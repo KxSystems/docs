@@ -93,7 +93,7 @@ A file containing certificate authority (CA) certificates in PEM format. The fil
 ... (CA certificate in base64 encoding) ...
 -----END CERTIFICATE-----
 ```
-sequences. Before, between, and after the certificates text is allowed which can be used e.g. for descriptions of the certificates.
+sequences. Text is allowed before, between, and after the certificates; it can be used, for example, for descriptions of the certificates.
 
 Default value is `<OPENSSLDIR>/cacert.pem`
 
