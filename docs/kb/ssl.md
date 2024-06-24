@@ -216,7 +216,7 @@ $ export KX_SSL_CA_CERT_FILE=/tmp/new/ca-cert.pem
 
 ## TLS Server Mode
 
-Once the certificates are in place, and the environment variables set, TLS Server Mode can be enabled through the [command-line option -E](../basics/cmdline.md#-e-tls-server-mode).
+When the certificates are in place, and the environment variables are set, TLS Server Mode can be enabled through the [command-line option -E](../basics/cmdline.md#-e-tls-server-mode).
 
 
 ## TLS Client Mode
