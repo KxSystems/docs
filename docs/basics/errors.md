@@ -106,7 +106,7 @@ conn
 
 :   Too many connections. Max connections was 1022 prior to 4.1t 2023.09.15, otherwise the limit imposed by the operating system (operating system configurable for system/protocol).
 
-[](){#Could-not-initialize-ssl}
+[](){#could-not-initialize-ssl}
 Could not initialize ssl
 
 :   [`(-26!)[]`](internal.md#-26x-ssl) found SSL/TLS not enabled
