@@ -86,7 +86,7 @@ Default value is `<OPENSSLDIR>/server-crt.pem`
 
 #### SSL_CA_CERT_FILE
 
-A file of certificate authority (CA) certificates in PEM format. The file can contain several CA certificates identified by
+A file containing certificate authority (CA) certificates in PEM format. The file can contain several CA certificates identified by
 
 ```
 -----BEGIN CERTIFICATE-----
