@@ -83,7 +83,7 @@ Note the license number (`#400` in the example) and quote it in any corresponden
 
 If you are sharing use of a commercial license, you will probably want to set the environment variable `QLIC` to the path of the license key file, as below.
 
-### License Errors
+### License errors
 
 A list of possible errors can be found [here](../basics/errors.md#license-errors)
 
