@@ -165,7 +165,7 @@ Configured TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../ba
 
 ## Certificates
 
-If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. An example script to do so follows, which you should customize as necessary
+If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. An example script to do so follows; customize as necessary.
 
 ```bash
 $ more makeCerts.sh
