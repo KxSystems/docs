@@ -39,7 +39,7 @@ Manages subscriptions: adds and removes subscribers, and sends subscriber table 
 
 Handles end-of-day (EOD) processing.
 
-??? tip "Best practices for tickerplants"
+!!! tip "Best practices for tickerplants"
 
     Tickerplants should be lightweight, not capturing data and using very little memory. 
 
@@ -50,7 +50,7 @@ Handles end-of-day (EOD) processing.
 
 This is the file to which the Tickerplant logs the q messages it receives from the feedhandler. It is used for recovery: if the RDB has to restart, the log file is replayed to return to the current state.
 
-??? tip "Best practices for log files"
+!!! tip "Best practices for log files"
 
     The logging process can run on any hardware and OS, from a RaspberryPi to a cloud server.
 
@@ -69,7 +69,7 @@ Subscribes to messages from the Tickerplant, stores them in memory, and allows t
 
 At end of day usually writes intraday data to the Historical Database, and sends it a new EOD message.
 
-??? tip "Best practices for real-time databases"
+!!! tip "Best practices for real-time databases"
 
     RDBs queried intraday should exploit attributes in their tables. For example, a trade table might be marked as sorted by time (`` `s#time``) and grouped by sym (`` `g#sym``).
 
@@ -90,7 +90,7 @@ At end of day usually writes intraday data to the Historical Database, and sends
 
 Subscribes to the intraday messages and typically performs some additional function on receipt of new data – e.g. calculating an order book or maintaining a subtable with the latest price for each instrument.
 
-??? tip "Best practices for real-time subscribers"
+!!! tip "Best practices for real-time subscribers"
 
     Write streaming analytics to compute the required results, rather than timed computations.
 
@@ -113,7 +113,7 @@ Large tables are usually stored on disk partitioned by date, with each column st
 
 The dates are referred to as _partitions_ and this on-disk structure contributes to the high performance of kdb+.
 
-??? tip "Best practices for historical databases"
+!!! tip "Best practices for historical databases"
 
     Attributes are key. Partition tables on disk on the most-queried column.
 
@@ -141,7 +141,7 @@ The entry point into the kdb+ system. Responsible for routing incoming queries t
 
 Can connect both the real-time and historical data to allow users to query across both. In some cases, a gateway will combine the result of a series of queries to different processes.
 
-??? tip "Best practices for gateways"
+!!! tip "Best practices for gateways"
 
     Run only lightweight code. 
 
@@ -180,7 +180,4 @@ Can connect both the real-time and historical data to allow users to query acros
 <br>
 :fontawesome-regular-map:
 [kdb+tick profiling for throughput optimization](../wp/tick-profiling.md)
-<br>
-:fontawesome-regular-map:
-[kdb+ and WebSockets](../wp/websockets/index.md)
 

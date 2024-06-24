@@ -405,7 +405,7 @@ Behavior depends on the value of `handle`.
 
 See more on [message types](https://github.com/KxSystems/javakdb/tree/master/docs#type-mapping). Note that a `k()` call will block until a message is completely sent/received (`handle!=0`) or evaluated (`handle=0`). This is true for both sync and async message types, although only the former will wait on a response from the peer socket. One should not confuse the qIPC async message type with [async I/O](https://en.wikipedia.org/wiki/Asynchronous_I/O).
 
-??? detail "Blocking sockets"
+!!! detail "Blocking sockets"
 
     As the C API does not perform any buffering, it does not support sending or reception of partial messages. Hence qIPC sockets must remain in blocking mode regardless of the message type used.
 
@@ -558,7 +558,7 @@ Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not 
 2    use TLS
 ```
 
-??? detail "Messages larger than 2GB"
+!!! detail "Messages larger than 2GB"
 
     During the initial handshake of a connection, each side’s capability is exchanged, and the common maximum is chosen for the connection. By setting the capability parameter for `khpunc`, the default message-size limit for this connection can be raised from 2GB to 1TB. e.g.
 

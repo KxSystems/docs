@@ -31,7 +31,7 @@ Using real NYSE trade data, we observed the `gzip` algorithm at level 9 compress
 
 The compressed file allows random access to the data.
 
-??? tip "Source and target file on the same drive might run slowly"
+!!! tip "Source and target file on the same drive might run slowly"
 
     Compression reads from the source file, compresses the data and writes to the target file. The disk is likely receiving many seek requests.
 
@@ -133,7 +133,7 @@ zipLevel          | 6i
 
 Appending to files with an attribute (e.g. `` `p#`` on sym) causes the whole file to be read and rewritten.
 
-??? warning "Appending to compressed enum files in V3.0 2012.05.17"
+!!! warning "Appending to compressed enum files in V3.0 2012.05.17"
 
     Appending to compressed enum files was blocked in V3.0 2012.05.17 due to potential concurrency issues, hence these files should not be compressed.
 
@@ -159,7 +159,7 @@ For example, say you are querying by date and sum over a date-partitioned table,
 
 The number of concurrently open files is limited by the environment/OS only (e.g. `ulimit -n`).
 
-??? detail "Prior to V3.2"
+!!! detail "Prior to V3.2"
 
     V3.2+ uses two file descriptors per file: you might need to increase the `ulimit -n` value used in prior versions.
 
@@ -176,7 +176,7 @@ This is reservation only, and can be accommodated by increasing the swap space a
 
 If you experience `wsfull` even with sufficient swap space configured, check whether you have any soft/hard limits imposed with `ulimit -v`.
 
-??? tip "Memory overcommit settings on Linux"
+!!! tip "Memory overcommit settings on Linux"
 
     `/proc/sys/vm/overcommit\_memory` and `/proc/sys/vm/overcommit\_ratio` – these control how careful Linux is when allocating address space with respect to available physical memory plus swap.
 
@@ -254,7 +254,7 @@ algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-appl
     Build the `liblz4-dll` project on Windows as outlined in the [README at GitHub](https://github.com/lz4/lz4/tree/release/build).
 
 
-??? danger "Certain releases of `lz4` do not function correctly within kdb+"
+!!! danger "Certain releases of `lz4` do not function correctly within kdb+"
 
     Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process.
 

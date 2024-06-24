@@ -53,14 +53,14 @@ _You can run kdb+ on Linux, macOS, or Windows_
 
 Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). (Credentials are available from customers’ [Designated Contacts](licensing.md#obtain-a-license-key-file)).
 
-??? tip "Internal distribution at customer sites"
+!!! tip "Internal distribution at customer sites"
 
     Most customers download the latest release of kdb+ (along with the accompanying `README.txt`, the detailed change list) and make a limited number of approved kdb+ versions available from a central file server.
 
     Designated Contacts should encourage developers to keep production systems up to date with these versions of kdb+. This can greatly simplify development, deployment and debugging.
 
 
-??? info "Platforms and versions"
+!!! info "Platforms and versions"
 
     The names of the ZIPs denote the platform: `l64.zip` – 64-bit Linux; `w32.zip` – 32-bit Windows, etc. m64 contains a universal binary suitable for both Intel and Apple Silicon Macs. l64 contains the Linux x86 build, with l64arm containing the Linux build suitable for ARM processors.
 
@@ -104,7 +104,7 @@ Unzip the downloaded ZIP to produce a folder `q` in your install location.
     ```
 
 
-??? tip "Recommended: `rlwrap` for Linux and macOS"
+!!! tip "Recommended: `rlwrap` for Linux and macOS"
 
     On Linux and macOS the `rlwrap` command allows the Up arrow to retrieve earlier expressions in the q session. It is very useful and we recommend installing it.
 
@@ -191,25 +191,26 @@ Confirm kdb+ is working: launch your first q session.
     q/m64/q
     ```
 
+    !!! warning ":fontawesome-brands-apple: Authorizing macOS to run kdb+"
+
+        MacOS Catalina (10.15) introduced tighter security.
+        It may display a warning that it does not recognize the software.
+
+        ![Catalina warning](../img/catalina-warning.png)
+
+        If the `spctl` and `xattr` commands above have not authorized the OS to run q, open _System Preferences > Security & Privacy_.
+
+        You should see a notification that q has been blocked – and a button to override the block.
+
+        :fontawesome-brands-apple:
+        [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491)
+
+
 === ":fontawesome-brands-windows: Windows"
 
     ```powershell
     c:\q\w64\q
     ```
-
-??? warning ":fontawesome-brands-apple: Authorizing macOS to run kdb+"
-
-    MacOS Catalina (10.15) introduced tighter security.
-    It may display a warning that it does not recognize the software.
-
-    ![Catalina warning](../img/catalina-warning.png)
-
-    If the `spctl` and `xattr` commands above have not authorized the OS to run q, open _System Preferences > Security & Privacy_.
-
-    You should see a notification that q has been blocked – and a button to override the block.
-
-    :fontawesome-brands-apple:
-    [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491)
 
 The q session opens with a banner like this.
 

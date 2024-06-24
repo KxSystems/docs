@@ -44,7 +44,7 @@ q)`:SNewTrade/ set .Q.en[`:.;trade]     / save splayed table
 q)s:get`:SNewTrade/                     / s has columns mapped on demand
 ```
 
-??? note "`value` is a synonym for `get`"
+!!! note "`value` is a synonym for `get`"
 
     By convention, [`value`](value.md) is used for other purposes. But the two are completely interchangeable.
 
@@ -162,7 +162,7 @@ q)read0 `:data/foo
 "\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\036\000..
 ```
 
-??? danger "Setting variables in the KX namespaces can result in undesired and confusing behavior."
+!!! danger "Setting variables in the KX namespaces can result in undesired and confusing behavior."
 
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 

@@ -68,7 +68,7 @@ q)hdat:hopen ":f.dat"             / data file (bytes)
 q)htxt:hopen ":c:/q/test.txt"     / text file
 ```
 
-??? tip "Passing strings instead of symbols avoids interning of such symbols."
+!!! tip "Passing strings instead of symbols avoids interning of such symbols."
 
     This is useful if embedding frequently-changing tokens in the username or password fields.
 
