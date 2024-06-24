@@ -85,7 +85,7 @@ If you are sharing use of a commercial license, you will probably want to set th
 
 ### License errors
 
-A list of possible errors can be found [here](../basics/errors.md#license-errors)
+A list of possible errors can be found [here](../basics/errors.md#license-errors).
 
 
 ## Keeping the license key file elsewhere
