@@ -254,7 +254,7 @@ q).Q.hg`$":https://www.kx.com"
 'conn. OS reports: Protocol not available
 ```
 
-## Connection Info
+## Connection information
 
 Extra protocol details for a connection handle are available via [`.z.e`](../ref/dotz.md#ze-tls-connection-status), including information about whether the current handle's TLS certificate was successfully verified.
 
