@@ -36,7 +36,7 @@ The default implementation of .z.ph displays all variables and views. For exampl
 
 Providing q code as a GET param causes it to be evaluated eg. `http://localhost:8080?1+1` returns `2`. 
 
-[.h.HOME](../ref/doth.md#hhome-webserver-root) can be set to be the webserver root in order to serve files contained in the directory e.g.
+[.h.HOME](../ref/doth.md#hhome-webserver-root) can be set to be the webserver root to serve files contained in the directory e.g.
 creating an HTML file index.html in directory `/webserver/` and setting `.h.HOME="/webserver"` allows the file to be viewed via  `http://localhost:8080/index.html'.
 
 :fontawesome-regular-map:
