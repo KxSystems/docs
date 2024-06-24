@@ -59,42 +59,7 @@ hopen each(`:mysymbol;
         (":localhost:5000";1000))
 ```
 
-
-## :fontawesome-solid-handshake-slash: `hclose`
-
-_Close a connection to a file or process_
-
-```syntax
-hclose x     hclose[x]
-```
-
-Where `x` is a connection handle, closes the connection, and destroys the handle.
-The corresponding integer can then no longer be applied to an argument.
-
-```q
-q)show h:hopen `::5001
-3i
-q)h"til 5"
-0 1 2 3 4
-q)hclose h
-q)h"til 5"
-': Bad file descriptor
-```
-
-Async connections: pending data on the connection handle is not sent prior to closing.
-If flushing is required prior to close, this must be done explicitly.
-(Since V3.6 2019.09.19)
-
-```q
-q)neg[h][];hclose h;
-```
-
-!!! info "`hclose` before V3.6 2019.09.19"
-
-    If the handle refers to a WebSocket, `hclose` blocks until any pending data on the connection handle has been sent.
-
-
-## :fontawesome-solid-database: Files
+### :fontawesome-solid-database: Files
 
 If a filehandle specifies a non-existent filepath, it is created, including directories.
 
@@ -118,9 +83,9 @@ q)r:htxt ` sv("asdf";"qwer")
 ```
 
 
-## :fontawesome-solid-handshake: Processes
+### :fontawesome-solid-handshake: Processes
 
-### Communication handles
+#### Communication handles
 
 A communication handle specifies a network resource, and may include authentication credentials for it. There are four forms.
 
@@ -168,7 +133,7 @@ q)(neg h)"a:2"    / asynchronous (SET)
 ```
 
 
-### :fontawesome-solid-thumbs-up: One-shot request
+#### :fontawesome-solid-thumbs-up: One-shot request
 
 If only one synchronous query/request is to be run, then the one-shot synchronous request can be used to connect, send the query, get the results, then disconnect.
 
@@ -187,6 +152,41 @@ One-shot sync queries can now execute via `` `::[(":host:port";timeout);query]``
 ```
 
 `":host:port"` can also be a symbol as `` `:host:port``.
+
+
+## :fontawesome-solid-handshake-slash: `hclose`
+
+_Close a connection to a file or process_
+
+```syntax
+hclose x     hclose[x]
+```
+
+Where `x` is a connection handle, closes the connection, and destroys the handle.
+The corresponding integer can then no longer be applied to an argument.
+
+```q
+q)show h:hopen `::5001
+3i
+q)h"til 5"
+0 1 2 3 4
+q)hclose h
+q)h"til 5"
+': Bad file descriptor
+```
+
+Async connections: pending data on the connection handle is not sent prior to closing.
+If flushing is required prior to close, this must be done explicitly.
+(Since V3.6 2019.09.19)
+
+```q
+q)neg[h][];hclose h;
+```
+
+!!! info "`hclose` before V3.6 2019.09.19"
+
+    If the handle refers to a WebSocket, `hclose` blocks until any pending data on the connection handle has been sent.
+
 
 ----
 :fontawesome-solid-book:
