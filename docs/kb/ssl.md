@@ -193,7 +193,7 @@ openssl req -new -sha256 -key client-private-key.pem -subj /C=US/ST=CA/L=Somewhe
 openssl x509 -req -in client.csr -CA ca-cert.pem -CAkey ca-private-key.pem -CAcreateserial -out client-cert.pem -days 365 -sha256
 ```
 
-using this script the server settings can be configured as:
+Using this script the server settings can be configured as:
 ```bash
 $ export SSL_CERT_FILE=$HOME/certs/server-cert.pem
 $ export SSL_KEY_FILE=$HOME/certs/server-private-key.pem
