@@ -173,7 +173,7 @@ The number of physical cores.
 
 ## `.z.e` (TLS connection status)
 
-TLS connection status.
+TLS details used with a connection handle. Returns an empty dictionary if the connection is not TLS enabled. E.g. where `h` is a connection handle.
 
 ```q
 q)h".z.e"
@@ -182,7 +182,7 @@ PROTOCOL| `TLSv1.2
 CERT    | `SUBJECT`ISSUER`SERIALNUMBER`NOTVALIDBEFORE`NOTVALIDAFTER`VERIFIED`VERIFYERROR!("/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com";"/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com";,"1";"Jul  6 10:08:57 2021 GMT";"May 15 10:08:57 2031 GMT";1b;0)
 ```
 
-Since V3.4 2016.05.16. Note: `CERT` details of `VERIFIED`,`VERIFYERROR` available since 4.1t 2024.02.07.
+Since V3.4 2016.05.16. `CERT` details of `VERIFIED`,`VERIFYERROR` available since 4.1t 2024.02.07.
 
 
 ## `.z.ex` (failed primitive)

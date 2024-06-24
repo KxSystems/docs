@@ -109,10 +109,11 @@ nav:
   - Home: 'https://code.kx.com/home'
   - kdb+ and q:
     - About: index.md
-    - Learn:
-      - Get started: learn/index.md
+    - Getting Started:
       - Install: learn/install.md
       - Licenses: learn/licensing.md
+    - Learn:
+      - Overview: learn/index.md
       - Mountain tour:
         - Overview: learn/tour/overview.md
         - Begin here: learn/tour/index.md
@@ -460,6 +461,7 @@ nav:
         - SSL/TLS: kb/ssl.md
         - HTTP: kb/http.md
         - WebSockets: kb/websockets.md
+        - WebSockets (WP): wp/websockets/index.md
         - Interprocess communication (WP): wp/ipc/index.md
       - Tools:
         - Code profiler: kb/profiler.md
@@ -525,7 +527,6 @@ nav:
       - Examples: architecture/examples.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Chained tickerplant: kb/chained-tickerplant.md
-      - Client-server: kb/client-server.md
       - Corporate actions: kb/corporate-actions.md
       - Data recovery for kdb+tick (WP): wp/data-recovery.md
       - Disaster recovery (WP): wp/disaster-recovery/index.md
@@ -540,10 +541,8 @@ nav:
         - Performance tests: architecture/optane-tests.md
       - Order Book (WP): wp/order-book.md
       - Publish and subscribe: kb/publish-subscribe.md
-      - Pub/sub with Solace (WP): wp/solace/index.md
       - Query Routing (WP): wp/query-routing/index.md
       - Real-time tick subscribers (WP): wp/rt-tick/index.md
-      - WebSockets (WP): wp/websockets/index.md
       - Write-only RDB: kb/w-q.md
       - Advanced:
         - Distributed systems (WP): wp/query-interface.md
@@ -566,7 +565,8 @@ nav:
     #  - ODBC/Simba: interfaces/odbc-simba.md
       - R: interfaces/r.md
       - Scala: interfaces/scala-client-for-q.md
-    - Open source: github.md
+      - Pub/sub with Solace (WP): wp/solace/index.md
+      - Open source: github.md
     - Using kdb+ in the cloud:
       - About: cloud/index.md
       - Amazon Web Services:
@@ -602,7 +602,6 @@ nav:
           - ObjectiveFS: cloud/otherfs/objectivefs.md
           - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
           - Quobyte: cloud/otherfs/quobyte.md
-      - DigitalOcean: kb/digitalocean.md
     - Academy: https://learninghub.kx.com
     - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
     - White papers: wp/index.md

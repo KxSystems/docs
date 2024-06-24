@@ -100,7 +100,7 @@ q)qpd:5*2*4*"i"$16:00-09:30
 q)date:raze(100*qpd)#'2009.01.05+til 5
 q)sym:(raze/)5#enlist qpd#'100?`4
 q)sym:(neg count sym)?sym
-q)time:"t"$raze 500#enlist 09:30:00+15*til qpd
+q)time:"t"$(raze/) 500#enlist 10#'09:30:00+15*til (qpd div 5*2)
 q)time+:(count time)?1000
 q)side:raze 500#enlist raze(qpd div 2)#enlist"BA"
 q)level:raze 500#enlist raze(qpd div 5)#enlist 0 1 2 3 4

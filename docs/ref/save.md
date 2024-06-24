@@ -44,6 +44,7 @@ The format used depends on the file extension:
  txt     plain text
  xls     Excel spreadsheet
  xml     Extensible Markup Language (XML)
+ json    JavaScript Object Notation (JSON), available since v3.2 2014.07.31
 ```
 
 !!! tip "There are no corresponding formats for [`load`](load.md). Instead, use [File Text](file-text.md)."

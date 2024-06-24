@@ -83,12 +83,16 @@ Note the license number (`#400` in the example) and quote it in any corresponden
 
 If you are sharing use of a commercial license, you will probably want to set the environment variable `QLIC` to the path of the license key file, as below.
 
+### License errors
+
+A list of possible errors can be found [here](../basics/errors.md#license-errors).
+
 
 ## Keeping the license key file elsewhere
 
 The default location for the license key file is the `QHOME` folder. You do not have to keep the license key file there. You can use the environment variable `QLIC` to specify a different filepath.
 
-??? tip "Folder not file"
+!!! tip "Folder not file"
 
     Like `QHOME`, `QLIC` points to a folder, not a file. For example,
 
@@ -133,10 +137,8 @@ You can see the number of cores entitled to a q process:
 
 The number of licensed cores is always 16 for the on-demand license. 
 
-:fontawesome-regular-hand-point-right: [License errors](../basics/errors.md#license-errors)
 
-
-??? warning "On the road"
+!!! tip "On the road"
 
     The license key file binds the interpreter to your computer’s hostname.
     For example, for a Mac named `mymbp` the hostname might be `mymbp.local`.
