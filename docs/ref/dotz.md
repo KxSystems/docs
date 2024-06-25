@@ -40,11 +40,11 @@ Environment                        Callbacks
 </div>
 
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
-??? warning "The `.z` namespace is reserved for use by KX, as are all single-letter namespaces."
+!!! warning "The `.z` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
 
-??? tip "By default, callbacks are not defined in the session"
+!!! tip "By default, callbacks are not defined in the session"
 
     After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
@@ -519,7 +519,7 @@ Where q has been [started with secondary processes for use in parallel processin
 
 For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to the secondary processes by calling [`.z.pd[]`](#zpd-peach-handles).
 
-??? danger "The processes with these handles must not be used for other messaging."
+!!! danger "The processes with these handles must not be used for other messaging."
 
     Each Parallel will close them if it receives anything other than a response message.
 
@@ -871,7 +871,7 @@ Where `f` is a binary function, `.z.vs` is evaluated _after_ a value is set glob
 
 For function `f[x;y]`, `x` is the symbol of the modified variable and `y` is the index. 
 
-??? detail "Applies only to globals in the default namespace"
+!!! detail "Applies only to globals in the default namespace"
 
     This is not triggered for function-local variables, nor globals that are not in the default namespace, e.g. those prefixed with a dot such as `.a.b`.
 
@@ -1095,9 +1095,7 @@ UTC time as a datetime atom.
 q).z.z
 2006.11.13T21:16:14.601
 ```
-??? detail "`z.z` calls `gettimeofday` and so has microsecond precision"
-
-    Unfortunately shoved into a 64-bit float.
+!!! detail "`z.z` calls `gettimeofday` and so has microsecond precision"
 
 
 ## `.z.zd` (zip defaults)

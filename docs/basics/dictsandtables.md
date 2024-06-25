@@ -56,11 +56,11 @@ c| 3
 
 The lists must be the same length. The keys should be unique (no duplicates) but no error is signalled if duplicates are present.
 
-??? danger "Avoid duplicating keys in a dictionary or (column names in a) table."
+!!! danger "Avoid duplicating keys in a dictionary or (column names in a) table."
 
     Q does not reject duplicate keys, but operations on dictionaries and tables with duplicate keys are **undefined**.
 
-??? tip "If you know the keys are unique you can set the `u` attribute on them."
+!!! tip "If you know the keys are unique you can set the `u` attribute on them."
 
     ``(`u#`a`b`c)!100 200 300``
 

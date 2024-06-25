@@ -58,7 +58,7 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
 
 `sum` is an aggregate function, equivalent to `+/`.
 
-??? warning "Floating-point addition is not associative"
+!!! warning "Floating-point addition is not associative"
 
     Different results may be obtained by changing the order of the summation.
 

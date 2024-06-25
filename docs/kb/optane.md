@@ -143,7 +143,7 @@ In Memory mode, the DRAM acts as a cache for frequently-accessed data, while the
 
 For larger datasets, this increased memory space avoids the costs and complexity of horizontal scaling.
 
-??? detail "Vertical-vs-horizontal scaling"
+!!! detail "Vertical-vs-horizontal scaling"
 
     A common solution for overly-large in-memory datasets, is to split the data across multiple machines. Data is usually split based on some inherent partition of the data (e.g. ticker symbol, sensor ID, region), to allow parallelization of calculations. Horizontal scaling allows users to add memory, but comes at a cost. Average performance (versus a single machine) is reduced due to the cost of IPC to move data between processes. There is also an increase in complexity as well as hardware, datacenter and operations costs.
 

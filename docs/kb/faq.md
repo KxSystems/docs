@@ -23,7 +23,7 @@ date: October 2020
 
 Tables are first-class objects in q.
 
-??? important "A table is an ordered list of its rows."
+!!! important "A table is an ordered list of its rows."
 
     Relations in SQL are sets. There are no duplicate rows, and rows are not ordered. It is possible to define a cursor on a result set and then manipulate the cursor rows in order. (Not in ANSI SQL.)
 
@@ -201,7 +201,7 @@ term | s
 pages| J
 ```
 
-??? danger "`meta` does not read the entire table."
+!!! danger "`meta` does not read the entire table."
 
     The `meta` keyword samples only the top of each column.
     You cannot rely on it to determine whether a column is simple, compound or mixed.
@@ -252,7 +252,7 @@ For a simple table of financial markets and their addresses:
 q)market:([name:`symbol$()] address:())
 ```
 
-??? danger "When constructing a table key, ensure its items are unique."
+!!! danger "When constructing a table key, ensure its items are unique."
 
     To protect performance, kdb+ does not ensure key items are unique.
 

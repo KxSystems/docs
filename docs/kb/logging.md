@@ -11,7 +11,7 @@ keywords: kdb+, log, logging, q, replication
 
 Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
 
-??? detail "Applies only to globals in the default namespace"
+!!! detail "Applies only to globals in the default namespace"
 
     This is not triggered for function-local variables, nor globals that are not in the default namespace, e.g. those prefixed with a dot such as `.a.b`.
 
@@ -54,7 +54,7 @@ sym  | `intel
 price| 88.5
 size | 1625
 ```
-??? warning "Updates done locally in the server process are logged to disk only if they are sent as messages to self"
+!!! warning "Updates done locally in the server process are logged to disk only if they are sent as messages to self"
 
     The syntax for this uses `0` as the handle:
 

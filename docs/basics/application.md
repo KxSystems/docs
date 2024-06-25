@@ -394,7 +394,7 @@ q)g 5       / still triple
 15
 ```
 
-??? tip "Make projections explicit"
+!!! tip "Make projections explicit"
 
     When projecting a function onto an argument list, make the argument list full-length.
     This is not always necessary but it is good style, because it makes it clear the value is being projected, not applied. 

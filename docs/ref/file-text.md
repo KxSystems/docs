@@ -56,7 +56,7 @@ q)"|" 0: (`a`b`c;1 2 3;"xyz")
 "c|3|z"
 ```
 
-??? detail "Temporals are represented according to ISO 8601."
+!!! detail "Temporals are represented according to ISO 8601."
 
     ```q
     q)show q:.z.p
@@ -100,7 +100,7 @@ q)csv 0:([]("foo\nbar";"baz"))
 "baz"
 ```
 
-??? danger "Columns that are neither vectors nor lists of strings"
+!!! danger "Columns that are neither vectors nor lists of strings"
 
     Prepare Text signals a type error if a column of its right argument is neither a vector nor a list of strings.
 

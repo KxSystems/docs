@@ -13,7 +13,7 @@ by [Rian Ó Cuinneagáin ](#author)
 
 [MQTT](http://mqtt.org/) is a messaging protocol for the Internet of Things (IoT). It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium.
 
-??? detail "Internet of Things"
+!!! detail "Internet of Things"
 
     _Internet of Things_ denotes the network of things embedded with sensors, software, and other technologies that connect and exchange data with other devices and systems over the internet.
 

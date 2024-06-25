@@ -95,7 +95,7 @@ q)x lj y
 ```
 
 
-??? detail "Changes in V3.0"
+!!! detail "Changes in V3.0"
 
     Since V3.0, the `lj` operator is a cover for `,\:` (Join Each Left) that allows the left argument to be a keyed table. `,\:` was introduced in V2.7 2011.01.24.
 

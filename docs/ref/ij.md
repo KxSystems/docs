@@ -59,7 +59,7 @@ k v   s
 4 400 c
 ```
 
-??? detail "Changes in V3.0"
+!!! detail "Changes in V3.0"
 
     Since V3.0, `ij` has changed behavior (similarly to `lj`): when there are nulls in `y`, `ij` uses the `y` null, where the earlier version left the corresponding value in `x` unchanged:
 
