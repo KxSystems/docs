@@ -526,7 +526,7 @@ q)\head test.txt
 String: location of the webserver root.
 
 :fontawesome-solid-graduation-cap:
-[Customizing the default webserver](../kb/custom-web.md)
+[HTTP](../kb/http.md)
 
 
 ## `.h.iso8601` (ISO timestamp)
