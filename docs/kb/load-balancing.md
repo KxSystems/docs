@@ -4,18 +4,12 @@ description: The primary server starts secondary servers; clients send requests 
 ---
 # A load-balancing kdb+ server
 
-
-
-
-
-
 The script 
 :fontawesome-brands-github: 
 [KxSystems/kdb/e/mserve.q](https://github.com/KxSystems/kdb/blob/master/e/mserve.q) 
 can be used to start a load-balancing kdb+ server. The primary server starts a number of secondary servers (in the same host). Clients then send requests to the primary server which, transparently to the client, chooses a secondary server with low CPU load, and forwards the request there.
 
 This set-up is useful for read operations, such as queries on historical databases. Each query is executed in one of the secondary threads, hence writes are not replicated.
-
 
 ## Starting the primary server
 
@@ -63,24 +57,3 @@ should be modified to
 c.ks(query);
 model.setFlip((c.Flip) c.k());
 ```
-
-
-## Source code
-
-The complete source code for `mserve.q` is quite short, reproduced here for convenience.
-
-```q
-/ start secondary servers
-{value"\\q ",.z.x[1]," -p ",string x}each p:(value"\\p")+1+til"I"$.z.x 0;
-
-/ unix (comment out for windows)
-\sleep 1
-
-/ connect to secondary servers
-h:neg hopen each p;h@\:".z.pc:{exit 0}";h!:()
-
-/ fields queries. assign query to least busy secondary server
-.z.ps:{$[(w:neg .z.w)in key h;[h[w;0]x;h[w]:1_h w];                    /response
- [h[a?:min a:count each h],:w;a("{(neg .z.w)@[value;x;`error]}";x)]]}  /request
-```
-
