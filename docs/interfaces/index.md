@@ -15,35 +15,6 @@ Our Fusion interfaces are
 -   released under the [Apache 2 license](https://www.apache.org/licenses/LICENSE-2.0)
 -   free for all use cases, including 64-bit and commercial use
 
-## Languages
-
-### C/C++
-
-[c.o](c-client-for-q.md) Call C/C++ from q, call q from C/C++, IPC communication with kdb+ (dynamic libraries and standalone applications)<br>
-[ffi](https://github.com/KxSystems/ffi) An extension to kdb+ for loading and calling dynamic libraries using pure q [:fontawesome-regular-map:](using-c-functions.md)
-
-### C# #
-
-[csharpkdb](https://github.com/KxSystems/csharpkdb) Call kdb+ from C# and .NET [:fontawesome-regular-map:](../wp/gui/index.md "White paper: An introduction to graphical interfaces for kdb+ using C#")
-
-### Java
-
-[javakdb](https://github.com/KxSystems/javakdb) Java client for kdb+
-
-### Python
-
-[pykx](https://code.kx.com/pykx) Integrate Python and q code<br>
-[embedPy](https://github.com/KxSystems/embedPy) Call Python from q
-
-### R
-
-[rkdb](https://github.com/KxSystems/rkdb) Query kdb+ from R [:fontawesome-regular-map:](r.md)<br>
-[embedR](https://github.com/KxSystems/embedR) Call R from q [:fontawesome-regular-map:](r.md)
-
-### Rust
-
-[kxkdb](https://github.com/KxSystems/kxkdb) Query kdb+ from Rust
-
 ## Message and data formats
 
 <table class="kx-compact" markdown>

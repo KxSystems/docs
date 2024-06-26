@@ -548,13 +548,21 @@ nav:
         - Distributed systems (WP): wp/query-interface.md
         - Intraday writedown (WP): wp/intraday-writedown/index.md
     - Interfaces:
+      - Languages:
+        - C/C++:
+          - Quick guide: interfaces/c-client-for-q.md
+          - API reference: interfaces/capiref.md
+          - C API for kdb+ (WP): wp/capi/index.md
+          - Using C/C++ functions: interfaces/using-c-functions.md
+        - C#: interfaces/csharp.md
+        - Foreign Function Interface (FFI): interfaces/ffi.md
+        - Java: interfaces/java.md
+        - Python: interfaces/python.md
+        - R: interfaces/r.md
+        - Rust: interfaces/rust.md
+        - Scala: interfaces/scala-client-for-q.md
       - KX libraries: interfaces/index.md
       - Bloomberg: interfaces/q-client-for-bloomberg.md
-      - C/C++:
-        - Quick guide: interfaces/c-client-for-q.md
-        - API reference: interfaces/capiref.md
-        - C API for kdb+ (WP): wp/capi/index.md
-        - Using C/C++ functions: interfaces/using-c-functions.md
       - Excel: interfaces/excel-client-for-q.md
       - FIX messaging (WP): wp/fix-messaging.md
       - GPUs: interfaces/gpus.md
@@ -563,8 +571,6 @@ nav:
       - ODBC: interfaces/q-client-for-odbc.md
       - ODBC3: interfaces/q-server-for-odbc3.md
     #  - ODBC/Simba: interfaces/odbc-simba.md
-      - R: interfaces/r.md
-      - Scala: interfaces/scala-client-for-q.md
       - Pub/sub with Solace (WP): wp/solace/index.md
       - Open source: github.md
     - Using kdb+ in the cloud:
