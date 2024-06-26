@@ -149,7 +149,7 @@ Can connect both the real-time and historical data to allow users to query acros
 
     Return sensible errors when queries fail.
 
-    Use the deferred-response feature (V3.6) to avoid additional coding on the side of connecting non-kdb+ processes.
+    Use the [deferred-response]((../basics/internal.md#-30x-deferred-response) feature (V3.6) to avoid additional coding on the side of connecting non-kdb+ processes.
 
     [Load-management](../kb/load-balancing.md): round-robin might not be the best option for your system. 
     Consider other options specific to your APIs and load.
