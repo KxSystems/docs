@@ -387,7 +387,7 @@ q)h"a"
 
 !!! tip "Deferred response" 
 
-    [Deferred reponse](../../kb/deferred-response.md) with `-30!` allows a server to defer the response to a synchronous query, allowing other messages to be processed before responding. This is useful where synchronous messaging is necessary on the client side. 
+    [Deferred reponse](../../kb/deferred-response.md) with [`-30!`](../../basics/internal.md#-30x-deferred-response) allows a server to defer the response to a synchronous query, allowing other messages to be processed before responding. This is useful where synchronous messaging is necessary on the client side. 
 
     An example implementation of deferred sync message handling is discussed in the blog [kdb+/q Insights: Deferred Response](https://kx.com/blog/kdb-q-insights-deferred-response/).
 
@@ -462,7 +462,7 @@ c  | 43.7764
 
 ### Broadcast 
 
-Much of the overhead of sending a message via IPC is in serializing the data before sending. It is possible to ‘async broadcast’ the same message to multiple handles using the internal `-25!` function. This will serialize the message once and send to all handles to reduce CPU and memory load. An error in publishing to any handle will result in the message not being sent to any of the handles, regardless of the handle’s position in the list.
+Much of the overhead of sending a message via IPC is in serializing the data before sending. It is possible to ‘async broadcast’ the same message to multiple handles using the internal [`-25!`](../../basics/internal.md#-25x-async-broadcast) function. This will serialize the message once and send to all handles to reduce CPU and memory load. An error in publishing to any handle will result in the message not being sent to any of the handles, regardless of the handle’s position in the list.
 
 ```q
 q)h1:hopen 5551
@@ -493,10 +493,6 @@ q)h3"d"
 ```
 
 This can be applied to a tickerplant publishing asynchronously to multiple subscribers: RDBs, chained tickerplants, or other processes performing realtime calculations. 
-
-:fontawesome-solid-code:
-[Examples](../../basics/internal.md#-25x-async-broadcast)
-
 
 ### `.z.pg` (get) and `.z.ps` (set)
 
