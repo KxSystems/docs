@@ -107,6 +107,3 @@ q)\ts dpfdot[`:db;2014.01.14;`sym;`t] / t is a dict of tables, i.e. syms!tables.
 3444 179274224
 ```
 
-:fontawesome-regular-hand-point-right: 
-[above transcript](assets/alternative-in-memory-layouts.log) in full window
-
