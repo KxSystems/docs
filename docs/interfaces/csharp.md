@@ -6,7 +6,7 @@ keywords: csharp, windows, api, ipc
 
 # C# client for kdb+
 
-A kdb+ interface for the C# programming language is documented and available for download [here](https://github.com/KxSystems/csharpkdb).
+A kdb+ interface for the C# programming language is documented and available for download from [https://github.com/KxSystems/csharpkdb](https://github.com/KxSystems/csharpkdb).
 
 The interface permits connecting C# and kdb+ processes via IPC.
 
