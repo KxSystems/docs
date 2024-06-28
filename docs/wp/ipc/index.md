@@ -222,7 +222,7 @@ The TLS protocol is used to communicate across a network in a way designed to pr
 
 ### Negative ports
 
-A kdb+ process can be started in multithreaded input mode by setting a negative port number. A multithreaded process will use separate threads for every process that connects, which means that each client request can be executed on a separate CPU.
+A kdb+ process can be started in multithreaded input mode by setting a [negative port number](../../basics/listening-port.md#multi-threaded-port). A multithreaded process will use separate threads for every process that connects, which means that each client request can be executed on a separate CPU.
 
 Although secondary processes are used to farm queries out to multiple processes, they still have a single-threaded input queue. By using a negative port number, it is possible to multithread that queue too.
 
@@ -237,15 +237,6 @@ q)\p
 
 Connections can be opened to this process in the same way as described previously for positive port numbers.
 
-Note that there are a number of restrictions in multithreaded mode:
-
--   Queries cannot update globals
--   `.z.pc` is not called on disconnect
--   `.z.W` has a view of main thread sockets only
--   Cannot send async messages
--   Cannot serve HTTP requests
--   Views can be recalculated from the main thread only
-
 ```q
 q)h:hopen 4567
 q)h"1+1"
@@ -255,7 +246,6 @@ q)h"a:2"
   [0]  h"a:2"
        ^
 ```
-
 
 :fontawesome-solid-graduation-cap:
 [Multithreaded input](../../kb/multithreaded-input.md)

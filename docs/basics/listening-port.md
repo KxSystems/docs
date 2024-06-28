@@ -86,8 +86,26 @@ q)\p myhost:2000/2010     / use a free port between 2000 and 2010, using given h
 
 ## Multi-threaded port
 
-A negative port sets a [multi-threaded](../kb/multithreaded-input.md) port and if used it must be the initial and only mode of operation, i.e. do not dynamically switch between positive port and negative port.
+A negative port sets a [multi-threaded](../kb/multithreaded-input.md) port and if used it must be the initial and only mode of operation, 
+i.e. do not dynamically switch between positive port and negative port.
 
+Note that there are a number of restrictions in multithreaded mode:
+
+* queries are unable to update globals
+* [.z.po](../ref/dotz.md#zpo-open) is not called on connect
+* [.z.pc](../ref/dotz.md#zpc-close) is not called on disconnect
+* [.z.W](../ref/dotz.md#zw-handles) has a view on main thread sockets only
+* Cannot send async message
+* Views can be recalculated from the main thread only
+
+Multithreaded input mode supports WebSockets and HTTP (but not TLS) since 4.1t 2021.03.30. 
+TLS support available since 4.1t 2023.12.14. A custom [.z.ph](../ref/dotz.md#zph-http-get) which does not update global state should be used with HTTP.
+
+The use of sockets from within those threads is allowed only for the one-shot sync request and HTTP client request (TLS/SSL support added in 4.1t 2023.11.10). 
+These can be inefficient, as it opens, queries and closes each time. Erroneous socket usage is blocked and signals a nosocket error.
+
+In multithreaded input mode, the seed for the random-number generator used for threads other than the main thread is based on the socket descriptor for that connection; 
+these threads are transient – destroyed when the socket is closed, and no context is carried over for new threads/connections.
 
 ## Unix domain socket
 
