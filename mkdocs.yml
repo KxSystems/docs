@@ -456,6 +456,7 @@ nav:
         - Overview: basics/ipc.md
         - Callbacks: kb/callbacks.md
         - Listening port: basics/listening-port.md
+        - Deferred response: kb/deferred-response.md
         - Named pipes: kb/named-pipes.md
         - Serialization examples: kb/serialization.md
         - Server calling client: kb/server-calling-client.md
@@ -474,7 +475,6 @@ nav:
         - Monitor & control execution: kb/using-dotz.md
       - Coding:
         - Data visualization (WP): wp/data-visualization/index.md
-        - Deferred response: kb/deferred-response.md
         - Geospatial indexing: kb/geospatial.md
         - Linear programming: kb/lp.md
         - Multithreaded input: kb/multithreaded-input.md
