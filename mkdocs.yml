@@ -403,6 +403,7 @@ nav:
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Connection handles: basics/handles.md
+      - Command-line options: basics/cmdline.md
       - Datatypes: basics/datatypes.md
       - Dictionaries: basics/dictsandtables.md
       - Enumerations: basics/enumerations.md
@@ -422,6 +423,7 @@ nav:
       - QSQL queries: basics/qsql.md
       - Regular Expressions: basics/regex.md
       - Syntax: basics/syntax.md
+      - System commands: basics/syscmds.md
       - Tables: kb/faq.md
       - Variadic syntax: basics/variadic.md
     - Database:
@@ -468,7 +470,6 @@ nav:
         - Debugging: basics/debug.md
         - Errors: basics/errors.md
         - man.q: about/man.md
-        - System commands: basics/syscmds.md
         - Unit tests: kb/unit-tests.md
         - Monitor & control execution: kb/using-dotz.md
       - Coding:
@@ -487,7 +488,6 @@ nav:
         - Unicode: kb/unicode.md
       - DevOps:
         - Authentication and access: kb/authentication.md
-        - Command-line options: basics/cmdline.md
         - CPU affinity: kb/cpu-affinity.md
         - Daemon: kb/daemon.md
         - Firewalling: kb/firewalling.md
