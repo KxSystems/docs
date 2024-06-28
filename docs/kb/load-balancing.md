@@ -13,7 +13,7 @@ This set-up is useful for read operations, such as queries on historical databas
 
 ## Starting the primary server
 
-The arguments are the number of secondary servers, and the name of a q script that will be executed by the secondary servers at start-up. Typically this script will read in a database from disk into memory.
+The arguments are the number of secondary servers, and the name of a q script that to be executed by the secondary servers at start-up. Typically this script reads in a database from disk into memory.
 
 ```bash
 $ q mserve.q -p 5001 2 startup.q
