@@ -47,7 +47,7 @@ The `.h` [namespace](../basics/namespaces.md) contains objects for
 -   composing HTTP responses
 -   web-console display
 
-??? warning "The `.h` namespace is reserved for use by KX, as are all single-letter namespaces."
+!!! warning "The `.h` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as its private API | and do not use them.
 
@@ -726,7 +726,7 @@ xml | k){g:{(#*y)#'(,,"<",x),y,,,"</",x:($x),">"};(,"<R>"),(,/'+g[`r]@,/(!x)g..
 xls | k){ex eb es[`Sheet1]x}
 ```
 
-??? detail "Streaming and static JSON"
+!!! detail "Streaming and static JSON"
 
     The result of ``.h.tx[`json]`` is designed for streaming as [JSON Lines](http://jsonlines.org/). For static JSON, enlist its argument:
 

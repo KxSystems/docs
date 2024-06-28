@@ -9,7 +9,7 @@ date: December 2020
 
 ![Carol singers](../../img/alamy/CN6580.jpg)
 
-??? summary "Map a simple data structure to a complex one"
+!!! summary "Map a simple data structure to a complex one"
 
     **Nested indexes** describe the structure of the result, produced by a single (elided) use of **Index At**.
 
@@ -327,7 +327,7 @@ q)show verses:stanza @ 0 1,/:{(reverse x)+2+til each 2+x}til 12
 
 A list. Each item is a list of strings. Nice. 
 
-??? detail "Postfix syntax lets us elide Index At"
+!!! detail "Postfix syntax lets us elide Index At"
 
         q)lines:0 1,/:{(reverse x)+2+til each 2+x}til 12
         q)(stanza lines) ~ stanza@lines

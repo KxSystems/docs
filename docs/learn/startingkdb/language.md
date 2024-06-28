@@ -78,7 +78,7 @@ You can confirm that you are in the `QHOME` directory by calling a directory lis
     ...
     ```
 
-??? tip "Command-line options"
+!!! tip "Command-line options"
 
     [Command-line options](../../basics/cmdline.md) e.g. `q profile.q -p 5001`
 

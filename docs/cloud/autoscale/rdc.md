@@ -16,7 +16,7 @@ The ASG will increase the number of instances in the cluster throughout the day 
 At the end of the day, the day’s data will be flushed from memory and the ASG will scale the cluster in.
 
 
-??? detail "Distributed RDBs"
+!!! detail "Distributed RDBs"
 
     This solution has one obvious difference to a regular kdb+ system in that there are multiple RDB servers.
     User queries will need to be parsed and routed to each one to ensure the data can be retrieved effectively.

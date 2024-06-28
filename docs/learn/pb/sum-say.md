@@ -8,7 +8,7 @@ date: December 2020
 
 ![Pebbles](../../img/alamy/PHPHX0.jpg)
 
-??? summary "Analyze a dictionary of results; map between dictionaries"
+!!! summary "Analyze a dictionary of results; map between dictionaries"
 
     A lambda for the Look & Say sequence **composes** with `desc` and the **Do iterator** to produce the Summarize & Say sequence.
 
@@ -115,7 +115,7 @@ seq:(key seeds)!30 sumsay\'key seeds
 
 A dictionary of seeds and their sequences.
 
-??? detail "Iterator syntax"
+!!! detail "Iterator syntax"
 
     **An iterator is a unary operator with postfix syntax.**
     It takes a single argument, on its _left_.
@@ -133,7 +133,7 @@ A dictionary of seeds and their sequences.
     :fontawesome-regular-map:
     [How to use iterators](../../wp/iterators/index.md "White paper")
 
-??? question "Bonus points"
+!!! question "Bonus points"
 
     The repetition in `(key seeds)!30 sumsay\'key seeds`
     can be removed by another iterator. 

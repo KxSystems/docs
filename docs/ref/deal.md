@@ -47,7 +47,7 @@ q)-3?`the`quick`brown`fox
 `brown`quick`fox
 ```
 
-??? tip "Duplicate items in `y`"
+!!! tip "Duplicate items in `y`"
 
     If `y` contains duplicate items, so may the result of Deal.
 

@@ -203,7 +203,7 @@ Since table `tr` has a column `sym`, represented by file `db/tr/sym`, one place 
 [Working with sym files](../wp/symfiles.md)
 
 
-???+ detail "Enumerating nested symbol columns"
+???+ detail "Enumerating nested symbol columns prior to V3.4"
 
     Since V3.0 2011.11.25 a splayed table column can hold nested sym vectors.
 

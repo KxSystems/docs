@@ -63,7 +63,7 @@ _Tools_
 
 Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](../basics/namespaces.md).
 
-??? warning "The `.Q` namespace is reserved for use by KX, as are all single-letter namespaces."
+!!! warning "The `.Q` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as [exposed infrastructure](../basics/exposed-infrastructure.md) – and do not use them.
 
@@ -274,7 +274,7 @@ q).Q.chk[`:hdb]
 ,`:/db/2009.01.03
 ```
 
-??? tip "Q must have write permission for the HDB area to create missing tables"
+!!! tip "Q must have write permission for the HDB area to create missing tables"
 
     If it signals an error similar to
 
@@ -516,9 +516,7 @@ q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 
 Tables splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
 
-??? warning "Locking ensures two processes do not write to the sym file at the same time"
-
-    Apart from that, it is up to you to manage.
+!!! warning "Locking ensures two processes do not write to the sym file at the same time"
 
 :fontawesome-solid-book:
 [`dsave`](dsave.md),
@@ -1354,9 +1352,7 @@ select … [by date,…] from … where [date …]
 
 - Use of .Q.MAP with compressed files is not recommended, as the uncompressed maps will be retained in memory
 
-??? detail "You may need to increase the number of available file handles, and also the number of available file maps"
-
-    For Linux see `vm.max_map_count`.
+!!! detail "You may need to increase the number of available file handles, and also the number of available file maps (for Linux see `vm.max_map_count`)"
 
 Since 4.1t 2024.01.11 parallelized over tables and partitions with [peach](each.md) when kdb+ running with secondary threads.
 

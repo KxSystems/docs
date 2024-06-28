@@ -109,7 +109,7 @@ Each phrase is a comma-separated list of subphrases.
 
 A _subphrase_ is a q expression in which names are resolved with respect to _t~exp~_ and any table/s linked by foreign keys. Subphrases are evaluated in order from the left, but each subphrase expression is evaluated right-to-left in normal q syntax. 
 
-??? tip "To use the Join operator within a subphrase, parenthesize the subphrase."
+!!! tip "To use the Join operator within a subphrase, parenthesize the subphrase."
 
     ```q
     q)select (id,'4),val from tbl
@@ -162,13 +162,13 @@ smith 400
 :fontawesome-solid-book-open:
 [Implicit joins](joins.md#implicit-joins)
 
-??? tip "You can refer explicitly to [namespaces](../basics/glossary.md#name-namespace)."
+!!! tip "You can refer explicitly to [namespaces](../basics/glossary.md#name-namespace)."
 
     ```q
     select (\`. \`toplevel) x from t
     ```
 
-??? detail "Duplicate names for columns or groups"
+!!! detail "Duplicate names for columns or groups"
 
     `select` auto-aliases colliding duplicate column names for either `select az,a from t`, or `select a by c,c from t`, but not for `select a,a by a from t`.
 
@@ -252,7 +252,7 @@ c  c   60 33.3 "3.3"
 
 A virtual column `i` represents the index of each record, i.e., the row number. 
 
-??? detail "Partitioned tables"
+!!! detail "Partitioned tables"
 
     In a partitioned table `i` is the index (row number) relative to the partition, not the whole table.
 
@@ -310,7 +310,7 @@ In the first example, only `c3` values corresponding to `c2` values greater than
 
 Efficient Where phrases start with their most stringent tests.
 
-??? danger "Querying a partitioned table"
+!!! danger "Querying a partitioned table"
 
     When querying a partitioned table, the first Where subphrase should select from the value/s used to partition the table. 
 
