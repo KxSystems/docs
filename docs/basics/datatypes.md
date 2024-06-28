@@ -79,7 +79,7 @@ The type is a short int:
 
 ## Basic types
 
-??? note "The default type for an integer is long (`7h` or `"j"`)."
+!!! note "The default type for an integer is long (`7h` or `"j"`)."
 
     Before V3.0 it was int (`6h` or `"i"`).
 
@@ -232,9 +232,6 @@ q)0w + 5
 
 ??? detail "To infinity and beyond"
 
-    [![Buzz Lightyear](../img/faces/buzzlightyear.jpg)](https://toystory.disney.com/buzz-lightyear)
-    {: .small-face style="margin-top:1em"}
-
     Floating-point arithmetic follows [IEEE754](https://en.wikipedia.org/wiki/IEEE_754 "Wikipedia").
 
     Integer arithmetic does no checks for infinities, just treats them as a signed integer.
@@ -270,8 +267,6 @@ q)0w + 5
     -   map to int_min+1 and int_max, with `0N` as int_min; so there is no number smaller than `0N`
 
     **Best practice is to view infinities as placeholders only, and not perform arithmetic on them.**
-
-    [![Infinity and beyond](../img/infinity-and-beyond.jpg)](https://toystory.disney.com/buzz-lightyear "Disney’s Toy Story")
 
 
 ### Guid

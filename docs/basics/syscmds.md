@@ -348,7 +348,7 @@ Should that fail, it will exit with `'wsfull`.
 When secondary threads are configured and `.Q.gc[]` is invoked in the main thread it will automatically invoke `.Q.gc[]` in each secondary thread. 
 If the call is instigated in a secondary thread – i.e., not the main thread – it will affect that thread’s local heap only.
 
-??? detail "Notes on the allocator"
+!!! detail "Notes on the allocator"
 
     Q’s allocator bins objects in power-of-two size categories, from 16b (e.g. an atom) to 64MB. 
     If there is already a slab in the object category’s freelist, it is reused. 
@@ -519,7 +519,7 @@ q)1%3
 0.3333333333
 ```
 
-??? tip "Use `.Q.fmt` and `.q.f` to format numbers to given width and precision"
+!!! tip "Use `.Q.fmt` and `.q.f` to format numbers to given width and precision"
 
     ```q
     q).Q.fmt[8;6]a            / format to width 8, 6 decimal places
@@ -768,7 +768,7 @@ q){x where x like"????"}system"v .h"
 `HOME`logo
 ```
 
-??? tip "To expunge `a` from the default namespace"
+!!! tip "To expunge `a` from the default namespace"
 
     ```q
     delete a from `.
@@ -894,7 +894,7 @@ q)2+3
 q)\x .z.pi                    / restore default
 ```
 
-??? warning "Works only for `.z.p*` variables defined in k before `q.k` is loaded"
+!!! warning "Works only for `.z.p*` variables defined in k before `q.k` is loaded"
 
     For example, as `.z.ph` is defined in `q.k`, there is no default for it to be reset to.
 

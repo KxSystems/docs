@@ -38,7 +38,7 @@ q)system "pwd"
 "/home/guest/q"
 ```
 
-??? warning "Binary output"
+!!! warning "Binary output"
 
 	The result is expected to be text, and is captured into a list of character vectors. 
 	As part of this capture, line feeds and associated carriage returns are removed. 
