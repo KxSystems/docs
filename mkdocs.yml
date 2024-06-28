@@ -470,7 +470,7 @@ nav:
         - man.q: about/man.md
         - System commands: basics/syscmds.md
         - Unit tests: kb/unit-tests.md
-        - Using .z: kb/using-dotz.md
+        - Monitor & control execution: kb/using-dotz.md
       - Coding:
         - Data visualization (WP): wp/data-visualization/index.md
         - Deferred response: kb/deferred-response.md
@@ -521,6 +521,7 @@ nav:
         - Changes in 2.4: releases/ChangesIn2.4.md
         - Withdrawn: releases/withdrawn.md
       # - Environment: basics/environment.md
+      - Developer tools: devtools.md
       - FAQ: kb/faq-listbox.md
     - Architecture:
       - About: architecture/index.md
@@ -573,6 +574,7 @@ nav:
     #  - ODBC/Simba: interfaces/odbc-simba.md
       - Pub/sub with Solace (WP): wp/solace/index.md
       - Open source: github.md
+      - Machine learning: ml.md
     - Using kdb+ in the cloud:
       - About: cloud/index.md
       - Amazon Web Services:
@@ -611,8 +613,6 @@ nav:
     - Academy: https://learninghub.kx.com
     - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
     - White papers: wp/index.md
-    - Developer tools: devtools.md
-    - Machine learning: ml.md
     - About this site: about/thissite.md
   - kdb Insights: 'https://code.kx.com/insights'
   - kdb Insights Enterprise: 'https://code.kx.com/insights/enterprise'
