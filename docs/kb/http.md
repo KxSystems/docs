@@ -1,13 +1,13 @@
 ---
 title: HTTP – Knowledge Base – kdb+ and q documentation
 description: How to work with HTTP in q
-keywords: browser, http, https, kdb+, q, web
+keywords: webserver, browser, http, html, https, kdb+, q, web
 ---
 # :fontawesome-solid-handshake: HTTP
 
 ## HTTP server
 
-kdb+ has an in-built service capable of handling HTTP/HTTPS requests.
+kdb+ has an in-built webserver capable of handling HTTP/HTTPS requests.
 
 ### Listening port
 
@@ -39,11 +39,10 @@ Providing q code as a GET param causes it to be evaluated eg. `http://localhost:
 [.h.HOME](../ref/doth.md#hhome-webserver-root) can be set to be the webserver root to serve files contained in the directory e.g.
 creating an HTML file index.html in directory `/webserver/` and setting `.h.HOME="/webserver"` allows the file to be viewed via  `http://localhost:8080/index.html'.
 
+An example of customizing the default webserver can be found in :fontawesome-brands-github:[simongarland/doth](https://github.com/simongarland/doth)
+
 :fontawesome-regular-map:
 [Restricting HTTP queries](../wp/permissions/index.md#restricting-http-queries)
-<br>
-:fontawesome-regular-map:
-[Custom web server](custom-web.md)
 
 ### Keep-alive
 

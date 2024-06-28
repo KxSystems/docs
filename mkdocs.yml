@@ -489,7 +489,6 @@ nav:
         - Authentication and access: kb/authentication.md
         - Command-line options: basics/cmdline.md
         - CPU affinity: kb/cpu-affinity.md
-        - Custom web server: kb/custom-web.md
         - Daemon: kb/daemon.md
         - Firewalling: kb/firewalling.md
         - inetd, xinetd: kb/inetd.md

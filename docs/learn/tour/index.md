@@ -513,7 +513,7 @@ Browse to `http://localhost:8090`.
 ![Browsing session tables](img/browser.png)
 
 :fontawesome-regular-hand-point-right:
-[Customizing the default webserver](../../kb/custom-web.md)
+[HTTP](../../kb/http.md)
 <br>
 :fontawesome-solid-book:
 [The `.h` namespace](../../ref/doth.md)
