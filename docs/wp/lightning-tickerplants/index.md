@@ -138,7 +138,7 @@ $sudo apt-get install bitcoind
 ```
 
 Before starting the daemon, a `bitcoin.conf` file should be created in the install folder (usually `$HOME/.bitcoin`),
-as described in white paper [Storing and exploring the Bitcoin blockchain](../blockchain/index.md#installing-a-bitcoin-full-node).
+as described in [Storing and exploring the Bitcoin blockchain](../blockchain/index.md#installing-a-bitcoin-full-node).
 However, the sample `bitcoin.conf` file presented in that white paper should now be extended, as shown below, to
 include the [ZeroMQ](https://github.com/bitcoin/bitcoin/blob/master/doc/zmq.md) wrapper, which will allow the Lightning
 node to be notified of events like the arrival of new blocks or transactions. Note that in the configuration file below, the
@@ -683,7 +683,6 @@ The main library functions this tickerplant implementation uses are shown below,
 form the basis for subsequent modifications. 
 
 :fontawesome-regular-hand-point-right:
-White paper: 
 [Building Real-Time Tick Subscribers](../rt-tick/index.md)
 
 ```q

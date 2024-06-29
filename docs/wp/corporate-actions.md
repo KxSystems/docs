@@ -265,7 +265,7 @@ q)cact:`s#cact;
 Within the majority of kdb+ systems, data is obtained through the use of a gateway process.
 
 :fontawesome-regular-hand-point-right:
-White paper: [Common design principles for kdb+ gateways](gateway-design/index.md)
+[Common design principles for kdb+ gateways](gateway-design/index.md)
 
 The gateway acts as an interface between the end user and the underlying databases. We would like to pass many different parameters into the function `getRes` that executes the query on the database, and perhaps more than the maximum number allowed in q, which is eight. For this reason we will use a dictionary as the single parameter. A typical parameter dictionary looks like the following:
 

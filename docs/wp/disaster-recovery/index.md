@@ -90,7 +90,7 @@ split into date partitions. A q process can read this data and
 memory-map it, allowing for fast queries across a large volume of
 data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 
-:fontawesome-regular-hand-point-right: White paper:
+:fontawesome-regular-hand-point-right: 
 [Data Recovery for kdb+ tick](../data-recovery.md)
 
 
@@ -270,7 +270,7 @@ carefully manage any querying of the database.
 
 ![](img/image12.jpeg)
 
-:fontawesome-regular-hand-point-right: White paper –
+:fontawesome-regular-hand-point-right: 
 [Query Routing: a kdb+ framework for a scalable load-balanced system](../query-routing/index.md)
 
 As mentioned above, the usual strategy for failover is to have a
