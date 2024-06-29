@@ -24,7 +24,7 @@ They are the primary means of iterating in q.
 [Iteration](../basics/iteration.md) in q
 <br>
 :fontawesome-regular-map:
-White paper: [Iterators](../wp/iterators/index.md)
+[Iterators](../wp/iterators/index.md)
 
 !!! detail "Applicable value"
 

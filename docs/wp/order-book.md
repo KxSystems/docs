@@ -1,5 +1,5 @@
 ---
-title: "Order Book: a kdb+ intraday storage and access methodology | White papers | q and kdb+ documentation"
+title: "Order Book: a kdb+ intraday storage and access methodology | q and kdb+ documentation"
 description: Strategies for storing order-book data, and their implications for query performance
 author: Niall Coulter
 date: April 2012

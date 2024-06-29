@@ -16,7 +16,7 @@ In its traditional financial domain, and across an increasingly broad range of i
 
 This paper will illustrate how the C API can be used to enable a C program to interact with a kdb+ process, and so leverage the real-time streaming and processing strengths of kdb+. Particular consideration will be given to how the API can facilitate subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system. Just as trade and quote data can be piped into a financial kdb+ application through a C feedhandler, interesting new datasets in non-financial industries can readily be consumed and processed with minimal setup work in C.
 
-For example, in a recent white paper “[kdb+ in astronomy](../astronomy.md)” a standard scientific file format is loaded into kdb+ for fast calculation of the recessional velocities of celestial bodies.
+For example, in “[kdb+ in astronomy](../astronomy.md)” a standard scientific file format is loaded into kdb+ for fast calculation of the recessional velocities of celestial bodies.
 
 While [Interfaces: C](../../interfaces/c-client-for-q.md) remains the primary source for up-to-date information on the C API, the examples presented here provide a complementary set of practical templates. These templates can be combined and used to apply kdb+ across a broad range of problem domains. 
 
@@ -271,7 +271,7 @@ In general, there are two common types of errors; those generated during the soc
 As an example of an initialization error, the ”Authentication Error” will occur when the user name or password credentials passed to `khpu` are invalid. In kdb+, a process can be started in a restricted access mode where only users with valid credentials can connect.
 
 :fontawesome-regular-hand-point-right: 
-White paper: [WebSockets](../websockets/index.md)
+[WebSockets](../websockets/index.md)
 
 Similarly, the ”Connection error” can result for incorrect hostname or port numbers being passed to `khpu`.
 
@@ -357,9 +357,9 @@ handle value.
 k(-handle, "1.0 + 2.0", (K)0);
 ```
 
-The asynchronous option is recommended when maximum data throughput is desired and the sender does not require an acknowledgment. Greater technical details on synchronous vs asynchronous requests can be found in the following white papers.
+The asynchronous option is recommended when maximum data throughput is desired and the sender does not require an acknowledgment. Greater technical details on synchronous vs asynchronous requests can be found in the following:
 
-:fontawesome-regular-hand-point-right: White papers:  
+:fontawesome-regular-hand-point-right: 
 [Common design principles for kdb+ gateways](../gateway-design/index.md)  
 [Query Routing: A kdb+ framework for a scalable, load balanced system](../query-routing/index.md)
 
@@ -1315,7 +1315,7 @@ A kdb+ tickerplant is a kdb+ process specifically designed to handle incoming, h
 ![Architecture](img/architecture.png)
 
 :fontawesome-regular-hand-point-right:
-White paper: [Building real-time tick subscribers](../rt-tick/index.md)
+[Building real-time tick subscribers](../rt-tick/index.md)
 
 
 ### Test tickerplant and feedhandler setup
@@ -1624,7 +1624,7 @@ int main() {
 
 ### Publishing multiple rows using a mixed-list object
 
-For performance-related reasons, discussed in the white paper, [kdb+tick profiling for throughput optimization](../tick-profiling.md) it is recommended to publish multiple rows at once so that bulk inserts can be performed on the tickerplant, maximizing tickerplant eﬃciency.
+For performance-related reasons, discussed in [kdb+tick profiling for throughput optimization](../tick-profiling.md) it is recommended to publish multiple rows at once so that bulk inserts can be performed on the tickerplant, maximizing tickerplant eﬃciency.
 
 > Feeds should read as many messages off the socket as possible and send bulk updates to the tickerplant if possible. Bulk updates will greatly increase the maximum throughput achievable.
 

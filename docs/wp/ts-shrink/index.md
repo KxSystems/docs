@@ -1,5 +1,5 @@
 ---
-title: Dynamically shrinking big data using timeseries database kdb+ | White papers | q and kdb+ documentation
+title: Dynamically shrinking big data using timeseries database kdb+ | q and kdb+ documentation
 author: [Sean Keevey, Kevin Smyth]
 description: Two implementations of the Ramer-Douglas-Peucker algorithm for curve simplification applied to financial time-series data without distortion.
 date: February 2015

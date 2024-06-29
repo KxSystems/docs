@@ -365,7 +365,7 @@ gateway queries should continue to be routed to the secondary until
 recovery and failover are complete, and the primary RDB is available
 to capture data and serve queries again.
 
-:fontawesome-regular-hand-point-right: White paper 
+:fontawesome-regular-hand-point-right:  
 [Data recovery for kdb+tick](../data-recovery.md)
 for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file
