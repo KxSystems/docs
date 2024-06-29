@@ -1,20 +1,14 @@
 ---
-title: "Query Routing: a kdb+ framework for a scalable, load balanced system | White Papers | kdb+ and q documentation"
+title: "Query Routing: a kdb+ framework for a scalable, load balanced system | kdb+ and q documentation"
 description: The design principle of the Connection Manager Load Balancer schematic whilst providing an asynchronous-only method of communication between processes.
 author: Kevin Holsgrove
 date: November 2015
 keywords: query, routing, load, balancing, kdb+, gateway
 ---
-White paper
-{: #wp-brand}
-
 # Query Routing: A kdb+ framework for a scalable, load balanced system
 
 by [Kevin Holsgrove](#author)
 {: .wp-author}
-
-
-
 
 
 Due to the large scale that kdb+ systems commonly grow to, it is

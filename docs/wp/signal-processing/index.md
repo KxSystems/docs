@@ -1,19 +1,14 @@
 ---
-title: Signal processing and q | White Papers | kdb+ and q documentation
+title: Signal processing and q | kdb+ and q documentation
 description: How statistical signal-processing operations can be implemented within q to remove noise, extract useful information, and quickly identify anomalies
 keywords: kdb+, processing, q, signal
 author: Callum Biggs
 date: August 2018
 ---
-White paper
-{: #wp-brand}
-
 # Signal processing and q
 
 by [Callum Biggs](#author)
 {: .wp-author}
-
-
 
 
 

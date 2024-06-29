@@ -1,19 +1,15 @@
 ---
-title: C API for kdb+ | White Papers | kdb+ and q documentation
+title: C API for kdb+ | kdb+ and q documentation
 description: How to connect a C program to a kdb+ database
 author: Jeremy Lucid
 date: December 2018
 keywords: kdb+, q, real-time, streaming, subscribe, tick
 ---
-White paper
-{: #wp-brand}
-
 # C API for kdb+
 
 by [Jeremy Lucid](#author)
 {: .wp-author}
 
- 
 
 
 In its traditional financial domain, and across an increasingly broad range of industries, one of the main strengths of kdb+ is its flexibility in integrating and communicating with external systems. This adoption-enhancing feature is facilitated through a number of interfaces, including C and Java APIs, ODBC support, HTTP and WebSockets. 

@@ -1,18 +1,14 @@
 ---
-title: Storing and exploring the Bitcoin blockchain | White Papers | kdb+ and q documentation
+title: Storing and exploring the Bitcoin blockchain | kdb+ and q documentation
 description: A blockchain explorer uses kdb+ to store and query Bitcoin transactions using partitioned databases, splayed tables, intraday write-downs, and in-memory joins.
 author: [Jeremy Lucid, Daniel Irwin]
 date: December 2018
 keywords: bitcoin, blockchain, kdb+, q
 ---
-White paper
-{: #wp-brand}
-
 # Storing and exploring the Bitcoin blockchain
 
 by [Jeremy Lucid &amp; Daniel Irwin](#authors)
 {: .wp-author}
-
 
 
 For over a decade, KX technology has played an important role in the

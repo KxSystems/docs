@@ -1,18 +1,14 @@
 ---
-title: Columnar database and query optimization | White Papers | documentation for q and kdb+
+title: Columnar database and query optimization | documentation for q and kdb+
 description: Methods available to developers for optimizing queries to a kdb+ database
 date: June 2012
 author: Ciáran Gorman
 keywords: attribute, columnar, database, grouped, kdb+, optimize, partitioned, performance, q, query, sorted, unique
 ---
-White paper
-{: #wp-brand}
-
 # Columnar database and query optimization
 
 by [Ciáran Gorman](#author)
 {: .wp-author}
-
 
 
 

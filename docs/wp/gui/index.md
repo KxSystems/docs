@@ -1,19 +1,14 @@
 ---
-title: An introduction to graphical interfaces for kdb+ using C# | White Papers | kdb+ and q documentation
+title: An introduction to graphical interfaces for kdb+ using C# | kdb+ and q documentation
 description: Basics of using C# to open connections to kdb+ processes running on remote servers as well as setting up a basic API that will allow for authentication, error recovery and basic queries through an interface
 author: Michael Reynolds
 date: May 2013
 keywords: analytics, connections, csharp, gui, kdb+, queries, validation
 ---
-White paper
-{: #wp-brand}
-
 # An introduction to graphical interfaces for kdb+ using C&#35;
 
 by [Michael Reynolds](#author)
 {: .wp-author}
-
-
 
 
 Over the course of fifteen years, C# has become one of the most

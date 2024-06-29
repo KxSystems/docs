@@ -5,16 +5,10 @@ author: Eoin Killeen
 date: October 2013
 keywords: compress, compression ratio, datatype, get, gzip, kdb+, logical block size, performance, q, set, 
 ---
-White paper
-{: #wp-brand}
-
 # Compression in kdb+
 
 by [Eoin Killeen](#author)
 {: .wp-author}
-
-
-
 
 
 As the rate of data generation in financial markets continues to increase, there is a strong impetus to investigate how large data volumes can be more efficiently processed. Even if disk is considered cheap, it can be a valuable exercise for many applications to determine what improvements can be gleaned from an analysis of the use of compression. Aside from reduced disk costs, some use cases can gain significant performance improvements through a problem-specific approach to compression. For example, some systems have fast CPUs, but find that disk I/O is a bottleneck. In some such cases, utilizing CPU power to reduce the amount of data being sent to disk can improve

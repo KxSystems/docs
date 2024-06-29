@@ -1,17 +1,13 @@
 ---
-title: Disaster-recovery planning for kdb+ tick systems | White Papers | kdb+ and q documentation
+title: Disaster-recovery planning for kdb+ tick systems | kdb+ and q documentation
 description: Disaster recovery (DR) and failover concepts from the perspective of the gateway layer accessing a typical kdb+ tick system used in capital-markets applications
 author: Stewart Robinson
 keywords: disaster, failover, kdb+, planning, recovery, tick
 ---
-White paper
-{: #wp-brand}
-
 # Disaster-recovery planning for kdb+ tick systems
 
 by [Stewart Robinson](#author)
 {: .wp-author}
-
 
 
 

@@ -1,20 +1,14 @@
 ---
-title: Predicting floods with q and machine learning | White paper | kdb+ and q documentation
+title: Predicting floods with q and machine learning | kdb+ and q documentation
 description: Machine-learning methods in q to predict flood susceptibility in an area and the time for a river to reach its peak height after a rainfall event.
 author: Diane O’Donoghue
 date: October 2019
 keywords: embedpy, flash, flood, kdb+, machine learning, model, nasa, nhdplus, nlcd, noaa, prism, q, random forest, space, usgs, xgboost
 ---
-White paper
-{: #wp-brand}
-
 # Predicting floods with q and machine learning
 
 by [Diane O’Donoghue](#author)
 {: .wp-author}
-
-
-
 
 
 The Frontier Development Lab (FDL) is a public-private partnership run annually with both the European Space Agency (ESA) and National Aeronautics and Space Administration (NASA). The objective of FDL is to bring together researchers from the Artificial Intelligence (AI) and space science sectors to tackle a broad spectrum of challenges in the space industry. The projects this year include challenges in lunar and heliophysics research, astronaut health and disaster prevention. This paper will focus on the Disaster Prevention, Progress and Response (Floods) challenge, for which KX was a partner.

@@ -1,23 +1,14 @@
 ---
-title: kdb+ and FIX messaging | White Papers | q and kdb+ documentation
+title: kdb+ and FIX messaging | q and kdb+ documentation
 description: A guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an order-management system
 author: Damien Barker
 date: January 2014
 keywords: analytics, fix, kdb+, last order, order-management system, order processing, order status, 
 ---
-White paper
-{: #wp-brand}
-
 # kdb+ and FIX messaging
 
 by [Damien Barker](#author)
 {: .wp-author}
-
-
-
-
-
-
 
 
 Electronic trading volumes have increased significantly in recent years, prompting financial institutions, both buy and sell side, to invest in increasingly sophisticated Order Management Systems (OMS). OMSs efficiently manage the execution of orders using a set of pre-defined conditions to obtain the best price of execution. OMSs typically use the Financial Information eXchange (FIX) protocol, which has become the industry standard for electronic trade messaging since it was first developed in 1992.

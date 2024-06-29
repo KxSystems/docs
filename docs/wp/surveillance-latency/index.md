@@ -1,19 +1,14 @@
 ---
-title: Latency and efficiency considerations for a real-time surveillance system | White papers | kdb+and q documentation
+title: Latency and efficiency considerations for a real-time surveillance system | kdb+and q documentation
 description: This paper investigates performance of four different alert analytic programming styles running at four different points of execution 
 author: Jason Quinn
 date: November 2019
 keywords: alerts, latency, realtime alert logic, surveillance  
 ---
-White paper
-{: #wp-brand}
-
 # Latency and efficiency considerations for a real-time surveillance system
 
 by [Jason Quinn](#author)
 {: .wp-author}
-
-
 
 
 The time between transaction execution and transaction monitoring against regulation guidelines varies across financial institutions. Factors such as the number of markets, the number of trading systems and their messaging profiles can play a significant part in deciding whether to run surveillance analytics on a real-time or an intraday/end-of day basis.

@@ -1,19 +1,14 @@
 ---
-title: "Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network | White Papers | kdb+ and q documentation"
+title: "Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network | kdb+ and q documentation"
 description: Use Lightning to monetize streaming data. Use the qlnd library to create payment channels, generate invoices, and route payments across the network.
 author: Jeremy Lucid
 date: August 2021
 keywords: bitcoin, lightning, blockchain, kdb+, q, tickerplant
 ---
-White paper
-{: #wp-brand}
-
 # Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network
 
 by [Jeremy Lucid](#author)
 {: .wp-author}
-
-
 
 
 [Lightning](https://lightning.network/lightning-network-paper.pdf) is a technology designed to scale Bitcoin and other compatible blockchains by enabling high transaction throughput with greater privacy while preserving decentralized qualities. It is a layer two infrastructure which builds upon the security and [smart contract](https://www.ucl.ac.uk/computer-science/research/research-groups/financial-computing-and-analytics/research/smart-contracts) functionality of the underlying base blockchain, analogous to how the HTTP application layer protocol builds on an underlying and reliable TCP layer. 

@@ -1,20 +1,13 @@
 ---
-title: kdb+ in astronomy | White papers | kdb+ and q documentation
+title: kdb+ in astronomy | kdb+ and q documentation
 description: Imports FITS data to kdb+, loads C functions and calculates recessional velocity
 author: [Andrew Magowan, James Neill]
 keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar objects, recessional velocity, red shift, telescope
 ---
-White paper
-{: #wp-brand}
-
 # kdb+ in astronomy
 
 by [Andrew Magowan &amp; James Neill](#authors)
 {: .wp-author}
-
-
-
-
 
 
 The field of observational astronomy has always been data-driven, but like many other fields, technological advances are causing something of a paradigm shift, and – according to experts – a bit of a headache! Currently under construction are new infrastructures that have the potential to record volumes of data that have not been seen before in the field. The Large Synoptic Survey Telescope (LSST) and Square Kilometer Array (SKA) are set to record such huge amounts of data that experts are concerned about their ability to make sense of this data, purely due to its sheer size.

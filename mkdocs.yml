@@ -178,21 +178,21 @@ nav:
         - Phrasebook: https://code.kx.com/phrases/
         - Scrabble: learn/reading/scrabble.md
       - Application examples:
-        - Astronomy (WP): wp/astronomy.md
-        - Bitcoin blockchains (WP): wp/blockchain/index.md
-        - Card counters (WP): wp/card-counters/index.md
-        - Corporate actions (WP): wp/corporate-actions.md
-        - Disaster management (WP): wp/disaster-management/index.md
-        - Exoplanets (WP): wp/exoplanets/index.md
-        - Market depth (WP): wp/market-depth/index.md
-        - Market fragmentation (WP): wp/market-fragmentation/index.md
-        - Option pricing (WP): wp/option-pricing/index.md
-        - Predicting floods (WP): wp/disaster-floods/index.md
-        - Signal processing (WP): wp/signal-processing/index.md
-        - Space weather (WP): wp/space-weather/index.md
-        - Trading surveillance (WP): wp/surveillance/index.md
-        - Transaction-cost analysis (WP): wp/transaction-cost.md
-        - Trend indicators (WP): wp/trend-indicators/index.md
+        - Astronomy: wp/astronomy.md
+        - Bitcoin blockchains: wp/blockchain/index.md
+        - Card counters: wp/card-counters/index.md
+        - Corporate actions: wp/corporate-actions.md
+        - Disaster management: wp/disaster-management/index.md
+        - Exoplanets: wp/exoplanets/index.md
+        - Market depth: wp/market-depth/index.md
+        - Market fragmentation: wp/market-fragmentation/index.md
+        - Option pricing: wp/option-pricing/index.md
+        - Predicting floods: wp/disaster-floods/index.md
+        - Signal processing: wp/signal-processing/index.md
+        - Space weather: wp/space-weather/index.md
+        - Trading surveillance: wp/surveillance/index.md
+        - Transaction-cost analysis: wp/transaction-cost.md
+        - Trend indicators: wp/trend-indicators/index.md
       - Advanced q:
         - Remarks on Style: https://github.com/qbists/style
         - Shifts & scans: learn/shifts-scans.md
@@ -217,7 +217,7 @@ nav:
         - Iterators: ref/iterators.md
         - Maps: ref/maps.md
         - Accumulators: ref/accumulators.md
-        - Guide to iterators (WP): wp/iterators/index.md
+        - Guide to iterators: wp/iterators/index.md
       - Keywords:
         - abs: ref/abs.md
         - aj, aj0, ajf, ajf0: ref/aj.md
@@ -419,7 +419,7 @@ nav:
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parse trees: basics/parsetrees.md
-      - Parse trees, functional SQL (WP): wp/parse-trees.md
+      - Parse trees, functional SQL: wp/parse-trees.md
       - QSQL queries: basics/qsql.md
       - Regular Expressions: basics/regex.md
       - Syntax: basics/syntax.md
@@ -430,27 +430,27 @@ nav:
       - Tables in the filesystem: database/index.md
       - Populating tables:
         - Loading from large files: kb/loading-from-large-files.md
-        - Foreign keys (WP): wp/foreign-keys.md
+        - Foreign keys: wp/foreign-keys.md
         - Linking columns: kb/linking-columns.md
-        - Data loaders (WP): wp/data-loaders/index.md
+        - Data loaders: wp/data-loaders/index.md
         - From MDB via ODBC: database/mdb-odbc.md
       - Persisting tables:
         - Serializing an object: database/object.md
         - Splayed tables: kb/splayed-tables.md
         - Partitioned tables: kb/partition.md
         - Segmented databases: database/segment.md
-        - Multiple partitions (WP): wp/multi-partitioned-dbs/index.md
+        - Multiple partitions: wp/multi-partitioned-dbs/index.md
       - Maintenance:
-        - Data management (WP): wp/data-management.md
+        - Data management: wp/data-management.md
         - Data-At-Rest Encryption: kb/dare.md
         - File compression: kb/file-compression.md
-        - Compression (WP): wp/compress/index.md
-        - Permissions (WP): wp/permissions/index.md
-        - Query optimization (WP): wp/columnar-database/index.md
-        - Query scaling (WP): wp/query-scaling.md
-        - Time-series simplification (WP): wp/ts-shrink/index.md
+        - Compression: wp/compress/index.md
+        - Permissions: wp/permissions/index.md
+        - Query optimization: wp/columnar-database/index.md
+        - Query scaling: wp/query-scaling.md
+        - Time-series simplification: wp/ts-shrink/index.md
         - Compacting HDB sym: kb/compacting-hdb-sym.md
-        - Working with sym files (WP): wp/symfiles.md
+        - Working with sym files: wp/symfiles.md
     - Developing:
       - IPC:
         - Overview: basics/ipc.md
@@ -460,7 +460,7 @@ nav:
         - Named pipes: kb/named-pipes.md
         - Serialization examples: kb/serialization.md
         - Server calling client: kb/server-calling-client.md
-        - Socket sharding (WP): wp/socket-sharding/index.md
+        - Socket sharding: wp/socket-sharding/index.md
         - SSL/TLS: kb/ssl.md
         - HTTP: kb/http.md
         - WebSockets: kb/websockets.md
@@ -474,7 +474,7 @@ nav:
         - Unit tests: kb/unit-tests.md
         - Monitor & control execution: kb/using-dotz.md
       - Coding:
-        - Data visualization (WP): wp/data-visualization/index.md
+        - Data visualization: wp/data-visualization/index.md
         - Geospatial indexing: kb/geospatial.md
         - Linear programming: kb/lp.md
         - Multithreaded input: kb/multithreaded-input.md
@@ -494,13 +494,13 @@ nav:
         - inetd, xinetd: kb/inetd.md
         - Linux production notes: kb/linux-production.md
         - Logging: kb/logging.md
-        - Multi-threading (WP): wp/multi-thread/index.md
+        - Multi-threading: wp/multi-thread/index.md
         - Multiple versions: kb/versions.md
         - Parallel processing: basics/peach.md
         - Performance tips: kb/performance-tips.md
         - Replay logfile: kb/replay-log.md
         - Shebang script: develop/shebang.md
-        - Surveillance latency (WP): wp/surveillance-latency/index.md
+        - Surveillance latency: wp/surveillance-latency/index.md
         - Windows service: kb/windows-service/index.md
       - Release notes:
         - History: releases/index.md
@@ -528,31 +528,31 @@ nav:
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Chained tickerplant: kb/chained-tickerplant.md
       - Corporate actions: kb/corporate-actions.md
-      - Data recovery for kdb+tick (WP): wp/data-recovery.md
-      - Disaster recovery (WP): wp/disaster-recovery/index.md
-      - Gateway design (WP): wp/gateway-design/index.md
+      - Data recovery for kdb+tick: wp/data-recovery.md
+      - Disaster recovery: wp/disaster-recovery/index.md
+      - Gateway design: wp/gateway-design/index.md
       - kdb+tick configuration: kb/kdb-tick.md
-      - kdb+tick profiling (WP): wp/tick-profiling.md
+      - kdb+tick profiling: wp/tick-profiling.md
       - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
       - Load balancing: kb/load-balancing.md
       - Memory backed by files: basics/memory-backed.md
       - Optane Memory:
         - Optane Memory and kdb+: kb/optane.md
         - Performance tests: architecture/optane-tests.md
-      - Order Book (WP): wp/order-book.md
+      - Order Book: wp/order-book.md
       - Publish and subscribe: kb/publish-subscribe.md
-      - Query Routing (WP): wp/query-routing/index.md
-      - Real-time tick subscribers (WP): wp/rt-tick/index.md
+      - Query Routing: wp/query-routing/index.md
+      - Real-time tick subscribers: wp/rt-tick/index.md
       - Write-only RDB: kb/w-q.md
       - Advanced:
-        - Distributed systems (WP): wp/query-interface.md
-        - Intraday writedown (WP): wp/intraday-writedown/index.md
+        - Distributed systems: wp/query-interface.md
+        - Intraday writedown: wp/intraday-writedown/index.md
     - Interfaces:
       - Languages:
         - C/C++:
           - Quick guide: interfaces/c-client-for-q.md
           - API reference: interfaces/capiref.md
-          - C API for kdb+ (WP): wp/capi/index.md
+          - C API for kdb+: wp/capi/index.md
           - Using C/C++ functions: interfaces/using-c-functions.md
         - C#: interfaces/csharp.md
         - Foreign Function Interface (FFI): interfaces/ffi.md
@@ -564,14 +564,14 @@ nav:
       - KX libraries: interfaces/index.md
       - Bloomberg: interfaces/q-client-for-bloomberg.md
       - Excel: interfaces/excel-client-for-q.md
-      - FIX messaging (WP): wp/fix-messaging.md
+      - FIX messaging: wp/fix-messaging.md
       - GPUs: interfaces/gpus.md
-      - Lightning tickerplants (WP): wp/lightning-tickerplants/index.md
+      - Lightning tickerplants: wp/lightning-tickerplants/index.md
       - Matlab: interfaces/matlab-client-for-q.md
       - ODBC: interfaces/q-client-for-odbc.md
       - ODBC3: interfaces/q-server-for-odbc3.md
     #  - ODBC/Simba: interfaces/odbc-simba.md
-      - Pub/sub with Solace (WP): wp/solace/index.md
+      - Pub/sub with Solace: wp/solace/index.md
       - Open source: github.md
       - Machine learning: ml.md
     - Using kdb+ in the cloud:
@@ -595,12 +595,12 @@ nav:
         #- Marketplace: cloud/gcpm/index.md
         - Reference architecture: cloud/gcpm/architecture.md
         #- License: license/gcp.md
-      - Auto Scaling (WP):
+      - Auto Scaling:
         - About: cloud/autoscale/index.md
         - Amazon Web Services: cloud/autoscale/aws.md
         - Realtime data cluster: cloud/autoscale/rdc.md
         - Costs and risks: cloud/autoscale/cost-risk.md
-      - Surveillance in the Cloud (WP): wp/surv-cloud/index.md
+      - Surveillance in the Cloud: wp/surv-cloud/index.md
       - Other file systems:
           - MapR-FS: cloud/otherfs/mapr.md
           - Goofys: cloud/otherfs/goofys.md

@@ -1,21 +1,13 @@
 ---
-title: Mass ingestion through kdb+ data loaders | White papers | kdb+ and q documentation
+title: Mass ingestion through kdb+ data loaders | kdb+ and q documentation
 description: A fast, efficient and scalable kdb+ framework for receiving large amounts of data from multiple sources in various formats 
 author: Enda Gildea
 keywords: attribute, batch, data, disk, file, format, ingest, loader, sort
 ---
-White paper
-{: #wp-brand}
-
 # Mass ingestion through data loaders
 
 by [Enda Gildea](#author)
 {: .wp-author}
-
-
-
-
-
 
 
 Receiving a large amount of data in various file formats and from multiple different sources that need to be ingested, processed, persisted, and reported upon within a certain time period is a challenging task.

@@ -1,18 +1,14 @@
 ---
-title: Data recovery for kdb+tick | White Papers | kdb+ and q documentation
+title: Data recovery for kdb+tick | kdb+ and q documentation
 description: Tickerplant logfiles can be replayed to recover service, even after they have been corrupted. 
 author: Fionnbharr Gaston
 date: July 2014
 keywords: corrupt, data, data recovery, error, kdb+, log, logfile, q, real-time, recovery, replay, subscribe, tick, tickerplant, trap
 ---
-White paper
-{: #wp-brand}
-
 # Data recovery for kdb+tick
 
 by [Fionnbharr Gaston](#author)
 {: .wp-author}
-
 
 
 

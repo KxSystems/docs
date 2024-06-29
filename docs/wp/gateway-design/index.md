@@ -1,21 +1,13 @@
 ---
-title: Common design principles in kdb+ gateways | White paper | q and kdb+ documentation
+title: Common design principles in kdb+ gateways | q and kdb+ documentation
 description: The most common technical challenges associated with gateways and the reasoning behind various design options
 date: December 2012
 author: Michael McClintock
 ---
-White paper
-{: #wp-brand}
-
 # Common design principles for kdb+ gateways
 
 by [Michael McClintock](#author)
 {: .wp-author}
-
-
-
-
-
 
 
 In the vast majority of kdb+ systems, data is stored across several processes. These setups can range from a single real-time and historic database on the same server to multi-site architectures where data of various forms is stored in hundreds of different processes. In either scenario there is likely to be the same requirement to access data across processes. This is typically achieved using a ‘gateway’ process.

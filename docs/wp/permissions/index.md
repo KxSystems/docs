@@ -1,13 +1,10 @@
 ---
-title: Permissions with kdb+ | White papers | q and kdb+ documentation
+title: Permissions with kdb+ | q and kdb+ documentation
 description: An introduction to permissioning in kdb+ without using LDAP or any other external entitlements system
 author: Tom Martin
 date: May 2013
 keywords: access, authentication, code injection, database, entitlement, http, ipc, kdb+, kerberos, ldap, password, permission, poweruser, q, query, security, single sign-on, superuser, user
 ---
-White paper
-{: #wp-brand}
-
 # Permissions with kdb+
 
 by [Tom Martin](#author)

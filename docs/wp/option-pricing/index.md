@@ -1,19 +1,14 @@
 ---
-title: Sobol’ option pricing in q | White papers | kdb+ and q documentation
+title: Sobol’ option pricing in q | kdb+ and q documentation
 description: Monte Carlo (MC) and Quasi-Monte Carlo (QMC) methods for pricing European and Asian options, with standard discretization and Brownian-bridge construction
 author: Deanna Morgan
 date: October 2019
 keywords: asian, black-scholes, c++, european, kdb+, monte carlo, option pricing, q, sobol,
 ---
-White paper
-{: #wp-brand}
-
 # Comparing option pricing methods in q
 
 by [Deanna Morgan](#author)
 {: .wp-author}
-
-
 
 
 In this paper, we compare the use of both Monte Carlo (MC) and Quasi-Monte Carlo (QMC) methods in the process of pricing European and Asian options. In doing so, we consider the use of two discretization schemes - standard discretization and Brownian-bridge construction. Results produced by the different methods are compared with the deterministic Black-Scholes price for each option type, using Global Sensitivity Analysis (SA). Note that the methods demonstrated below follow the work presented by [S. Kucherenko et al. 2007](http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf "Wilmott").

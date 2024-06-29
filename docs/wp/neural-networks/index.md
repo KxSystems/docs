@@ -1,19 +1,13 @@
 ---
-title: An introduction to neural networks with kdb+ | White Papers | kdb+ and q documentation
+title: An introduction to neural networks with kdb+ | kdb+ and q documentation
 description: Implementation of a feedforward neural network in kdb+
 author: James Neill
 keywords: kdb+, neural network
 ---
-White paper
-{: #wp-brand}
-
 # An introduction to neural networks with kdb+
 
 by [James Neill](#author)
 {: .wp-author}
-
-
-
 
 
 Due to the desire to understand the brain and mimic the way it works

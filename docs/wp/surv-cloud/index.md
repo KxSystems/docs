@@ -4,9 +4,6 @@ title: Surveillance in the Cloud
 description: Trade surveillance systems analyze up to terabytes of order and trade data daily, in an effort to detect potential market abuses. 
 date: April 2022
 ---
-White paper
-{: #wp-brand}
-
 # Surveillance in the Cloud
 
 ![banner](./img/banner.jpg)

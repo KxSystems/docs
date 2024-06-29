@@ -1,19 +1,14 @@
 ---
-title: Socket sharding with kdb+ and Linux | White Papers | kdb+ and q documentation
+title: Socket sharding with kdb+ and Linux | kdb+ and q documentation
 description: Set-up and use of socket sharding in kdb+, with several example scenarios
 author: Marcus Clarke
 date: January 2018
 keywords: gateway, linux, load balance, port, shard, socket, so_reuseport
 ---
-White paper
-{: #wp-brand}
-
 # Socket sharding with kdb+ and Linux
 
 by [Marcus Clarke](#author)
 {: .wp-author}
-
-
 
 
 When creating a new TCP socket on a Linux server several options can be set which affect the behavior of the newly-created socket. One of these options, `SO_REUSEPORT`, allows multiple sockets to bind to the same local IP address and port. Incoming connection requests to this port number are allocated by the Linux kernel to a listening process, allowing user queries to be spread across multiple processes while providing a single connection port to users and without requiring users to go through a load balancer.

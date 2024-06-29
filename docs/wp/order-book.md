@@ -5,15 +5,10 @@ author: Niall Coulter
 date: April 2012
 keywords: access, kdb+, latency, performance, q, storage
 ---
-White paper
-{: #wp-brand}
-
 # Order Book: a kdb+ intraday storage and access methodology
 
 by [Niall Coulter](#author)
 {: .wp-author}
-
-
 
 
 The purpose of this white paper is to describe some of the structures available for storing a real-time view of an order book in kdb+ and to provide some examples of how to query each of these structures effectively.

@@ -1,22 +1,14 @@
 ---
-title: "Machine Learning in kdb+: k-Nearest Neighbor classification and pattern recognition with q | White papers | kdb+ and q documentation"
+title: "Machine Learning in kdb+: k-Nearest Neighbor classification and pattern recognition with q | kdb+ and q documentation"
 description: How to implement a k-NN classification algorithm with kdb+, using tables and qSQL, and iterators to optimize the classification time
 author: Emanuele Melis
 date: July 2017
 keywords: classifier, iterator, k-nearest-neighbor, kdb+, performance, q, qsql
 ---
-White paper
-{: #wp-brand}
-
 # Machine Learning in kdb+:<br>k-Nearest Neighbor classification and pattern recognition with q
 
 by [Emanuele Melis](#author)
 {: .wp-author}
-
-
-
-
-
 
 
 Amongst the numerous algorithms used in machine learning, k-Nearest Neighbors (k-NN) is often used in pattern recognition due to its easy implementation and non-parametric nature. A k-NN classifier aims to predict the class of an observation based on the prevailing class among its k-nearest neighbors; “nearest” is determined by a distance metric between class attributes (or features), and k is the number of nearest neighbors to consider.

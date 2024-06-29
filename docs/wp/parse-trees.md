@@ -4,14 +4,10 @@ description: How to understand parse trees and use functional forms in q queries
 author: [Peter Storeng, Stephen Taylor]
 keywords: functional, kdb+, parse, parse tree, q, qSQL, query, SQL
 ---
-White paper
-{: #wp-brand}
-
 # Parse trees and functional forms
 
 by [Peter Storeng &amp; Stephen Taylor](#authors)
 {: .wp-author}
-
 
 
 The importance of understanding and using the functional form of qSQL statements in kdb+ cannot be overstated. The functional form has many advantages over the qSQL approach, including the ability to select columns and build Where clauses dynamically. It is important for any q programmer to understand the functional form fully and how to convert to it from qSQL.

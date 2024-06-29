@@ -1,19 +1,14 @@
 ---
-title: "Streaming analytics with kdb+: Detecting card counters in Blackjack | White Papers | q and kdb+ documentation"
+title: "Streaming analytics with kdb+: Detecting card counters in Blackjack | q and kdb+ documentation"
 author: [Caolan Rafferty, Krishan Subherwal]
 description: Using kdb+ event-stream processing analytics in real time to detect card counters in Blackjack
 date: May 2017
 keywords: analytics, blackjack, card counting, event-stream, kdb+, q
 ---
-White paper
-{: #wp-brand}
-
 # Streaming analytics with kdb+:<br>Detecting card counters in Blackjack
 
 by [Caolan Rafferty &amp; Krishan Subherwal](#authors)
 {: .wp-author}
-
-
 
 
 With the growth and acceleration of the Internet of Things, data collection is increasingly being performed by sensors and smart devices. Sensors are able to detect just about any physical element from a multitude of machines, including mobile phones, vehicles, appliances and meters. Airlines are currently using smart devices to prevent failures, producing as much as 40 terabytes of data per hour per flight. Consuming and analyzing the massive amounts of data transmitted from sensing devices is considered the next Big Data challenge for businesses.

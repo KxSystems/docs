@@ -1,19 +1,14 @@
 ---
-title: Intraday writedown solutions | White papers | q and kdb+ documentation
+title: Intraday writedown solutions | q and kdb+ documentation
 description: Compares two methods for dealing with insufficient RAM on a server, when a full day’s worth of data cannot be held in memory. 
 author: Colm McCarthy
 date: March 2014
 keywords: end of day, eod, hdb, intraday, kdb+, partition, performance, q, query speed, rdb, save, tick, write
 ---
-White paper
-{: #wp-brand}
-
 # Intraday writedown solutions
 
 by [Colm McCarthy](#author)
 {: .wp-author}
-
-
 
 
 With data volumes in the financial-services sector continuing to grow at exponential rates, kdb+ is the data-storage technology of choice for many financial institutions due to its efficiency in storing and retrieving large volumes of data. kdb+ is uniquely equipped to deal with these growing data volumes as it is extremely scalable and can deal with increasing data volumes with ease. As volumes grow the amount of data that can be kept in memory will eventually be limited by the RAM available on the server. There exist two types of solution to this problem.

@@ -5,15 +5,10 @@ description: Two implementations of the Ramer-Douglas-Peucker algorithm for curv
 date: February 2015
 keywords: compression, distortion, iterative, kdb+, q, Ramer-Douglas-Peucker, recursive, simplification, time series
 ---
-White paper
-{: #wp-brand}
-
 # Dynamically shrinking big data using time-series database kdb+
 
 by [Sean Keevey &amp; Kevin Smyth](#author)
 {: .wp-author}
-
-
 
 
 
