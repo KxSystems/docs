@@ -14,5 +14,5 @@ PyKX supports three principal use cases:
 2. It allows users to query external q processes via an IPC interface.
 3. It allows users to embed Python functionality within a native q session using it's under q functionality.
 
-It is documented and available for download from [https://code.kx.com/pykx](https://code.kx.com/pykx).
+It is documented and available to download from [https://code.kx.com/pykx](https://code.kx.com/pykx).
 
