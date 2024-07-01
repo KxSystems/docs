@@ -416,6 +416,7 @@ nav:
       - Internal functions: basics/internal.md
       - Joins: basics/joins.md
       - Mathematics: basics/math.md
+      - Memory backed by files: basics/memory-backed.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parse trees: basics/parsetrees.md
@@ -502,6 +503,9 @@ nav:
         - Shebang script: develop/shebang.md
         - Surveillance latency: wp/surveillance-latency/index.md
         - Windows service: kb/windows-service/index.md
+        - Optane Memory:
+          - Optane Memory and kdb+: kb/optane.md
+          - Performance tests: architecture/optane-tests.md
       - Release notes:
         - History: releases/index.md
         - Changes in 4.1: releases/ChangesIn4.1.md
@@ -535,10 +539,6 @@ nav:
       - kdb+tick profiling: wp/tick-profiling.md
       - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
       - Load balancing: kb/load-balancing.md
-      - Memory backed by files: basics/memory-backed.md
-      - Optane Memory:
-        - Optane Memory and kdb+: kb/optane.md
-        - Performance tests: architecture/optane-tests.md
       - Order Book: wp/order-book.md
       - Publish and subscribe: kb/publish-subscribe.md
       - Query Routing: wp/query-routing/index.md
