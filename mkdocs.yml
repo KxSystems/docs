@@ -459,7 +459,7 @@ nav:
         - Deferred response: kb/deferred-response.md
         - Named pipes: kb/named-pipes.md
         - Serialization examples: kb/serialization.md
-        - Server calling client: kb/server-calling-client.md
+        - Server calling C client: kb/server-calling-client.md
         - Socket sharding (WP): wp/socket-sharding/index.md
         - SSL/TLS: kb/ssl.md
         - HTTP: kb/http.md
