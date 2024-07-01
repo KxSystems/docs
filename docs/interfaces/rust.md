@@ -6,7 +6,7 @@ keywords: rust, api, ipc
 
 # Rust client for kdb+
 
-A kdb+ interface for the Rust programming language is documented and available for download from [https://github.com/KxSystems/kxkdb](https://github.com/KxSystems/kxkdb).
+A kdb+ interface for the Rust programming language is documented and available to download from [https://github.com/KxSystems/kxkdb](https://github.com/KxSystems/kxkdb).
 
 The interface comprises two features:
 
