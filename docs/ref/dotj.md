@@ -19,6 +19,8 @@ The `.j` [namespace](../basics/namespaces.md) contains functions for converting 
 
     Consider all undocumented functions in the namespace as its private API – and do not use them.
 
+Prior to V3.2, JSON parsing was catered for via use of the script [KxSystems/kdb/e/json.k](https://github.com/KxSystems/kdb/blob/master/e/json.k)
+
 
 ## `.j.j` (serialize)
 
@@ -76,3 +78,20 @@ a b
 ```
 
 !!! warning "Note serialization and deserialization to and from JSON may not preserve q datatype"
+
+If your JSON data is spread over multiple lines, reduce those to a single char vector with [`raze`](raze.md).
+
+```bash
+$ cat t1.json
+{
+   "code" : 3,
+   "message" : "This request requires authorization"
+}
+```
+
+```q
+q).j.k raze read0 `:t1.json
+code   | 3f
+message| "This request requires authorization"
+```
+

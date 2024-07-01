@@ -344,34 +344,10 @@ to show both in action.
 
 ### Using `.j` functions within a q process (server-side parsing)
 
-kdb+ 3.3 introduced native functions for translating between kdb+ and
-JSON format. This resulted in a 50-100× speedup compared to previous
-functionality, and the new versions can also process Unicode.
+JSON can be parsed and generated using functions found within the [.j namespace](../../ref/dotj.md).
 
-There are two main functions that we will make use of:
-
--   `.j.j` parses kdb+ into a JSON string
--   `.j.k` parses a JSON string into kdb+
-
-```q
-q)tab:([]col1:`a`b`c`d;col2:1 2 3 4)
-q)tab 
-col1 col2 
---------- 
-a    1
-b    2
-c    3
-d    4
-q).j.j tab
-"[{\"col1\":\"a\",\"col2\":1},{\"col1\":\"b\",\"col2\":2},{\"col1\":\"c\",\"c..
-q).j.k "{\"a\":1,\"b\":2,\"c\":3,\"d\":4}"
-a| 1
-b| 2
-c| 3
-d| 4
-```
 Here is an example of how we can use this to manipulate data in our web
-app. First set up our server and use `.j.j` to convert the kdb+ output to
+app. First set up our server and use [`.j.j`](../../ref/dotj.md#jj-serialize) to convert the kdb+ output to
 JSON:
 ```q
 q)\p 5001

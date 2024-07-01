@@ -83,60 +83,7 @@ This example works, because the default `.z.ws` echoes the byte vector over the 
 
 ## JSON
 
-A small utility to parse and generate JSON is shipped in `q.k`. (Since V3.2 2014.08.22.) For prior releases, it can be found at:
-:fontawesome-brands-github: 
-[KxSystems/kdb/e/json.k](https://github.com/KxSystems/kdb/blob/master/e/json.k)
-
-After loading `json.k`, example data is in `.j.x`
-
-```q
-q).j.x
-C    b j z                      
---------------------------------
-"as" 0                          
-""   1 2 2014.05.08T16:45:16.025
-q).j.j .j.x / convert q data to json
-"[{\"C\":\"as\",\"b\":false,\"j\":null,\"z\":\"\"},{\"C\":\"\",\"b\":true,\"j\":2,\"z\":\"2014-05-08T16:45:16.025\"}]"
-q)-1 .j.j .j.x; / pretty display
-[{"C":"as","b":false,"j":null,"z":""},{"C":"","b":true,"j":2,"z":"2014-05-08T16:45:16.025"}]
-q).j.k .j.j .j.x / convert json to q
-C    b j z                        
-----------------------------------
-"as" 0   ""                       
-""   1 2 "2014-05-08T16:45:16.025"
-```
-
-
-### Multi-line data
-
-If your JSON data is spread over multiple lines, reduce those to a single char vector with `raze`.
-
-```bash
-$ cat t1.json 
-{
-    "code" : 3,
-    "message" : "This request requires authorization"
-}
-```
-
-```q
-q).j.k raze read0 `:t1.json
-code   | 3f
-message| "This request requires authorization"
-```
-
-Otherwise you’ll encounter an error similar to:
-
-```q
-q).j.k read0 `:t1.json
-k){=\~("\"=-1_q,x)<q=x}
-'length
-<
-(0b;,0b;000000000000b;00000000000000000000000000000000000000000000000000b)
-(,0b;010000100000b;01000000010001000000000000000000000000000000000001b;,0b)
-q.j))\\
-```
-
+JSON can be parsed and generated using functions found within the [.j namespace](../ref/dotj.md).
 
 ## Compression
 
