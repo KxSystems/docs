@@ -13,4 +13,4 @@ The main purpose of the library is to build stable interfaces on top of external
 
 No compiler toolchain or writing C/C++ code is required to use this library.
 
-The FFI interface is is documented and available for download from [https://github.com/KxSystems/ffi/](https://github.com/KxSystems/ffi/)
+The FFI interface is documented and available to download from [https://github.com/KxSystems/ffi/](https://github.com/KxSystems/ffi/)
