@@ -1,18 +1,14 @@
 ---
-title: "FDL Europe: Analyzing social media data for disaster management | White papers | q and kdb+ documentation"
+title: "FDL Europe: Analyzing social media data for disaster management | q and kdb+ documentation"
 description: Deep-learning methods to classify tweets relating to flooding events – training a binary classifier to discern relevance; a categorical model to classify tweets into finer-grained buckets.
 author: Conor McCarthy
 date: October 2019
 keywords: disaster, kdb+, machine-learning, nasa, q, space, social media
 ---
-White paper
-{: #wp-brand}
-
 # FDL Europe: Analyzing social media data for disaster management
 
 by [Conor McCarthy](#author)
 {: .wp-author}
-
 
 
 

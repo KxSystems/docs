@@ -1,18 +1,14 @@
 ---
-title: Storing and exploring the Bitcoin blockchain | White Papers | kdb+ and q documentation
+title: Storing and exploring the Bitcoin blockchain | kdb+ and q documentation
 description: A blockchain explorer uses kdb+ to store and query Bitcoin transactions using partitioned databases, splayed tables, intraday write-downs, and in-memory joins.
 author: [Jeremy Lucid, Daniel Irwin]
 date: December 2018
 keywords: bitcoin, blockchain, kdb+, q
 ---
-White paper
-{: #wp-brand}
-
 # Storing and exploring the Bitcoin blockchain
 
 by [Jeremy Lucid &amp; Daniel Irwin](#authors)
 {: .wp-author}
-
 
 
 For over a decade, KX technology has played an important role in the
@@ -483,7 +479,7 @@ common column to group data together. Such [partitioned
 table](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
 structures help to more easily manage large datasets and enable query
 optimization. For more information on the benefits of partitioned
-databases, see white paper “[Columnar database and query
+databases, see “[Columnar database and query
 optimization](../columnar-database/index.md)”.
 
 For `mainDB`, each table contains a common column named `height`
@@ -631,7 +627,7 @@ comparisons performed when searching for an address or TXID within a
 given partition.
 
 For more information on the performance enhancements achieved by on-disk
-attribute application, refer again to the white paper [Columnar database and query optimization](../columnar-database/index.md).
+attribute application, refer again to [Columnar database and query optimization](../columnar-database/index.md).
 
 
 ### Memory management 
@@ -691,7 +687,7 @@ heightToPartition:{[Height;Width]
 ```
 
 :fontawesome-regular-hand-point-right:
-White paper: [Intraday Writedown Solutions](../intraday-writedown/index.md)
+[Intraday Writedown Solutions](../intraday-writedown/index.md)
 
 
 #### Garbage collection
@@ -728,7 +724,7 @@ q).z.zd:17 2 6
 The above setting resulted in a compression ratio of 2.7 on average. 
 
 :fontawesome-regular-hand-point-right:
-White paper: [Compression in kdb+](../compress/index.md)
+[Compression in kdb+](../compress/index.md)
 
 
 #### Assigning appropriate data types

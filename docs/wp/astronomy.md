@@ -1,20 +1,13 @@
 ---
-title: kdb+ in astronomy | White papers | kdb+ and q documentation
+title: kdb+ in astronomy | kdb+ and q documentation
 description: Imports FITS data to kdb+, loads C functions and calculates recessional velocity
 author: [Andrew Magowan, James Neill]
 keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar objects, recessional velocity, red shift, telescope
 ---
-White paper
-{: #wp-brand}
-
 # kdb+ in astronomy
 
 by [Andrew Magowan &amp; James Neill](#authors)
 {: .wp-author}
-
-
-
-
 
 
 The field of observational astronomy has always been data-driven, but like many other fields, technological advances are causing something of a paradigm shift, and – according to experts – a bit of a headache! Currently under construction are new infrastructures that have the potential to record volumes of data that have not been seen before in the field. The Large Synoptic Survey Telescope (LSST) and Square Kilometer Array (SKA) are set to record such huge amounts of data that experts are concerned about their ability to make sense of this data, purely due to its sheer size.
@@ -48,7 +41,7 @@ KX provides a header file, `k.h`, for interacting with C from kdb+. It provides 
 
 :fontawesome-regular-hand-point-right:
 Interfaces: [C client for kdb+](../interfaces/c-client-for-q.md)<br>
-White paper: [“C API for kdb+”](capi/index.md)<br>
+[“C API for kdb+”](capi/index.md)<br>
 :fontawesome-brands-github:
 [KxSystems/kdb](https://github.com/kxsystems/kdb)<br>
 James Neill’s repository for kdb+ in astronomy:
@@ -252,12 +245,12 @@ We can infer from these results that quasi-stellar objects (QSOs) have the great
 
 As previously mentioned, the positive impact of having the SDSS data available to the public has been massive. Since it was released, over 3,000 papers have been written on a range of different topics in the field, based on [data from the SDSS](http://onlinelibrary.wiley.com/doi/10.1111/j.1740-9713.2012.00587.x/pdf). 
 
-The SDSS is just one example of several projects, but it shows the benefit of making the data accessible to all interested parties, both professional and amateur. This impact throughout the wider astronomical community has pushed leaders in the field to continue this development – to further promote sky surveys by building bigger, more powerful telescopes. However, this doesn’t come without its problems, with data storage and computational processing power being pushed to the limits. kdb+ has the ability to scale to these extremes. Sean Keevey’s white paper [“A natural query interface for distributed systems”](query-interface.md) discusses how data distributed over several processes and machines can be seamlessly accessed from a single
+The SDSS is just one example of several projects, but it shows the benefit of making the data accessible to all interested parties, both professional and amateur. This impact throughout the wider astronomical community has pushed leaders in the field to continue this development – to further promote sky surveys by building bigger, more powerful telescopes. However, this doesn’t come without its problems, with data storage and computational processing power being pushed to the limits. kdb+ has the ability to scale to these extremes. Sean Keevey’s [“A natural query interface for distributed systems”](query-interface.md) discusses how data distributed over several processes and machines can be seamlessly accessed from a single
 starting point by the end user. 
 
 We previously mentioned how astronomy data can often come with a time domain, which would be well suited to kdb+ and how the data would be stored on disk. The data set in this example does not have a time domain, as it just provides information on given objects recorded once, but this certainly does not mean that it is not suited to kdb+. 
 
-We could apply an attribute to this data for optimization, such as the sorted attribute to the class column in the example data set. The benefits of this would become more apparent as more files were being loaded in. Ciaran Gorman’s white paper [“Columnar database and query optimization”](columnar-database/index.md) gives an in-depth explanation as to how they can be applied. 
+We could apply an attribute to this data for optimization, such as the sorted attribute to the class column in the example data set. The benefits of this would become more apparent as more files were being loaded in. Ciaran Gorman’s [“Columnar database and query optimization”](columnar-database/index.md) gives an in-depth explanation as to how they can be applied. 
 
 
 ## Conclusion

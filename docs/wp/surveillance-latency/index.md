@@ -1,19 +1,14 @@
 ---
-title: Latency and efficiency considerations for a real-time surveillance system | White papers | kdb+and q documentation
+title: Latency and efficiency considerations for a real-time surveillance system | kdb+and q documentation
 description: This paper investigates performance of four different alert analytic programming styles running at four different points of execution 
 author: Jason Quinn
 date: November 2019
 keywords: alerts, latency, realtime alert logic, surveillance  
 ---
-White paper
-{: #wp-brand}
-
 # Latency and efficiency considerations for a real-time surveillance system
 
 by [Jason Quinn](#author)
 {: .wp-author}
-
-
 
 
 The time between transaction execution and transaction monitoring against regulation guidelines varies across financial institutions. Factors such as the number of markets, the number of trading systems and their messaging profiles can play a significant part in deciding whether to run surveillance analytics on a real-time or an intraday/end-of day basis.
@@ -298,7 +293,7 @@ In graphical form, these are presented as:
 
 In this case, the memory usage is similar if not identical to that in experiment 1 – to be expected given that the data is the same. The run times behave the same across the execution points as previously i.e. grows as execution point is less frequent and appears to take slightly longer than when the data is streaming. Although the run time of the iterative approach in the real-time case is in line with the other approaches, it is unacceptably long in the intraday cases and would lead to a lengthy time rerunning the alerts historical.
 
-We could experiment with the introduction of [parallel processing](../../basics/peach.md) into the framework. From the results in the white paper “[Multithreading in kdb+](../multi-thread/index.md)”, we would expect this to reduce the run-time and memory usage of the iterative approach. Although, not as much as to bring them down to those of the other three approaches without a considerable implementation revision. At this stage, we discount the iterative approach as an option as there is strong evidence that it would cause an unacceptable lag behind the streaming data which may require considerable efficiency-making efforts to overcome.
+We could experiment with the introduction of [parallel processing](../../basics/peach.md) into the framework. From the results in “[Multithreading in kdb+](../multi-thread/index.md)”, we would expect this to reduce the run-time and memory usage of the iterative approach. Although, not as much as to bring them down to those of the other three approaches without a considerable implementation revision. At this stage, we discount the iterative approach as an option as there is strong evidence that it would cause an unacceptable lag behind the streaming data which may require considerable efficiency-making efforts to overcome.
 
 As mentioned previously, in the section ‘Exchange-member simulation’, the grouping by cryptocurrency sym only is not seen as realistic. It is expected that institutional data will be grouped by combinations such as sym+traderID, sym+brokerID, sym+desk etc. Our final experiment tests the remaining three approaches on four hours of streaming data with simulated member IDs added to the data. We consider the following results to be more reflective of real institutional data:
 
@@ -339,7 +334,7 @@ These results show that the use of event ID windows instead of timestamp windows
 
 There are other factors that we have not experimented with – the distribution of the twenty runs of the alert analytics out to different secondary threads, implementing intraday memory management techniques in the alert engines or varying the hard-coded lookback threshold of five minutes on top of varying the intraday execution point frequency.
 
-Whether on the minimal grouping by sym or on an estimated realistic grouping of sym and member ID, the real-time execution results appear not to discount the possibility of the alert engine being regularly occupied while it attempts to catch up with the live streaming data. More careful examination of bucket-by-bucket results is required though, to truly qualify that finding. If so, this would affect the implementation of memory-management techniques or the scheduling of intraday/end-of-day activities within the alert engines as the lag could continuously build up over time (more applicable in the case of 24 streaming data as is used in these experiments). This ties in with the conclusions in the “[kdb+tick profiling for throughput optimization](../tick-profiling.md)” white paper, where it is found more efficient to deal with messages in bulk rather than in isolation – further justifying our dismissal of the iterative approach.
+Whether on the minimal grouping by sym or on an estimated realistic grouping of sym and member ID, the real-time execution results appear not to discount the possibility of the alert engine being regularly occupied while it attempts to catch up with the live streaming data. More careful examination of bucket-by-bucket results is required though, to truly qualify that finding. If so, this would affect the implementation of memory-management techniques or the scheduling of intraday/end-of-day activities within the alert engines as the lag could continuously build up over time (more applicable in the case of 24 streaming data as is used in these experiments). This ties in with the conclusions in “[kdb+tick profiling for throughput optimization](../tick-profiling.md)”, where it is found more efficient to deal with messages in bulk rather than in isolation – further justifying our dismissal of the iterative approach.
 
 On the other hand, the results suggest that the intraday approaches always finish their task in ample time before the next intraday milestone is reached – giving plenty of time for any memory management tasks or intraday/end-of-day job scheduling to complete in an expected timeframe. For example, the results suggest that any EOD job scheduled in an alert engine running on an intraday 1-minute basis will start at most at 00:07 after the last intraday bucket of the day has been analyzed by the 20 alert calls. This short delay could be further reduced by memory-management techniques and the use of secondary threads.
 
@@ -362,7 +357,7 @@ In conclusion, between what appears to be an acceptable guaranteed cap on the la
 
 ## Appendix – Surveillance framework example
 
-The white paper “[Building real-time tick subscribers](../rt-tick/index.md)”, demonstrates the ease with which a skeleton kdb+ ticker plant framework can be adapted to meet an organization’s specific needs. Taking this, we set up the following sample surveillance framework:
+“[Building real-time tick subscribers](../rt-tick/index.md)”, demonstrates the ease with which a skeleton kdb+ ticker plant framework can be adapted to meet an organization’s specific needs. Taking this, we set up the following sample surveillance framework:
 
 ![Example surveillance framework used for experimentation](img/figure6.png)
 
@@ -381,7 +376,7 @@ In addition, we have introduced a number of alert-engine processes subscribing t
 
 This framework is for the purposes of experimenting only and we do not suggest that this is an optimal TP setup for the above processes. Potentially we could have placed chained ticker plants between the main parent ticker plant and the alert engines.
 
-See white paper “[Building real-time tick subscribers](../rt-tick/index.md)” for details behind the startup scripts for the ticker plant, RDB and HDB processes. The main adjustment we made to those scripts was to define additional schemas in `sym.q`. These schemas are
+See “[Building real-time tick subscribers](../rt-tick/index.md)” for details behind the startup scripts for the ticker plant, RDB and HDB processes. The main adjustment we made to those scripts was to define additional schemas in `sym.q`. These schemas are
 
 schema | contents
 -------|----------

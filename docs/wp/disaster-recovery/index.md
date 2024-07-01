@@ -1,17 +1,13 @@
 ---
-title: Disaster-recovery planning for kdb+ tick systems | White Papers | kdb+ and q documentation
+title: Disaster-recovery planning for kdb+ tick systems | kdb+ and q documentation
 description: Disaster recovery (DR) and failover concepts from the perspective of the gateway layer accessing a typical kdb+ tick system used in capital-markets applications
 author: Stewart Robinson
 keywords: disaster, failover, kdb+, planning, recovery, tick
 ---
-White paper
-{: #wp-brand}
-
 # Disaster-recovery planning for kdb+ tick systems
 
 by [Stewart Robinson](#author)
 {: .wp-author}
-
 
 
 
@@ -94,7 +90,7 @@ split into date partitions. A q process can read this data and
 memory-map it, allowing for fast queries across a large volume of
 data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 
-:fontawesome-regular-hand-point-right: White paper:
+:fontawesome-regular-hand-point-right: 
 [Data Recovery for kdb+ tick](../data-recovery.md)
 
 
@@ -274,7 +270,7 @@ carefully manage any querying of the database.
 
 ![](img/image12.jpeg)
 
-:fontawesome-regular-hand-point-right: White paper –
+:fontawesome-regular-hand-point-right: 
 [Query Routing: a kdb+ framework for a scalable load-balanced system](../query-routing/index.md)
 
 As mentioned above, the usual strategy for failover is to have a
@@ -369,7 +365,7 @@ gateway queries should continue to be routed to the secondary until
 recovery and failover are complete, and the primary RDB is available
 to capture data and serve queries again.
 
-:fontawesome-regular-hand-point-right: White paper 
+:fontawesome-regular-hand-point-right:  
 [Data recovery for kdb+tick](../data-recovery.md)
 for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file

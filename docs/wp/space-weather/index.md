@@ -1,18 +1,14 @@
 ---
-title: NASA Frontier Development Lab Space Weather Challenge | White Papers | kdb+ and q documentation
+title: NASA Frontier Development Lab Space Weather Challenge | kdb+ and q documentation
 description: Examines the use of ML models to predict scintillation events, using historical GNSS data
 author: Deanna Morgan
 date: November 2018
 keywords: kdb+, q, space, NASA, machine learning
 ---
-White paper
-{: #wp-brand}
-
 # NASA Frontier Development Lab Space Weather Challenge
 
 by [Deanna Morgan](#author)
 {: .wp-author}
-
 
 
 

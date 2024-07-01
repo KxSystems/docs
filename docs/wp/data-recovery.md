@@ -1,18 +1,14 @@
 ---
-title: Data recovery for kdb+tick | White Papers | kdb+ and q documentation
+title: Data recovery for kdb+tick | kdb+ and q documentation
 description: Tickerplant logfiles can be replayed to recover service, even after they have been corrupted. 
 author: Fionnbharr Gaston
 date: July 2014
 keywords: corrupt, data, data recovery, error, kdb+, log, logfile, q, real-time, recovery, replay, subscribe, tick, tickerplant, trap
 ---
-White paper
-{: #wp-brand}
-
 # Data recovery for kdb+tick
 
 by [Fionnbharr Gaston](#author)
 {: .wp-author}
-
 
 
 
@@ -48,7 +44,6 @@ Historical database
 : The historical database (HDB) consists of on-disk kdb+ data, typically split into date partitions. A kdb+ process can read this data and memory-map it, allowing for fast queries across a large volume of data. The RDB is instructed to save its data to the HDB at EOD.
 
 :fontawesome-regular-hand-point-right:
-White paper: 
 [kdb+ tick profiling for throughput optimization](tick-profiling.md)
 
 This paper will primarily consider the relationship between the TP and RDB and in particular the use of tickerplant logs when recovering lost data in an RDB.

@@ -11,4 +11,4 @@ A kdb+ interface for the C# programming language is documented and available to 
 The interface permits connecting C# and kdb+ processes via IPC.
 
 :fontawesome-regular-map:
-[White paper: An introduction to graphical interfaces for kdb+ using C#](../wp/gui/index.md)
+[An introduction to graphical interfaces for kdb+ using C#](../wp/gui/index.md)

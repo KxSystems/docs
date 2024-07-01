@@ -1,5 +1,5 @@
 ---
-title: Serverless q/kdb+ on AWS Lambda | White Papers | kdb+ and q documentation
+title: Serverless q/kdb+ on AWS Lambda | kdb+ and q documentation
 description: How to deploy kdb+ processes on AWS Lambda, an event-driven, serverless computing platform using the Serverless Application Repository and Cloud Development Kit
 author: Eric Corcoran
 date: March 2020

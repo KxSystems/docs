@@ -1,19 +1,14 @@
 ---
-title: "Temporal data: a kdb+ framework for corporate actions | White Papers | documentation for q and kdb+"
+title: "Temporal data: a kdb+ framework for corporate actions | documentation for q and kdb+"
 author: Sean Rodgers
 date: March 2014
 description: Examines a kdb+ framework which can be used to apply corporate action adjustments on the fly to equity tick data
 keywords: adjustment, corporate action, cash dividend, dividend, framework, name change, reference data, spin off, stock split, temporal data
 ---
-White paper
-{: #wp-brand}
-
 # Temporal data:<br>A kdb+ framework for corporate actions
 
 by [Sean Rodgers](#author)
 {: .wp-author}
-
-
 
 
 kdb+ is leveraged in many financial institutions across the globe and has built a well-earned reputation as a high-performance database, appropriate for capturing, storing and analyzing enormous amounts of data. It is essential that any large-scale kdb+ system has an efficient design so that time to value is kept to a minimum and the end users are provided with useful functionality.
@@ -270,7 +265,7 @@ q)cact:`s#cact;
 Within the majority of kdb+ systems, data is obtained through the use of a gateway process.
 
 :fontawesome-regular-hand-point-right:
-White paper: [Common design principles for kdb+ gateways](gateway-design/index.md)
+[Common design principles for kdb+ gateways](gateway-design/index.md)
 
 The gateway acts as an interface between the end user and the underlying databases. We would like to pass many different parameters into the function `getRes` that executes the query on the database, and perhaps more than the maximum number allowed in q, which is eight. For this reason we will use a dictionary as the single parameter. A typical parameter dictionary looks like the following:
 

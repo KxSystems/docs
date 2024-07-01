@@ -1,19 +1,14 @@
 ---
-title: Sample aggregation engine for market depth | White papers | kdb+ and q documentation
+title: Sample aggregation engine for market depth | kdb+ and q documentation
 description: A framework for aggregating market depth and managing multiple subscriptions, using FX data as an example
 author: Stephen Dempsey
 date: January 2014
 keywords: aggregation, ask, attribute, bid, book, depth, fx, kdb+, market depth, order book, price,publish, q, quote, schema, sort, subscribe, top of book
 ---
-White paper
-{: #wp-brand}
-
 # Sample aggregation engine for market depth
 
 by [Stephen Dempsey](#author)
 {: .wp-author}
-
-
 
 
 Throughout the past decade the volume of data in the financial markets has increased substantially due to a variety of factors, including access to technology, decimalization and increased volatility. As these volumes increase it can pose significant problems for applications consuming market depth, which is summarized as the quantity of the instrument on offer at each price level. The purpose of this white paper is to describe a sample method for efficiently storing and producing views on this depth data.

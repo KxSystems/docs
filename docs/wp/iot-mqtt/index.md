@@ -1,5 +1,5 @@
 ---
-title: Internet of Things with MQTT | White papers
+title: Internet of Things with MQTT
 description: MQTT is a messaging protocol for the Internet of Things (IoT). It was designed as an extremely lightweight publish/subscribe messaging transport. KX has released a MQTT interface with source code available on GitHub. The interface supports Linux, macOS, and Windows platforms.
 author: Rian Ó Cuinneagáin
 date: May 2021

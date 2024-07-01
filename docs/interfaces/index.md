@@ -24,10 +24,10 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[jdbc](https://github.com/KxSystems/jdbc)</td><td markdown>**JDBC** driver for kdb+</td>
 <tr markdown><td markdown>[kafka](https://github.com/KxSystems/kafka)</td><td markdown>Q client for **Apache Kafka**</td></tr>
 <tr markdown><td markdown>[ldap](https://github.com/KxSystems/ldap)</td><td markdown>Q client for **LDAP**</td></tr>
-<tr markdown><td markdown>[mqtt](https://github.com/KxSystems/mqtt)</td><td markdown>Q client for **MQTT** [:fontawesome-regular-map:](../wp/iot-mqtt/index.md "White paper: Internet of Things with MQTT")</td></tr>
+<tr markdown><td markdown>[mqtt](https://github.com/KxSystems/mqtt)</td><td markdown>Q client for **MQTT** [:fontawesome-regular-map:](../wp/iot-mqtt/index.md "Internet of Things with MQTT")</td></tr>
 <tr markdown><td markdown>[prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)</td><td markdown>Export kdb+ metrics to **Prometheus**</td></tr>
 <tr markdown><td markdown>[protobufkdb](https://github.com/KxSystems/protobufkdb)</td><td markdown>Read and write **Protocol Buffers** data</td></tr>
-<tr markdown><td markdown>[solace](https://github.com/KxSystems/solace)</td><td markdown>Query kdb+ from a **Solace** event broker [:fontawesome-regular-map:](../wp/solace/index.md "White paper: Publish/subscribe with the Solace event broker")</td></tr>
+<tr markdown><td markdown>[solace](https://github.com/KxSystems/solace)</td><td markdown>Query kdb+ from a **Solace** event broker [:fontawesome-regular-map:](../wp/solace/index.md "Publish/subscribe with the Solace event broker")</td></tr>
 </tr>
 </table>
 

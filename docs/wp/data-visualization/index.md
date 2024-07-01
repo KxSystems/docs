@@ -1,20 +1,14 @@
 ---
-title: "Data visualization with kdb+ using ODBC: a Tableau case study | White Papers | kdb+ and q documentation"
+title: "Data visualization with kdb+ using ODBC: a Tableau case study | kdb+ and q documentation"
 description: Illustrates the flexibility with which kdb+ data can be accessed by Tableau using ODBC
 author: Michaela Woods
 date: July 2018
 keywords: data, kdb+, ODBC, Tableau, visualization
 ---
-White paper
-{: #wp-brand}
-
 # Data visualization with kdb+ using ODBC: <br/>A Tableau case study
 
 by [Michaela Woods](#author)
 {: .wp-author}
-
-
-
 
 
 Business intelligence (BI) tools are widely used across many industries

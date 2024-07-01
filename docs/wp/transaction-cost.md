@@ -1,21 +1,14 @@
 ---
-title: Transaction-cost analysis using kdb+ | White papers | q and kdb+documentation
+title: Transaction-cost analysis using kdb+ | q and kdb+documentation
 author: Colm Earley
 date: December 2012
 description: Using kdb+to analyze transaction costs from high-frequency data that often overwhelms traditional database and event-processing systems
 keywords: analysis, performance, schema, transaction cost
 ---
-White paper
-{: #wp-brand}
-
 # Transaction-cost analysis using kdb+
 
 by [Colm Earley](#author)
 {: .wp-author}
-
-
-
-
 
 
 With the ever-increasing volatility of financial markets and multitude of trading venues as a result of market fragmentation, transaction-cost analysis (TCA) has become one of the expected functions provided to a client by their broker dealer. The buy side has also become more sophisticated in recent years in acquiring their own TCA tools as they seek more transparency around their trading. These firms now strive to measure their real execution performance, feeding statistics into their portfolio strategies, market-impact models and, of course, relaying their level of service satisfaction back to their brokers.

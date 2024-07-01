@@ -1,18 +1,14 @@
 ---
-title: "Market Fragmentation:  A kdb+ framework for multiple liquidity sources | White Papers | kdb+ and q documentation"
+title: "Market Fragmentation:  A kdb+ framework for multiple liquidity sources | kdb+ and q documentation"
 description: An approach to the challenge of consolidating share price information for equities that trade on multiple venues.
 author: James Corcoran
 date: January 2013
 keywords: analytics, fragmentation, kdb+, market
 ---
-White paper
-{: #wp-brand}
-
 # Market Fragmentation:<br/>A kdb+ framework for multiple liquidity sources
 
 by [James Corcoran](#author)
 {: .wp-author}
-
 
 
 

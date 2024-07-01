@@ -1,20 +1,14 @@
 ---
-title: kdb+ data-management techniques | White papers | q and kdb+ documentation
+title: kdb+ data-management techniques | q and kdb+ documentation
 description: Examines implementation options and data-management techniques in seven scenarios
 author: Simon Mescal
 date: January 2013
 keywords: attribute, data management, grouped, intra-day, historical, kdb+, partitioned, performance, q, real-time, sorted, unique
 ---
-White paper
-{: #wp-brand}
-
 # kdb+ data-management techniques
 
 by [Simon Mescal](#author)
 {: .wp-author}
-
-
-
 
 
 

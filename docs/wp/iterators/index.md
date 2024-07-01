@@ -1,19 +1,14 @@
 ---
-title: Iterators | White Papers | kdb+ and q documentation
+title: Iterators | kdb+ and q documentation
 description: Iterators (formerly known as adverbs) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. 
 author: [Conor Slattery, Stephen Taylor]
 date: March 2019
 keywords: accumulator, adverb, applicable value, converge, dictionary, do, iteration, iterator, kdb+, list, loop, map, operator, q, value, while
 ---
-White paper
-{: #wp-brand}
-
 # Iterators
 
 by [Conor Slattery &amp; Stephen Taylor](#authors)
 {: .wp-author}
-
-
 
 
 [Iterators](../../ref/iterators.md) (formerly known as _adverbs_) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill.

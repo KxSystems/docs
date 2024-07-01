@@ -1,18 +1,14 @@
 ---
-title: The application of foreign keys and linked columns in kdb+ | White papers | q and kdb+ documentation
+title: The application of foreign keys and linked columns in kdb+ | q and kdb+ documentation
 description: How foreign keys and linked columns may be established and applied in kdb+ databases, and a review of the advantages and penalties
 author: Kevin Smyth
 date: April 2013
 keywords: foreign key, kdb+, link, linked columns, q, sym file, symlink
 ---
-White paper
-{: #wp-brand}
-
 # The application of foreign keys and linked columns in kdb+
 
 by [Kevin Smyth](#author)
 {: .wp-author}
-
 
 
 

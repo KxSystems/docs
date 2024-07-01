@@ -4,9 +4,6 @@ description: How to auto-scale a cloud deployment of kdb+ realtime database
 author: Jack Stapleton
 date: September 2020
 ---
-White paper
-{: #wp-brand}
-
 # Auto Scaling for a kdb+ realtime database
 
 

@@ -1,21 +1,14 @@
 ---
-title: kdb+ query scaling | White papers | kdb+ and q documentation
+title: kdb+ query scaling | kdb+ and q documentation
 description: How to take advantage of multiple kdb+ query structures  to achieve optimal query performance for large volumes of data
 author: Ian Lester
 date: January 2014
 keywords: find, join, kdb+, optimize, performance, q, query, scale, select
 ---
-White paper
-{: #wp-brand}
-
 # kdb+ query scaling
 
 by [Ian lester](#author)
 {: .wp-author}
-
-
-
-
 
 
 Trading volumes in financial market exchanges have increased significantly in recent years and as a result it has become increasingly important for financial institutions to invest in the best technologies and to ensure that they are used to their full potential.

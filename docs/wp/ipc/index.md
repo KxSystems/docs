@@ -4,9 +4,6 @@ description: Core concepts related to IPC in kdb+, and the role of IPC in a kdb+
 author: Katrina McCormack
 date: April 2021
 ---
-White paper
-{: #wp-brand}
-
 # Interprocess communications
 
 by [Katrina McCormack](#author)

@@ -1,22 +1,14 @@
 ---
-title: NASA Frontier Development Lab Exoplanets Challenge | White Papers | kdb+ and q documentation
+title: NASA Frontier Development Lab Exoplanets Challenge | kdb+ and q documentation
 description: The Transiting Exoplanet Survey Satellite (TESS) was launched in April 2018, with the objective of discovering new exoplanets in orbit around the brightest stars in the solar neighborhood
 keywords: kdb+, q, space, NASA, machine learning
 author: Esperanza López Aguilera
 date: December 2018
 ---
-White paper
-{: #wp-brand}
-
 # NASA Frontier Development Lab Exoplanets Challenge
 
 by [Esperanza López Aguilera](#author)
 {: .wp-author}
-
-
-
-
-
 
 
 The NASA Frontier Development Lab (FDL) is an applied artificial intelligence (AI) research accelerator, hosted by the SETI Institute in partnership with NASA Ames Research Centre. The programme brings commercial and private partners together with researchers to solve challenges in the space science community using new AI technologies.

@@ -1,18 +1,13 @@
 ---
-title: Publish-subscribe messaging with Solace | White papers | kdb+ and q documentation
+title: Publish-subscribe messaging with Solace | kdb+ and q documentation
 description: Set-up and use of socket sharding in kdb+, with several example scenarios
 author: Himanshu Gupta
 date: November 2020
 ---
-White paper
-{: #wp-brand}
-
 # Publish-subscribe messaging with Solace
 
 by [Himanshu Gupta](#author)
 {: .wp-author}
-
-
 
 
 ![](img/pub_sub.png)

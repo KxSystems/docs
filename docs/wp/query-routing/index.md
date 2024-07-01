@@ -1,20 +1,14 @@
 ---
-title: "Query Routing: a kdb+ framework for a scalable, load balanced system | White Papers | kdb+ and q documentation"
+title: "Query Routing: a kdb+ framework for a scalable, load balanced system | kdb+ and q documentation"
 description: The design principle of the Connection Manager Load Balancer schematic whilst providing an asynchronous-only method of communication between processes.
 author: Kevin Holsgrove
 date: November 2015
 keywords: query, routing, load, balancing, kdb+, gateway
 ---
-White paper
-{: #wp-brand}
-
 # Query Routing: A kdb+ framework for a scalable, load balanced system
 
 by [Kevin Holsgrove](#author)
 {: .wp-author}
-
-
-
 
 
 Due to the large scale that kdb+ systems commonly grow to, it is
@@ -26,7 +20,7 @@ Distributed kdb+ systems have been covered in a number of KX Technical
 White papers. The primary objective of this paper is to expand on
 routing, query tagging and connectivity management of a large
 distributing kdb+ system. The basic architecture used in this paper is
-based heavily on the ideas discussed in another white paper:
+based heavily on the ideas discussed in 
 [“Common design principles for kdb+ gateways”](../gateway-design/index.md).
 
 It is recommended the reader understand these concepts before
@@ -218,8 +212,8 @@ matching the name passed to `userQuery` and send an error if no such
 resource exists. We are setting outside the scope of this paper any
 further request validation, including access permissioning. 
 
-For further details on access control, please refer to the technical
-white paper [“Permissions with kdb+”](../permissions/index.md).
+For further details on access control, please refer to 
+[“Permissions with kdb+”](../permissions/index.md).
 
 When a user sends her query via the `userQuery` function, we assign
 the query a unique sequence number and publish an asynchronous
@@ -623,8 +617,8 @@ As an example framework focused on network routing, this paper covers
 much of the core functionality, but the scope of this paper does not
 encompass some desirable production features a system architect should
 consider, such as permissions, query validation and capacity
-management. Where topics haven’t been covered previously, the KX
-Technical White paper series will continue to drill down on important
+management. Where topics haven’t been covered previously, KX 
+will continue to drill down on important
 components that provide the building blocks for a stable, scalable,
 protected and efficient kdb+ system.
 

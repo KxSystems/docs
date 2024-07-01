@@ -1,20 +1,14 @@
 ---
-title: Building real-time tick subscribers | White Papers | kdb+ and q documentation
+title: Building real-time tick subscribers | kdb+ and q documentation
 description: How to build a custom real-time tick subscriber
 author: Nathan Perrem
 date: August 2014
 keywords: kdb+, q, real-time, subscribe, tick
 ---
-White paper
-{: #wp-brand}
-
 # Building real-time tick subscribers
 
 by [Nathan Perrem](#author)
 {: .wp-author}
-
-
-
 
 The purpose of this white paper is to help q developers who wish to build their own custom real-time tick subscribers. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process (`tick.q`) and the vanilla real-time subscriber process (`r.q`), known as the real-time database. This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? This white paper attempts to help with this task. It breaks down into the following broad sections:
 
@@ -353,7 +347,7 @@ This attempt at logfile replay failed because the data is a list, not a table, a
 
 The real-time database (`r.q`) replays the tickerplant logfile upon startup. Specifically, after it has connected/subscribed to the tickerplant, but before it has received any intraday updates.
 
-For more information on tickerplant logfile replay, see White Paper [“Data Recovery for kdb+tick”](../data-recovery.md) published in July 2014, written by Fionnbharr Gaston.
+For more information on tickerplant logfile replay, see [“Data Recovery for kdb+tick”](../data-recovery.md) published in July 2014, written by Fionnbharr Gaston.
 
 
 ### End of day

@@ -1,18 +1,14 @@
 ---
-title: kdb+tick profiling for throughput optimization | White Papers | kdb+ and q documentation
+title: kdb+tick profiling for throughput optimization | kdb+ and q documentation
 description: Key factors that influence the performance and throughput of a kdb+ tickerplant, a methodology to profile its performance, and four key areas to control.
 author: Ian Kilpatrick
 date: March 2014
 keywords: chained tickerplant, frequency, kdb+, performance, publish, q, rdb, subscribers, tick, tickerplant, update
 ---
-White paper
-{: #wp-brand}
-
 # kdb+tick profiling for throughput optimization
 
 by [Ian Kilpatrick](#author)
 {: .wp-author}
-
 
 
 

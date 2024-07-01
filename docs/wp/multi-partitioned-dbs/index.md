@@ -1,19 +1,13 @@
 ---
-title: "Multi-partitioned kdb+ databases: an equity options case study | White Papers | kdb+ and q documentation"
+title: "Multi-partitioned kdb+ databases: an equity options case study | kdb+ and q documentation"
 description: Storage and maintenance of financial equity options data in kdb+, with examples of possible ways to design and query these large databases efficiently.
 author: James Hanna
 keywords: database, equity, kdb+, options, partition, 
 ---
-White paper
-{: #wp-brand}
-
 # Multi-partitioned kdb+ databases: <br/>an equity options case study
 
 by [James Hanna](#author)
 {: .wp-author}
-
-
-
 
 
 kdb+ is well suited to managing massive datasets and offers an

@@ -1,21 +1,13 @@
 ---
-title: Mass ingestion through kdb+ data loaders | White papers | kdb+ and q documentation
+title: Mass ingestion through kdb+ data loaders | kdb+ and q documentation
 description: A fast, efficient and scalable kdb+ framework for receiving large amounts of data from multiple sources in various formats 
 author: Enda Gildea
 keywords: attribute, batch, data, disk, file, format, ingest, loader, sort
 ---
-White paper
-{: #wp-brand}
-
 # Mass ingestion through data loaders
 
 by [Enda Gildea](#author)
 {: .wp-author}
-
-
-
-
-
 
 
 Receiving a large amount of data in various file formats and from multiple different sources that need to be ingested, processed, persisted, and reported upon within a certain time period is a challenging task.
@@ -106,7 +98,7 @@ Each worker will read, transform, map and upsert data to a relevant schema and t
 Once all files of a batch are loaded, the workers will be tasked with merging a list of specific columns, sorting based on the index from the files saved and if necessary include any existing data from the HDB during the sort and merge. Once the merge is complete the table will be moved to the HDB, during which all queries to the HDB will be temporarily disabled using a lockfile.
 
 :fontawesome-regular-map:
-White paper: [“Intraday writedown solutions”](../intraday-writedown/index.md)
+[“Intraday writedown solutions”](../intraday-writedown/index.md)
 for similar solutions
 
 Workers can be killed after each batch to free up memory rather than each worker running garbage collection, which can be time-consuming.
@@ -454,7 +446,7 @@ In order to maintain sym file integrity the following method is used to ensure a
 ```
 
 :fontawesome-regular-map:
-White paper: [Working with symfiles](../symfiles.md)
+[Working with symfiles](../symfiles.md)
 
 
 ### Step 4: Indexing
@@ -553,7 +545,6 @@ In order to reduce downtime between batches, each worker is killed and restarted
 Once the batch successfully completes, any post-ingestion event-driven tasks can be run. These can include any scheduled reporting, regulatory reporting for surveillance, transaction analysis, or ad-hoc queries.
 
 :fontawesome-regular-map:
-White papers:<br>
 [Surveillance techniques to effectively monitor algo- and high-frequency trading](../surveillance/index.md)<br>
 [Transaction-cost analysis using kdb+](../transaction-cost.md)
 
