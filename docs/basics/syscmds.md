@@ -1103,10 +1103,4 @@ q)\ls                 / usual ls command
 
 ---
 
-![Borat](../img/faces/borat.jpg)
-{: .small-face}
-
-When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [:fontawesome-brands-twitter: DevOps Borat](https://twitter.com/devops_borat)
-
-
 
