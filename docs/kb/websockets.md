@@ -1,23 +1,30 @@
 ---
 title: WebSockets – Knowledge Base – kdb+ and q documentation
 description: How to work with WebSockets in q
-keywords: browser, json, kdb+, q, websockets
+keywords: browser, json, kdb+, q, websockets, javascript
 ---
 # :fontawesome-solid-handshake: WebSockets
 
+kdb+ supports the WebSocket protocol since [V3.0](../releases/ChangesIn3.0.md)
 
+## WebSocket server
 
+To enable kdb+ to accept websocket connection, simply start a q session [listening on a port](../basics/listening-port.md) of your choice.
 
-## Simple WebSocket server example
+The [`.z.ws`](../ref/dotz.md#zws-websockets) function will be called by the server for every client message.
+To customise the kdb+ websocket server, define the [`.z.ws`](../ref/dotz.md#zws-websockets) function to your choosen logic.
+Note that [`.z.w`](../ref/dotz.md#zw-handle) is used for obtaining the current connection handle, which represents the client connection when called within the `.z.ws` callback.
 
-[V3.0](../releases/ChangesIn3.0.md) supports the WebSocket protocol.
+### Example
 
-To get your browser and kdb+ talking on a WebSocket, start a q session listening on port 5000, and set its WebSocket handler `.z.ws` to echo whatever it receives.
+To start a q session listening on port 5000, which then handles any websocket requests by echoing whatever it receives:
 
 ```q
 q)\p 5000
 q).z.ws:{neg[.z.w] x}
 ```
+
+The handler `{neg[.z.w]x}` echoes the message back to the client.
 
 Download 
 :fontawesome-brands-github: 
@@ -30,15 +37,7 @@ Now click _connect_ and type e.g. `4+til 3` in the edit box. Hit Enter or click 
 
 ![echo](../img/websocket-echo.png)
 
-
-### How it works
-
-kdb+ serves all protocols on the same port and the WebSocket protocol is no exception. [`.z.ws`](../ref/dotz.md#zws-websockets) is called for every message sent from the client (browser). The handler `{neg[.z.w]x}` echoes the message back to the client.
-
-
-## Doing something useful
-
-We just need to set [`.z.ws`](../ref/dotz.md#zws-websockets) to do something useful. In your q session, define:
+The example can be enhanced further, to run any q code typed into the browser. In your q session, redefine .z.ws:
 
 ```q
 .z.ws:{neg[.z.w].Q.s value x}
@@ -48,30 +47,94 @@ Then try typing `4+til 3` in the edit box and click _send_. You will see a resul
 
 ![result](../img/websocket-result.png)
 
-To enable error reporting, try:
+To catch any bad q code that is submitted, redo the definition of .z.ws to [trap errors](../ref/apply.md#trap-at):
 
 ```q
-.z.ws:{neg[.z.w]@[.Q.s value@;x;{`“`'`”`,x,`“`\n`”`}]}
+.z.ws:{neg[.z.w]@[.Q.s value@;x;{"`",x,"\n"}]}
 ```
 
+## WebSocket client
 
-## `c.js` (no AJAX required)
+Since V3.2t 2014.07.26, q can also create a WebSocket connection, i.e. operate as a client as well as a server.
 
-`c.js` provides functions `serialize` and `deserialize` to simplify IPC between the browser and a kdb+ server. An example, `wslogin.htm` shows how to send a JavaScript dictionary to kdb+. It receives an echo of the dictionary and turns it back into a JavaScript dictionary.
+The [`.z.ws`](../ref/dotz.md#zws-websockets) function will be called by the client for every server message.
+`.z.ws` must be defined before opening a WebSocket.
+
+To open a client connection to a server, use the following syntax:
+```q
+(`$":ws://host:port")"GET / HTTP/1.1\r\nHost: host:port\r\n\r\n"
+```
+If successful it will return a 2-item list of (handle;HTTP response), e.g.
+```q
+(3i;"HTTP/1.1 101 Switching Protocols\r\nConnection: Upgrade\r\nUpgrade: websocket\r\nSec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=\r\nSec-WebSocket-Extensions: permessage-deflate\r\n\r\n")
+```
+If the protocol upgrade from HTTP to WebSocket failed, it returns the 2-item list, with the handle as `0Ni`, e.g.
+
+```q
+(0Ni;"HTTP/1.1 400 Bad Request\r\nContent-Type: text/html; charset=UTF-8...")
+```
+Any other error is signalled as usual, e.g.
+```q
+'www.nonexist.badcom: No route to host
+```
+
+To use SSL/TLS, kdb+ should first be [configured to use SSL/TLS](ssl.md). For any request requiring SSL/TLS, replace `ws://host:port` with `wss://host:port`.
+An alternative is to use stunnel, and open from kdb+ to that stunnel with `ws://`. 
+
+Basic Authentication can be passed in the char vector on opening, along with any other necessary fields such as cookies etc.
+
+Both client and server support permessage-deflate compression.
+
+### Example
+
+Open 2 terminal windows, one for the websocket server, and one for the client.
+
+In the server q session, listen on a choosen port (e.g. 5000) and define a callback that replies with a string to client
+```q
+q)\p 5000
+q).z.ws:{neg[.z.w] "server replied with ",$[10=type x;x;raze string x];}
+```
+In the client q session, define a callback to echo incoming messages and connect to the server
+```q
+q).z.ws:{0N!"Client Received Msg:";0N!x;}
+q)r:(`$":ws://127.0.0.1:5000")"GET / HTTP/1.1\r\nHost: 127.0.0.1:5000\r\n\r\n"
+q)r
+6i
+"HTTP/1.1 101 Switching Protocols\r\nConnection: Upgrade\r\nUpgrade: websocket\r\nSec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=\r\nSec-WebSocket-Extensions: permessage-deflate\r\n\r\n"
+```
+The client can then send a message to the server using:
+```q
+q)neg[r[0]]"test" / a char vector
+q)neg[r[0]]0x010203 / a bytevector
+```
+The client should then see the reply received from the server echoed to the terminal.
+
+## JavaScript serialization
+
+[`c.js`](https://github.com/KxSystems/kdb/blob/master/c/c.js)  provides functions `serialize` and `deserialize` to simplify IPC between the browser and a kdb+ server. 
+
+### Example
+
+An example, [`wslogin.htm`](https://github.com/KxSystems/cookbook/blob/master/wslogin.htm) shows how to send a JavaScript dictionary to kdb+. It receives a dictionary and replies with a vector of strings to the browser (the dictionaries values).
+To decode a *serialized* string using q, use [`-9!`](../basics/internal.md#-9x-from-bytes) and to encode, use [`-8!`](../basics/internal.md##-8x-to-bytes).
 
 To run this example
 
-1.  restart the server
-1.  download `wslogin.htm` and `c.js` to the same location
-1.  open `wslogin.htm` in your browser
-
-A byte vector is passed to `.z.ws` when using the `c.js` function `serialize`. To decode a *serialized* string, use `-9!` and to encode, use `-8!`.
-
+1.  start the server listening on port 5000 and define the callback to deserialize the dictionary, and reply with the serialized dictionary values. Note: to handle both byte and char, check for the type of the input.
 ```q
+q)\p 5000
 q).z.ws:{neg[.z.w] -8!value -9!x;}
 ```
-
-Note that the above functions for `.z.ws` won't work when using serialize/deserialize. To handle both byte and char, check for the type of the input.
+1.  download `wslogin.htm` and `c.js` to the same location
+1.  open `wslogin.htm` in your browser
+1.  client the `login` button. The will cause the browser to serialise its data and send to kdb+. The kdb+ server will receive a byte vector of an encoded kdb+ dictionary. The kdb+ server will then deserialise the dictionary, and reply to the browser with the values found within the dictionary (for display in its text box). The dictionary has the following form:
+```q
+`u`p!("user";"At0mbang.")`
+```
+and therefore, it will reply with the serialised form of the dictionary values e.g.
+```q
+("user";"At0mbang.")
+```
 
 This example works, because the default `.z.ws` echoes the byte vector over the WebSocket.
 
@@ -114,60 +177,6 @@ Since 4.1 2024.03.12, 4.0 2024.03.04 websocket compression is disabled if kdb+ r
 ```js
 ws=new WebSocket(url),"kxnodeflate");
 ```
-
-
-## Simple WebSocket client example
-
-Since V3.2t 2014.07.26, q can also create a WebSocket connection, i.e. operate as a client as well as a server.
-
-`.z.ws` must be defined before opening a WebSocket.
-
-```q
-q).z.ws:{0N!x;} / print incoming msgs to console, no echo.
-```
-
-A WebSocket can be created with the syntax
-
-```q
-q)r:(`$":ws://host:port")"GET / HTTP/1.1\r\nHost: host:port\r\n\r\n"
-```
-
-If successful it will return a 2-item list of (handle;HTTP response), e.g.
-
-```q
-(3i;"HTTP/1.1 101 Switching Protocols\r\nConnection: Upgrade\r\nUpgrade: websocket\r\nSec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=\r\nSec-WebSocket-Extensions: permessage-deflate\r\n\r\n")
-```
-
-and from that point on will call back via `.z.ws` when messages arrive. To send messages, use
-
-```q
-q)neg[handle]"text" / a char vector
-```
-
-or
-
-```q
-q)neg[handle]0x010203 / a bytevector
-```
-
-If the protocol upgrade from HTTP to WebSocket failed, it returns the 2-item list, with the handle as `0Ni`, e.g.
-
-```q
-(0Ni;"HTTP/1.1 400 Bad Request\r\nContent-Type: text/html; charset=UTF-8...")
-```
-
-The response text is returned for debug purposes only; ideally, you need only be concerned whether the handle is valid.
-
-Any other error is signalled as usual, e.g.
-
-```q
-'www.nonexist.badcom: No route to host
-```
-
-Should you need to use WebSockets over SSL, e.g. `wss://host:port`, consider stunnel, and open from kdb+ to that stunnel with `ws://`. Basic Authentication can be passed in the char vector on opening, along with any other necessary fields such as cookies etc.
-
-Both client and server support permessage-deflate compression.
-
 
 ## Secure sockets: stunnel
 
