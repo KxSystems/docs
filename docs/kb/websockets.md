@@ -7,6 +7,17 @@ keywords: browser, json, kdb+, q, websockets, javascript
 
 kdb+ supports the WebSocket protocol since [V3.0](../releases/ChangesIn3.0.md)
 
+WebSockets provide a protocol between a client and server which runs over a persistent TCP connection. 
+The client-server connection can be kept open as long as needed and can be closed by either the client or the server. 
+
+This open connection allows bi-directional, full-duplex messages to be sent over the single TCP socket connection.
+The connection allows data transfer in both directions, and both client and server can send messages simultaneously. 
+
+WebSockets were designed to be implemented in web browsers and web servers, but they can be used by any client or server application. 
+The ability for bi-directional real-time functionality means it provides a basis for creating real-time applications on both web and mobile platforms.
+
+All messages sent across a WebSocket connection are asynchronous.
+
 ## WebSocket server
 
 To enable kdb+ to accept websocket connection, simply start a q session [listening on a port](../basics/listening-port.md) of your choice.
@@ -36,6 +47,8 @@ q)activeWSConnections
 handle connectTime
 ------------------
 ```
+
+The internal function [-38!](../basics/internal.md#-38x-socket-table) can also be used to view current WebSocket connections and connection handles.
 
 ### Example
 
@@ -75,6 +88,14 @@ To catch any bad q code that is submitted, redo the definition of .z.ws to [trap
 .z.ws:{neg[.z.w]@[.Q.s value@;x;{"`",x,"\n"}]}
 ```
 
+### Authentication / Authoriation
+
+In order to initialize a WebSocket connection, a WebSocket ‘handshake’ must be successfully made between the client and server processes. 
+First, the client sends a HTTP request to the server to upgrade from the HTTP protocol to the WebSocket protocol.
+
+Client HTTP requests can be authenticated/authorized using [.z.ac](../ref/dotz.md#zac-http-auth).
+This allows kdb+ to be customized with a variety of mechanisms for securing HTTP requests  e.g. LDAP, OAuth2, OpenID Connect, etc.
+
 ## WebSocket client
 
 Since V3.2t 2014.07.26, q can also create a WebSocket connection, i.e. operate as a client as well as a server.
@@ -108,15 +129,6 @@ Both client and server support permessage-deflate compression.
 [.z.wc](../ref/dotz.md#zwc-websocket-close) is used to define callback functions in the event of a client connection closing.
 This have no default action, and can be customised with user required logic. The callback function [.z.wo](../ref/dotz.md#zwo-websocket-open) is not used with client initiated connections.
 
-### Authentication
-
-As the HTTP header can be customised as part of the connection string, various means of authentication can be implemented (e.g. adding bearer token, cookie, etc).
-
-The client connection also allows username:password to be specified for [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). e.g.
-```q
-q)`:ws://username:password@127.0.0.1:5001 "GET / HTTP/1.1\r\nHost: 127.0.0.1:5001\r\n\r\n"
-```
-
 ### Example
 
 Open 2 terminal windows, one for the websocket server, and one for the client.
@@ -140,6 +152,15 @@ q)neg[r[0]]"test" / a char vector
 q)neg[r[0]]0x010203 / a bytevector
 ```
 The client should then see the reply received from the server echoed to the terminal.
+
+### Authentication
+
+As the HTTP header can be customised as part of the connection string, various means of authentication can be implemented (e.g. adding bearer token, cookie, etc).
+
+The client connection also allows username:password to be specified for [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). e.g.
+```q
+q)`:ws://username:password@127.0.0.1:5001 "GET / HTTP/1.1\r\nHost: 127.0.0.1:5001\r\n\r\n"
+```
 
 ## JavaScript serialization
 
