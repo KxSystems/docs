@@ -103,12 +103,19 @@ Any other error is signalled as usual, e.g.
 To use SSL/TLS, kdb+ should first be [configured to use SSL/TLS](ssl.md). For any request requiring SSL/TLS, replace `ws://host:port` with `wss://host:port`.
 An alternative is to use stunnel, and open from kdb+ to that stunnel with `ws://`. 
 
-Basic Authentication can be passed in the char vector on opening, along with any other necessary fields such as cookies etc.
-
 Both client and server support permessage-deflate compression.
 
 [.z.wc](../ref/dotz.md#zwc-websocket-close) is used to define callback functions in the event of a client connection closing.
 This have no default action, and can be customised with user required logic. The callback function [.z.wo](../ref/dotz.md#zwo-websocket-open) is not used with client initiated connections.
+
+### Authentication
+
+As the HTTP header can be customised as part of the connection string, various means of authentication can be implemented (e.g. adding bearer token, cookie, etc).
+
+The client connection also allows username:password to be specified for [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). e.g.
+```q
+q)`:ws://username:password@127.0.0.1:5001 "GET / HTTP/1.1\r\nHost: 127.0.0.1:5001\r\n\r\n"
+```
 
 ### Example
 
