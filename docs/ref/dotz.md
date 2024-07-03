@@ -991,9 +991,6 @@ Sending a websocket message is limited to async messages only (sync is `'nyi`). 
 <br>
 :fontawesome-solid-graduation-cap:
 [WebSockets](../kb/websockets.md)
-<br>
-:fontawesome-regular-map:
-[kdb+ and WebSockets](../wp/websockets/index.md)
 
 
 ## `.z.X` (raw command line)

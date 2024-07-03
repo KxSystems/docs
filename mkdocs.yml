@@ -465,7 +465,6 @@ nav:
         - SSL/TLS: kb/ssl.md
         - HTTP: kb/http.md
         - WebSockets: kb/websockets.md
-        - WebSockets (WP): wp/websockets/index.md
         - Interprocess communication (WP): wp/ipc/index.md
       - Tools:
         - Code profiler: kb/profiler.md

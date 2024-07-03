@@ -272,9 +272,6 @@ The compression/decompression algorithms are proprietary and implemented as the 
 :fontawesome-solid-graduation-cap:
 [WebSockets](../kb/websockets.md)
 <br>
-:fontawesome-regular-map:
-[kdb+ and WebSockets](../wp/websockets/index.md)
-<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)

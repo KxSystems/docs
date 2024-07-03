@@ -88,6 +88,18 @@ To catch any bad q code that is submitted, redo the definition of .z.ws to [trap
 .z.ws:{neg[.z.w]@[.Q.s value@;x;{"`",x,"\n"}]}
 ```
 
+### Connection handles
+
+Data should be sent [async](../basics/ipc.md#async-message-set) to a websocket connection.
+
+When no longer required, connection handles are closed using [`hclose`](../ref/hopen.md#hclose).
+
+As communiction is async, if you wish to flush any pending data prior to close, see the following example where h is a connection handle:
+```q
+q)neg[h][] / flush any pending data (blocks til all data sent)
+q)hclose h / close handle
+```
+
 ### Authentication / Authoriation
 
 In order to initialize a WebSocket connection, a WebSocket ‘handshake’ must be successfully made between the client and server processes. 
@@ -98,6 +110,7 @@ This allows kdb+ to be customized with a variety of mechanisms for securing HTTP
 
 ## WebSocket client
 
+A WebSocket API exists for a number of languages (inc a native JavaScript WebSocket API), and web browsers are often used as WebSocket clients.
 Since V3.2t 2014.07.26, q can also create a WebSocket connection, i.e. operate as a client as well as a server.
 
 The [`.z.ws`](../ref/dotz.md#zws-websockets) function will be called by the client for every server message.
@@ -152,6 +165,10 @@ q)neg[r[0]]"test" / a char vector
 q)neg[r[0]]0x010203 / a bytevector
 ```
 The client should then see the reply received from the server echoed to the terminal.
+
+### Connection handles
+
+Use as per server [connection handles](#connection-handles).
 
 ### Authentication
 
@@ -243,13 +260,119 @@ ws=new WebSocket(url),"kxnodeflate");
 
 The WebSocket requires that text is UTF-8 encoded. If you try to send invalidly encoded text it will signal `'utf8`.
 
+## Real-time Demo
+
+This section will present a simple example in which some tables will be
+updated in the browser in real-time, as shown:
+
+![](img/image5.jpg)<br/>
+<small>_The web page shows the last quote and trade values for
+each symbol, and gives the user the ability to filter the syms
+in view_</small>
+
+### Setup
+
+1. Download files from [https://github.com/kxcontrib/websocket/tree/master/AppendixB](https://github.com/kxcontrib/websocket/tree/master/AppendixB)
+2. Run `q pubsub.q`. It will create the q interface for the WebSocket connections and contains a simple pubsub mechanism to push data to clients when there are updates
+3. Run `q fh.q`. This will generate dummy trade and quote data and push it to the pubsub process. The script can be edited to change the number of symbols and frequency of updates.
+4. Open `websockets.html` in your browser. This will connect to kdb+ and display trade data in real-time, which can be filtered.
+
+### Explaination
+
+The idea behind the pubsub mechanism here is that a client will make
+subscriptions to specific functions and provide parameters that they
+should be executed with. The subscription messages we send to the server
+will be sent as query strings so our `.z.ws` message handler is defined to
+simply evaluate them.
+```q
+q).z.ws:{value x}
+```
+Next, we initialize the trade and quote tables and `upd` function to mimic
+a simple Real-Time Subscriber, along with a further table called `subs`,
+which we will use to keep track of subscriptions.
+```q
+// subs table to keep track of current subscriptions
+q)subs:2!flip `handle`func`params`curData!"is**"$\:()
+```
+The `subs` table will store the handle, function name and function
+parameters for each client. As we only want to send updates to a
+subscriber when something has changed, we store the current data held by
+each subscriber so that we can compare against it later.
+
+The functions that can be called and subscribed to by clients through
+the WebSocket should be defined as necessary. In this example, we have
+defined a simple function that will return a list of distinct syms that
+will be used to generate the filter checkboxes on the client and
+additional functions to display the last record for each sym in both the
+trade and quote tables. The aforementioned trade and quote table
+functions will also accept an argument by which to filter the data if it
+is present.
+```q
+//subscribe to something
+sub:{`subs upsert(.z.w;x;enlist y)}
+//publish data according to subs table
+pub:{
+  row:(0!subs)[x];
+  (neg row[`handle]) .j.j (value row[`func])[row[`params]]
+  }
+// trigger refresh every 1000ms
+.z.ts:{pub each til count subs}
+\t 1000
+```
+The subfunction will handle new subscriptions by upserting the handle,
+function name and function parameters into the `subs` table. `.z.wc` will
+handle removing subscriptions from the table whenever a connection is
+dropped.
+
+The `pub` function is responsible for publishing data to the client. It
+takes an argument that refers to a row index in the `subs` table and uses
+it to get the subscriptions function, the parameters to use when calling
+that function and the handle that it will use in sending the result to
+the client. Before doing so, it will also use `.j.j` to parse the result
+into a JSON string. The client can then parse the JSON into a JavaScript
+object upon arrival as it did in the earlier example. The `pub` function
+itself will be called on a timer every second for each row in the `subs`
+table.
+
+One thing that is important to be consider whenever using
+WebSockets is that the JavaScript `onmessage` function needs a way in
+which to identify different responses from one another. Each different
+response could have a different data structure that will need to be
+handled differently. Perhaps some data should be used in populating
+charts while other data for updating a table. If an identifier is
+present, it can be used to ensure each response is handled accordingly.
+In this example, the responses `func` value acts as our identifier. We can
+look at the `func` value and from that determine which function should be
+called in order to handle the associated data.
+```js
+ws.onmessage = function(e) {
+    /*parse message from JSON String into Object*/
+    var d = JSON.parse(e.data);
+    /*
+        depending on the messages func value,
+        pass the result to the appropriate handler function
+    */
+    switch(d.func){
+        case 'getSyms'   : setSyms(d.result);   break;
+        case 'getQuotes' : setQuotes(d.result); break;
+        case 'getTrades' : setTrades(d.result);
+    }
+};
+```
+The rest of the JavaScript code for the client has been seen in previous
+examples. The tables that update in the browser are simply being redrawn
+every time the client receives a new response for the appropriate table.
+
+The end result is a simplistic, interactive, real-time web application
+showing the latest trade and quote data for a range of symbols. Its
+intention is to help readers understand the basic concepts of kdb+ and
+WebSocket integration.
+
+
 :fontawesome-solid-book: 
 [Namespace `.h`](../ref/doth.md)
 
 ----
-:fontawesome-regular-map:
-[kdb+ and WebSockets](../wp/websockets/index.md)
-<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.7.2 Basic WebSockets](/q4m3/11_IO/#1172-basic-websockets)
