@@ -15,6 +15,28 @@ The [`.z.ws`](../ref/dotz.md#zws-websockets) function will be called by the serv
 To customise the kdb+ websocket server, define the [`.z.ws`](../ref/dotz.md#zws-websockets) function to your choosen logic.
 Note that [`.z.w`](../ref/dotz.md#zw-handle) is used for obtaining the current connection handle, which represents the client connection when called within the `.z.ws` callback.
 
+[.z.wo](../ref/dotz.md#zwo-websocket-open) and [.z.wc](../ref/dotz.md#zwc-websocket-close) are used to define callback functions in the event of a client connection opening or closing respectively.
+These have no default action, and can be customised with user required logic e.g. for tracking connections
+
+```q
+q)activeWSConnections: ([] handle:(); connectTime:())
+
+//x argument supplied to .z.wc & .z.wo is the connection handle
+q).z.wo:{`activeWSConnections upsert (x;.z.t)}
+q).z.wc:{ delete from `activeWSConnections where handle =x}
+
+//websocket connects
+q)activeWSConnections
+handle connectTime
+-------------------
+548 13:15:24.737
+
+//websocket disconnects
+q)activeWSConnections
+handle connectTime
+------------------
+```
+
 ### Example
 
 To start a q session listening on port 5000, which then handles any websocket requests by echoing whatever it receives:
@@ -84,6 +106,9 @@ An alternative is to use stunnel, and open from kdb+ to that stunnel with `ws://
 Basic Authentication can be passed in the char vector on opening, along with any other necessary fields such as cookies etc.
 
 Both client and server support permessage-deflate compression.
+
+[.z.wc](../ref/dotz.md#zwc-websocket-close) is used to define callback functions in the event of a client connection closing.
+This have no default action, and can be customised with user required logic. The callback function [.z.wo](../ref/dotz.md#zwo-websocket-open) is not used with client initiated connections.
 
 ### Example
 
