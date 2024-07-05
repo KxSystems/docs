@@ -455,12 +455,12 @@ nav:
     - Developing:
       - IPC:
         - Overview: basics/ipc.md
-        - Callbacks: kb/callbacks.md
         - Listening port: basics/listening-port.md
         - Deferred response: kb/deferred-response.md
+        - Async callbacks: kb/callbacks.md
+        - Async callbacks (C client): kb/server-calling-client.md
         - Named pipes: kb/named-pipes.md
         - Serialization examples: kb/serialization.md
-        - Server calling C client: kb/server-calling-client.md
         - Socket sharding: wp/socket-sharding/index.md
         - SSL/TLS: kb/ssl.md
         - HTTP: kb/http.md
