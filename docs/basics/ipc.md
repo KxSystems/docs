@@ -29,32 +29,29 @@ A kdb+ process can communicate with other processes through TCP/IP, which is bak
 [File system](files.md)
 
 
-## Listen to a port
+## Listen for connections
 
-To start a kdb+ process listening on a port, use the [command `\p port`](syscmds.md#p-port)
-```q
-q)\p 5001
-```
+A kdb+ process can define a [listening port](listening-port.md) at start-up or at runtime. 
+kdb+ can receive messages over TCP, UDS (unix domain sockets), named pipes or a range of 3rd party middlewares (e.g. Kafka, Solace, etc)
 
-or start the q process with the [`-p` port command line parameter](cmdline.md#-p-listening-port):
+## Connecting
+
+A kdb+ process can connect to another using [`hopen`](../ref/hopen.md) e.g: to start a kdb+ process listening on port 5000
 
 ```bash
 $ q -p 5001
 ```
-
-This process is now awaiting incoming connections via TCP/IP. To stop the process listening on a port, instruct it to listen on port 0:
-
-```q
-q)\p 0
-```
-
-Another kdb+ process can connect to this process with [`hopen`](../ref/hopen.md):
+another kdb+ process can connect to this process with [`hopen`](../ref/hopen.md):
 
 ```q
 q)h:hopen `::5001
-q)h  /h is the socket (an OS file descriptor)
+q)h                 /h is the socket (an OS file descriptor)
 3i
 ```
+
+## Closing connections
+
+Client or server connections can be closed using [`hclose`](../ref/hopen.md#hclose).
 
 ## Message format
 
