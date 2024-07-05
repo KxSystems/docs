@@ -198,7 +198,7 @@ Messages can be queued for sending to a remote process through using async messa
 Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
 
 
-## Users
+## Authentication / Authorization
 
 Access control and authentication is supported through using the [`-U` command-line option](cmdline.md#-u-usr-pwd) to specify a file of users and passwords, and [`.z.pw`](../ref/dotz.md#zpw-validate-user) for further integration with enterprise standards such as LDAP. Access control is possible through overriding the message handlers and inspecting the incoming requests for function calls, and validating whether the user is allowed to call such functions.
 
@@ -255,13 +255,10 @@ The compression/decompression algorithms are proprietary and implemented as the 
 [`hopen`, `hclose`](../ref/hopen.md),
 [`hsym`](../ref/hsym.md)
 <br>
-[`.h` namespace](../ref/doth.md) for markup  
 [`.z` namespace](../ref/dotz.md) for callback functions
 <br> 
 [`.Q.addr`](../ref/dotq.md#addr-ip-address) (IP address), 
-[`.Q.hg`](../ref/dotq.md#hg-http-get) (HTTP get), 
 [`.Q.host`](../ref/dotq.md#host-hostname) (hostname), 
-[`.Q.hp`](../ref/dotq.md#hp-http-post) (HTTP post)
 <br>
 :fontawesome-solid-book-open:
 [Connection handles](handles.md)
