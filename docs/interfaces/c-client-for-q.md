@@ -5,7 +5,7 @@ author: Charles Skelton
 ---
 # C/C++ quick guide
 
-
+## Use Cases
 
 There are three cases in which to to use the [C API](capiref.md) for kdb+:
 
