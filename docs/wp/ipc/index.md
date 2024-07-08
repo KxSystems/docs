@@ -398,7 +398,7 @@ Outgoing aysnc messages are sent periodically on each iteration of the underlyin
 -   send a synchronous message on the same handle: this will confirm execution as all messages are processed in the order they are sent
 
 :fontawesome-solid-book-open:
-[Block, queue, flush](../../basics/ipc.md#block-queue-flush)
+[Flushing](../../basics/ipc.md#flushing)
 
 
 ### Deferred synchronous

@@ -119,8 +119,26 @@ To ensure an async message has been processed by the remote, follow with a sync 
 q)h"";
 ```
 
-You may consider increasing the size of TCP send/receive buffers on your system to reduce the amount of blocking whilst trying to write into a socket.  
+You may consider increasing the size of TCP send/receive buffers on your system to reduce the amount of blocking whilst trying to write into a socket.
 
+#### Flushing
+
+Messages can be queued for sending to a remote process through using async messaging. 
+kdb+ will queue the serialized message in user space, later writing it to the socket as the remote end drains the message queue. 
+
+One can see how many messages are queued on a handle and their sizes as a dictionary through the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
+
+Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. 
+This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. 
+
+If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, 
+e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
+
+#### Broadcast
+
+Much of the overhead of sending a message via IPC is in serializing the data before sending. 
+It is possible to ‘async broadcast’ the same message to multiple handles using the internal [-25!](internal.md#-25x-async-broadcast) function. 
+This will serialize the message once and send to all handles to reduce CPU and memory load.
 
 ### Sync request (get)
 
@@ -191,18 +209,13 @@ To detect when a connection is closed from the remote end, override the port clo
 :fontawesome-solid-graduation-cap: 
 [Using `.z`](../kb/using-dotz.md) for more resources, including contributed code for tracing and monitoring
 
-
-## Block, queue, flush
+### Async block
 
 To block until any async message is received on handle `h`
 
 ```q
 r:h[] / store message in r
 ```
-
-Messages can be queued for sending to a remote process through using async messaging. kdb+ will queue the serialized message in user space, later writing it to the socket as the remote end drains the message queue. One can see how many messages are queued on a handle and their sizes as a dictionary through the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
-
-Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
 
 
 ## Authentication / Authorization
