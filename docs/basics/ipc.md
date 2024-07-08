@@ -97,41 +97,7 @@ q)h({x+y};2;3) /Extend the list to pass more arguments
 
 Send messages from the client to the server using the [connection handle](handles.md) returned from `hopen`.
 
-There are three message types: async, sync, and response.
-
-
-### Async message (set)
-
-Serializes and puts a message on the output queue for handle `h`, and does not block client nor wait for any response message. A negative handle signifies async.
-
-```q
-q)neg[h]"a:10" / on the remote instance, sets the variable a to 10
-```
-
-Since the process is not waiting for a response, async querying is critical in situations where waiting for an unresponsive subscriber is unacceptable, e.g. in a tickerplant.
-
-You may consider increasing the size of TCP send/receive buffers on your system to reduce the amount of blocking whilst trying to write into a socket.
-
-#### Flushing
-
-Messages can be queued for sending to a remote process through using async messaging. 
-kdb+ will queue the serialized message in user space, later writing it to the socket as the remote end drains the message queue. 
-
-One can see how many messages are queued on a handle and their sizes as a dictionary through the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
-
-Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. 
-This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. 
-
-If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, 
-e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
-
-!!! note "flushing can also be achieved by sending a synchronous message on the same handle: this will confirm execution as all messages are processed in the order they are sent"
-
-#### Broadcast
-
-Much of the overhead of sending a message via IPC is in serializing the data before sending. 
-It is possible to ‘async broadcast’ the same message to multiple handles using the internal [-25!](internal.md#-25x-async-broadcast) function. 
-This will serialize the message once and send to all handles to reduce CPU and memory load.
+There are three message types: sync, async, and response.
 
 ### Sync request (get)
 
@@ -168,7 +134,6 @@ q)h(`add;2;3)         / execute the 'add' function as defined on the server, pas
 5
 ```
 
-
 !!! warning "Nesting sync requests is not recommended: response messages may be out of request order."
 
 #### One-shot message
@@ -192,19 +157,74 @@ q)`::[(`::4567;100);"1+1"]
 2
 ```
 
+#### Interrupting requests
+
+It is possible to interrupt a long-running sync query with `kill -s INT *PID*`. As with the previous example, any subsequent attempt to communicate across this handle will fail.
+
+```q
+q)h"system\"sleep 30\""
+'rcv handle: 4. OS reports: Interrupted system call
+  [0]  h"system\"sleep 30\""
+       ^
+q)
+q)h"a"
+'Cannot write to handle 4. OS reports: Bad file descriptor
+  [0]  h"a"
+       ^
+```
+
 ### Response message (get response)
 
 Sent automatically by the listening process on completing a sync (get) request.
 
+### Async message (set)
+
+Serializes and puts a message on the output queue for handle `h`, and does not block client nor wait for any response message. A negative handle signifies async.
+
+```q
+q)neg[h]"a:10" / on the remote instance, sets the variable a to 10
+```
+
+As per [sync messages](#sync-request-get), you can replace the string repesenting the code to execute as a list that forms a parse tree.
+
+Since the process is not waiting for a response, async querying is critical in situations where waiting for an unresponsive subscriber is unacceptable, e.g. in a tickerplant.
+
+You may consider increasing the size of TCP send/receive buffers on your system to reduce the amount of blocking whilst trying to write into a socket.
+
+#### Flushing
+
+Messages can be queued for sending to a remote process through using async messaging. 
+kdb+ will queue the serialized message in user space, later writing it to the socket as the remote end drains the message queue. 
+
+One can see how many messages are queued on a handle and their sizes as a dictionary through the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
+
+Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. 
+This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. 
+
+If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, 
+e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
+
+!!! note "flushing can also be achieved by sending a synchronous message on the same handle: this will confirm execution as all messages are processed in the order they are sent"
+
+#### Broadcast
+
+Much of the overhead of sending a message via IPC is in serializing the data before sending. 
+It is possible to ‘async broadcast’ the same message to multiple handles using the internal [-25!](internal.md#-25x-async-broadcast) function. 
+This will serialize the message once and send to all handles to reduce CPU and memory load.
+
 
 ## Handle messages
 
-Message handlers on the server are defined in the [`.z` namespace](../ref/dotz.md). Their default values can be overridden. The default handler for both sync and async messages is `value`:
+Message handlers on the server are defined in the [`.z` namespace](../ref/dotz.md). Their default values can be overridden. 
+The following callback functions are provided which can be set to a user defined function if desired:
 
-```q
-.z.pg:value / port get - for sync messages
-.z.ps:value / port set - for async messages
-```
+* [`.z.pw`](../ref/dotz.md#zpw-validate-user) for [user validation](#authentication-authorization)
+* [`.z.po`](../ref/dotz.md#zpo-open) called when a connection to a kdb+ session has been initialized
+* [`.z.pg`](../ref/dotz.md#zpg-get) called for a sync request
+* [`.z.ps`](../ref/dotz.md#zps-set) called for a async request
+* [`.z.pc`](../ref/dotz.md#zpc-close) called after a connection has been closed
+
+The default values of these callback can be restored using [`\x`](syscmds.md#x-expunge).
 
 These can be made a little more interesting by inserting some debug info. 
 
@@ -245,11 +265,20 @@ r:h[] / store message in r
 
 ## Authentication / Authorization
 
-Access control and authentication is supported through using the [`-U` command-line option](cmdline.md#-u-usr-pwd) to specify a file of users and passwords, and [`.z.pw`](../ref/dotz.md#zpw-validate-user) for further integration with enterprise standards such as LDAP. Access control is possible through overriding the message handlers and inspecting the incoming requests for function calls, and validating whether the user is allowed to call such functions.
+Basic access control and authentication is supported through using the [-u](cmdline.md#-u-usr-pwd-local)/[-U](cmdline.md#-u-usr-pwd) command-line option to specify a file of users and passwords.
+
+In order to provide further customizations of the authentication process, [.z.pw](../ref/dotz.md#zpw-validate-user) callback is called immediately after successful –u/-U authentication (if specified at startup – otherwise .z.pw is the first authentication check done by a kdb+ process). The ability to set .z.pw to user defined function, allows allows integration with enterprise standards such as LDAP, Kerberos, OpenID Connect,etc
+
+Finer grained authorization can be implemented by tracking user info with active handles, and customizing sync/async callbacks for user-level permissioning.
 
 :fontawesome-regular-map:
 [Permissions with kdb+](../wp/permissions/index.md "White paper")
 
+## Tracking connections
+
+A list of current connections can be viewed using [.z.H](../ref/dotz.md#zh-active-sockets). A more detailed list is achieved via [-38!](internal.md#-38x-socket-table).
+
+Further tracking of connections on a server (tracking client connections) can be accomplished using customized implementations of [.z.po](../ref/dotz.md#zpo-open) and [.z.pc](../ref/dotz.md#zpc-close)
 
 ## Protocol
 
