@@ -49,6 +49,8 @@ q)h                 /h is the socket (an OS file descriptor)
 3i
 ```
 
+Sync messages can also be sent without a pre-existing connection using [one-shot](#one-shot-message).
+
 ## Closing connections
 
 Client or server connections can be closed using [`hclose`](../ref/hopen.md#hclose).
@@ -122,12 +124,23 @@ You may consider increasing the size of TCP send/receive buffers on your system 
 
 ### Sync request (get)
 
-Sends any pending outgoing (async) messages on `h`, sends the sync request message, and processes any pending incoming messages on `h` until a response (or error) message is received.
+Performs the following:
+
+1. sends any pending outgoing (async) messages on `h`
+1. sends the sync request message
+1. processes any pending incoming messages on `h` until a response (or error) message is received
 
 ```q
 q)h"2+2" / this is sent to the remote process for calculation
 4
 ```
+
+!!! warning "Nesting sync requests is not recommended: response messages may be out of request order."
+
+#### One-shot message
+
+A sync message can also be sent on a short-lived connection. 
+When sending multiple messages, this is less efficient than [using a pre-existing connection](#sync-request-get) due to the effort of repeated connections/disconnections.
 
 A useful shorthand for a one-shot get is:
 
@@ -135,9 +148,6 @@ A useful shorthand for a one-shot get is:
 q)`::5001 "1+1"
 2
 ```
-
-!!! warning "Nesting sync requests is not recommended: response messages may be out of request order."
-
 
 ### Response message (get response)
 
