@@ -212,6 +212,26 @@ Much of the overhead of sending a message via IPC is in serializing the data bef
 It is possible to ‘async broadcast’ the same message to multiple handles using the internal [-25!](internal.md#-25x-async-broadcast) function. 
 This will serialize the message once and send to all handles to reduce CPU and memory load.
 
+#### Deferred sync
+
+Deferred sync is when a message is sent asynchronously to the server using the negative handle and executes a function which includes an instruction 
+to return the result though the handle to the client process ([`.z.w`](../ref/dotz.md#zw-handle)), again asynchronously. 
+
+After the client sends its async request it [blocks](#async-blocking) on the handle waiting for a result to be returned.
+
+For example, start a kdb+ to act as a server
+```q
+q)\p 5000
+q)add:{x+y+z}
+q)proc:{neg[.z.w](add . x)}      / wrapper function for client comms
+```
+then run a kdb+ instance to connect to the server
+```q
+q)h:hopen 5000
+q)neg[h](`proc;1 2 3);res:h[];   / call 'proc' on server, wait for reply
+q)res
+6
+```
 
 ## Handle messages
 
