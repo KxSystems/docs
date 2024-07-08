@@ -51,6 +51,9 @@ q)h                 /h is the socket (an OS file descriptor)
 
 Sync messages can also be sent without a pre-existing connection using [one-shot](#one-shot-message).
 
+The max number of connections is defined by the system limit for protocol (operating system configurable). Prior to 4.1t 2023.09.15, the limit was hardcoded to 1022.
+After the limit is reached, you see the error `'conn` on the server process. All successfully opened connections remain open.
+
 ## Closing connections
 
 Client or server connections can be closed using [`hclose`](../ref/hopen.md#hclose).
@@ -99,25 +102,13 @@ There are three message types: async, sync, and response.
 
 ### Async message (set)
 
-Serializes and puts a message on the output queue for handle `h`, and does not block client. A negative handle signifies async.
+Serializes and puts a message on the output queue for handle `h`, and does not block client nor wait for any response message. A negative handle signifies async.
 
 ```q
 q)neg[h]"a:10" / on the remote instance, sets the variable a to 10
 ```
 
-To ensure an async message is sent immediately, flush the pending outgoing queue for handle `h` with
-
-```q
-q)neg[h][] 
-```
-
-which blocks until pending outgoing messages on handle `h` have been written to the socket.
-
-To ensure an async message has been processed by the remote, follow with a sync chaser, e.g.
-
-```q
-q)h"";
-```
+Since the process is not waiting for a response, async querying is critical in situations where waiting for an unresponsive subscriber is unacceptable, e.g. in a tickerplant.
 
 You may consider increasing the size of TCP send/receive buffers on your system to reduce the amount of blocking whilst trying to write into a socket.
 
@@ -133,6 +124,8 @@ This can be achieved through using async flush – invoked as `neg[h][]` or `neg
 
 If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, 
 e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
+
+!!! note "flushing can also be achieved by sending a synchronous message on the same handle: this will confirm execution as all messages are processed in the order they are sent"
 
 #### Broadcast
 
@@ -153,6 +146,29 @@ q)h"2+2" / this is sent to the remote process for calculation
 4
 ```
 
+The basic method used to execute a query via IPC is sending the query as a string as in the above example. 
+A function can also be executed on the server by passing a [parse tree](parsetrees.md) to the handle: a list with the function as first item, followed by its arguments.
+
+To execute a function defined on the *client side*, simply pass the function name so it will be resolved before sending. 
+
+To execute a function defined on the *server side*, pass the function name as a symbol.
+
+For example, run the following to create a server instance with a function called 'add':
+```q
+q)\p 5000
+q)add:{x+y}           / define a function 'add' on the server
+```
+Using a seperate kdb+ instance, connect to the server and execute the functions:
+```q
+q)add:{x+2*y}         / define a function 'add' on the client
+q)h:hopen 5000        / connect to the server
+q)h(add;2;3)          / pass the client function 'add' to the server and execute, passing 2 parameters
+8
+q)h(`add;2;3)         / execute the 'add' function as defined on the server, passing 2 parameters
+5
+```
+
+
 !!! warning "Nesting sync requests is not recommended: response messages may be out of request order."
 
 #### One-shot message
@@ -164,6 +180,15 @@ A useful shorthand for a one-shot get is:
 
 ```q
 q)`::5001 "1+1"
+2
+```
+
+Since V4.0 2020.03.09, a one-shot query can be run with a timeout (in milliseconds), as in the second example below:
+
+```q
+q)`::4567"2+2"
+4
+q)`::[(`::4567;100);"1+1"]
 2
 ```
 
@@ -209,7 +234,7 @@ To detect when a connection is closed from the remote end, override the port clo
 :fontawesome-solid-graduation-cap: 
 [Using `.z`](../kb/using-dotz.md) for more resources, including contributed code for tracing and monitoring
 
-### Async block
+### Async blocking
 
 To block until any async message is received on handle `h`
 
@@ -222,12 +247,15 @@ r:h[] / store message in r
 
 Access control and authentication is supported through using the [`-U` command-line option](cmdline.md#-u-usr-pwd) to specify a file of users and passwords, and [`.z.pw`](../ref/dotz.md#zpw-validate-user) for further integration with enterprise standards such as LDAP. Access control is possible through overriding the message handlers and inspecting the incoming requests for function calls, and validating whether the user is allowed to call such functions.
 
+:fontawesome-regular-map:
+[Permissions with kdb+](../wp/permissions/index.md "White paper")
+
 
 ## Protocol
 
 The protocol is extremely simple, as is the message format. 
 
-One can see what a TCP/IP message looks like by using `-8!object`, which generates the byte vector for the [serialization](../kb/serialization.md) of the object.
+One can see what a TCP/IP message looks like by using [`-8!object`](internal.md#-8x-to-bytes), which generates the byte vector for the [serialization](../kb/serialization.md) of the object.
 
 This information is provided for debugging and troubleshooting only.
 
