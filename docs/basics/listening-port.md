@@ -54,7 +54,7 @@ To stop the process listening on a port at runtime, instruct it to listen on por
 q)\p 0
 ```
 
-By default, kdb+ wont listen to a port unless a port is specified.
+By default, kdb+ won't listen to a port unless a port is specified.
 
 ## Load balancing
 
