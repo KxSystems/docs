@@ -287,7 +287,7 @@ Basic access control and authentication is supported by using the [-u](cmdline.m
 
 In order to provide further customizations of the authentication process, [.z.pw](../ref/dotz.md#zpw-validate-user) callback is called immediately after successful –u/-U authentication (if specified at startup – otherwise .z.pw is the first authentication check done by a kdb+ process). The ability to set .z.pw to user defined function, allows allows integration with enterprise standards such as LDAP, Kerberos, OpenID Connect,etc
 
-Finer grained authorization can be implemented by tracking user info with active handles, and customizing sync/async callbacks for user-level permissioning e.g. server with protected funcs for sync calls
+Finer grained authorization can be implemented by tracking user information with active handles and customizing sync/async callbacks for user-level permissioning, for example, server with protected functions for sync calls.
 
 ```q
 q)\p 5000
