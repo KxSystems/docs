@@ -201,8 +201,7 @@ You can see how many messages are queued on a handle and their sizes as a dictio
 Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. 
 This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. 
 
-If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, 
-e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
+If you need confirmation that the remote end has received and processed the async messages, use a sync request. For example, `h""` – the remote end processes the messages on a socket in the order that they are sent.
 
 !!! note "flushing can also be achieved by sending a synchronous message on the same handle: this will confirm execution as all messages are processed in the order they are sent"
 
