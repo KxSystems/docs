@@ -103,7 +103,7 @@ The result is that 6 is displayed on the server and then 6 is displayed on the c
 
 ### Function wrapper
 
-An arbitrary function on the server will not have the appropriate signature to accept a callback. We show here a simple wrapper function that permits any reasonable multivalent function to be called asynchronously with its result returned to the caller.
+An arbitrary function on the server does not have the appropriate signature to accept a callback. This example shows a simple wrapper function that permits any reasonable multivalent function to be called asynchronously with its result returned to the caller.
 
 Define the following on the server.
 
