@@ -115,7 +115,7 @@ q)h"2+2" / this is sent to the remote process for calculation
 The method shown above is sending the query as a string.
 You can also execute a function on the server by passing a [parse tree](parsetrees.md) to the handle: a list with the function as first item, followed by its arguments.
 
-To execute a function defined on the *client side*, simply pass the function name so it will be resolved before sending. 
+To execute a function defined on the *client side*, pass the function name so it is resolved before sending. 
 
 To execute a function defined on the *server side*, pass the function name as a symbol.
 
