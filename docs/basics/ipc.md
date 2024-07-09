@@ -329,7 +329,7 @@ Further tracking of connections on a server (tracking client connections) can be
 
 The protocol is extremely simple, as is the message format. 
 
-One can see what a TCP/IP message looks like by using [`-8!object`](internal.md#-8x-to-bytes), which generates the byte vector for the [serialization](../kb/serialization.md) of the object.
+You can see what a TCP/IP message looks like by using [`-8!object`](internal.md#-8x-to-bytes), which generates the byte vector for the [serialization](../kb/serialization.md) of the object.
 
 This information is provided for debugging and troubleshooting only.
 
