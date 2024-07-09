@@ -323,7 +323,7 @@ q)h"1*1"
 
 A list of current connections can be viewed using [.z.H](../ref/dotz.md#zh-active-sockets). A more detailed list is achieved via [-38!](internal.md#-38x-socket-table).
 
-Further tracking of connections on a server (tracking client connections) can be accomplished using customized implementations of [.z.po](../ref/dotz.md#zpo-open) and [.z.pc](../ref/dotz.md#zpc-close)
+Further tracking of connections on a server (tracking client connections) can be accomplished using customized implementations of [.z.po](../ref/dotz.md#zpo-open) and [.z.pc](../ref/dotz.md#zpc-close).
 
 ## Protocol
 
