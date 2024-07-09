@@ -194,7 +194,7 @@ You may consider increasing the size of TCP send/receive buffers on your system 
 #### Flushing
 
 Messages can be queued for sending to a remote process through using async messaging. 
-kdb+ will queue the serialized message in user space, later writing it to the socket as the remote end drains the message queue. 
+kdb+ queues the serialized message in user space, later writing it to the socket as the remote end drains the message queue. 
 
 One can see how many messages are queued on a handle and their sizes as a dictionary through the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
 
