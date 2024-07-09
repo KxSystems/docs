@@ -159,6 +159,6 @@ The result is that 6 and 7 are multiplied on the server and then 42 is displayed
 
 !!! warning
 
-    Give careful consideration before allowing this style IPC in a production environment as a client can bring down an unprotected server.
+    Give careful consideration before using this style IPC in a production environment as a client can bring down an unprotected server. A kdb+ server can be protected by [authorising](../basics/ipc.md#authentication-authorization) which services are permitted to run.
 
 
