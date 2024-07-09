@@ -36,7 +36,7 @@ kdb+ can receive messages over TCP, UDS (unix domain sockets), named pipes or a 
 
 ## Connecting
 
-A kdb+ process can connect to another using [`hopen`](../ref/hopen.md) e.g: to start a kdb+ process listening on port 5000
+A kdb+ process can connect to another using [`hopen`](../ref/hopen.md). For example, to start a kdb+ process listening on port 5000.
 
 ```bash
 $ q -p 5001
