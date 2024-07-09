@@ -187,7 +187,7 @@ q)neg[h]"a:10" / on the remote instance, sets the variable a to 10
 
 As per [sync messages](#sync-request-get), you can replace the string repesenting the code to execute as a list that forms a parse tree.
 
-Since the process is not waiting for a response, async querying is critical in situations where waiting for an unresponsive subscriber is unacceptable, e.g. in a tickerplant.
+Since the process is not waiting for a response, async querying is critical in situations where waiting for an unresponsive subscriber is unacceptable, for example, in a tickerplant.
 
 You may consider increasing the size of TCP send/receive buffers on your system to reduce the amount of blocking whilst trying to write into a socket.
 
