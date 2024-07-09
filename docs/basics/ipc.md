@@ -207,9 +207,8 @@ If you need confirmation that the remote end has received and processed the asyn
 
 #### Broadcast
 
-Much of the overhead of sending a message via IPC is in serializing the data before sending. 
-It is possible to ‘async broadcast’ the same message to multiple handles using the internal [-25!](internal.md#-25x-async-broadcast) function. 
-This will serialize the message once and send to all handles to reduce CPU and memory load.
+Much of the overhead of sending a message using IPC is in serializing the data before sending. 
+It is possible to ‘async broadcast’ the same message to multiple handles using the internal [-25!](internal.md#-25x-async-broadcast) function. This serializes the message once and send to all handles to reduce CPU and memory load.
 
 #### Deferred sync
 
