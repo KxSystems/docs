@@ -32,7 +32,7 @@ A kdb+ process can communicate with other processes through TCP/IP, which is bak
 ## Listen for connections
 
 A kdb+ process can define a [listening port](listening-port.md) at start-up or at runtime. 
-kdb+ can receive messages over TCP, UDS (unix domain sockets), named pipes or a range of 3rd party middlewares (e.g. Kafka, Solace, etc)
+kdb+ can receive messages over TCP, UDS (unix domain sockets), named pipes or a range of third party middlewares (for example, Kafka, Solace, and so on).
 
 ## Connecting
 
