@@ -283,9 +283,11 @@ r:h[] / store message in r
 
 ## Authentication / Authorization
 
-Basic access control and authentication is supported by using the [-u](cmdline.md#-u-usr-pwd-local)/[-U](cmdline.md#-u-usr-pwd) command-line option to specify a file of users and passwords.
+Basic access control and authentication is supported by using the [-u](cmdline.md#-u-usr-pwd-local)/[-U](cmdline.md#-u-usr-pwd) command-line option to specify a file of users and passwords. The [.z.pw](../ref/dotz.md#zpw-validate-user) callback is called immediately after successful –u/-U authentication.
 
-In order to provide further customizations of the authentication process, [.z.pw](../ref/dotz.md#zpw-validate-user) callback is called immediately after successful –u/-U authentication (if specified at startup – otherwise .z.pw is the first authentication check done by a kdb+ process). The ability to set .z.pw to user defined function, allows allows integration with enterprise standards such as LDAP, Kerberos, OpenID Connect,etc
+If the -u/-U command-line options are not used, the .z.pw callback is executed for each new connection.
+
+The ability to set .z.pw to user defined function, allows allows integration with enterprise standards such as LDAP, Kerberos, OpenID Connect,etc
 
 Finer grained authorization can be implemented by tracking user information with active handles and customizing sync/async callbacks for user-level permissioning, for example, server with protected functions for sync calls.
 
