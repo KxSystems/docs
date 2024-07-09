@@ -487,7 +487,6 @@ nav:
         - Timezones: kb/timezones.md
         - Unicode: kb/unicode.md
       - DevOps:
-        - Authentication and access: kb/authentication.md
         - CPU affinity: kb/cpu-affinity.md
         - Daemon: kb/daemon.md
         - Firewalling: kb/firewalling.md

@@ -289,10 +289,35 @@ Basic access control and authentication is supported through using the [-u](cmdl
 
 In order to provide further customizations of the authentication process, [.z.pw](../ref/dotz.md#zpw-validate-user) callback is called immediately after successful –u/-U authentication (if specified at startup – otherwise .z.pw is the first authentication check done by a kdb+ process). The ability to set .z.pw to user defined function, allows allows integration with enterprise standards such as LDAP, Kerberos, OpenID Connect,etc
 
-Finer grained authorization can be implemented by tracking user info with active handles, and customizing sync/async callbacks for user-level permissioning.
+Finer grained authorization can be implemented by tracking user info with active handles, and customizing sync/async callbacks for user-level permissioning e.g. server with protected funcs for sync calls
+
+```q
+q)\p 5000
+q)allowedFns:(`func1;`func2;`func3;+;-) / list of allowed function/ops to call
+q)checkFn:{if[not x in allowedFns;'(-3!x)," not allowed"];}
+q)validatePT:{if[0h=t:type x;if[(not 0h=type first x)&1=count first x;checkFn first x;];.z.s each x where 0h=type each x;];}
+q).z.pg:{if[10h=type x;x:parse x;];validatePT x;eval x}
+```
+
+client trying to access protected functions:
+```q
+q)h:hopen 5000
+q)h"1+1"
+2
+q)h"1*1"
+'* not allowed
+  [0]  h"1*1"
+       ^
+```
+
+!!! note
+    ticker plants, and other high-volume message sources such as feed handlers, will most likely be inserting data via .z.ps. To cater for such high volumes, the handles of those processes should be used to avoid the overhead of these validation checks. That is, feeds and tickerplants could be viewed as trusted processes
 
 :fontawesome-regular-map:
 [Permissions with kdb+](../wp/permissions/index.md "White paper")
+<br>
+:fontawesome-regular-map:
+[Using .z](../kb/using-dotz.md)
 
 ## Tracking connections
 
