@@ -309,7 +309,7 @@ q)h"1*1"
 ```
 
 !!! note
-    ticker plants, and other high-volume message sources such as feed handlers, will most likely be inserting data via .z.ps. To cater for such high volumes, the handles of those processes should be used to avoid the overhead of these validation checks. That is, feeds and tickerplants could be viewed as trusted processes
+    Ticker plants and other high-volume message sources, such as feed handlers, generally insert data using `.z.ps`. To manage such high volumes, the handles of those processes should be used to avoid the overhead of these validation checks. That is, feeds and tickerplants could be viewed as trusted processes.
 
 :fontawesome-regular-map:
 [Permissions with kdb+](../wp/permissions/index.md "White paper")
