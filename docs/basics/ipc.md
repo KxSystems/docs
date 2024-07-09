@@ -113,7 +113,7 @@ q)h"2+2" / this is sent to the remote process for calculation
 ```
 
 The basic method used to execute a query via IPC is sending the query as a string as in the above example. 
-A function can also be executed on the server by passing a [parse tree](parsetrees.md) to the handle: a list with the function as first item, followed by its arguments.
+You can also execute a function on the server by passing a [parse tree](parsetrees.md) to the handle: a list with the function as first item, followed by its arguments.
 
 To execute a function defined on the *client side*, simply pass the function name so it will be resolved before sending. 
 
