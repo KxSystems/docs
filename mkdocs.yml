@@ -526,7 +526,6 @@ nav:
       - FAQ: kb/faq-listbox.md
     - Architecture:
       - About: architecture/index.md
-      - Examples: architecture/examples.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Chained tickerplant: kb/chained-tickerplant.md
       - Corporate actions: kb/corporate-actions.md
