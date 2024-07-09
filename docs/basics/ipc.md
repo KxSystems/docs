@@ -51,7 +51,7 @@ q)h                 /h is the socket (an OS file descriptor)
 
 Sync messages can also be sent without a pre-existing connection using [one-shot](#one-shot-message).
 
-The max number of connections is defined by the system limit for protocol (operating system configurable). Prior to 4.1t 2023.09.15, the limit was hardcoded to 1022.
+The maximum number of connections is defined by the system limit for protocol (operating system configurable). Prior to 4.1t 2023.09.15, the limit was hardcoded to 1022.
 After the limit is reached, you see the error `'conn` on the server process. All successfully opened connections remain open.
 
 ## Closing connections
