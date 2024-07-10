@@ -102,7 +102,7 @@ Applying a value to its argument/s or indexes by writing it to the left of an ar
 
 ## Chained tickerplant
 
-A [chained tickerplant](../kb/chained-tickerplant.md) subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn.
+A [chained tickerplant](../kb/kdb-tick.md#chained-tickerplants) subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn.
 
 
 ## Character constant

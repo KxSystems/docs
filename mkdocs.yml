@@ -525,14 +525,13 @@ nav:
       - Developer tools: devtools.md
       - FAQ: kb/faq-listbox.md
     - Architecture:
-      - About: architecture/index.md
+      - General architecture: architecture/index.md
+      - Alternative architecture: kb/kdb-tick.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
-      - Chained tickerplant: kb/chained-tickerplant.md
       - Corporate actions: kb/corporate-actions.md
       - Data recovery for kdb+tick: wp/data-recovery.md
       - Disaster recovery: wp/disaster-recovery/index.md
       - Gateway design: wp/gateway-design/index.md
-      - kdb+tick configuration: kb/kdb-tick.md
       - kdb+tick profiling: wp/tick-profiling.md
       - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
       - Load balancing: kb/load-balancing.md

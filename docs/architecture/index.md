@@ -1,11 +1,9 @@
 ---
 title: Architecture | Documentation for q and kdb+
 description: How to construct systems from kdb+ processes
+keywords: hdb, kdb+, q, rdb, tick, tickerplant, streaming
 ---
 # Architecture of kdb+ systems
-
-
-
 
 
 _Applications that use kdb+ typically comprise multiple processes_
@@ -46,7 +44,7 @@ Handles end-of-day (EOD) processing.
     For best resilience, and to avoid core resource competition, run them on their own cores.
 
 
-## Log file
+### Log file
 
 This is the file to which the Tickerplant logs the q messages it receives from the feedhandler. It is used for recovery: if the RDB has to restart, the log file is replayed to return to the current state.
 
