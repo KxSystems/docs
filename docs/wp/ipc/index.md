@@ -398,7 +398,7 @@ Outgoing aysnc messages are sent periodically on each iteration of the underlyin
 -   send a synchronous message on the same handle: this will confirm execution as all messages are processed in the order they are sent
 
 :fontawesome-solid-book-open:
-[Block, queue, flush](../../basics/ipc.md#block-queue-flush)
+[Flushing](../../basics/ipc.md#flushing)
 
 
 ### Deferred synchronous
@@ -560,7 +560,9 @@ q)"connection opened, handle: 6"
 
 ### Tracking open connections
 
-As mentioned above, it is common for a server process to use the `.z.po` and `.z.pc` message handlers to track all connections from client processes. In the below example, we create a table in memory on the server side, keyed on handle. When a new connection is opened, a new row is added to the table; and when the connection is closed, the row can be deleted or preferably updated to reflect the new status.
+[`.z.H`](../../ref/dotz.md#zh-active-sockets) can be used to view active sockets, augmented by the internal function [-38!](../../basics/internal.md#-38x-socket-table) to view details of active connections.
+
+In addition `.z.po` and `.z.pc` can be used to track all connections from client processes. In the below example, we create a table in memory on the server side, keyed on handle. When a new connection is opened, a new row is added to the table; and when the connection is closed, the row can be deleted or preferably updated to reflect the new status.
 
 ```q
 q)// on the server side

@@ -134,5 +134,3 @@ q)\v
 :fontawesome-regular-hand-point-right:
 [qSQL](../basics/qsql.md)
 
-
-[![DevOps Borat on delete](../img/borat_delete.jpg)](https://twitter.com/devops_borat)

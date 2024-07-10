@@ -6,14 +6,15 @@ keywords: async, concurrency, deferred, kdb+_, q, response, sync
 ---
 # Deferred response
 
+## Overview
 
+Ideally, for concurrency, all messaging would be async. However, sync messaging is a convenient paradigm for client apps. 
 
-
-Ideally, for concurrency, all messaging would be async. However, sync messaging is a convenient paradigm for client apps. Hence `-30!x` was added as a feature in V3.6, allowing processing of a sync message to be ‘suspended’ to allow other messages to be processed prior to sending a response message. 
-
-How it works: `-30!(::)` indicates the response for the currently-executing sync message will be sent explicitly later via `-30!(handle;isError;msg)`.
+You can use [`-30!x`](../basics/internal.md#-30x-deferred-response) to allow processing of a sync message to be ‘suspended’, by indicating the response for the currently-executing sync message to be sent explicitly later. This allows other messages to be processed prior to sending a response message. 
 
 You can use `-30!(::)` at any place in the execution path of [`.z.pg`](../ref/dotz.md#zpg-get), start up some work, allow `.z.pg` to complete without sending a response, and then when the workers complete the task, send the response explicitly.
+
+## Handle Tracking
 
 kdb+ tracks which handles are expecting a response. If you try to send a response to a handle that is not expecting one, you’ll see
 
@@ -27,6 +28,8 @@ q)-30!(8i;0b;`hello`world) / try to send a response of (0b;`hello`world)
 ```
 
 and if the handle is not a member of [`.z.W`](../ref/dotz.md#zw-handles), you’ll observe a `'domain` error.
+
+## Example
 
 Below is a simple script to demonstrate the mechanics of `-30!x` in a gateway. Further error checking, [`.z.pc`](../ref/dotz.md#zpc-close), timeouts, sequence numbers, load-balancing, etc., are left as an exercise for the reader.
 

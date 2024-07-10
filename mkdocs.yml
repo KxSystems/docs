@@ -455,17 +455,16 @@ nav:
     - Developing:
       - IPC:
         - Overview: basics/ipc.md
-        - Callbacks: kb/callbacks.md
         - Listening port: basics/listening-port.md
         - Deferred response: kb/deferred-response.md
+        - Async callbacks: kb/callbacks.md
+        - Async callbacks (C client): kb/server-calling-client.md
         - Named pipes: kb/named-pipes.md
         - Serialization examples: kb/serialization.md
-        - Server calling C client: kb/server-calling-client.md
         - Socket sharding: wp/socket-sharding/index.md
         - SSL/TLS: kb/ssl.md
         - HTTP: kb/http.md
         - WebSockets: kb/websockets.md
-        - WebSockets (WP): wp/websockets/index.md
         - Interprocess communication (WP): wp/ipc/index.md
       - Tools:
         - Code profiler: kb/profiler.md
@@ -488,7 +487,6 @@ nav:
         - Timezones: kb/timezones.md
         - Unicode: kb/unicode.md
       - DevOps:
-        - Authentication and access: kb/authentication.md
         - CPU affinity: kb/cpu-affinity.md
         - Daemon: kb/daemon.md
         - Firewalling: kb/firewalling.md
@@ -528,7 +526,6 @@ nav:
       - FAQ: kb/faq-listbox.md
     - Architecture:
       - About: architecture/index.md
-      - Examples: architecture/examples.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Chained tickerplant: kb/chained-tickerplant.md
       - Corporate actions: kb/corporate-actions.md
@@ -618,4 +615,4 @@ nav:
   - KDB.AI: 'https://code.kx.com/kdbai'
   - PyKX: 'https://code.kx.com/pykx'
   - APIs: 'https://code.kx.com/insights/api'
-  - Help: 'https://code.kx.com/home/support'
+  - Help: 'https://code.kx.com/home/support.html'

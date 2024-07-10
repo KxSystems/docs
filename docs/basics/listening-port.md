@@ -5,8 +5,6 @@ keywords: ephemeral, kdb+, listen, multi-threaded, port, q, socket, unix
 ---
 # Listening port
 
-
-
 Use the [`-p` command-line option](cmdline.md#-p-listening-port) or the [`\p` system command](syscmds.md#p-listening-port) to tell kdb+ to listen to a port. The command-line option and the system command take the same parameters.
 
 ```txt
@@ -48,6 +46,15 @@ q)\p
 
 !!! tip "If you know the process is for clients on the localhost only, choose localhost:port for maximum security."
 
+## Preventing connections
+
+To stop the process listening on a port at runtime, instruct it to listen on port 0:
+
+```q
+q)\p 0
+```
+
+By default, kdb+ won't listen to a port unless a port is specified.
 
 ## Load balancing
 

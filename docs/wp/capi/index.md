@@ -270,9 +270,6 @@ In general, there are two common types of errors; those generated during the soc
 
 As an example of an initialization error, the ”Authentication Error” will occur when the user name or password credentials passed to `khpu` are invalid. In kdb+, a process can be started in a restricted access mode where only users with valid credentials can connect.
 
-:fontawesome-regular-hand-point-right: 
-[WebSockets](../websockets/index.md)
-
 Similarly, the ”Connection error” can result for incorrect hostname or port numbers being passed to `khpu`.
 
 Evaluation errors occur from invalid queries being passed to the kdb+ process using `k`. In this case, the type element (`x->t`) of the `K` object, `x`, returned by `k` should be checked, see [_Object type element t_](#object-type-element-t). If the type value is 0 (null), then a network error has occurred. If the type value is `-128`, then `x->s` will give the error message resulting from the invalid query. In `error.c`, below, three invalid queries are passed to a kdb+ process and their associated error messages printed. For all subsequent examples in this paper, the function `isRemoteErr` will be used to capture such errors. 

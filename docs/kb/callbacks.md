@@ -1,28 +1,13 @@
 ---
-title: Callbacks – Knowledge Base – kdb+ and q documentation
+title: Asynchronous Callbacks – Knowledge Base – kdb+ and q documentation
 description: The construct of an asynchronous remote call with callback is not built into interprocess communication (IPC) syntax in q, but it is not difficult to implement. We explain here how to do this with simple examples that are easily generalized.
-keywords: callback, kdb+, q
+keywords: async, remote, ipc, callback, kdb+, q
 ---
-# Callbacks
-
-
-
-
-
-
-The construct of an asynchronous remote call with callback is not built into interprocess communication (IPC) syntax in q, but it is not difficult to implement. We explain here how to do this with simple examples that are easily generalized.
-
-To begin, we establish the following environment and terminology. A client process wishes to make an async call to a q function `proc` on a separate q process, the server, listening on some port, say 5042. In our examples, we assume that the following utility functions are on both the client and the server:
-
-```q
-q)echo:{0N!x;}
-q)add:{echo x+y}
-```
-
-The `echo` utility uses `0N!` to force its argument to the console (i.e., stdout) and then sinks its result to avoid duplicate display in some circumstances.
-
+# Asynchronous Callbacks
 
 ## Overview
+
+The construct of an asynchronous remote call with callback is not built into interprocess communication (IPC) syntax in q, but it is not difficult to implement. 
 
 Callback implementation is straightforward if you understand basic IPC in kdb+. 
 
@@ -50,65 +35,82 @@ q)proc:{[arg1;  ;argn ; callname]  }
 
 Finally, in the remote function, obtain the open handle of the calling process from the system variable [`.z.w`](../ref/dotz.md#zw-handle). Use this link back to the caller to invoke the callback function.
 
+## Examples
 
-## Example 1
+These examples use `0N!` to force its argument to the console (i.e., stdout) and then sinks its result to avoid duplicate display in some circumstances.
 
-In the simplest case, the client makes an asynchronous call to a unary “remote” function on the server, passing the name of a unary function in its workspace for the remote function to call once it completes. For those who know about such things, the callback represents a _continuation_ for the remote function.
+### Unary function
 
-Define `proc` on the server as,
+In the simplest case, the client makes an asynchronous call to a unary “remote” function on the server, 
+passing the name of a unary function in its workspace for the remote function to call once it completes. 
+For those who know about such things, the callback represents a _continuation_ for the remote function.
+
+Create a kdb+ instance to act as a server, by listening on a port and defining a `proc` on the server as,
 
 ```q
-q)proc:{echo x; h:.z.w; (neg h) (y; 43)}
+q)\p 5000                                           / listen on port 5000
+q)serverFunc:{0N!x;}                                / server function
+q)proc:{serverFunc x; h:.z.w; (neg h) (y; 43)}      / function for client to call
 ```
 
-In this case, the data for `proc` is passed in the implicit parameter `x` and the callback function name is passed in the implicit parameter `y`. Here the expression `echo x` stands for the actual calculations performed on the server.
+In this case, the data for `proc` is passed in the implicit parameter `x` and the callback function name is passed in the implicit parameter `y`. 
+Here the expression `serverFunc x` stands for the actual calculations performed on the server.
 
-Now execute the following on the client. (Note that the sample communication handle assumes that the server process is listening on port 5042 on the same machine as the client. Substitute your actual values.)
+Now execute the following on the client. 
+Note that the sample communication handle assumes that the server process is listening on port 5000 on the same machine as the client. Substitute your actual values.
 ```q
-q)h:hopen `::5042
-q)(neg h) (`proc; 42; `echo)
+q)clientFunc:{0N!x;}
+q)h:hopen `::5000
+q)(neg h) (`proc; 42; `clientFunc)
   ...
 q)hclose h
 ```
 
-This says make an async call to the remote function `proc` , passing it the argument 42 and the symbol `` `echo`` representing the name of the callback function.
+This says make an async call to the remote function `proc` , passing it the argument 42 and the symbol `` `clientFunc`` representing the name of the callback function.
 
 The result is that 42 is displayed on the server and then 43 is displayed on the client.
 
 
-## Example 2
+### Function with multiple parameters
 
 If you need to call a remote function that has more than two data parameters, you cannot use implicit parameters on the server as above. You can either define explicit parameters or encapsulate the arguments in a list. We show the latter here.
 
 Define the following on the server,
 
 ```q
-q)add3:{x+y+z}
-q)proc3:{ echo r:add3 . x; (neg .z.w) (y; r)}
+q)\p 5000                                           / listen on port 5000
+q)add3:{x+y+z}                                      / server function
+q)proc3:{ echo r:add3 . x; (neg .z.w) (y; r)}       / function for client to call
 ```
 
-Here the data for `proc3` is passed as a list in the implicit parameter `x` , while the callback function name is passed as `y`. Note the use of [`.` (Apply)](../ref/apply.md) to evaluate a non-unary function on a list of arguments.
+Here the data for `proc3` is passed as a list in the implicit parameter `x` , while the callback function name is passed as `y`. 
+Note the use of [`.` (Apply)](../ref/apply.md) to evaluate a non-unary function on a list of arguments.
 
 Now execute the following on the client.
 
 ```q
-q)(neg h) (`proc3; 1 2 3; `echo)
+q)clientFunc:{0N!x;}
+q)h:hopen `::5000
+q)(neg h) (`proc3; 1 2 3; `clientFunc)
+  ...
+q)hclose h
 ```
 
-This expression makes an async call to the remote function `proc3`, passing it the list argument `1 2 3` and the symbol `` `echo`` representing the name of the callback function.
+This expression makes an async call to the remote function `proc3`, passing it the list argument `1 2 3` and the symbol `` `clientFunc`` representing the name of the callback function.
 
 The result is that 6 is displayed on the server and then 6 is displayed on the client.
 
 
-## Example 3
+### Function wrapper
 
-An arbitrary function on the server will not have the appropriate signature to accept a callback. We show here a simple wrapper function that permits any reasonable multivalent function to be called asynchronously with its result returned to the caller.
+An arbitrary function on the server does not have the appropriate signature to accept a callback. This example shows a simple wrapper function that permits any reasonable multivalent function to be called asynchronously with its result returned to the caller.
 
 Define the following on the server.
 
 ```q
-q)add3:{x+y+z}
-q)marshal:{(neg .z.w) (z; (value x) . y)}
+q)\p 5000                                           / listen on port 5000
+q)add3:{x+y+z}                                      / server function
+q)marshal:{(neg .z.w) (z; (value x) . y)}           / function for client to call
 ```
 
 Here the function `marshal` expects the name of a non-unary function in the first parameter, an argument list for the wrapped function in the second argument and the name of the callback function used to pass back the result in the third argument.
@@ -116,32 +118,47 @@ Here the function `marshal` expects the name of a non-unary function in the firs
 Now execute the following on the client.
 
 ```q
-q)(neg h) (`marshal; `add3; 1 2 3; `echo)
+q)clientFunc:{0N!x;}
+q)h:hopen `::5000
+q)(neg h) (`marshal; `add3; 1 2 3; `clientFunc)
+  ...
+q)hclose h
 ```
 
-This expression makes an async call to the remote function `marshal`, asking it to invoke the remote function `add3` with list argument `1 2 3` and to pass the result back to `echo`.
+This expression makes an async call to the remote function `marshal`, asking it to invoke the remote function `add3` with list argument `1 2 3` and to pass the result back to `clientFunc`.
 
 The result is that the list is summed on the server and then 6 is displayed on the client.
 
 
-## Example 4
+### Anonymous functions
 
-It is also possible to send a function to be executed remotely on the server using an alternative form of IPC. In this case, nothing needs to be defined on the server in advance. Here we show an example sending an anonymous function that returns its value to the client. 
+It is also possible to send a function to be executed remotely on the server using an alternative form of IPC. 
+In this case, nothing needs to be defined on the server in advance. Here we show an example sending an anonymous function that returns its value to the client. 
 
-!!! warning
+Start a kdb+ server listening on a choosen port e.g.
 
-    Give careful consideration before allowing this style IPC in a production environment as a client can bring down an unprotected server.
+```bash
+$ q -p 5000
+```
 
 Execute the following on the client.
 
 ```q
-q)(neg h) ({(neg .z.w) (z; x*y)}; 6; 7; `echo)
+q)clientFunc:{0N!x;} 
+q)h:hopen `::5000
+q)(neg h) ({(neg .z.w) (z; x*y)}; 6; 7; `clientFunc)
 ```
 
 This expression makes an async call sending: 
 
 - a function that multiplies two arguments and returns the result with a callback
 - the arguments 6 and 7
-- and the name of `echo` for the callback
+- and the name of `clientFunc` for the callback
 
 The result is that 6 and 7 are multiplied on the server and then 42 is displayed on the client.
+
+!!! warning
+
+    Give careful consideration before using this style IPC in a production environment as a client can bring down an unprotected server. A kdb+ server can be protected by [authorising](../basics/ipc.md#authentication-authorization) which services are permitted to run.
+
+

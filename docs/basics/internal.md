@@ -322,6 +322,9 @@ SSL_VERIFY_SERVER| YES
 
 In the result, all keys except `SSLEAY_VERSION` are initialized from their corresponding environment variables.
 
+:fontawesome-solid-hand-point-right:
+[`.z.e` TLS connection status](../ref/dotz.md#ze-tls-connection-status)
+<br>
 :fontawesome-solid-graduation-cap:
 [SSL](../kb/ssl.md)
 
@@ -458,7 +461,7 @@ h| p f z n m
 ```
 
 :fontawesome-solid-book:
-[`.z.H`](../ref/dotz.md#zh-active-sockets)
+[`.z.H` active sockets](../ref/dotz.md#zh-active-sockets)
 ## `-120!x` (memory domain)
 
 ```syntax
