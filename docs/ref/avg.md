@@ -151,6 +151,8 @@ q)2 0N 4 5 wavg 1 2 0N 8  / nulls in either argument ignored
 6f
 q)0 wavg 2 3
 0n                        / since 4.1t 2021.09.03,4.0 2021.10.01, previously returned 2.5
+q)0 wavg (1 2;3 4)
+0n 0n                     / since 4.0/4.1 2024.07.08, previously returned 0n
 ```
 
 Where `x` and `y` conform, the result has an atom for each sublist.
