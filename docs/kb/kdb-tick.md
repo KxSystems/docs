@@ -78,12 +78,40 @@ $ q chainedr.q :5010 -p 5111
 
 :fontawesome-brands-github: [KxSystems/kdb/tick/chainedr.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q)
 
-## No RDB
+## Write-only RDB
 
-An RDB is an in-memory database, and by day-end can be using a lot of memory. If clients are querying that data intra-day then the memory cost is reasonable – but if the data’s only being collected for insertion into the HDB at day-end the overhead is unreasonable. In such a case it would make sense to write the data to disk during the day so that it’s ready for day-end processing, but with only a small memory footprint to build bulk updates.
+The default behavior of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. 
+This makes sense if it’s actually queried during the day, but if the only reason for having an RDB is to be able to save the historical partition 
+the amount of memory required to keep the in-memory database can be excessive.
 
-:fontawesome-regular-hand-point-right: 
-[Write-only alternative to RDB](w-q.md)
+It would make sense to write the data to disk during the day so that it’s ready for day-end processing, but with only a small memory footprint to build bulk updates.
+
+:fontawesome-brands-github:
+[simongarland/tick/w.q](https://github.com/simongarland/tick/blob/master/w.q)
+is a potential replacement for the default RDB
+:fontawesome-brands-github:
+[KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q).
+
+`w.q` connects to the tickerplant just like `r.q`, but it buffers up requests and, every `MAXROWS` records, writes the data to disk. 
+At day end, remaining data is flushed to disk, the database is sorted (on disk) and then moved to the appropriate date partition within the historical database.
+
+Note that it makes no sense to query the task running `w.q` as it will have a small (and variable-sized) selection of records. 
+Although it wouldn’t be difficult to modify it to keep say the last 5 minutes of data, 
+that sort of custom collection is probably better housed in a task running a [`c.q`](#cq)-like aggregation.
+
+Syntax:
+```bash
+q w.q [tickerplanthost]:port[:usr:pwd] [hdbhost]:port[:usr:pwd] [-koe|keeponexit]
+```
+
+e.g.
+```bash
+$ q w.q :5010 :5012
+```
+
+The `-koe` or `-keeponexit` parameter governs the behavior when a `w.q` task is exited at user request i.e. `.z.exit` is called. 
+By default the data saved so far is deleted, as if the task were restarted it would be difficult to ensure it restarted from exactly the right place.
+It’s easier to replay the log and (re)write the data. If the flag is provided (or the `KEEPONEXIT` global set to `1b`) the data will not be removed.
 
 
 ## Working with the TP logfile
