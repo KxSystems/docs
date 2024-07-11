@@ -24,9 +24,7 @@ Tests performed using kdb+ version 3.1 2014.02.08
 
 ## Standard tick setup
 
-Most kdb+ users will be familiar with a vanilla tick setup which has a tickerplant (TP) receiving data and then logging it to disk and publishing to an in-memory realtime database (RDB) which keeps all of the current day’s data in memory. At the end of the day the RDB then commits this data to disk in a separate historical database (HDB) which stores all of this historical data. This means that the most recent data (and often most important) always has the fastest access time as it is stored in RAM.
-
-![Figure 1](img/figure01.png)
+Most kdb+ users will be familiar with a [vanilla tick setup](../../architecture/index.md) which has a tickerplant (TP) receiving data and then logging it to disk and publishing to an in-memory realtime database (RDB) which keeps all of the current day’s data in memory. At the end of the day the RDB then commits this data to disk in a separate historical database (HDB) which stores all of this historical data. This means that the most recent data (and often most important) always has the fastest access time as it is stored in RAM.
 
 The standard approach above can be limited by available RAM if daily data volumes grow too large. It is important to realize also that extra RAM is required to query the data, on top of what is required to keep it in memory. The extra amount required will vary depending on the different use cases and queries that are run on it. Consideration must also be given to other processes such as chained RDBs or HDBs which will need to share the resources on the server.
 
@@ -35,12 +33,7 @@ One solution is to write down some of the data from the RDB to a temporary direc
 
 ## `w.q`
 
-:fontawesome-brands-github:
-[simongarland/tick](https://github.com/simongarland/tick)
-
-This script can easily be modified to work with any standard kdb+ setup. The important changes begin with the callback function `upd` which no longer simply inserts data into the table.
-
-
+A [write-only RDB](../../kb/kdb-tick.md#write-only-rdb) script (`w.q`) can easily be modified to work with any standard kdb+ setup. The important changes begin with the callback function `upd` which no longer simply inserts data into the table.
 ```q
 append:{[t;data]
   t insert data;
@@ -105,10 +98,10 @@ The table is not reorganized if the column we are parting the table by is alread
 The `w.q` script has an additional option to delete the temporary data on exit to handle recovery scenarios. The default behavior is to delete the temporary data and recover from the TP log as it is difficult to locate the point in the TP log which was last committed to disk.
 
 
-## Limitations of `w.q` 
+### Limitations of `w.q` 
 
 
-### Downtime
+#### Downtime
 
 When rolling the RDB at end of day it is very important to minimize the downtime of the RDB and to have the new date partition available as quickly as possible in the HDB. However, sorting very large tables on disk can add significant delay, no matter which sorting method is used. Table 1 describes the time taken (in seconds) to sort a quote table for increasing numbers of rows. The schema of the quote table is described below:
 
@@ -137,7 +130,7 @@ Table 1:
 As can be seen, the amount of time taken to sort a simple table like the above is quite large. This may be a serious problem as yesterday’s data may not be queryable for a significant period each morning.
 
 
-### Performance
+#### Performance
 
 The `w.q` solution was intended more as an effective method to alleviate RAM problems during data capture than to be a queryable process. Since the most recent data will be in-memory and everything else is splayed on disk, any queries for intraday data will have to be run against both tables and be combined. The query against the on-disk splay with no attributes will have a significant impact on query performance.
 
@@ -234,8 +227,6 @@ A partitioned table in kdb+ may be partitioned by one of four separate datatypes
 Each partition in our intraday writedown directory will store data for a single sym and the partition value will be the enumerated integer value for that sym. If, for example, in your HDB’s symfile the enumerated value of `` `eurusd`` is 223, then during the day EURUSD updates that are being written to disk will be appended to the relevant table in the 223 int partition. These entries will be sorted by time as they are being appended and so will have a `s` attribute on time in the temporary directory.
 
 The advantage of of this method is that the data in the temporary directory can be queried much more efficiently as it is essentially partitioned by sym and sorted by time. The second processing time-saving is seen at EOD: no sort is required since the data is already divided by sym. Therefore, adding to the HDB reduces from an append-and-sort to a simple append.
-
-This solution, of course, comes with its own drawbacks, namely added complexity in maintaining the data in the RDB and in creating the HDB partition. Also, querying the data will be much more complicated as result of the data being stored in a different format in memory and in the temporary directory. However, depending on the use case, the benefits may outweigh the drawbacks.
 
 The solution begins by setting the following in the RDB.
 
@@ -467,7 +458,7 @@ appendHDB:{[tbls;dtDir]
 : This function works out what partitions are present (i.e. 0 20 56 222 etc.) and also what tables. After appending all the tables using `appendTable`, `.Q.chk` is performed on the new HDB partition to ensure no table has been missed out (e.g. if a `WRITETBLS` table received no updates that day). Finally each table in the HDB date partition has a `p` (parted) attribute applied.
 
 
-## Querying partitioned writedown
+### Querying partitioned writedown
 
 Before the query speeds for the different solutions can be compared, the method for querying the partitioned writedown must be discussed. The data for each table is no longer stored in one in-memory table but divided into a different table for each sym, both on-disk and in-memory. This is far from ideal but is one of the penalties that comes with this solution for dealing with low memory.
 
@@ -573,6 +564,9 @@ time         sym    bid       ask       bsize asize
 
 The `genQuery` function could easily be expanded and refined based on what type of queries are run most often and how they are best optimized. However this function demonstrates the principles of how to query both the in-memory and the partitioned data structure together.
 
+### Limitations
+
+This solution, of course, comes with its own drawbacks, namely added complexity in maintaining the data in the RDB and in creating the HDB partition. Also, querying the data will be much more complicated as result of the data being stored in a different format in memory and in the temporary directory. However, depending on the use case, the benefits may outweigh the drawbacks.
 
 ## Comparison of `w.q` and partitioned writedown
 
