@@ -524,15 +524,15 @@ nav:
       # - Environment: basics/environment.md
       - Developer tools: devtools.md
       - FAQ: kb/faq-listbox.md
-    - Architecture:
+    - Streaming:
       - General architecture: architecture/index.md
       - Alternative architecture: kb/kdb-tick.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Corporate actions: kb/corporate-actions.md
-      - Data recovery for kdb+tick: wp/data-recovery.md
+      - Data recovery: wp/data-recovery.md
       - Disaster recovery: wp/disaster-recovery/index.md
       - Gateway design: wp/gateway-design/index.md
-      - kdb+tick profiling: wp/tick-profiling.md
+      - Profiling: wp/tick-profiling.md
       - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
       - Load balancing: kb/load-balancing.md
       - Order Book: wp/order-book.md

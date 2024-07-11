@@ -43,9 +43,6 @@ Historical database
 
 : The historical database (HDB) consists of on-disk kdb+ data, typically split into date partitions. A kdb+ process can read this data and memory-map it, allowing for fast queries across a large volume of data. The RDB is instructed to save its data to the HDB at EOD.
 
-:fontawesome-regular-hand-point-right:
-[kdb+ tick profiling for throughput optimization](tick-profiling.md)
-
 This paper will primarily consider the relationship between the TP and RDB and in particular the use of tickerplant logs when recovering lost data in an RDB.
 
 

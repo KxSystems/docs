@@ -14,22 +14,23 @@ The small footprint of the q interpreter, the [interprocess communication](../ba
 
 Certain kinds of process recur across applications.
 
+## Components
 
-## Data feed
+### Data feed
 
-This is a source of real-time data; for example, financial quotes and trades from [Bloomberg](https://www.bloomberg.com/professional/solution/content-and-data/) or [Refinitiv](https://www.refinitiv.com/), or readings from a network of sensors
+This is a source of real-time data; for example, financial quotes and trades from [Bloomberg](https://www.bloomberg.com/professional/solution/content-and-data/) or [Refinitiv](https://www.refinitiv.com/), or readings from a network of sensors.
 
 
-## Feedhandler
+### Feedhandler
 
 Parses data from the data feed to a format that can be ingested by kdb+.
 
 KX’s [Fusion interfaces](../interfaces/index.md#fusion-interfaces) connect kdb+ to a range of other technologies, such as [R](../interfaces/r.md), Apache Kafka, Java, Python and [C](../interfaces/c-client-for-q.md).
 
 
-## Tickerplant
+### TP
 
-Captures the initial data feed, writes it to the log file and [publishes](../kb/publish-subscribe.md) these messages to any registered subscribers.
+A TP (tickerplant) captures the initial data feed, writes it to the log file and [publishes](../kb/publish-subscribe.md) these messages to any registered subscribers.
 Aims for zero-latency.
 Includes ingesting data in batch mode.
 
@@ -44,13 +45,11 @@ Handles end-of-day (EOD) processing.
     For best resilience, and to avoid core resource competition, run them on their own cores.
 
 
-### Log file
+#### TP Log
 
 This is the file to which the Tickerplant logs the q messages it receives from the feedhandler. It is used for recovery: if the RDB has to restart, the log file is replayed to return to the current state.
 
 !!! tip "Best practices for log files"
-
-    The logging process can run on any hardware and OS, from a RaspberryPi to a cloud server.
 
     Store the file on a fast local disk to minimize publication delay and I/O waits.
 
@@ -61,9 +60,9 @@ This is the file to which the Tickerplant logs the q messages it receives from t
     [Linux production notes](../kb/linux-production.md)
 
 
-## Real-time database
+### RDB
 
-Subscribes to messages from the Tickerplant, stores them in memory, and allows this data to be queried intraday.
+A RDB (real-time database) subscribes to messages from the Tickerplant, stores them in memory, and allows this data to be queried intraday.
 
 At end of day usually writes intraday data to the Historical Database, and sends it a new EOD message.
 
@@ -84,9 +83,10 @@ At end of day usually writes intraday data to the Historical Database, and sends
     [Intraday writedown solutions](../wp/intraday-writedown/index.md)
 
 
-## Real-time subscriber
+### RTE/RTS
 
-Subscribes to the intraday messages and typically performs some additional function on receipt of new data – e.g. calculating an order book or maintaining a subtable with the latest price for each instrument.
+A RTE (real-time engine) subscribes to the intraday messages and typically performs some additional function on receipt of new data – e.g. calculating an order book or maintaining a subtable with the latest price for each instrument.
+A RTE is sometimes referred to as a RTS (real-time subscriber).
 
 !!! tip "Best practices for real-time subscribers"
 
@@ -102,9 +102,9 @@ Subscribes to the intraday messages and typically performs some additional funct
 
 
 
-## Historical database
+### HDB
 
-Provides a queryable data store of historical data;
+A HDB (historical database) provides a queryable data store of historical data;
 for example, for creating customer reports on order execution times, or sensor failure analyses.
 
 Large tables are usually stored on disk partitioned by date, with each column stored as its own file.
@@ -133,7 +133,7 @@ The dates are referred to as _partitions_ and this on-disk structure contributes
     [Compression in kdb+](../wp/compress/index.md)
 
 
-## Gateway
+### Gateway
 
 The entry point into the kdb+ system. Responsible for routing incoming queries to the appropriate processes, and returning their results.
 
