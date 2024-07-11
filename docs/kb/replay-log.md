@@ -8,7 +8,7 @@ date: December 2019
 
 
 
-Streaming-execute over a file is used (for example in kdb+tick) to replay logfiles in a memory-efficient manner.
+Streaming-execute over a file is used (for example in kdb+tick) to replay [logfiles](logging.md) in a memory-efficient manner.
 
 :fontawesome-solid-book-open:
 [`-11!` streaming execute](../basics/internal.md#-11-streaming-execute)

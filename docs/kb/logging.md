@@ -198,6 +198,9 @@ Currently, only a single replicating process can subscribe to the primary proces
 _Q for Mortals_
 [§13.2.6 Logging `-l` and `-L`](/q4m3/13_Commands_and_System_Variables/#1326-logging-l-and-l)
 <br>
+:fontawesome-regular-map:
+[Replaying log files](replay-log.md)
+<br>
 :fontawesome-brands-github: 
 [prodrive11/log4q](https://github.com/prodrive11/log4q)
 A concise implementation of logger for q applications

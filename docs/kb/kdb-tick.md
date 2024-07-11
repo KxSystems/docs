@@ -123,6 +123,12 @@ The TP logs the updates published to subscribers to a file. In the event of a se
 :fontawesome-brands-github: 
 [simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q)
 
+:fontawesome-regular-map:
+[Data recovery for kdb+tick](../wp/data-recovery.md)
+<br>
+:fontawesome-regular-map:
+[Replaying log files](replay-log.md)
+
 
 ## `c.q`
 
