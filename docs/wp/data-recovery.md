@@ -25,26 +25,7 @@ All tests were run using kdb+ version 3.1 (2014.03.27).
 
 ## kdb+tick
 
-kdb+tick is an architecture which allows the capture, processing and querying of data in real time and historically. It typically consists of:
-
-The feedhandler
-
-: A feedhandler is a process which captures external data and translates it into kdb+ messages. Multiple feed handlers can be used to gather data from a number of different sources and feed it to the kdb+ system for storage and analysis.
-
-The tickerplant
-
-: The tickerplant (TP) is a specialized kdb+ process that operates as a link between the client’s data feed and a number of subscribers. It receives data from the feedhandler, appends a time stamp to it and saves it to a log file. It publishes this data to a real-time database (RDB) and any clients which have subscribed to it, and then purges its tables of data. In this way the tickerplant uses very little memory, whilst a full record of intra-day data is maintained in the real-time database.
-
-Real-time database
-
-: The real-time database (RDB) holds all the intra-day data in-memory to allow for fast, powerful queries. At startup, the RDB sends a message to the tickerplant and receives a reply containing the data schema, the location of the log file, and the number of lines to read from the log file. It then receives subsequent updates from the TP as they are published.
-
-Historical database
-
-: The historical database (HDB) consists of on-disk kdb+ data, typically split into date partitions. A kdb+ process can read this data and memory-map it, allowing for fast queries across a large volume of data. The RDB is instructed to save its data to the HDB at EOD.
-
-This paper will primarily consider the relationship between the TP and RDB and in particular the use of tickerplant logs when recovering lost data in an RDB.
-
+This paper will primarily consider the relationship between the TP and RDB in a [kdb+tick architecture](../architecture/index.md). In particular, the use of tickerplant logs when recovering lost data in an RDB.
 
 ### Schemas
 

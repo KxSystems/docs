@@ -25,6 +25,8 @@ This is a source of real-time data; for example, financial quotes and trades fro
 
 Parses data from the data feed to a format that can be ingested by kdb+.
 
+Multiple feed handlers can be used to gather data from a number of different sources and feed it to the kdb+ system for storage and analysis.
+
 KX’s [Fusion interfaces](../interfaces/index.md#fusion-interfaces) connect kdb+ to a range of other technologies, such as [R](../interfaces/r.md), Apache Kafka, Java, Python and [C](../interfaces/c-client-for-q.md).
 
 
@@ -63,6 +65,8 @@ This is the file to which the Tickerplant logs the q messages it receives from t
 ### RDB
 
 A RDB (real-time database) subscribes to messages from the Tickerplant, stores them in memory, and allows this data to be queried intraday.
+
+At startup, the RDB sends a message to the tickerplant and receives a reply containing the data schema, the location of the log file, and the number of lines to read from the log file. It then receives subsequent updates from the TP as they are published.
 
 At end of day usually writes intraday data to the Historical Database, and sends it a new EOD message.
 
