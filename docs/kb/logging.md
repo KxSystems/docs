@@ -225,7 +225,11 @@ q)value each get `:logfile.2013.12.03
 `b 20
 ```
 
-If successful, the number of chunks executed is returned. If the end of the file is corrupt a `badtail` error is signalled. In the event that the log file references an undefined function, the function name is signalled as an error. This can be confusing if the missing function name is `upd`, as it does not reflect the same situation as the license expiry `upd` error. e.g.
+If successful, the number of chunks executed is returned. 
+
+If the end of the file is corrupt a `badtail` error is signalled, which may be partially [recovered](#replay-from-corrupt-logs).
+
+In the event that the log file references an undefined function, the function name is signalled as an error. This can be confusing if the missing function name is `upd`, as it does not reflect the same situation as the license expiry `upd` error. e.g.
 
 ```q
 / Continuing the above example
@@ -235,8 +239,6 @@ q)/function f no longer defined, so it signals an error
 q)-11!`:logfile.2013.12.03
 'f
 ```
-
-:fontawesome-brands-github: [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) for examples of usage
 
 
 ### Replay part of a file
@@ -290,6 +292,8 @@ q)/ 26 valid chunks until position 35634 (out of 39623)
 q)-11!(26;logfile)
 26
 ```
+
+:fontawesome-brands-github: [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) contains some helper functions for recovering data from logs.
 
 ---
 

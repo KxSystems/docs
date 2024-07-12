@@ -117,19 +117,6 @@ It’s easier to replay the log and (re)write the data. If the flag is provided 
 [Intraday writedown solutions](../wp/intraday-writedown/index.md)
 
 
-## Working with the TP logfile
-
-The TP logs the updates published to subscribers to a file. In the event of a serious crash, this file can be rescued using the utility functions in 
-:fontawesome-brands-github: 
-[simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q)
-
-:fontawesome-regular-map:
-[Data recovery for kdb+tick](../wp/data-recovery.md)
-<br>
-:fontawesome-regular-map:
-[Log files](logging.md)
-
-
 ## `c.q`
 
 Another often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. 
