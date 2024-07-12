@@ -5,7 +5,7 @@ keywords: kdb+, log, logging, q, replication, recovery
 ---
 # Using log files: logging, recovery and replication
 
-
+!!! warning "This should not be confused with a file that logs human readable warnings, errors, etc. It refers to a log of instructions to regain state."
 
 ## Creating a log file
 
@@ -19,41 +19,37 @@ Software or hardware problems can cause a kdb+ server process to fail, possibly 
 
 Logging is enabled by using the [`-l` or `-L` command-line arguments](../basics/cmdline.md#-l-log-updates).
 
-```bash
-$ q logTest -l
+This example will require a file `trade.q` containing instructions to create a trade table:
+```q
+trade:([]time:`time$();sym:`symbol$();price:`float$();size:`int$())
 ```
 
-```q
-q)\p 5001
-q)\l trade.q
+Start kdb+, loading `trade.q` while enabling recording to `trade.log` (note: this also uses `-p 5001` to allow client connections to port 5001):
+
+```bash
+$ q trade -l -p 5001
 ```
 
 Now update messages from clients are logged. For instance:
 
 ```q
 q)/ this is a client
-q)h: hopen `:localhost:5001
-q)h "insert[`trade](10:30:01; `intel; 88.5; 1625)"
-q)h "last trade"
-time | 10:30:01.000
-sym  | `intel
-price| 88.5
-size | 1625
+q)h:hopen `:localhost:5001
+q)h "insert[`trade](10:30:01.000; `intel; 88.5; 1625)"
 ```
 
+In the server instance, run `count trade` to check the trade table is now populated with one row.
 Assume that the kdb+ server process dies. If we now restart it with logging on, the updates logged to disk are not lost:
 
 ```bash
-q logTest -l
+q q trade -l -p 5001
 ```
 
 ```q
-q)last trade
-time | 10:30:01.000
-sym  | `intel
-price| 88.5
-size | 1625
+q)count trade
+1
 ```
+
 !!! warning "Updates done locally in the server process are logged to disk only if they are sent as messages to self"
 
     The syntax for this uses `0` as the handle:
@@ -64,7 +60,7 @@ size | 1625
     ```
 
 
-## Check-pointing / Rolling
+## Check-pointing / rolling
 
 A logging server uses a `.log` file and a `.qdb` data file. The command [`\l`](../basics/syscmds.md#l-load-file-or-directory) checkpoints the `.qdb` file and empties the log file.
 
@@ -196,7 +192,7 @@ Currently, only a single replicating process can subscribe to the primary proces
 ## Replaying log files
 
 
-Streaming-execute over a file is used (for example in kdb+tick) to replay [logfiles](logging.md) in a memory-efficient manner.
+Streaming-execute over a file is used (for example in kdb+tick) to replay a log file in a memory-efficient manner.
 
 :fontawesome-solid-book-open:
 [`-11!` streaming execute](../basics/internal.md#-11-streaming-execute)
@@ -241,7 +237,6 @@ q)-11!`:logfile.2013.12.03
 ```
 
 :fontawesome-brands-github: [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) for examples of usage
-
 
 
 ### Replay part of a file
@@ -295,7 +290,6 @@ q)/ 26 valid chunks until position 35634 (out of 39623)
 q)-11!(26;logfile)
 26
 ```
-
 
 ---
 
