@@ -11,7 +11,9 @@ A [‘vanilla’](../architecture/index.md) tick setup has a tickerplant (TP) lo
 It doesn’t have to be that way. There are a _many_ other ways of assembling the kdb+tick “building blocks” to reduce or share the load.
 
 
-## Chained tickerplants
+## TP
+
+### Chained tickerplants
 
 If the primary tickerplant is running in zero-latency mode (i.e. all updates are published immediately to subscribers) 
 it can be inefficient to have a client task that is only plotting graphs subscribe for instantaneous update. An update every few seconds would be quite adequate.
@@ -25,7 +27,7 @@ If the primary tickerplant is a zero-latency tickerplant the chained tickerplant
 For example if clients are using data from the tickerplant to drive a GUI, it may not need updates hundreds of times per second.
 A tickerplant that updates once a second would suffice
 
-### Example
+#### Example
 
 The example script [`chainedtick.q`](https://github.com/KxSystems/kdb/blob/master/tick/chainedtick.q) can be run as follows:
 ```bash
@@ -51,7 +53,9 @@ q chainedtick.q :5010 -p 5110 -t 0
 :fontawesome-brands-github:
 [KxSystems/kdb-tick/tick/u.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/u.q)
 
-## Chained RDBs
+## RDB
+
+### Chained RDBs
 
 A chained RDB can either be connected to the primary tickerplant, or to a chained tickerplant. 
 Unlike a default RDB, the chained RDB doesn't have any day-end processing beyond emptying all tables.
@@ -64,7 +68,7 @@ It might be useful to have an RDB with only the stocks building a particular ind
 
 Don’t forget though that a second RDB will increase the memory usage, as it's an in-memory database and can’t be sharing any data with the primary RDB.
 
-### Example
+#### Example
 
 The example script [`chainedr.q`](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q) can be run as follows:
 ```bash
@@ -78,7 +82,7 @@ $ q chainedr.q :5010 -p 5111
 
 :fontawesome-brands-github: [KxSystems/kdb/tick/chainedr.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q)
 
-## Write-only RDB
+### Write-only RDB
 
 The default behavior of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. 
 This makes sense if it’s actually queried during the day, but if the only reason for having an RDB is to be able to save the historical partition 
@@ -116,8 +120,9 @@ It’s easier to replay the log and (re)write the data. If the flag is provided 
 :fontawesome-regular-map:
 [Intraday writedown solutions](../wp/intraday-writedown/index.md)
 
+## RTE
 
-## `c.q`
+### `c.q`
 
 Another often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. 
 
@@ -129,7 +134,7 @@ A more interesting example is keeping a table of the latest trade and the associ
 [KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
 
 
-## `clog.q`
+### `clog.q`
 
 The default version of `c.q` linked to above connects to a TP and starts collecting data. Sometimes that’s not enough and you want to replay the log through the task first. (For example, to get the Open/High/Low for the day, not just since starting the task.) For that, use `clog.q` instead. 
 
@@ -137,7 +142,7 @@ The default version of `c.q` linked to above connects to a TP and starts collect
 [simongarland/tick/clog.q](https://github.com/simongarland/tick/blob/master/clog.q)
 
 
-## `daily.q`
+### `daily.q`
 
 By default, the end-of-day processing simply saves the intra-day RDB to disk after a little re-organization. 
 
