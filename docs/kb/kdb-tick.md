@@ -127,7 +127,7 @@ The TP logs the updates published to subscribers to a file. In the event of a se
 [Data recovery for kdb+tick](../wp/data-recovery.md)
 <br>
 :fontawesome-regular-map:
-[Replaying log files](replay-log.md)
+[Log files](logging.md)
 
 
 ## `c.q`

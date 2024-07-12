@@ -1,13 +1,13 @@
 ---
 title: Logging, recovery and replication – Knowledge Base – kdb+ and q documentation
 description: Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
-keywords: kdb+, log, logging, q, replication
+keywords: kdb+, log, logging, q, replication, recovery
 ---
-# Logging, recovery and replication
+# Using log files: logging, recovery and replication
 
 
 
-
+## Creating a log file
 
 Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
 
@@ -64,7 +64,7 @@ size | 1625
     ```
 
 
-## Check-pointing
+## Check-pointing / Rolling
 
 A logging server uses a `.log` file and a `.qdb` data file. The command [`\l`](../basics/syscmds.md#l-load-file-or-directory) checkpoints the `.qdb` file and empties the log file.
 
@@ -140,7 +140,7 @@ results in
 ```
 
 
-## Files
+## File read order
 
 When you type
 
@@ -192,15 +192,118 @@ If the replicating process loses its connection to the logging process, you can 
 Currently, only a single replicating process can subscribe to the primary process. If another kdb+ process attempts to replicate from the primary, the previous replicating process will no longer receive updates. If you need multiple replicating processes, you might like to consider [kdb+tick](../learn/startingkdb/tick.md).
 
 
+
+## Replaying log files
+
+
+Streaming-execute over a file is used (for example in kdb+tick) to replay [logfiles](logging.md) in a memory-efficient manner.
+
+:fontawesome-solid-book-open:
+[`-11!` streaming execute](../basics/internal.md#-11-streaming-execute)
+
+A logfile is just a list of lists, and each list is read in turn and evaluated by [`.z.ps`](../ref/dotz.md#zps-set) (which defaults to [`value`](../ref/value.md)).
+
+Here, for demonstration purposes, we manually create a logfile, and play it back through `-11!`. This is functionally equivalent to doing ``value each get `:logfile`` but uses far less memory.
+
+```q
+q)`:logfile.2013.12.03 set () / create a new,empty log file
+`:logfile.2013.12.03
+q)h:hopen `:logfile.2013.12.03 / open it
+q)h enlist(`f;`a;10) / append a record
+3i
+q)h enlist(`f;`b;20) / append a record
+3i
+q)hclose h / close the file
+q)/Define the function that is referenced in those records
+q)f:{0N!(x;y)}
+q)-11!`:logfile.2013.12.03 / playback the logfile
+(`a;10)
+(`b;20)
+2
+q)/ DO NOT DO THIS ON LARGE LOGFILES!!!!
+q)/This is the whole purpose of -11!x.
+q)value each get `:logfile.2013.12.03
+(`a;10)
+(`b;20)
+`a 10
+`b 20
+```
+
+If successful, the number of chunks executed is returned. If the end of the file is corrupt a `badtail` error is signalled. In the event that the log file references an undefined function, the function name is signalled as an error. This can be confusing if the missing function name is `upd`, as it does not reflect the same situation as the license expiry `upd` error. e.g.
+
+```q
+/ Continuing the above example
+q)delete f from `.
+`.
+q)/function f no longer defined, so it signals an error
+q)-11!`:logfile.2013.12.03
+'f
+```
+
+:fontawesome-brands-github: [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) for examples of usage
+
+
+
+### Replay part of a file
+
+Streaming-execute the first `n` chunks of logfile `x`, return the number of chunks if successful: `-11!(n;x)`.
+
+It is possible to use the above to playback `n` records from record `M` onwards.
+
+Firstly create a sample log file, which contains 1000 records as
+`((`f;0);(`f;1);(`f;2);..;(`f;999))`.
+
+```q
+q)`:log set();h:hopen`:log;i:0;do[1000;h enlist(`f;i);i+:1];hclose h;
+```
+
+Then define function `f` to just print its arg, skip the first `M` records. If [`.z.ps`](../ref/dotz.md#zps-set) is defined, `-11!` calls it for each record.
+
+```q
+q)m:0;M:750;f:0N!;.z.ps:{m+:1;if[m>M;value x;];};-11!(M+5-1;`:log)
+750
+751
+752
+753
+754
+```
+
+
+### Replay from corrupt logs
+
+Given a valid logfile `x`, `-11(-2;x)` returns the number of chunks.
+
+Given an invalid logfile, returns the number of valid chunks and length of the valid part.
+
+```q
+q)logfile:`:good.log / a non-corrupted logfile
+q)-11!(-2;logfile)
+26
+q)logfile:`:broken.log / a manually corrupted logfile
+q)/define a dummy upd file as components are of the form (`upd;data)
+q)upd:{[x;y]}
+q)-11!logfile
+'badtail
+q)-11!(-1;logfile)
+'badtail
+q)hcount logfile
+39623
+q)-11!(-2;logfile)
+26
+35634
+q)/ 26 valid chunks until position 35634 (out of 39623)
+q)-11!(26;logfile)
+26
+```
+
+
 ---
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§13.2.6 Logging `-l` and `-L`](/q4m3/13_Commands_and_System_Variables/#1326-logging-l-and-l)
 <br>
-:fontawesome-regular-map:
-[Replaying log files](replay-log.md)
-<br>
 :fontawesome-brands-github: 
 [prodrive11/log4q](https://github.com/prodrive11/log4q)
 A concise implementation of logger for q applications
+

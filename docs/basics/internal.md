@@ -150,7 +150,7 @@ Where `n` is a non-negative integer and `x` is a logfile handle
 In replaying, if the logfile references an undefined function, the function name is signalled as an error.
 
 :fontawesome-solid-graduation-cap:
-[Replaying logfiles](../kb/replay-log.md)
+[Log files](../kb/logging.md)
 
 
 ## `-14!x` (quote escape)

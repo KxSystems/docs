@@ -492,12 +492,11 @@ nav:
         - Firewalling: kb/firewalling.md
         - inetd, xinetd: kb/inetd.md
         - Linux production notes: kb/linux-production.md
-        - Logging: kb/logging.md
+        - Log Files: kb/logging.md
         - Multi-threading: wp/multi-thread/index.md
         - Multiple versions: kb/versions.md
         - Parallel processing: basics/peach.md
         - Performance tips: kb/performance-tips.md
-        - Replay logfile: kb/replay-log.md
         - Shebang script: develop/shebang.md
         - Surveillance latency: wp/surveillance-latency/index.md
         - Windows service: kb/windows-service/index.md
