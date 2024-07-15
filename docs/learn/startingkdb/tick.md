@@ -26,11 +26,6 @@ In practice, much larger RAM might be used.
 
 Data feeds can be any market or other time-series data. A feedhandler converts the data stream into a format suitable for writing to kdb+. These are usually written in a compiled language, such as C, C++, Java or C\#. 
 
-A Reuters RFA feedhandler is available. 
-
-:fontawesome-brands-github: 
-[KxSystems/kdb/c/feed/rfa.zip](https://github.com/KxSystems/kdb/blob/master/c/feed/rfa.zip)
-
 In the example described here, the data feed is generated at random by a kdb+ process.
 
 
@@ -108,15 +103,15 @@ Install the demo scripts.
 
 The demo displays each kdb+ process in its own window. 
 
-=== ":fontawesome-brands-apple: macOS"
-
-    Run the `start/tick/run.app` application from Finder. (Consult the `README` as changes must be made to the default Terminal settings.)
-
 === ":fontawesome-brands-linux: Linux"
 
     ```bash
     start/tick/run.sh
     ```
+
+=== ":fontawesome-brands-apple: macOS"
+
+    Run the `start/tick/run.app` application from Finder. (Consult the `README` as changes must be made to the default Terminal settings.)
 
 === ":fontawesome-brands-windows: Windows"
 
@@ -158,9 +153,9 @@ If the run scripts are unsuitable for your system, then you can call each proces
 kdb+tick uses paths relative to the local directory. To run correctly, you should change directory such that `tick.q` is in the local directory. For example on macOS, for each of the following commands, open a new terminal, change directory to `~/q/start/tick`, then:
 
 ```bash
-~/q/start/tick$ ~/q/m32/q tick.q -p 5010
-~/q/start/tick$ ~/q/m32/q feed.q localhost:5010 -t 107
-~/q/start/tick$ ~/q/m32/q tick/r.q -p 5011
+q tick.q -p 5010
+q feed.q localhost:5010 -t 107
+q tick/r.q -p 5011
 ```
 
 Refer to `run1.sh` for the remaining processes.
@@ -211,25 +206,25 @@ DOW  24.23159 705727
 The standard components of kdb+tick support various options. In the basic set-up outlined here, the tickerplant publishes all data immediately, and does not create a log file. Optional parameters of
 
 ```bash
-~/q/m32/q tick.q [schema] [destination directory] [-t N] -p 5010
+q tick.q [schema] [destination directory] [-t N] -p 5010
 ```
 
 can be supplied. If the destination directory is set, then the schema must also be defined. To modify the supplied example to create a tickerplant log file and to publish data in 1-second batches rather than immediately, start the process with:
 
 ```bash
-~/q/m32/q tick.q sym ./hdb -t 1000 -p 5010
+q tick.q sym ./hdb -t 1000 -p 5010
 ```
 
 Similarly the real-time database can be started with optional host:port:user:pass of the tickerplant and historic database to reload at end-of-day:
 
 ```bash
-~/q/m32/q tick/r.q [tickerplant host:port] [hdb host:port] -p 5011
+q tick/r.q [tickerplant host:port] [hdb host:port] -p 5011
 ```
 
 e.g.
 
 ```bash
-~/q/m32/q tick/r.q :5010 :5012 -p 5011
+q tick/r.q :5010 :5012 -p 5011
 ```
 
 
