@@ -44,9 +44,6 @@ Other processes would subscribe to a tickerplant to receive new data, and each w
 
 The demo scripts run a simple tickerplant/RDB configuration. 
 
-:fontawesome-brands-github: 
-[KxSystems/cookbook/start/tick](https://github.com/KxSystems/kdb/blob/master/d/a/tick.htm) 
-
 The layout is:
 
 ```txt
@@ -69,101 +66,70 @@ tickerplant
 
 : gets data from feed and pushes it to clients that have subscribed. Once the data is written, it is discarded.
 
-rdb, vwap, hlcv, tq, last
+rdb
 
-: are databases that have subscribed to the tickerplant. Note that these databases can be queried by a client application.
+: is an RDB (realtime database) than stores all intra-day data received in memory
+
+vwap, hlcv, tq, last, show
+
+: are RTE (realtime engines) that have subscribed to the tickerplant. Note that these databases can be queried by a client application.
 
 database | role  
 ---------|-------
-rdb      | has all of today’s data 
 vwap     | has volume-weighted averages for selected stocks 
 hlcv     | has high, low, close, volume for selected stocks 
 tq       | has a trade and quote table for selected stocks; each row is a trade joined with the most recent quote
 last     | has the last entries for each stock in the trade and quote tables
 show     | counts the updates, and displays the counts periodically 
 
-Note that all the client processes load the same script file `cx.q`, with a parameter that selects the corresponding code for the process in that file. Alternatively, each process could load its own script file, but since the definitions tend to be very short, it is convenient to use a single script for all. More examples: 
+Note that all the client processes load the same script file `cx.q`, with a parameter that selects the corresponding code for the process in that file. Alternatively, each process could load its own script file, but since the definitions tend to be very short, it is convenient to use a single script for all. More RTE examples: 
 
 :fontawesome-brands-github: 
 [KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)  
 :fontawesome-brands-github: [KxSystems/kdb/e/c.q](https://github.com/KxSystems/kdb/blob/master/e/c.q) 
 
 
-## Running the demo
+### Running the demo
 
-Install kdb+tick. 
+Download kdb+tick. 
 
 :fontawesome-brands-github: 
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) 
 
-Install the demo scripts. 
+Download the demo scripts. 
 
 :fontawesome-brands-github: 
 [KxSystems/cookbook/start/tick](https://github.com/KxSystems/cookbook/tree/master/start/tick)  
 
-The demo displays each kdb+ process in its own window. 
+Copy `sym.q` (table schema) to `<kdb-tick directory>/tick/sym.q`
 
-=== ":fontawesome-brands-linux: Linux"
-
-    ```bash
-    start/tick/run.sh
-    ```
-
-=== ":fontawesome-brands-apple: macOS"
-
-    Run the `start/tick/run.app` application from Finder. (Consult the `README` as changes must be made to the default Terminal settings.)
-
-=== ":fontawesome-brands-windows: Windows"
-
-    ```bash
-    start/tick/run.bat
-    ```
-
-The calls starting each process are essentially:
-
-1. tickerplant – the `tick.q` script defines the tickerplant, and runs on port 5010
-
-    ```bash
-    q tick.q -p 5010
-    ```
-
-2. feed – the `feed.q` script connects to the tickerplant and sends a new batch every 507 milliseconds
-
-    ```bash
-    q feed.q localhost:5010 -t 507
-    ```
-
-3. rdb – the `r.q` script defines the real time database
-
-    ```bash
-    q tick/r.q -p 5011
-    ```
-
-4. show – the `show` process, which does not need a port
-
-    ```bash
-    q cx.q show
-    ```
-
-
-## Running processes manually
-
-If the run scripts are unsuitable for your system, then you can call each process manually. In each case, open up a new terminal window, change to the `QHOME` directory and enter the appropriate command. The tickerplant should be started first.
-
-kdb+tick uses paths relative to the local directory. To run correctly, you should change directory such that `tick.q` is in the local directory. For example on macOS, for each of the following commands, open a new terminal, change directory to `~/q/start/tick`, then:
-
-```bash
+From the downloaded `kdb-tick` directory create a tickerplant:
+```q
 q tick.q -p 5010
-q feed.q localhost:5010 -t 107
+```
+from a seperate terminal window, start an RDB:
+```q
 q tick/r.q -p 5011
 ```
 
-Refer to `run1.sh` for the remaining processes.
+From this directory run each of the following realtime engines in seperate terminal windows:
 
+```q
+q cx.q hlcv -p 5014 -t 1000
+q cx.q last -p 5015 -t 1000
+q cx.q tq -p 5016 -t 1000
+q cx.q vwap -p 5017 -t 1000
+q cx.q show
+```
 
-## Process examples
+Create a feedhandler simulator to start data flowing into the system:
+```q
+q feed.q localhost:5010 -t 500
+```
 
-Set focus on the last window, and view the trade table. 
+### Process examples
+
+Set focus on the RDB, and view the trade table. 
 Note that each time the table is viewed, it will be updated with the latest data:
 
 ```q
@@ -176,7 +142,7 @@ AMD | 14:36:03.405 23.21 94   1    W    N
 ...
 ```
 
-Set focus on the vwap window, and view the `vwap` table. Note that `price` is actually `price*size`. This can be updated much more efficiently than storing actual prices and sizes.
+Set focus on the VWAP window, and view the `vwap` table. Note that `price` is actually `price*size`. This can be updated much more efficiently than storing actual prices and sizes.
 
 ```q
 q)vwap
@@ -241,6 +207,6 @@ upd:{[t;x].[t;();,;select by sym from x]}]
 
 ## More information
 
-:fontawesome-brands-github: 
-[KxSystems/kdb/d/tick.htm](https://github.com/KxSystems/kdb/blob/master/d/tick.htm)  
+:fontawesome-regular-map:
+[Streaming Architecture](../../architecture/index.md)
 
