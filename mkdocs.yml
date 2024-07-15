@@ -458,7 +458,6 @@ nav:
         - Listening port: basics/listening-port.md
         - Deferred response: kb/deferred-response.md
         - Async callbacks: kb/callbacks.md
-        - Async callbacks (C client): kb/server-calling-client.md
         - Named pipes: kb/named-pipes.md
         - Serialization examples: kb/serialization.md
         - Socket sharding: wp/socket-sharding/index.md
@@ -548,6 +547,7 @@ nav:
           - API reference: interfaces/capiref.md
           - C API for kdb+: wp/capi/index.md
           - Using C/C++ functions: interfaces/using-c-functions.md
+          - Async callbacks (C client): kb/server-calling-client.md
         - C#: interfaces/csharp.md
         - Foreign Function Interface (FFI): interfaces/ffi.md
         - Java: interfaces/java.md
