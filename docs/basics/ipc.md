@@ -294,7 +294,7 @@ Finer grained authorization can be implemented by tracking user information with
 ```q
 q)\p 5000
 q)allowedFns:(`func1;`func2;`func3;+;-) / list of allowed function/ops to call
-q)checkFn:{if[not x in allowedFns;'(-3!x)," not allowed"];}
+q)checkFn:{if[not x in allowedFns;'(.Q.s1 x)," not allowed"];}
 q)validatePT:{if[0h=t:type x;if[(not 0h=type first x)&1=count first x;checkFn first x;];.z.s each x where 0h=type each x;];}
 q).z.pg:{if[10h=type x;x:parse x;];validatePT x;eval x}
 ```
