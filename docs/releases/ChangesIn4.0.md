@@ -210,7 +210,7 @@ Files can then be compressed and/or encrypted using the same command as for file
 (`:ztest;17;2+16;6) set asc 10000?`3 / compress and encrypt to an individual file
 ```
 
-or use [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) for process-wide default setting when writing files:
+or use [`.z.zd`](../ref/dotz.md#zzd-compressionencryption-defaults) for process-wide default setting when writing files:
 
 ```q
 .z.zd:(17;2+16;6) / zlib compression, with aes256cbc encryption

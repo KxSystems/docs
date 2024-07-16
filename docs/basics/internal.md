@@ -208,7 +208,7 @@ q)get[`:test]~get`:ztest
 [File compression](../kb/file-compression.md)
 <br>
 :fontawesome-solid-book:
-[`.z.zd` zip defaults](../ref/dotz.md#zzd-zip-defaults)
+[`.z.zd` zip defaults](../ref/dotz.md#zzd-compressionencryption-defaults)
  -->
 
 [](){#-21x-compression-stats}

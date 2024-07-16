@@ -160,7 +160,7 @@ Individual files can be encrypted as e.g.
 (`:ztest;17;16;6) set asc 10000?`3 / encrypt an individual file
 ```
 
-Or use [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) for a process-wide default setting for all qualifying files.
+Or use [`.z.zd`](../ref/dotz.md#zzd-compressionencryption-defaults) for a process-wide default setting for all qualifying files.
 
 ```q
 .z.zd:17  2 6     / zlib compression

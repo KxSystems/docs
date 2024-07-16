@@ -714,7 +714,7 @@ tables.
 
 To minimize on-disk memory, all tables are stored across partitioned
 databases in a compressed format. This was achieved by setting
-[`.z.zd`](../../ref/dotz.md#zzd-zip-defaults) to a value of
+[`.z.zd`](../../ref/dotz.md#zzd-compressionencryption-defaults) to a value of
 `17 2 6` prior to writing.
 
 ```q

@@ -96,7 +96,7 @@ The [`-21!` internal function](../basics/internal.md#-21x-compressionencryption-
 
 kdb+ can write compressed files by default.
 
-This is governed by the [zip defaults `.z.zd`](../ref/dotz.md#zzd-zip-defaults).
+This is governed by the [zip defaults `.z.zd`](../ref/dotz.md#zzd-compressionencryption-defaults).
 Set this as an integer vector, e.g.
 
 ```q

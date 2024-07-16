@@ -94,7 +94,7 @@ t:([]a:asc 1000000?10; b:asc 1000000?10; c:asc 1000000?10)
 
 ### Compression defaults
 
-Rather than specifying the compression parameters individually every time `set` is called, we also have the option of defining default compression parameters which will be used if `set` is called the old-fashioned way, i.e. `` `:filename set table``. This is done by defining the [zip-defaults variable `.z.zd`](../../ref/dotz.md#zzd-zip-defaults). The format is the same as the non-filename arguments passed to `set`, e.g.
+Rather than specifying the compression parameters individually every time `set` is called, we also have the option of defining default compression parameters which will be used if `set` is called the old-fashioned way, i.e. `` `:filename set table``. This is done by defining the [zip-defaults variable `.z.zd`](../../ref/dotz.md#zzd-compressionencryption-defaults). The format is the same as the non-filename arguments passed to `set`, e.g.
 
 ```q
 .z.zd:(17;2;6);`:zfile set asc 10000?`3

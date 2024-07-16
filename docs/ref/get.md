@@ -193,7 +193,7 @@ For
 
 the keys of `dic` are either column names of `t` or the null symbol `` `  ``. The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`.
 
-Compression for unspecified columns is specified either by an entry for the null symbol (as below) or by [`.z.zd`](dotz.md#zzd-zip-defaults).
+Compression for unspecified columns is specified either by an entry for the null symbol (as below) or by [`.z.zd`](dotz.md#zzd-compressionencryption-defaults).
 
 ```q
 q)m1:1000000
