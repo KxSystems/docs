@@ -16,7 +16,7 @@ Q operators and keywords read both compressed and uncompressed files.
 ## Write compressed files
 
 Use [`set`](../ref/get.md#set) with a left argument that specifies the file or splay target, and the [compression parameters](#compression-parameters).
-(For a splayed table, you can [specify the compression of each column](../ref/get.md#compression).)
+(For a splayed table, you can [specify the compression of each column](../ref/get.md#compressionencryption).)
 
 ```q
 q)`:a set 1000#enlist asc 1000?10  / uncompressed file

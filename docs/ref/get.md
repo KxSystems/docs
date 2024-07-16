@@ -73,16 +73,16 @@ Persist an object as a file or directory_
 nam set y                set[nam;y]               /set global var nam
 fil set y                set[fil;y]               /serialize y to fil
 dir set t                set[dir;t]               /splay t to dir
-(fil;lbs;alg;lvl) set y  set[(fil;lbs;alg;lvl);y] /write y to fil, cmprssd
-(dir;lbs;alg;lvl) set t  set[(dir;lbs;alg;lvl);t] /splay t to dir, cmprssd
-(dir;dic) set t          set[(dir;dic);t]         /splay t to dir, cmprssd
+(fil;lbs;alg;lvl) set y  set[(fil;lbs;alg;lvl);y] /write y to fil, compressed and/or encrypted
+(dir;lbs;alg;lvl) set t  set[(dir;lbs;alg;lvl);t] /splay t to dir, compressed and/or encrypted
+(dir;dic) set t          set[(dir;dic);t]         /splay t to dir, compressed and/or encrypted
 ```
 
 Where
 
 ```txt
-alg   integer atom     compression algorithm
-dic   dictionary       compression specifications
+alg   integer atom     compression/encryption algorithm
+dic   dictionary       compression/encryption specifications
 dir   filesymbol       directory in the filesystem
 fil   filesymbol       file in the filesystem
 lbs   integer atom     logical block size
@@ -95,7 +95,10 @@ y     (any)            any q object
 :fontawesome-solid-database:
 [Compression parameters `alg`, `lbs`, and `lvl`](../kb/file-compression.md#parameters)
 <br>
-[Compression specification dictionary](#compression)
+:fontawesome-solid-database:
+[Encryption parameters `alg` and `lbs`](../kb/dare.md#encryption)
+<br>
+[Compression/Encryption specification dictionary](#compressionencryption)
 
 Examples:
 ```q
@@ -115,6 +118,9 @@ q)(`:ztbl;17;2;6) set t             / serialize compressed
 `:ztbl
 
 q)(`:ztbl/;17;2;6) set t            / splay table compressed
+`:ztbl/
+
+q)(`:ztbl/;17;2+16;6) set t         / splay table compressed and encrypted (since v4.0 2019.12.12)
 `:ztbl/
 ```
 
@@ -166,17 +172,17 @@ q)read0 `:data/foo
 
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 
-
-### Compression
+[](){#compression}
+### Compression/Encryption
 
 For
 
 ```q
-(fil;lbs;alg;lvl) set y   / write y to fil, compressed
-(dir;lbs;alg;lvl) set t   / splay t to dir, compressed
+(fil;lbs;alg;lvl) set y   / write y to fil, compressed and/or encrypted
+(dir;lbs;alg;lvl) set t   / splay t to dir, compressed and/or encrypted
 ```
 
-Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parametrers).
+Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parametrers) and/or [encryption parameters](../kb/dare.md#encryption).
 
 Splay table `t` to directory `ztbl/` with gzip compression:
 
@@ -193,7 +199,7 @@ For
 
 the keys of `dic` are either column names of `t` or the null symbol `` `  ``. The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`.
 
-Compression for unspecified columns is specified either by an entry for the null symbol (as below) or by [`.z.zd`](dotz.md#zzd-compressionencryption-defaults).
+Compression/encryption for unspecified columns is specified either by an entry for the null symbol (as below) or by [`.z.zd`](dotz.md#zzd-compressionencryption-defaults).
 
 ```q
 q)m1:1000000
@@ -221,3 +227,6 @@ q)(`:ztbl/;dic) set t               / splay table compressed
 <br>
 :fontawesome-regular-map:
 [Compression in kdb+](../wp/compress/index.md)
+<br>
+:fontawesome-solid-database:
+[Data at rest encryption (DARE)](../kb/dare.md)
