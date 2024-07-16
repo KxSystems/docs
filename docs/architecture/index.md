@@ -18,7 +18,7 @@ Certain kinds of process recur across applications.
 
 ### Data feed
 
-This is a source of real-time data; for example, financial quotes and trades from [Bloomberg](https://www.bloomberg.com/professional/solution/content-and-data/) or [Refinitiv](https://www.refinitiv.com/), or readings from a network of sensors.
+This is a source of real-time data; for example, financial quotes and trades from Bloomberg or Refinitiv, or readings from a network of sensors.
 
 
 ### Feedhandler
