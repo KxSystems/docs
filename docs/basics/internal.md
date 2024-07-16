@@ -10,25 +10,25 @@ description: The operator ! with a negative integer as left-argument calls an in
 The operator `!` with a negative integer as left argument calls an internal function.
 
 <div markdown="1" class="typewriter">
-[0N!x](#0nx-show)        show                   Replaced:
-[-4!x](#-4x-tokens)        tokens                   -1!   [hsym](../ref/hsym.md)
-[-8!x](#-8x-to-bytes)        to bytes                 -2!   [attr](../ref/attr.md)
-[-9!x](#-9x-from-bytes)        from bytes               -3!   [.Q.s1](../ref/dotq.md#s1-string-representation)
-[-10!x](#-10x-type-enum)       type enum                -5!   [parse](../ref/parse.md)
-[-11!](#-11-streaming-execute)        streaming execute        -6!   [eval](../ref/eval.md)
-[-14!x](#-14x-quote-escape)       quote escape             -7!   [hcount](../ref/hcount.md)
-[-16!x](#-16x-ref-count)       ref count                -12!  [.Q.host](../ref/dotq.md#host-hostname)
-[-18!x](#-18x-compress-byte)       compress byte            -13!  [.Q.addr](../ref/dotq.md#addr-ip-address)
-[-21!x](#-21x-compression-stats)       compression stats        -15!  [md5](../ref/md5.md)
-[-22!x](#-22x-uncompressed-length)       uncompressed length      -19!  [set](../ref/get.md#set)
-[-23!x](#-23x-memory-map)       memory map               -20!  [.Q.gc](../ref/dotq.md#gc-garbage-collect)
-[-25!x](#-25x-async-broadcast)       async broadcast          -24!  [reval](../ref/eval.md#reval)
-[-26!x](#-26x-ssl)       SSL                      -29!  [.j.k](../ref/dotj.md#jk-deserialize)
-[-27!(x;y)](#-27xy-format)   format                   -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
-[-30!x](#-30x-deferred-response)       deferred response        -32!  [.Q.btoa](../ref/dotq.md#btoa-b64-encode)
-[-33!x](#-33x-sha-1-hash)       SHA-1 hash               -34!  [.Q.ts](../ref/dotq.md#ts-time-and-space)
-[-36!](#-36-load-master-key)        load master key          -35!  [.Q.gz](../ref/dotq.md#gz-gzip)
-[-38!x](#-38x-socket-table)       socket table             -37!  [.Q.prf0](../ref/dotq.md#prf0-code-profiler)
+[0N!x](#0nx-show)        show                          Replaced:
+[-4!x](#-4x-tokens)        tokens                        -1!   [hsym](../ref/hsym.md)
+[-8!x](#-8x-to-bytes)        to bytes                      -2!   [attr](../ref/attr.md)
+[-9!x](#-9x-from-bytes)        from bytes                    -3!   [.Q.s1](../ref/dotq.md#s1-string-representation)
+[-10!x](#-10x-type-enum)       type enum                     -5!   [parse](../ref/parse.md)
+[-11!](#-11-streaming-execute)        streaming execute             -6!   [eval](../ref/eval.md)
+[-14!x](#-14x-quote-escape)       quote escape                  -7!   [hcount](../ref/hcount.md)
+[-16!x](#-16x-ref-count)       ref count                     -12!  [.Q.host](../ref/dotq.md#host-hostname)
+[-18!x](#-18x-compress-byte)       compress byte                 -13!  [.Q.addr](../ref/dotq.md#addr-ip-address)
+[-21!x](#-21x-compressionencryption-stats)       compression/encryption stats  -15!  [md5](../ref/md5.md)
+[-22!x](#-22x-uncompressed-length)       uncompressed length           -19!  [set](../ref/get.md#set)
+[-23!x](#-23x-memory-map)       memory map                    -20!  [.Q.gc](../ref/dotq.md#gc-garbage-collect)
+[-25!x](#-25x-async-broadcast)       async broadcast               -24!  [reval](../ref/eval.md#reval)
+[-26!x](#-26x-ssl)       SSL                           -29!  [.j.k](../ref/dotj.md#jk-deserialize)
+[-27!(x;y)](#-27xy-format)   format                        -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[-30!x](#-30x-deferred-response)       deferred response             -32!  [.Q.btoa](../ref/dotq.md#btoa-b64-encode)
+[-33!x](#-33x-sha-1-hash)       SHA-1 hash                    -34!  [.Q.ts](../ref/dotq.md#ts-time-and-space)
+[-36!](#-36-load-master-key)        load master key               -35!  [.Q.gz](../ref/dotq.md#gz-gzip)
+[-38!x](#-38x-socket-table)       socket table                  -37!  [.Q.prf0](../ref/dotq.md#prf0-code-profiler)
 [-120!x](#-120x-memory-domain)      memory domain
 </div>
 
@@ -211,10 +211,11 @@ q)get[`:test]~get`:ztest
 [`.z.zd` zip defaults](../ref/dotz.md#zzd-zip-defaults)
  -->
 
-## `-21!x` (compression stats)
+[](){#-21x-compression-stats}
+## `-21!x` (compression/encryption stats)
 
-Where `x` is a file symbol, returns a dictionary of compression statistics for it.
-The dictionary is empty if the file is not compressed.
+Where `x` is a file symbol, returns a dictionary of compression/encryption statistics for it. Encryption available since 4.0 2019.12.12.
+The dictionary is empty if the file is not compressed/encrypted.
 
 ```q
 q)-21!`:ztest       / compressed
@@ -226,6 +227,18 @@ zipLevel          | 6i
 q)-21!`:test        / not compressed
 q)count -21!`:test
 0
+q)-21!`:ztest       / encrypted
+compressedLength  | 40088
+uncompressedLength| 40008
+algorithm         | 16i
+logicalBlockSize  | 17i
+zipLevel          | 6i
+q)-21!`:ztest      / compressed and encrypted
+compressedLength  | 6504
+uncompressedLength| 40008
+algorithm         | 18i
+logicalBlockSize  | 17i
+zipLevel          | 6i
 ```
 
 :fontawesome-solid-book:
@@ -233,6 +246,9 @@ q)count -21!`:test
 <br>
 :fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
+<br>
+:fontawesome-solid-database:
+[Data at rest encryption (DARE)](../kb/dare.md)
 
 
 ## `-22!x` (uncompressed length)

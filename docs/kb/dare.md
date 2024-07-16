@@ -170,7 +170,7 @@ Or use [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) for a process-wide default set
 
 When using the global setting `.z.zd`, files which do not qualify for encryption are filenames with an extension. e.g. `abc.bin`, `.d`.
 
-Encryption adds a small amount of data, depending on the logical block size chosen, amounting to less than 2% of the overall size for typical DB files. The encoded size is reported via the command [`-21!filename`](../basics/internal.md#-21x-compression-stats).
+Encryption adds a small amount of data, depending on the logical block size chosen, amounting to less than 2% of the overall size for typical DB files. The encoded size is reported via the command [`-21!filename`](../basics/internal.md#-21x-compressionencryption-stats).
 
 ## File locking
 
