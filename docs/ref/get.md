@@ -70,12 +70,12 @@ _Assign a value to a global variable
 Persist an object as a file or directory_
 
 ```{.syntax style="font-size: .8em"}
-nam set y                set[nam;y]               /set global var nam
-fil set y                set[fil;y]               /serialize y to fil
-dir set t                set[dir;t]               /splay t to dir
-(fil;lbs;alg;lvl) set y  set[(fil;lbs;alg;lvl);y] /write y to fil, compressed and/or encrypted
-(dir;lbs;alg;lvl) set t  set[(dir;lbs;alg;lvl);t] /splay t to dir, compressed and/or encrypted
-(dir;dic) set t          set[(dir;dic);t]         /splay t to dir, compressed and/or encrypted
+nam set y                 set[nam;y]                /set global var nam
+file set y                set[file;y]               /serialize y to file
+dir set t                 set[dir;t]                /splay t to dir
+(file;lbs;alg;lvl) set y  set[(file;lbs;alg;lvl);y] /write y to file, compressed and/or encrypted
+(dir;lbs;alg;lvl) set t   set[(dir;lbs;alg;lvl);t]  /splay t to dir, compressed and/or encrypted
+(dir;dic) set t           set[(dir;dic);t]          /splay t to dir, compressed and/or encrypted
 ```
 
 Where
@@ -84,7 +84,7 @@ Where
 alg   integer atom     compression/encryption algorithm
 dic   dictionary       compression/encryption specifications
 dir   filesymbol       directory in the filesystem
-fil   filesymbol       file in the filesystem
+file  filesymbol       file in the filesystem
 lbs   integer atom     logical block size
 lvl   integer atom     compression level
 nam   symbol atom      valid q name
