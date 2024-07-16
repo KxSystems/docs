@@ -76,6 +76,8 @@ alg  algorithm  level  since
 
 !!! detail "Level 0 for `lz4hc` default compression; level>16 behaves the same as 16"
 
+!!! note "Algorithm is also used to specifiy the [encryption](dare.md#encryption) algorithm which can be [used with compression](dare.md#compression-with-encryption)"
+
 
 ### Selective compression
 

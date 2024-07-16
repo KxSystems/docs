@@ -233,12 +233,6 @@ uncompressedLength| 40008
 algorithm         | 16i
 logicalBlockSize  | 17i
 zipLevel          | 6i
-q)-21!`:ztest      / compressed and encrypted
-compressedLength  | 6504
-uncompressedLength| 40008
-algorithm         | 18i
-logicalBlockSize  | 17i
-zipLevel          | 6i
 ```
 
 :fontawesome-solid-book:

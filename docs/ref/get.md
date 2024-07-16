@@ -120,7 +120,7 @@ q)(`:ztbl;17;2;6) set t             / serialize compressed
 q)(`:ztbl/;17;2;6) set t            / splay table compressed
 `:ztbl/
 
-q)(`:ztbl/;17;2+16;6) set t         / splay table compressed and encrypted (since v4.0 2019.12.12)
+q)(`:ztbl/;17;16;6) set t           / splay table encrypted (since v4.0 2019.12.12)
 `:ztbl/
 ```
 

@@ -48,7 +48,7 @@ where
 
 `alg`
 
-: Compression algorithm: 0 (none), 1 (kdb+ IPC), or 2 (`gzip`)
+: [Compression](../../kb/file-compression.md#compression-parameters) and/or [encryption](../../kb/dare.md#encryption) algorithm
 
 `level`
 
