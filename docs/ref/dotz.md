@@ -1191,6 +1191,9 @@ Shorthand forms:
 .z.t  `time$.z.z     .z.d  `date$.z.z
 ```
 
+:fontawesome-solid-hand-point-right:
+[`.z.Z` local datetime](#zz-local-datetime), [`.z.z` UTC datetime](#zz-utc-datetime)
+
 
 ---
 :fontawesome-solid-graduation-cap:
