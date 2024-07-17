@@ -428,7 +428,7 @@ This line obtains the subset of tables in `t` that have the grouped attribute on
 .Q.hdpf[`$":",.u.x 1;`:.;x;`sym]
 ```
 
-[`.Q.hdpf`](../../ref/dotq/#qhdpf-save-table) is a high-level function which saves all in-memory tables to disk in partitioned format, empties them out and then instructs the HDB to reload. Its arguments at runtime here will be:
+[`.Q.hdpf`](../../ref/dotq.md#qhdpf-save-table) is a high-level function which saves all in-memory tables to disk in partitioned format, empties them out and then instructs the HDB to reload. Its arguments at runtime here will be:
 
 argument | value                 | semantics
 ---------|-----------------------|----------

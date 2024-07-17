@@ -56,7 +56,7 @@ bad lambda
 [](){#badmsg}
 badmsg
 
-:   Failure in [IPC validator](../releases/ChangesIn2.7/#ipc-message-validator)
+:   Failure in [IPC validator](../releases/ChangesIn2.7.md#ipc-message-validator)
 
 bad meta data in file
 

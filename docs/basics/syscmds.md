@@ -338,7 +338,7 @@ There is no garbage since q uses reference counting. As soon as there are no ref
 
 During that return of memory, q checks if the capacity of the object is ≥64MB. If it is and `\g` is 1, the memory is returned immediately to the OS; otherwise, the memory is returned to the thread-local heap for reuse.
 
-Executing [`.Q.gc[]`](../ref/dotq/#qgc-garbage-collect) additionally attempts to coalesce pieces of the heap into their original allocation units and returns any units ≥64MB to the OS.
+Executing [`.Q.gc[]`](../ref/dotq.md#qgc-garbage-collect) additionally attempts to coalesce pieces of the heap into their original allocation units and returns any units ≥64MB to the OS.
 
 Since V3.3 2015.08.23 (Linux only) unused pages in the heap are dropped from RSS during `.Q.gc[]`.
 
