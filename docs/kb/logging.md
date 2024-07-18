@@ -19,7 +19,7 @@ Software or hardware problems can cause a kdb+ server process to fail, possibly 
 
 Logging is enabled by using the [`-l` or `-L` command-line arguments](../basics/cmdline.md#-l-log-updates).
 
-This example will require a file `trade.q` containing instructions to create a trade table:
+This example requires a file `trade.q` containing instructions to create a trade table:
 ```q
 trade:([]time:`time$();sym:`symbol$();price:`float$();size:`int$())
 ```
