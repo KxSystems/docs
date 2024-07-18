@@ -130,7 +130,7 @@ q feed.q localhost:5010 -t 500
 ### Process examples
 
 Set focus on the RDB, and view the trade table. 
-Note that each time the table is viewed, it will be updated with the latest data:
+Note that each time the table is viewed, it is updated with the latest data:
 
 ```q
 q)trade
