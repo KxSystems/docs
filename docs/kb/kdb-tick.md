@@ -85,7 +85,7 @@ $ q chainedr.q :5010 -p 5111
 ### Write-only RDB
 
 The default behavior of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. 
-This makes sense if it’s actually queried during the day, but if the only reason for having an RDB is to be able to save the historical partition 
+This is acceptable if it’s actually queried during the day, but if the only reason for having an RDB is to be able to save the historical partition, 
 the amount of memory required to keep the in-memory database can be excessive.
 
 It would make sense to write the data to disk during the day so that it’s ready for day-end processing, but with only a small memory footprint to build bulk updates.
