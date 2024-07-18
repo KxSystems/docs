@@ -30,7 +30,7 @@ Multiple feed handlers can be used to gather data from a number of different sou
 KX’s [Fusion interfaces](../interfaces/index.md#fusion-interfaces) connect kdb+ to a range of other technologies, such as [R](../interfaces/r.md), Apache Kafka, Java, Python and [C](../interfaces/c-client-for-q.md).
 
 
-### TP
+### Tickerplant (TP)
 
 A TP (tickerplant) captures the initial data feed, writes it to the log file and [publishes](../kb/publish-subscribe.md) these messages to any registered subscribers.
 Aims for zero-latency.
