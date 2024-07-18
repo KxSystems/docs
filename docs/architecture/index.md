@@ -62,7 +62,7 @@ This is the file to which the Tickerplant logs the q messages it receives from t
     [Linux production notes](../kb/linux-production.md)
 
 
-### RDB
+### Real-time database (RDB)
 
 A RDB (real-time database) subscribes to messages from the Tickerplant, stores them in memory, and allows this data to be queried intraday.
 
