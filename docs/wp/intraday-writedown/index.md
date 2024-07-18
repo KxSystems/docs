@@ -566,7 +566,7 @@ The `genQuery` function could easily be expanded and refined based on what type 
 
 ### Limitations
 
-This solution, of course, comes with its own drawbacks, namely added complexity in maintaining the data in the RDB and in creating the HDB partition. Also, querying the data will be much more complicated as result of the data being stored in a different format in memory and in the temporary directory. However, depending on the use case, the benefits may outweigh the drawbacks.
+This solution, comes with some limitations, namely added complexity in maintaining the data in the RDB and in creating the HDB partition. Also, querying the data is much more complicated as result of the data being stored in a different format in memory and in the temporary directory. However, depending on the use case, the benefits may outweigh the drawbacks.
 
 ## Comparison of `w.q` and partitioned writedown
 
