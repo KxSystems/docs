@@ -99,9 +99,8 @@ is a potential replacement for the default RDB
 `w.q` connects to the tickerplant just like `r.q`, but it buffers up requests and, every `MAXROWS` records, writes the data to disk. 
 At day end, remaining data is flushed to disk, the database is sorted (on disk) and then moved to the appropriate date partition within the historical database.
 
-Note that it makes no sense to query the task running `w.q` as it will have a small (and variable-sized) selection of records. 
-Although it wouldn’t be difficult to modify it to keep say the last 5 minutes of data, 
-that sort of custom collection is probably better housed in a task running a [`c.q`](#cq)-like aggregation.
+!!! Note It is not recommended to query the task running `w.q` as it contains a small (and variable-sized) selection of records. 
+Although it wouldn’t be difficult to modify it to keep the last 5 minutes of data, for example, that sort of custom collection is probably better housed in a task running a [`c.q`](#cq)-like aggregation.
 
 Syntax:
 ```bash
