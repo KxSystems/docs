@@ -113,9 +113,9 @@ e.g.
 $ q w.q :5010 :5012
 ```
 
-The `-koe` or `-keeponexit` parameter governs the behavior when a `w.q` task is exited at user request i.e. `.z.exit` is called. 
-By default the data saved so far is deleted, as if the task were restarted it would be difficult to ensure it restarted from exactly the right place.
-It’s easier to replay the log and (re)write the data. If the flag is provided (or the `KEEPONEXIT` global set to `1b`) the data will not be removed.
+The `-koe` or `-keeponexit` parameter governs the behavior when a `w.q` task is exited at user request, when `.z.exit` is called. 
+By default, the data saved so far is deleted. If the task were restarted it would be difficult to ensure it restarted from exactly the right place.
+It’s easier to replay the log and (re)write the data. If the flag is provided (or the `KEEPONEXIT` global set to `1b`) the data is not removed.
 
 :fontawesome-regular-map:
 [Intraday writedown solutions](../wp/intraday-writedown/index.md)
