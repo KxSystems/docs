@@ -106,7 +106,7 @@ A RTE is sometimes referred to as a RTS (real-time subscriber).
 
 
 
-### HDB
+### Historical database (HDB)
 
 A HDB (historical database) provides a queryable data store of historical data;
 for example, for creating customer reports on order execution times, or sensor failure analyses.
