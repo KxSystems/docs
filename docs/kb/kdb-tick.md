@@ -96,7 +96,7 @@ is a potential replacement for the default RDB
 :fontawesome-brands-github:
 [KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q).
 
-`w.q` connects to the tickerplant just like `r.q`, but it buffers up requests and, every `MAXROWS` records, writes the data to disk. 
+`w.q` connects to the tickerplant, but buffers requests. Each time the number of records in the buffer is equal to  `MAXROWS`, it will write the records to disk.
 At day end, remaining data is flushed to disk, the database is sorted (on disk) and then moved to the appropriate date partition within the historical database.
 
 !!! Note It is not recommended to query the task running `w.q` as it contains a small (and variable-sized) selection of records. 

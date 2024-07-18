@@ -5,14 +5,11 @@ keywords: hdb, kdb+, q, rdb, tick, tickerplant, streaming
 ---
 # Architecture of kdb+ systems
 
+A kdb-tick based archecture can be used to capture, process and analyse vasts amount of real-time and historical data.
 
-_Applications that use kdb+ typically comprise multiple processes_
+The following diagram illustrates the components that are often found in a vanilla kdb-tick setup:
 
 ![architecture](../img/architecture.png)
-
-The small footprint of the q interpreter, the [interprocess communication](../basics/ipc.md) baked into q, and the range of [interfaces](../interfaces/index.md) available make it straightforward to incorporate kdb+ into a multi-process application architecture.
-
-Certain kinds of process recur across applications.
 
 ## Components
 
@@ -32,7 +29,7 @@ KX’s [Fusion interfaces](../interfaces/index.md#fusion-interfaces) connect kdb
 
 ### Tickerplant (TP)
 
-A TP (tickerplant) captures the initial data feed, writes it to the log file and [publishes](../kb/publish-subscribe.md) these messages to any registered subscribers.
+A kdb+ processing acting as a TP (tickerplant) captures the initial data feed, writes it to the log file and [publishes](../kb/publish-subscribe.md) these messages to any registered subscribers.
 Aims for zero-latency.
 Includes ingesting data in batch mode.
 
@@ -64,7 +61,7 @@ This is the file to which the Tickerplant logs the q messages it receives from t
 
 ### Real-time database (RDB)
 
-A RDB (real-time database) subscribes to messages from the Tickerplant, stores them in memory, and allows this data to be queried intraday.
+A kdb+ processing acting as a RDB (real-time database) subscribes to messages from the Tickerplant, stores them in memory, and allows this data to be queried intraday.
 
 At startup, the RDB sends a message to the tickerplant and receives a reply containing the data schema, the location of the log file, and the number of lines to read from the log file. It then receives subsequent updates from the TP as they are published.
 
@@ -87,9 +84,9 @@ At end of day usually writes intraday data to the Historical Database, and sends
     [Intraday writedown solutions](../wp/intraday-writedown/index.md)
 
 
-### RTE/RTS
+### Real-time engine/subscriber (RTE/RTS)
 
-A RTE (real-time engine) subscribes to the intraday messages and typically performs some additional function on receipt of new data – e.g. calculating an order book or maintaining a subtable with the latest price for each instrument.
+A kdb+ processing acting as a RTE (real-time engine) subscribes to the intraday messages and typically performs some additional function on receipt of new data – e.g. calculating an order book or maintaining a subtable with the latest price for each instrument.
 A RTE is sometimes referred to as a RTS (real-time subscriber).
 
 !!! tip "Best practices for real-time subscribers"
@@ -108,7 +105,7 @@ A RTE is sometimes referred to as a RTS (real-time subscriber).
 
 ### Historical database (HDB)
 
-A HDB (historical database) provides a queryable data store of historical data;
+A kdb+ processing acting as a HDB (historical database) provides a queryable data store of historical data;
 for example, for creating customer reports on order execution times, or sensor failure analyses.
 
 Large tables are usually stored on disk partitioned by date, with each column stored as its own file.
