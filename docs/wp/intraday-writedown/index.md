@@ -24,7 +24,7 @@ Tests performed using kdb+ version 3.1 2014.02.08
 
 ## Standard tick setup
 
-Most kdb+ users will be familiar with a [vanilla tick setup](../../architecture/index.md) which has a tickerplant (TP) receiving data and then logging it to disk and publishing to an in-memory realtime database (RDB) which keeps all of the current day’s data in memory. At the end of the day the RDB then commits this data to disk in a separate historical database (HDB) which stores all of this historical data. This means that the most recent data (and often most important) always has the fastest access time as it is stored in RAM.
+A common kdb+ [vanilla tick setup](../../architecture/index.md), has a tickerplant (TP) receiving data and then logs it to disk, whilst publishing to an in-memory realtime database (RDB), which keeps all of the current day’s data in memory. At the end of the day, the RDB commits this data to disk in a separate historical database (HDB) that stores all of this historical data. This means that the most recent data (and often most important) always has the fastest access time as it is stored in RAM.
 
 The standard approach above can be limited by available RAM if daily data volumes grow too large. It is important to realize also that extra RAM is required to query the data, on top of what is required to keep it in memory. The extra amount required will vary depending on the different use cases and queries that are run on it. Consideration must also be given to other processes such as chained RDBs or HDBs which will need to share the resources on the server.
 
