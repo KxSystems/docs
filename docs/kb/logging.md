@@ -227,7 +227,7 @@ q)value each get `:logfile.2013.12.03
 
 If successful, the number of chunks executed is returned. 
 
-If the end of the file is corrupt a `badtail` error is signalled, which may be partially [recovered](#replay-from-corrupt-logs).
+If the end of the file is corrupt, a `badtail` error is signalled, which may be partially [recovered](#replay-from-corrupt-logs).
 
 In the event that the log file references an undefined function, the function name is signalled as an error. This can be confusing if the missing function name is `upd`, as it does not reflect the same situation as the license expiry `upd` error. e.g.
 
