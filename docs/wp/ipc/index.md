@@ -617,8 +617,6 @@ handle| ip         user    status
 
 ## Application of IPC in a kdb+ tick system
 
-![Tick diagram](img/tick-diagram.png)
-
 :fontawesome-solid-graduation-cap:
 [Realtime database](../../learn/startingkdb/tick.md)
 <br>
@@ -632,7 +630,7 @@ The core elements of this kdb+ tick setup are
 -   A historical database (HDB)
 -   A source of data (feed)
 
-The discussion uses the KX tick code to explore how IPC is used in a vanilla tick application.
+The discussion uses the KX tick code to explore how IPC is used in a [vanilla tick application](../../architecture/index.md).
 
 :fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) 

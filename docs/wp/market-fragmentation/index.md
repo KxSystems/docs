@@ -265,10 +265,10 @@ The final step is to aggregate by the originally supplied user `symList`.
 byClause:(enlist`sym)!enlist`origSymList;
 ```
 
-We then look up the multimarket rules for the columns we are interested in, use `-5!` to parse each string, and create a dictionary mapping each column name to its corresponding aggregation. This dictionary is required for the final parameter into the functional select.
+We then look up the multimarket rules for the columns we are interested in, use [`parse`](../../ref/parse.md) to parse each string, and create a dictionary mapping each column name to its corresponding aggregation. This dictionary is required for the final parameter into the functional select.
 
 ```q
-aggClause:columns!-5!'.cfg.multiMarketAgg[columns:params`columns]
+aggClause:columns!parse each .cfg.multiMarketAgg[columns:params`columns]
 ```
 
 `aggClause` is thus defined as:
@@ -391,7 +391,7 @@ res:select volume:sum[size], vwap:wavg[size;price], range:max[price]-min[price],
 if[params[`multiMarketRule]~`multi;
     res:lj[res;`sym xkey select sym:symList, origSymList from extended_syms]; 
     byClause:(enlist`sym)!enlist`origSymList;
-    aggClause:columns!-5!'.cfg.multiMarketAgg[columns:params`columns]; 
+    aggClause:columns!parse each .cfg.multiMarketAgg[columns:params`columns]; 
     res:0!?[res;();byClause;aggClause];
   ];
   :(`sym,params[`columns])\#0!res

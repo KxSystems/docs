@@ -1,55 +1,127 @@
 ---
-title: kdb+tick configuration – Knowledge Base – kdb+ and q documentation
+title: kdb+tick alternative architecture – Knowledge Base – kdb+ and q documentation
 description: A ‘vanilla’ tick setup has a tickerplant (TP) logging to disk and publishing to an in-memory realtime database (RDB) – and at day-end the RDB data is saved to disk as another day in the history database (HDB). Users typically query the RDB or HDB directly. It doesn’t have to be that way. There are a many other ways of assembling the kdb+tick “building blocks” to reduce or share the load.
 keywords: chained, hdb, kdb+, q, rdb, tick, tickerplant
 ---
-# kdb+tick configuration
+# kdb+tick alternative architecture
 
 
-
-
-
-A ‘vanilla’ tick setup has a tickerplant (TP) logging to disk and publishing to an in-memory realtime database (RDB) – and at day-end the RDB data is saved to disk as another day in the history database (HDB). Users typically query the RDB or HDB directly.
+A [‘vanilla’](../architecture/index.md) tick setup has a tickerplant (TP) logging to disk and publishing to an in-memory realtime database (RDB) – and at day-end the RDB data is saved to disk as another day in the history database (HDB). Users typically query the RDB or HDB directly.
 
 It doesn’t have to be that way. There are a _many_ other ways of assembling the kdb+tick “building blocks” to reduce or share the load.
 
 
-## Chained tickerplants
+## TP
 
-Starting at the beginning with the TP: if this is running in zero-latency mode (i.e. all updates are published immediately to subscribers) it is completely over-the-top to have a client task that is only plotting graphs subscribe for instantaneous update – an update every few seconds would be quite adequate.
+### Chained tickerplants
 
-One way of doing this is to have a chained TP, or even a chain of them. The first TP would be a zero-latency TP – and would have only clients who truly need immediate update. It in turn would have as one of its clients a TP publishing bulk updates every 100ms. That in turn would have a chained tickerplant as client that publishes updates only every second. Clients then subscribe to the TP with granularity that suits their needs. 
+If the primary tickerplant is running in zero-latency mode (i.e. all updates are published immediately to subscribers) 
+it can be inefficient to have a client task that is only plotting graphs subscribe for instantaneous update. An update every few seconds would be quite adequate.
 
-:fontawesome-regular-hand-point-right: 
-[Chained tickerplant and RDB for kdb+tick](chained-tickerplant.md)
+One way of doing this is to have a chained tickerplant, or even a chain of them. 
 
+A chained tickerplant subscribes to the primary tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn.
+Unlike the primary tickerplant, *it doesn’t keep its own log*.
 
-## No RDB
+If the primary tickerplant is a zero-latency tickerplant the chained tickerplant can be a more traditional tickerplant that chunks up updates on a timer. 
+For example if clients are using data from the tickerplant to drive a GUI, it may not need updates hundreds of times per second.
+A tickerplant that updates once a second would suffice
 
-Next in the chain comes the RDB. An RDB is an in-memory database, and by day-end can be using a lot of memory. If clients are querying that data intra-day then the memory cost is reasonable – but if the data’s only being collected for insertion into the HDB at day-end the overhead is unreasonable. In such a case it would make sense to write the data to disk during the day so that it’s ready for day-end processing, but with only a small memory footprint to build bulk updates.
+#### Example
 
-:fontawesome-regular-hand-point-right: 
-[Write-only alternative to RDB](w-q.md)
+The example script [`chainedtick.q`](https://github.com/KxSystems/kdb/blob/master/tick/chainedtick.q) can be run as follows:
+```bash
+q chainedtick.q [host]:port[:usr:pwd] [-p 5110] [-t N]
+```
 
+!!! note
+    chainedtick.q contains `\l tick/u.q` therefore has a dependancy on [`u.q`](https://github.com/KxSystems/kdb-tick/blob/master/tick/u.q) existing within the directory `tick`.
 
-## Chained RDBs
+If the primary tickerplant is running on the same host (port 5010), the following starts a chained tickerplant on port 5010 sending bulk updates, every 1000 milliseconds.
+```bash
+$ q chainedtick.q :5010 -p 5110 -t 1000
+```
 
-The other extreme is when one RDB isn’t enough - then the same approach can be used with multiple chained RDBs. Depending on the sort of clients it has it may be enough for one of the chained RDBs to subscribe to a bulk-update TP rather than the fastest zero-latency one.
+Start a chained tickerplant which echoes updates immediately.
+```bash
+q chainedtick.q :5010 -p 5110 -t 0
+```
 
-A chained RDB doesn’t have to subscribe to the whole ‘firehose’. It might be useful to have a TP with only the stocks building a particular index, or perhaps only trades and no quotes.
+:fontawesome-brands-github:
+[KxSystems/kdb/tick/chainedtick.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedtick.q)
+<br>
+:fontawesome-brands-github:
+[KxSystems/kdb-tick/tick/u.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/u.q)
 
-:fontawesome-regular-hand-point-right: 
-[Chained tickerplant and RDB for kdb+tick](chained-tickerplant.md)
+## RDB
 
+### Chained RDBs
 
-## Working with the TP logfile
+A chained RDB can either be connected to the primary tickerplant, or to a chained tickerplant. 
+Unlike a default RDB, the chained RDB doesn't have any day-end processing beyond emptying all tables.
 
-The TP logs the updates published to subscribers to a file. In the event of a serious crash, this file can be rescued using the utility functions in 
-:fontawesome-brands-github: 
-[simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q)
+The benefit is similar to that of a chained tickerplant i.e. being able to keep ordinary users away from the primary RDB. 
+In particular, the CPU load will reduce if connecting to a chained bulking tickerplant instead of a primary zero latency tickerplant.
 
+A chained RDB doesn’t have to subscribe to the whole set of available data.
+It might be useful to have an RDB with only the stocks building a particular index, or perhaps only trades and no quotes.
 
-## `c.q`
+Don’t forget though that a second RDB will increase the memory usage, as it's an in-memory database and can’t be sharing any data with the primary RDB.
+
+#### Example
+
+The example script [`chainedr.q`](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q) can be run as follows:
+```bash
+q chainedr.q [host]:port[:usr:pwd] [-p 5111]
+```
+
+If a tickerplant is running on the same host (port 5010), the following starts a chained RDB on port 5111
+```q
+$ q chainedr.q :5010 -p 5111 
+```
+
+:fontawesome-brands-github: [KxSystems/kdb/tick/chainedr.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q)
+
+### Write-only RDB
+
+The default behavior of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. 
+This is acceptable if it’s actually queried during the day, but if the only reason for having an RDB is to be able to save the historical partition, 
+the amount of memory required to keep the in-memory database can be excessive.
+
+It would make sense to write the data to disk during the day so that it’s ready for day-end processing, but with only a small memory footprint to build bulk updates.
+
+:fontawesome-brands-github:
+[simongarland/tick/w.q](https://github.com/simongarland/tick/blob/master/w.q)
+is a potential replacement for the default RDB
+:fontawesome-brands-github:
+[KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q).
+
+`w.q` connects to the tickerplant, but buffers requests. Each time the number of records in the buffer is equal to  `MAXROWS`, it will write the records to disk.
+At day end, remaining data is flushed to disk, the database is sorted (on disk) and then moved to the appropriate date partition within the historical database.
+
+!!! Note It is not recommended to query the task running `w.q` as it contains a small (and variable-sized) selection of records. 
+Although it wouldn’t be difficult to modify it to keep the last 5 minutes of data, for example, that sort of custom collection is probably better housed in a task running a [`c.q`](#cq)-like aggregation.
+
+Syntax:
+```bash
+q w.q [tickerplanthost]:port[:usr:pwd] [hdbhost]:port[:usr:pwd] [-koe|keeponexit]
+```
+
+e.g.
+```bash
+$ q w.q :5010 :5012
+```
+
+The `-koe` or `-keeponexit` parameter governs the behavior when a `w.q` task is exited at user request, when `.z.exit` is called. 
+By default, the data saved so far is deleted. If the task were restarted it would be difficult to ensure it restarted from exactly the right place.
+It’s easier to replay the log and (re)write the data. If the flag is provided (or the `KEEPONEXIT` global set to `1b`) the data is not removed.
+
+:fontawesome-regular-map:
+[Intraday writedown solutions](../wp/intraday-writedown/index.md)
+
+## RTE
+
+### `c.q`
 
 Another often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. 
 
@@ -61,7 +133,7 @@ A more interesting example is keeping a table of the latest trade and the associ
 [KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
 
 
-## `clog.q`
+### `clog.q`
 
 The default version of `c.q` linked to above connects to a TP and starts collecting data. Sometimes that’s not enough and you want to replay the log through the task first. (For example, to get the Open/High/Low for the day, not just since starting the task.) For that, use `clog.q` instead. 
 
@@ -69,7 +141,7 @@ The default version of `c.q` linked to above connects to a TP and starts collect
 [simongarland/tick/clog.q](https://github.com/simongarland/tick/blob/master/clog.q)
 
 
-## `daily.q`
+### `daily.q`
 
 By default, the end-of-day processing simply saves the intra-day RDB to disk after a little re-organization. 
 

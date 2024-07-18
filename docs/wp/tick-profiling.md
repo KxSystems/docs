@@ -392,7 +392,7 @@ We can see that increasing the number of subscribers increases the tickerplant p
 If there are multiple subscribers to a tickerplant it might be worth considering a chained tickerplant to reduce the number of subscribers. Only the chained tickerplant and the subscribers which need the data as quickly as possible would subscribe to the main tickerplant. Then other subscribers would subscribe to the chained tickerplant to get the data.
 
 :fontawesome-regular-hand-point-right:
-Knowledge Base: [Chained tickerplant](../kb/chained-tickerplant.md)
+[Chained tickerplant](../kb/kdb-tick.md#chained-tickerplants)
 
 
 ## Conclusion
@@ -407,7 +407,7 @@ This white paper examined some key factors which can influence the performance a
 
 -   **Publish frequency** Buffering the messages in the tickerplant and publishing on a timer improves throughput. The CPU usage of the RDB also decreases as the data is being batched up into fewer updates per second. However, it is not suitable if the subscribers need the data immediately. Writing the messages to disk on a timer improves throughput further but more data could be lost if the tickerplant dies. The improvement is more noticeable as the number of updates per second increases.
 
--   **Number of subscribers** Adding more subscribers increases the load on the tickerplant. To reduce this, consider using a [chained tickerplant](../kb/chained-tickerplant.md). Even existing subscribers will be affected if more subscribers are added since the internal message queues for each subscriber are all written to before the queues are flushed.
+-   **Number of subscribers** Adding more subscribers increases the load on the tickerplant. To reduce this, consider using a [chained tickerplant](../kb/kdb-tick.md#chained-tickerplants). Even existing subscribers will be affected if more subscribers are added since the internal message queues for each subscriber are all written to before the queues are flushed.
 
 These are not the only factors that contribute to a tickerplant’s performance. A complete analysis would also examine the effects that network latency and bandwidth, disk write-speed and TCP/IP tuning have on tickerplant performance.
 

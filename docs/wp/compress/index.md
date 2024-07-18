@@ -23,36 +23,15 @@ All tests were run using kdb+ version 3.1 (2013.09.05)
 
 ## Compression options
 
-There are two high-level approaches to saving on-disk data in compressed format. The first is a two-step approach: save data to disk in the regular uncompressed format using `set`, then convert it to a compressed format using the `-19!` operator. The second approach is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
-
-:fontawesome-regular-hand-point-right:
-Reference: [`set`](../../ref/get.md#set), 
-[`-19!`](../../basics/internal.md#-19x-compress-file)
+There are two high-level approaches to saving on-disk data in compressed format. The first is a two-step approach: save data to disk in the regular uncompressed format using [`set`](../../ref/get.md#set), then convert it to a compressed format using `set`. The second approach is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
 
 The first approach is useful for archiving existing historical data, or in cases where it is significantly faster to save the data to disk uncompressed, without the overhead of first compressing the data. In many other cases, it can be more convenient and/or performant to compress the data on the fly while saving.
 
 
-### Converting saved data to compressed format using `-19!`
+### Converting saved data to compressed format using `set`
 
-The syntax of `-19!` is:
-
-```q
--19! (`:sourceFile; `:targetFile; blockSize; alg; level) 
-```
-
-where
-
-`blockSize`
-
-: is logical block size, a power of 2 between 12 and 20: page size or allocation granularity to 1MB (see note). This argument affects both compression speed and compression ratio: larger blocks can be slower and better compressed.
-
-`alg`
-
-: Compression algorithm: 0 (none), 1 (kdb+ IPC), or 2 (`gzip`)
-
-`level`
-
-: Compression level: for `gzip`, an integer between 0 and 9; else 0.
+:fontawesome-regular-hand-point-right:
+Reference: [`set`](../../ref/get.md#set)
 
 !!! tip "Logical block size"
 
@@ -64,7 +43,7 @@ The various combinations of arguments will be discussed further in the following
 
 ```q
 `:/db/trade_uncompressed set trade
--19! (`:/db/trade_uncompressed; `:/db/trade_compressed; 16; 1; 0)
+(`:/db/trade_compressed; 16; 1; 0) set `:/db/trade_uncompressed
 ```
 
 If this approach is used to compress data, it is preferable to have the source and target files on separate physical disks. This will reduce the number of disk seeks required to move the data iteratively in chunks. 
@@ -94,7 +73,7 @@ t:([]a:asc 1000000?10; b:asc 1000000?10; c:asc 1000000?10)
 
 ### Compression defaults
 
-Rather than specifying the compression parameters individually every time `set` is called, we also have the option of defining default compression parameters which will be used if `set` is called the old-fashioned way, i.e. `` `:filename set table``. This is done by defining the [zip-defaults variable `.z.zd`](../../ref/dotz.md#zzd-zip-defaults). The format is the same as the non-filename arguments passed to `set`, e.g.
+Rather than specifying the compression parameters individually every time `set` is called, we also have the option of defining default compression parameters which will be used if `set` is called the old-fashioned way, i.e. `` `:filename set table``. This is done by defining the [zip-defaults variable `.z.zd`](../../ref/dotz.md#zzd-compressionencryption-defaults). The format is the same as the non-filename arguments passed to `set`, e.g.
 
 ```q
 .z.zd:(17;2;6);`:zfile set asc 10000?`3

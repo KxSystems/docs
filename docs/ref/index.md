@@ -60,9 +60,9 @@ author: Stephen Taylor
 <tr markdown>
 </tr>
 <tr markdown> <td markdown class="kx-glyph">`+ - * %`</td><td colspan="7" markdown>[Add](add.md), [Subtract](subtract.md), [Multiply](multiply.md), [Divide](divide.md)</td> </tr>
-<tr markdown> <td markdown class="kx-glyph">`= <> ~`</td><td colspan="7" markdown>[Equals](../basics/comparison/#six-comparison-operators), [Not Equals](../basics/comparison/#six-comparison-operators), [Match](../basics/comparison/#match)</td></tr>
+<tr markdown> <td markdown class="kx-glyph">`= <> ~`</td><td colspan="7" markdown>[Equals](../basics/comparison.md#six-comparison-operators), [Not Equals](../basics/comparison.md#six-comparison-operators), [Match](../basics/comparison.md#match)</td></tr>
 <tr markdown>
-<td markdown class="kx-glyph">`< <= >= >`</td><td colspan="7" markdown>[Less Than](../basics/comparison/#six-comparison-operators), [Up To](../basics/comparison/#six-comparison-operators), [At Least](../basics/comparison/#six-comparison-operators), [Greater Than](../basics/comparison/#six-comparison-operators)</td>
+<td markdown class="kx-glyph">`< <= >= >`</td><td colspan="7" markdown>[Less Than](../basics/comparison.md#six-comparison-operators), [Up To](../basics/comparison.md#six-comparison-operators), [At Least](../basics/comparison.md#six-comparison-operators), [Greater Than](../basics/comparison.md#six-comparison-operators)</td>
 </tr>
 <tr markdown> <td markdown class="kx-glyph">`| &`</td><td colspan="3" markdown>[Greater (OR)](greater.md), [Lesser, AND](lesser.md)</td> </tr>
 <tr markdown>

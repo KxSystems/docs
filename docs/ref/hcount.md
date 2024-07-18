@@ -22,7 +22,7 @@ q)hcount`:c:/q/test.txt
 42
 ```
 
-On a compressed file returns the size of the original uncompressed file.
+On a compressed/encrypted file returns the size of the original uncompressed/unencrypted file.
 
 ----
 :fontawesome-solid-book-open:
@@ -30,3 +30,6 @@ On a compressed file returns the size of the original uncompressed file.
 <br>
 :fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
+<br>
+:fontawesome-solid-database:
+[Data at rest encryption (DARE)](../kb/dare.md)

@@ -16,7 +16,7 @@ Q operators and keywords read both compressed and uncompressed files.
 ## Write compressed files
 
 Use [`set`](../ref/get.md#set) with a left argument that specifies the file or splay target, and the [compression parameters](#compression-parameters).
-(For a splayed table, you can [specify the compression of each column](../ref/get.md#compression).)
+(For a splayed table, you can [specify the compression of each column](../ref/get.md#compressionencryption).)
 
 ```q
 q)`:a set 1000#enlist asc 1000?10  / uncompressed file
@@ -76,6 +76,8 @@ alg  algorithm  level  since
 
 !!! detail "Level 0 for `lz4hc` default compression; level>16 behaves the same as 16"
 
+!!! note "Algorithm is also used to specifiy the [encryption](dare.md#encryption) algorithm which can be [used with compression](dare.md#compression-with-encryption)"
+
 
 ### Selective compression
 
@@ -87,7 +89,7 @@ So files that do not compress well, or have an access pattern that does not perf
 
 ### Compression statistics
 
-The [`-21!` internal function](../basics/internal.md#-21x-compression-stats) returns a dictionary of compression statistics, or an empty dictionary if the file is not compressed.
+The [`-21!` internal function](../basics/internal.md#-21x-compressionencryption-stats) returns a dictionary of compression statistics, or an empty dictionary if the file is not compressed.
 
 [`hcount`](../ref/hcount.md) returns the uncompressed file length.
 
@@ -96,7 +98,7 @@ The [`-21!` internal function](../basics/internal.md#-21x-compression-stats) ret
 
 kdb+ can write compressed files by default.
 
-This is governed by the [zip defaults `.z.zd`](../ref/dotz.md#zzd-zip-defaults).
+This is governed by the [zip defaults `.z.zd`](../ref/dotz.md#zzd-compressionencryption-defaults).
 Set this as an integer vector, e.g.
 
 ```q

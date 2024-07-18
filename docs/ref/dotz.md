@@ -36,7 +36,7 @@ Environment                        Callbacks
  [.z.W/w  handles/handle](#zw-handles)
  [.z.X/x  raw/parsed command line](#zx-raw-command-line)
  [.z.Z/z  local/UTC datetime](#zz-local-datetime)
- [.z.zd   zip defaults](#zzd-zip-defaults)
+ [.z.zd   compression/encryption defaults](#zzd-compressionencryption-defaults)
 </div>
 
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
@@ -1153,14 +1153,16 @@ q).z.z
 [`.z.Z` local datetime](#zz-local-datetime), [`.z.P` local timestamp](#zp-local-timestamp), [`.z.p` UTC timestamp](#zp-utc-timestamp) [`.z.N` local timespan](#zn-local-timespan), [`.z.n` UTC timespan](#zn-utc-timespan)
 
 
-## `.z.zd` (zip defaults)
+[](){#zzd-zip-defaults}
+## `.z.zd` (compression/encryption defaults)
 
 ```syntax
 .z.zd:(lbs;alg;lvl)
 ```
 
-Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters).
-They set default values for logical block size, compression algorithm and compression level that apply when saving to files with no file extension.
+Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#encryption).
+They set default values for logical block size, compression/encryption algorithm and compression level that apply when saving to files with no file extension.
+Encryption available since 4.0 2019.12.12.
 
 ```q
 q).z.zd:17 2 6        / set zip defaults
@@ -1175,6 +1177,9 @@ q)\x .z.zd            / clear zip defaults
 <br>
 :fontawesome-regular-map:
 [Compression in kdb+](../wp/compress/index.md)
+<br>
+:fontawesome-solid-database:
+[Data at rest encryption (DARE)](../kb/dare.md)
 
 
 ## `.z.T` `.z.t` `.z.D` `.z.d` (time/date shortcuts)
@@ -1185,6 +1190,9 @@ Shorthand forms:
 .z.T  `time$.z.Z     .z.D  `date$.z.Z
 .z.t  `time$.z.z     .z.d  `date$.z.z
 ```
+
+:fontawesome-solid-hand-point-right:
+[`.z.Z` local datetime](#zz-local-datetime), [`.z.z` UTC datetime](#zz-utc-datetime)
 
 
 ---

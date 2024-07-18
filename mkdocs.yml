@@ -133,7 +133,7 @@ nav:
         - IDE: learn/tour/ide.md
       - Q for quants: learn/brief-introduction.md
       - Q by Examples: learn/q-by-examples.md
-      - Q for All: learn/q-for-all.md
+      - Q for All (video): learn/q-for-all.md
       # - Q for Pythons:
       #   - Introduction: learn/python/index.md
       #   - Primer:
@@ -458,7 +458,6 @@ nav:
         - Listening port: basics/listening-port.md
         - Deferred response: kb/deferred-response.md
         - Async callbacks: kb/callbacks.md
-        - Async callbacks (C client): kb/server-calling-client.md
         - Named pipes: kb/named-pipes.md
         - Serialization examples: kb/serialization.md
         - Socket sharding: wp/socket-sharding/index.md
@@ -492,12 +491,11 @@ nav:
         - Firewalling: kb/firewalling.md
         - inetd, xinetd: kb/inetd.md
         - Linux production notes: kb/linux-production.md
-        - Logging: kb/logging.md
+        - Log Files: kb/logging.md
         - Multi-threading: wp/multi-thread/index.md
         - Multiple versions: kb/versions.md
         - Parallel processing: basics/peach.md
         - Performance tips: kb/performance-tips.md
-        - Replay logfile: kb/replay-log.md
         - Shebang script: develop/shebang.md
         - Surveillance latency: wp/surveillance-latency/index.md
         - Windows service: kb/windows-service/index.md
@@ -524,23 +522,21 @@ nav:
       # - Environment: basics/environment.md
       - Developer tools: devtools.md
       - FAQ: kb/faq-listbox.md
-    - Architecture:
-      - About: architecture/index.md
+    - Streaming:
+      - General architecture: architecture/index.md
+      - Alternative architecture: kb/kdb-tick.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
-      - Chained tickerplant: kb/chained-tickerplant.md
       - Corporate actions: kb/corporate-actions.md
-      - Data recovery for kdb+tick: wp/data-recovery.md
+      - Data recovery: wp/data-recovery.md
       - Disaster recovery: wp/disaster-recovery/index.md
       - Gateway design: wp/gateway-design/index.md
-      - kdb+tick configuration: kb/kdb-tick.md
-      - kdb+tick profiling: wp/tick-profiling.md
+      - Profiling: wp/tick-profiling.md
       - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
       - Load balancing: kb/load-balancing.md
       - Order Book: wp/order-book.md
       - Publish and subscribe: kb/publish-subscribe.md
       - Query Routing: wp/query-routing/index.md
       - Real-time tick subscribers: wp/rt-tick/index.md
-      - Write-only RDB: kb/w-q.md
       - Advanced:
         - Distributed systems: wp/query-interface.md
         - Intraday writedown: wp/intraday-writedown/index.md
@@ -551,6 +547,7 @@ nav:
           - API reference: interfaces/capiref.md
           - C API for kdb+: wp/capi/index.md
           - Using C/C++ functions: interfaces/using-c-functions.md
+          - Async callbacks (C client): kb/server-calling-client.md
         - C#: interfaces/csharp.md
         - Foreign Function Interface (FFI): interfaces/ffi.md
         - Java: interfaces/java.md
