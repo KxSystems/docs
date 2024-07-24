@@ -35,6 +35,7 @@ q chainedtick.q [host]:port[:usr:pwd] [-p 5110] [-t N]
 ```
 
 !!! note
+
     chainedtick.q contains `\l tick/u.q` therefore has a dependancy on [`u.q`](https://github.com/KxSystems/kdb-tick/blob/master/tick/u.q) existing within the directory `tick`.
 
 If the primary tickerplant is running on the same host (port 5010), the following starts a chained tickerplant on port 5010 sending bulk updates, every 1000 milliseconds.
@@ -99,8 +100,10 @@ is a potential replacement for the default RDB
 `w.q` connects to the tickerplant, but buffers requests. Each time the number of records in the buffer is equal to  `MAXROWS`, it will write the records to disk.
 At day end, remaining data is flushed to disk, the database is sorted (on disk) and then moved to the appropriate date partition within the historical database.
 
-!!! Note It is not recommended to query the task running `w.q` as it contains a small (and variable-sized) selection of records. 
-Although it wouldn’t be difficult to modify it to keep the last 5 minutes of data, for example, that sort of custom collection is probably better housed in a task running a [`c.q`](#cq)-like aggregation.
+!!! note 
+
+    It is not recommended to query the task running `w.q` as it contains a small (and variable-sized) selection of records. 
+    Although it wouldn’t be difficult to modify it to keep the last 5 minutes of data, for example, that sort of custom collection is probably better housed in a task running a [`c.q`](#cq)-like aggregation.
 
 Syntax:
 ```bash
