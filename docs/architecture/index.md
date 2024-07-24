@@ -37,6 +37,8 @@ Manages subscriptions: adds and removes subscribers, and sends subscriber table 
 
 Handles end-of-day (EOD) processing.
 
+[`tick.q`](tickq.md) represents a tickerplant and is provided as a starting point for most environments.
+
 !!! tip "Best practices for tickerplants"
 
     Tickerplants should be lightweight, not capturing data and using very little memory. 
@@ -66,6 +68,8 @@ A kdb+ processing acting as a RDB (real-time database) subscribes to messages fr
 At startup, the RDB sends a message to the tickerplant and receives a reply containing the data schema, the location of the log file, and the number of lines to read from the log file. It then receives subsequent updates from the TP as they are published.
 
 At end of day usually writes intraday data to the Historical Database, and sends it a new EOD message.
+
+[`r.q`](rq.md) represents a tickerplant and is provided as a starting point for most environments.
 
 !!! tip "Best practices for real-time databases"
 
@@ -156,27 +160,4 @@ Can connect both the real-time and historical data to allow users to query acros
     :fontawesome-regular-map:
     [Query Routing: A kdb+ framework for a scalable, load balanced system](../wp/query-routing/index.md)
 
-
-## :fontawesome-solid-hand-point-right: What next?
-
-:fontawesome-regular-map:
-[Building real-time tick subscribers](../wp/rt-tick/index.md)
-<br>
-:fontawesome-regular-map:
-[Data recovery for kdb+ tick](../wp/data-recovery.md)
-<br>
-:fontawesome-regular-map:
-[Disaster-recovery planning for kdb+ tick systems](../wp/disaster-recovery/index.md)
-<br>
-:fontawesome-regular-map:
-[Intraday writedown solutions](../wp/intraday-writedown/index.md)
-<br>
-:fontawesome-regular-map:
-[Query routing: a kdb+ framework for a scalable load-balanced system](../wp/query-routing/index.md)
-<br>
-:fontawesome-regular-map:
-[Order book: a kdb+ intraday storage and access methodology](../wp/order-book.md)
-<br>
-:fontawesome-regular-map:
-[kdb+tick profiling for throughput optimization](../wp/tick-profiling.md)
 

@@ -464,7 +464,6 @@ nav:
         - SSL/TLS: kb/ssl.md
         - HTTP: kb/http.md
         - WebSockets: kb/websockets.md
-        - Interprocess communication (WP): wp/ipc/index.md
       - Tools:
         - Code profiler: kb/profiler.md
         - Debugging: basics/debug.md
@@ -523,7 +522,12 @@ nav:
       - Developer tools: devtools.md
       - FAQ: kb/faq-listbox.md
     - Streaming:
-      - General architecture: architecture/index.md
+      - General architecture:
+        - Environment: architecture/index.md
+        - kdb-tick:
+          - Tickerplant (tick.q): architecture/tickq.md
+          - u.q: architecture/uq.md
+          - RDB (r.q): architecture/rq.md
       - Alternative architecture: kb/kdb-tick.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Corporate actions: kb/corporate-actions.md
