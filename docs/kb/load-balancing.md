@@ -36,7 +36,7 @@ q)h "xs"
 0 1 2 3 4 5 6 7 8
 ```
 
-Asynchronous messages are forwarded to one of the secondary servers, transparently to the client. The code below issues an asynchronous request, then [blocks on the handle](../basics/ipc.md#async-blocking) waiting for a result to be returned. This is called _deferred synchronous_.
+Asynchronous messages are forwarded to one of the secondary servers, transparently to the client. The code below issues an asynchronous request, then [blocks on the handle](../basics/ipc.md#async-blocking) waiting for a result to be returned. This is called [_deferred synchronous_](../basics/ipc.md#deferred-sync).
 
 ```q
 q)(neg h) "select sym,price from trade where size > 50000" ; h[]
