@@ -93,9 +93,7 @@ It would make sense to write the data to disk during the day so that it’s read
 
 :fontawesome-brands-github:
 [simongarland/tick/w.q](https://github.com/simongarland/tick/blob/master/w.q)
-is a potential replacement for the default RDB
-:fontawesome-brands-github:
-[KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q).
+is a potential replacement for the default RDB ([`r.q`](../architecture/rq.md))
 
 `w.q` connects to the tickerplant, but buffers requests. Each time the number of records in the buffer is equal to  `MAXROWS`, it will write the records to disk.
 At day end, remaining data is flushed to disk, the database is sorted (on disk) and then moved to the appropriate date partition within the historical database.
@@ -126,7 +124,7 @@ It’s easier to replay the log and (re)write the data. If the flag is provided 
 
 ### `c.q`
 
-Another often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. 
+An often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. 
 
 A simple example would be keeping a running Open/High/Low/Latest: much simpler to update incrementally with data from the TP each time something changes than to build from scratch. 
 

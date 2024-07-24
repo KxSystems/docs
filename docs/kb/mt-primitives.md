@@ -6,10 +6,6 @@ date: March 2020
 ---
 # :fontawesome-solid-bolt: Multithreaded primitives
 
-
-![Parallelism](../img/parallelism.jpg)
-<!-- GettyImages-1133385944 -->
-
 To complement existing explicit parallel computation facilities ([`peach`](../ref/each.md)), kdb+ 4.0 introduces implicit, within-primitive parallelism. It is able to exploit internal parallelism of the hardware – in-memory, with modern multi-channel memory architectures, and on-disk, e.g. making use of SSD internal parallelism. 
 
 ```q
@@ -21,6 +17,8 @@ q)(s;r[0]%r;r:st[;"\\t:100 f a"]each s:1 4 16 32)
 1    4.1 8.3 11 / speedup
 1082 262 131 95 / time, ms
 ```
+
+## Supported Primitives
 
 The following primitives now use multiple threads where appropriate:
 
