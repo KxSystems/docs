@@ -200,7 +200,7 @@ Actions performed:
     * inspect [`.u.d`](#variables), if a new day has occured call [`.z.ts`](#batch-mode_1)
     * add a new timespan column populated with the current local time ([`.z.P`](../ref/dotz.md#zp-local-timestamp)). If mutiple rows of data, all rows receive the same time.
 * Add data to current batch (i.e. new data `y` inserted into table `x`), which will be published on batch timer [`.z.ts`](#batch-mode_1).
-* If tickerplant log file created, write .u.upd call & params to the log and increment [`.u.j`](#variables)
+* If tickerplant log file created, write upd function call & params to the log and increment [`.u.j`](#variables) so that an RDB can execute what was originally called during recovery.
 
 
 #### Realtime Mode
@@ -213,7 +213,7 @@ Actions performed:
 * If the first element of `y` is not a timespan (or list of timespan), add a new timespan column populated with the current local time ([`.z.P`](../ref/dotz.md#zp-local-timestamp)). If mutiple rows of data, all rows receive the same time.
 * Retrieves the column names of table `x`
 * Publish data to all interested clients, by calling [`.u.pub`](uq.md#upub) with table name `x` and table generated from `y` and column names.
-* If tickerplant log file created, write .u.upd call & params to the log and increment [`.u.i`](#variables) so that data recovery is possible.
+* If tickerplant log file created, write upd function call & params to the log and increment [`.u.i`](#variables) so that an RDB can execute what was originally called during recovery
 
 ### .z.ts
 

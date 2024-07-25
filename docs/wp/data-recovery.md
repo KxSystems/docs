@@ -39,16 +39,7 @@ accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$()
 
 ### Tick scripts
 
-kdb+tick is freely available and contains a few short, yet powerful scripts.
-
-:fontawesome-brands-github:
-[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
-
-script     | purpose
------------|--------
-`tick.q`   | runs a standard tickerplant
-`tick/r.q` | runs a standard real-time database
-`tick/u.q` | contains functions for subscription and publication
+:fontawesome-brands-github:[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) is freely available and contains a few short, yet powerful scripts.
 
 :fontawesome-regular-hand-point-right:
 Starting kdb+: [Realtime database](../learn/startingkdb/tick.md)
@@ -74,22 +65,13 @@ Here, `functionname` and `tablename` are symbols, and `tabledata` is a row of da
 
 In a standard tick system, each kdb+ message will call a function named `upd`. Each process may have a different definition of this function. A TP will publish each time the `upd` function is called (if its timer is not set to batch the data), and an RDB will simply insert the data into the relevant table.
 
-
 ## Recovery
-
 
 ### Writing a tplog
 
 Should the TP fail, or be shut down for any period of time, no downstream subscriber will receive any published data for the period of its downtime. This data typically will not be recoverable. Thus it is imperative that the TP remain always running and available.
 
-Every message that the tickerplant receives is written to a kdb+ binary file, called the tickerplant log file, or _tplog_. The tickerplant maintains some key variables which are important in the context of data recovery for subscribers.
-
-variable | purpose
----------|-----------------
-`.u.l`   | A handle to the log file which is created at startup. This is used to write each message to disk.
-`.u.L`   | Path to the log file. In a standard tickerplant, the name of the log file will be a combination of the first parameter passed to `tick.q` (the name of the schema file, generally `sym`) and the current date.
-`.u.i`   | Total count of messages in the log file.
-`.u.j`   | Total count of messages in the tickerplant: `.u.i` plus what is buffered in memory.
+Every message that the tickerplant receives is written to a kdb+ binary file, called the tickerplant log file, or _tplog_. The tickerplant maintains some key [variables](../architecture/tickq.md#variables) which are important in the context of data recovery for subscribers.
 
 ```bash
 # start tickerplant
@@ -102,7 +84,6 @@ q).u.l
 376i 
 q).u.i 0
 ```
-
 The `upd` function is called each time a TP receives a message. Within this function, the TP will write the message to the tplog.
 
 ```q
@@ -117,9 +98,11 @@ if[l; l enlist(`upd;t;x); j+:1]
 
 ### Replaying a tplog
 
-Recovery of an RDB typically involves simply restarting the process. On startup, an RDB will subscribe to a TP and will receive information about the message count (`.u.i`) and location of the tplog (`.u.L`) in return. 
+Recovery of an RDB typically involves simply restarting the process. On startup, an RDB will subscribe to a TP and will receive information about the message count ([`.u.i`](../architecture/tickq.md#variables)) and location of the tplog ([`.u.L`](../architecture/tickq.md#variables)) in return. 
 
-It will then replay this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using `-11!`, the streaming replay function. This is called within `.u.rep`, which is executed when the RDB connects to the TP.
+It will then replay this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function. 
+
+This is called within `.u.rep`, which is executed when the RDB connects to the TP.
 
 ```q
 //from r.q
@@ -131,7 +114,7 @@ kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-me
 
 ### `-11!` functionality
 
-`-11!` is an internal function that will read each message in a tplog in turn, running the function `functioname` on the `(tablename;tabledata)` parameters.
+[`-11!`](../basics/internal.md#-11-streaming-execute) is an internal function that will read each message in a tplog in turn, running the function `functioname` on the `(tablename;tabledata)` parameters.
 
 In this section, we will focus on normal usage of the `-11!` function where the tplog is uncorrupted, and move on to discuss how to use it to recover from a corrupted tplog below in [_Replay errors_](#replay-errors).
 
