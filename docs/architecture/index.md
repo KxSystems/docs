@@ -29,7 +29,7 @@ KX’s [Fusion interfaces](../interfaces/index.md#fusion-interfaces) connect kdb
 
 ### Tickerplant (TP)
 
-A kdb+ processing acting as a TP (tickerplant) captures the initial data feed, writes it to the log file and [publishes](../kb/publish-subscribe.md) these messages to any registered subscribers.
+A kdb+ processing acting as a TP (tickerplant) captures the initial data feed, writes it to the log file and publishes these messages to any registered subscribers.
 Aims for zero-latency.
 Includes ingesting data in batch mode.
 

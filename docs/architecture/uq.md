@@ -13,6 +13,24 @@ Contains functions to allow clients to subscribe to all or subsets of available 
 
 This script is loaded by other processes, for example [a tickerplant](tickq.md).
 
+## Usage
+
+To give the ability to publish data to any process, a few things need to be done:
+
+-   load `u.q`
+-   declare the tables to be published in the top level namespace. Each table must contain a column called `sym`, which acts as the single key field to which subscribers subscribe
+-   initialize by calling [`.u.init[]`](#uinit)
+-   publish data by calling [`.u.pub[table name; table data]`](#upub)
+
+The list of tables that can be published and the processes currently subscribed are held in [`.u.w`](#variables).
+
+Subscriber processes must open a connection to the publisher and call [`.u.sub[tablename;list_of_symbols_to_subscribe_to]`](#usub).
+
+If a subscriber calls `.u.sub` again, the current subscription will be overwritten either for all tables (if a wildcard is used) or the specified table. 
+To add to a subscription (e.g. add more syms to a current subscription) the subscriber can call [`.u.add`](#uadd)).
+
+Clients should define a [`upd`](rq.md#upd) function to receive updates, and [`.u.end`](rq.md#uend) function for end-of-day events
+
 ## Variables
 
 | Name | Description |
@@ -32,7 +50,7 @@ Initialise variables used to track registered clients.
 .u.init[]
 ```
 
-Initialises [variables](#variables) used to track client interest in data being published.
+Initialises [variables](#variables) by retreiving all tables defined in the root namespace. Used to track client interest in data being published.
 
 ### .u.del
 
@@ -142,3 +160,19 @@ Implementation of [`.z.pc`](../ref/dotz.md#zpc-close) callback for connection cl
 
 Called when a client disconnects. The client handle provided is used to call [`.u.del`](#udel) for all tables. This ensures all subscriptions are removed for that client.
 
+## Example
+
+[`tick.q`](tickq.md) is an example of a tickerplant that uses `u.q` for pub/sub. 
+
+In addition, the example scripts below demonstrate pub/sub in a standalone publisher and subscriber.
+They can be downloaded from :fontawesome-brands-github:[KxSystems/cookbook/pubsub](https://github.com/KxSystems/cookbook/tree/master/pubsub). 
+Each script should be run from the OS command prompt e.g.
+
+```bash
+$ q publisher.q
+$ q subscriber.q
+```
+
+The publisher will generate some random data and publish it periodically on a timer.
+
+The subscriber will receive data from the publisher and output it to the screen. You can modify the subscription request and the `upd` function of the subscriber as required. You can run multiple subscribers at once.

@@ -538,7 +538,6 @@ nav:
       - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
       - Load balancing: kb/load-balancing.md
       - Order Book: wp/order-book.md
-      - Publish and subscribe: kb/publish-subscribe.md
       - Query Routing: wp/query-routing/index.md
       - Real-time engines: wp/rt-tick/index.md
       - Advanced:
