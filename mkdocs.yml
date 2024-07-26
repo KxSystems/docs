@@ -540,7 +540,7 @@ nav:
       - Order Book: wp/order-book.md
       - Publish and subscribe: kb/publish-subscribe.md
       - Query Routing: wp/query-routing/index.md
-      - Real-time tick subscribers: wp/rt-tick/index.md
+      - Real-time engines: wp/rt-tick/index.md
       - Advanced:
         - Distributed systems: wp/query-interface.md
         - Intraday writedown: wp/intraday-writedown/index.md
