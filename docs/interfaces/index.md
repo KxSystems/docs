@@ -39,11 +39,10 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[automl](https://github.com/KxSystems/automl)</td><td markdown>[Automate machine learning in kdb+](../ml.md)</td></tr>
 <tr markdown><td markdown>[cookbook](https://github.com/KxSystems/cookbook)</td><td markdown>Companion files to the Knowledge Base</td></tr>
 <tr markdown><td markdown>[help](https://github.com/KxSystems/help)</td><td markdown>Online **help** for q</td></tr>
-<tr markdown><td markdown>[insights-assemblies](https://github.com/KxSystems/insights-assemblies)</td><td markdown> Deploy assemblies for **KX Insights** ==new==</td></tr>
 <tr markdown><td markdown>[jupyterq](https://github.com/KxSystems/jupyterq)</td><td markdown>**Jupyter** kernel for kdb+</td>
 <tr markdown><td markdown>[kdb](https://github.com/KxSystems/kdb)</td><td markdown>Companion files to **kdb+**</td></tr>
 <tr markdown><td markdown>[kdb-taq](https://github.com/KxSystems/kdb-taq)</td><td markdown>Processing **trade-and-quote** data</td></tr>
-<tr markdown><td markdown>[kdb-tick](https://github.com/KxSystems/kdb-tick)</td><td markdown>[**Ticker**plant](../kb/kdb-tick.md)</td></tr>
+<tr markdown><td markdown>[kdb-tick](https://github.com/KxSystems/kdb-tick)</td><td markdown>[Tickerplant](../architecture/index.md)</td></tr>
 <tr markdown><td markdown>[man](https://github.com/KxSystems/man)</td><td markdown>[man-style reference](../about/man.md)</td></tr>
 <tr markdown><td markdown>[ml](https://github.com/KxSystems/ml)</td><td markdown>[**Machine Learning** Toolkit](../ml.md)</td></tr>
 <tr markdown><td markdown>[mlnotebooks](https://github.com/KxSystems/mlnotebooks)</td><td markdown>Jupyter notebooks with ML examples</td></tr>
