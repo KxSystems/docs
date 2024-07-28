@@ -9,12 +9,16 @@ keywords: hdb, kdb+, q, tick, tickerplant, streaming
 
 ## Overview
 
+All incoming streaming data is processed by a kdb+ process acting as a tickerplant.
+A tickerplant writes all data to a tickerplant log (to permit data recovery) and publishes data to subscribed clients, for example a RDB.
+
 ### Customization
 
 `tick.q` provides a starting point to most environments. The source code is freely avaialble and can be tailered to individual needs.
 
 ### Schema file
 
+A tickerplant requires a schema file.
 A schema file should be created to describe the data you plan to capture, by specifing the tables that will be populated by the tickerplant environment. 
 The [datatypes](../basics/datatypes.md) and [attributes](../ref/set-attribute.md) are denoted within the file as shown in this example:
 ```q

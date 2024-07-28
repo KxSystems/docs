@@ -9,6 +9,10 @@ keywords: kdb+, q, rdb, streaming
 
 ## Overview
 
+A kdb+ process acting as an RDB stores a current day’s data in-memory for client queries.
+It can write its contents to disk at end-of-day, clearing out it in-memory data to prepare for the next day.
+After writting data to disk, it will instruct a HDB to load the written data.
+
 ### Customization
 
 `r.q` provides a starting point to most environments. The source code is freely avaialble and can be tailered to individual needs. For example:
