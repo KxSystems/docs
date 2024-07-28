@@ -57,6 +57,8 @@ time       sym  qty px
 10:01:04 ge   150
 ```
 
+`aj` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 !!! tip "There is no requirement for any of the join columns to be keys but the join will be faster on keys."
 
 

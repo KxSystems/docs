@@ -62,6 +62,8 @@ q)(1 2;3 4) in ((1 2;3 4);9)  / x is an item of y
 
 `in` uses [Find](find.md) to search for `x` in `y`.
 
+`in` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Queries
 

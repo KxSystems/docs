@@ -58,6 +58,8 @@ a b| c  d
 3 7| 30 C
 ```
 
+`uj` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 !!! note "`uj` generalizes the [`,` Join](join.md) operator."
 
 
