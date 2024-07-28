@@ -35,6 +35,8 @@ q)log -2 0n 0 0.1 1 42
 0n 0n -0w -2.302585 0 3.73767
 ```
 
+`log` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ### :fontawesome-solid-sitemap: Implicit iteration
 

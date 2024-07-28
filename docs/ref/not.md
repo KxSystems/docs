@@ -46,6 +46,8 @@ q)not (0W;-0w;0N)
 
 An atomic function. 
 
+`not` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 ---
 :fontawesome-solid-book:
 [`neg`](neg.md) 

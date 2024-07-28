@@ -34,6 +34,8 @@ q)neg 2000.01.01 2012.01.01     / negates the underlying data value
 
 An atomic function.
 
+`neg` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Domain and range
 

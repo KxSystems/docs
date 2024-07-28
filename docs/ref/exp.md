@@ -39,6 +39,7 @@ q)exp 00:00:00 00:00:12 12:00:00
 1 162754.8 0w
 ```
 
+`exp` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ### :fontawesome-solid-sitemap: Implicit iteration

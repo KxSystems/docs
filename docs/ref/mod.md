@@ -28,6 +28,8 @@ q)-7 7 mod/:\:-2.5 -2 2 2.5
 -0.5 -1 1 2
 ```
 
+`mod` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

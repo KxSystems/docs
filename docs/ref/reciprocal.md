@@ -25,6 +25,8 @@ q)reciprocal 1b
 1f
 ```
 
+`reciprocal` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 ## :fontawesome-solid-sitemap: Implicit iteration
 
 `reciprocal` is an [atomic function](../basics/atomic.md).
