@@ -37,6 +37,8 @@ q)atan 42
 1.546991
 ```
 
+`tan` and `atan` are [multithreaded primitives](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

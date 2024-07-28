@@ -41,6 +41,7 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  b . x h i j e f c . p m d z n u v t
 ```
 
+`max` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## `maxs`

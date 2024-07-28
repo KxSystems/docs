@@ -112,6 +112,8 @@ q)"A"xlog"C"
 1.00726
 ```
 
+`xlog` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ### :fontawesome-solid-sitemap: Implicit iteration
 
