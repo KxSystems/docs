@@ -80,6 +80,7 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
         q)sum a
         49999897.181933172
 
+`sum` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `sums`
 

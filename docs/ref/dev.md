@@ -50,6 +50,7 @@ a| 1.247219
 b| 2
 ```
 
+`dev` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `mdev`
 
@@ -183,6 +184,8 @@ q)sdev T
 a| 1.527525
 b| 2.828427
 ```
+
+`sdev` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ----
 :fontawesome-solid-book:
