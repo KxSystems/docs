@@ -45,6 +45,8 @@ q)2010.01.01 % 2005.01.01
 1.999453
 ```
 
+`%` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

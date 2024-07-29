@@ -9,8 +9,6 @@ keywords: find, kdb+, q, query, search
 _Find the first occurrence of an item in a list._
 
 
-
-
 ```syntax
 x?y   ?[x;y]
 ```
@@ -37,6 +35,8 @@ q)w[7]
 q)"abcde"?"d"
 3
 ```
+
+`?`(find) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## Type-specific

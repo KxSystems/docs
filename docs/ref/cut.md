@@ -62,6 +62,8 @@ s4 p4 300
 s1 p5 400
 ```
 
+`_`(cut) is a [multithreaded primitive](../kb/mt-primitives.md).
+
 !!! tip "Avoid confusion with underscores in names: separate the Cut operator with spaces."
 
 

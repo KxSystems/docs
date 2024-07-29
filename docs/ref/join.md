@@ -46,6 +46,8 @@ q)v,(type v)$0xab
 1.00 2.34 -567.1 20.00 171e
 ```
 
+`,`(join) is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Dictionaries
 

@@ -40,6 +40,8 @@ price qty
 34.5  17
 ```
 
+`*` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 
