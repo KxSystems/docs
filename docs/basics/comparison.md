@@ -66,6 +66,8 @@ q)(1 + 1e-13) = 1
 1b
 ```
 
+`< > = >= <= <>` are [multithreaded primitives](../kb/mt-primitives.md).
+
 !!! tip "For booleans, `<>` is the same as _exclusive or_ (XOR)."
 
 

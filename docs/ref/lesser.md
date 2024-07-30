@@ -26,6 +26,8 @@ q)"sat"&"cow"
 "cat"
 ```
 
+`&` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Flags
 
