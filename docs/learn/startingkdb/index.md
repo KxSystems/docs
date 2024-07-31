@@ -50,38 +50,6 @@ Several background articles and links can be found in the [Archive](../archive.m
 If you do not already have access to a licensed copy, go to [Get started](../index.md) to download and install q.
 
 
-## :fontawesome-solid-file: Example files
-
-Two sets of scripts are referenced in this guide:
-
-1. The free system is distributed with the following example script in the main directory:
-
-    -   `sp.q` – the Suppliers and Parts sample database
-
-    If you do not have these scripts, get them from 
-    :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) 
-    and save them in your `QHOME` directory.
-
-2. Other example files are in the :fontawesome-brands-github: [KxSystems/cookbook/start](https://github.com/KxSystems/cookbook/tree/master/start) directory. 
-
-    Move the `start` directory under your `QHOME` directory, e.g. `q/start`. For example, there should be a file:
-
-    === ":fontawesome-brands-linux: Linux :fontawesome-brands-apple: macOS"
-
-            ~/q/start/buildhdb.q
-    
-    === ":fontawesome-brands-windows: Windows"
-
-            c:\q\start\buildhdb.q
-
-
-!!! tip "Text editor for :fontawesome-brands-windows: Windows"
-
-    Since q source is in plain text files, it is worth installing a good text editor such as Notepad++ or Notepad2.
-
-    Some text editors have extensions to provide e.g. syntax highlighting for q. See the [list of editor integrations](../../interfaces/index.md#editor-integrations)
-
-
 ## Graphical user interface
 
 When q is run, it displays a console where you can enter commands and see the results. This is all you need to follow the tutorial, and if you just want to learn a little about q, then it is easiest to work in the console.

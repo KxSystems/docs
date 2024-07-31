@@ -36,17 +36,15 @@ These storage strategies give best efficiency for searching and retrieval. For e
 For example, a simple partitioning scheme on a single disk might be as shown right. Here, the daily and master tables are small enough to be written to single files, while the trade and quote tables are splayed and partitioned by date.
 
 
-## Sample database
+## Sample partitioned database
 
-The script `buildhdb.q` will build a sample HDB. It builds a month’s random data in directory `start/db`, and takes a few seconds to run. 
-
-:fontawesome-brands-github: 
-[KxSystems/cookbook/start/buildhdb.q](https://github.com/KxSystems/cookbook/blob/master/start/buildhdb.q) 
+The script :fontawesome-brands-github:[`KxSystems/cookbook/start/buildhdb.q`](https://github.com/KxSystems/cookbook/blob/master/start/buildhdb.q) will build a sample HDB. 
+It builds a month’s random data in directory `start/db`, and takes a few seconds to run. 
 
 Load q, then:
 
 ```q
-q)\l start/buildhdb.q
+q)\l buildhdb.q
 ```
 
 To load the database, enter:
@@ -86,8 +84,7 @@ date      | x
 2013.05.06| 14182
 ...
 
-q)select cnt:count i,sum size,last price, wprice:size wavg price
-  by 5 xbar time.minute from t
+q)select cnt:count i,sum size,last price, wprice:size wavg price by 5 xbar time.minute from t
 minute| cnt size price wprice
 ------| -----------------------
 09:30 | 44  2456 47.83 47.60555
@@ -115,11 +112,11 @@ time         price bid   ask
 
 ## Sample segmented database
 
-The `buildhdb.q` script can be customized to build a segmented database. In practice, database segments should be on separate drives, but for illustration, the segments are here written to a single drive. Both the database root, and the location of the database segments need to be specified.
+The `buildhdb.q` script can be customized to build a segmented database. 
+In practice, database segments should be on separate drives, but for illustration, the segments are here written to a single drive. 
+Both the database root, and the location of the database segments need to be specified.
 
-For example, edit the first few lines of the script as below.
-
-Ensure that the directory given in `dsp` is the full pathname, and that it is created, writeable and empty.
+For example, edit the first few lines of the script :fontawesome-brands-github:[`KxSystems/cookbook/start/buildhdb.q`](https://github.com/KxSystems/cookbook/blob/master/start/buildhdb.q) as below.
 
 ```q
 dst:`:start/dbs      / new database root
@@ -131,9 +128,12 @@ end:2013.12.31
 ...
 ```
 
-For Windows, `dsp` might be: ``dsp:`:c:/dbss``.
+Ensure that the directory given in `dsp` is the full pathname, and that it is created, writeable and empty. For Windows, `dsp` might be: ``dsp:`:c:/dbss``.
 
-Load the modified script, which should now take a minute or so. This should write the partioned data to subdirectories of `dsp`, and create a `par.txt` file like:
+!!! warning "This example writes approximately 7GB of created data to disk."
+
+Load the modified script, which should now take a minute or so. This should write the partioned data to subdirectories of the directory specified by `dsp`
+`par.txt` can be found within the `dsp` directory, which lists the disks/directories containing the data of the segmented database.
 
 ```txt
 /dbss/d0
@@ -151,8 +151,7 @@ q)\l start/dbs
 q)(count quote), count trade
 61752871 12356516
 
-q)select cnt:count i,sum size,size wavg price from trade
-  where date in 2012.09.17+til 5, sym=`IBM
+q)select cnt:count i,sum size,size wavg price from trade where date in 2012.09.17+til 5, sym=`IBM
 cnt  size   price
 --------------------
 4033 217537 37.35015
