@@ -684,7 +684,8 @@ At end of day, the tickerplant sends a message to all RTEs telling them to invok
   logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D; 
   .[logfile;();:;()]; /Initialize the new log file 
   LogfileHandle::hopen logfile;
-  {delete from x}each tables `. /clear out tables }
+  {delete from x}each tables `. /clear out tables
+  }
 ```
 
 This function has been heavily modified from `r.q` to achieve the following desired behavior:
