@@ -64,7 +64,6 @@ You can confirm that you are in the `QHOME` directory by calling a directory lis
     q)\ls *.q
     ...
     "sp.q"
-    "trade.q"
     ...
     ```
 
@@ -74,7 +73,6 @@ You can confirm that you are in the `QHOME` directory by calling a directory lis
     q)\dir *.q
     ...
     "sp.q"
-    "trade.q"
     ...
     ```
 
@@ -360,7 +358,7 @@ cog   3     20     60
 
 A q script is a plain text file with extension `.q`, which contains q expressions that are executed when loaded.
 
-For example, load the script `sp.q` and display the `s` table that it defines:
+For example, load the script :fontawesome-brands-github:[`KxSystems/kdb/sp.q`](https://github.com/KxSystems/kdb/blob/master/sp.q) and display the `s` table that it defines:
 
 ```q
 q)\l sp.q                                / load script
@@ -416,7 +414,8 @@ q)b
 
 ## Q queries
 
-Q queries are similar to SQL, though often much simpler.
+Q queries are similar to SQL, though often much simpler. 
+Loading the script :fontawesome-brands-github:[`KxSystems/kdb/sp.q`](https://github.com/KxSystems/kdb/blob/master/sp.q) to populate tables `s`,`p` and `sp` we can show some query examples:
 
 ```q
 \l sp.q

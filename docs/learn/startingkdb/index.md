@@ -54,10 +54,9 @@ If you do not already have access to a licensed copy, go to [Get started](../ind
 
 Two sets of scripts are referenced in this guide:
 
-1. The free system is distributed with the following example scripts in the main directory:
+1. The free system is distributed with the following example script in the main directory:
 
     -   `sp.q` – the Suppliers and Parts sample database
-    -   `trade.q` – a stock trades sample database
 
     If you do not have these scripts, get them from 
     :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) 
