@@ -48,8 +48,7 @@ Although the inner workings of the tickerplant process are beyond the scope of t
 : refers to the schema file (in this case called `sym.q`), assumed to reside in the subdirectory called `tick` (relative to `tick.q`). This schema file simply defines the tables that exist in the TP – here we define two tables, `trade` and `quote`, as follows.
 
 ```q
-quote:([]time:`timespan$();sym:`symbol$();bid:`float$();ask:`float$();
-  bsize:`int$();asize:`int$())
+quote:([]time:`timespan$();sym:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
 trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
 ```
 
@@ -93,7 +92,7 @@ getask:{[s] prices[s]+getmovement[s]} /generate ask price
 Points to note from the above:
 
 1.  The data sent to the tickerplant is in columnar (column-oriented) list format. In other words, the tickerplant expects data as lists, not tables. This point will be relevant later when the RDB wishes to replay the tickerplant logfile.
-1.  The function triggered on the tickerplant upon receipt of these updates is `.u.upd`.
+1.  The function triggered on the tickerplant upon receipt of these updates is [`.u.upd`](../../architecture/tickq.md#uupd).
 1.  If you wish to increase the frequency of updates sent to the tickerplant for testing purposes, simply change the timer value at the end of this script accordingly.
 
 

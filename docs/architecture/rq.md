@@ -80,7 +80,7 @@ upd[x;y]
 Where
 
 * `x` is a symbol atom naming a table
-* `y` is table data to add to table `x`.
+* `y` is table data to add to table `x`, which can contain one or more rows.
 
 ### .u.end
 
