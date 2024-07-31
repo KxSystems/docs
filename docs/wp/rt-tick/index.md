@@ -750,9 +750,9 @@ The next part of the script is probably the most critical – the process connec
 
 ```q
 / connect to tickerplant and subscribe to trade and quote for portfolio 
-h:hopen args`tp /connect to tickerplant
-InitializeSchemas . h(".u.sub";`trade;args`syms)
-InitializeSchemas . h(".u.sub";`quote;args`syms)
+h:hopen args`tp; /connect to tickerplant
+InitializeSchemas . h(".u.sub";`trade;args`syms);
+InitializeSchemas . h(".u.sub";`quote;args`syms);
 ```
 
 The output of a subscription to a given table (for example `trade`) from the tickerplant is a 2-list, as discussed previously. This pair is in turn passed to the function `InitializeSchemas`.
