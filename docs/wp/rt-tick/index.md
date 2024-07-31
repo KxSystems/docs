@@ -286,7 +286,7 @@ upd:insert
 
 In other words, when the RDB replays a given message, it simply inserts the record/s into the corresponding table. This is the same definition of `upd` used for intraday updates via IPC. These updates succeed because the second argument to `insert` can be either a columnar list or a table.
 
-A q process replays a tickerplant logfile using the operator `-11!`. Although this operator can be used in different ways, the simplest syntax is:
+A q process replays a tickerplant logfile using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute). Although this operator can be used in different ways, the simplest syntax is:
 
 ```q
 -11! `:TPDailyLogfile
@@ -772,7 +772,12 @@ time                 sym  price    size bid      bsize ask      asize
 
 ### Real-time VWAP subscriber
 
-This section describes how to build an RTE which enriches trade with VWAP (volume-weighted average price) information on a per-symbol basis. A VWAP can be defined as:
+#### Overview
+
+This section describes how to build an RTE which enriches trade with VWAP (volume-weighted average price) information on a per-symbol basis.
+If a situation occurs were this RTE is restarted, it will recalculate VWAP from the TP log file. Upon an end-of-day event it will clear current records.
+
+A VWAP can be defined as:
 
 $$ VWAP = \frac{\sum_{i} (tradevolume_i)(tradeprice_i)}{\sum_{i} (trade price_i)}$$
 
@@ -839,7 +844,53 @@ IBM.N  | 191.17041
 MSFT.O | 45.146982
 ```
 
-Just like the previous RTE example, this solution will comprise a heavily modified version of `r.q`, written by the author and named `real_time_vwap.q`.
+#### Example script
+
+Just like the previous RTE example, this solution will comprise a heavily modified version of [`r.q`](../../architecture/rq.md), written by the author and named `real_time_vwap.q`.
+
+```q
+/initialize schema function
+InitializeTrade:{[TradeInfo;logfile]
+  `trade set TradeInfo 1;
+  if[null first logfile;update v:0n,s:0Ni,rvwap:0n from `trade;:()];
+  -11!logfile;
+  update v:sums (size*price),s:sums size by sym from `trade;
+  update rvwap:v%s from `trade;
+  `vwap upsert select last rvwap by sym from trade;}
+
+/this keyed table maps a symbol to its current vwap
+vwap:([sym:`$()] rvwap:`float$())
+
+/For TP logfile replay, upd is a simple insert for trades
+upd:{if[not `trade=x;:()];`trade insert y}
+
+/
+This intraday function is triggered upon incoming updates from TP.
+Its behavior is as follows:
+1. Add s and v columns to incoming trade records
+2. Increment incoming records with the last previous s and v values
+   (on per sym basis)
+3. Add rvwap column to incoming records (rvwap is v divided by s)
+4. Insert these enriched incoming records to the trade table
+5. Update vwap table
+\
+updIntraDay:{[t;d]
+  d:update s:sums size,v:sums size*price by sym from d;
+  d:d pj select last v,last s by sym from trade;
+  d:update rvwap:v%s from d;
+  `trade insert d;
+  `vwap upsert select last rvwap by sym from trade; }
+
+/end of day function - triggered by tickerplant at EOD
+/Empty tables
+.u.end:{{delete from x}each tables `. } /clear out trade and vwap tables
+
+args:.Q.opt .z.x
+args:`$args
+h:hopen hsym first args`tp /connect to tickerplant
+InitializeTrade . h "(.u.sub[`trade;",(.Q.s1 args`syms),"];`.u `i`L)"
+upd:updIntraDay /switch upd to intraday update mode
+```
 
 This process should be started off as follows:
 
@@ -854,19 +905,10 @@ arguments and uses these to update some default values – identical
 code to the start of `RealTimeTradeWithAsofQuotes.q`.
 
 
-#### Initialize desired table schemas
+#### InitializeTrade function
 
-The next section of code defines the behavior of this RTE upon connecting to the TP and subscribing to the `trade` table. This RTE will replay the TP’s logfile, much like the RDB. The following function replaces `.u.rep`.
-
-```q
-/initialize schema function
-InitializeTrade:{[TradeInfo;logfile] 
-  `trade set TradeInfo 1;
-  if[null first logfile;update v:0n,s:0Ni,rvwap:0n from `trade;:()]; 
-  -11!logfile;
-  update v:sums (size*price),s:sums size by sym from `trade;
-  update rvwap:v%s from `trade; }
-```
+`InitializeTrade` defines the behavior of this RTE after connecting to the TP and subscribing to the `trade` table. 
+This RTE will replay the TP’s logfile, much like the RDB. The `InitializeTrade` function replaces [`.u.rep`](../../architecture/rq.md#urep).
 
 This binary function `InitializeTrade` will be executed upon startup. It is passed two arguments, just like `.u.rep`:
 
@@ -882,57 +924,22 @@ The `vwap` table is then simply defined as:
 vwap:([sym:`$()] rvwap:`float$())
 ```
 
-When `InitializeTrade` is executed, the TP logfile will be replayed using `-11!`. For the purpose of this replay, the function `upd` is simply defined as:
+When `InitializeTrade` is executed, the TP logfile will be replayed and its contents executed using [`-11!`](../../basics/internal.md#-11-streaming-execute). 
 
-```q
-/For TP logfile replay, upd is a simple insert for trades
-upd:{if[not `trade=x;:()];`trade insert y}
-```
+Replaying will cause the `upd` function to be executed, which in this script is defined as insert `trade` records into the `trade` table and ignoring `quote` records.
 
-In other words, insert `trade` records into the `trade` table and ignore `quote` records.
+#### updIntraDay function
 
+`updIntraDay` is called whenever a trade update comes in, the VWAP for each affected symbol is updated and the new trades are enriched with this information.
 
-#### Intraday update behavior
+#### .u.end function
 
-The next code section defines the intraday behavior upon receiving
-new trades:
+The EOD behavior on this RTE is very simple – clear out the tables.
 
-```q
-/
-This intraday function is triggered upon incoming updates from TP. 
-Its behavior is as follows:
-1. Add s and v columns to incoming trade records
-2. Increment incoming records with the last previous s and v values 
-   (on per sym basis)
-3. Add rvwap column to incoming records (rvwap is v divided by s)
-4. Insert these enriched incoming records to the trade table
-5. Update vwap table
-\
-updIntraDay:{[t;d]
-  d:update s:sums size,v:sums size*price by sym from d; 
-  d:d pj select last v,last s by sym from trade; 
-  d:update rvwap:v%s from d;
-  `trade insert d;
-  `vwap upsert select last rvwap by sym from trade; }
-```
+#### TP subscription
 
-So whenever a trade update comes in, the VWAP for each affected symbol is updated and the new trades are enriched with this information.
-
-
-#### End of day
-
-The EOD behavior on this RTE is very simple – clear out the tables:
-
-```q
-/end of day function - triggered by tickerplant at EOD 
-/Empty tables
-.u.end:{{delete from x}each tables `. } /clear out trade and vwap tables 
-```
-
-
-#### Subscribe to TP
-
-The RTE connects to the TP and subscribes to the `trade` table for user specified symbols. The RTE also requests TP logfile information (for replay purposes):
+The RTE connects to the TP and subscribes to the `trade` table for user specified symbols. 
+The RTE also requests TP logfile information (for replay purposes):
 
 ```q
 h:hopen args`tp /connect to tickerplant
@@ -940,8 +947,8 @@ InitializeTrade . h "(.u.sub[`trade;",(.Q.s1 args`syms),"];`.u `i`L)"
 upd:updIntraDay /switch upd to intraday update mode
 ```
 
-The message returned from the TP is passed to the function `InitializeTrade`. Once the RTE has finished initializing or replaying the TP logfile, the definition of `upd` is then switched to `updIntraDay` so the RTE can deal with intraday updates appropriately.
-
+The message returned from the TP is passed to the function `InitializeTrade`. 
+Once the RTE has finished initializing or replaying the TP logfile, the definition of `upd` is then switched to `updIntraDay` so the RTE can deal with intraday updates appropriately.
 
 
 ## Performance considerations
