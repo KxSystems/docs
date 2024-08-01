@@ -417,6 +417,33 @@ ans =
 >> close(q)
 ```
 
+## Handling null
+
+kdb+ has the ability to set values to null. MATLAB doesnt have a corresponding null type, so if your data contains nulls you may wish to filter or detect them.
+
+MATLAB has the ability to call static methods within Java. The `NULL` method can provide the null values for the different [data types](../basics/datatypes.md). For example
+
+```matlab
+NullInt=kx.c.NULL('i')
+NullLong=kx.c.NULL('j')
+NullDouble=kx.c.NULL('f')
+NullDate=kx.c.NULL('d')
+```
+
+With this, you can test values for null. The following shows that the comparison will return true when requesting null values from a kdb+ connection named conn:
+
+```matlab
+fetch(conn,'0Ni')== NullInt
+fetch(conn,'0N')== NullLong
+fetch(conn,'0Nd')== NullDate
+isequaln(fetch(conn,'0Ni'),NullInt)
+isequaln(fetch(conn,'0N'), NullLong)
+isequaln(fetch(conn,'0Nd'), NullDate)
+isequaln(fetch(conn,'0Nf'), NullDouble)
+```
+
+An alternative is to have your query include a filter for nulls (if they are populated), so they arent retrieved by MATLAB.
+
 
 ## Getting more help
 
