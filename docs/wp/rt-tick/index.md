@@ -566,211 +566,6 @@ Reading this from the right, we obtain the location of the tickerplant process w
 
 Two quite different RTE instances are described below.
 
-
-### Real-time trade with as-of quotes
-
-One of the most popular and powerful joins in the q language is the [`aj`](../../ref/aj.md) function. This keyword was added to the language to solve a specific problem – how to join trade and quote tables together in such a way that for each trade, we grab the prevalent quote _as of_ the time of that trade. In other words, what is the last quote at or prior to the trade? 
-
-This function is relatively easy to use for one-off joins. However, what if you want to maintain trades with as-of quotes in real time? This section describes how to build an RTE with real-time trades and as-of quotes. This is a heavily modified version of `r.q`, written by the author and named `RealTimeTradeWithAsofQuotes.q`.
-
-One additional feature this script demonstrates is the ability of any q process to write to and maintain its own kdb+ binary logfile for replay/recovery purposes. In this case, the RTE maintains its own daily logfile for trade records. This will be used for recovery in place of the standard tickerplant logfile as used by `r.q`.
-
-This process should be started off as follows:
-
-```bash
-q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N -p 5003
-```
-
-This process will subscribe to both trade and quote tables for symbols `MSFT.O`, `IBM.N` and `GS.N` and will listen on port 5003. The author has deliberately made some of the q syntax more easily understandable compared to `r.q`.
-
-The first section of the script simply parses the command-line arguments and uses these to update some default values:
-
-```q
-/
-The purpose of this script is as follows:
-1. Demonstrate how custom RTEs can be created in q 
-2. In this example, create an efficient engine for calculating 
-   the prevalent quotes as of trades in real-time.
-   This removes the need for ad-hoc invocations of the aj function.
-3. In this example, this subscriber also maintains its own binary 
-   log file for replay purposes.
-   This replaces the standard tickerplant log file replay functionality.
-\
-show "RealTimeTradeWithAsofQuotes.q"
-/sample usage
-/q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N
-
-/default command line arguments - tp is location of tickerplant. 
-/syms are the symbols we wish to subscribe to
-default:`tp`syms!("::5000";"") 
- 
-args:.Q.opt .z.x /transform incoming cmd line arguments into a dictionary
-args:`$default,args /upsert args into default 
-args[`tp] : hsym first args[`tp]
-
-/drop into debug mode if running in foreground AND 
-/errors occur (for debugging purposes)
-\e 1 
-
-if[not "w"=first string .z.o;system "sleep 1"]
-```
-
-The error flag above is set for purely testing purposes – when the developer runs this script in the foreground, if errors occur at runtime as a result of incoming IPC messages, the process will drop into debug mode. For example, if there is a problem with the definition of `upd`, then when an update is received from the tickerplant we will drop into debug mode and (hopefully) identify the issue.
-
-
-#### Initialize desired table schemas
-
-The next section of code defines the behavior of this RTE upon connecting and subscribing to the tickerplant’s trade and quote tables. This function replaces `.u.rep` in `r.q`:
-
-```q
-/initialize schemas for custom RTE
-InitializeSchemas:`trade`quote!
-  (
-   {[x]`TradeWithQuote insert update bid:0n,bsize:0N,ask:0n,asize:0N from x};
-   {[x]`LatestQuote upsert select by sym from x}
-  );
-```
-
-The RTE’s trade table (named `TradeWithQuote`) maintains `bid`, `bsize`, `ask` and `asize` columns of appropriate type. For the quote table, we just maintain a keyed table called `LatestQuote`, keyed on `sym` which will maintain the most recent quote per symbol. This table will be used when joining prevalent quotes to incoming trades.
-
-
-#### Intraday update behavior
-
-The next code section defines the intraday behavior upon receiving new trades:
-
-```q
-/intraday update functions
-/Trade Update
-/1. Update incoming data with latest quotes
-/2. Insert updated data to TradeWithQuote table 
-/3. Append message to custom logfile 
-updTrade:{[d]
-  d:d lj LatestQuote;
-  `TradeWithQuote insert d;
-  LogfileHandle enlist (`replay;`TradeWithQuote;d); }
-```
-
-Besides inserting the new trades with prevalent quote information into the trade table, the above function also appends the new records to its custom logfile. This logfile will be replayed upon recovery/startup of the RTE. Note that the replay function is named `replay`. This differs from the conventional TP logfile where the replay function was called `upd`.
-
-The next section defines the intraday behavior upon receiving new quotes:
-
-```q
-/Quote Update
-/1. Calculate latest quote per sym for incoming data 
-/2. Update LatestQuote table
-updQuote:{[d]
-  `LatestQuote upsert select by sym from d; }
-```
-
-The following dictionary `upd` acts as a case statement – when an update for the trade table is received, `updTrade` will be triggered with the message as argument. Likewise, when an update for the quote table is received, `updQuote` will be triggered.
-
-```q
-/upd dictionary will be triggered upon incoming update from tickerplant
-upd:`trade`quote!(updTrade;updQuote)
-```
-
-In `r.q`, `upd` is defined as a function, not a dictionary. However we can use this dictionary definition for reasons discussed previously.
-
-
-#### End of day
-
-At end of day, the tickerplant sends a message to all RTEs telling them to invoke their EOD function – `.u.end`:
-
-```q
-/end of day function - triggered by tickerplant at EOD
-.u.end:{
-  hclose LogfileHandle; /close the connection to the old log file 
-  /create the new logfile
-  logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D; 
-  .[logfile;();:;()]; /Initialize the new log file 
-  LogfileHandle::hopen logfile;
-  {delete from x}each tables `. /clear out tables
-  }
-```
-
-This function has been heavily modified from `r.q` to achieve the following desired behavior:
-
-`hclose LogfileHandle`
-
-: Close connection to the custom logfile.
-
-``logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D``
-
-: Create the name of the new custom logfile. This logfile is a daily logfile – meaning it only contains one day’s trade records and it has today’s date in its name, just like the tickerplant’s logfile.
-
-`.[logfile;();:;()]`
-
-: Initialize this logfile with an empty list.
-
-`LogfileHandle::hopen logfile`
-
-: Establish a connection (handle) to this logfile for streaming writes.
-
-``{delete from x}each tables `.``
-
-: Empty out the tables.
-
-
-#### Replay custom logfile
-
-This section concerns the initialization and replay of the RTE’s custom logfile.
-
-```q
-/Initialize name of custom logfile
-logfile:hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D 
-
-replay:{[t;d]t insert d} /custom log file replay function
-```
-
-At this point, the name of today’s logfile and the definition of the logfile replay function have been established. The replay function will be invoked when replaying the process’s custom daily logfile. It is defined to simply insert the on-disk records into the in memory (`TradeWithQuote`) table. This will be a fast operation ensuring recovery is achieved quickly and efficiently.
-
-Upon startup, the process uses a try-catch to replay its custom daily logfile. If it fails for any reason (possibly because the logfile does not yet exist), it will send an appropriate message to standard out and will initialize this logfile. Replay of the logfile is achieved with the standard operator `-11!` as discussed previously.
-
-```q
-/attempt to replay custom log file
-@[{-11!x;show"successfully replayed custom log file"}; logfile;
-  {[e]
-    m:"failed to replay custom log file";
-    show m," - assume it does not exist. Creating it now";
-    .[logfile;();:;()]; /Initialize the log file
-  } ]
-```
-
-Once the logfile has been successfully replayed/initialized, a handle (connection) is established to it for subsequent streaming appends (upon new incoming trades from tickerplant):
-
-```q
- /open a connection to log file for writing
-LogfileHandle:hopen logfile
-```
-
-
-#### Subscribe to TP
-
-The next part of the script is probably the most critical – the process connects to the tickerplant and subscribes to the trade and quote table for user-specified symbols.
-
-```q
-/ connect to tickerplant and subscribe to trade and quote for portfolio 
-h:hopen args`tp; /connect to tickerplant
-InitializeSchemas . h(".u.sub";`trade;args`syms);
-InitializeSchemas . h(".u.sub";`quote;args`syms);
-```
-
-The output of a subscription to a given table (for example `trade`) from the tickerplant is a 2-list, as discussed previously. This pair is in turn passed to the function `InitializeSchemas`.
-
-We can see this RTE in action by examining the five most recent trades for `GS.N`:
-
-```q
-q)-5#select from TradeWithQuote where sym=`GS.N
-time                 sym  price    size bid      bsize ask      asize 
----------------------------------------------------------------------
-0D21:50:58.857411000 GS.N 178.83   790  178.8148 25    178.8408 98
-0D21:51:00.158357000 GS.N 178.8315 312  178.8126 12    178.831  664
-0D21:51:01.157842000 GS.N 178.8463 307  178.8193 767   178.8383 697 
-0D21:51:03.258055000 GS.N 178.8296 221  178.83   370   178.8627 358
-0D21:51:03.317152000 GS.N 178.8314 198  178.8296 915   178.8587 480
-```
-
-
 ### Real-time VWAP subscriber
 
 #### Overview
@@ -906,7 +701,7 @@ arguments and uses these to update some default values – identical
 code to the start of `RealTimeTradeWithAsofQuotes.q`.
 
 
-#### InitializeTrade function
+#### Initialization
 
 `InitializeTrade` defines the behavior of this RTE after connecting to the TP and subscribing to the `trade` table. 
 This RTE will replay the TP’s logfile, much like the RDB. The `InitializeTrade` function replaces [`.u.rep`](../../architecture/rq.md#urep).
@@ -929,15 +724,15 @@ When `InitializeTrade` is executed, the TP logfile will be replayed and its cont
 
 Replaying will cause the `upd` function to be executed, which in this script is defined as insert `trade` records into the `trade` table and ignoring `quote` records.
 
-#### updIntraDay function
+#### Intraday update behavior
 
 `updIntraDay` is called whenever a trade update comes in, the VWAP for each affected symbol is updated and the new trades are enriched with this information.
 
-#### .u.end function
+#### End of day
 
-The EOD behavior on this RTE is very simple – clear out the tables.
+At end of day, the tickerplant sends a message to all RTEs telling them to invoke their EOD function (`.u.end`). The function will clear tables used on this RTE.
 
-#### TP subscription
+#### Subscribe to TP
 
 The RTE connects to the TP and subscribes to the `trade` table for user specified symbols. 
 The RTE also requests TP logfile information (for replay purposes):
@@ -950,6 +745,226 @@ upd:updIntraDay /switch upd to intraday update mode
 
 The message returned from the TP is passed to the function `InitializeTrade`. 
 Once the RTE has finished initializing or replaying the TP logfile, the definition of `upd` is then switched to `updIntraDay` so the RTE can deal with intraday updates appropriately.
+
+### Real-time trade with as-of quotes
+
+#### Overview
+
+One of the most popular and powerful joins in the q language is the [`aj`](../../ref/aj.md) function. This keyword was added to the language to solve a specific problem – how to join trade and quote tables together in such a way that for each trade, we grab the prevalent quote _as of_ the time of that trade. In other words, what is the last quote at or prior to the trade? 
+
+This function is relatively easy to use for one-off joins. However, what if you want to maintain trades with as-of quotes in real time? This section describes how to build an RTE with real-time trades and as-of quotes.
+
+One additional feature this script demonstrates is the ability of any q process to write to and maintain its own kdb+ binary logfile for replay/recovery purposes. In this case, the RTE maintains its own daily logfile for trade records. This will be used for recovery in place of the standard tickerplant logfile.
+
+#### Example script
+
+This is a heavily modified version of an RDB ([`r.q`](../../architecture/rq.md)), written by the author and named `RealTimeTradeWithAsofQuotes.q`.
+
+```q
+/
+The purpose of this script is as follows:
+1. Demonstrate how custom RTEs can be created in q
+2. In this example, create an efficient engine for calculating
+   the prevalent quotes as of trades in real-time.
+   This removes the need for ad-hoc invocations of the aj function.
+3. In this example, this subscriber also maintains its own binary
+   log file for replay purposes.
+   This replaces the standard tickerplant log file replay functionality.
+\
+show "RealTimeTradeWithAsofQuotes.q"
+/sample usage
+/q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N
+
+/default command line arguments - tp is location of tickerplant.
+/syms are the symbols we wish to subscribe to
+default:`tp`syms!("::5000";"")
+
+args:.Q.opt .z.x /transform incoming cmd line arguments into a dictionary
+args:`$default,args /upsert args into default
+args[`tp] : hsym first args[`tp]
+
+/drop into debug mode if running in foreground AND
+/errors occur (for debugging purposes)
+\e 1
+
+if[not "w"=first string .z.o;system "sleep 1"]
+
+/initialize schemas for custom RTE
+InitializeSchemas:`trade`quote!
+  (
+   {[x]`TradeWithQuote insert update bid:0n,bsize:0N,ask:0n,asize:0N from x};
+   {[x]`LatestQuote upsert select by sym from x}
+  );
+
+/intraday update functions
+/Trade Update
+/1. Update incoming data with latest quotes
+/2. Insert updated data to TradeWithQuote table
+/3. Append message to custom logfile
+updTrade:{[d]
+  d:d lj LatestQuote;
+  `TradeWithQuote insert d;
+  LogfileHandle enlist (`replay;`TradeWithQuote;d); }
+
+/Quote Update
+/1. Calculate latest quote per sym for incoming data
+/2. Update LatestQuote table
+updQuote:{[d]
+  `LatestQuote upsert select by sym from d; }
+
+/upd dictionary will be triggered upon incoming update from tickerplant
+upd:`trade`quote!(updTrade;updQuote)
+
+/end of day function - triggered by tickerplant at EOD
+.u.end:{
+  hclose LogfileHandle; /close the connection to the old log file
+  /create the new logfile
+  logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D;
+  .[logfile;();:;()]; /Initialize the new log file
+  LogfileHandle::hopen logfile;
+  {delete from x}each tables `. /clear out tables
+  }
+
+/Initialize name of custom logfile
+logfile:hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D;
+
+replay:{[t;d]t insert d} /custom log file replay function
+
+/attempt to replay custom log file
+@[{-11!x;show"successfully replayed custom log file"}; logfile;
+  {[e]
+    m:"failed to replay custom log file";
+    show m," - assume it does not exist. Creating it now";
+    .[logfile;();:;()]; /Initialize the log file
+  } ]
+
+/open a connection to log file for writing
+LogfileHandle:hopen logfile
+
+/ connect to tickerplant and subscribe to trade and quote for portfolio
+h:hopen args`tp; /connect to tickerplant
+InitializeSchemas . h(".u.sub";`trade;args`syms);
+InitializeSchemas . h(".u.sub";`quote;args`syms);
+```
+
+This process should be started off as follows:
+
+```bash
+q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N -p 5003
+```
+
+This process will subscribe to both trade and quote tables for symbols `MSFT.O`, `IBM.N` and `GS.N` and will listen on port 5003. The author has deliberately made some of the q syntax more easily understandable compared to `r.q`.
+
+The first section of the script simply parses the command-line arguments and uses these to update some default values.
+
+The error flag [`\e`](../../basics/syscmds.md#e-error-trap-clients) is set for purely testing purposes. 
+When the developer runs this script in the foreground, 
+if errors occur at runtime as a result of incoming IPC messages, the process will drop into debug mode. 
+For example, if there is a problem with the definition of `upd`, then when an update is received from the tickerplant 
+we will drop into debug mode and (hopefully) identify the issue.
+
+We can see this RTE in action by examining the five most recent trades for `GS.N`:
+
+```q
+q)-5#select from TradeWithQuote where sym=`GS.N
+time                 sym  price    size bid      bsize ask      asize 
+---------------------------------------------------------------------
+0D21:50:58.857411000 GS.N 178.83   790  178.8148 25    178.8408 98
+0D21:51:00.158357000 GS.N 178.8315 312  178.8126 12    178.831  664
+0D21:51:01.157842000 GS.N 178.8463 307  178.8193 767   178.8383 697 
+0D21:51:03.258055000 GS.N 178.8296 221  178.83   370   178.8627 358
+0D21:51:03.317152000 GS.N 178.8314 198  178.8296 915   178.8587 480
+```
+
+#### Initialize desired table schemas
+
+`InitializeSchemas` defines the behavior of this RTE upon connecting and subscribing to the tickerplant’s trade and quote tables. 
+`InitializeSchemas` (defined as a dictionary which maps table names to unary function definitions) replaces [`.u.rep`](../../architecture/rq.md#urep) in `r.q`:
+
+The RTE’s trade table (named `TradeWithQuote`) maintains `bid`, `bsize`, `ask` and `asize` columns of appropriate type. 
+For the quote table, we just maintain a keyed table called `LatestQuote`, keyed on `sym` which will maintain the most recent quote per symbol. 
+This table will be used when joining prevalent quotes to incoming trades.
+
+
+#### Intraday update behavior
+
+`updTrade` defines the intraday behavior upon receiving new trades.
+
+Besides inserting the new trades with prevalent quote information into the trade table, `updTrade`
+also appends the new records to its custom logfile. This logfile will be replayed upon recovery/startup of the RTE. 
+Note that the replay function is named `replay`. This differs from the conventional TP logfile where the replay function was called `upd`.
+
+`updQuote` defines the intraday behavior upon receiving new quotes.
+
+The `upd` dictionary acts as a case statement – when an update for the trade table is received, 
+`updTrade` will be triggered with the message as argument. 
+Likewise, when an update for the quote table is received, `updQuote` will be triggered.
+
+In `r.q`, `upd` is defined as a function, not a dictionary. However we can use this dictionary definition for reasons discussed previously.
+
+
+#### End of day
+
+At end of day, the tickerplant sends a message to all RTEs telling them to invoke their EOD function (`.u.end`):
+
+This function has been heavily modified from `r.q` to achieve the following desired behavior:
+
+* `hclose LogfileHandle`
+    * Close connection to the custom logfile.
+* ``logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D``
+    * Create the name of the new custom logfile. This logfile is a daily logfile – meaning it only contains one day’s trade records and it has today’s date in its name, just like the tickerplant’s logfile.
+* `.[logfile;();:;()]`
+    * Initialize this logfile with an empty list.
+* `LogfileHandle::hopen logfile`
+    * Establish a connection (handle) to this logfile for streaming writes.
+* ``{delete from x}each tables `.``
+    * Empty out the tables.
+
+
+#### Replay custom logfile
+
+This section concerns the initialization and replay of the RTE’s custom logfile.
+
+```q
+/Initialize name of custom logfile
+logfile:hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D 
+
+replay:{[t;d]t insert d} /custom log file replay function
+```
+
+At this point, the name of today’s logfile and the definition of the logfile replay function have been established. The replay function will be invoked when replaying the process’s custom daily logfile. It is defined to simply insert the on-disk records into the in memory (`TradeWithQuote`) table. This will be a fast operation ensuring recovery is achieved quickly and efficiently.
+
+Upon startup, the process uses a try-catch to replay its custom daily logfile. If it fails for any reason (possibly because the logfile does not yet exist), it will send an appropriate message to standard out and will initialize this logfile. Replay of the logfile is achieved with the standard operator `-11!` as discussed previously.
+
+```q
+/attempt to replay custom log file
+@[{-11!x;show"successfully replayed custom log file"}; logfile;
+  {[e]
+    m:"failed to replay custom log file";
+    show m," - assume it does not exist. Creating it now";
+    .[logfile;();:;()]; /Initialize the log file
+  } ]
+```
+
+Once the logfile has been successfully replayed/initialized, a handle (connection) is established to it for subsequent streaming appends (upon new incoming trades from tickerplant):
+
+```q
+ /open a connection to log file for writing
+LogfileHandle:hopen logfile
+```
+
+#### Subscribe to TP
+
+The next part of the script is probably the most critical – the process connects to the tickerplant and subscribes to the trade and quote table for user-specified symbols.
+
+```q
+/ connect to tickerplant and subscribe to trade and quote for portfolio 
+h:hopen args`tp; /connect to tickerplant
+InitializeSchemas . h(".u.sub";`trade;args`syms);
+InitializeSchemas . h(".u.sub";`quote;args`syms);
+```
+
+The output of a subscription to a given table (for example `trade`) from the tickerplant is a 2-list, as discussed previously. This pair is in turn passed to the function `InitializeSchemas`.
 
 
 ## Performance considerations
