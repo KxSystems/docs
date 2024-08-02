@@ -9,7 +9,7 @@ keywords: kdb+, q, tick, tickerplant, streaming
 
 ## Overview
 
-Contains functions to allow clients to subscribe to all or subsets of available data, publishing to interested clients & alerting clients to events (i.e. end-of-day). Tracks client subscription interest and removes a client subscription details on their disconnection.
+Contains functions to allow clients to subscribe to all or subsets of available data, publishing to interested clients and  alerting clients to events, for example, end-of-day. Tracks client subscription interest and removes client subscription details on their disconnection.
 
 This script is loaded by other processes, for example [a tickerplant](tickq.md).
 
