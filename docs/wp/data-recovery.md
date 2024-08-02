@@ -114,7 +114,7 @@ kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-me
 
 ### `-11!` functionality
 
-[`-11!`](../basics/internal.md#-11-streaming-execute) is an internal function that will read each message in a tplog in turn, running the function `functioname` on the `(tablename;tabledata)` parameters.
+[`-11!`](../basics/internal.md#-11-streaming-execute) is an internal function that reads each message in a tplog in turn, running the function `functioname` on the `(tablename;tabledata)` parameters.
 
 This section focuses on normal usage of the `-11!` function where the tplog is uncorrupted, and then discusses how to use it to recover from a corrupted tplog below in [_Replay errors_](#replay-errors).
 
