@@ -32,7 +32,7 @@ The default setup requires the first two columns to be `time` and `sym`.
 
 _The mode is controlled via the [`-t`](#usage) command line parameter._
 Batch mode can alleviate CPU use on both the tickerplant and its subscribers by grouping together multiple ticks within the timer interval prior to sending/writing. 
-This will be at the expense of tickerplant memory (required memory to hold several ticks) and increased latency that may occur between adding to the batch and sending. 
+This comes at the expense of tickerplant memory (required memory to hold several ticks) and increased latency that may occur between adding to the batch and sending. 
 There is no ideal setting for all deployments as it depends on the frequency of the ticks received. 
 Real-time mode processes every tick as soon as they occur.
 
