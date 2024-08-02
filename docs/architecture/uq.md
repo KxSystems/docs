@@ -15,7 +15,7 @@ This script is loaded by other processes, for example [a tickerplant](tickq.md).
 
 ## Usage
 
-To give the ability to publish data to any process, a few things need to be done:
+To allow the ability to publish data to any process, do the following:
 
 -   load `u.q`
 -   declare the tables to be published in the top level namespace. Each table must contain a column called `sym`, which acts as the single key field to which subscribers subscribe
