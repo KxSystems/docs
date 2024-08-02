@@ -34,7 +34,7 @@ _The mode is controlled via the [`-t`](#usage) command line parameter._
 Batch mode can alleviate CPU use on both the tickerplant and its subscribers by grouping together multiple ticks within the timer interval prior to sending/writing. 
 This will be at the expense of tickerplant memory (required memory to hold several ticks) and increased latency that may occur between adding to the batch and sending. 
 There is no ideal setting for all deployments as it depends on the frequency of the ticks received. 
-Real-time mode will process every tick as soon as they occur.
+Real-time mode processes every tick as soon as they occur.
 
 !!! note "A feedhandler can be written to send messages comprising of multiple ticks to a tickerplant. In this situation real-time mode will already be processing batches of messages."
 
