@@ -116,7 +116,7 @@ kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-me
 
 [`-11!`](../basics/internal.md#-11-streaming-execute) is an internal function that will read each message in a tplog in turn, running the function `functioname` on the `(tablename;tabledata)` parameters.
 
-In this section, we will focus on normal usage of the `-11!` function where the tplog is uncorrupted, and move on to discuss how to use it to recover from a corrupted tplog below in [_Replay errors_](#replay-errors).
+This section focuses on normal usage of the `-11!` function where the tplog is uncorrupted, and then discusses how to use it to recover from a corrupted tplog below in [_Replay errors_](#replay-errors).
 
 There are three distinct usages of `-11!` when passed a list of two parameters, depending on the value of the first parameter. 
 
