@@ -167,7 +167,7 @@ Actions performed:
 
 * using [`.u.L`](#variables), change last 10 chars to provided date and create log file if it doesnt yet exist
 * set [`.u.i`](#variables) and [`.u.j`](#variables) to count of valid messages currently in log file
-* if log file is found to be corrupt (size bigger than size of number of valid messages) an error will be returned
+* if log file is found to be corrupt (size bigger than size of number of valid messages) an error is returned
 * open new/existing log file
 
 ### .u.ts
