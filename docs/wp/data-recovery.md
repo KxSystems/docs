@@ -98,9 +98,11 @@ if[l; l enlist(`upd;t;x); j+:1]
 
 ### Replaying a tplog
 
-Recovery of an RDB typically involves simply restarting the process. On startup, an RDB will subscribe to a TP and will receive information about the message count ([`.u.i`](../architecture/tickq.md#variables)) and location of the tplog ([`.u.L`](../architecture/tickq.md#variables)) in return. 
+Recovery of an RDB involves restarting the process. On startup, an RDB subscribes to a TP and receives the following information:
+- message count ([`.u.i`](../architecture/tickq.md#variables)) 
+- location of the tplog ([`.u.L`](../architecture/tickq.md#variables)). 
 
-It will then replay this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function. 
+It then replays this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function. 
 
 This is called within `.u.rep`, which is executed when the RDB connects to the TP.
 
