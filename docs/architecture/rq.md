@@ -30,7 +30,7 @@ If known/common queries can be designed, the RDB can load additional scripts to 
 
 ### End-of-day
 
-The end-of-day event is governed by the tickerplant process. The tickerplant calls the RDB [`.u.end`](#uend) function when this event occur.
+The end-of-day event is governed by the tickerplant process. The tickerplant calls the RDB [`.u.end`](#uend) function when this event occurs.
 The main end-of-day event for an RDB is to save todays data from memory to disk, clear its tables and cause the HDB to be aware of a new days dataset for it to access.
 
 !!! Note "[.u.rep](#urep) sets the HDB directory be the same as the tickerplant log file directory. This can be edited to use a different directory if required"
