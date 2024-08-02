@@ -14,7 +14,7 @@ A tickerplant writes all data to a tickerplant log (to permit data recovery) and
 
 ### Customization
 
-`tick.q` provides a starting point to most environments. The source code is freely avaialble and can be tailered to individual needs.
+`tick.q` provides a starting point to most environments. The source code is freely available and can be tailored to individual needs.
 
 ### Schema file
 
