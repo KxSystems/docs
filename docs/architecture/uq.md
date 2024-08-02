@@ -119,7 +119,7 @@ Actions performed:
 Returns 2 element list. The first element is the table name. The second element depends on whether `x` refers to a keyed table.
 
 * If `x` is a keyed table, [`.u.sel`](#usel) is used to select from the keyed table the required syms
-* otherwise returns an empty table `x` (i.e. schema definition of table), with the [grouped attribute](../ref/set-attribute.md#grouped-and-parted) applied to the sym column.
+* otherwise returns an empty table `x` (schema definition of table), with the [grouped attribute](../ref/set-attribute.md#grouped-and-parted) applied to the sym column.
 
 ### .u.sub
 
