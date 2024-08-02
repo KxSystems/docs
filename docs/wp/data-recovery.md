@@ -63,7 +63,7 @@ Here, `functionname` and `tablename` are symbols, and `tabledata` is a row of da
 `upd `trade (0D14:56:01.122310000;`SGDUSD;"B";5000;98.14)
 ```
 
-In a standard tick system, each kdb+ message will call a function named `upd`. Each process may have a different definition of this function. A TP will publish each time the `upd` function is called (if its timer is not set to batch the data), and an RDB will simply insert the data into the relevant table.
+In a standard tick system, each kdb+ message calls a function named `upd`. Each process may have a different definition of this function. A TP publishes each time the `upd` function is called (if its timer is not set to batch the data), and an RDB inserts the data into the relevant table.
 
 ## Recovery
 
