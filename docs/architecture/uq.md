@@ -175,4 +175,4 @@ $ q subscriber.q
 
 The publisher generates some random data and publishes it periodically on a timer.
 
-The subscriber will receive data from the publisher and output it to the screen. You can modify the subscription request and the `upd` function of the subscriber as required. You can run multiple subscribers at once.
+The subscriber receives data from the publisher and is displayed on the screen. You can modify the subscription request and the `upd` function of the subscriber as required. You can run multiple subscribers at once.
