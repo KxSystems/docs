@@ -173,6 +173,6 @@ $ q publisher.q
 $ q subscriber.q
 ```
 
-The publisher will generate some random data and publish it periodically on a timer.
+The publisher generates some random data and publishes it periodically on a timer.
 
 The subscriber will receive data from the publisher and output it to the screen. You can modify the subscription request and the `upd` function of the subscriber as required. You can run multiple subscribers at once.
