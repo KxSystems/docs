@@ -40,7 +40,7 @@ The main end-of-day event for an RDB is to save todays data from memory to disk,
 Using IPC, the RDB process can retrieve the current tickerplant log location and use via the [variables](tickq.md#variables) the tickerplant maintains.
 The function [`.u.rep`](#urep) is then used to populate any tables from the log.
 
-!!! Note "The RDB should have tickerplant log available from a directory on the same machine. The RDB/tickerplant can be changed to reside on different hosts but this will entail the increased resource utilisation of transmitting the log file contents over the network."
+!!! Note "The RDB should be able to access the tickerplant log from a directory on the same machine. The RDB/tickerplant can be changed to reside on different hosts but this increases the resources needed to transmit the log file contents over the network."
 
 ## Usage
 
