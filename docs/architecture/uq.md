@@ -35,7 +35,7 @@ Clients should define a [`upd`](rq.md#upd) function to receive updates, and [`.u
 
 | Name | Description |
 | ---- | ---- |
-| .u.w | Dictionary of registered client interest in data being processed i.e. (tables->(handle;syms) |
+| .u.w | Dictionary of registered client interest in data being processed (for example, tables->(handle;syms) |
 | .u.t | Table names |
 
 ## Functions
