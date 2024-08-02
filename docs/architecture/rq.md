@@ -19,7 +19,7 @@ After writing data to disk, it instructs a HDB to load the written data.
 
 #### Memory use
 
-The default RDB will store all of a days data in memory before end-of-day writting to disk. The host machines should be configured that all required resources 
+The default RDB stores all of a days data in memory before end-of-day writing to disk. The host machines should be configured that all required resources 
 can handle the demands that may be made of them (both for today and the future).
 Depending on when there may be periods of low/no activity, [garbage collection](../ref/dotq.md#gc-garbage-collect) could be deployed after clearing tables at end-of-day, or a system for intra-day writedowns.
 
