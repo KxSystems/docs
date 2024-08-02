@@ -19,7 +19,7 @@ A tickerplant writes all data to a tickerplant log (to permit data recovery) and
 ### Schema file
 
 A tickerplant requires a schema file.
-A schema file should be created to describe the data you plan to capture, by specifing the tables that will be populated by the tickerplant environment. 
+A schema file describes the data you plan to capture, by specifying the tables to be populated by the tickerplant environment. 
 The [datatypes](../basics/datatypes.md) and [attributes](../ref/set-attribute.md) are denoted within the file as shown in this example:
 ```q
 quote:([]time:`timespan$(); sym:`g#`symbol$(); bid:`float$(); ask:`float$(); bsize:`long$(); asize:`long$(); mode:`char$(); ex:`char$())
