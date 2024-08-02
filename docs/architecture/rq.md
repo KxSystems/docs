@@ -25,7 +25,7 @@ Depending on when there may be periods of low/no activity, [garbage collection](
 
 #### User queries
 
-A gateway process should control user queries and authorisation/authentication, using RDBs/RTEs/HDBs to retrieve the required information.
+A gateway process should control user queries and authorization/authentication, using RDBs/RTEs/HDBs to retrieve the required information.
 If known/common queries can be designed, the RDB can load additional scripts to pre-define functions a gateway can call.
 
 ### End-of-day
