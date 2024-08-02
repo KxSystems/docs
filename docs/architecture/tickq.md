@@ -197,7 +197,7 @@ Where
 
 #### Batch Mode
 
-Add each recieved message to batch and record message to tickerplant log. Batch will be published on running timer.
+Add each received message to the batch and record message to the tickerplant log. Batch is published on running timer.
 
 Actions performed:
 * If the first element of  `y` is not a timespan (or list of timespan)
