@@ -29,7 +29,7 @@ Subscriber processes must open a connection to the publisher and call [`.u.sub[t
 If a subscriber calls `.u.sub` again, the current subscription is overwritten either for all tables (if a wildcard is used) or the specified table. 
 To add to a subscription, for example, add more `syms` to a current subscription, the subscriber can call [`.u.add`](#uadd)).
 
-Clients should define a [`upd`](rq.md#upd) function to receive updates, and [`.u.end`](rq.md#uend) function for end-of-day events
+Clients should define a [`upd`](rq.md#upd) function to receive updates, and [`.u.end`](rq.md#uend) function for end-of-day events.
 
 ## Variables
 
