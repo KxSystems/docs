@@ -39,7 +39,7 @@ For example, a simple partitioning scheme on a single disk might be as shown rig
 ## Sample partitioned database
 
 The script :fontawesome-brands-github:[`KxSystems/cookbook/start/buildhdb.q`](https://github.com/KxSystems/cookbook/blob/master/start/buildhdb.q) builds a sample HDB. 
-It builds a month’s random data in directory `start/db`, and takes a few seconds to run. 
+It builds a month’s random data in directory `start/db`. 
 
 Load q, then:
 
