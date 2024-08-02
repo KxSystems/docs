@@ -166,7 +166,7 @@ Called when a client disconnects. The client handle provided is used to call [`.
 
 In addition, the example scripts below demonstrate pub/sub in a standalone publisher and subscriber.
 They can be downloaded from :fontawesome-brands-github:[KxSystems/cookbook/pubsub](https://github.com/KxSystems/cookbook/tree/master/pubsub). 
-Each script should be run from the OS command prompt e.g.
+Each script should be run from the OS command prompt as shown in the following example.
 
 ```bash
 $ q publisher.q
