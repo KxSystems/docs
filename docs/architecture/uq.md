@@ -40,7 +40,7 @@ Clients should define a [`upd`](rq.md#upd) function to receive updates, and [`.u
 
 ## Functions
 
-Functions are open source & open to customisation.
+Functions are open source and open to customisation.
 
 ### .u.init
 
