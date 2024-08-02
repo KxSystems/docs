@@ -1341,7 +1341,7 @@ The tickerplant process is started from the command line as follows.
 $ q tick.q trade /logs/tickerplant/ -p 5010
 ```
 
-Above, the first argument following [`tick.q`](../../architecture/tickq.md) is the name of the table schema file to use. The second argument is the location where the tickerplant log file will be created and the value following the `-p` option is the port the tickerplant will listen on. The C process will use this port number when initializing the connection. The final step in this setup is to create a kdb+ mock feedhandler process which will act as the trade data source for the tickerplant. Below is a simple publishing process which is suﬃcient for the demonstration.
+Above, the first argument following [`tick.q`](../../architecture/tickq.md) is the name of the table schema file to use. The second argument is the location where the tickerplant log file is created and the value following the `-p` option is the port the tickerplant listens on. The C process uses this port number when initializing the connection. The final step in this setup is to create a kdb+ mock feedhandler process, which acts as the trade data source for the tickerplant. Below is a simple publishing process.
 
 ```q
 /* File name: feed.q */
