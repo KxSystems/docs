@@ -584,9 +584,8 @@ if(handle==-3){
 }
 ```
 
-Prior to 4.1t 2023.11.10, SSL/TLS connections can be used from the initialization thread only, i.e. the thread which first calls any `khp` function since the start of the application. It can now be used for one-shot synchronous requests.
-
-The lib is sensitive to the same environment variables as kdb+, noted at [Knowledge Base: SSL/TLS](../kb/ssl.md)
+The lib is sensitive to the same environment variables as kdb+, noted at [Knowledge Base: SSL/TLS](../kb/ssl.md). 
+Using `khpunc` for SSL/TLS connections can be used from the initialization thread only, see [SSL/TLS thread](../kb/ssl.md#thread-support) support for more details.
 
 The OpenSSL libs are loaded dynamically,  the first time a TLS connection is requested. It may be forced on startup with
 
