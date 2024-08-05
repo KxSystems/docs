@@ -17,7 +17,7 @@ Software or hardware problems can cause a kdb+ server process to fail, possibly 
 
     This is the same restriction that applies to [`.z.vs`](../ref/dotz.md#zvs-value-set).
 
-Logging is enabled by using the [`-l` or `-L` command-line arguments](../basics/cmdline.md#-l-log-updates).
+Logging is enabled by using the [`-l`](../basics/cmdline.md#-l-log-updates) or [`-L`](../basics/cmdline.md#-l-log-sync) command-line arguments.
 
 This example requires a file `trade.q` containing instructions to create a trade table:
 ```q
@@ -40,10 +40,6 @@ q)h "insert[`trade](10:30:01.000; `intel; 88.5; 1625)"
 
 In the server instance, run `count trade` to check the trade table is now populated with one row.
 Assume that the kdb+ server process dies. If we now restart it with logging on, the updates logged to disk are not lost:
-
-```bash
-q q trade -l -p 5001
-```
 
 ```q
 q)count trade
@@ -71,25 +67,21 @@ However, the checkpoint is path-dependent. Consider the following:
 q)
 ```
 
-A listing of the directory gives:
+A listing of the current directory gives:
 
 ```bash
-/tmp/qtest$ ls
-qtest.log
+q)\ls
+"qtest.log"
 ```
 
-Back in q:
+The system command `\l` can be used to roll the log file. 
+The current log file will be renamed with the `qdb` extension and a new log file will be created.
 
 ```q
 q)\l
-```
-
-yields
-
-```bash
-/tmp/qtest$ $ls
-qtest.log
-qtest.qdb
+q)\ls
+"qtest.log"
+"qtest.qdb"
 ```
 
 However, if there is a change of directory within the q session then the `*.qdb` checkpoint file is placed in the latter directory. For instance:
@@ -149,14 +141,14 @@ this reads the data file (`.qdb`), log file, and the q script file `logTest.q`, 
 
 ## Logging options
 
-The `-l` option is recommended if you trust (or duplicate) the machine where the server is running. The `-L` option involves an actual disk write (assuming hardware write-cache is disabled).
+The [`-l`](../basics/cmdline.md#-l-log-updates) option is recommended if you trust (or duplicate) the machine where the server is running. The [`-L`](../basics/cmdline.md#-l-log-sync) option involves an actual disk write (assuming hardware write-cache is disabled).
 
 Another option is to use no logging. This is used with test, read-only, read-mostly, trusted, duplicated or cache databases.
 
 
 ## Errors and rollbacks
 
-If either message handler (`.z.pg` or `.z.ps`) throws any error, and the state was changed during that message processing, this will cause a rollback.
+If either message handler ([`.z.pg`](../ref/dotz.md#zpg-get) or [`.z.ps`](../ref/dotz.md#zps-set)) throws any error, and the state was changed during that message processing, this will cause a rollback.
 
 
 ## Replication
@@ -167,7 +159,7 @@ Given a logging q process listening on port 5000, e.g. started with
 q test -l -p 5000
 ```
 
-a single kdb+ process can replicate that logging process via
+an additional kdb+ process can replicate that logging process via the [`-r`](../basics/cmdline.md#-r-replicate) command line parameter
 
 ```bash
 q -r :localhost:5000:username:password
@@ -183,7 +175,7 @@ the replicating process will receive this information when it connects.
 
 On start-up, the replicating process connects to the logging process, gets the log filename and record count, opens the log file, plays back that count of records from the log file, and continues to receive updates via [TCP/IP](../basics/ipc.md). Each record is executed via `value`.
 
-If the replicating process loses its connection to the logging process, you can detect that with `.z.pc`. To resubscribe to the logging process, restart the replicating process.
+If the replicating process loses its connection to the logging process, you can detect that with [`.z.pc`](../ref/dotz.md#zpc-close). To resubscribe to the logging process, restart the replicating process.
 
 Currently, only a single replicating process can subscribe to the primary process. If another kdb+ process attempts to replicate from the primary, the previous replicating process will no longer receive updates. If you need multiple replicating processes, you might like to consider [kdb+tick](../learn/startingkdb/tick.md).
 
