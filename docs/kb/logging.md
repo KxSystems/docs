@@ -5,11 +5,21 @@ keywords: kdb+, log, logging, q, replication, recovery
 ---
 # Using log files: logging, recovery and replication
 
+## Overview
+
+Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur.
+
 !!! warning "This should not be confused with a file that logs human readable warnings, errors, etc. It refers to a log of instructions to regain state."
 
-## Creating a log file
+## Automatic handling
 
-Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
+### Overview
+
+The automatic log file creation requires little developer work, but without the advantages of the finer level of control that [manual log creation](#manual-handling) provides.
+
+Automatic logging captures a message only if it changes the state of the process’ data.
+
+### Creating a log file
 
 !!! detail "Applies only to globals in the default namespace"
 
@@ -56,7 +66,7 @@ q)count trade
     ```
 
 
-## Check-pointing / rolling
+### Check-pointing / rolling
 
 A logging server uses a `.log` file and a `.qdb` data file. The command [`\l`](../basics/syscmds.md#l-load-file-or-directory) checkpoints the `.qdb` file and empties the log file.
 
@@ -128,7 +138,7 @@ results in
 ```
 
 
-## File read order
+### File read order
 
 When you type
 
@@ -139,19 +149,19 @@ q logTest -l
 this reads the data file (`.qdb`), log file, and the q script file `logTest.q`, if present. If any of the three files exists (`.q`, `.qdb`, and `.log`), they should all be in the same directory.
 
 
-## Logging options
+### Logging options
 
 The [`-l`](../basics/cmdline.md#-l-log-updates) option is recommended if you trust (or duplicate) the machine where the server is running. The [`-L`](../basics/cmdline.md#-l-log-sync) option involves an actual disk write (assuming hardware write-cache is disabled).
 
 Another option is to use no logging. This is used with test, read-only, read-mostly, trusted, duplicated or cache databases.
 
 
-## Errors and rollbacks
+### Errors and rollbacks
 
 If either message handler ([`.z.pg`](../ref/dotz.md#zpg-get) or [`.z.ps`](../ref/dotz.md#zps-set)) throws any error, and the state was changed during that message processing, this will cause a rollback.
 
 
-## Replication
+### Replication
 
 Given a logging q process listening on port 5000, e.g. started with
 
@@ -180,9 +190,83 @@ If the replicating process loses its connection to the logging process, you can 
 Currently, only a single replicating process can subscribe to the primary process. If another kdb+ process attempts to replicate from the primary, the previous replicating process will no longer receive updates. If you need multiple replicating processes, you might like to consider [kdb+tick](../learn/startingkdb/tick.md).
 
 
+## Manual handling
+
+### Overview
+
+Function calls and the contents of the their parameters can be recorded to a log file, which can then be replayed by a process. This is often used for data recovery.
+
+This technique is often used to allow a developer more control over log file naming conventions, what to log, log file locations and the ability to add logic around the log file lifecycle.
+
+### Creating a log file
+
+A log file can be initialized using [`set`](../ref/get.md#set).
+
+```q
+q)logfile:hsym `$"qlog";
+q)logfile set ();
+q)logfilehandle:hopen logfile;
+```
+
+!!!note "`logfile set ();` is equivalent to `.[logfile;();:;()];`"
+
+A check for a pre-existing log file can be achieved using [`get`](../ref/get.md#get). 
+The script can now be written to initialize a new log file if it does not exist, otherwise it will opened for appending.
+
+```q
+q)logfile:hsym `$"qlog";
+q)if[not type key logfile;logfile set()]
+q)logfilehandle:hopen logfile;
+```
+
+Close the log file when finished logging any messages.
+
+```q
+q)hclose logfilehandle
+```
+
+### Log writting
+
+To record events/messages to a log, append a list consisting of a function name followed by any parameters used. 
+
+A tickerplant uses this concept to record all messages sent to its clients so they can use the log to recover. It records calling a function `upd` passing the parameters of a table name and the table content to append.
+
+For example, calling a function called `upd` with two parameters, x and y, can be recorded to a file file as follows:
+```q
+q)logfilehandle enlist (`upd;x;y)
+```
+When a kdb+ process plays back this log, a function called `upd` will be called with the value of the two parameters. Multiple function calls can be logged also:
+
+```q
+q)logfilehandle ((`func1;param1);(`func2;param1;param2))
+```
+
+As [log replay](#replaying-log-files) calls [`value`](../ref/value.md) to execute, you can also log q code as a string, for example
+
+```q
+logfilehandle enlist "upd[22;33]"
+```
+
+Function calls that are used to updating data are typically written, without logging the function definition. 
+This has the disadvantage of requiring that the recoverying process defines the functions (e.g. by loading a q script) prior to replaying the log. 
+The advantages can outweight the disadvantages by allowing for bugs fixes within the function or temporarily assigning the function to a different definition prior to playback, 
+to provide despoke logic for data sourced from a log file.
+
+### Log rolling
+
+A kdb+ process can run 24/7, but a log file may only be relevant for a specific timeframe or event. 
+For example, the default tickerplant creates a new log for each day. 
+The developer should close the current log and create a new one on each event. 
+A decision must be taken on whether to retain the old files or delete them, taking into account disk usage and what other processes may require them.
+
+A naming convention should be used to aid distinction between current log files and any old log files required for retention.
+The [`z`](../ref/dotz.md) namespace provides various functions for system information such as current date, time, etc. 
+The following is an example of namimg a log file after the current date:
+```q
+q)logfile:hsym `$"qlog_",string .z.D;
+```
 
 ## Replaying log files
-
 
 Streaming-execute over a file is used (for example in kdb+tick) to replay a log file in a memory-efficient manner.
 
