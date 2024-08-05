@@ -143,18 +143,6 @@ q)\ts value each get `:sym2014.05.07
 :fontawesome-regular-hand-point-right:
 Basics: [`\ts` system command](../basics/syscmds.md#ts-time-and-space)
 
-The return value from ``-11!`:logfile`` is the number of tplog lines executed.
-
-```q
-q)count trade
-0
-/play back the logfile
-q)-11!`:sym2014.05.07
-18
-q)count trade
-18
-```
-
 
 #### ``-11!(-2;`:tplog)``
 

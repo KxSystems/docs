@@ -286,15 +286,7 @@ upd:insert
 
 In other words, when the RDB replays a given message, it simply inserts the record/s into the corresponding table. This is the same definition of `upd` used for intraday updates via IPC. These updates succeed because the second argument to `insert` can be either a columnar list or a table.
 
-A q process replays a tickerplant logfile using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute). Although this operator can be used in different ways, the simplest syntax is:
-
-```q
--11! `:TPDailyLogfile
-```
-
-Where `TPDailyLogfile` is the particular logfile to replay.
-
-The result is the number of messages successfully replayed.
+A q process replays a tickerplant logfile using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute).
 
 For example, based on the above definition of `upd`, we could replay a logfile as follows:
 
