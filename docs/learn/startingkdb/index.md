@@ -5,14 +5,9 @@ keywords: kdb+, q, start, tutorial,
 ---
 # Starting kdb+
 
-
-
-
-
 This is a quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material. After completing this you should be able to follow the Borror textbook [Q for Mortals](/q4m3/), and the [Reference](../../ref/index.md).
 
 One caution: you can learn kdb+ reasonably well by independent study, but for serious deployment of the product you need the help of a consultant. This is because kdb+ is typically used for very demanding applications that require experience to set up properly. Contact KX for help with such evaluations.
-
 
 ## kdb+
 
@@ -47,45 +42,12 @@ Several background articles and links can be found in the [Archive](../archive.m
 ### Discussion groups
 
 -   The main discussion forum is the [k4 Topicbox](https://k4.topicbox.com/groups/k4). This is available only to licensed customers – please use a work email address to [apply for access](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106).
--   The [kdb+ Personal Developers](https://groups.google.com/forum/#!forum/personal-kdbplus) forum is an open Google discussion group for users of the free system.
+-   [KX Community discussion forum](https://learninghub.kx.com/forums/) is used to find answers, ask questions, and connect with our KX Community.
 
 
 ## :fontawesome-solid-download: Install free system
 
 If you do not already have access to a licensed copy, go to [Get started](../index.md) to download and install q.
-
-
-## :fontawesome-solid-file: Example files
-
-Two sets of scripts are referenced in this guide:
-
-1. The free system is distributed with the following example scripts in the main directory:
-
-    -   `sp.q` – the Suppliers and Parts sample database
-    -   `trade.q` – a stock trades sample database
-
-    If you do not have these scripts, get them from 
-    :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) 
-    and save them in your `QHOME` directory.
-
-2. Other example files are in the :fontawesome-brands-github: [KxSystems/cookbook/start](https://github.com/KxSystems/cookbook/tree/master/start) directory. 
-
-    Move the `start` directory under your `QHOME` directory, e.g. `q/start`. For example, there should be a file:
-
-    === ":fontawesome-brands-linux: Linux :fontawesome-brands-apple: macOS"
-
-            ~/q/start/buildhdb.q
-    
-    === ":fontawesome-brands-windows: Windows"
-
-            c:\q\start\buildhdb.q
-
-
-!!! tip "Text editor for :fontawesome-brands-windows: Windows"
-
-    Since q source is in plain text files, it is worth installing a good text editor such as Notepad++ or Notepad2.
-
-    Some text editors have extensions to provide e.g. syntax highlighting for q. See the [list of editor integrations](../../interfaces/index.md#editor-integrations)
 
 
 ## Graphical user interface

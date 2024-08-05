@@ -68,6 +68,7 @@ A   1996.05.23| 046298105 ASTRA AB CL-A ADS 1CL-ASEK2.50 0  N  100
 A   2000.08.04| 00846U101 AGILENT TECHNOLOGIES  INC      0  N  100
 ```
 
+`asof` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ----
 :fontawesome-solid-book:

@@ -1,24 +1,75 @@
 ---
-title: Working with Matlab | Interfaces | kdb+ and q documentation
-description: How connect a Matlab client program to a kdb+ server process
+title: Working with MATLAB | Interfaces | kdb+ and q documentation
+description: How connect a MATLAB client program to a kdb+ server process
 ---
-# ![Matlab](img/matlab.png) Working with Matlab 
+# Working with MATLAB
 
-
-
-Support for Matlab is a part of [Datafeed Toolbox for Matlab](https://uk.mathworks.com/help/datafeed/kx-systems-inc-.html): since R2007a edition.
-
-MathWorks provides functions overview, usage instructions and some examples on the toolbox webpage.
+## Installation
 
 !!! note "Versions"
 
-    As Matlab/datafeed toolbox evolves features or instruction below are subject to revisions. Please refer to toolbox documentation for latest version.
+    As MATLAB/datafeed toolbox evolves features or instruction below are subject to revisions. Please refer to toolbox documentation for latest version.
     Users have reported that this works with more recent versions (e.g. R2015b on RHEL 6.8/2016b and 2017a on macOS).
 
     See also community-supported native connector :fontawesome-brands-github: [dmarienko/kdbml](https://github.com/dmarienko/kdbml)
 
 
-First, we start up a kdb+ process that we wish to communicate with from Matlab and load some sample data into it.
+=== "MATLAB R2021a and later"
+
+    Download and unzip [kx_kdbplus.zip](https://uk.mathworks.com/matlabcentral/answers/864350-trading-toolbox-functionality-for-kx-systems-inc-kdb-in-matlab-r2021a-and-later).
+    Add the resulting directory to your [MATLAB path](https://uk.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html), for example in MATLAB
+    ```matlab
+    >> addpath('/Users/Developer/matlabkx')
+    ```
+
+=== "MATLAB prior to R2021a"
+
+    Support for MATLAB is a part of [Datafeed Toolbox for MATLAB](https://uk.mathworks.com/help/releases/R2020b/datafeed/kx-systems-inc-.html): since R2007a edition.
+
+The MATLAB integration depends on the two Java files `c.jar` and `jdbc.jar`. 
+
+:fontawesome-brands-github: 
+[KxSystems/kdb/c/c.jar](https://github.com/KxSystems/kdb/blob/master/c/c.jar)  
+:fontawesome-brands-github: 
+[KxSystems/kdb/c/jdbc.jar](https://github.com/KxSystems/kdb/blob/master/c/jdbc.jar)
+
+Add the JAR files to the classpath used by MATLAB. It can be added permanently by editing `classpath.txt` (type `edit classpath.txt` at the MATLAB prompt) or for the duration of a particular session using the `javaaddpath` function, for example
+
+```matlab
+>> javaaddpath /home/myusername/jdbc.jar
+>> javaaddpath /home/myusername/c.jar
+```
+
+!!! note "Installation directory"
+
+    In these examples change `/home/myusername` to the directory where `jdbc.jar` and `c.jar` are installed.
+
+Alternatively, this can be achieved in a MATLAB source file (i.e., \*.m file) adding the following two functions before calling `kx` functions.
+
+```matlab
+javaaddpath('/home/myusername/jdbc.jar')
+javaaddpath('/home/myusername/c.jar')
+```
+
+Confirm they have been added successfully using the `javaclasspath` function.
+
+```matlab
+>> javaclasspath
+    STATIC JAVA PATH
+...
+    /opt/matlab/2015b/java/jar/toolbox/stats.jar
+    /opt/matlab/2015b/java/jar/toolbox/symbol.jar
+
+    DYNAMIC JAVA PATH
+
+    /home/myusername/jdbc.jar
+    /home/myusername/c.jar
+>>
+```
+
+## Connecting to a q process
+
+First, we start up a kdb+ process that we wish to communicate with from MATLAB and load some sample data into it.
 Save following as `tradedata.q` file
 
 ```q
@@ -48,7 +99,7 @@ totalvolume2:{[stock;minvolume] select sum(volume) from trade where sec = stock,
 
 Then
 
-```powershell
+```bash
 q tradedata.q -p 5001
 ```
 
@@ -80,54 +131,7 @@ XYZ  13.64856 2900   6.435824 2005.04.03
 q)
 ```
 
-The Matlab integration depends on the two Java files `c.jar` and `jdbc.jar`. 
-For the purposes of this recipe, we assume this is available on the machine Matlab is running on, at `C:\q\jdbc.jar`. 
-
-:fontawesome-brands-github: 
-[KxSystems/kdb/c/c.jar](https://github.com/KxSystems/kdb/blob/master/c/c.jar)  
-:fontawesome-brands-github: 
-[KxSystems/kdb/c/jdbc.jar](https://github.com/KxSystems/kdb/blob/master/c/jdbc.jar)
-
-We then start a new Matlab session. From here on, `>>` represents the Matlab prompt.
-
-
-## Connecting to a q process
-
-We assume a kdb+ process running on the local host on port 5001 and that the `jdbc.jar` is installed.
-
-First we need to add the JAR file to the classpath used by Matlab. We can either permanently add it by editing `classpath.txt` (type `edit classpath.txt` at the Matlab prompt) or for the duration of a particular session using the `javaaddpath` function. We’ll use the latter here.
-
-```matlab
->> javaaddpath /home/myusername/jdbc.jar
->> javaaddpath /home/myusername/c.jar
-```
-
-!!! note "Installation directory"
-
-    In these examples change `/home/myusername` to the directory where `jdbc.jar` and `c.jar` are installed.
-
-Alternatively, this can be achieved in a Matlab source file (i.e., \*.m file) adding the following two functions before calling `kx` functions.
-
-```matlab
-javaaddpath('/home/myusername/jdbc.jar')
-javaaddpath('/home/myusername/c.jar')
-```
-
-We can confirm that we’ve added this successfully using the `javaclasspath` function.
-
-```matlab
->> javaclasspath
-    STATIC JAVA PATH
-...
-    /opt/matlab/2015b/java/jar/toolbox/stats.jar
-    /opt/matlab/2015b/java/jar/toolbox/symbol.jar
-
-    DYNAMIC JAVA PATH
-
-    /home/myusername/jdbc.jar
-    /home/myusername/c.jar
->>
-```
+We then start a new MATLAB session. From here on, `>>` represents the MATLAB prompt.
 
 We’re now ready to open a connection to the q process:
 
@@ -145,7 +149,7 @@ q =
 
     We can also pass a username:password string as the third parameter to the `kx` function if it is required to log in to the q process.
 
-The `q` value is a normal Matlab object and we can inspect the listed properties. We’ll use this value in all our communications with the q process. 
+The `q` value is a normal MATLAB object and we can inspect the listed properties. We’ll use this value in all our communications with the q process. 
 
 We close a connection using the `close` function:
 
@@ -171,13 +175,9 @@ We close a connection using the `close` function:
     java.net.SocketException: Socket closed
 
         at java.net.SocketOutputStream.socketWrite(Unknown Source)
-
         at java.net.SocketOutputStream.write(Unknown Source)
-
         at c.w(c.java:99)
-
         at c.k(c.java:107)
-
         at c.k(c.java:108)
 
     Error in ==> kx.fetch at 65
@@ -222,28 +222,29 @@ Then we can fetch it:
 
 hundreds =
 
-java.lang.Object[]:
-    [100x1 int32]
-    [100x1 int32]
+  java.lang.Object[]:
+
+    [100×1 int64]
+    [100×1 int64]
 ```
 
-We can use the `cell` function to strip the Java array wrapper away:
+We can use the [`cell`](https://uk.mathworks.com/help/matlab/ref/cell.html) function to strip the Java array wrapper away:
 
 ```matlab
 >> hundreds_as_cell = cell(hundreds)
 
 hundreds_as_cell =
 
-    [100x1 int32]
-    [100x1 int32]
+  2×1 cell array
 
->>
+    {100×1 int64}
+    {100×1 int64}
 ```
 
 Tables are returned as an object with an array property for each column. Taking the first 10 rows of the `trade` table as an example:
 
 ```q
-q) 10 # trade
+q)10#trade
 sec  price    volume exchange date
 ----------------------------------------
 ACME 89.5897  1300   6.58303  2005.04.26
@@ -258,18 +259,18 @@ ABC  58.26731 2100   5.220929 2004.09.10
 XYZ  74.14568 2900   5.075229 2004.08.24
 ```
 
-Will be returned in Matlab:
+Will be returned in MATLAB:
 
 ```matlab
->> ten = fetch(q, '10 # trade')
+>> ten = fetch(q, '10#trade')
 
 ten =
 
-         sec: {10x1 cell}
-       price: [10x1 double]
-      volume: [10x1 int32]
-    exchange: [10x1 double]
-        date: [10x1 double]
+         sec: {10×1 cell}
+       price: [10×1 double]
+      volume: [10×1 int64]
+    exchange: [10×1 double]
+        date: [10×1 double]
 ```
 
 With suitable computation in q, we can return data suitable for immediate plotting. Here we compute a 10-item moving average over the `` `ACME `` prices:
@@ -279,13 +280,13 @@ q)mavg[10;exec price from trade where sec=`ACME]
 89.5897 65.9259 61.50204 53.32677 54.74408 57.39743 57.15958 62.33525 56.8732..
 ```
 ```matlab
->> plot (fetch(q,'mavg[10;exec price from trade where sec=`ACME]'))
+>> acme = fetch(q,'mavg[10;exec price from trade where sec=`ACME]')
 ```
 
 
 ## Metadata
 
-The q integration in Matlab provides the `tables` meta function.
+The q integration in MATLAB provides the `tables` meta function.
 
 ```matlab
 >> tables(q)
@@ -297,7 +298,7 @@ ans =
     'trade'
 ```
 
-The experienced q user can use the `\v` command to see all values in the directory:
+The experienced q user can use the [`\v`](../basics/syscmds.md#v-variables) command to see all values in the directory:
 
 ```matlab
 >> fetch(q,'\v')
@@ -322,7 +323,8 @@ We can use the `fetch` function to cause side effects in the kdb+ process, such 
 Given a table `b`:
 
 ```q
-q)show b
+q)b:([] a:1 2; b:1 2)
+q)b
 a b
 ---
 1 1
@@ -371,7 +373,7 @@ a b
 A more complicated row shows the potential advantage to better effect:
 
 ```matlab
->> insert(q,'TRADE',{'`ACME',100.45,400,.0453,'2005.04.28'})
+>> insert(q,'trade',{'`ACME',100.45,400,.0453,'2005.04.28'})
 ```
 
 Be warned though, that errors will not be detected very well. For example the following expression silently fails!
@@ -384,91 +386,17 @@ whereas the equivalent `fetch` call provokes an error:
 
 ```matlab
 >> fetch(q,'b,:(1;2;3)')
-??? Java exception occurred:
-c$KException: length
-
-    at c.k(c.java:106)
-
-    at c.k(c.java:107)
-
-    at c.k(c.java:108)
-
-Error in ==> kx.fetch at 65
-    t = c.handle.k(varargin{1});
+Error using fetch (line 64)
+Java exception occurred:
+kx.c$KException: length
+	at kx.c.k(c.java:110)
+	at kx.c.k(c.java:111)
+	at kx.c.k(c.java:112)
 ```
-
-
-## Moving data from one source to another
-
-As an example of moving data from one source to another, let us get a MSFT quote from Yahoo! and insert it into our q table of data.
-
-First we connect to Yahoo! and get the quote:
-
-```matlab
->> y = yahoo
-
-y =
-
-     url: 'http://quote.yahoo.com'
-      ip: []
-    port: []
-
->> msft = fetch(y,'MSFT')
-
-msft =
-
-    Symbol: {'MSFT'}
-      Last: 30.7200
-      Date: 733064
-      Time: 0.6674
-    Change: -0.3900
-      Open: 31.0600
-      High: 31.1200
-       Low: 30.5100
-    Volume: 50928424
-```
-
-And then we insert it to a suitable table in q:
-
-```matlab
->> fetch(q,'yahoo_data:([symbol:`symbol$()];high:`float$();low:`float$())')
->> insert(q,'yahoo_data',{'`MSFT', msft.High, msft.Low})
-```
-
-And do the same for an IBM quote:
-
-```matlab
->> ibm = fetch(y,'IBM')
-
-ibm =
-
-    Symbol: {'IBM'}
-      Last: 97.0900
-      Date: 733064
-      Time: 0.6660
-    Change: 0.9200
-      Open: 96.4200
-      High: 97.2300
-       Low: 96.1200
-    Volume: 10474800
-
->> insert(q,'yahoo_data',{'`IBM', ibm.High, ibm.Low})
-```
-
-Finally, let’s check the average high for the data we’re tracking:
-
-```matlab
->> fetch(q,'select avg high from yahoo_data')
-
-ans =
-
-    high: 64.1750
-```
-
 
 ## Async commands to q
 
-The `exec` function is used for sending asynchronous commands to q; ones we do not expect a response to, and which may be performed in the background while we continue interacting with the Matlab process.
+The `exec` function is used for sending asynchronous commands to q; ones we do not expect a response to, and which may be performed in the background while we continue interacting with the MATLAB process.
 
 Here we establish a large-ish data structure in the kdb+ process:
 
@@ -489,9 +417,36 @@ ans =
 >> close(q)
 ```
 
+## Handling null
+
+kdb+ has the ability to set values to null. MATLAB doesnt have a corresponding null type, so if your data contains nulls you may wish to filter or detect them.
+
+MATLAB has the ability to call static methods within Java. The `NULL` method can provide the null values for the different [data types](../basics/datatypes.md). For example
+
+```matlab
+NullInt=kx.c.NULL('i')
+NullLong=kx.c.NULL('j')
+NullDouble=kx.c.NULL('f')
+NullDate=kx.c.NULL('d')
+```
+
+With this, you can test values for null. The following shows that the comparison will return true when requesting null values from a kdb+ connection named conn:
+
+```matlab
+fetch(conn,'0Ni')== NullInt
+fetch(conn,'0N')== NullLong
+fetch(conn,'0Nd')== NullDate
+isequaln(fetch(conn,'0Ni'),NullInt)
+isequaln(fetch(conn,'0N'), NullLong)
+isequaln(fetch(conn,'0Nd'), NullDate)
+isequaln(fetch(conn,'0Nf'), NullDouble)
+```
+
+An alternative is to have your query include a filter for nulls (if they are populated), so they arent retrieved by MATLAB.
+
 
 ## Getting more help
 
-Start with `help kx` in your Matlab session and also see `help kx.fetch` and so on for further details of the integration.
+Start with `help kx` in your MATLAB session and also see `help kx.fetch` and so on for further details of the integration.
 
-
+MathWorks provides functions overview, usage instructions and some examples on the [toolbox webpage](https://uk.mathworks.com/help/releases/R2020b/datafeed/kx-systems-inc-.html).

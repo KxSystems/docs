@@ -37,6 +37,8 @@ q)select min price by sym from t   / use in a select statement
 
 `min` is an aggregate function, equivalent to `&/`.
 
+`min` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## `mins`
 

@@ -1,16 +1,16 @@
 ---
-title: Building real-time tick subscribers | kdb+ and q documentation
-description: How to build a custom real-time tick subscriber
+title: Building real-time tick engines | kdb+ and q documentation
+description: How to build a custom real-time tick engine
 author: Nathan Perrem
 date: August 2014
 keywords: kdb+, q, real-time, subscribe, tick
 ---
-# Building real-time tick subscribers
+# Building real-time engines
 
 by [Nathan Perrem](#author)
 {: .wp-author}
 
-The purpose of this white paper is to help q developers who wish to build their own custom real-time tick subscribers. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process (`tick.q`) and the vanilla real-time subscriber process (`r.q`), known as the real-time database. This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? This white paper attempts to help with this task. It breaks down into the following broad sections:
+The purpose of this white paper is to help q developers who wish to build their own custom real-time engine. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? This white paper attempts to help with this task. It breaks down into the following broad sections:
 
 1.  Explain the existing code and principles behind `r.q`.
 2.  Use `r.q` as a template to build some sample real-time analytic
@@ -19,19 +19,16 @@ The purpose of this white paper is to help q developers who wish to build their 
 It is hoped this white paper will help dispel any notion of tick being a black box product which cannot be adapted to the requirements of the real-time data consumer.
 
 All tests were run using kdb+ V3.1 (2013.09.19) on Windows.
-The tickerplant and real-time database scripts can be obtained from GitHub.
-
-:fontawesome-brands-github:
-[KxSystems/kdb+tick](https://github.com/KxSystems/kdb-tick)
+The tickerplant and real-time database scripts can be obtained from :fontawesome-brands-github:[KxSystems/kdb+tick](https://github.com/KxSystems/kdb-tick)
 
 The tickerplant and real-time database scripts used are dated 2014.03.12 and 2008.09.09 respectively. These are the most up-to-date versions as of the writing of this white paper.
 
-This paper is focused on the real-time database and custom real-time subscribers. However, some background will be provided on the other key processes in this environment.
+This paper is focused on the real-time database and custom real-time engines (RTEs). However, some background will be provided on the other key processes in this environment.
 
 
 ## The kdb+tick environment
 
-The real-time database (RDB) and all other real-time subscribers (RTS) do not exist in isolation. Instead they sit downstream of the feedhandler (FH) and tickerplant (TP) processes. The feedhandler feeds data into the tickerplant, which in turns publishes certain records to the real-time database and other real-time subscribers. Today’s data can be queried on the RDB. The historical data resides on disk and can be read into memory upon demand by the historical database process (HDB).
+The real-time database (RDB) and all other real-time engines (RTE) do not exist in isolation. Instead they sit downstream of the feedhandler (FH) and tickerplant (TP) processes. The feedhandler feeds data into the tickerplant, which in turns publishes certain records to the real-time database and other RTEs. Today’s data can be queried on the RDB. The historical data resides on disk and can be read into memory upon demand by the historical database process (HDB).
 
 The incoming data feed could be from Reuters, Bloomberg, a particular exchange or some other internal data feed. The feedhandler receives this data and extracts the fields of interest. It will also perform some datatype casting and re-ordering of fields to normalize the data set with the corresponding table schemas present on the tickerplant. The feedhandler then pushes this massaged data to the tickerplant.
 
@@ -51,8 +48,7 @@ Although the inner workings of the tickerplant process are beyond the scope of t
 : refers to the schema file (in this case called `sym.q`), assumed to reside in the subdirectory called `tick` (relative to `tick.q`). This schema file simply defines the tables that exist in the TP – here we define two tables, `trade` and `quote`, as follows.
 
 ```q
-quote:([]time:`timespan$();sym:`symbol$();bid:`float$();ask:`float$();
-  bsize:`int$();asize:`int$())
+quote:([]time:`timespan$();sym:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
 trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
 ```
 
@@ -96,7 +92,7 @@ getask:{[s] prices[s]+getmovement[s]} /generate ask price
 Points to note from the above:
 
 1.  The data sent to the tickerplant is in columnar (column-oriented) list format. In other words, the tickerplant expects data as lists, not tables. This point will be relevant later when the RDB wishes to replay the tickerplant logfile.
-1.  The function triggered on the tickerplant upon receipt of these updates is `.u.upd`.
+1.  The function triggered on the tickerplant upon receipt of these updates is [`.u.upd`](../../architecture/tickq.md#uupd).
 1.  If you wish to increase the frequency of updates sent to the tickerplant for testing purposes, simply change the timer value at the end of this script accordingly.
 
 
@@ -113,7 +109,7 @@ hdb:.z.x 0
 @[{system"l ",x};hdb;{show "Error message - ",x;exit 0}]
 ```
 
-Strictly speaking, an instance of the HDB is not required for this paper since all we really need is a tickerplant being fed data and then publishing this data downstream to the RDB and RTS. However, the RDB does communicate with the HDB at end of day once it has finished writing its records to the on-disk database.
+Strictly speaking, an instance of the HDB is not required for this paper since all we really need is a tickerplant being fed data and then publishing this data downstream to the RDB and RTE. However, the RDB does communicate with the HDB at end of day once it has finished writing its records to the on-disk database.
 
 
 ## Real-time database (RDB)
@@ -132,7 +128,7 @@ argument         | semantics
 
 ### Real-time updates
 
-Quite simply, the tickerplant provides the ability for a process (in this case the real-time database) to subscribe to certain tables, and for certain symbols (stock tickers, currency pairs etc.). Such a real-time subscriber will subsequently have relevant updates pushed to it by the tickerplant. The tickerplant asynchronously pushes the update as a 3-item list in the format `(upd;Table;data)`:
+Quite simply, the tickerplant provides the ability for a process (in this case the real-time database) to subscribe to certain tables, and for certain symbols (stock tickers, currency pairs etc.). Such a RTE will subsequently have relevant updates pushed to it by the tickerplant. The tickerplant asynchronously pushes the update as a 3-item list in the format `(upd;Table;data)`:
 
 item     | semantics
 ---------|----------
@@ -161,7 +157,7 @@ Some example updates:
     size:1000 2000))
 ```
 
-Such a list is received by the real-time subscriber and is implicitly passed to the [`value`](../../ref/value.md) function. Here is a simple example of `value` in action:
+Such a list is received by the RTE and is implicitly passed to the [`value`](../../ref/value.md) function. Here is a simple example of `value` in action:
 
 ```q
 q)upd:{:x-y}
@@ -169,9 +165,9 @@ q)value (`upd;3;2)
 1
 ```
 
-In other words, the real-time subscriber passes two inputs to the function called `upd`. In the above examples, the inputs are the table name `` `trade`` and the table of new records.
+In other words, the RTE passes two inputs to the function called `upd`. In the above examples, the inputs are the table name `` `trade`` and the table of new records.
 
-The `upd` function should be defined on the real-time subscriber according to how the process is required to act in the event of an update. Often `upd` is defined as a binary (2-argument) function, but it could alternatively be defined as a dictionary which maps table names to unary function definitions. This duality works because of a fundamental and elegant feature of kdb+: [executing functions and indexing into data structures are equivalent](../../ref/apply.md). For example:
+The `upd` function should be defined on the RTE according to how the process is required to act in the event of an update. Often `upd` is defined as a binary (2-argument) function, but it could alternatively be defined as a dictionary which maps table names to unary function definitions. This duality works because of a fundamental and elegant feature of kdb+: [executing functions and indexing into data structures are equivalent](../../ref/apply.md). For example:
 
 ```q
 /define map as a dictionary
@@ -190,7 +186,7 @@ q)map[`bar;10]
 
 So the developer of the process needs to define `upd` according to their desired behavior.
 
-Perhaps the simplest definition of `upd` is to be found in the vanilla RTS – the RDB. The script for this process is called `r.q` and within this script, we find the definition:
+Perhaps the simplest definition of `upd` is to be found in the vanilla RTE – the RDB. The script for this process is called `r.q` and within this script, we find the definition:
 
 ```q
 upd:insert
@@ -238,22 +234,22 @@ q)MC
 4
 ```
 
-The main challenge in developing a custom real-time subscriber is rewriting `upd` to achieve desired real-time behavior.
+The main challenge in developing a custom RTE is rewriting `upd` to achieve desired real-time behavior.
 
 
 ### Tickerplant log replay
 
-An important role of the tickerplant is to maintain a daily logfile on disk for replay purposes. When a real-time subscriber starts up, they could potentially replay this daily logfile, assuming they have read access to it. Such a feature could be useful if the subscriber crashes intraday and is restarted. In this scenario, the process would replay this logfile and then be fully up-to-date. Replaying this logfile, particularly late in the day when the tickerplant has written many messages to it, can take minutes. The exact duration will depend on three factors:
+An important role of the tickerplant is to maintain a daily logfile on disk for replay purposes. When a RTE starts up, they could potentially replay this daily logfile, assuming they have read access to it. Such a feature could be useful if the subscriber crashes intraday and is restarted. In this scenario, the process would replay this logfile and then be fully up-to-date. Replaying this logfile, particularly late in the day when the tickerplant has written many messages to it, can take minutes. The exact duration will depend on three factors:
 
 1.  How many messages are in the logfile
 2.  The disk read speed
 3.  How quickly the process can replay a given message
 
-The first and second factors are probably not controllable by the developer of the RTS. However the third factor is based on the efficiency and complexity of the particular replay function called `upd`. Defining this replay function efficiently is therefore of the upmost importance for quick intraday restarts.
+The first and second factors are probably not controllable by the developer of the RTE. However the third factor is based on the efficiency and complexity of the particular replay function called `upd`. Defining this replay function efficiently is therefore of the upmost importance for quick intraday restarts.
 
 !!! note "One daily logfile"
 
-    The tickerplant maintains just one daily logfile. It does _not_ maintain separate logfiles split across different tables and symbols. This means that an RTS replaying such a logfile may only be interested in a fraction of the messages stored within.
+    The tickerplant maintains just one daily logfile. It does _not_ maintain separate logfiles split across different tables and symbols. This means that an RTE replaying such a logfile may only be interested in a fraction of the messages stored within.
 
     Ultimately the developer must decide if the process truly requires these records from earlier in the day. Changing the tickerplant’s code to allow subscriber specific logfiles should be technically possible, but is beyond the scope of this white paper.
 
@@ -274,15 +270,15 @@ Focusing on the first message:
 
 item | semantics
 -----|-----------
-1    | the symbol `` `upd`` is the name of the update/replay function on RTS
+1    | the symbol `` `upd`` is the name of the update/replay function on RTE
 2    | the symbol `` `trade`` is the table name of the update
 3    | a column-oriented (columnar) list containing the new records
 
-The format of the message in the tickerplant logfile is the same as the format of real-time updates sent to the RTS with one _critical_ difference – the data here is a list, _not_ a table. The RTS which wants to replay this logfile will need to define their `upd` to accommodate this list. This will mean in general that an RTS will have two different definitions of `upd` – one for tickerplant logfile replay and another for intraday updates via IPC (interprocess communication).
+The format of the message in the tickerplant logfile is the same as the format of real-time updates sent to the RTE with one _critical_ difference – the data here is a list, _not_ a table. The RTE which wants to replay this logfile will need to define their `upd` to accommodate this list. This will mean in general that an RTE will have two different definitions of `upd` – one for tickerplant logfile replay and another for intraday updates via IPC (interprocess communication).
 
 For example, a q process with suitable definitions for the tables `trade` and `quote`, as well as the function `upd`, could replay `sym2014.08.23`. Again, a suitable definition for `upd` will depend on the desired behavior, but the function will need to deal with incoming lists as well as tables.
 
-In the RDB (vanilla RTS), `upd` for both replay purposes and intraday update purposes is simply defined as:
+In the RDB (vanilla RTE), `upd` for both replay purposes and intraday update purposes is simply defined as:
 
 ```q
 upd:insert
@@ -290,7 +286,7 @@ upd:insert
 
 In other words, when the RDB replays a given message, it simply inserts the record/s into the corresponding table. This is the same definition of `upd` used for intraday updates via IPC. These updates succeed because the second argument to `insert` can be either a columnar list or a table.
 
-A q process replays a tickerplant logfile using the operator `-11!`. Although this operator can be used in different ways, the simplest syntax is:
+A q process replays a tickerplant logfile using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute). Although this operator can be used in different ways, the simplest syntax is:
 
 ```q
 -11! `:TPDailyLogfile
@@ -350,8 +346,8 @@ For more information on tickerplant logfile replay, see [“Data Recovery for kd
 
 ### End of day
 
-At end of day (EOD), the tickerplant sends messages to all its real-time subscribers, telling them to execute their unary end-of-day function called `.u.end`. The tickerplant supplies a date which is typically the previous day’s
-date. When customizing your RTS, define `.u.end` to achieve whatever behavior you deem appropriate at EOD. On the RDB, `.u.end` is defined as follows:
+At end of day (EOD), the tickerplant sends messages to all its RTEs, telling them to execute their unary end-of-day function called `.u.end`. The tickerplant supplies a date which is typically the previous day’s
+date. When customizing your RTE, define `.u.end` to achieve whatever behavior you deem appropriate at EOD. On the RDB, `.u.end` is defined as follows:
 
 ```q
 / end of day: save, clear, hdb reload
@@ -366,7 +362,7 @@ To summarize this behavior: the RDB persists its tables to disk in date-partitio
 
 ### Understanding the code in `r.q`
 
-To help you modify `r.q` to create your own custom RTS, this section explains its inner workings. This script starts out with the following:
+To help you modify `r.q` to create your own custom RTE, this section explains its inner workings. This script starts out with the following:
 
 ```q
 if[not "w"=first string .z.o;system "sleep 1"];
@@ -566,217 +562,18 @@ Reading this from the right, we obtain the location of the tickerplant process w
 
 
 
-## Examples of custom real-time subscribers
+## Examples of custom RTEs
 
-Two quite different RTS instances are described below.
-
-
-### Real-time trade with as-of quotes
-
-One of the most popular and powerful joins in the q language is the [`aj`](../../ref/aj.md) function. This keyword was added to the language to solve a specific problem – how to join trade and quote tables together in such a way that for each trade, we grab the prevalent quote _as of_ the time of that trade. In other words, what is the last quote at or prior to the trade? 
-
-This function is relatively easy to use for one-off joins. However, what if you want to maintain trades with as-of quotes in real time? This section describes how to build an RTS with real-time trades and as-of quotes. This is a heavily modified version of `r.q`, written by the author and named `RealTimeTradeWithAsofQuotes.q`.
-
-One additional feature this script demonstrates is the ability of any q process to write to and maintain its own kdb+ binary logfile for replay/recovery purposes. In this case, the RTS maintains its own daily logfile for trade records. This will be used for recovery in place of the standard tickerplant logfile as used by `r.q`.
-
-This process should be started off as follows:
-
-```bash
-q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N -p 5003
-```
-
-This process will subscribe to both trade and quote tables for symbols `MSFT.O`, `IBM.N` and `GS.N` and will listen on port 5003. The author has deliberately made some of the q syntax more easily understandable compared to `r.q`.
-
-The first section of the script simply parses the command-line arguments and uses these to update some default values:
-
-```q
-/
-The purpose of this script is as follows:
-1. Demonstrate how custom real-time subscribers can be created in q 
-2. In this example, create an efficient engine for calculating 
-   the prevalent quotes as of trades in real-time.
-   This removes the need for ad-hoc invocations of the aj function.
-3. In this example, this subscriber also maintains its own binary 
-   log file for replay purposes.
-   This replaces the standard tickerplant log file replay functionality.
-\
-show "RealTimeTradeWithAsofQuotes.q"
-/sample usage
-/q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N
-
-/default command line arguments - tp is location of tickerplant. 
-/syms are the symbols we wish to subscribe to
-default:`tp`syms!("::5000";"") 
- 
-args:.Q.opt .z.x /transform incoming cmd line arguments into a dictionary
-args:`$default,args /upsert args into default 
-args[`tp] : hsym first args[`tp]
-
-/drop into debug mode if running in foreground AND 
-/errors occur (for debugging purposes)
-\e 1 
-
-if[not "w"=first string .z.o;system "sleep 1"]
-```
-
-The error flag above is set for purely testing purposes – when the developer runs this script in the foreground, if errors occur at runtime as a result of incoming IPC messages, the process will drop into debug mode. For example, if there is a problem with the definition of `upd`, then when an update is received from the tickerplant we will drop into debug mode and (hopefully) identify the issue.
-
-
-#### Initialize desired table schemas
-
-The next section of code defines the behavior of this RTS upon connecting and subscribing to the tickerplant’s trade and quote tables. This function replaces `.u.rep` in `r.q`:
-
-```q
-/initialize schemas for custom real-time subscriber
-InitializeSchemas:`trade`quote!
-  (
-   {[x]`TradeWithQuote insert update bid:0n,bsize:0N,ask:0n,asize:0N from x};
-   {[x]`LatestQuote upsert select by sym from x}
-  );
-```
-
-The RTS’s trade table (named `TradeWithQuote`) maintains `bid`, `bsize`, `ask` and `asize` columns of appropriate type. For the quote table, we just maintain a keyed table called `LatestQuote`, keyed on `sym` which will maintain the most recent quote per symbol. This table will be used when joining prevalent quotes to incoming trades.
-
-
-#### Intraday update behavior
-
-The next code section defines the intraday behavior upon receiving new trades:
-
-```q
-/intraday update functions
-/Trade Update
-/1. Update incoming data with latest quotes
-/2. Insert updated data to TradeWithQuote table 
-/3. Append message to custom logfile 
-updTrade:{[d]
-  d:d lj LatestQuote;
-  `TradeWithQuote insert d;
-  LogfileHandle enlist (`replay;`TradeWithQuote;d); }
-```
-
-Besides inserting the new trades with prevalent quote information into the trade table, the above function also appends the new records to its custom logfile. This logfile will be replayed upon recovery/startup of the RTS. Note that the replay function is named `replay`. This differs from the conventional TP logfile where the replay function was called `upd`.
-
-The next section defines the intraday behavior upon receiving new quotes:
-
-```q
-/Quote Update
-/1. Calculate latest quote per sym for incoming data 
-/2. Update LatestQuote table
-updQuote:{[d]
-  `LatestQuote upsert select by sym from d; }
-```
-
-The following dictionary `upd` acts as a case statement – when an update for the trade table is received, `updTrade` will be triggered with the message as argument. Likewise, when an update for the quote table is received, `updQuote` will be triggered.
-
-```q
-/upd dictionary will be triggered upon incoming update from tickerplant
-upd:`trade`quote!(updTrade;updQuote)
-```
-
-In `r.q`, `upd` is defined as a function, not a dictionary. However we can use this dictionary definition for reasons discussed previously.
-
-
-#### End of day
-
-At end of day, the tickerplant sends a message to all real-time subscribers telling them to invoke their EOD function – `.u.end`:
-
-```q
-/end of day function - triggered by tickerplant at EOD
-.u.end:{
-  hclose LogfileHandle; /close the connection to the old log file 
-  /create the new logfile
-  logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D; 
-  .[logfile;();:;()]; /Initialize the new log file 
-  LogfileHandle::hopen logfile;
-  {delete from x}each tables `. /clear out tables }
-```
-
-This function has been heavily modified from `r.q` to achieve the following desired behavior:
-
-`hclose LogfileHandle`
-
-: Close connection to the custom logfile.
-
-``logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D``
-
-: Create the name of the new custom logfile. This logfile is a daily logfile – meaning it only contains one day’s trade records and it has today’s date in its name, just like the tickerplant’s logfile.
-
-`.[logfile;();:;()]`
-
-: Initialize this logfile with an empty list.
-
-`LogfileHandle::hopen logfile`
-
-: Establish a connection (handle) to this logfile for streaming writes.
-
-``{delete from x}each tables `.``
-
-: Empty out the tables.
-
-
-#### Replay custom logfile
-
-This section concerns the initialization and replay of the RTS’s custom logfile.
-
-```q
-/Initialize name of custom logfile
-logfile:hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D 
-
-replay:{[t;d]t insert d} /custom log file replay function
-```
-
-At this point, the name of today’s logfile and the definition of the logfile replay function have been established. The replay function will be invoked when replaying the process’s custom daily logfile. It is defined to simply insert the on-disk records into the in memory (`TradeWithQuote`) table. This will be a fast operation ensuring recovery is achieved quickly and efficiently.
-
-Upon startup, the process uses a try-catch to replay its custom daily logfile. If it fails for any reason (possibly because the logfile does not yet exist), it will send an appropriate message to standard out and will initialize this logfile. Replay of the logfile is achieved with the standard operator `-11!` as discussed previously.
-
-```q
-/attempt to replay custom log file
-@[{-11!x;show"successfully replayed custom log file"}; logfile;
-  {[e]
-    m:"failed to replay custom log file";
-    show m," - assume it does not exist. Creating it now";
-    .[logfile;();:;()]; /Initialize the log file
-  } ]
-```
-
-Once the logfile has been successfully replayed/initialized, a handle (connection) is established to it for subsequent streaming appends (upon new incoming trades from tickerplant):
-
-```q
- /open a connection to log file for writing
-LogfileHandle:hopen logfile
-```
-
-
-#### Subscribe to TP
-
-The next part of the script is probably the most critical – the process connects to the tickerplant and subscribes to the trade and quote table for user-specified symbols.
-
-```q
-/ connect to tickerplant and subscribe to trade and quote for portfolio 
-h:hopen args`tp /connect to tickerplant
-InitializeSchemas . h(".u.sub";`trade;args`syms)
-InitializeSchemas . h(".u.sub";`quote;args`syms)
-```
-
-The output of a subscription to a given table (for example `trade`) from the tickerplant is a 2-list, as discussed previously. This pair is in turn passed to the function `InitializeSchemas`.
-
-We can see this RTS in action by examining the five most recent trades for `GS.N`:
-
-```q
-q)-5#select from TradeWithQuote where sym=`GS.N
-time                 sym  price    size bid      bsize ask      asize 
----------------------------------------------------------------------
-0D21:50:58.857411000 GS.N 178.83   790  178.8148 25    178.8408 98
-0D21:51:00.158357000 GS.N 178.8315 312  178.8126 12    178.831  664
-0D21:51:01.157842000 GS.N 178.8463 307  178.8193 767   178.8383 697 
-0D21:51:03.258055000 GS.N 178.8296 221  178.83   370   178.8627 358
-0D21:51:03.317152000 GS.N 178.8314 198  178.8296 915   178.8587 480
-```
-
+Two quite different RTE instances are described below.
 
 ### Real-time VWAP subscriber
 
-This section describes how to build an RTS which enriches trade with VWAP (volume-weighted average price) information on a per-symbol basis. A VWAP can be defined as:
+#### Overview
+
+This section describes how to build an RTE which enriches trade with VWAP (volume-weighted average price) information on a per-symbol basis.
+If a situation occurs were this RTE is restarted, it will recalculate VWAP from the TP log file. Upon an end-of-day event it will clear current records.
+
+A VWAP can be defined as:
 
 $$ VWAP = \frac{\sum_{i} (tradevolume_i)(tradeprice_i)}{\sum_{i} (trade price_i)}$$
 
@@ -843,7 +640,53 @@ IBM.N  | 191.17041
 MSFT.O | 45.146982
 ```
 
-Just like the previous RTS example, this solution will comprise a heavily modified version of `r.q`, written by the author and named `real_time_vwap.q`.
+#### Example script
+
+Just like the previous RTE example, this solution will comprise a heavily modified version of [`r.q`](../../architecture/rq.md), written by the author and named `real_time_vwap.q`.
+
+```q
+/initialize schema function
+InitializeTrade:{[TradeInfo;logfile]
+  `trade set TradeInfo 1;
+  if[null first logfile;update v:0n,s:0Ni,rvwap:0n from `trade;:()];
+  -11!logfile;
+  update v:sums (size*price),s:sums size by sym from `trade;
+  update rvwap:v%s from `trade;
+  `vwap upsert select last rvwap by sym from trade;}
+
+/this keyed table maps a symbol to its current vwap
+vwap:([sym:`$()] rvwap:`float$())
+
+/For TP logfile replay, upd is a simple insert for trades
+upd:{if[not `trade=x;:()];`trade insert y}
+
+/
+This intraday function is triggered upon incoming updates from TP.
+Its behavior is as follows:
+1. Add s and v columns to incoming trade records
+2. Increment incoming records with the last previous s and v values
+   (on per sym basis)
+3. Add rvwap column to incoming records (rvwap is v divided by s)
+4. Insert these enriched incoming records to the trade table
+5. Update vwap table
+\
+updIntraDay:{[t;d]
+  d:update s:sums size,v:sums size*price by sym from d;
+  d:d pj select last v,last s by sym from trade;
+  d:update rvwap:v%s from d;
+  `trade insert d;
+  `vwap upsert select last rvwap by sym from trade; }
+
+/end of day function - triggered by tickerplant at EOD
+/Empty tables
+.u.end:{{delete from x}each tables `. } /clear out trade and vwap tables
+
+args:.Q.opt .z.x
+args:`$args
+h:hopen hsym first args`tp /connect to tickerplant
+InitializeTrade . h "(.u.sub[`trade;",(.Q.s1 args`syms),"];`.u `i`L)"
+upd:updIntraDay /switch upd to intraday update mode
+```
 
 This process should be started off as follows:
 
@@ -858,19 +701,10 @@ arguments and uses these to update some default values – identical
 code to the start of `RealTimeTradeWithAsofQuotes.q`.
 
 
-#### Initialize desired table schemas
+#### Initialization
 
-The next section of code defines the behavior of this RTS upon connecting to the TP and subscribing to the `trade` table. This RTS will replay the TP’s logfile, much like the RDB. The following function replaces `.u.rep`.
-
-```q
-/initialize schema function
-InitializeTrade:{[TradeInfo;logfile] 
-  `trade set TradeInfo 1;
-  if[null first logfile;update v:0n,s:0Ni,rvwap:0n from `trade;:()]; 
-  -11!logfile;
-  update v:sums (size*price),s:sums size by sym from `trade;
-  update rvwap:v%s from `trade; }
-```
+`InitializeTrade` defines the behavior of this RTE after connecting to the TP and subscribing to the `trade` table. 
+This RTE will replay the TP’s logfile, much like the RDB. The `InitializeTrade` function replaces [`.u.rep`](../../architecture/rq.md#urep).
 
 This binary function `InitializeTrade` will be executed upon startup. It is passed two arguments, just like `.u.rep`:
 
@@ -886,57 +720,22 @@ The `vwap` table is then simply defined as:
 vwap:([sym:`$()] rvwap:`float$())
 ```
 
-When `InitializeTrade` is executed, the TP logfile will be replayed using `-11!`. For the purpose of this replay, the function `upd` is simply defined as:
+When `InitializeTrade` is executed, the TP logfile will be replayed and its contents executed using [`-11!`](../../basics/internal.md#-11-streaming-execute). 
 
-```q
-/For TP logfile replay, upd is a simple insert for trades
-upd:{if[not `trade=x;:()];`trade insert y}
-```
-
-In other words, insert `trade` records into the `trade` table and ignore `quote` records.
-
+Replaying will cause the `upd` function to be executed, which in this script is defined as insert `trade` records into the `trade` table and ignoring `quote` records.
 
 #### Intraday update behavior
 
-The next code section defines the intraday behavior upon receiving
-new trades:
-
-```q
-/
-This intraday function is triggered upon incoming updates from TP. 
-Its behavior is as follows:
-1. Add s and v columns to incoming trade records
-2. Increment incoming records with the last previous s and v values 
-   (on per sym basis)
-3. Add rvwap column to incoming records (rvwap is v divided by s)
-4. Insert these enriched incoming records to the trade table
-5. Update vwap table
-\
-updIntraDay:{[t;d]
-  d:update s:sums size,v:sums size*price by sym from d; 
-  d:d pj select last v,last s by sym from trade; 
-  d:update rvwap:v%s from d;
-  `trade insert d;
-  `vwap upsert select last rvwap by sym from trade; }
-```
-
-So whenever a trade update comes in, the VWAP for each affected symbol is updated and the new trades are enriched with this information.
-
+`updIntraDay` is called whenever a trade update comes in, the VWAP for each affected symbol is updated and the new trades are enriched with this information.
 
 #### End of day
 
-The EOD behavior on this RTS is very simple – clear out the tables:
-
-```q
-/end of day function - triggered by tickerplant at EOD 
-/Empty tables
-.u.end:{{delete from x}each tables `. } /clear out trade and vwap tables 
-```
-
+At end of day, the tickerplant sends a message to all RTEs telling them to invoke their EOD function (`.u.end`). The function will clear tables used on this RTE.
 
 #### Subscribe to TP
 
-The RTS connects to the TP and subscribes to the `trade` table for user specified symbols. The RTS also requests TP logfile information (for replay purposes):
+The RTE connects to the TP and subscribes to the `trade` table for user specified symbols. 
+The RTE also requests TP logfile information (for replay purposes):
 
 ```q
 h:hopen args`tp /connect to tickerplant
@@ -944,19 +743,239 @@ InitializeTrade . h "(.u.sub[`trade;",(.Q.s1 args`syms),"];`.u `i`L)"
 upd:updIntraDay /switch upd to intraday update mode
 ```
 
-The message returned from the TP is passed to the function `InitializeTrade`. Once the RTS has finished initializing or replaying the TP logfile, the definition of `upd` is then switched to `updIntraDay` so the RTS can deal with intraday updates appropriately.
+The message returned from the TP is passed to the function `InitializeTrade`. 
+Once the RTE has finished initializing or replaying the TP logfile, the definition of `upd` is then switched to `updIntraDay` so the RTE can deal with intraday updates appropriately.
 
+### Real-time trade with as-of quotes
+
+#### Overview
+
+One of the most popular and powerful joins in the q language is the [`aj`](../../ref/aj.md) function. This keyword was added to the language to solve a specific problem – how to join trade and quote tables together in such a way that for each trade, we grab the prevalent quote _as of_ the time of that trade. In other words, what is the last quote at or prior to the trade? 
+
+This function is relatively easy to use for one-off joins. However, what if you want to maintain trades with as-of quotes in real time? This section describes how to build an RTE with real-time trades and as-of quotes.
+
+One additional feature this script demonstrates is the ability of any q process to write to and maintain its own kdb+ binary logfile for replay/recovery purposes. In this case, the RTE maintains its own daily logfile for trade records. This will be used for recovery in place of the standard tickerplant logfile.
+
+#### Example script
+
+This is a heavily modified version of an RDB ([`r.q`](../../architecture/rq.md)), written by the author and named `RealTimeTradeWithAsofQuotes.q`.
+
+```q
+/
+The purpose of this script is as follows:
+1. Demonstrate how custom RTEs can be created in q
+2. In this example, create an efficient engine for calculating
+   the prevalent quotes as of trades in real-time.
+   This removes the need for ad-hoc invocations of the aj function.
+3. In this example, this subscriber also maintains its own binary
+   log file for replay purposes.
+   This replaces the standard tickerplant log file replay functionality.
+\
+show "RealTimeTradeWithAsofQuotes.q"
+/sample usage
+/q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N
+
+/default command line arguments - tp is location of tickerplant.
+/syms are the symbols we wish to subscribe to
+default:`tp`syms!("::5000";"")
+
+args:.Q.opt .z.x /transform incoming cmd line arguments into a dictionary
+args:`$default,args /upsert args into default
+args[`tp] : hsym first args[`tp]
+
+/drop into debug mode if running in foreground AND
+/errors occur (for debugging purposes)
+\e 1
+
+if[not "w"=first string .z.o;system "sleep 1"]
+
+/initialize schemas for custom RTE
+InitializeSchemas:`trade`quote!
+  (
+   {[x]`TradeWithQuote insert update bid:0n,bsize:0N,ask:0n,asize:0N from x};
+   {[x]`LatestQuote upsert select by sym from x}
+  );
+
+/intraday update functions
+/Trade Update
+/1. Update incoming data with latest quotes
+/2. Insert updated data to TradeWithQuote table
+/3. Append message to custom logfile
+updTrade:{[d]
+  d:d lj LatestQuote;
+  `TradeWithQuote insert d;
+  LogfileHandle enlist (`replay;`TradeWithQuote;d); }
+
+/Quote Update
+/1. Calculate latest quote per sym for incoming data
+/2. Update LatestQuote table
+updQuote:{[d]
+  `LatestQuote upsert select by sym from d; }
+
+/upd dictionary will be triggered upon incoming update from tickerplant
+upd:`trade`quote!(updTrade;updQuote)
+
+/end of day function - triggered by tickerplant at EOD
+.u.end:{
+  hclose LogfileHandle; /close the connection to the old log file
+  /create the new logfile
+  logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D;
+  .[logfile;();:;()]; /Initialize the new log file
+  LogfileHandle::hopen logfile;
+  {delete from x}each tables `. /clear out tables
+  }
+
+/Initialize name of custom logfile
+logfile:hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D;
+
+replay:{[t;d]t insert d} /custom log file replay function
+
+/attempt to replay custom log file
+@[{-11!x;show"successfully replayed custom log file"}; logfile;
+  {[e]
+    m:"failed to replay custom log file";
+    show m," - assume it does not exist. Creating it now";
+    .[logfile;();:;()]; /Initialize the log file
+  } ]
+
+/open a connection to log file for writing
+LogfileHandle:hopen logfile
+
+/ connect to tickerplant and subscribe to trade and quote for portfolio
+h:hopen args`tp; /connect to tickerplant
+InitializeSchemas . h(".u.sub";`trade;args`syms);
+InitializeSchemas . h(".u.sub";`quote;args`syms);
+```
+
+This process should be started off as follows:
+
+```bash
+q tick/RealTimeTradeWithAsofQuotes.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N -p 5003
+```
+
+This process will subscribe to both trade and quote tables for symbols `MSFT.O`, `IBM.N` and `GS.N` and will listen on port 5003. The author has deliberately made some of the q syntax more easily understandable compared to `r.q`.
+
+The first section of the script simply parses the command-line arguments and uses these to update some default values.
+
+The error flag [`\e`](../../basics/syscmds.md#e-error-trap-clients) is set for purely testing purposes. 
+When the developer runs this script in the foreground, 
+if errors occur at runtime as a result of incoming IPC messages, the process will drop into debug mode. 
+For example, if there is a problem with the definition of `upd`, then when an update is received from the tickerplant 
+we will drop into debug mode and (hopefully) identify the issue.
+
+We can see this RTE in action by examining the five most recent trades for `GS.N`:
+
+```q
+q)-5#select from TradeWithQuote where sym=`GS.N
+time                 sym  price    size bid      bsize ask      asize 
+---------------------------------------------------------------------
+0D21:50:58.857411000 GS.N 178.83   790  178.8148 25    178.8408 98
+0D21:51:00.158357000 GS.N 178.8315 312  178.8126 12    178.831  664
+0D21:51:01.157842000 GS.N 178.8463 307  178.8193 767   178.8383 697 
+0D21:51:03.258055000 GS.N 178.8296 221  178.83   370   178.8627 358
+0D21:51:03.317152000 GS.N 178.8314 198  178.8296 915   178.8587 480
+```
+
+#### Initialize desired table schemas
+
+`InitializeSchemas` defines the behavior of this RTE upon connecting and subscribing to the tickerplant’s trade and quote tables. 
+`InitializeSchemas` (defined as a dictionary which maps table names to unary function definitions) replaces [`.u.rep`](../../architecture/rq.md#urep) in `r.q`:
+
+The RTE’s trade table (named `TradeWithQuote`) maintains `bid`, `bsize`, `ask` and `asize` columns of appropriate type. 
+For the quote table, we just maintain a keyed table called `LatestQuote`, keyed on `sym` which will maintain the most recent quote per symbol. 
+This table will be used when joining prevalent quotes to incoming trades.
+
+
+#### Intraday update behavior
+
+`updTrade` defines the intraday behavior upon receiving new trades.
+
+Besides inserting the new trades with prevalent quote information into the trade table, `updTrade`
+also appends the new records to its custom logfile. This logfile will be replayed upon recovery/startup of the RTE. 
+Note that the replay function is named `replay`. This differs from the conventional TP logfile where the replay function was called `upd`.
+
+`updQuote` defines the intraday behavior upon receiving new quotes.
+
+The `upd` dictionary acts as a case statement – when an update for the trade table is received, 
+`updTrade` will be triggered with the message as argument. 
+Likewise, when an update for the quote table is received, `updQuote` will be triggered.
+
+In `r.q`, `upd` is defined as a function, not a dictionary. However we can use this dictionary definition for reasons discussed previously.
+
+
+#### End of day
+
+At end of day, the tickerplant sends a message to all RTEs telling them to invoke their EOD function (`.u.end`):
+
+This function has been heavily modified from `r.q` to achieve the following desired behavior:
+
+* `hclose LogfileHandle`
+    * Close connection to the custom logfile.
+* ``logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D``
+    * Create the name of the new custom logfile. This logfile is a daily logfile – meaning it only contains one day’s trade records and it has today’s date in its name, just like the tickerplant’s logfile.
+* `.[logfile;();:;()]`
+    * Initialize this logfile with an empty list.
+* `LogfileHandle::hopen logfile`
+    * Establish a connection (handle) to this logfile for streaming writes.
+* ``{delete from x}each tables `.``
+    * Empty out the tables.
+
+
+#### Replay custom logfile
+
+This section concerns the initialization and replay of the RTE’s custom logfile.
+
+```q
+/Initialize name of custom logfile
+logfile:hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D 
+
+replay:{[t;d]t insert d} /custom log file replay function
+```
+
+At this point, the name of today’s logfile and the definition of the logfile replay function have been established. The replay function will be invoked when replaying the process’s custom daily logfile. It is defined to simply insert the on-disk records into the in memory (`TradeWithQuote`) table. This will be a fast operation ensuring recovery is achieved quickly and efficiently.
+
+Upon startup, the process uses a try-catch to replay its custom daily logfile. If it fails for any reason (possibly because the logfile does not yet exist), it will send an appropriate message to standard out and will initialize this logfile. Replay of the logfile is achieved with the standard operator `-11!` as discussed previously.
+
+```q
+/attempt to replay custom log file
+@[{-11!x;show"successfully replayed custom log file"}; logfile;
+  {[e]
+    m:"failed to replay custom log file";
+    show m," - assume it does not exist. Creating it now";
+    .[logfile;();:;()]; /Initialize the log file
+  } ]
+```
+
+Once the logfile has been successfully replayed/initialized, a handle (connection) is established to it for subsequent streaming appends (upon new incoming trades from tickerplant):
+
+```q
+ /open a connection to log file for writing
+LogfileHandle:hopen logfile
+```
+
+#### Subscribe to TP
+
+The next part of the script is probably the most critical – the process connects to the tickerplant and subscribes to the trade and quote table for user-specified symbols.
+
+```q
+/ connect to tickerplant and subscribe to trade and quote for portfolio 
+h:hopen args`tp; /connect to tickerplant
+InitializeSchemas . h(".u.sub";`trade;args`syms);
+InitializeSchemas . h(".u.sub";`quote;args`syms);
+```
+
+The output of a subscription to a given table (for example `trade`) from the tickerplant is a 2-list, as discussed previously. This pair is in turn passed to the function `InitializeSchemas`.
 
 
 ## Performance considerations
 
-The developer can build the RTS to achieve whatever real-time behavior is desired. However from a performance perspective, not all RTS instances are equal. The standard RDB is highly performant – meaning it should be able process updates at a very high frequency without maxing out CPU resources. In a real world environment, it is critical that the RTS can finish processing an incoming update before the next one arrives. The high level of RDB performance comes from the fact that its definition of `upd` is extremely simple:
+The developer can build the RTE to achieve whatever real-time behavior is desired. However from a performance perspective, not all RTE instances are equal. The standard RDB is highly performant – meaning it should be able process updates at a very high frequency without maxing out CPU resources. In a real world environment, it is critical that the RTE can finish processing an incoming update before the next one arrives. The high level of RDB performance comes from the fact that its definition of `upd` is extremely simple:
 
 ```q
 upd:insert
 ```
 
-In other words, for both TP logfile replay and intraday updates, simply insert the records into the table. It doesn’t take much time to execute `insert` in kdb+. However, the two custom RTS instances discussed in this white paper have more complicated definitions of `upd` for intraday updates and will therefore be less performant. This section examines this relative performance.
+In other words, for both TP logfile replay and intraday updates, simply insert the records into the table. It doesn’t take much time to execute `insert` in kdb+. However, the two custom RTE instances discussed in this white paper have more complicated definitions of `upd` for intraday updates and will therefore be less performant. This section examines this relative performance.
 
 For this test, the TP log will be used. This particular TP logfile has the following characteristics:
 
@@ -1004,7 +1023,7 @@ upd:{[tblName;tblData]
 ```
 
 This transformed logfile will now be used to test performance on the
-RDB and two RTS instances. 
+RDB and two RTE instances. 
 
 On the RDB, we obtained the following performance:
 
@@ -1020,7 +1039,7 @@ q)\ts value each logs /execute each update
 
 It took 289 milliseconds to process over a quarter of a million updates, where each update had two records. Therefore, the average time taken to process a single two-row update is 1µs.
 
-In the first example RTS (Real-time Trade With As-of Quotes), we obtained the following performance:
+In the first example RTE (Real-time Trade With As-of Quotes), we obtained the following performance:
 
 ```q
 q)upd /custom real time update behavior
@@ -1038,12 +1057,12 @@ q)\ts value each logs /execute each update
 
 It took 2185 milliseconds to process over a quarter of a million updates, where each update had two records. Therefore, the average time taken to process a single two-row update is 7.7 µs – over seven times slower than RDB.
 
-In the second example RTS (Real-time VWAP), we obtained the following performance:
+In the second example RTE (Real-time VWAP), we obtained the following performance:
 
 ```q
 /
 Because there are trades and quotes in the logfile 
-but this RTS is only designed to handle trades, 
+but this RTE is only designed to handle trades, 
 a slight change to upd is necessary 
 for the purpose of this performance experiment
 \
@@ -1059,16 +1078,16 @@ q)\ts value each logs /execute each update
 
 It took 9639 milliseconds to process over a quarter of a million updates, where each update had two records. Therefore, the average time taken to process a single two row update is 34 µs – over thirty times slower than RDB.
 
-We can conclude that there was a significant difference in performance in processing updates across the various real-time subscribers. However even in the worst case, assuming the TP updates arrive no more frequently than once every 100 µs, the process should still function well.
+We can conclude that there was a significant difference in performance in processing updates across the various RTEs. However even in the worst case, assuming the TP updates arrive no more frequently than once every 100 µs, the process should still function well.
 
 It should be noted that prior to this experiment being carried out on each process, all tables were emptied.
 
 
 ## Conclusions
 
-This white paper explained the inner workings of the standard real-time database subscriber as well as an overview of the rest of the kdb+tick environment. The white paper then detailed examples of customizing the RDB to achieve useful real-time analytical behavior.
+This white paper explained the inner workings of the standard RDB as well as an overview of the rest of the kdb+tick environment. The white paper then detailed examples of customizing the RDB to achieve useful real-time analytical behavior.
 
-It’s important when building a custom RTS to consider the performance implications of adding complexity to the update logic. The more complex the definition of `upd`, the longer it will take to process intraday updates or replay the TP logfile. In the case of intraday updates, it is important to know the frequency of TP updates in order to know how much complexity you can afford to build into your `upd` function.
+It’s important when building a custom RTE to consider the performance implications of adding complexity to the update logic. The more complex the definition of `upd`, the longer it will take to process intraday updates or replay the TP logfile. In the case of intraday updates, it is important to know the frequency of TP updates in order to know how much complexity you can afford to build into your `upd` function.
 
 It is the aim of the author that the reader will now have the understanding of how a kdb+tick subscriber can be built and customized fairly easily according to the requirements of the system.
 

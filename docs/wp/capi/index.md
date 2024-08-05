@@ -1307,7 +1307,7 @@ q)csha256"kx tech"
 
 ### Subscribing to a kdb+ tickerplant
 
-A kdb+ tickerplant is a kdb+ process specifically designed to handle incoming, high-frequency, data feeds from publishing processes. The primary responsibility of the tickerplant is to manage subscription requests and publish data quickly to its subscribers. In the vanilla kdb+ setup, illustrated below, the real-time database (RDB) and chained tickerplant kdb+ processes are the most common type of subscriber. However, C applications are also possible using the API.
+A kdb+ [tickerplant](../../architecture/index.md) is a kdb+ process specifically designed to handle incoming, high-frequency, data feeds from publishing processes. The primary responsibility of the tickerplant is to manage subscription requests and publish data quickly to its subscribers. In the vanilla kdb+ setup, illustrated below, the real-time database (RDB) and chained tickerplant kdb+ processes are the most common type of subscriber. However, C applications are also possible using the API.
 
 ![Architecture](img/architecture.png)
 
@@ -1341,7 +1341,7 @@ The tickerplant process is started from the command line as follows.
 $ q tick.q trade /logs/tickerplant/ -p 5010
 ```
 
-Above, the first argument following `tick.q` is the name of the table schema file to use. The second argument is the location where the tickerplant log file will be created and the value following the `-p` option is the port the tickerplant will listen on. The C process will use this port number when initializing the connection. The final step in this setup is to create a kdb+ mock feedhandler process which will act as the trade data source for the tickerplant. Below is a simple publishing process which is suﬃcient for the demonstration.
+Above, the first argument following [`tick.q`](../../architecture/tickq.md) is the name of the table schema file to use. The second argument is the location where the tickerplant log file is created and the value following the `-p` option is the port the tickerplant listens on. The C process uses this port number when initializing the connection. The final step in this setup is to create a kdb+ mock feedhandler process, which acts as the trade data source for the tickerplant. Below is a simple publishing process.
 
 ```q
 /* File name: feed.q */
@@ -1368,10 +1368,7 @@ Once the tickerplant and feedhandler processes are up and running the C subscrib
 
 Subscriber processes are required to make an initial subscribe request to the tickerplant in order to receive data.
 
-:fontawesome-regular-hand-point-right:
-Knowledge Base: [Publish and subscribe](../../kb/publish-subscribe.md)
-
-This request involves calling the `.u.sub` function with two parameter arguments. The first argument is the table name, and the second is the list of symbols to subscribe to.
+This request involves calling the [`.u.sub`](../../architecture/uq.md#usub) function with two parameter arguments. The first argument is the table name, and the second is the list of symbols to subscribe to.
 
 Specifying a backtick character for either parameter of `.u.sub` means _all_, as in, all tables and/or all symbols. If the `.u.sub` function is called synchronously the tickerplant will return the table schema. The following program demonstrates how the initial subscribe request can be made and the column names of table schema extracted. In the case below, a request is made for all trade records.
 
@@ -1564,7 +1561,7 @@ Handle value
 
 : The integer value returned by the `khpu` function when a socket connection is established.
 
-Update function name `.u.upd` 
+Update function name [`.u.upd`](../../architecture/tickq.md#uupd)
 
 : The function executed on the tickerplant which enables the data insertion. It may be called synchronously or asynchronously and takes two arguments, as follow.
 
@@ -1588,7 +1585,7 @@ k(handle,".u.upd",r1(tableName),mixedList,(K)0)
 
 ### Publishing a single row using a mixed-list object
 
-The next example shows how a `K` object, containing a mixed list corresponding to one row of data, can be passed to the `.u.upd` function. Below the `knk` function is used to create the mixed list containing a symbol, float and integer, constituting a single row. The function `.u.upd` is called in the `k` function with two parameters being passed, a symbol object corresponding to the table name and the singleRow object.
+The next example shows how a `K` object, containing a mixed list corresponding to one row of data, can be passed to the [`.u.upd`](../../architecture/tickq.md#uupd) function. Below the `knk` function is used to create the mixed list containing a symbol, float and integer, constituting a single row. The function `.u.upd` is called in the `k` function with two parameters being passed, a symbol object corresponding to the table name and the singleRow object.
 
 ```c
 /* File name: singleRow.c */

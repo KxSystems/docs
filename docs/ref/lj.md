@@ -59,6 +59,8 @@ c d
 2 20
 ```
 
+`lj` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Changes in V4.0
 

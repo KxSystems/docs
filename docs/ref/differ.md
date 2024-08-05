@@ -59,6 +59,8 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  b b b b b b b b b b b b b b b b b b
 ```
 
+`differ` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 ??? warning "Binary use deprecated"
 
     As of V3.6 the keyword is [variadic](../basics/variadic.md). 

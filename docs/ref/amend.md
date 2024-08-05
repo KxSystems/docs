@@ -98,6 +98,25 @@ q).[(5 2.14; "abc"); 1 2; :; "x"]    / replace at depth 2
 "abx"
 ```
 
+### Amend At
+
+Indicies results are accumulated when repeated:
+
+```q
+q)@[(0 1 2;1 2 3 4;7 8 9) ;1 1; 2*]
+0 1 2
+4 8 12 16                                   / equates to 2*2*1 2 3 4
+7 8 9
+q)@[(0 1 2;1 2 3 4;7 8 9) ;0 1 2 1; 100*]
+0 100 200                                   / equates to 100*0 1 2
+10000 20000 30000 40000                     / equates to 100*100*1 2 3 4
+700 800 900                                 / equates to 100*7 8 9
+q)@[(0 1 2;1 2 3 4;7 8 9) ;0 1 2 1; {x*y};100]
+0 100 200                                   / equates to {x*100}0 1 2
+10000 20000 30000 40000                     / equates to {x*100}{x*100}1 2 3 4
+700 800 900                                 / equates to {x*100}7 8 9
+```
+
 
 ### Cross sections
 

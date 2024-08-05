@@ -21,6 +21,8 @@ q)floor -2.1 0 2.1
 -3 0 2
 ```
 
+`floor` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

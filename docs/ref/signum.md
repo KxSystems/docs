@@ -35,6 +35,8 @@ Find counts of price movements by direction:
 select count i by signum deltas price from trade
 ```
 
+`signum` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

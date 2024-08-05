@@ -8,6 +8,8 @@ keywords: and, greater, kdb+, logic, or, q
 
 _Greater of two values, logical OR_
 
+`or` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 
 :fontawesome-regular-hand-point-right: 

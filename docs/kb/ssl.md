@@ -202,8 +202,8 @@ $ export KX_SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem
 with the client as:
 ```bash
 $ export SSL_CERT_FILE=$HOME/certs/client-cert.pem 
-$ export SSL_KEY_FILE=$HOME/certs/client-private-key.pep
-$ export KX_SSL_CA_CERT_FILE=/tmp/new/ca-cert.pem
+$ export SSL_KEY_FILE=$HOME/certs/client-private-key.pem
+$ export KX_SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem
 ```
 
 :fontawesome-brands-github:

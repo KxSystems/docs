@@ -51,7 +51,7 @@ Here table `t` is defined with column names $c_{1-n}$, and corresponding values 
 
 ## 4.3 Suppliers and parts
 
-The script `sp.q` defines [C.J. Date’s Suppliers and Parts database](https://en.wikipedia.org/wiki/Suppliers_and_Parts_database). You can view this script in an editor to see the definitions. Load the script.
+The script :fontawesome-brands-github:[`KxSystems/kdb/sp.q`](https://github.com/KxSystems/kdb/blob/master/sp.q) defines [C.J. Date’s Suppliers and Parts database](https://en.wikipedia.org/wiki/Suppliers_and_Parts_database). You can view this script in an editor to see the definitions. Load the script.
 
 ```q
 q)\l sp.q
@@ -163,14 +163,11 @@ s4 p5 100
 
 ## Stock data
 
-The following is a typical layout populated with random data. Load the `trades.q` script.
+The following is a typical layout populated with random data. Load the :fontawesome-brands-github:[`KxSystems/cookbook/start/trades.q`](https://github.com/KxSystems/cookbook/blob/master/start/trades.q) script.
 
 ```q
-q)\l start/trades.q
+q)\l trades.q
 ```
-
-:fontawesome-brands-github: 
-[KxSystems/cookbook/start/trades.q](https://github.com/KxSystems/cookbook/blob/master/start/trades.q) 
 
 A trade table might include: date, time, symbol, price, size, condition code.
 

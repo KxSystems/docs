@@ -15,6 +15,8 @@ _Drop items from a list, entries from a dictionary or columns from a table._
 x _ y    _[x;y]
 ```
 
+`_`(drop) is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Drop leading or trailing items
 

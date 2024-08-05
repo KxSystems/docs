@@ -16,7 +16,7 @@ abs x    abs[x]
 
 Where `x` is a numeric or temporal, returns 
 the absolute value of `x`. 
-Null is returned if `x` is null.
+Null is returned if `x` is null. 
 
 ```q
 q)abs -1.0
@@ -24,6 +24,8 @@ q)abs -1.0
 q)abs 10 -43 0N
 10 43 0N
 ```
+
+`abs` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## :fontawesome-solid-sitemap: Implicit iteration

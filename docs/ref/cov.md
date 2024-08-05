@@ -56,7 +56,7 @@ t | f . f f f f f f f . f f f f f f f f
 
 Range: `f`
 
-
+`cov` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `scov`
 
@@ -109,6 +109,8 @@ t | f . f f f f f f f . f f f f f f f f
 ```
 
 Range: `f`
+
+`scov` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ----

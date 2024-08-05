@@ -40,6 +40,8 @@ q)distinct 2 + 0f,10 xexp -13
 2 2.0000000000001
 ```
 
+`distinct` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Errors
 

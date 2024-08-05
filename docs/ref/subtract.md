@@ -21,6 +21,8 @@ q)2000.11.22 - 03:44:55.666
 2000.11.21D20:15:04.334000000
 ```
 
+`-` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

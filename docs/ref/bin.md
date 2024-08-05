@@ -48,6 +48,8 @@ Essentially `bin` gives a half-open interval on the left.
 
 `bin` also operates on tuples and table columns and is the function used in [`aj`](aj.md) and [`lj`](lj.md).
 
+`bin` and `binr` are [multithreaded primitives](../kb/mt-primitives.md).
+
 !!! danger "If `x` is not sorted the result is undefined."
 
 

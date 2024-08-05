@@ -23,6 +23,8 @@ Where
 
 returns `y` as a list, dictionary or table described or selected by `x`. 
 
+`#` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Atom or list
 

@@ -35,6 +35,8 @@ msoft| 3005 103
 
 Add is generally faster than [Subtract](subtract.md).
 
+`+` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

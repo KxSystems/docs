@@ -53,6 +53,8 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  f . f f f f f f f . f f f f f f f f
 ```
 
+`avg` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 ## `avgs`
 
 _Running averages_
@@ -197,6 +199,8 @@ t | f . f f f f f f f . f f f f f f f f
 ```
 
 Range: `f`
+
+`wavg` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## :fontawesome-solid-sitemap: Implicit iteration

@@ -60,6 +60,7 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  b . b b b b b b b . b b b b b b b b
 ```
 
+`all` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `any`
 
@@ -99,6 +100,9 @@ q)if[any x in y;....]   / use in control structure
 domain: b g x h i j e f c s p m d z n u v t
 range:  b . b b b b b b b . b b b b b b b b
 ```
+
+`any` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 ----
 
 :fontawesome-solid-book:

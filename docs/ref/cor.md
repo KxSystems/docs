@@ -32,6 +32,8 @@ q)1000101000b cor 0010011001b
 
 `cor` is an aggregate function, equivalent to `{cov[x;y]%dev[x]*dev y}`.
 
+`cor` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## Domain and range
 

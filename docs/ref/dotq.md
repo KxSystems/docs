@@ -992,7 +992,11 @@ q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 .Q.hdpf[historicalport;directory;partition;`p#field]
 ```
 
-Saves all tables by calling `.Q.dpft`, clears tables, and sends reload message to HDB.
+The function:
+
+* saves all tables to disk, by calling [`.Q.dpft`](#dpft-save-table) (saves as splayed tables to a partition)
+* clears in-memory tables
+* sends reload message to HDB, by opening a temporary connection and sending [`\l .`](../basics/syscmds.md#l-load-file-or-directory)
 
 
 ## `hg` (HTTP get)

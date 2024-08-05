@@ -9,6 +9,8 @@ author: Stephen Taylor
 
 _Lesser of two values, logical AND_
 
+`and` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 :fontawesome-solid-book: 
 [Lesser](lesser.md)
 

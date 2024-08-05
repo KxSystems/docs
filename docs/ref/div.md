@@ -51,6 +51,8 @@ q)"\023" div 8
 2i
 ```
 
+`div` is a [multithreaded primitive](../kb/mt-primitives.md).
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

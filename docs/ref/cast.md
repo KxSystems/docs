@@ -45,6 +45,7 @@ Where `x` is:
 
 Casting does not change the underlying bit pattern of the data, only how it is represented.
 
+`$`(cast) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## :fontawesome-solid-sitemap: Iteration
 
