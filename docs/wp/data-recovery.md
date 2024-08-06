@@ -104,7 +104,7 @@ Recovery of an RDB involves restarting the process. On startup, an RDB subscribe
 
 It then replays this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function. 
 
-This is called within `.u.rep`, which is executed when the RDB connects to the TP.
+This is called within [`.u.rep`](../architecture/rq.md#urep), which is executed when the RDB connects to the TP.
 
 ```q
 //from r.q
@@ -129,31 +129,9 @@ Passing only one parameter is functionally equivalent to passing a first paramet
 
 `-11!` will replay the tplog into memory, thus recovering the data. This can be reproduced by running ``value each get`:tplog`` but `-11!` uses far less memory. `-11!` will read and process each row of the tplog in turn, whereas ``get`:tplog`` will read the whole tplog into memory, then `value each` will execute each row in turn.
 
-```q
-q)\ts value each get`:sym2014.05.07
-1 4198832
-q)\ts -11!`:sym2014.05.07
-1 4195344
-q)\ts -11!`:sym2014.05.07
-1204 4257168
-q)\ts value each get `:sym2014.05.07
-1690 296580768
-```
-
-:fontawesome-regular-hand-point-right:
-Basics: [`\ts` system command](../basics/syscmds.md#ts-time-and-space)
-
-
 #### ``-11!(-2;`:tplog)``
 
 When the first parameter is `-2`, there are two possible forms of the output. If the tplog is uncorrupted, the return value is a single long number describing the total number of rows in the logfile. This result is equivalent to ``count get`:tplog``, but `-11!` is faster and more memory efficient.
-
-```q
-q)\ts -11!`:sym2014.04.30
-19502 5276800
-q)\ts value each get `:sym2014.04.30
-21321 583811984
-```
 
 Should a tplog be corrupted in some way, running ``-11!(-2;`:tplog)`` will return two values: the first describes the number of good chunks in the tplog while the second describes the number of replayable bytes i.e. the point in the log file where the replaying function hits an error.
 
