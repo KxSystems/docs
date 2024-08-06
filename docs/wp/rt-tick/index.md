@@ -276,7 +276,7 @@ item | semantics
 
 The format of the message in the tickerplant logfile is the same as the format of real-time updates sent to the RTE with one _critical_ difference – the data here is a list, _not_ a table. The RTE which wants to replay this logfile will need to define their `upd` to accommodate this list. This will mean in general that an RTE will have two different definitions of `upd` – one for tickerplant logfile replay and another for intraday updates via IPC (interprocess communication).
 
-For example, a q process with suitable definitions for the tables `trade` and `quote`, as well as the function `upd`, could replay `sym2014.08.23`. Again, a suitable definition for `upd` will depend on the desired behavior, but the function will need to deal with incoming lists as well as tables.
+For example, a q process with suitable definitions for the tables `trade` and `quote`, as well as the function `upd`, could replay `sym2014.08.23` using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute). Again, a suitable definition for `upd` will depend on the desired behavior, but the function will need to deal with incoming lists as well as tables.
 
 In the RDB (vanilla RTE), `upd` for both replay purposes and intraday update purposes is simply defined as:
 
@@ -285,16 +285,6 @@ upd:insert
 ```
 
 In other words, when the RDB replays a given message, it simply inserts the record/s into the corresponding table. This is the same definition of `upd` used for intraday updates via IPC. These updates succeed because the second argument to `insert` can be either a columnar list or a table.
-
-A q process replays a tickerplant logfile using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute).
-
-For example, based on the above definition of `upd`, we could replay a logfile as follows:
-
-```q
--11! `:C:/OnDiskDB/sym2014.08.23
-```
-
-This would replay all messages in the logfile, resulting in inserts into the `trade` and `quote` tables.
 
 Define `upd` for tickerplant log replay in whatever way is deemed appropriate. Here are some different definitions:
 

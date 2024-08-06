@@ -684,16 +684,13 @@ for full details on these options
 
 ## Control for KX
 
-_Control for KX_ is a code- and process-management system that provides
+[_Control for KX_](https://code.kx.com/platform/) is a code- and process-management system that provides
 robust failover management along with standardized logging, error
 handling, and process monitoring. These features, coupled with the
 process templates, provide the framework for quicker and easier
 development of custom kdb+ applications. Tried-and-tested failover
 solutions provide the flexibility and scalability needed to meet any
 resilience or availability requirements.
-
-:fontawesome-regular-hand-point-right:
-[kx.com/solutions](https://kx.com/solutions/#EnterpriseFeatures)
 
 
 ## Conclusion
