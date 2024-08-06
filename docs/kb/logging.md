@@ -369,6 +369,35 @@ q)-11!(26;logfile)
 26
 ```
 
+### Replacing a corrupt log
+
+It can be  more efficient to [replay from a corrupt file](##replay-from-corrupt-logs) (due to disk usage), than to directly take the good chunks from a bad log to create a new log.
+
+The knowledge of how to create a log file, and how to replay part of a log file can be combined to convert a file that was previously giving the `badtail` error.
+Note that this does not fix the corrupted section, only removes the corrupted section from the file.
+
+The following example shows converting a `bad.log` into a `good.log` by temporarly overriding [`.z.ps`](../ref/dotz.md#zps-set) which is called for each valid chunk (as defined by [`-11!`](../basics/internal.md#-11-streaming-execute)). 
+It resets `.z.ts` to the system default after processing using [`\x`](../basics/syscmds/#x-expunge).
+
+```q
+goodfile:hsym `:good.log;
+goodfile set ();
+goodfilehandle:hopen goodfile;
+
+chunks:first -11!(-2;`:bad.log);
+
+.z.ps:{goodfilehandle enlist x};
+-11!(chunks;`:bad.log);
+system"x .z.ps";
+
+hclose goodfilehandle;
+```
+
+Alternatively, generic system tools can be used e.g. unix `head` command. For example, given that ``-11!(-2;`:bad.log)`` returns 2879 bytes.
+```bash
+head -c 2879 bad.log > good.log
+```
+
 :fontawesome-brands-github: [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) contains some helper functions for recovering data from logs.
 
 ---

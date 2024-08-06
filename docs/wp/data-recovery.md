@@ -56,11 +56,11 @@ In a standard tick system, each kdb+ message calls a function named `upd`. Each 
 
 ## Recovery
 
-### Writing a tplog
+### Writing a TP log
 
 Should the TP fail, or be shut down for any period of time, no downstream subscriber will receive any published data for the period of its downtime. This data typically will not be recoverable. Thus it is imperative that the TP remain always running and available.
 
-Every message that the tickerplant receives is written to a kdb+ binary file, called the tickerplant log file, or _tplog_. The tickerplant maintains some key [variables](../architecture/tickq.md#variables) which are important in the context of data recovery for subscribers.
+Every message that the tickerplant receives is written to a kdb+ binary file, called the tickerplant log file, or _TP log_. The tickerplant maintains some key [variables](../architecture/tickq.md#variables) which are important in the context of data recovery for subscribers.
 
 ```bash
 # start tickerplant
@@ -73,24 +73,24 @@ q).u.l
 376i 
 q).u.i 0
 ```
-The `upd` function is called each time a TP receives a message. Within this function, the TP will write the message to the tplog.
+The `upd` function is called each time a TP receives a message. Within this function, the TP will write the message to the TP log.
 
 ```q
 //from u.q
 upd:{[t;x] ...
 
-//if the handle .u.l exists, write (`upd;t;x) to the tplog; 
+//if the handle .u.l exists, write (`upd;t;x) to the TP log; 
 //increment .u.j by one
 if[l; l enlist(`upd;t;x); j+:1]
 ```
 
-### Replaying a tplog
+### Replaying a TP log
 
 Recovery of an RDB involves restarting the process. On startup, an RDB subscribes to a TP and receives the following information:
 - message count ([`.u.i`](../architecture/tickq.md#variables)) 
-- location of the tplog ([`.u.L`](../architecture/tickq.md#variables)). 
+- location of the TP log ([`.u.L`](../architecture/tickq.md#variables)). 
 
-It then replays this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function, as detailed [here](../kb/logging.md#replaying-log-files).
+It then replays this TP log to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function, as detailed [here](../kb/logging.md#replaying-log-files).
 
 This is called within [`.u.rep`](../architecture/rq.md#urep), which is executed when the RDB connects to the TP.
 
@@ -103,18 +103,18 @@ kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-me
 
 ## Replay errors
 
-### Corrupt tplog
+### Corrupt TP log
 
-A tplog may become corrupted. For example, the tickerplant process could die mid-write (e.g. due to hardware failure). For recovery, we wish to isolate the valid parts of the tplog, discarding the corrupted sections. This can be done with a combination of the various forms of `-11!`.
+A TP log may become corrupted. For example, the tickerplant process could die mid-write (e.g. due to hardware failure). For recovery, we wish to isolate the valid parts of the TP log, discarding the corrupted sections. This can be done with a combination of the various forms of `-11!`.
 
-First, we attempt to replay a corrupted tplog.
+First, we attempt to replay a corrupted TP log.
 
 ```q
 q)-11!(`:sym2013.10.29)
 'badtail
 ```
 
-`'badtail` indicates an incomplete transaction at the end of the file. Next, we identify the position of the corruption in the tplog using `-11!(-2;x)`.
+`'badtail` indicates an incomplete transaction at the end of the file. Next, we identify the position of the corruption in the TP log using `-11!(-2;x)`.
 
 ```q
 q)-11!(-2;`:sym2013.10.29)
@@ -122,16 +122,16 @@ q)-11!(-2;`:sym2013.10.29)
 46756601608
 ```
 
-There are 46,333,621 valid chunks in the tplog, and the valid portion of the log file is 46,756,601,608 bytes in size.
+There are 46,333,621 valid chunks in the TP log, and the valid portion of the log file is 46,756,601,608 bytes in size.
 
-For safety, we will back up the corrupt tplog. We will also remove user write permission to reduce the risk of accidentally affecting this file.
+For safety, we will back up the corrupt TP log. We will also remove user write permission to reduce the risk of accidentally affecting this file.
 
 ```bash
 $ mv sym2013.10.29 sym2013.10.29_old
 $ chmod u-x sym2013.10.29_old
 ```
 
-Within a new kdb+ session, we create variables to point to this tplog, and create a handle to a new tplog. We assume the current working directory of this session is the same as where the tplog is located.
+Within a new kdb+ session, we create variables to point to this TP log, and create a handle to a new TP log. We assume the current working directory of this session is the same as where the TP log is located.
 
 ```q
 q) old:`:sym2013.10.29_old
@@ -152,7 +152,7 @@ We define the `upd` function within this new kdb+ process to write to this handl
 q)upd:{[t;x]h enlist(`upd;t;x)}
 ```
 
-We use `-11!` to replay the first 46,333,621 chunks of the corrupt tplog. This will omit the last, bad message.
+We use `-11!` to replay the first 46,333,621 chunks of the corrupt TP log. This will omit the last, bad message.
 
 ```q
 q)-11!(46333621;old)
@@ -171,35 +171,9 @@ q)get new
 `upd `trade (0D14:56:01.113310000;`AUDUSD;"S";1000;96.96)
 ```
 
-This will give us a new tplog with the corrupt parts removed. This can now be replayed to restore the data in the RDB up until the point of corruption.
+This will give us a new TP log with the corrupt parts removed. This can now be replayed to restore the data in the RDB up until the point of corruption.
 
-```q
-q)trade
-time sym side size price
-------------------------
-
-//recover new tplog
-q) -11! new
-46333621
-
-q)trade
-time                 sym    side size price
--------------------------------------------
-0D14:56:01.113310000 AUDUSD S    1000 96.96
-0D14:56:01.115310000 SGDUSD S    5000 95.45
-0D14:56:01.119310000 AUDUSD B    1000 95.08
-0D14:56:01.121310000 AUDUSD B    1000 95.65
-0D14:56:01.122310000 SGDUSD B    5000 98.14
-0D14:56:01.124310000 AUDUSD S    1000 97.17
-0D14:56:01.126310000 AUDUSD S    1000 96.92
-0D14:56:01.127310000 SGDUSD S    2000 98.83
-0D14:56:01.129311000 SGDUSD B    1000 94.94
-0D14:56:01.130311000 AUDUSD B    5000 94.52
-...
-```
-
-
-Rename the new tplog to the convention expected by the TP and RDB (in this example we rename to `sym2014.05.03`). Restart both processes so that they write and read respectively to the correct tplog. Upon restarting, the RDB should read this tplog in and replay the tables correctly.
+Rename the new TP log to the convention expected by the TP and RDB (in this example we rename to `sym2014.05.03`). Restart both processes so that they write and read respectively to the correct TP log. Upon restarting, the RDB should read this TP log in and replay the tables correctly.
 
 
 ### Illegal operations on keyed tables
@@ -229,7 +203,7 @@ upd:{[t;x]
     t insert x]; }
 ```
 
-Here we have three operations we can perform on the `accounts` table: `insert`, `update` and `delete`. We wish to record the running of these operations in the tplog, capture in the RDB (in an unkeyed version of the table), and perform customized actions in the RTE. We create a function to publish the data to the TP. The TP will publish to both the RDB and RTE, and the `upd` function will then be called locally on each. Assuming TP is running on same machine on port 5010, with no user access credentials required, we can define a function named `pub` on the RTE which will publish data from the RTE to the TP where it can be logged and subsequently re-published to the RDB and RTE.
+Here we have three operations we can perform on the `accounts` table: `insert`, `update` and `delete`. We wish to record the running of these operations in the TP log, capture in the RDB (in an unkeyed version of the table), and perform customized actions in the RTE. We create a function to publish the data to the TP. The TP will publish to both the RDB and RTE, and the `upd` function will then be called locally on each. Assuming TP is running on same machine on port 5010, with no user access credentials required, we can define a function named `pub` on the RTE which will publish data from the RTE to the TP where it can be logged and subsequently re-published to the RDB and RTE.
 
 ```q
 .tp.h:hopen`:localhost:5010
@@ -286,7 +260,7 @@ ACCOUNT0024  2014.05.04D11:05:30.557228000 SGDUSD update 7000000
 ACCOUNT0024  2014.05.04D11:05:30.557228000 SGDUSD delete 1000000
 ```
 
-The order in which logfile messages are replayed is hugely important in this case. All operations on this table should be made via the tickerplant so that everything is logged and order is maintained. After the three operations above, the tplog will have the following lines appended.
+The order in which logfile messages are replayed is hugely important in this case. All operations on this table should be made via the tickerplant so that everything is logged and order is maintained. After the three operations above, the TP log will have the following lines appended.
 
 ```q
 q)get`:TP_2014.05.04
@@ -298,7 +272,7 @@ q)get`:TP_2014.05.04
   (`ACCOUNT0024; 2014.05.04D11:05:30.557228000;`SGDUSD;`delete;1000000);
 ```
 
-Replaying this logfile will recover this table. If we wanted every operation to this table to be recoverable from a logfile, we would need to publish each operation. However, manual user actions that are not recorded in the tplog can cause errors when replaying. Consider the following table on the RTE.
+Replaying this logfile will recover this table. If we wanted every operation to this table to be recoverable from a logfile, we would need to publish each operation. However, manual user actions that are not recorded in the TP log can cause errors when replaying. Consider the following table on the RTE.
 
 ```q
 q)accounts
@@ -326,7 +300,7 @@ ACCOUNT0024| 2014.05.04D10:54:41.796915000 SGDUSD insert 1000000
 ```
 
 
-Only two of these three actions were sent to the TP so only these two messages were recorded in the tplog:
+Only two of these three actions were sent to the TP so only these two messages were recorded in the TP log:
 
 ```q
 q)get`:TP_2014.05.04
@@ -336,7 +310,7 @@ q)get`:TP_2014.05.04
   (`ACCOUNT0024; 2014.05.04D10:54:41.796915000;`SGDUSD;`insert;1000000);
 ```
 
-Replaying the tplog, the kdb+ process tries to perform an insert to a keyed table, but there is a restriction that the same key cannot be inserted in the table twice. The delete that was performed manually between these two steps was omitted.
+Replaying the TP log, the kdb+ process tries to perform an insert to a keyed table, but there is a restriction that the same key cannot be inserted in the table twice. The delete that was performed manually between these two steps was omitted.
 
 ```q
  q)-11!`:TP_2014.05.04
@@ -346,7 +320,7 @@ Replaying the tplog, the kdb+ process tries to perform an insert to a keyed tabl
 
 ### Recovering from q errors during replay
 
-As seen in the previous section, replaying a tplog can result in an error even if the log file is uncorrupted. We can utilize error trapping to isolate any rows in the tplog which cause an error while transferring the other, error-free rows into a new log file. The problematic tplog lines will be stored in a variable where they can be analyzed to determine the next course of action.
+As seen in the previous section, replaying a TP log can result in an error even if the log file is uncorrupted. We can utilize error trapping to isolate any rows in the TP log which cause an error while transferring the other, error-free rows into a new log file. The problematic TP log lines will be stored in a variable where they can be analyzed to determine the next course of action.
 
 ```q
 old:`:2014.05.03
@@ -367,7 +341,7 @@ upd:{[t;x]                  / redefine upd with error trapping
 :fontawesome-regular-hand-point-right:
 Reference: [Trap](../ref/apply.md#trap)
 
-We now replay the original tplog.
+We now replay the original TP log.
 
 ```q
 q)-11!old
@@ -378,7 +352,7 @@ sym        | time                          curr   action limit
 ACCOUNT0024| 2014.05.04D10:54:41.796915000 SGDUSD insert 1000000
 ```
 
-Here, both lines of the tplog have been replayed, but only one has actually been executed. The second insert has been appended to the `baddata` variable.
+Here, both lines of the TP log have been replayed, but only one has actually been executed. The second insert has been appended to the `baddata` variable.
 
 ```q
 q)baddata
@@ -397,7 +371,7 @@ We may wish to write the bad data to its own logfile.
 
 This paper discussed tickerplant log files and their importance within kdb+tick systems. They act as a record of every message that passes through the system. In the event of a real-time subscriber process crashing, it can connect to a tickerplant and replay the log file using the `-11!` operator, restoring all intra-day data. [_Recovery_](#recovery) examined the various parameters that can be supplied to `-11!`.
 
-The log file can, however, become corrupted. For instance, the tickerplant process might die in the process of writing to the file, or the disk where the file is being written could fill up. In this scenario, a simple replay of the log file is not possible. However, using various combinations of `-11!`, we can at least recover any data up until the point of corruption. This is described in [_Corrupt tplog_](#corrupt-tplog).
+The log file can, however, become corrupted. For instance, the tickerplant process might die in the process of writing to the file, or the disk where the file is being written could fill up. In this scenario, a simple replay of the log file is not possible. However, using various combinations of `-11!`, we can at least recover any data up until the point of corruption. This is described in [_Corrupt TP log_](#corrupt-TP log).
 
 [_Illegal operations on keyed tables_](#illegal-operations-on-keyed-tables) and [_Recovering from q errors during replay_](#recovering-from-q-errors-during-replay) discussed scenarios in which replaying a log file could result in an error, even if the file is uncorrupted. In this case, we used error trapping to isolate any rows of data causing errors whilst successfully replaying any valid rows. The problematic data could then be viewed in isolation in order to determine the best course of action.
 
