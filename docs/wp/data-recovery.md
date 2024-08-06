@@ -95,14 +95,13 @@ upd:{[t;x] ...
 if[l; l enlist(`upd;t;x); j+:1]
 ```
 
-
 ### Replaying a tplog
 
 Recovery of an RDB involves restarting the process. On startup, an RDB subscribes to a TP and receives the following information:
 - message count ([`.u.i`](../architecture/tickq.md#variables)) 
 - location of the tplog ([`.u.L`](../architecture/tickq.md#variables)). 
 
-It then replays this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function. 
+It then replays this tplog to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function, as detailed [here](../kb/logging.md#replaying-log-files).
 
 This is called within [`.u.rep`](../architecture/rq.md#urep), which is executed when the RDB connects to the TP.
 
@@ -113,49 +112,7 @@ This is called within [`.u.rep`](../architecture/rq.md#urep), which is executed 
 
 kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-messages-and-upd-function). In a typical RDB, `functionname` will be `` `upd``, which will perform an insert. Therefore, executing a single line in the logfile will be equivalent to ``insert[`tablename;tabledata]``.
 
-
-### `-11!` functionality
-
-[`-11!`](../basics/internal.md#-11-streaming-execute) is an internal function that reads each message in a tplog in turn, running the function `functioname` on the `(tablename;tabledata)` parameters.
-
-This section focuses on normal usage of the `-11!` function where the tplog is uncorrupted, and then discusses how to use it to recover from a corrupted tplog below in [_Replay errors_](#replay-errors).
-
-There are three distinct usages of `-11!` when passed a list of two parameters, depending on the value of the first parameter. 
-
-
-#### ``-11!(`:tplog)``
-
-Passing only one parameter is functionally equivalent to passing a first parameter of `-1`. That is, ``-11!`:tplog`` is equivalent to ``-11!(-1;`:tplog)``.
-
-`-11!` will replay the tplog into memory, thus recovering the data. This can be reproduced by running ``value each get`:tplog`` but `-11!` uses far less memory. `-11!` will read and process each row of the tplog in turn, whereas ``get`:tplog`` will read the whole tplog into memory, then `value each` will execute each row in turn.
-
-#### ``-11!(-2;`:tplog)``
-
-When the first parameter is `-2`, there are two possible forms of the output. If the tplog is uncorrupted, the return value is a single long number describing the total number of rows in the logfile. This result is equivalent to ``count get`:tplog``, but `-11!` is faster and more memory efficient.
-
-Should a tplog be corrupted in some way, running ``-11!(-2;`:tplog)`` will return two values: the first describes the number of good chunks in the tplog while the second describes the number of replayable bytes i.e. the point in the log file where the replaying function hits an error.
-
-```q
-q)-11!(-2;`:sym2013.10.29)
-46333621
-46756601608
-```
-
-This means that there are 46,333,621 valid chunks in the tplog, and 46,756,601,608 valid bytes. Anything after this point is considered corrupt and not replayable.
-
-
-#### ``-11!(n;`:tplog)``
-
-This performs streaming execution of the first `n` chunks of the specified tplog. This is helpful when the position of the corrupt message is known (determined by executing ``-11!(-2;`:tplog)``). The return value is the number of tplog chunks executed.
-
-```q
-q)-11!(46333621; `:sym2013.10.29)
-46333621
-```
-
-
 ## Replay errors
-
 
 ### Corrupt tplog
 
