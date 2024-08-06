@@ -11,7 +11,6 @@ by [Fionnbharr Gaston](#author)
 {: .wp-author}
 
 
-
 KX freely offers a complete tick-capture product which allows for the processing, analysis and historical storage of huge volumes of tick data in real time. This product, known as kdb+tick, is extremely powerful, lightweight and forms the core of most kdb+ architectures. 
 
 The tickerplant lies at the heart of this structure. It is responsible for receiving data from external feedhandlers and publishing to downstream subscribers. 
@@ -22,10 +21,9 @@ This paper will explore the nature of tickerplant log files and their importance
 
 All tests were run using kdb+ version 3.1 (2014.03.27).
 
-
 ## kdb+tick
 
-This paper will primarily consider the relationship between the TP and RDB in a [kdb+tick architecture](../architecture/index.md). In particular, the use of tickerplant logs when recovering lost data in an RDB.
+This paper will primarily consider the relationship between the TP ([tick.q](../architecture/tickq.md)) and RDB ([r.q](../architecture/rq.md)) in a [kdb+tick architecture](../architecture/index.md). In particular, the use of tickerplant logs when recovering lost data in an RDB.
 
 ### Schemas
 
@@ -35,15 +33,6 @@ For the worked examples in this paper, we will make use of a simple trade table 
 trade:([]time:`timespan$();sym:`$();side:`char$();size:`long$();price:` float$() );
 accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$());
 ```
-
-
-### Tick scripts
-
-:fontawesome-brands-github:[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) is freely available and contains a few short, yet powerful scripts.
-
-:fontawesome-regular-hand-point-right:
-Starting kdb+: [Realtime database](../learn/startingkdb/tick.md)
-
 
 ### kdb+ messages and `upd` function
 
