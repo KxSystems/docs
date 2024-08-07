@@ -46,7 +46,7 @@ For example, a RDB may implement [`.u.end`](rq.md#uend) to write down all in-mem
 
 ### Tickerplant Logs
 
-[Log files](../kb/logging.md) are created using the format `<tickerplant log dir>/<schema filename><date>` e.g. `tplog/sym2022.02.02`.
+[Log files](../kb/logging.md#manual-handling) are created using the format `<tickerplant log dir>/<schema filename><date>` e.g. `tplog/sym2022.02.02`.
 These record all published messages and permit recovery by downstream clients, by allowing them to replay messages they have missed.
 The directory used should have enough space to record all published data.
 

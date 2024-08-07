@@ -126,6 +126,8 @@ q)-10!20h
 
 ## `-11!` (streaming execute)
 
+Replay the q interpreter on messages stored in a log file.
+
 ```syntax
 -11!x
 -11!(-1;x)
@@ -147,6 +149,7 @@ Where `n` is a non-negative integer and `x` is a logfile handle
 
 : replays `n` chunks from top of logfile and returns the number of chunks executed
 
+Each chunk from a log is passed to [`.z.ps`](../ref/dotz/#zps-set) for execution.
 In replaying, if the logfile references an undefined function, the function name is signalled as an error.
 
 :fontawesome-solid-graduation-cap:
