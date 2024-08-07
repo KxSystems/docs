@@ -19,8 +19,6 @@ Perhaps the most important aspect of the tickerplant is how it logs every single
 
 This paper will explore the nature of tickerplant log files and their importance in a kdb+tick system. We will also examine how log files can become corrupted and the various solutions that exist for this scenario.
 
-All tests were run using kdb+ version 3.1 (2014.03.27).
-
 ## kdb+tick
 
 This paper will primarily consider the relationship between the TP ([tick.q](../architecture/tickq.md)) and RDB ([r.q](../architecture/rq.md)) in a [kdb+tick architecture](../architecture/index.md). In particular, the use of tickerplant logs when recovering lost data in an RDB.
@@ -325,13 +323,11 @@ We may wish to write the bad data to its own logfile.
 
 ## Conclusion
 
-This paper discussed tickerplant log files and their importance within kdb+tick systems. They act as a record of every message that passes through the system. In the event of a real-time subscriber process crashing, it can connect to a tickerplant and replay the log file using the `-11!` operator, restoring all intra-day data. [_Recovery_](#recovery) examined the various parameters that can be supplied to `-11!`.
+This paper discussed tickerplant log files and their importance within kdb+tick systems. They act as a record of every message that passes through the system. In the event of a real-time subscriber process crashing, it can connect to a tickerplant and replay the log file using the `-11!` operator, restoring all intra-day data.
 
-The log file can, however, become corrupted. For instance, the tickerplant process might die in the process of writing to the file, or the disk where the file is being written could fill up. In this scenario, a simple replay of the log file is not possible. However, using various combinations of `-11!`, we can at least recover any data up until the point of corruption. This is described in [_Corrupt TP log_](#corrupt-TP log).
+The log file can, however, become corrupted. For instance, the tickerplant process might die in the process of writing to the file, or the disk where the file is being written could fill up. In this scenario, a simple replay of the log file is not possible. However, using various combinations of `-11!`, we can at least recover any data up until the point of corruption.
 
-[_Illegal operations on keyed tables_](#illegal-operations-on-keyed-tables) and [_Recovering from q errors during replay_](#recovering-from-q-errors-during-replay) discussed scenarios in which replaying a log file could result in an error, even if the file is uncorrupted. In this case, we used error trapping to isolate any rows of data causing errors whilst successfully replaying any valid rows. The problematic data could then be viewed in isolation in order to determine the best course of action.
-
-All tests were run using kdb+ V3.1 (2014.03.27).
+An [example](#example) discussed scenarios in which replaying a log file could result in an error, even if the file is uncorrupted. In this case, we used error trapping to isolate any rows of data causing errors whilst successfully replaying any valid rows. The problematic data could then be viewed in isolation in order to determine the best course of action.
 
 
 ## Author
