@@ -25,42 +25,19 @@ All tests were run using kdb+ version 3.1 (2014.03.27).
 
 This paper will primarily consider the relationship between the TP ([tick.q](../architecture/tickq.md)) and RDB ([r.q](../architecture/rq.md)) in a [kdb+tick architecture](../architecture/index.md). In particular, the use of tickerplant logs when recovering lost data in an RDB.
 
-### Schemas
+A log file created by a tickerplant is often referred to as a `TP log`.
 
-For the worked examples in this paper, we will make use of a simple trade table schema. Later, we shall look at `accounts` – a simple position limits table, which we will key in a real-time engine process. The schemas are defined in the file `sym.q`.
+## Writing a TP log
 
-```q
-trade:([]time:`timespan$();sym:`$();side:`char$();size:`long$();price:` float$() );
-accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$());
-```
+A log file can be created by any kdb+ process to record instructions/data in binary format, which can be later replayed to recover state.
 
-### kdb+ messages and `upd` function
+A tickerplant ([tick.q](../architecture/tickq.md)) has the option to create and records messages sent to its subscribing clients so that they may recover in situations were they may fail. 
+The tickerplant creates and records logs using the methods as described [here](../kb/logging.md#manual-handling).
 
-A kdb+ message takes the form of a list.
+Should the TP fail, or be shut down for any period of time, no downstream subscriber will receive any published data for the period of its downtime. This data typically will not be recoverable. 
+Thus it is imperative that the TP remain always running and available.
 
-```q
-(functioname;tablename;tabledata)
-```
-
-Here, `functionname` and `tablename` are symbols, and `tabledata` is a row of data to be inserted into `tablename`. 
-
-```q
-`upd `trade (0D14:56:01.113310000;`AUDUSD;"S";1000;96.96)
-`upd `trade (0D14:56:01.115310000;`SGDUSD;"S";5000;95.45)
-`upd `trade (0D14:56:01.119310000;`AUDUSD;"B";1000;95.08)
-`upd `trade (0D14:56:01.121310000;`AUDUSD;"B";1000;95.65)
-`upd `trade (0D14:56:01.122310000;`SGDUSD;"B";5000;98.14)
-```
-
-In a standard tick system, each kdb+ message calls a function named `upd`. Each process may have a different definition of this function. A TP publishes each time the `upd` function is called (if its timer is not set to batch the data), and an RDB inserts the data into the relevant table.
-
-## Recovery
-
-### Writing a TP log
-
-Should the TP fail, or be shut down for any period of time, no downstream subscriber will receive any published data for the period of its downtime. This data typically will not be recoverable. Thus it is imperative that the TP remain always running and available.
-
-Every message that the tickerplant receives is written to a kdb+ binary file, called the tickerplant log file, or _TP log_. The tickerplant maintains some key [variables](../architecture/tickq.md#variables) which are important in the context of data recovery for subscribers.
+The tickerplant maintains some key [variables](../architecture/tickq.md#variables) which can be requested by subscribers in order to read the current TP log.
 
 ```bash
 # start tickerplant
@@ -73,8 +50,9 @@ q).u.l
 376i 
 q).u.i 0
 ```
-The `upd` function is called each time a TP receives a message. Within this function, the TP will write the message to the TP log.
 
+The tickerplant calls the `upd` function on any of its subscribing processes. 
+Therefore the tickerplant logs the `upd` function call and any data passed, so that any subscribers can replay the log to regain state. 
 ```q
 //from u.q
 upd:{[t;x] ...
@@ -84,14 +62,44 @@ upd:{[t;x] ...
 if[l; l enlist(`upd;t;x); j+:1]
 ```
 
-### Replaying a TP log
+### kdb+ messages and `upd` function
 
-Recovery of an RDB involves restarting the process. On startup, an RDB subscribes to a TP and receives the following information:
+A tickerplant message takes the form of a list.
+
+```q
+(updfunctioname;tablename;tabledata)
+```
+
+Here, `functionname` and `tablename` are symbols, and `tabledata` is a row of data to be inserted into `tablename`. 
+
+Updates using trade schema
+```q
+trade:([]time:`timespan$();sym:`$();side:`char$();size:`long$();price:` float$() );
+```
+would appear in the tp log as
+```q
+`upd `trade (0D14:56:01.113310000;`AUDUSD;"S";1000;96.96)
+`upd `trade (0D14:56:01.115310000;`SGDUSD;"S";5000;95.45)
+`upd `trade (0D14:56:01.119310000;`AUDUSD;"B";1000;95.08)
+`upd `trade (0D14:56:01.121310000;`AUDUSD;"B";1000;95.65)
+`upd `trade (0D14:56:01.122310000;`SGDUSD;"B";5000;98.14)
+```
+
+## Replaying a TP log
+
+Replay of a log file and dealing with a _corrupt_ log file is described [here](../kb/logging.md#replaying-log-files).
+
+Clients of a tickerplant that may wish to recover state may be an RDB or custom developed RTEs.
+Its important to note that tickerplant does not playback the log file. An individual client of the tickerplant (e.g. a RDB)
+replays the log file when required.
+
+An example of an RDB that uses the TP log to recover state on a restart is [r.q](../architecture/rq.md).
+
+On startup, r.q subscribes to a TP and receives the following information:
 - message count ([`.u.i`](../architecture/tickq.md#variables)) 
 - location of the TP log ([`.u.L`](../architecture/tickq.md#variables)). 
 
-It then replays this TP log to recover all the data that has passed through the TP up to that point in the day. The replay is achieved using [`-11!`](../basics/internal.md#-11-streaming-execute), the streaming replay function, as detailed [here](../kb/logging.md#replaying-log-files).
-
+It then replays this TP log to recover all the data that has passed through the TP up to that point in the day. 
 This is called within [`.u.rep`](../architecture/rq.md#urep), which is executed when the RDB connects to the TP.
 
 ```q
@@ -99,86 +107,34 @@ This is called within [`.u.rep`](../architecture/rq.md#urep), which is executed 
 .u.rep:{...;-11!y;...};
 ```
 
-kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-messages-and-upd-function). In a typical RDB, `functionname` will be `` `upd``, which will perform an insert. Therefore, executing a single line in the logfile will be equivalent to ``insert[`tablename;tabledata]``.
+kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-messages-and-upd-function). 
+In a typical RDB, `upd``, which will perform an insert. 
+Therefore, executing a single line in the logfile will be equivalent to ``insert[`tablename;tabledata]``.
 
-## Replay errors
+### Filtering TP log
 
-### Corrupt TP log
+A TP log will contain all messages published. 
+A client of the tickerplant may have originally been subscribed to a subset of that data e.g. one of many tables published, or may wish to 
+perform alternative logic on the data recovered from the log file. 
 
-A TP log may become corrupted. For example, the tickerplant process could die mid-write (e.g. due to hardware failure). For recovery, we wish to isolate the valid parts of the TP log, discarding the corrupted sections. This can be done with a combination of the various forms of `-11!`.
+To filter on the data from the tp log, we can set the function(s) originally logged e.g. `upd` to a different value prior to playback and reinstate it after
+playback completes. With this playback specific function, logic can be implemented to filter on the data provided or perform alternative logic.§
 
-First, we attempt to replay a corrupted TP log.
+## Logging via an RTE/RDB
 
-```q
-q)-11!(`:sym2013.10.29)
-'badtail
-```
+### Example 
 
-`'badtail` indicates an incomplete transaction at the end of the file. Next, we identify the position of the corruption in the TP log using `-11!(-2;x)`.
+Consider a Real-Time Engine designed to keep track of trading account position limits, 
+The limits for each account can be used against realtime data from the tickerplant, and could be
+updated in the RTE by account managers.
 
-```q
-q)-11!(-2;`:sym2013.10.29)
-46333621
-46756601608
-```
-
-There are 46,333,621 valid chunks in the TP log, and the valid portion of the log file is 46,756,601,608 bytes in size.
-
-For safety, we will back up the corrupt TP log. We will also remove user write permission to reduce the risk of accidentally affecting this file.
-
-```bash
-$ mv sym2013.10.29 sym2013.10.29_old
-$ chmod u-x sym2013.10.29_old
-```
-
-Within a new kdb+ session, we create variables to point to this TP log, and create a handle to a new TP log. We assume the current working directory of this session is the same as where the TP log is located.
+The account positions will use this schema
 
 ```q
-q) old:`:sym2013.10.29_old
+accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$());
 ```
 
-Initiate a new, empty file, and open a handle to it.
-
-```q
-q)new:`:sym2013.10.29_new
-q)new set ()
-`:sym2013.10.29_new
-q)h:hopen new
-```
-
-We define the `upd` function within this new kdb+ process to write to this handle.
-
-```q
-q)upd:{[t;x]h enlist(`upd;t;x)}
-```
-
-We use `-11!` to replay the first 46,333,621 chunks of the corrupt TP log. This will omit the last, bad message.
-
-```q
-q)-11!(46333621;old)
-46333621
-```
-
-The `upd` function (as defined in this process) is being called in each one of these messages. This will write each one of these messages in turn to the handle `h`, which is streaming the message to the new log file. The equivalent execution is:
-
-```q
-q)enlist first get`:sym2014.05.07
-`upd `trade (0D14:56:01.113310000;`AUDUSD;"S";1000;96.96) 
-q)h enlist first get`:sym2014.05.07
-392i
-// the return value is the value of the handle
-q)get new
-`upd `trade (0D14:56:01.113310000;`AUDUSD;"S";1000;96.96)
-```
-
-This will give us a new TP log with the corrupt parts removed. This can now be replayed to restore the data in the RDB up until the point of corruption.
-
-Rename the new TP log to the convention expected by the TP and RDB (in this example we rename to `sym2014.05.03`). Restart both processes so that they write and read respectively to the correct TP log. Upon restarting, the RDB should read this TP log in and replay the tables correctly.
-
-
-### Illegal operations on keyed tables
-
-Consider a Real-Time Engine designed to keep track of trading account position limits. This could take the form of a keyed table, where sym is an account name.
+This could take the form of a keyed table, where sym is an account name.
 
 ```q
 q) `sym xkey `accounts
@@ -191,7 +147,7 @@ pbAcc       | 2014.05.04D10:27:00.291699000 GBPUSD insert 1000000
 ACCOUNT0023 | 2014.05.04D10:27:01.558332000 SGDUSD insert 1000000
 ```
 
-If we wanted this keyed table to be recoverable within this process, we would publish any changes to the table via the tickerplant and have a customized `upd` function defined locally in the RTE.
+If we wanted this keyed table to be recoverable within this process, we would publish any changes to the table via the tickerplant and have a customized `upd` function defined locally in the RTE to take specific action on changes to the accounts table
 
 ```q
 upd:{[t;x]
@@ -318,7 +274,7 @@ Replaying the TP log, the kdb+ process tries to perform an insert to a keyed tab
 ```
 
 
-### Recovering from q errors during replay
+#### Recovering from q errors during replay
 
 As seen in the previous section, replaying a TP log can result in an error even if the log file is uncorrupted. We can utilize error trapping to isolate any rows in the TP log which cause an error while transferring the other, error-free rows into a new log file. The problematic TP log lines will be stored in a variable where they can be analyzed to determine the next course of action.
 
