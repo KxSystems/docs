@@ -16,13 +16,6 @@ The purpose of this white paper is to help q developers who wish to build their 
 2.  Use `r.q` as a template to build some sample real-time analytic
     engines.
 
-It is hoped this white paper will help dispel any notion of tick being a black box product which cannot be adapted to the requirements of the real-time data consumer.
-
-All tests were run using kdb+ V3.1 (2013.09.19) on Windows.
-The tickerplant and real-time database scripts can be obtained from :fontawesome-brands-github:[KxSystems/kdb+tick](https://github.com/KxSystems/kdb-tick)
-
-The tickerplant and real-time database scripts used are dated 2014.03.12 and 2008.09.09 respectively. These are the most up-to-date versions as of the writing of this white paper.
-
 This paper is focused on the real-time database and custom real-time engines (RTEs). However, some background will be provided on the other key processes in this environment.
 
 
