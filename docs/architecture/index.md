@@ -137,6 +137,29 @@ The dates are referred to as _partitions_ and this on-disk structure contributes
     :fontawesome-regular-map:
     [Compression in kdb+](../wp/compress/index.md)
 
+#### Example HDB script
+
+A q script named `hdb.q` that can be used by kdb+ to create a HDB process:
+```q
+/q tick/hdb.q sym -p 5012
+if[1>count .z.x;show"Supply directory of historical database";exit 0];
+hdb:.z.x 0
+/Mount the Historical Date Partitioned Database
+@[{system"l ",x};hdb;{show "Error message - ",x;exit 0}]
+```
+Usage
+```bash
+q hdb.q SRC [-p 5012]
+```
+
+| Parameter Name | Description | Default |
+| ---- | ---- | --- |
+| SRC | The [directory used by the RDB](rq.md#end-of-day) to which it saves previous values at end-of-day | &lt;none&gt; |
+| -p    | [listening port](../basics/cmdline.md#-p-listening-port) for client communication, for example, a RDB instructing the HDB to reload its DB or client queries against the HDB data | &lt;none&gt; |
+
+!!! Note "Standard kdb+ [command line options](../basics/cmdline.md) may also be passed"
+
+A HDB will be empty until the RDB saves its first set of tables at end-of-day.
 
 ### Gateway
 
