@@ -320,17 +320,3 @@ We may wish to write the bad data to its own logfile.
 (`:tp_2014.05.03_new) set enlist each `upd,/: baddata;
 ```
 
-
-## Conclusion
-
-This paper discussed tickerplant log files and their importance within kdb+tick systems. They act as a record of every message that passes through the system. In the event of a real-time subscriber process crashing, it can connect to a tickerplant and replay the log file using the `-11!` operator, restoring all intra-day data.
-
-The log file can, however, become corrupted. For instance, the tickerplant process might die in the process of writing to the file, or the disk where the file is being written could fill up. In this scenario, a simple replay of the log file is not possible. However, using various combinations of `-11!`, we can at least recover any data up until the point of corruption.
-
-An [example](#example) discussed scenarios in which replaying a log file could result in an error, even if the file is uncorrupted. In this case, we used error trapping to isolate any rows of data causing errors whilst successfully replaying any valid rows. The problematic data could then be viewed in isolation in order to determine the best course of action.
-
-
-## Author
-
-**Fionnbharr Gaston** is a kdb+ consultant currently based in Singapore. He has worked with a number of top-tier investment banks and exchanges in the UK, Asia, and Australia, on applications ranging from market-data capture to market surveillance.
-

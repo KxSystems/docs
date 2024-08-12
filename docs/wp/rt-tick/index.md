@@ -1065,18 +1065,3 @@ We can conclude that there was a significant difference in performance in proces
 It should be noted that prior to this experiment being carried out on each process, all tables were emptied.
 
 
-## Conclusions
-
-This white paper explained the inner workings of the standard RDB as well as an overview of the rest of the kdb+tick environment. The white paper then detailed examples of customizing the RDB to achieve useful real-time analytical behavior.
-
-It’s important when building a custom RTE to consider the performance implications of adding complexity to the update logic. The more complex the definition of `upd`, the longer it will take to process intraday updates or replay the TP logfile. In the case of intraday updates, it is important to know the frequency of TP updates in order to know how much complexity you can afford to build into your `upd` function.
-
-It is the aim of the author that the reader will now have the understanding of how a kdb+tick subscriber can be built and customized fairly easily according to the requirements of the system.
-
-All tests were run using kdb+ version V3.1 (2013.09.19) on Windows.
-
-
-## Author
-
-**Nathan Perrem** has worked onsite as a kdb+ developer at a range of investment banks and brokerage firms in New York and London. He has designed and delivered all client kdb+ training courses since 2009.
-
