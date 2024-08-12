@@ -524,7 +524,7 @@ nav:
     - Streaming:
       - General architecture:
         - Overview: architecture/index.md
-        - kdb-tick:
+        - kdb+tick:
           - Tickerplant (tick.q): architecture/tickq.md
           - Tickerplant pub/sub (u.q): architecture/uq.md
           - RDB (r.q): architecture/rq.md
