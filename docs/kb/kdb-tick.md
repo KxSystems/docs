@@ -133,6 +133,71 @@ A more interesting example is keeping a table of the latest trade and the associ
 :fontawesome-brands-github: 
 [KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
 
+#### Usage
+
+```bash
+q c.q CMD [host]:port[:usr:pwd]
+```
+
+| Parameter Name | Description | Default |
+| ---- | ---- | --- |
+| CMD | See [options](#options) for list of possible options | &lt;none&gt; |
+| host | host running kdb+ instance that the instance will subscribe to e.g. tickerplant host | localhost |
+| port | port of kdb+ instance that the instance will subscribe to  e.g. tickerplant port | 5010 |
+| usr   | username | &lt;none&gt; |
+| pwd   | password | &lt;none&gt; |
+| -p    | [listening port](../basics/cmdline.md#-p-listening-port) for client communications | &lt;none&gt; |
+
+The `t` variable within the source file can be edited to a table name to filter, or an empty sym list for no filter.
+
+The `s` variable within the source file can be edited to a list of syms to filter on, or an empty sym list for no filter.
+
+##### Options
+
+Possible options for `CMD` on command-line are:
+
+* `all` uses all data received to populate table(s)
+* `last` populates table(s) with last value
+* `last5` populates tables with each row representing the last update within a five minute window for each sym. Latest row updates for each tick until five minute window passes and a new row is created.
+```q
+sym    minute| time                 price    size
+-------------| ----------------------------------
+MSFT.O 10:50 | 0D10:54:59.561385000 45.1433  627
+MSFT.O 10:55 | 0D10:59:59.561575000 45.18819 764
+MSFT.O 11:00 | 0D11:03:05.560379000 45.18205 123
+```
+* `tq` populates table `tq` with all trades with then current quote. Example depends upon the tickerplant using a schema with only a quote and trade table.
+```q
+time                 sym    price    size bid      ask      bsize asize
+-----------------------------------------------------------------------
+0D11:11:45.566803000 MSFT.O 45.14688 209  45.14713 45.15063 55    465
+0D11:11:49.868267000 MSFT.O 45.15094 288  45.14479 45.15053 27    686
+```
+<!--
+* `vwap` TODO
+* `vwap1` TODO
+* `move` TODO
+-->
+* `hlcv` populates table `hlcv` with high price, low price, last price, total volume. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size.
+```q
+sym   | high     low      price    size
+------| -------------------------------
+MSFT.O| 45.15094 45.14245 45.14724 5686
+```
+<!--
+* `lvl2` TODO
+-->
+* `nest` creates and populates a `trade` table. There will be one row for each symbol, were each element is a list. Each list has its corresponding value appended to on each update i.e. four trade updates will result in a four item list of prices. Example depends upon the tickerplant publishing a trade table.
+```q
+sym   | time                                                                                price                             size           
+------| -------------------------------------------------------------------------------------------------------------------------------------
+MSFT.O| 0D11:06:24.370938000 0D11:06:25.374533000 0D11:06:26.373827000 0D11:06:27.376053000 45.14767 45.14413 45.1419 45.1402 360 585 869 694
+```
+<!--
+* `vwap2` TODO
+* `vwap3` TODO
+-->
+
 
 ### `clog.q`
 
@@ -141,6 +206,12 @@ The default version of `c.q` linked to above connects to a TP and starts collect
 :fontawesome-brands-github: 
 [simongarland/tick/clog.q](https://github.com/simongarland/tick/blob/master/clog.q)
 
+#### Usage
+
+```bash
+q clog.q {all|..} [host]:port[:usr:pwd]
+```
+
 
 ### `daily.q`
 
@@ -148,4 +219,5 @@ By default, the end-of-day processing simply saves the intra-day RDB to disk aft
 
 An example of additional processing (updating a permanent HLOC table and building an NBBO table from scratch) can be found in
 :fontawesome-brands-github: 
-[KxSystems/kdb/taq/daily.q](https://github.com/simongarland/tick/blob/master/clog.q). 
+[KxSystems/kdb/taq/daily.q](https://github.com/KxSystems/kdb/blob/master/taq/daily.q). 
+
