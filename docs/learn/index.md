@@ -102,7 +102,7 @@ by Mattew Kwon
 <br>
 by Kdbcn Workshop
 
-[kdbcn.gitee.io](https://kdbcn.gitee.io/)
+[gitee.com/kdbcn/kdbcn](https://gitee.com/kdbcn/kdbcn/blob/master/index.md)
 
 <hr style="clear: both">
 

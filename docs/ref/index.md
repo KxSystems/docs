@@ -136,7 +136,7 @@ author: Stephen Taylor
 <table markdown class="kx-tight">
 <tr markdown><td markdown>[file](../basics/cmdline.md#file)</td></tr>
 <tr markdown><td markdown>[`\a`](../basics/syscmds.md#a-tables)</td><td markdown>tables</td><td markdown>[`\r`](../basics/syscmds.md#r-rename)</td><td markdown>rename</td></tr>
-<tr markdown><td markdown>[`-b`](../basics/cmdline.md#-b-blocked)</td><td markdown>blocked</td><td markdown>[`-s`](../basics/cmdline.md#-s-secondary-processes) [`\s`](../basics/syscmds.md#s-number-of-secondary-processes)</td><td markdown>secondary processes</td></tr>
+<tr markdown><td markdown>[`-b`](../basics/cmdline.md#-b-blocked)</td><td markdown>blocked</td><td markdown>[`-s`](../basics/cmdline.md#-s-secondary-processes) [`\s`](../basics/syscmds.md#s-number-of-secondary-threads)</td><td markdown>secondary processes</td></tr>
 <tr markdown><td markdown>[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td markdown>views</td><td markdown>[`-S`](../basics/cmdline.md#-s-random-seed) [`\S`](../basics/syscmds.md#s-random-seed)</td><td markdown>random seed</td></tr>
 <tr markdown><td markdown>[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)</td><td markdown>console size</td><td markdown>[`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)</td><td markdown>timer ticks</td></tr>
 <tr markdown><td markdown>[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td markdown>HTTP size</td><td markdown>[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td markdown>time and space</td></tr>
