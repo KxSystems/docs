@@ -173,10 +173,46 @@ time                 sym    price    size bid      ask      bsize asize
 0D11:11:45.566803000 MSFT.O 45.14688 209  45.14713 45.15063 55    465
 0D11:11:49.868267000 MSFT.O 45.15094 288  45.14479 45.15053 27    686
 ```
-<!--
-* `vwap` TODO
-* `vwap1` TODO
--->
+* `vwap` populates table `vwap` with information that can be used to generate a volume weighted adjusted price. The input volume and price can fluctuate during the day. This example uses [`wsum`](../ref/sum.md#wsum) to calculate the weighted sum over the mutliple ticks that may be in a single update. Result shows size representing the total volume traded, and price being the total cost of all stocks traded. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size.
+```q
+q)vwap
+sym   | price    size
+------| -------------
+MSFT.O| 148714.2 6348
+IBM.N | 138147.1 3060
+q)select sym,vwap:price%size from vwap
+sym    vwap
+---------------
+MSFT.O 23.42693
+IBM.N  45.14611
+```
+* `vwap1` populates table `vwap` with information that can be used to generate a volume weighted adjusted price. Calculation as per `vwap` example above. A new row is inserted per sym, when each minute passes. This presents the vwap on per minute basis.
+```q
+q)vwap
+sym    minute| price    size
+-------------| --------------
+MSFT.O 11:07 | 570708.2 12643
+MSFT.O 11:08 | 1328935  29425
+MSFT.O 11:09 | 56653.97 1254
+q)select sym,minute,vwap:price%size from vwap
+sym    minute vwap
+----------------------
+MSFT.O 11:07  45.14025
+MSFT.O 11:08  45.16346
+MSFT.O 11:09  45.18718
+```
+* `vwap2` as per `vwap` example, but only including last ten trade messages for calculation.
+```q
+sym   | vwap
+------| --------
+MSFT.O| 45.14031
+```
+* `vwap3` as per `vwap` example, but only including any trade messages received in the last minute for calculation.
+```q
+sym   | vwap
+------| --------
+MSFT.O| 45.14376
+```
 * `move` populates table `move` with moving price calculation performed in real-time, generating the `price` and `price * volume` change over a 1 minute window. Using the last tick that occurred over one minute ago, subtract from latest value. For example, price change would be +12 if the value one minute ago was 8 and the last received price was 20. Recalculates for every update. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size. Example must be run for at least one minute.
 ```q
 sym   | size      size1
@@ -198,10 +234,6 @@ sym   | time                                                                    
 ------| -------------------------------------------------------------------------------------------------------------------------------------
 MSFT.O| 0D11:06:24.370938000 0D11:06:25.374533000 0D11:06:26.373827000 0D11:06:27.376053000 45.14767 45.14413 45.1419 45.1402 360 585 869 694
 ```
-<!--
-* `vwap2` TODO
-* `vwap3` TODO
--->
 
 
 ### `clog.q`
