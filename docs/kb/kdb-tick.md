@@ -157,7 +157,7 @@ The `s` variable within the source file can be edited to a list of syms to filte
 Possible options for `CMD` on command-line are:
 
 * `all` uses all data received to populate table(s)
-* `last` populates table(s) with last value
+* `last` populates table(s) with last value for each sym
 * `last5` populates tables with each row representing the last update within a five minute window for each sym. Latest row updates for each tick until five minute window passes and a new row is created.
 ```q
 sym    minute| time                 price    size
@@ -225,9 +225,20 @@ sym   | high     low      price    size
 ------| -------------------------------
 MSFT.O| 45.15094 45.14245 45.14724 5686
 ```
-<!--
-* `lvl2` TODO
--->
+* `lvl2` populates a dictionary `lvl2` mapping syms to quote information. The quote information is a keyed table showing the latest quote for each market maker.
+```q
+q)lvl2`MSFT.O
+mm| time                 bid      ask      bsize asize
+--| --------------------------------------------------
+AA| 0D16:12:03.895824000 45.14677 45.15006 660   540
+DD| 0D16:12:01.895931000 45.14815 45.15354 652   108
+CC| 0D16:12:19.896721000 45.14967 45.15131 270   347
+BB| 0D16:12:13.900165000 45.14737 45.1529  245   392
+```
+Requires a quote schema containing a column named `mm` for the market maker, for example
+```q
+quote:([]time:`timespan$();sym:`symbol$();mm:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
+```
 * `nest` creates and populates a `trade` table. There will be one row for each symbol, were each element is a list. Each list has its corresponding value appended to on each update i.e. four trade updates will result in a four item list of prices. Example depends upon the tickerplant publishing a trade table.
 ```q
 sym   | time                                                                                price                             size           
