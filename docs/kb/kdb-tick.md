@@ -136,7 +136,7 @@ A more interesting example is keeping a table of the latest trade and the associ
 #### Usage
 
 ```bash
-q c.q CMD [host]:port[:usr:pwd]
+q c.q CMD [host]:port[:usr:pwd] [-p 5040]
 ```
 
 | Parameter Name | Description | Default |
@@ -166,7 +166,7 @@ MSFT.O 10:50 | 0D10:54:59.561385000 45.1433  627
 MSFT.O 10:55 | 0D10:59:59.561575000 45.18819 764
 MSFT.O 11:00 | 0D11:03:05.560379000 45.18205 123
 ```
-* `tq` populates table `tq` with all trades with then current quote. Example depends upon the tickerplant using a schema with only a quote and trade table.
+* `tq` records the current quote price as each trade occurs. It populates table `tq` with all trade updates, accompanied by the value contained within the last received quote update for the related sym. Example depends upon the tickerplant using a schema with only a quote and trade table.
 ```q
 time                 sym    price    size bid      ask      bsize asize
 -----------------------------------------------------------------------
@@ -265,7 +265,8 @@ q clog.q {all|..} [host]:port[:usr:pwd]
 
 By default, the end-of-day processing simply saves the intra-day RDB to disk after a little re-organization. 
 
-An example of additional processing (updating a permanent HLOC table and building an NBBO table from scratch) can be found in
+Additional processing, such as a permanent HLOC (high/low/open/close) table and building a NBBO (national best bid and offer) table, can be found in
+
 :fontawesome-brands-github: 
 [KxSystems/kdb/taq/daily.q](https://github.com/KxSystems/kdb/blob/master/taq/daily.q). 
 
