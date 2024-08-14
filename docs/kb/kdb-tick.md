@@ -177,7 +177,7 @@ time                 sym    price    size bid      ask      bsize asize
 * `vwap` TODO
 * `vwap1` TODO
 -->
-* `move` populates table `move` with moving price calculation performed in real-time, generating the `price` and `price * volume` change over a 1 min window. Using the last tick that occurred over one minute ago, subtract from latest value. For example, price change would be +12 if the value one minute ago was 8 and the last received price was 20. Recalculates for every update. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size. Example must be run for at least one minute.
+* `move` populates table `move` with moving price calculation performed in real-time, generating the `price` and `price * volume` change over a 1 minute window. Using the last tick that occurred over one minute ago, subtract from latest value. For example, price change would be +12 if the value one minute ago was 8 and the last received price was 20. Recalculates for every update. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size. Example must be run for at least one minute.
 ```q
 sym   | size      size1
 ------| ---------------
