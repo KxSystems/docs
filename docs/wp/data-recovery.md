@@ -15,9 +15,8 @@ KX freely offers a complete tick-capture product which allows for the processing
 
 The tickerplant lies at the heart of this structure. It is responsible for receiving data from external feedhandlers and publishing to downstream subscribers. 
 
-Perhaps the most important aspect of the tickerplant is how it logs every single message it receives to a binary log file. In the event of a subscriber process failing, this log file can be used to restore any missing data. However, should this log file become corrupt, or if there are problems during recovery, a complete replay of the log file may not be possible.
+Perhaps the most important aspect of the tickerplant is how it logs every single message it receives to a binary log file. In the event of a subscriber process failing, this log file can be used to restore any missing data.
 
-This paper will explore the nature of tickerplant log files and their importance in a kdb+tick system. We will also examine how log files can become corrupted and the various solutions that exist for this scenario.
 
 ## kdb+tick
 
