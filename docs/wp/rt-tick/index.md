@@ -41,7 +41,7 @@ Although the inner workings of the tickerplant process are beyond the scope of t
 : refers to the schema file (in this case called `sym.q`), assumed to reside in the subdirectory called `tick` (relative to `tick.q`). This schema file simply defines the tables that exist in the TP – here we define two tables, `trade` and `quote`, as follows.
 
 ```q
-quote:([]time:`timespan$();sym:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
+quote:([]time:`timespan$();sym:`symbol$();mm:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
 trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
 ```
 
@@ -75,7 +75,7 @@ getask:{[s] prices[s]+getmovement[s]} /generate ask price
 .z.ts:{
   s:n?syms;
   $[0<flag mod 10;
-    h(".u.upd";`quote;(n#.z.N;s;getbid'[s];getask'[s];n?1000;n?1000)); 
+    h(".u.upd";`quote;(n#.z.N;s;n?`AA`BB`CC`DD;getbid'[s];getask'[s];n?1000;n?1000));
     h(".u.upd";`trade;(n#.z.N;s;getprice'[s];n?1000))];
   flag+:1; }
 /trigger timer every 100ms
@@ -432,7 +432,7 @@ This section defines an important function called `.u.rep`. This function is inv
 ```q
 q)show x /x is the first input to .u.rep
 `quote 
-+`time`sym`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`float$();`f loat$();`int$();`int$())
++`time`sym`mm`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`symbol$();`float$();`f loat$();`int$();`int$())
 `trade 
 +`time`sym`price`size!(`timespan$();`g#`symbol$();`float$();`int$())
 ```
@@ -441,8 +441,8 @@ Drilling down further:
 
 ```q
 q)show each x 0 /table name/empty table combination for quote `quote
-time sym bid ask bsize asize
-----------------------------
+time sym mm bid ask bsize asize
+-------------------------------
 q)
 q)show each x 1 /table name/empty table combination for trade `trade
 time sym price size
@@ -472,7 +472,7 @@ This line just loops over the table name/empty table pairs and initializes these
 
 ```q
 q)x 0
-`quote +`time`sym`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`float$();`f loat$();`int$();`int$())
+`quote +`time`sym`mm`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`symbol$();`float$();`f loat$();`int$();`int$())
 ```
 
 Given that the function `set` is essentially a projection onto [the dot
@@ -767,7 +767,7 @@ if[not "w"=first string .z.o;system "sleep 1"]
 /initialize schemas for custom RTE
 InitializeSchemas:`trade`quote!
   (
-   {[x]`TradeWithQuote insert update bid:0n,bsize:0N,ask:0n,asize:0N from x};
+   {[x]`TradeWithQuote insert update mm:`,bid:0n,bsize:0N,ask:0n,asize:0N from x};
    {[x]`LatestQuote upsert select by sym from x}
   );
 
