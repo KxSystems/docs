@@ -227,7 +227,7 @@ q)hclose logfilehandle
 
 ### Log writing
 
-To record events/messages to a log, append a list consisting of a function name followed by any parameters used. 
+To record events and messages to a log, you must append a list consisting of a function name, followed by any parameters used. 
 
 A tickerplant uses this concept to record all messages sent to its clients so they can use the log to recover. It records calling a function `upd` passing the parameters of a table name and the table content to append.
 
