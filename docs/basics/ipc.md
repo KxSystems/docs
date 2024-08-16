@@ -123,8 +123,7 @@ q)h("+";2;2)
 
 !!! tip "Default handling of a sync message"
     [`.z.pg`](../ref/dotz.md#zpg-get) is called on the server when any message is received. 
-    The default processing is to call [`value`](../ref/value.md) with the provided message. Using the
-    documentation for `value`, the processing for the two messages above can be shown as:
+    The default processing calls [`value`](../ref/value.md) with the provided message. Using `value`, the processing for the two messages above would be:
     ```q
     q)value "2+2"
     4
