@@ -231,7 +231,7 @@ To record events and messages to a log, you must append a list consisting of a f
 
 A tickerplant uses this concept to record all messages sent to its clients so they can use the log to recover. It records calling a function `upd` passing the parameters of a table name and the table content to append.
 
-For example, calling a function called `upd` with two parameters, x and y, can be recorded to a file file as follows:
+For example, calling a function called `upd` with two parameters, x and y, can be recorded to a file as follows:
 ```q
 q)logfilehandle enlist (`upd;x;y)
 ```
