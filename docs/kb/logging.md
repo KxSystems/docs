@@ -200,27 +200,23 @@ This technique allows more control over actions like log file naming conventions
 
 ### Create a log file
 
-1. Initialize a log file by using [`set`](../ref/get.md#set).
+To create a log file, do the following.
 
+1. Initialize a log file by using [`set`](../ref/get.md#set).
 ```q
 q)logfile:hsym `$"qlog";
 q)logfile set ();
 q)logfilehandle:hopen logfile;
 ```
-
 !!!note "`logfile set ();` is equivalent to `.[logfile;();:;()];`"
-
-1. Check for pre-existing log files by using [`get`](../ref/get.md#get). 
-1. If a new log file does not exist, the script can now be written to initialize it, otherwise it is opened for appending.
-
+An alternative method is to check for pre-existing log files by using [`key`](../ref/key.md#whether-a-file-exists). 
+If a new log file does not exist, the script can now be written to initialize it, otherwise it is opened for appending.
 ```q
 q)logfile:hsym `$"qlog";
 q)if[not type key logfile;logfile set()]
 q)logfilehandle:hopen logfile;
 ```
-
 1. Close the log file when you are finished logging any messages.
-
 ```q
 q)hclose logfilehandle
 ```
