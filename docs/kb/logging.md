@@ -248,9 +248,8 @@ logfilehandle enlist "upd[22;33]"
 ```
 
 Function calls that are used to updating data are typically written, without logging the function definition. 
-This has the disadvantage of requiring that the recoverying process defines the functions (e.g. by loading a q script) prior to replaying the log. 
-The advantages can outweight the disadvantages by allowing for bugs fixes within the function or temporarily assigning the function to a different definition prior to playback, 
-to provide despoke logic for data sourced from a log file.
+This has the disadvantage of requiring that the recovery process defines the functions (for example, by loading a q script) prior to replaying the log. 
+The advantages can outweigh the disadvantages, however, by allowing for bugs fixes within the function, or temporarily assigning the function to a different definition prior to playback, to provide bespoke logic for data sourced from a log file.
 
 ### Log rolling
 
