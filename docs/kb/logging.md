@@ -198,7 +198,7 @@ Function calls and the contents of the their parameters can be recorded to a log
 
 This technique allows more control over actions like log file naming conventions, what to log, log file locations and the ability to add logic around the log file lifecycle.
 
-### Creating a log file
+### Create a log file
 
 A log file can be initialized using [`set`](../ref/get.md#set).
 
