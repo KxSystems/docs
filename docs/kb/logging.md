@@ -225,7 +225,7 @@ Close the log file when finished logging any messages.
 q)hclose logfilehandle
 ```
 
-### Log writting
+### Log writing
 
 To record events/messages to a log, append a list consisting of a function name followed by any parameters used. 
 
