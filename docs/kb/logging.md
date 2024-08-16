@@ -219,7 +219,7 @@ q)if[not type key logfile;logfile set()]
 q)logfilehandle:hopen logfile;
 ```
 
-Close the log file when finished logging any messages.
+1. Close the log file when you are finished logging any messages.
 
 ```q
 q)hclose logfilehandle
