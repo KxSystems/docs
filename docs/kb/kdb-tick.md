@@ -124,14 +124,18 @@ It’s easier to replay the log and (re)write the data. If the flag is provided 
 
 ### `c.q` collection
 
+:fontawesome-brands-github:
+[KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
+
 An often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. 
 
 A simple example would be keeping a running Open/High/Low/Latest: much simpler to update incrementally with data from the TP each time something changes than to build from scratch. 
 
 A more interesting example is keeping a table of the latest trade and the associated quote for every stock – trivial to do in real time with the incremental updates from the TP, but impossible to build from scratch in a timely fashion with the raw data. 
 
-:fontawesome-brands-github: 
-[KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
+The default version of `c.q` connects to a TP and starts collecting data.
+Dpending on your situation, you may wish to be able to replay TP data on a restart of an RTE.
+An alternative version that replays data from a [TP log](../wp/data-recovery.md) on start-up is available from [`simongarland/tick/clog.q`](https://github.com/simongarland/tick/blob/master/clog.q).
 
 #### General Usage
 
@@ -161,16 +165,34 @@ Possible options for `CMD` on command-line are:
 ```bash
 q c.q all [host]:port[:usr:pwd] [-p 5040]
 ```
-
 Stores all data received via subscribed tables/syms in corresponding table(s).
+```q
+q)trade
+time                 sym    price    size
+-----------------------------------------
+0D17:43:53.750787000 MSFT.O 45.18422 227
+0D17:43:53.750787000 MSFT.O 45.18253 723
+0D17:43:54.750922000 IBM.N  190.9688 31
+```
 
 ##### Latest value 
 
 ```bash
 q c.q last [host]:port[:usr:pwd] [-p 5040]
 ```
-
-Stores last value per sym, for data received via subscribed tables/syms.
+Stores last value per sym, for data received via subscribed tables/syms. If variable `t` set to subscribe to all tables (i.e. value is empty sym) then the
+script will also set `r` to the last table update received. `r` can contain more than one row if the feedhandler or TP is configured to send messages in batches.
+```q
+q)trade
+sym   | time                 price    size
+------| ----------------------------------
+MSFT.O| 0D17:47:44.755199000 45.21574 566
+IBM.N | 0D17:47:43.751284000 191.0358 505
+q)r
+sym  | time                 mm bid      ask      bsize asize
+-----| -----------------------------------------------------
+IBM.N| 0D17:47:46.355176000 BB 191.0336 191.0548 452   888
+```
 
 ##### Five minute window
 
@@ -179,11 +201,15 @@ q c.q last5 [host]:port[:usr:pwd] [-p 5040]
 ```
 Populates tables with each row representing the last update within a five minute window for each sym. Latest row updates for each tick until five minute window passes and a new row is created.
 ```q
+q)trade
 sym    minute| time                 price    size
 -------------| ----------------------------------
-MSFT.O 10:50 | 0D10:54:59.561385000 45.1433  627
-MSFT.O 10:55 | 0D10:59:59.561575000 45.18819 764
-MSFT.O 11:00 | 0D11:03:05.560379000 45.18205 123
+MSFT.O 17:45 | 0D17:49:56.755206000 45.2008  289
+IBM.N  17:45 | 0D17:49:59.750186000 191.1024 79
+IBM.N  17:50 | 0D17:54:55.752129000 191.2633 817
+MSFT.O 17:50 | 0D17:54:58.754249000 45.22999 635
+IBM.N  17:55 | 0D17:55:06.753962000 191.266  154
+MSFT.O 17:55 | 0D17:55:11.751203000 45.23911 826
 ```
 
 ##### Trade with quote
@@ -193,6 +219,7 @@ q c.q tq [host]:port[:usr:pwd] [-p 5040]
 ```
 Records the current quote price as each trade occurs. It populates table `tq` with all trade updates, accompanied by the value contained within the last received quote update for the related sym. Example depends upon the tickerplant using a schema with only a quote and trade table.
 ```q
+q)tq
 time                 sym    price    size bid      ask      bsize asize
 -----------------------------------------------------------------------
 0D11:11:45.566803000 MSFT.O 45.14688 209  45.14713 45.15063 55    465
@@ -246,6 +273,7 @@ q c.q vwap2 [host]:port[:usr:pwd] [-p 5040]
 ```
 As per `vwap` example, but only including last ten trade messages for calculation.
 ```q
+q)vwap
 sym   | vwap
 ------| --------
 MSFT.O| 45.14031
@@ -258,6 +286,7 @@ q c.q vwap3 [host]:port[:usr:pwd] [-p 5040]
 ```
 As per `vwap` example, but only including any trade messages received in the last minute for calculation.
 ```q
+q)vwap
 sym   | vwap
 ------| --------
 MSFT.O| 45.14376
@@ -268,8 +297,9 @@ MSFT.O| 45.14376
 ```bash
 q c.q move [host]:port[:usr:pwd] [-p 5040]
 ```
-Populates table `move` with moving price calculation performed in real-time, generating the `price` and `price * volume` change over a 1 minute window. Using the last tick that occurred over one minute ago, subtract from latest value. For example, price change would be +12 if the value one minute ago was 8 and the last received price was 20. Recalculates for every update. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size. Example must be run for at least one minute.
+Populates table `move` with moving price calculation performed in real-time, generating the `price` and `price * volume` change over a 1 minute window. Using the last tick that occurred over one minute ago, subtract from latest value. For example, price change would be +12 if the value one minute ago was 8 and the last received price was 20. Recalculates for every update. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size. _Example must be run for at least one minute._
 ```q
+q)move
 sym   | size      size1
 ------| ---------------
 MSFT.O| -35842.39 -794 
@@ -282,6 +312,7 @@ q c.q hlcv [host]:port[:usr:pwd] [-p 5040]
 ```
 Populates table `hlcv` with high price, low price, last price, total volume. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size.
 ```q
+q)hlcv
 sym   | high     low      price    size
 ------| -------------------------------
 MSFT.O| 45.15094 45.14245 45.14724 5686
@@ -297,10 +328,17 @@ Populates a dictionary `lvl2` mapping syms to quote information. The quote infor
 q)lvl2`MSFT.O
 mm| time                 bid      ask      bsize asize
 --| --------------------------------------------------
-AA| 0D16:12:03.895824000 45.14677 45.15006 660   540
-DD| 0D16:12:01.895931000 45.14815 45.15354 652   108
-CC| 0D16:12:19.896721000 45.14967 45.15131 270   347
-BB| 0D16:12:13.900165000 45.14737 45.1529  245   392
+AA| 0D10:59:44.510353000 45.15978 45.16659 883   321
+CC| 0D10:59:43.010352000 45.15233 45.15853 956   293
+BB| 0D10:59:45.910348000 45.15745 45.16148 533   721
+DD| 0D10:59:46.209092000 45.15623 45.16231 404   279
+q)lvl2`IBM.N
+mm| time                 bid      ask      bsize asize
+--| --------------------------------------------------
+DD| 0D10:59:52.410404000 191.0868 191.093  768   89
+AA| 0D10:59:52.410404000 191.0798 191.0976 587   140
+BB| 0D10:59:54.610352000 191.1039 191.1101 187   774
+CC| 0D10:59:54.310351000 191.0951 191.1116 563   711
 ```
 Requires a quote schema containing a column named `mm` for the market maker, for example
 ```q
@@ -314,28 +352,11 @@ q c.q nest [host]:port[:usr:pwd] [-p 5040]
 ```
 Creates and populates a `trade` table. There will be one row for each symbol, were each element is a list. Each list has its corresponding value appended to on each update i.e. four trade updates will result in a four item list of prices. Example depends upon the tickerplant publishing a trade table.
 ```q
+q)trade
 sym   | time                                                                                price                             size           
 ------| -------------------------------------------------------------------------------------------------------------------------------------
 MSFT.O| 0D11:06:24.370938000 0D11:06:25.374533000 0D11:06:26.373827000 0D11:06:27.376053000 45.14767 45.14413 45.1419 45.1402 360 585 869 694
 ```
-
-
-### `clog.q` collection
-
-The default version of `c.q` linked to above connects to a TP and starts collecting data. 
-Sometimes that’s not enough and you want to replay the log through the task first. 
-(For example, to get the Open/High/Low for the day, not just since starting the task.) 
-For that, use `clog.q` instead. 
-
-:fontawesome-brands-github: 
-[simongarland/tick/clog.q](https://github.com/simongarland/tick/blob/master/clog.q)
-
-#### Usage
-
-```bash
-q clog.q {all|..} [host]:port[:usr:pwd] [-p 5041]
-```
-
 
 ### `daily.q`
 

@@ -537,7 +537,7 @@ Reading this from the right, we obtain the location of the tickerplant process w
 
 
 
-## Examples of custom RTEs
+## Examples
 
 Two quite different RTE instances are described below.
 

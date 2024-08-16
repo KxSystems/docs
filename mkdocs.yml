@@ -539,7 +539,7 @@ nav:
       - Load balancing: kb/load-balancing.md
       - Order Book: wp/order-book.md
       - Query Routing: wp/query-routing/index.md
-      - Real-time engines: wp/rt-tick/index.md
+      - RTEs (real-time engines): wp/rt-tick/index.md
       - Advanced:
         - Distributed systems: wp/query-interface.md
         - Intraday writedown: wp/intraday-writedown/index.md
