@@ -5,11 +5,21 @@ keywords: kdb+, log, logging, q, replication, recovery
 ---
 # Using log files: logging, recovery and replication
 
+## Overview
+
+Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data if not saved to disk at the time of the failure. A kdb+ server can use logging updates to avoid data loss when failures occur.
+
 !!! warning "This should not be confused with a file that logs human readable warnings, errors, etc. It refers to a log of instructions to regain state."
 
-## Creating a log file
+## Automatic handling
 
-Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
+### Overview
+
+The automatic log file creation requires little developer work, but without the advantages of the finer level of control that [manual log creation](#manual-handling) provides.
+
+Automatic logging captures a message only if it changes the state of the process’ data.
+
+### Creating a log file
 
 !!! detail "Applies only to globals in the default namespace"
 
@@ -17,7 +27,7 @@ Software or hardware problems can cause a kdb+ server process to fail, possibly 
 
     This is the same restriction that applies to [`.z.vs`](../ref/dotz.md#zvs-value-set).
 
-Logging is enabled by using the [`-l` or `-L` command-line arguments](../basics/cmdline.md#-l-log-updates).
+Logging is enabled by using the [`-l`](../basics/cmdline.md#-l-log-updates) or [`-L`](../basics/cmdline.md#-l-log-sync) command-line arguments.
 
 This example requires a file `trade.q` containing instructions to create a trade table:
 ```q
@@ -41,10 +51,6 @@ q)h "insert[`trade](10:30:01.000; `intel; 88.5; 1625)"
 In the server instance, run `count trade` to check the trade table is now populated with one row.
 Assume that the kdb+ server process dies. If we now restart it with logging on, the updates logged to disk are not lost:
 
-```bash
-q q trade -l -p 5001
-```
-
 ```q
 q)count trade
 1
@@ -60,7 +66,7 @@ q)count trade
     ```
 
 
-## Check-pointing / rolling
+### Check-pointing / rolling
 
 A logging server uses a `.log` file and a `.qdb` data file. The command [`\l`](../basics/syscmds.md#l-load-file-or-directory) checkpoints the `.qdb` file and empties the log file.
 
@@ -71,25 +77,21 @@ However, the checkpoint is path-dependent. Consider the following:
 q)
 ```
 
-A listing of the directory gives:
+A listing of the current directory gives:
 
 ```bash
-/tmp/qtest$ ls
-qtest.log
+q)\ls
+"qtest.log"
 ```
 
-Back in q:
+The system command `\l` can be used to roll the log file. 
+The current log file is renamed with the `qdb` extension and a new log file is created.
 
 ```q
 q)\l
-```
-
-yields
-
-```bash
-/tmp/qtest$ $ls
-qtest.log
-qtest.qdb
+q)\ls
+"qtest.log"
+"qtest.qdb"
 ```
 
 However, if there is a change of directory within the q session then the `*.qdb` checkpoint file is placed in the latter directory. For instance:
@@ -136,7 +138,7 @@ results in
 ```
 
 
-## File read order
+### File read order
 
 When you type
 
@@ -147,19 +149,19 @@ q logTest -l
 this reads the data file (`.qdb`), log file, and the q script file `logTest.q`, if present. If any of the three files exists (`.q`, `.qdb`, and `.log`), they should all be in the same directory.
 
 
-## Logging options
+### Logging options
 
-The `-l` option is recommended if you trust (or duplicate) the machine where the server is running. The `-L` option involves an actual disk write (assuming hardware write-cache is disabled).
+The [`-l`](../basics/cmdline.md#-l-log-updates) option is recommended if you trust (or duplicate) the machine where the server is running. The [`-L`](../basics/cmdline.md#-l-log-sync) option involves an actual disk write (assuming hardware write-cache is disabled).
 
 Another option is to use no logging. This is used with test, read-only, read-mostly, trusted, duplicated or cache databases.
 
 
-## Errors and rollbacks
+### Errors and rollbacks
 
-If either message handler (`.z.pg` or `.z.ps`) throws any error, and the state was changed during that message processing, this will cause a rollback.
+If either message handler ([`.z.pg`](../ref/dotz.md#zpg-get), or [`.z.ps`](../ref/dotz.md#zps-set)), throws any error and the state was changed during that message processing, this initiates a rollback.
 
 
-## Replication
+### Replication
 
 Given a logging q process listening on port 5000, e.g. started with
 
@@ -167,7 +169,7 @@ Given a logging q process listening on port 5000, e.g. started with
 q test -l -p 5000
 ```
 
-a single kdb+ process can replicate that logging process via
+an additional kdb+ process can replicate that logging process via the [`-r`](../basics/cmdline.md#-r-replicate) command line parameter
 
 ```bash
 q -r :localhost:5000:username:password
@@ -183,14 +185,83 @@ the replicating process will receive this information when it connects.
 
 On start-up, the replicating process connects to the logging process, gets the log filename and record count, opens the log file, plays back that count of records from the log file, and continues to receive updates via [TCP/IP](../basics/ipc.md). Each record is executed via `value`.
 
-If the replicating process loses its connection to the logging process, you can detect that with `.z.pc`. To resubscribe to the logging process, restart the replicating process.
+If the replicating process loses its connection to the logging process, you can detect that with [`.z.pc`](../ref/dotz.md#zpc-close). To resubscribe to the logging process, restart the replicating process.
 
 Currently, only a single replicating process can subscribe to the primary process. If another kdb+ process attempts to replicate from the primary, the previous replicating process will no longer receive updates. If you need multiple replicating processes, you might like to consider [kdb+tick](../learn/startingkdb/tick.md).
 
 
+## Manual handling
+
+### Overview
+
+Function calls and the contents of the their parameters can be recorded to a log file, which can then be replayed by a process. This is often used for data recovery.
+
+This technique allows more control over actions like log file naming conventions, what to log, log file locations and the ability to add logic around the log file lifecycle.
+
+### Create a log file
+
+To create a log file, do the following.
+
+1. Initialize a log file by using [`set`](../ref/get.md#set).
+```q
+q)logfile:hsym `$"qlog";
+q)logfile set ();
+q)logfilehandle:hopen logfile;
+``` 
+_Note that `logfile set ();` is equivalent to `.[logfile;();:;()];`._
+An alternative method is to check for pre-existing log files by using [`key`](../ref/key.md#whether-a-file-exists).
+If a new log file does not exist, the script can now be written to initialize it, otherwise it is opened for appending.
+```q
+q)logfile:hsym `$"qlog";
+q)if[not type key logfile;logfile set()]
+q)logfilehandle:hopen logfile;
+```
+1. Close the log file when you are finished logging any messages.
+```q
+q)hclose logfilehandle
+```
+
+### Log writing
+
+To record events and messages to a log, you must append a list consisting of a function name, followed by any parameters used. 
+
+A tickerplant uses this concept to record all messages sent to its clients so they can use the log to recover. It records calling a function `upd` passing the parameters of a table name and the table content to append.
+
+For example, calling a function called `upd` with two parameters, x and y, can be recorded to a file as follows:
+```q
+q)logfilehandle enlist (`upd;x;y)
+```
+When a kdb+ process plays back this log, a function called `upd` is called with the value of the two parameters. Multiple function calls can be logged also:
+
+```q
+q)logfilehandle ((`func1;param1);(`func2;param1;param2))
+```
+
+As [log replay](#replaying-log-files) calls [`value`](../ref/value.md) to execute, you can also log q code as a string, for example
+
+```q
+logfilehandle enlist "upd[22;33]"
+```
+
+Function calls that are used to updating data are typically written, without logging the function definition. 
+This has the disadvantage of requiring that the recovery process defines the functions (for example, by loading a q script) prior to replaying the log. 
+The advantages can outweigh the disadvantages, however, by allowing for bugs fixes within the function, or temporarily assigning the function to a different definition prior to playback, to provide bespoke logic for data sourced from a log file.
+
+### Log rolling
+
+A kdb+ process can run 24/7, but a log file may only be relevant for a specific timeframe or event. 
+For example, the default tickerplant creates a new log for each day. 
+You should ensure the current log is closed and a new log created on each event. 
+A decision must be taken on whether to retain the old files or delete them, taking into account disk usage and what other processes may require them.
+
+A naming convention should be used to aid distinction between current log files and any old log files required for retention.
+The [`z`](../ref/dotz.md) namespace provides various functions for system information such as current date, time, etc. 
+The below example demonstrates naming a log file after the current date:
+```q
+q)logfile:hsym `$"qlog_",string .z.D;
+```
 
 ## Replaying log files
-
 
 Streaming-execute over a file is used (for example in kdb+tick) to replay a log file in a memory-efficient manner.
 
@@ -291,6 +362,35 @@ q)-11!(-2;logfile)
 q)/ 26 valid chunks until position 35634 (out of 39623)
 q)-11!(26;logfile)
 26
+```
+
+### Replacing a corrupt log
+
+It can be  more efficient to [replay from a corrupt file](##replay-from-corrupt-logs) (due to disk usage), than to directly take the good chunks from a bad log to create a new log.
+
+The knowledge of how to create a log file, and how to replay part of a log file can be combined to convert a file that was previously giving the `badtail` error.
+Note that this does not fix the corrupted section, only removes the corrupted section from the file.
+
+The following example shows converting a `bad.log` into a `good.log` by temporarly overriding [`.z.ps`](../ref/dotz.md#zps-set) which is called for each valid chunk (as defined by [`-11!`](../basics/internal.md#-11-streaming-execute)). 
+It resets `.z.ts` to the system default after processing using [`\x`](../basics/syscmds/#x-expunge).
+
+```q
+goodfile:hsym `:good.log;
+goodfile set ();
+goodfilehandle:hopen goodfile;
+
+chunks:first -11!(-2;`:bad.log);
+
+.z.ps:{goodfilehandle enlist x};
+-11!(chunks;`:bad.log);
+system"x .z.ps";
+
+hclose goodfilehandle;
+```
+
+Alternatively, generic system tools can be used like the unix `head` command. For example, given that ``-11!(-2;`:bad.log)`` returns 2879 bytes.
+```bash
+head -c 2879 bad.log > good.log
 ```
 
 :fontawesome-brands-github: [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) contains some helper functions for recovering data from logs.

@@ -112,7 +112,7 @@ from a seperate terminal window, start an RDB:
 q tick/r.q -p 5011
 ```
 
-From this directory run each of the following realtime engines in seperate terminal windows:
+From the demo scripts directory run each of the following realtime engines in seperate terminal windows:
 
 ```q
 q cx.q hlcv -p 5014 -t 1000

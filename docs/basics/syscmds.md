@@ -41,8 +41,7 @@ Commands with optional parameters that set values, will show the current values 
 
 Some system commands have equivalent command-line parameters.
 
-!!! tip "The [`system`](../ref/system.md) keyword executes a string representation of a system command and returns its result."
-
+!!! tip "An alternative method to executing system commands is to use the [`system`](../ref/system.md) keyword. This executes a string representation of a system command and returns its result."
 
 ## `\a` (tables)
 

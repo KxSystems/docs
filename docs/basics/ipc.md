@@ -113,7 +113,23 @@ q)h"2+2" / this is sent to the remote process for calculation
 ```
 
 The method shown above is sending the query as a string.
-You can also execute a function on the server by passing a [parse tree](parsetrees.md) to the handle: a list with the function as first item, followed by its arguments.
+You can also execute a function on the server by passing a list with the function as first item, followed by its arguments.
+
+```q
+q)h:hopen 5000
+q)h("+";2;2)
+4
+```
+
+!!! tip "Default handling of a sync message"
+    [`.z.pg`](../ref/dotz.md#zpg-get) is called on the server when any message is received. 
+    The default processing calls [`value`](../ref/value.md) with the provided message. Using `value`, the processing for the two messages above would be:
+    ```q
+    q)value "2+2"
+    4
+    q)value ("+";2;2)
+    4
+    ```
 
 To execute a function defined on the *client side*, pass the function name so it is resolved before sending. 
 
@@ -185,7 +201,12 @@ Serializes and puts a message on the output queue for handle `h`, and does not b
 q)neg[h]"a:10" / on the remote instance, sets the variable a to 10
 ```
 
-As per [sync messages](#sync-request-get), you can replace the string repesenting the code to execute as a list that forms a parse tree.
+Similar to [sync messages](#sync-request-get), you can replace the string representing the code to execute as a list. 
+The following example uses [`0N!`](../ref/display.md) to echo data provided to the servers console
+
+```q
+q)neg[h]("0N!";22)
+```
 
 Since the process is not waiting for a response, async querying is critical in situations where waiting for an unresponsive subscriber is unacceptable, for example, in a tickerplant.
 

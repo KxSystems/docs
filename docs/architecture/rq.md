@@ -11,7 +11,7 @@ keywords: kdb+, q, rdb, streaming
 
 A kdb+ process acting as an RDB stores a current day’s data in-memory for client queries.
 It can write its contents to disk at end-of-day, clearing out it in-memory data to prepare for the next day.
-After writing data to disk, it instructs a HDB to load the written data.
+After writing data to disk, it communicates with a HDB to load the written data.
 
 ### Customization
 
@@ -31,14 +31,14 @@ If known/common queries can be designed, the RDB can load additional scripts to 
 ### End-of-day
 
 The end-of-day event is governed by the tickerplant process. The tickerplant calls the RDB [`.u.end`](#uend) function when this event occurs.
-The main end-of-day event for an RDB is to save todays data from memory to disk, clear its tables and cause the HDB to be aware of a new days dataset for it to access.
+The main end-of-day event for an RDB is to save todays data from memory to disk, clear its tables and uses IPC to instruct the HDB to be aware of a new days dataset for it to access.
 
 !!! Note "[.u.rep](#urep) sets the HDB directory be the same as the tickerplant log file directory. This can be edited to use a different directory if required"
 
 ### Recovery
 
-Using IPC, the RDB process can retrieve the current tickerplant log location and use via the [variables](tickq.md#variables) the tickerplant maintains.
-The function [`.u.rep`](#urep) is then used to populate any tables from the log.
+Using IPC ([sync request](../basics/ipc.md#sync-request-get)), the RDB process can retrieve the current tickerplant log location and use via the [variables](tickq.md#variables) the tickerplant maintains.
+The function [`.u.rep`](#urep) is then used to [replay the log](../kb/logging.md#replaying-log-files), repopulating the RDB.
 
 !!! Note "The RDB should be able to access the tickerplant log from a directory on the same machine. The RDB/tickerplant can be changed to reside on different hosts but this increases the resources needed to transmit the log file contents over the network."
 

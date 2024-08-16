@@ -120,32 +120,13 @@ It’s easier to replay the log and (re)write the data. If the flag is provided 
 :fontawesome-regular-map:
 [Intraday writedown solutions](../wp/intraday-writedown/index.md)
 
-## RTE
-
-### `c.q`
-
-An often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. 
-
-A simple example would be keeping a running Open/High/Low/Latest: much simpler to update incrementally with data from the TP each time something changes than to build from scratch. 
-
-A more interesting example is keeping a table of the latest trade and the associated quote for every stock – trivial to do in real time with the incremental updates from the TP, but impossible to build from scratch in a timely fashion with the raw data. 
-
-:fontawesome-brands-github: 
-[KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
-
-
-### `clog.q`
-
-The default version of `c.q` linked to above connects to a TP and starts collecting data. Sometimes that’s not enough and you want to replay the log through the task first. (For example, to get the Open/High/Low for the day, not just since starting the task.) For that, use `clog.q` instead. 
-
-:fontawesome-brands-github: 
-[simongarland/tick/clog.q](https://github.com/simongarland/tick/blob/master/clog.q)
-
-
+<!--
 ### `daily.q`
 
 By default, the end-of-day processing simply saves the intra-day RDB to disk after a little re-organization. 
 
-An example of additional processing (updating a permanent HLOC table and building an NBBO table from scratch) can be found in
+Additional processing, such as a permanent HLOC (high/low/open/close) table and building a NBBO (national best bid and offer) table, can be found in
+
 :fontawesome-brands-github: 
-[KxSystems/kdb/taq/daily.q](https://github.com/simongarland/tick/blob/master/clog.q). 
+[KxSystems/kdb/taq/daily.q](https://github.com/KxSystems/kdb/blob/master/taq/daily.q). 
+-->

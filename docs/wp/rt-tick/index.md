@@ -10,21 +10,7 @@ keywords: kdb+, q, real-time, subscribe, tick
 by [Nathan Perrem](#author)
 {: .wp-author}
 
-The purpose of this white paper is to help q developers who wish to build their own custom real-time engine. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? This white paper attempts to help with this task. It breaks down into the following broad sections:
-
-1.  Explain the existing code and principles behind `r.q`.
-2.  Use `r.q` as a template to build some sample real-time analytic
-    engines.
-
-It is hoped this white paper will help dispel any notion of tick being a black box product which cannot be adapted to the requirements of the real-time data consumer.
-
-All tests were run using kdb+ V3.1 (2013.09.19) on Windows.
-The tickerplant and real-time database scripts can be obtained from :fontawesome-brands-github:[KxSystems/kdb+tick](https://github.com/KxSystems/kdb-tick)
-
-The tickerplant and real-time database scripts used are dated 2014.03.12 and 2008.09.09 respectively. These are the most up-to-date versions as of the writing of this white paper.
-
-This paper is focused on the real-time database and custom real-time engines (RTEs). However, some background will be provided on the other key processes in this environment.
-
+The purpose of this white paper is to help q developers who wish to build their own custom real-time engine. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? 
 
 ## The kdb+tick environment
 
@@ -48,15 +34,11 @@ Although the inner workings of the tickerplant process are beyond the scope of t
 : refers to the schema file (in this case called `sym.q`), assumed to reside in the subdirectory called `tick` (relative to `tick.q`). This schema file simply defines the tables that exist in the TP – here we define two tables, `trade` and `quote`, as follows.
 
 ```q
-quote:([]time:`timespan$();sym:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
+quote:([]time:`timespan$();sym:`symbol$();mm:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
 trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
 ```
 
 : The schemas for these tables are subject to the constraint that the first two columns be called `time` and `sym` and be of datatype timespan (nanoseconds) and symbol respectively. 
-
-!!! note "Earlier version"
-
-    Prior to the 2012.11.09 release of `tick.q`, the `time` column needed to be of datatype time (milliseconds) as opposed to timespan.
 
 `C:/OnDiskDB` 
 
@@ -82,7 +64,7 @@ getask:{[s] prices[s]+getmovement[s]} /generate ask price
 .z.ts:{
   s:n?syms;
   $[0<flag mod 10;
-    h(".u.upd";`quote;(n#.z.N;s;getbid'[s];getask'[s];n?1000;n?1000)); 
+    h(".u.upd";`quote;(n#.z.N;s;n?`AA`BB`CC`DD;getbid'[s];getask'[s];n?1000;n?1000));
     h(".u.upd";`trade;(n#.z.N;s;getprice'[s];n?1000))];
   flag+:1; }
 /trigger timer every 100ms
@@ -276,7 +258,7 @@ item | semantics
 
 The format of the message in the tickerplant logfile is the same as the format of real-time updates sent to the RTE with one _critical_ difference – the data here is a list, _not_ a table. The RTE which wants to replay this logfile will need to define their `upd` to accommodate this list. This will mean in general that an RTE will have two different definitions of `upd` – one for tickerplant logfile replay and another for intraday updates via IPC (interprocess communication).
 
-For example, a q process with suitable definitions for the tables `trade` and `quote`, as well as the function `upd`, could replay `sym2014.08.23`. Again, a suitable definition for `upd` will depend on the desired behavior, but the function will need to deal with incoming lists as well as tables.
+For example, a q process with suitable definitions for the tables `trade` and `quote`, as well as the function `upd`, could replay `sym2014.08.23` using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute). Again, a suitable definition for `upd` will depend on the desired behavior, but the function will need to deal with incoming lists as well as tables.
 
 In the RDB (vanilla RTE), `upd` for both replay purposes and intraday update purposes is simply defined as:
 
@@ -285,24 +267,6 @@ upd:insert
 ```
 
 In other words, when the RDB replays a given message, it simply inserts the record/s into the corresponding table. This is the same definition of `upd` used for intraday updates via IPC. These updates succeed because the second argument to `insert` can be either a columnar list or a table.
-
-A q process replays a tickerplant logfile using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute). Although this operator can be used in different ways, the simplest syntax is:
-
-```q
--11! `:TPDailyLogfile
-```
-
-Where `TPDailyLogfile` is the particular logfile to replay.
-
-The result is the number of messages successfully replayed.
-
-For example, based on the above definition of `upd`, we could replay a logfile as follows:
-
-```q
--11! `:C:/OnDiskDB/sym2014.08.23
-```
-
-This would replay all messages in the logfile, resulting in inserts into the `trade` and `quote` tables.
 
 Define `upd` for tickerplant log replay in whatever way is deemed appropriate. Here are some different definitions:
 
@@ -457,7 +421,7 @@ This section defines an important function called `.u.rep`. This function is inv
 ```q
 q)show x /x is the first input to .u.rep
 `quote 
-+`time`sym`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`float$();`f loat$();`int$();`int$())
++`time`sym`mm`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`symbol$();`float$();`f loat$();`int$();`int$())
 `trade 
 +`time`sym`price`size!(`timespan$();`g#`symbol$();`float$();`int$())
 ```
@@ -466,8 +430,8 @@ Drilling down further:
 
 ```q
 q)show each x 0 /table name/empty table combination for quote `quote
-time sym bid ask bsize asize
-----------------------------
+time sym mm bid ask bsize asize
+-------------------------------
 q)
 q)show each x 1 /table name/empty table combination for trade `trade
 time sym price size
@@ -497,7 +461,7 @@ This line just loops over the table name/empty table pairs and initializes these
 
 ```q
 q)x 0
-`quote +`time`sym`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`float$();`f loat$();`int$();`int$())
+`quote +`time`sym`mm`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`symbol$();`float$();`f loat$();`int$();`int$())
 ```
 
 Given that the function `set` is essentially a projection onto [the dot
@@ -561,10 +525,241 @@ Reading this from the right, we obtain the location of the tickerplant process w
 : The output of this is the list passed as second argument to `.u.rep` as previously discussed.
 
 
+### `c.q` collection
 
-## Examples of custom RTEs
+:fontawesome-brands-github:
+[KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
 
-Two quite different RTE instances are described below.
+An often-overlooked problem is users fetching vast amounts of raw data to calculate something that could much better be built once, incrementally updated, and then made available to all interested clients. `c.q` provides a collection of RTE examples, such as
+
+*  keeping a running Open/High/Low/Latest: much simpler to update incrementally with data from the TP each time something changes than to build from scratch. 
+*  keeping a table of the latest trade and the associated quote for every stock – trivial to do in real time with the incremental updates from the TP, but impossible to build from scratch in a timely fashion with the raw data. 
+
+The default version of `c.q` connects to a TP and starts collecting data.
+Depending on your situation, you may wish to be able to replay TP data on a restart of an RTE.
+An alternative version that replays data from a [TP log](../data-recovery.md) on start-up is available from [`simongarland/tick/clog.q`](https://github.com/simongarland/tick/blob/master/clog.q).
+
+#### General Usage
+
+```bash
+q c.q CMD [host]:port[:usr:pwd] [-p 5040]
+```
+
+| Parameter Name | Description | Default |
+| ---- | ---- | --- |
+| CMD | See [options](#options) for list of possible options | &lt;none&gt; |
+| host | host running kdb+ instance that the instance will subscribe to e.g. tickerplant host | localhost | 
+| port | port of kdb+ instance that the instance will subscribe to  e.g. tickerplant port | 5010 |
+| usr   | username | &lt;none&gt; |
+| pwd   | password | &lt;none&gt; |
+| -p    | [listening port](../../basics/cmdline.md#-p-listening-port) for client communications | &lt;none&gt; |
+
+The `t` variable within the source file can be edited to a table name to filter, or an empty sym list for no filter.
+
+The `s` variable within the source file can be edited to a list of syms to filter on, or an empty sym list for no filter.
+
+#### Features
+
+Possible options for `CMD` on command-line are:
+
+##### All data (with filter)
+
+```bash
+q c.q all [host]:port[:usr:pwd] [-p 5040]
+```
+Stores all data received via subscribed tables/syms in corresponding table(s).
+```q
+q)trade
+time                 sym    price    size
+-----------------------------------------
+0D17:43:53.750787000 MSFT.O 45.18422 227
+0D17:43:53.750787000 MSFT.O 45.18253 723
+0D17:43:54.750922000 IBM.N  190.9688 31
+```
+
+##### Latest value
+
+```bash
+q c.q last [host]:port[:usr:pwd] [-p 5040]
+```
+Stores last value per sym, for data received via subscribed tables/syms. If variable `t` set to subscribe to all tables (i.e. value is empty sym) then the
+script will also set `r` to the last table update received. `r` can contain more than one row if the feedhandler or TP is configured to send messages in batches.
+```q
+q)trade
+sym   | time                 price    size
+------| ----------------------------------
+MSFT.O| 0D17:47:44.755199000 45.21574 566
+IBM.N | 0D17:47:43.751284000 191.0358 505
+q)r
+sym  | time                 mm bid      ask      bsize asize
+-----| -----------------------------------------------------
+IBM.N| 0D17:47:46.355176000 BB 191.0336 191.0548 452   888
+```
+
+##### Five minute window
+
+```bash
+q c.q last5 [host]:port[:usr:pwd] [-p 5040]
+```
+Populates tables with each row representing the last update within a five minute window for each sym. Latest row updates for each tick until five minute window passes and a new row is created.
+```q
+q)trade
+sym    minute| time                 price    size
+-------------| ----------------------------------
+MSFT.O 17:45 | 0D17:49:56.755206000 45.2008  289
+IBM.N  17:45 | 0D17:49:59.750186000 191.1024 79
+IBM.N  17:50 | 0D17:54:55.752129000 191.2633 817
+MSFT.O 17:50 | 0D17:54:58.754249000 45.22999 635
+IBM.N  17:55 | 0D17:55:06.753962000 191.266  154
+MSFT.O 17:55 | 0D17:55:11.751203000 45.23911 826
+```
+
+##### Trade with quote
+
+```bash
+q c.q tq [host]:port[:usr:pwd] [-p 5040]
+```
+Records the current quote price as each trade occurs. It populates table `tq` with all trade updates, accompanied by the value contained within the last received quote update for the related sym. Example depends upon the tickerplant using a schema with only a quote and trade table.
+```q
+q)tq
+time                 sym    price    size bid      ask      bsize asize
+-----------------------------------------------------------------------
+0D11:11:45.566803000 MSFT.O 45.14688 209  45.14713 45.15063 55    465
+0D11:11:49.868267000 MSFT.O 45.15094 288  45.14479 45.15053 27    686
+```
+
+##### VWAP calculation
+
+```bash
+q c.q vwap [host]:port[:usr:pwd] [-p 5040]
+```
+Populates table `vwap` with information that can be used to generate a volume weighted adjusted price. The input volume and price can fluctuate during the day. This example uses [`wsum`](../../ref/sum.md#wsum) to calculate the weighted sum over the mutliple ticks that may be in a single update. Result shows size representing the total volume traded, and price being the total cost of all stocks traded. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size.
+```q
+q)vwap
+sym   | price    size
+------| -------------
+MSFT.O| 148714.2 6348
+IBM.N | 138147.1 3060
+q)select sym,vwap:price%size from vwap
+sym    vwap
+---------------
+MSFT.O 23.42693
+IBM.N  45.14611
+```
+
+##### VWAP calculation (time window)
+
+```bash
+q c.q vwap1 [host]:port[:usr:pwd] [-p 5040]
+```
+Populates table `vwap` with information that can be used to generate a volume weighted adjusted price. Calculation as per `vwap` example above. A new row is inserted per sym, when each minute passes. This presents the vwap on per minute basis.
+```q
+q)vwap
+sym    minute| price    size
+-------------| --------------
+MSFT.O 11:07 | 570708.2 12643
+MSFT.O 11:08 | 1328935  29425
+MSFT.O 11:09 | 56653.97 1254
+q)select sym,minute,vwap:price%size from vwap
+sym    minute vwap
+----------------------
+MSFT.O 11:07  45.14025
+MSFT.O 11:08  45.16346
+MSFT.O 11:09  45.18718
+```
+
+##### VWAP calculation (tick limit)
+
+```bash
+q c.q vwap2 [host]:port[:usr:pwd] [-p 5040]
+```
+As per `vwap` example, but only including last ten trade messages for calculation.
+```q
+q)vwap
+sym   | vwap
+------| --------
+MSFT.O| 45.14031
+```
+
+##### VWAP calculation (time limit)
+
+```bash
+q c.q vwap3 [host]:port[:usr:pwd] [-p 5040]
+```
+As per `vwap` example, but only including any trade messages received in the last minute for calculation.
+```q
+q)vwap
+sym   | vwap
+------| --------
+MSFT.O| 45.14376
+```
+
+##### Moving calculation (time window)
+
+```bash
+q c.q move [host]:port[:usr:pwd] [-p 5040]
+```
+Populates table `move` with moving price calculation performed in real-time, generating the `price` and `price * volume` change over a 1 minute window. Using the last tick that occurred over one minute ago, subtract from latest value. For example, price change would be +12 if the value one minute ago was 8 and the last received price was 20. Recalculates for every update. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size. _Example must be run for at least one minute._
+```q
+q)move
+sym   | size      size1
+------| ---------------
+MSFT.O| -35842.39 -794
+```
+
+##### Daily running stats
+
+```bash
+q c.q hlcv [host]:port[:usr:pwd] [-p 5040]
+```
+Populates table `hlcv` with high price, low price, last price, total volume. Example depends upon tickerplant using a schema with a trade table that include the columns sym, price and size.
+```q
+q)hlcv
+sym   | high     low      price    size
+------| -------------------------------
+MSFT.O| 45.15094 45.14245 45.14724 5686
+```
+
+##### Categorizing into keyed table
+
+```bash
+q c.q lvl2 [host]:port[:usr:pwd] [-p 5040]
+```
+Populates a dictionary `lvl2` mapping syms to quote information. The quote information is a keyed table showing the latest quote for each market maker.
+```q
+q)lvl2`MSFT.O
+mm| time                 bid      ask      bsize asize
+--| --------------------------------------------------
+AA| 0D10:59:44.510353000 45.15978 45.16659 883   321
+CC| 0D10:59:43.010352000 45.15233 45.15853 956   293
+BB| 0D10:59:45.910348000 45.15745 45.16148 533   721
+DD| 0D10:59:46.209092000 45.15623 45.16231 404   279
+q)lvl2`IBM.N
+mm| time                 bid      ask      bsize asize
+--| --------------------------------------------------
+DD| 0D10:59:52.410404000 191.0868 191.093  768   89
+AA| 0D10:59:52.410404000 191.0798 191.0976 587   140
+BB| 0D10:59:54.610352000 191.1039 191.1101 187   774
+CC| 0D10:59:54.310351000 191.0951 191.1116 563   711
+```
+Requires a quote schema containing a column named `mm` for the market maker, for example
+```q
+quote:([]time:`timespan$();sym:`symbol$();mm:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
+```
+
+##### Store to nested structures
+
+```bash
+q c.q nest [host]:port[:usr:pwd] [-p 5040]
+```
+Creates and populates a `trade` table. There will be one row for each symbol, were each element is a list. Each list has its corresponding value appended to on each update i.e. four trade updates will result in a four item list of prices. Example depends upon the tickerplant publishing a trade table.
+```q
+q)trade
+sym   | time                                                                                price                             size
+------| -------------------------------------------------------------------------------------------------------------------------------------
+MSFT.O| 0D11:06:24.370938000 0D11:06:25.374533000 0D11:06:26.373827000 0D11:06:27.376053000 45.14767 45.14413 45.1419 45.1402 360 585 869 694
+```
+
 
 ### Real-time VWAP subscriber
 
@@ -792,7 +987,7 @@ if[not "w"=first string .z.o;system "sleep 1"]
 /initialize schemas for custom RTE
 InitializeSchemas:`trade`quote!
   (
-   {[x]`TradeWithQuote insert update bid:0n,bsize:0N,ask:0n,asize:0N from x};
+   {[x]`TradeWithQuote insert update mm:`,bid:0n,bsize:0N,ask:0n,asize:0N from x};
    {[x]`LatestQuote upsert select by sym from x}
   );
 
@@ -1082,19 +1277,4 @@ We can conclude that there was a significant difference in performance in proces
 
 It should be noted that prior to this experiment being carried out on each process, all tables were emptied.
 
-
-## Conclusions
-
-This white paper explained the inner workings of the standard RDB as well as an overview of the rest of the kdb+tick environment. The white paper then detailed examples of customizing the RDB to achieve useful real-time analytical behavior.
-
-It’s important when building a custom RTE to consider the performance implications of adding complexity to the update logic. The more complex the definition of `upd`, the longer it will take to process intraday updates or replay the TP logfile. In the case of intraday updates, it is important to know the frequency of TP updates in order to know how much complexity you can afford to build into your `upd` function.
-
-It is the aim of the author that the reader will now have the understanding of how a kdb+tick subscriber can be built and customized fairly easily according to the requirements of the system.
-
-All tests were run using kdb+ version V3.1 (2013.09.19) on Windows.
-
-
-## Author
-
-**Nathan Perrem** has worked onsite as a kdb+ developer at a range of investment banks and brokerage firms in New York and London. He has designed and delivered all client kdb+ training courses since 2009.
 
