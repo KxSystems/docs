@@ -256,7 +256,7 @@ to provide despoke logic for data sourced from a log file.
 
 A kdb+ process can run 24/7, but a log file may only be relevant for a specific timeframe or event. 
 For example, the default tickerplant creates a new log for each day. 
-The developer should close the current log and create a new one on each event. 
+You should ensure the current log is closed and a new log created on each event. 
 A decision must be taken on whether to retain the old files or delete them, taking into account disk usage and what other processes may require them.
 
 A naming convention should be used to aid distinction between current log files and any old log files required for retention.
