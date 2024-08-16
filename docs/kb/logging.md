@@ -7,7 +7,7 @@ keywords: kdb+, log, logging, q, replication, recovery
 
 ## Overview
 
-Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur.
+Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data if not saved to disk at the time of the failure. A kdb+ server can use logging updates to avoid data loss when failures occur.
 
 !!! warning "This should not be confused with a file that logs human readable warnings, errors, etc. It refers to a log of instructions to regain state."
 
