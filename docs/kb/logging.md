@@ -158,7 +158,7 @@ Another option is to use no logging. This is used with test, read-only, read-mos
 
 ### Errors and rollbacks
 
-If either message handler ([`.z.pg`](../ref/dotz.md#zpg-get) or [`.z.ps`](../ref/dotz.md#zps-set)) throws any error, and the state was changed during that message processing, this will cause a rollback.
+If either message handler ([`.z.pg`](../ref/dotz.md#zpg-get), or [`.z.ps`](../ref/dotz.md#zps-set)), throws any error and the state was changed during that message processing, this initiates a rollback.
 
 
 ### Replication
