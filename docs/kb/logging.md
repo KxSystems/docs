@@ -207,9 +207,9 @@ To create a log file, do the following.
 q)logfile:hsym `$"qlog";
 q)logfile set ();
 q)logfilehandle:hopen logfile;
-```
-!!!note "`logfile set ();` is equivalent to `.[logfile;();:;()];`"
-An alternative method is to check for pre-existing log files by using [`key`](../ref/key.md#whether-a-file-exists). 
+``` 
+_Note that `logfile set ();` is equivalent to `.[logfile;();:;()];`._
+An alternative method is to check for pre-existing log files by using [`key`](../ref/key.md#whether-a-file-exists).
 If a new log file does not exist, the script can now be written to initialize it, otherwise it is opened for appending.
 ```q
 q)logfile:hsym `$"qlog";
