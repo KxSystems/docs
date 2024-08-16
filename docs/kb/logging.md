@@ -196,7 +196,7 @@ Currently, only a single replicating process can subscribe to the primary proces
 
 Function calls and the contents of the their parameters can be recorded to a log file, which can then be replayed by a process. This is often used for data recovery.
 
-This technique is often used to allow a developer more control over log file naming conventions, what to log, log file locations and the ability to add logic around the log file lifecycle.
+This technique allows more control over actions like log file naming conventions, what to log, log file locations and the ability to add logic around the log file lifecycle.
 
 ### Creating a log file
 
