@@ -200,7 +200,7 @@ This technique allows more control over actions like log file naming conventions
 
 ### Create a log file
 
-A log file can be initialized using [`set`](../ref/get.md#set).
+1. Initialize a log file by using [`set`](../ref/get.md#set).
 
 ```q
 q)logfile:hsym `$"qlog";
