@@ -235,7 +235,7 @@ For example, calling a function called `upd` with two parameters, x and y, can b
 ```q
 q)logfilehandle enlist (`upd;x;y)
 ```
-When a kdb+ process plays back this log, a function called `upd` will be called with the value of the two parameters. Multiple function calls can be logged also:
+When a kdb+ process plays back this log, a function called `upd` is called with the value of the two parameters. Multiple function calls can be logged also:
 
 ```q
 q)logfilehandle ((`func1;param1);(`func2;param1;param2))
