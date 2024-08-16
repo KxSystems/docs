@@ -261,7 +261,7 @@ A decision must be taken on whether to retain the old files or delete them, taki
 
 A naming convention should be used to aid distinction between current log files and any old log files required for retention.
 The [`z`](../ref/dotz.md) namespace provides various functions for system information such as current date, time, etc. 
-The following is an example of namimg a log file after the current date:
+The below example demonstrates naming a log file after the current date:
 ```q
 q)logfile:hsym `$"qlog_",string .z.D;
 ```
