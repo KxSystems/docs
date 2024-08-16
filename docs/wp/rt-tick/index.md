@@ -10,14 +10,7 @@ keywords: kdb+, q, real-time, subscribe, tick
 by [Nathan Perrem](#author)
 {: .wp-author}
 
-The purpose of this white paper is to help q developers who wish to build their own custom real-time engine. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? This white paper attempts to help with this task. It breaks down into the following broad sections:
-
-1.  Explain the existing code and principles behind `r.q`.
-2.  Use `r.q` as a template to build some sample real-time analytic
-    engines.
-
-This paper is focused on the real-time database and custom real-time engines (RTEs). However, some background will be provided on the other key processes in this environment.
-
+The purpose of this white paper is to help q developers who wish to build their own custom real-time engine. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? 
 
 ## The kdb+tick environment
 
@@ -46,10 +39,6 @@ trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
 ```
 
 : The schemas for these tables are subject to the constraint that the first two columns be called `time` and `sym` and be of datatype timespan (nanoseconds) and symbol respectively. 
-
-!!! note "Earlier version"
-
-    Prior to the 2012.11.09 release of `tick.q`, the `time` column needed to be of datatype time (milliseconds) as opposed to timespan.
 
 `C:/OnDiskDB` 
 
@@ -535,9 +524,6 @@ Reading this from the right, we obtain the location of the tickerplant process w
 
 : The output of this is the list passed as second argument to `.u.rep` as previously discussed.
 
-
-
-## Examples
 
 ### `c.q` collection
 

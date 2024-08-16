@@ -529,17 +529,17 @@ nav:
           - Tickerplant pub/sub (u.q): architecture/uq.md
           - RDB (r.q): architecture/rq.md
       - Alternative architecture: kb/kdb-tick.md
+      - TP Log (data recovery): wp/data-recovery.md
+      - RTEs (real-time engines): wp/rt-tick/index.md
+      - Gateway design: wp/gateway-design/index.md
+      - Query Routing: wp/query-routing/index.md
+      - Load balancing: kb/load-balancing.md
+      - Profiling: wp/tick-profiling.md
+      - Disaster recovery: wp/disaster-recovery/index.md
+      - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
+      - Order Book: wp/order-book.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Corporate actions: kb/corporate-actions.md
-      - TP Log (data recovery): wp/data-recovery.md
-      - Disaster recovery: wp/disaster-recovery/index.md
-      - Gateway design: wp/gateway-design/index.md
-      - Profiling: wp/tick-profiling.md
-      - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
-      - Load balancing: kb/load-balancing.md
-      - Order Book: wp/order-book.md
-      - Query Routing: wp/query-routing/index.md
-      - RTEs (real-time engines): wp/rt-tick/index.md
       - Advanced:
         - Distributed systems: wp/query-interface.md
         - Intraday writedown: wp/intraday-writedown/index.md

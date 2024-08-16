@@ -7,16 +7,11 @@ keywords: corrupt, data, data recovery, error, kdb+, log, logfile, q, real-time,
 ---
 # Data recovery for kdb+tick
 
-by [Fionnbharr Gaston](#author)
-{: .wp-author}
-
-
 KX freely offers a complete tick-capture product which allows for the processing, analysis and historical storage of huge volumes of tick data in real time. This product, known as kdb+tick, is extremely powerful, lightweight and forms the core of most kdb+ architectures. 
 
 The tickerplant lies at the heart of this structure. It is responsible for receiving data from external feedhandlers and publishing to downstream subscribers. 
 
 Perhaps the most important aspect of the tickerplant is how it logs every single message it receives to a binary log file. In the event of a subscriber process failing, this log file can be used to restore any missing data.
-
 
 ## kdb+tick
 
