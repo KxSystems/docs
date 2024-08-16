@@ -393,7 +393,7 @@ system"x .z.ps";
 hclose goodfilehandle;
 ```
 
-Alternatively, generic system tools can be used e.g. unix `head` command. For example, given that ``-11!(-2;`:bad.log)`` returns 2879 bytes.
+Alternatively, generic system tools can be used like the unix `head` command. For example, given that ``-11!(-2;`:bad.log)`` returns 2879 bytes.
 ```bash
 head -c 2879 bad.log > good.log
 ```
