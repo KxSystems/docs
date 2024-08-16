@@ -210,8 +210,8 @@ q)logfilehandle:hopen logfile;
 
 !!!note "`logfile set ();` is equivalent to `.[logfile;();:;()];`"
 
-A check for a pre-existing log file can be achieved using [`get`](../ref/get.md#get). 
-The script can now be written to initialize a new log file if it does not exist, otherwise it will opened for appending.
+1. Check for pre-existing log files by using [`get`](../ref/get.md#get). 
+1. If a new log file does not exist, the script can now be written to initialize it, otherwise it is opened for appending.
 
 ```q
 q)logfile:hsym `$"qlog";
