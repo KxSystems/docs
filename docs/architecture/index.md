@@ -159,7 +159,7 @@ q hdb.q SRC [-p 5012]
 
 !!! Note "Standard kdb+ [command line options](../basics/cmdline.md) may also be passed"
 
-A HDB will be empty until the RDB saves its first set of tables at end-of-day.
+A HDB is empty until the RDB saves its first set of tables at end-of-day.
 
 ### Gateway
 
