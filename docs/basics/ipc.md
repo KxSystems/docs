@@ -202,7 +202,7 @@ Serializes and puts a message on the output queue for handle `h`, and does not b
 q)neg[h]"a:10" / on the remote instance, sets the variable a to 10
 ```
 
-As per [sync messages](#sync-request-get), you can replace the string repesenting the code to execute as a list. 
+Similar to [sync messages](#sync-request-get), you can replace the string representing the code to execute as a list. 
 The following example uses [`0N!`](../ref/display.md) to echo data provided to the servers console
 
 ```q
