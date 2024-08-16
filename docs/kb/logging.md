@@ -85,7 +85,7 @@ q)\ls
 ```
 
 The system command `\l` can be used to roll the log file. 
-The current log file will be renamed with the `qdb` extension and a new log file will be created.
+The current log file is renamed with the `qdb` extension and a new log file is created.
 
 ```q
 q)\l
