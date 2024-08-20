@@ -10,91 +10,19 @@ keywords: kdb+, q, real-time, subscribe, tick
 by [Nathan Perrem](#author)
 {: .wp-author}
 
-The purpose of this white paper is to help q developers who wish to build their own custom real-time engine. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? 
-
 ## The kdb+tick environment
 
-The real-time database (RDB) and all other real-time engines (RTE) do not exist in isolation. Instead they sit downstream of the feedhandler (FH) and tickerplant (TP) processes. The feedhandler feeds data into the tickerplant, which in turns publishes certain records to the real-time database and other RTEs. Today’s data can be queried on the RDB. The historical data resides on disk and can be read into memory upon demand by the historical database process (HDB).
+KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). 
 
-The incoming data feed could be from Reuters, Bloomberg, a particular exchange or some other internal data feed. The feedhandler receives this data and extracts the fields of interest. It will also perform some datatype casting and re-ordering of fields to normalize the data set with the corresponding table schemas present on the tickerplant. The feedhandler then pushes this massaged data to the tickerplant.
+The RDB is a form is real-time engine (RTE). It is a real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates, it inserts these records to the end of the corresponding table. 
 
+A tick environment can have one or many optional RTEs subscribing to the real-time data being generated from the tickerplant.
 
-### Tickerplant (TP)
-
-The tickerplant process is started up as follows.
-
-```bash
-q tick.q sym C:\OnDiskDB -p 5000
-```
-
-Although the inner workings of the tickerplant process are beyond the scope of this white paper, we will consider the significance of the two custom command-line arguments supplied:
-
-`sym`
-
-: refers to the schema file (in this case called `sym.q`), assumed to reside in the subdirectory called `tick` (relative to `tick.q`). This schema file simply defines the tables that exist in the TP – here we define two tables, `trade` and `quote`, as follows.
-
-```q
-quote:([]time:`timespan$();sym:`symbol$();mm:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
-trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
-```
-
-: The schemas for these tables are subject to the constraint that the first two columns be called `time` and `sym` and be of datatype timespan (nanoseconds) and symbol respectively. 
-
-`C:/OnDiskDB` 
-
-: the on-disk location where the TP logfile is stored. This process must have write access to whatever directory is specified here. Furthermore, since this process will be writing to this logfile every time an update is received by the feedhandler, the disk write speed should be high enough to deal with the frequency of these updates.
-
-
-### Feedhandler (FH)
-
-A sample feedhandler called `SampleFeed.q` is also instantiated. This simple process simply pumps dummy, random data to the tickerplant for the trade and quote tables on a regular interval. The data generated is consistent in schema with `sym.q`. For completeness, the code in `SampleFeed.q` is included below.
-
-```q
-h:neg hopen `:localhost:5000 /connect to tickerplant 
-syms:`MSFT.O`IBM.N`GS.N`BA.N`VOD.L /stocks
-prices:syms!45.15 191.10 178.50 128.04 341.30 /starting prices 
-n:2 /number of rows per update
-flag:1 /generate 10% of updates for trade and 90% for quote
-getmovement:{[s] rand[0.0001]*prices[s]} /get a random price movement 
-/generate trade price
-getprice:{[s] prices[s]+:rand[1 -1]*getmovement[s]; prices[s]} 
-getbid:{[s] prices[s]-getmovement[s]} /generate bid price
-getask:{[s] prices[s]+getmovement[s]} /generate ask price
-/timer function
-.z.ts:{
-  s:n?syms;
-  $[0<flag mod 10;
-    h(".u.upd";`quote;(n#.z.N;s;n?`AA`BB`CC`DD;getbid'[s];getask'[s];n?1000;n?1000));
-    h(".u.upd";`trade;(n#.z.N;s;getprice'[s];n?1000))];
-  flag+:1; }
-/trigger timer every 100ms
-\t 100
-```
-
-Points to note from the above:
-
-1.  The data sent to the tickerplant is in columnar (column-oriented) list format. In other words, the tickerplant expects data as lists, not tables. This point will be relevant later when the RDB wishes to replay the tickerplant logfile.
-1.  The function triggered on the tickerplant upon receipt of these updates is [`.u.upd`](../../architecture/tickq.md#uupd).
-1.  If you wish to increase the frequency of updates sent to the tickerplant for testing purposes, simply change the timer value at the end of this script accordingly.
-
-
-### Historical database (HDB)
-
-The HDB instance typically mounts the on-disk, date-partitioned database. Clients who wish to query records prior to today will generally query this process. There is no canonical script for the HDB so for this paper the following simple script (`hdb.q`) was used:
-
-```q
-/Sample usage:
-/q hdb.q C:/OnDiskDB/sym -p 5002
-if[1>count .z.x;show"Supply directory of historical database";exit 0];
-hdb:.z.x 0
-/Mount the Historical Date Partitioned Database
-@[{system"l ",x};hdb;{show "Error message - ",x;exit 0}]
-```
-
-Strictly speaking, an instance of the HDB is not required for this paper since all we really need is a tickerplant being fed data and then publishing this data downstream to the RDB and RTE. However, the RDB does communicate with the HDB at end of day once it has finished writing its records to the on-disk database.
-
+This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? 
 
 ## Real-time database (RDB)
+
+An RDB is a form of RTE. Knowledge can be gained on writting a bespoke RTE by inspecting the functionality and source code of the vanilla RDB known as [`tick.q`](../../architecture/tickq.md).
 
 The RDB is started off as
 
@@ -524,6 +452,57 @@ Reading this from the right, we obtain the location of the tickerplant process w
 
 : The output of this is the list passed as second argument to `.u.rep` as previously discussed.
 
+## Examples
+
+### Environment setup
+
+Download kdb+tick.
+
+:fontawesome-brands-github:
+[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
+
+Create a schema file with the following two tables (`quote` and `trade`) in `tick/sym.q`
+```q
+quote:([]time:`timespan$();sym:`symbol$();mm:`symbol$();bid:`float$();ask:`float$();bsize:`int$();asize:`int$())
+trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
+```
+
+1. Start a tickerplant
+```q 
+q tick.q sym . -p 5000
+```
+Refer to [tick.q usage](../../architecture/tickq.md#usage) for more details. Note that a log file will be created in the current directory based on the above command, which will log every message received.
+2. Start one or more of the RTEs below, to connect to the tickerplant. Once data is being produced from the feed simulator you can inspect the tables generated, as shown in the relevent examples.
+3. Start a feed simulator to publish randomly generated data on a regular interval. The following `feed.q` script has been created to generate data relevant to the schema file above:
+```q
+h:neg hopen `:localhost:5000 /connect to tickerplant
+syms:`MSFT.O`IBM.N`GS.N`BA.N`VOD.L /stocks
+prices:syms!45.15 191.10 178.50 128.04 341.30 /starting prices
+n:2 /number of rows per update
+flag:1 /generate 10% of updates for trade and 90% for quote
+getmovement:{[s] rand[0.0001]*prices[s]} /get a random price movement
+/generate trade price
+getprice:{[s] prices[s]+:rand[1 -1]*getmovement[s]; prices[s]}
+getbid:{[s] prices[s]-getmovement[s]} /generate bid price
+getask:{[s] prices[s]+getmovement[s]} /generate ask price
+/timer function
+.z.ts:{
+  s:n?syms;
+  $[0<flag mod 10;
+    h(".u.upd";`quote;(n#.z.N;s;n?`AA`BB`CC`DD;getbid'[s];getask'[s];n?1000;n?1000));
+    h(".u.upd";`trade;(n#.z.N;s;getprice'[s];n?1000))];
+  flag+:1; }
+/trigger timer every 100ms
+\t 100
+```
+Run as 
+```q
+q feed.q
+```
+Points to note from the above:
+    1.  The data sent to the tickerplant is in columnar (column-oriented) list format. In other words, the tickerplant expects data as lists, not tables. This point will be relevant later when the RDB wishes to replay the tickerplant logfile.
+    1.  The function triggered on the tickerplant upon receipt of these updates is [`.u.upd`](../../architecture/tickq.md#uupd).
+    1.  If you wish to increase the frequency of updates sent to the tickerplant for testing purposes, simply change the timer value at the end of this script accordingly.
 
 ### `c.q` collection
 
