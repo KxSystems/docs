@@ -41,13 +41,7 @@ Let’s consider a basic example where a user makes a request for trade data for
 -   Gain access to data in the required services
 -   Provide best possible service and query performance
 
-As the gateway serves as the sole client interface it is the logical point for entitlement validation. Permissioning is commonly broken into two components; user level access using the `.z.pw` function, and execution access using either `.z.pg` or `.z.ps`. These functions can be customized to control access at several levels including by symbol, table, service or region.
-
-:fontawesome-regular-hand-point-right:
-Reference:
-[`.z.pg`](../../ref/dotz.md#zpg-get),
-[`.z.ps`](../../ref/dotz.md#zps-set),
-[`.z.pw`](../../ref/dotz.md#zpw-validate-user)
+As the gateway serves as the sole client interface it is the logical point for entitlement validation. Permissioning is commonly broken into two components; user level access using the [`.z.pw`](../../ref/dotz.md#zpw-validate-user) function, and execution access using either [`.z.pg`](../../ref/dotz.md#zpg-get) or [`.z.ps`](../../ref/dotz.md#zps-set). These functions can be customized to control access at several levels including by symbol, table, service or region.
 
 Any user requests that fail entitlement checks should be returned to the client with an appropriate message without proceeding any further. At this point it is worth noting that gateways are primarily used for data retrieval and not for applying updates to data.
 
@@ -269,7 +263,4 @@ All code included is using kdb+ 3.0 (2012.11.12).
 {: .small-face}
 
 **Michael McClintock** has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data-capture and analytics platforms across a number of different asset classes.
-&nbsp;
-[:fontawesome-solid-envelope:](mailto:mmcclintock@kx.com?subject=White paper: Gateway design) 
-&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/michael-mcclintock-93488841/)
+
