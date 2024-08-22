@@ -28,7 +28,7 @@ A common kdb+ [vanilla tick setup](../../architecture/index.md), has a tickerpla
 
 The standard approach above can be limited by available RAM if daily data volumes grow too large. It is important to realize also that extra RAM is required to query the data, on top of what is required to keep it in memory. The extra amount required will vary depending on the different use cases and queries that are run on it. Consideration must also be given to other processes such as chained RDBs or HDBs which will need to share the resources on the server.
 
-One solution is to write down some of the data from the RDB to a temporary directory on disk at different points throughout the day and then delete the data from memory, thus freeing up RAM. Various methods to achieve this will be discussed. Initially, the TP is publishing data asynchronously to the RDB and calling a `upd` function equivalent to the `insert` function.
+One solution is to write down some of the data from the RDB to a temporary directory on disk at different points throughout the day and then delete the data from memory, thus freeing up RAM. Various methods to achieve this will be discussed. Initially, the TP is publishing data asynchronously to the RDB and calling a [`upd`](../../architecture/rq.md#upd) function equivalent to the [`insert`](../../ref/insert.md) function.
 
 
 ## `w.q`
@@ -47,9 +47,9 @@ upd:append
 
 The new `upd` function inserts the data into the table, and then if the count has exceeded a pre-configured value – `MAXROWS` – all data in the table is enumerated and is appended to a splayed table on disk in the `TMPSAVE` temporary directory. The data is then deleted from the RDB, thus reducing the memory used by the process.
 
-At the end of the day all data has been written to disk in splayed tables, in time order. Most HDBs however are partitioned by date and a parted attribute is applied to the `sym` column, while also retaining time order within each sym. Therefore the on-disk temporary tables need to be reorganized before they can be added to the HDB as a new date partition.
+At the end of the day all data has been written to disk in splayed tables, in time order. Most HDBs however are partitioned by date and a [parted attribute](../../ref/set-attribute.md#grouped-and-parted) is applied to the `sym` column, while also retaining time order within each sym. Therefore the on-disk temporary tables need to be reorganized before they can be added to the HDB as a new date partition.
 
-The end-of-day logic is invoked by calling `.u.end`. This generally consists of writing the RDB data to a new partition and then deleting all data from the RDB tables. In `w.q`, `.u.end` is overridden to save any remaining data in the tables to the temporary directory before purging them. The data is then sorted on disk, moved from the temporary directory to a new date partition in the main HDB directory and made available to clients by reloading the HDB.
+The end-of-day logic is invoked by calling [`.u.end`](../../architecture/rq.md#uend). This generally consists of writing the RDB data to a new partition and then deleting all data from the RDB tables. In `w.q`, `.u.end` is overridden to save any remaining data in the tables to the temporary directory before purging them. The data is then sorted on disk, moved from the temporary directory to a new date partition in the main HDB directory and made available to clients by reloading the HDB.
 
 ```q
 / end of day: save, clear, sort on disk, move, hdb reload
@@ -75,7 +75,7 @@ Instead of using [`xasc`](../../ref/asc.md#xasc) to sort the table, the script i
 
 -   the handle to the on-disk table
 -   the column name to part the table by, generally `sym`
--   a function to [apply an attribute](../../ref/set-attribute.md), e.g. `` `p#`` for parted
+-   a function to [apply an attribute](../../ref/set-attribute.md), e.g. [`` `p#`` for parted](../../ref/set-attribute.md#grouped-and-parted)
 
 ```q
 disksort:{[t;c;a]

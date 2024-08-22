@@ -97,7 +97,7 @@ data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 ## What does a kdb+ database look like on disk?
 
 Before we consider creating a disaster-recovery plan, we first must
-understand the layout of a typical kdb+ database on-disk. kdb+
+understand the layout of a typical kdb+ [partitioned database](../../kb/partition.md) on-disk. kdb+
 databases are stored as a series of files and directories on disk.
 This makes handling databases extremely easy because database files
 can be manipulated as operating system files. Backing up a kdb+
