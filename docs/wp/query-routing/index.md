@@ -50,10 +50,10 @@ All tests were run using kdb+ version 3.3 (2015.11.03)
 ## Technical overview
 
 Interaction between the user and a gateway
-occurs through deferred synchronous communication, allowing multiple
+occurs through [deferred synchronous communication](../../basics/ipc.md#deferred-sync), allowing multiple
 users to interact with a single gateway at the same time. With
 exception to the interaction between the user and the gateway, all
-processes in our system communicate via asynchronous messaging.
+processes in our system communicate via [asynchronous messaging](../../basics/ipc.md#async-message-set).
 
 ![Overview of system framework](img/image3.png)  
 <small>_Overview of system framework_</small>
@@ -106,7 +106,7 @@ order to emphasize the functionality of the Load Balancer. We will
 require the user to send her query to the gateway handle by calling
 the function `userQuery` with a two-item list parameter: the required
 service and the query to be executed. The user interacts with the
-gateway using deferred synchronous messaging. 
+gateway using [deferred synchronous messaging](../../basics/ipc.md#deferred-sync). 
 
 Further information can be found at the Knowledge Base article on [load balancing](../../kb/load-balancing.md).
 
@@ -254,7 +254,7 @@ incoming message packet executes the `returnRes` function, which uses
 the sequence number to identify the user handle and return the
 results. If the user has disconnected before the results can be
 returned then the user handle field `uh` will be set to null (through
-the `.z.pc` trigger) causing nothing further to be done.
+the [`.z.pc`](../../ref/dotz.md#zpc-close) trigger) causing nothing further to be done.
 
 ```q
 returnRes:{[res]
@@ -265,7 +265,7 @@ returnRes:{[res]
   queryTable[(res 0);`ret]:.z.p }
 ```
 
-In the situation where a process disconnects from the gateway, `.z.pc`
+In the situation where a process disconnects from the gateway, [`.z.pc`](../../ref/dotz.md#zpc-close)
 establishes what actions to take. As mentioned, a disconnected user
 will cause `queryTable` to be updated with a null user handle. If the
 user currently has no outstanding queries, the gateway has nothing to
@@ -281,7 +281,7 @@ returned directly to users as the Load Balancer is unavailable to
 respond to their request. A timer is set to attempt to reconnect to
 the Load Balancer. On reconnection, the gateway will re-register
 itself, pull all available resources and establish new connections.
-The `.z.ts` trigger is executed once, on script startup, to initialize
+The [`.z.ts`](../../ref/dotz.md#zts-timer) trigger is executed once, on script startup, to initialize
 and register the process.
 
 ```q
@@ -526,8 +526,8 @@ outgoing message queue for this handle to be flushed immediately.
 :fontawesome-regular-hand-point-right:
 Basics: [Interprocess communications](../../basics/ipc.md)
 
-Like our gateway, the `.z.pc` handle is set to reconnect to the Load
-Balancer on disconnect. The `.z.ts` function retries to connect to the
+Like our gateway, the [`.z.pc`](../../ref/dotz.md#zpc-close) handle is set to reconnect to the Load
+Balancer on disconnect. The [`.z.ts`](../../ref/dotz.md#zts-timer) function retries to connect to the
 Load Balancer, and once successful the service registers its details.
 The `.z.ts` function is executed once on start-up – like the gateway –
 to initialize the first connection.
