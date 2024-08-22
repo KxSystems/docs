@@ -129,9 +129,9 @@ Splayed or flat tables can also exist in the database at the top level
 but are excluded here for simplicity.
 
 The standard approach to saving data to an on-disk database (HDB) is
-to use the `.Q.dpft` utility, usually from an in-memory real-time
-database via an end-of-day write-down function (see `.u.end` in
-`r.q`). This utility creates the files and directories as laid out in
+to use the [`.Q.dpft`](../../ref/dotq.md#dpft-save-table) utility, usually from an in-memory real-time
+database via an end-of-day write-down function (see [`.u.end`](../../architecture/rq.md#uend) in
+[`r.q`](../../architecture/rq.md)). This utility creates the files and directories as laid out in
 the table above, along with applying a _parted_ attribute to the
 specified column.
 
@@ -142,7 +142,7 @@ specified column.
 However, the constituent parts of the utility can be run individually
 and used to construct or amend a database. The basic steps are:
 
-1.  Enumerate the table to be saved against the sym file (`.Q.en`)
+1.  Enumerate the table to be saved against the sym file ([`.Q.en`](../../ref/dotq.md#en-enumerate-varchar-cols))
 
     ```q
     .Q.en[`:/kx/hdb] trade
@@ -157,7 +157,7 @@ and used to construct or amend a database. The basic steps are:
 
 Note that as part of setting a splayed table, the column `.d` file is
 automatically written by kdb+. After these steps, the database can now
-be loaded into q via a simple `\l` command.
+be loaded into q via a simple [`\l` command](../../basics/syscmds.md#l-load-file-or-directory).
 
 These step-by-step methods can become useful for fixing issues that
 may occur on specific files or date partitions. For example, if we
@@ -168,7 +168,7 @@ file can be overwritten with a simple `set`.
 `:/kx/hdb/2017.01.01/trade/.d set `time`sym`price`size`side`ex
 ```
 
-The [`dbmaint.q` script](https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md))
+The [`dbmaint.q`](https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md) script
 provides some useful utilities for editing and maintaining a
 historical database (HDB). Generally, these functions are safer and
 should be used in place of the raw commands for any database
@@ -278,14 +278,14 @@ complete mirror of the production system (feedhandler, tickerplant,
 and real-time subscriber), and when any critical process goes down,
 the secondary is able to take over. Switching from production to
 disaster recovery systems can be implemented seamlessly using kdb+
-[interprocess communication](../../basics/ipc.md) (via `.z.pc`).
+[interprocess communication](../../basics/ipc.md) (via [`.z.pc`](../../ref/dotz.md#zpc-close)).
 
 An alternative method is to have a parent control process monitoring
 everything within the system with heart-beating: a simple message sent
 from the control process to another asking _Are you alive?_ In the
 event that a process is unreachable, the parent control process
 signals failover of the whole system to the secondary. This is
-obviously more complex than using `.z.pc` between system processes to
+obviously more complex than using [`.z.pc`](../../ref/dotz.md#zpc-close) between system processes to
 trigger the failover, but the advantage is that the whole system can
 be controlled from a single process pair (primary and secondary).
 
@@ -315,7 +315,7 @@ others.
 If a real-time database does go down, then it is usual practice to
 trigger a failover to the secondary RDB, such that the gateway will
 only route queries to the secondary RDB while the primary is offline
-or recovering. Failover can be signaled via `.z.pc`. Usually, the
+or recovering. Failover can be signaled via [`.z.pc`](../../ref/dotz.md#zpc-close). Usually, the
 handles to the secondary RDB are opened prior to any failover
 occurring, and it is simply a case of pointing the query to the
 secondary RDB handle, in place of the primary RDB handle. In larger
@@ -357,7 +357,7 @@ tickerplant. If updates arrive whilst the RDB is reading from the log
 file, they are buffered in the TCP/IP buffer. If the log file is large
 enough, then the replay may take enough time that the buffers fill. In
 this case, the messages are kept in the main tickerplant process
-memory (this can be seen in `.z.W` in the TP).
+memory (this can be seen in [`.z.W`](../../ref/dotz.md#zw-handles) in the TP).
 
 Replaying the log can potentially take several minutes or more,
 depending on the size of the tickerplant log file, therefore the
@@ -404,8 +404,8 @@ Some common issues along with possible fixes:
 
 #### A missing table from a partition
 
-This is fixed using either `.Q.chk`
-to save empty copies of all tables or `.Q.bv` to create in-memory
+This is fixed using either [`.Q.chk`](../../ref/dotq.md#chk-fill-hdb)
+to save empty copies of all tables or [`.Q.bv`](../../ref/dotq/#bv-build-vp) to create in-memory
 mapping of missing tables. This may arise due to a lack of data
 having been received for this date, and the end-of-day write
 function therefore skips this save. Unless `.Q.bv` is in use within
@@ -420,7 +420,7 @@ These can cause issues if not implemented correctly. Often
 this could be missing files in older partitions for the new fields.
 This can be resolved by saving a file of null values of the same
 type and the same length as the other fields for that date. The `.d`
-file should be updated also. `fixtable` from dbmaint can be used to
+file should be updated also. `fixtable` from [`dbmaint.q`](https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md) can be used to
 save these empty columns, but a manual example is given below:
 
 ```q
@@ -438,7 +438,7 @@ This is usually due to a column vector being a different
 length from the rest of the table. The only method to fix it is to
 count each column file and compare, then manually saving the
 erroneous one to the correct length. This can occur when not using
-the standard save commands (.e.g `.Q.dpft`), but rather setting each
+the standard save commands (.e.g [`.Q.dpft`](../../ref/dotq.md#dpft-save-table)), but rather setting each
 column individually, and some logic has caused the column lengths to
 vary.
 
@@ -476,7 +476,7 @@ tickerplant dies, this could trigger a failover of the subscriber to
 the secondary process. The subscriber isn’t lost and could reconnect
 to the secondary TP, allowing seamless transition. Clients that have
 subscribed to the tickerplant will receive a closed connection
-callback to `.z.pc`. They could then use this to seamlessly switch over
+callback to [`.z.pc`](../../ref/dotz.md#zpc-close). They could then use this to seamlessly switch over
 to the secondary. Depending on the time taken to switch and connect to
 the secondary tickerplant, there may be some data loss. However, the
 primary and secondary systems are usually in separate data centers,
@@ -538,7 +538,7 @@ a primary system may be degraded during the recovery process, which
 may necessitate failing over to a secondary or disaster recovery
 system. Provided the secondary systems are running on different
 hardware, a hardware failure can be treated similarly to a software
-failure and failover can again be controlled via `.z.pc` signaling. If
+failure and failover can again be controlled via [`.z.pc`](../../ref/dotz.md#zpc-close) signaling. If
 however, the secondary system is running on the same server or
 infrastructure, no recovery can easily be made until the hardware
 issue has been resolved. There will possibly be data loss as well in
@@ -551,7 +551,7 @@ Network connection problems can sometimes be hard to diagnose. However
 they are treated similarly to a software failure as an unreachable
 process is deemed indistinguishable from a non-running process. A full
 failover to the secondary system should be made if there is a network
-failure on the primary. This can again be controlled via `.z.pc`
+failure on the primary. This can again be controlled via [`.z.pc`](../../ref/dotz.md#zpc-close)
 signaling.
 
 
@@ -562,7 +562,7 @@ there will always be a risk of data loss on the primary side. Even if
 callbacks were used to switch subscription to the secondary, during
 this switching period there may be some data missed, for example, the
 secondary tickerplant may have processed additional messages prior to
-the receipt of the subscription request (`.u.sub`) from the primary
+the receipt of the subscription request ([`.u.sub`](../../architecture/uq.md#usub)) from the primary
 RDB. As such, it is usual for a process of data reconciliation to be
 configured for the end of the day.
 
