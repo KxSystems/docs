@@ -19,6 +19,10 @@ This paper will primarily consider the relationship between the TP ([tick.q](../
 
 A log file created by a tickerplant is often referred to as a `TP log`.
 
+The following diagram shows the steps taken by an RDB to recover from a TP log on start-up:
+
+![RDB_end-of-day](../img/TP_log_recovery.svg)
+
 ## Writing a TP log
 
 A log file can be created by any kdb+ process to record instructions/data in binary format, which can be later replayed to recover state.
