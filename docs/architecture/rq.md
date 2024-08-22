@@ -44,6 +44,10 @@ The function [`.u.rep`](#urep) is then used to [replay the log](../kb/logging.md
 
 !!! Note "The RDB should be able to access the tickerplant log from a directory on the same machine. The RDB/tickerplant can be changed to reside on different hosts but this increases the resources needed to transmit the log file contents over the network."
 
+The following diagram shows the steps taken by an RDB to recover from a TP log:
+
+![RDB_end-of-day](../img/TP_log_recovery.svg)
+
 ## Usage
 
 ```bash
@@ -105,7 +109,7 @@ Actions performed:
 
 ### .u.rep
 
-Initialise RDB by creating tables, which is then populated with any existing tickerplant log. Will set the HDB directory to use at end-of-day.
+Initialise RDB by creating tables, which is then [populated with any existing tickerplant log](#recovery). Will set the HDB directory to use at end-of-day.
 
 ```q
 .u.rep[x;y]
