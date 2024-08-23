@@ -532,7 +532,7 @@ nav:
       - TP Log (data recovery): wp/data-recovery.md
       - RTEs (real-time engines): wp/rt-tick/index.md
       - Gateway design: wp/gateway-design/index.md
-      - Query Routing: wp/query-routing/index.md
+      - Query routing: wp/query-routing/index.md
       - Load balancing: kb/load-balancing.md
       - Profiling: wp/tick-profiling.md
       - Disaster recovery: wp/disaster-recovery/index.md
@@ -542,7 +542,7 @@ nav:
       - Corporate actions: kb/corporate-actions.md
       - Advanced:
         - Distributed systems: wp/query-interface.md
-        - Intraday writedown: wp/intraday-writedown/index.md
+        - RDB intraday writedown: wp/intraday-writedown/index.md
     - Interfaces:
       - Languages:
         - C/C++:
