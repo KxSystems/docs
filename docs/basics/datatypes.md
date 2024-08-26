@@ -184,6 +184,7 @@ A back tick without characters after it represents the _empty symbol_: `` ` ``.
     The empty symbol can be used with [Cast](../ref/cast.md) to cast a string into a symbol, creating symbols whose names could not otherwise be written, such as symbols containing spaces. `` `$x`` is shorthand for `"S"$x`.
 
     ```q
+    q)s:`hello world
     'world
     q)s:`$"hello world"
     q)s
