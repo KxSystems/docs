@@ -364,8 +364,7 @@ gateway queries should continue to be routed to the secondary until
 recovery and failover are complete, and the primary RDB is available
 to capture data and serve queries again.
 
-:fontawesome-regular-hand-point-right:  
-[Data recovery for kdb+tick](../data-recovery.md)
+:fontawesome-regular-hand-point-right: [TP log (data recovery)](../data-recovery.md)
 for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file
 
@@ -743,7 +742,7 @@ surveillance, for some of the world’s largest financial institutions.
 
 ## Appendix
 
-The examples here are edits of `r.q` from kdb+ tick.
+The examples here are edits of the vanilla RDB ([`r.q`](../../architecture/rq.md) from kdb+ tick).
 
 As discussed in the main paper, often the primary and secondary sites
 are separate, hence large data transfer between the two could be
@@ -767,7 +766,4 @@ handles are opened on startup.
 /.z.pc now just has to subscribe to the backup TP and the handle is already open 
 .z.pc:{.tp.handles:.tp.handles except x;(first .tp.handles)".u.sub[`;`]";}
 ```
-
-Full details on GitHub at :fontawesome-brands-github:
-[KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q)
 
