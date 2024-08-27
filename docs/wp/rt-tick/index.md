@@ -607,7 +607,7 @@ time                 sym    price    size bid      ask      bsize asize
 0D11:11:49.868267000 MSFT.O 45.15094 288  45.14479 45.15053 27    686
 ```
 
-##### VWAP calculation
+##### Weighted average (VWAP)
 
 ```bash
 q c.q vwap [host]:port[:usr:pwd] [-p 5040]
@@ -626,7 +626,7 @@ MSFT.O 23.42693
 IBM.N  45.14611
 ```
 
-##### VWAP calculation (time window)
+##### Weighted average (VWAP with time window)
 
 ```bash
 q c.q vwap1 [host]:port[:usr:pwd] [-p 5040]
@@ -647,7 +647,7 @@ MSFT.O 11:08  45.16346
 MSFT.O 11:09  45.18718
 ```
 
-##### VWAP calculation (tick limit)
+##### Weighted average (VWAP with tick limit)
 
 ```bash
 q c.q vwap2 [host]:port[:usr:pwd] [-p 5040]
@@ -660,7 +660,7 @@ sym   | vwap
 MSFT.O| 45.14031
 ```
 
-##### VWAP calculation (time limit)
+##### Weighted average (VWAP with time limit)
 
 ```bash
 q c.q vwap3 [host]:port[:usr:pwd] [-p 5040]
