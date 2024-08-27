@@ -1103,8 +1103,6 @@ While the approach outlined in this paper solely used q code to implement a perm
 
 **Tom Martin** is a senior kdb+ consultant for KX who has built kdb+ systems for some of the world’s leading financial institutions. Tom is currently based in London, where he works on FX auto-hedging and client algos at a top-tier investment bank.
 &nbsp;
-[:fontawesome-solid-envelope:](mailto:tmartin@kx.com?subject=White paper: Permissions with kdb+) 
-&nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/tom-martin-9ba96438/)
 &nbsp;
 [:fontawesome-brands-github:](https://github.com/t-martin)

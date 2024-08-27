@@ -287,6 +287,5 @@ In any given application, the metrics which will determine if and how compressio
 **Eoin Killeen** has worked with KX technology for over ten years, designing and building real-time trading and analytics systems for clients in New York and London.
 Eoin’s current focus is Solution Architecture for EMEA-based clients.
 &nbsp;
-[:fontawesome-solid-envelope:](mailto:ekilleen@kx.com?subject=White paper: Compression in kdb+) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/eoin-killeen/)
 

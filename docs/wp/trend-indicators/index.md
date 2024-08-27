@@ -590,6 +590,5 @@ The combination of this library of functions and KX Analyst provides the user fa
 
 **James Galligan** is a kdb+ consultant who has designed and developed data-capture and data-analytics platforms for trading and analytics across multiple asset classes in multiple leading financial institutions. 
 &nbsp;
-[:fontawesome-solid-envelope:](mailto:jgalligan@kx.com?subject=White paper: Implementing trend indicators in kdb+) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/james-galligan-50629997/) &nbsp;
 [:fontawesome-brands-github:](https://github.com/jgalligan1993/)

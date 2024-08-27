@@ -939,7 +939,6 @@ The Solace PubSub+ event broker and the KX open-source API brings the power of p
 {: .small-face}
 
 **Himanshu Gupta** is a solutions architect at [Solace](https://solace.com). He has experience working at both buy and sell side as a tick data developer. In these roles, he has worked with popular timeseries databases, such as kdb+, to store and analyze real-time and historical financial market data. &nbsp;
-[:fontawesome-solid-envelope:](mailto:himoacs@gmail.com?subject=White paper: Publish-subscribe messaging with Solace) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/guptahim/) 
 
 Other papers by Himanshu Gupta

@@ -20,8 +20,6 @@ There exist two types of solution to this problem.
 
 This paper discusses various software approaches to performing intraday writedowns in kdb+, which help overcome memory limitations.
 
-Tests performed using kdb+ version 3.1 2014.02.08
-
 
 ## Standard tick setup
 
@@ -40,7 +38,9 @@ One solution is to write down some of the data from the RDB to a temporary direc
 
 ### Handling real-time updates
 
-In a standard tick setup that uses `r.q`, the TP is publishing data asynchronously to the RDB and calling a [`upd`](../../architecture/rq.md#upd) function equivalent to the [`insert`](../../ref/insert.md) function. The important changes begin with the callback function `upd` which no longer simply inserts data into the table.
+In a standard tick setup that uses `r.q`, the TP is publishing data asynchronously to the RDB and calling a [`upd`](../../architecture/rq.md#upd) function equivalent to the [`insert`](../../ref/insert.md) function. 
+
+The important changes in `w.q` begin with the callback function `upd` which no longer simply inserts data into the table.
 
 ```q
 append:{[t;data]
@@ -110,9 +110,7 @@ The table is not reorganized if the column we are parting the table by is alread
 
 The `w.q` script has an additional option to delete the temporary data on exit to handle recovery scenarios. The default behavior is to delete the temporary data and recover from the TP log as it is difficult to locate the point in the TP log which was last committed to disk.
 
-
 ### Limitations of `w.q` 
-
 
 #### Downtime
 
@@ -652,5 +650,4 @@ Tests performed using kdb+ version 3.1 (2014.02.08)
 ## Author
 
 **Colm McCarthy** is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes. &nbsp;
-[:fontawesome-solid-envelope:](mailto:cmccarthy@kx.com?subject=White paper: Intraday writedowns) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/colm-mccarthy-11a60864/)

@@ -529,7 +529,6 @@ As alluded to at the start of the paper, trade surveillance systems are only goi
 {: .small-face}
 
 **Luke Britton** has helped develop surveillance systems to identify market abuses for major international investment banks and exchanges, helped build and maintain a data warehouse for a new Mexican stock exchange for exchange monitoring, worked as part of an internal R&D team to build a product solution for the new U.S. regulatory requirement CAT, and led telemetry data visualization workshops for the MIT Motorsport team for their Formula SAE car. &nbsp;
-[:fontawesome-solid-envelope:](mailto:lbritton@kx.com) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/luke-britton-964718114/) 
 
 <!-- Abbreviations -->

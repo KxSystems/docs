@@ -657,7 +657,6 @@ by kdb+ can be found under _Featured Resources_ at
 
 **Samantha (Gallagher) Devlin** has worked on implementing kdb+ solutions for financial institutions globally. 
 &nbsp;
-[:fontawesome-solid-envelope:](mailto:sgallagher1@kx.com?subject=White paper: embedPy and LASSO) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/samantha-gallagher-kdb) 
 
 Other papers by Samantha Gallagher

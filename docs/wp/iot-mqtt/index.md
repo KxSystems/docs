@@ -907,7 +907,6 @@ _KX POC Blog Series_:
 **Rian Ó Cuinneagáin** is a manager at KX.
 Rian is currently based in Dublin working on industrial applications of kdb+.
 <br>
-[:fontawesome-solid-envelope:](mailto:rocuinneagain@kx.com?subject=White paper: IoT with MQTT) 
 &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/rocuinneagain/)
 &nbsp;
