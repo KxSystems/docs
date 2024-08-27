@@ -293,7 +293,7 @@ In this example we can load different files in parallel as we know that the file
 
 ## Aborting the load
 
-Aborting the load (e.g. Ctrl-c, `kill -9`, and errors such as `wsfull`) is generally bad. The loader may have written some but not all of the data to the database. 
+Aborting the load (e.g. Ctrl-c, `kill -9`, and errors such as [`wsfull`](../basics/errors.md#wsfull)) is generally bad. The loader may have written some but not all of the data to the database. 
 
 Usually the side effects can be corrected with some manual work, such as re-saving the table without the partially loaded data and running the loader again. 
 

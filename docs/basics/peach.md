@@ -138,7 +138,7 @@ Each secondary thread has its own heap, a minimum of 64MB.
 
 Since V2.7 2011.09.21, [`.Q.gc[]`](../ref/dotq.md#gc-garbage-collect) in the main thread collects garbage in the secondary threads too.
 
-Automatic garbage collection within each thread (triggered by a wsfull, or hitting the artificial heap limit as specified with [`-w`](cmdline.md#-w-workspace) on the command line) is executed only for that particular thread, not across all threads.
+Automatic garbage collection within each thread (triggered by a [`wsfull`](../basics/errors.md#wsfull)), or hitting the artificial heap limit as specified with [`-w`](cmdline.md#-w-workspace) on the command line) is executed only for that particular thread, not across all threads.
 
 Symbols are internalized from a single memory area common to all threads.
 

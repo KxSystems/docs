@@ -342,7 +342,7 @@ Executing [`.Q.gc[]`](../ref/dotq.md#qgc-garbage-collect) additionally attempts 
 Since V3.3 2015.08.23 (Linux only) unused pages in the heap are dropped from RSS during `.Q.gc[]`.
 
 When q is denied additional address space from the OS, it invokes `.Q.gc[]` and retries the request to the OS. 
-Should that fail, it will exit with `'wsfull`.
+Should that fail, it will exit with [`'wsfull`](../basics/errors.md#wsfull).
 
 When secondary threads are configured and `.Q.gc[]` is invoked in the main thread it will automatically invoke `.Q.gc[]` in each secondary thread. 
 If the call is instigated in a secondary thread – i.e., not the main thread – it will affect that thread’s local heap only.

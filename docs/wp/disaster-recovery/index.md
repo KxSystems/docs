@@ -10,7 +10,6 @@ by [Stewart Robinson](#author)
 {: .wp-author}
 
 
-
 Disasters are inevitable; hardware failure, network problems, and data
 corruption are all events that could play havoc with a system. If
 these events are not fully understood and planned for they may lead to
@@ -303,7 +302,7 @@ components within this simplified architecture.
 ## What to do when…
 
 
-### …a real-time database goes down
+### …a RDB (real-time database) goes down
 
 It is important to design the system so it is resilient and
 fault-tolerant, including adequately specifying the memory
@@ -371,13 +370,13 @@ for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file
 
 
-### …a historical database fails to load
+### …a HDB (historical database) fails to load
 
 Some well-developed kdb+ systems survived many market events which
 brought other systems to their knees, however, it is possible that an
 HDB may become unreachable, but through proper database maintenance,
 access rights, correct dimensioning and recovery procedures, users can
-avoid incapacitating an HDB. HDB process failures and `wsfull` errors
+avoid incapacitating an HDB. HDB process failures and [`wsfull`](../../basics/errors.md#wsfull) errors
 are usually an indication that a process has been incorrectly
 dimensioned, or access control has not been applied.
 
@@ -443,7 +442,7 @@ column individually, and some logic has caused the column lengths to
 vary.
 
 
-### …the tickerplant fails
+### …the TP (tickerplant) fails
 
 In an adequately specified 64-bit system, one tickerplant is usually
 enough to capture all the data from a feed. A kdb+ process is able to
@@ -498,7 +497,7 @@ this can be the case late in the trading day when the log files are
 nearly at the maximum size, so restarting an RDB just before market
 close is the worst scenario. Unless protected from slow subscribers,
 the tickerplant memory footprint may, in extreme circumstances, grow
-to an unmanageable level, resulting in a `wsfull` error. Therefore,
+to an unmanageable level, resulting in a [`wsfull`](../../basics/errors.md#wsfull) error. Therefore,
 aside from suitable dimensioning of the TP host machine for RDB
 restarts, the tickerplant log files should reside on high-performance,
 dedicated drives with no contention from other processes. This ensures
@@ -771,6 +770,4 @@ handles are opened on startup.
 
 Full details on GitHub at :fontawesome-brands-github:
 [KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q)
-
-
 

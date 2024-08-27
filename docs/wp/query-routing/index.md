@@ -446,7 +446,7 @@ begin with a timeout function to limit interruption of service.
 ## Example service
 
 The example below takes a simple in-memory database containing trade
-and quote data that users can query. An example timeout of ten seconds
+and quote data that users can query. An example [`\T` timeout](../..//basics/syscmds.md#t-timeout) of ten seconds
 is assigned, to prevent queries running for too long.
 
 ```q

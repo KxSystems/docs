@@ -176,7 +176,7 @@ kdb+ allocates enough memory to decompress the whole vector, regardless of how m
 
 This is reservation only, and can be accommodated by increasing the swap space available: even though the swap should never actually be written to, the OS has to be assured that in the worst-case scenario of decompressing the data in full, it could swap it out if needed.
 
-If you experience `wsfull` even with sufficient swap space configured, check whether you have any soft/hard limits imposed with `ulimit -v`.
+If you experience [`wsfull`](../basics/errors.md#wsfull) even with sufficient swap space configured, check whether you have any soft/hard limits imposed with `ulimit -v`.
 
 !!! tip "Memory overcommit settings on Linux"
 
