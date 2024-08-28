@@ -11,11 +11,13 @@ by [Colm McCarthy](#author)
 {: .wp-author}
 
 
-With data volumes in the financial-services sector continuing to grow at exponential rates, kdb+ is the data-storage technology of choice for many financial institutions due to its efficiency in storing and retrieving large volumes of data. kdb+ is uniquely equipped to deal with these growing data volumes as it is extremely scalable and can deal with increasing data volumes with ease. As volumes grow the amount of data that an RDB can keep in memory may eventually be limited by the RAM available on the server. 
+With data volumes in the financial-services sector continuing to grow at exponential rates, kdb+ is the data-storage technology of choice for many financial institutions due to its efficiency in storing and retrieving large volumes of data. kdb+ is uniquely equipped to deal with these growing data volumes as it is extremely scalable and can deal with increasing data volumes with ease. 
+
+As volumes grow the amount of data that an RDB can keep in memory may eventually be limited by the RAM available on the server. 
 
 There exist two types of solution to this problem.
 
-1. The easiest and most obvious is the hardware solution which would involve increasing the RAM available or to scale across multiple machines, splitting the data up across servers by region, table or symbol. However, some existing users who are experiencing large data growth may be prevented from using this solution because of operational restrictions or hardware limitations.
+1. The easiest and most obvious is the hardware solution which would involve increasing the RAM available or to scale across multiple machines, splitting the data up across servers by region, table or symbol.
 2. The second solution – the software solution – continues to use a server which has inadequate RAM to store a whole day’s data. In this solution, the reliance on RAM is reduced by periodically writing the data to disk and then purging it from memory. This intraday write to disk allows a full day’s worth of data to be contained on a single server. This is not the ideal setup for kdb+ and as such will come with some penalties attached.
 
 This paper discusses various software approaches to performing intraday writedowns in kdb+, which help overcome memory limitations.
