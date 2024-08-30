@@ -95,7 +95,7 @@ Perform [end-of-day actions](end-of-day) of saving tables to disk, clearing tabl
 ```q
 .u.end[x]
 ```
-Where x is the date that has ended.
+Where x is the date that has ended, as a date atom type.
 
 Actions performed:
 
