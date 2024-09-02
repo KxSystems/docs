@@ -104,7 +104,7 @@ This is called within [`.u.rep`](../architecture/rq.md#urep), which is executed 
 ```
 
 kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-messages-and-upd-function). 
-In a typical RDB, `upd``, which will perform an insert. 
+In a typical RDB, `upd` will perform an insert. 
 Therefore, executing a single line in the logfile will be equivalent to ``insert[`tablename;tabledata]``.
 
 ### Filtering TP log
