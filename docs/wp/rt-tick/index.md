@@ -7,459 +7,27 @@ keywords: kdb+, q, real-time, subscribe, tick
 ---
 # Building real-time engines
 
-by [Nathan Perrem](#author)
-{: .wp-author}
-
 ## The kdb+tick environment
 
-KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process ([`tick.q`](../../architecture/tickq.md)) and the vanilla real-time engine process ([`r.q`](../../architecture/rq.md)), known as the real-time database (RDB). 
+The use of real-time engines (RTEs) within a [tick environment](../../architecture/index.md) provides the ability to enrich it further with real-time custom analytics and alerts. A tick environment can have one or many optional RTEs subscribing to the real-time data being generated from the tickerplant (TP).
 
-The RDB is a form is real-time engine (RTE). It is a real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates, it inserts these records to the end of the corresponding table. 
+A RTE can subscribe to all or a subset of the data provided by a TP. The data stored with an RTE can be as little as only that required to hold the latest calculated result (or send an alert), resulting in a very low utilization of resources.
 
-A tick environment can have one or many optional RTEs subscribing to the real-time data being generated from the tickerplant.
+The [RDB](../../architecture/rq.md) is a form of RTE. It is a real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates, it inserts these records to the end of the corresponding table in order to contain all of the currrent days data.
 
-This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? 
+An alternative is to using an RTE is to query the RDB on each clients request. As this would entail performing an operation on a growing dataset, it can prove much more inefficient for the client while also consuming the resources of the RDB.
 
-## Real-time database (RDB)
+A RTE can also use the TP log file to recover from any inexpected intra-day restarts.
 
-An RDB is a form of RTE. Knowledge can be gained on writting a bespoke RTE by inspecting the functionality and source code of the vanilla RDB known as [`tick.q`](../../architecture/tickq.md).
+## Building a RTE
 
-The RDB is started off as
-
-```bash
-q tick/r.q localhost:5000 localhost:5002 -p 5001
-```
-
-argument         | semantics
------------------|----------
-`localhost:5000` | location of tickerplant process
-`localhost:5002` | location of HDB process
-
-
-### Real-time updates
-
-Quite simply, the tickerplant provides the ability for a process (in this case the real-time database) to subscribe to certain tables, and for certain symbols (stock tickers, currency pairs etc.). Such a RTE will subsequently have relevant updates pushed to it by the tickerplant. The tickerplant asynchronously pushes the update as a 3-item list in the format `(upd;Table;data)`:
-
-item     | semantics
----------|----------
-`upd`    | name of the update function on the RDB to be invoked
- `Table` | name of the table being updated; e.g. `` `trade``, `` `quote``, etc.
-`data`   | table containing one or more new records
-
-Some example updates:
-
-```q
-/single-row update for the trade table
-(`upd;
-  `trade;
-  ([]time:enlist 0D10:30:59.5;
-    sym:`IBM.N;
-    price:183.1;
-    size:1000))
-```
-```q
-/multi-row update for the trade table
-(`upd;
-  `trade;
-  ([]time:0D10:30:59.5 0D10:30:59.6;
-    sym:`IBM.N`MSFT.O;
-    price:183.1 43.2;
-    size:1000 2000))
-```
-
-Such a list is received by the RTE and is implicitly passed to the [`value`](../../ref/value.md) function. Here is a simple example of `value` in action:
-
-```q
-q)upd:{:x-y}
-q)value (`upd;3;2)
-1
-```
-
-In other words, the RTE passes two inputs to the function called `upd`. In the above examples, the inputs are the table name `` `trade`` and the table of new records.
-
-The `upd` function should be defined on the RTE according to how the process is required to act in the event of an update. Often `upd` is defined as a binary (2-argument) function, but it could alternatively be defined as a dictionary which maps table names to unary function definitions. This duality works because of a fundamental and elegant feature of kdb+: [executing functions and indexing into data structures are equivalent](../../ref/apply.md). For example:
-
-```q
-/define map as a dictionary
-q)map:`foo`bar!({x+1};{x-1}) /`foo and `bar map to unary functions 
-q)map[`foo;10] /foo's function is triggered
-11
-q)map[`bar;10] /bar's function is triggered
-9
-/define map as a binary function to achieve similar results 
-q)map:{[t;x]$[t=`foo;{x+1}[x];t=`bar;{x-1}[x];]}
-q)map[`foo;10]
-11
-q)map[`bar;10]
-9
-```
-
-So the developer of the process needs to define `upd` according to their desired behavior.
-
-Perhaps the simplest definition of `upd` is to be found in the vanilla RTE – the RDB. The script for this process is called `r.q` and within this script, we find the definition:
-
-```q
-upd:insert
-```
-
-In other words, when records `y` for table `x` are received, simply insert these records into the table whose name is `x`. If a different behavior is required upon a new update, then a different definition of `upd` should be used. In this white paper we will build custom subscribers which maintain certain analytics in real time. The core of any such solution involves a custom definition for `upd`. To reinforce this point, here are some scenarios with different, valid definitions of `upd`.
-
-```q
-/upd is a binary function which increments MC and does an insert 
-/the output is a list with the new row indices 
-q)upd:{[t;d]MC+:1;t insert d}
-```
-```q
-/demonstrate single row update
-q)value (`upd;`trade;([]time:enlist 0D10:30:59.5;sym:`IBM.N;price:183.1;size:1000))
-,0
-q)MC /this variable (Message Counter) incremented by 1 
-1
-```
-```q
-/demonstrate multi-row update
-q)value (`upd;`trade;([]time:0D10:30:59.5 0D10:30:59.6;sym:`IBM.N`MSFT.O;price:183.1 43.2;size:1000 2000)) 
-12
-q)count trade /row count of trade is now 3
-3
-q)MC
-2
-```
-```q
-/upd is a dictionary providing similar results to previous example
-upd:`trade`quote!({MC+:1;`trade insert x};{MC+:1;`quote insert x})
-/demonstrate single row update
-q)value (`upd;`trade;([]time:enlist 0D10:30:59.5;sym:`IBM.N;price:183.1;size:1000)) 
-,3
-q)MC
-3
-```
-```q
-/demonstrate multi-row update
-q)value (`upd;`trade;([]time:0D10:30:59.5 0D10:30:59.6;sym:`IBM.N`MSFT.O;price:183.1 43.2;size:1000 2000)) 
-45
-q)count trade /row count of trade is now 6
-6
-q)MC
-4
-```
-
-The main challenge in developing a custom RTE is rewriting `upd` to achieve desired real-time behavior.
-
-
-### Tickerplant log replay
-
-An important role of the tickerplant is to maintain a daily logfile on disk for replay purposes. When a RTE starts up, they could potentially replay this daily logfile, assuming they have read access to it. Such a feature could be useful if the subscriber crashes intraday and is restarted. In this scenario, the process would replay this logfile and then be fully up-to-date. Replaying this logfile, particularly late in the day when the tickerplant has written many messages to it, can take minutes. The exact duration will depend on three factors:
-
-1.  How many messages are in the logfile
-2.  The disk read speed
-3.  How quickly the process can replay a given message
-
-The first and second factors are probably not controllable by the developer of the RTE. However the third factor is based on the efficiency and complexity of the particular replay function called `upd`. Defining this replay function efficiently is therefore of the upmost importance for quick intraday restarts.
-
-!!! note "One daily logfile"
-
-    The tickerplant maintains just one daily logfile. It does _not_ maintain separate logfiles split across different tables and symbols. This means that an RTE replaying such a logfile may only be interested in a fraction of the messages stored within.
-
-    Ultimately the developer must decide if the process truly requires these records from earlier in the day. Changing the tickerplant’s code to allow subscriber specific logfiles should be technically possible, but is beyond the scope of this white paper.
-
-Below are the first three messages stored in a sample tickerplant logfile called `sym2014.08.23` located in the directory `C:\OnDiskDB` (as set by the tickerplant upon startup). This logfile was generated by running the tickerplant and sample feedhandler for a short period of time. Its contents can be examined within a q process using the `get` function as follows:
-
-```q
-q)3#get `:C:/OnDiskDB/sym2014.08.23 /examine first 3 messages
-`upd `trade (0D21:37:10.977580000 0D21:37:10.977580000;`GS.N`BA.N;178.5 128;798 627)
-`upd `quote (0D21:37:11.077158000 0D21:37:11.077158000;`IBM.N`VOD.L;191.1 341.3;191.1 341.3;564 807;886 262)
-`upd `quote (0D21:37:11.177744000 0D21:37:11.177744000;`GS.N`IBM.N;178.5 191.1;178.5 191.1;549 461;458 274)
-```
-
-Focusing on the first message:
-
-```q
-`upd `trade (0D21:37:10.977580000 0D21:37:10.977580000;`GS.N`BA.N;178.5 128;798 627)
-```
-
-item | semantics
------|-----------
-1    | the symbol `` `upd`` is the name of the update/replay function on RTE
-2    | the symbol `` `trade`` is the table name of the update
-3    | a column-oriented (columnar) list containing the new records
-
-The format of the message in the tickerplant logfile is the same as the format of real-time updates sent to the RTE with one _critical_ difference – the data here is a list, _not_ a table. The RTE which wants to replay this logfile will need to define their `upd` to accommodate this list. This will mean in general that an RTE will have two different definitions of `upd` – one for tickerplant logfile replay and another for intraday updates via IPC (interprocess communication).
-
-For example, a q process with suitable definitions for the tables `trade` and `quote`, as well as the function `upd`, could replay `sym2014.08.23` using the operator [`-11!`](../../basics/internal.md#-11-streaming-execute). Again, a suitable definition for `upd` will depend on the desired behavior, but the function will need to deal with incoming lists as well as tables.
-
-In the RDB (vanilla RTE), `upd` for both replay purposes and intraday update purposes is simply defined as:
-
-```q
-upd:insert
-```
-
-In other words, when the RDB replays a given message, it simply inserts the record/s into the corresponding table. This is the same definition of `upd` used for intraday updates via IPC. These updates succeed because the second argument to `insert` can be either a columnar list or a table.
-
-Define `upd` for tickerplant log replay in whatever way is deemed appropriate. Here are some different definitions:
-
-```q
-/upd is a binary function which increments MC and does an insert
-q)upd:{[t;d]MC+:1;t insert d}
-q)-11! `:C:/OnDiskDB/sym2014.08.23 /output is number of messages read 
-45
-```
-```q
-/upd is a binary function which maintains counters for trade and quote
-q)upd:{[t;d]$[t=`trade;TC+:1;t=`quote;QC+:1;]} 
-q)-11! `:C:/OnDiskDB/sym2014.08.23
-45
-q)TC /number of updates for trade
-4
-q)QC /number of updates for quote
-41
-```
-
-Why does the following attempt at logfile replay fail?
-
-```q
-q)upd:{[t;d]$[t=`trade;select price from d;]} 
-q)-11! `:C:/OnDiskDB/sym2014.08.23 
-{[t;d]$[t=`trade;select price from d;]}
-'type
-q))show d
-0D14:03:27.812066000 0D14:03:27.812066000 
-IBM.N                GS.N
-91.33033             14.85357
-798                  627
-```
-
-This attempt at logfile replay failed because the data is a list, not a table, and therefore the qSQL select invocation failed. QSQL and table join functions (`lj`, `aj` etc.) work only on tables, not lists. Bear this in mind when designing the `upd` function for logfile replay purposes.
-
-The real-time database (`r.q`) replays the tickerplant logfile upon startup. Specifically, after it has connected/subscribed to the tickerplant, but before it has received any intraday updates.
-
-For more information on tickerplant logfile replay, see [“Data Recovery for kdb+tick”](../data-recovery.md) published in July 2014, written by Fionnbharr Gaston.
-
-
-### End of day
-
-At end of day (EOD), the tickerplant sends messages to all its RTEs, telling them to execute their unary end-of-day function called `.u.end`. The tickerplant supplies a date which is typically the previous day’s
-date. When customizing your RTE, define `.u.end` to achieve whatever behavior you deem appropriate at EOD. On the RDB, `.u.end` is defined as follows:
-
-```q
-/ end of day: save, clear, hdb reload
-.u.end:{t:tables`.;
-  t@:where `g=attr each t@\:`sym;
-  .Q.hdpf[`$":",.u.x 1;`:.;x;`sym];
-  @[;`sym;`g#] each t;}
-```
-
-To summarize this behavior: the RDB persists its tables to disk in date-partitioned format, sends a message to the HDB, telling it to refresh and then the RDB clears out its tables, but maintains the grouped attribute on all tables’ `sym` columns, for query performance reasons. (A more detailed explanation of the workings of `.u.end` is found below.)
-
-
-### Understanding the code in `r.q`
-
-To help you modify `r.q` to create your own custom RTE, this section explains its inner workings. This script starts out with the following:
-
-```q
-if[not "w"=first string .z.o;system "sleep 1"];
-```
-
-The above code simply checks the operating system, and if it is not Windows, the appropriate OS command is invoked to sleep for one second. This is required as the RDB will soon try to establish a connection to the TP and a non-Windows OS may need some time to register the RDB before such an interprocess communication (TCP/IP) connection can be established.
-
-The next line of code is very short and yet critical to the behavior of this subscriber:
-
-```q
-upd:insert
-```
-
-Earlier in this white paper, the roles of `upd` for both intraday updates and tickerplant logfile replay were discussed.
-
-The next section simply defines default locations for the tickerplant
-and HDB processes:
-
-```q
-/ get the ticker plant and history ports, defaults are 5010, 5012
-.u.x:.z.x,(count .z.x)_(":5010";":5012");
-```
-
-`.z.x` is a system variable which stores the custom command-line arguments, supplied to the process upon startup. For example:
-
-```q
-C:\>q trade.q foo bar -p 4000
-KDB+ 3.1 2014.07.01 Copyright (C) 1993-2014 Kx Systems
-w32/ 8()core 4095MB nperrem inspiron2 192.168.1.153 NONEXPIRE
-
-q)/display custom command line args
-q).z.x 0
-"foo"
-q).z.x 1
-"bar" 
-q)
-```
-
-
-#### `.u.end`
-
-The function `.u.end` is then defined. The definition, significance and broad behavior of this function were discussed earlier. What follows is a line-by-line breakdown of `.u.end`:
-
-```q
-t:tables`.;
-```
-
-Return a list of the names of all tables defined in the default
-namespace and assign to the local variable `t`. `t` will contain `` `trade``
-and `` `quote`` in this case.
-
-```q
-t@:where `g=attr each t@\:`sym;
-```
-
-This line obtains the subset of tables in `t` that have the grouped attribute on their `sym` column. This is done because later these tables will be emptied out and their attribute information will be lost. Therefore we store this attribute information now so the attributes can be re-applied after the clear out. As an aside, the `g` attribute of the `sym` column makes queries that filter on the `sym` column run faster.
-
-```q
-.Q.hdpf[`$":",.u.x 1;`:.;x;`sym]
-```
-
-[`.Q.hdpf`](../../ref/dotq.md#qhdpf-save-table) is a high-level function which saves all in-memory tables to disk in partitioned format, empties them out and then instructs the HDB to reload. Its arguments at runtime here will be:
-
-argument | value                 | semantics
----------|-----------------------|----------
-1        | `` `:localhost:5002`` | location of HDB
-2        | `` `:.``             | current working directory – root of on-disk partitioned database
-3        | `2014.08.23`          | input to `.u.end` as supplied by TP: the partition to write to
-4        | `` `sym``            | column on which to sort/part the tables prior to persisting
-
-```q
-@[;`sym;`g#] each t;
-```
-
-This line applies the `g` attribute to the `sym` column of each table as previously discussed.
-
-
-#### `.u.rep`
-
-This section defines an important function called `.u.rep`. This function is invoked at startup once the RDB has connected/subscribed to the TP.
-
-```q
-/ init schema and sync up from log file;cd to hdb(so client save can run)
-.u.rep:{(.[;();:;].)each x;
-  if[null first y;:()];
-  -11!y;
-  system "cd ",1_- 10_string first reverse y}
-```
-
-`.u.rep` takes two arguments. The first, `x`, is a list of two-item lists, each containing a table name (as a symbol) and an empty schema for that table. The second argument to `.u.rep`, `y`, is a single two-item list. These arguments are supplied by the TP upon subscription. Based on this RDB with `trade` and `quote` tables, the first argument (`x`) to `.u.rep` would look like:
-
-```q
-q)show x /x is the first input to .u.rep
-`quote 
-+`time`sym`mm`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`symbol$();`float$();`f loat$();`int$();`int$())
-`trade 
-+`time`sym`price`size!(`timespan$();`g#`symbol$();`float$();`int$())
-```
-
-Drilling down further:
-
-```q
-q)show each x 0 /table name/empty table combination for quote `quote
-time sym mm bid ask bsize asize
--------------------------------
-q)
-q)show each x 1 /table name/empty table combination for trade `trade
-time sym price size
--------------------
-q)
-```
-
-So each item of `x` is a pair containing a table name and a corresponding empty copy of that table. This information, as previously mentioned, was supplied by the TP. This is how the RDB knows the schemas for the tables it subscribes to.
-
-The second argument to `.u.rep` is simpler and would look like:
-
-```q
-q)y
-11995
-`:C:/OnDiskDB/sym2014.08.23
-```
-
-In other words, `y` is a pair where the last element is the TP logfile and the first element is the number of messages written to this logfile so far. This is the number of messages which the RDB will replay. Given the single-threaded nature of this process, the RDB will neither miss nor duplicate any of these messages.
-
-Now let’s consider the line-by-line behavior of `.u.rep`:
-
-```q
-(.[;();:;].)each x;
-```
-
-This line just loops over the table name/empty table pairs and initializes these tables accordingly within the current working namespace (default namespace). Upon first iteration of the projection, the argument is the pair:
-
-```q
-q)x 0
-`quote +`time`sym`mm`bid`ask`bsize`asize!(`timespan$();`g#`symbol$();`symbol$();`float$();`f loat$();`int$();`int$())
-```
-
-Given that the function `set` is essentially a projection onto [the dot
-form of Amend](../../ref/amend.md), the first line of `.u.rep` could be replaced with the following expression and yield identical behavior.
-
-```q
-(set[;].) each x;
-```
-
-The next line checks if no messages have been written to the TP logfile.
-
-```q
-if[null first y;:()];
-```
-
-If that is the case, the RDB is ready to go and the function returns (arbitrarily with an empty list). Otherwise, proceed to the next line:
-
-```q
--11!y;
-```
-
-This line simply replays an appropriate number of messages from the start of the TP logfile. At which point, based upon the definition of `upd` as `insert`, the RDB’s `trade` and `quote` tables are now populated.
-
-The last line in this function is:
-
-```q
-system "cd ",1_-10_string first reverse y
-```
-
-This changes the current working directory of the RDB to the root of the on-disk partitioned database. Therefore, when `.Q.hdpf` is invoked
-at EOD, the day’s records will be written to the correct place.
-
-
-#### Starting the RDB
-
-The following section of code appears at the end of `r.q` and kicks the RDB into life:
-
-```q
-/ connect to ticker plant for (schema;(logcount;log))
-.u.rep .(hopen `$":",.u.x 0)"(.u.sub[`;`];`.u `i`L)"
-```
-
-This is a rather involved line of q code and its inner workings are broken down as follows:
-
-```q
-hopen `$":",.u.x 0
-```
-
-Reading this from the right, we obtain the location of the tickerplant process which is then passed into the [`hopen`](../../ref/hopen.md) function, which returns a handle (connection) to the tickerplant. Through this handle, we then send a synchronous message to the tickerplant, telling it to do two things:
-
-``.u.sub[`;`]``
-
-: Subscribe to all tables and to all symbols. 
-
-: `.u.sub` is a binary function defined on the tickerplant. If passed null symbols (as is the case here), it will return a list of pairs (table name/empty table), consistent with the first argument to `.u.rep` as discussed previously. At this point the RDB is subscribed to all tables and to all symbols on the tickerplant and will therefore receive all intraday updates from the TP. The exact inner workings of `.u.sub` as defined on the TP are beyond the scope of this white paper.
-
-``.u `i`L``
-
-: Obtain name/location of TP logfile and number of messages written by TP to said logfile.
-
-: The output of this is the list passed as second argument to `.u.rep` as previously discussed.
-
-## Examples
+How to create a RTE will be shown using an example.
 
 ### Environment setup
 
-Download kdb+tick.
+The following environment can be used to run all examples on this page.
 
-:fontawesome-brands-github:
-[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
+Download kdb+tick from :fontawesome-brands-github:[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
 
 Create a schema file with the following two tables (`quote` and `trade`) in `tick/sym.q`
 ```q
@@ -468,7 +36,7 @@ trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
 ```
 
 1. Start a tickerplant
-```q 
+```q
 q tick.q sym . -p 5000
 ```
 Refer to [tick.q usage](../../architecture/tickq.md#usage) for more details. Note that a log file will be created in the current directory based on the above command, which will log every message received.
@@ -495,7 +63,7 @@ getask:{[s] prices[s]+getmovement[s]} /generate ask price
 /trigger timer every 100ms
 \t 100
 ```
-Run as 
+Run as
 ```q
 q feed.q
 ```
@@ -503,6 +71,288 @@ Points to note from the above:
     1.  The data sent to the tickerplant is in columnar (column-oriented) list format. In other words, the tickerplant expects data as lists, not tables. This point will be relevant later when the RDB wishes to replay the tickerplant logfile.
     1.  The function triggered on the tickerplant upon receipt of these updates is [`.u.upd`](../../architecture/tickq.md#uupd).
     1.  If you wish to increase the frequency of updates sent to the tickerplant for testing purposes, simply change the timer value at the end of this script accordingly.
+
+
+### Weighted average (VWAP) example
+
+This section describes how to build an RTE which calculates information used for VWAP (volume-weighted average price) on a per-symbol basis in real-time.
+Clients can then retrieve the current VWAP value for one or many symbols.
+Upon an end-of-day event it will clear current records, ready to recalculate on the next trading day.
+
+A VWAP can be defined as:
+
+$$ VWAP = \frac{\sum_{i} (tradevolume_i)(tradeprice_i)}{\sum_{i} (trade price_i)}$$
+
+The code to create this example (`vwap.q`) is as follows: 
+```q
+/ connect to TP
+h:hopen `::5000;
+
+/ syms to subscribe to
+s:`MSFT.O`IBM.N
+/ table to hold info used in vwap calc
+ttrades:([sym:`$()]price:`float$();size:`int$())
+
+/ action for real-time data
+upd:{[x;y]ttrades+:select size wsum price,sum size by sym from y;}
+
+/ subscribe to trade table for syms
+h(".u.sub";`trade;s);
+
+/ clear table on end of day
+.u.end:{[x]
+  0N!"End of Day ",string x;
+  delete from `ttrades;}
+
+/ client function to retrieve vwap
+/ e.g. getVWAP[`IBM.N`MSFT.O]
+getVWAP:{select sym,vwap:price%size from ttrades where sym in x}
+```
+
+The RTE can be run as `q vwap.q -p 5041` after starting a tickerplant, but prior to starting the feedhandler.
+
+#### Subscribing to a TP
+
+Connect to the TP using [IPC](../../basics/ipc.md#connecting) (via the [hopen](../../ref/hopen.md) command). 
+For example the following connects to another process on the current host using port 5000:
+```q
+h:hopen `::5000;
+```
+
+Once connected, a subcription to the required data is created by calling the [`.u.sub`](../../architecture/uq.md#usub) 
+function in the TP using a [synchronous request](../../basics/ipc.md#sync-request-get).
+
+A RTE should subscribe to the least amount of data required to perform there task. 
+To aid this, the default mechanism allows filtering both by table name and by symbol names being
+updated within the table.
+
+The VWAP example subscribes to any updates occuring within the trade table for the symbols MSFT.O and IBM.N:
+
+```q
+h(".u.sub";`trade;`MSFT.O`IBM.N);
+```
+
+#### Intraday updates
+
+In order to receive real-time updates for the subscriptions made, the RTE must implement the upd function.
+This should contain the logic required for your choosen analytic or alert.
+```q
+upd[x;y]
+```
+Where
+
+* x is a symbol atom of the name of the table being updated; e.g. `` `trade``, `` `quote``, etc.
+* y is table data to add to table x, which can contain one or more rows. The schema used for the table will be the one defined in the TP schema file.
+
+An example of data passed to `upd` in the `y` parameter for the example `trade` schema :
+```q
+time                 sym    mm bid      ask      bsize asize
+------------------------------------------------------------
+0D11:57:53.538026000 MSFT.O BB 45.16191 45.16555 349   902
+0D11:57:53.538026000 IBM.N  DD 178.4829 178.5018 31    673
+```
+
+`y` can one or more rows depending on the configuration of the feed handler and TP and the filtering enabled
+within the subscription. When batching enabled in either feed handler or TP, more than one row can be present.
+
+The VWAP example has the following custom logic
+```q
+upd:{[x;y]ttrades+:select size wsum price,sum size by sym from y;}
+```
+From the example above, it uses qsql to select the required data. It uses [sum](../../ref/sum.md) and [wsum](../../ref/sum.md#wsum) to perform the calculation. 
+Both the result of the calculation and `ttables` are keyed tables (dictionaries) so the `+` ([add](../../ref/add.md)) operator has upsert semantics,
+adding the result of the calculation to the running total (`ttables`) indexed by sym.
+
+The following example shows the actions of an intraday update on the `ttables` keyed table:
+
+1. contents of `ttables` prior to update
+```q
+sym   | price    size
+------| -------------
+MSFT.O| 91572.43 2026
+IBM.N | 269151.2 1408
+```
+2. TP calls upd with `x` set to `trade and `y` set to:
+```q
+time                 sym   price    size
+----------------------------------------
+0D13:03:22.799016000 IBM.N 191.1547 684
+```
+3. result of the custom calculation performed on data passed to upd 
+```q
+sym  | price    size
+-----| -------------
+IBM.N| 130749.8 684
+```
+4. contents of `ttables` after update 
+```q
+sym   | price    size
+------| -------------
+MSFT.O| 91572.43 2026
+IBM.N | 399901   2092
+```
+
+As `upd` is defined as a binary (2-argument) function, it could alternatively be defined as a dictionary which maps table names to unary function definitions. 
+This duality works because of a fundamental and elegant feature of kdb+: [executing functions and indexing into data structures are equivalent](../../ref/apply.md).
+The following demonstrates how a `upd` function can be replaced by a mapping of table name to handling function, simulating what occurs on different updates:
+```q
+q)updquote:{[x]0N!"quote update with data ";show x;}  / function for quote table updates 
+q)updtrade:{[x]0N!"trade update with data ";show x;}  / function for trade table updates
+q)upd:`trade`quote!(updtrade;updquote)                / map table names to unique handler two tables called 'trade' and 'quote'
+q)upd[`quote;([]a:1 2 3;b:4 5 6)];                    / update for quote table calls updquote
+"quote update with data "
+a b
+---
+1 4
+2 5
+3 6
+q)upd[`trade;([]a:1 2 3;b:4 5 6)];                    / update for trade table calls updtrade
+"trade update with data "
+a b
+---
+1 4
+2 5
+3 6
+q)upd[`not_handled;([]a:1 2 3;b:4 5 6)];             / update with no corresponding handler
+```
+
+The RTE could also be integrated with other processes using [IPC](../../basics/ipc.md) to call a function when specific conditions occur (i.e. an alert).
+
+#### End of day
+
+At end of day (EOD), the TP sends messages to all subscribed clients, telling them to execute their unary end-of-day function called .u.end.
+```q
+.u.end[x]
+```
+Where x is the date that has ended, as a date atom type.
+
+A RTE will execute its `.u.end` function once at end-of-day, regardless of whether it has one or many subscriptions.
+
+In the VWAP example, it logs that the end-of-day has occured and clears the table holding the current calculation.
+
+#### Client interaction
+
+The RTE can provide a client API consisting of one or more functions that can be used by a client to retrieve the results of our calculation. Rather than have each client request a specific calculation is performed. It also hides the data structures used to record data, leaving them self contained for future improvements.
+
+The VWAP example defines a `getVWAP` function that can take a list of symbols. A RTE client can use [IPC](../../basics/ipc.md) to retrieve the current VWAP calculation for one or many symbols, for example
+```q
+q)h:hopen `::5041
+q)h("getVWAP";`MSFT.O)
+sym    vwap
+---------------
+MSFT.O 45.16362
+q)h("getVWAP";`MSFT.O`IBM.N)
+sym    vwap
+---------------
+MSFT.O 45.16362
+IBM.N  191.0711
+```
+Without an RTE, this calculation would have to be performed over the entire days dataset contained within the RDB.
+
+### Weighted average (VWAP) example with recovery
+
+If a situation occurs were an RTE is restarted and it requires all of todays relevant data to regain the current value, it can replay the data from the TP log.
+
+To demonstrate this, the previous [example](#weighted-average-vwap-example) (`vwap.q`) has been altered to include the ability to replay from a TP log on startup:
+
+```q
+/ connect to TP
+h:hopen `::5000;
+
+/ syms to subscribe to
+s:`MSFT.O`IBM.N
+/ table to hold info used in vwap calc
+ttrades:([sym:`$()]price:`float$();size:`int$())
+
+/ action for real-time data
+upd_rt:{[x;y]ttrades+:select size wsum price,sum size by sym from y}
+
+/ action for data received from log file
+upd_replay:{[x;y]if[x~`trade;upd_rt[`trade; select from (trade upsert flip y) where sym in s]];}
+
+/ clear table on end of day
+.u.end:{[x]
+  0N!"End of Day ",string x;
+  delete from `ttrades;}
+
+/ replay log file
+replay:{[x]
+  logf:x[1];
+  if[null first logf;:()];      / return if logging not enabled on TP
+  .[set;x[0]];                  / create empty table for data being sent
+  upd::upd_replay;
+  0N!"Replaying ",(string logf[0])," messages from log ",string logf[1];
+  -11!logf;
+  0N!"Replay done";}
+
+/ subscribe and initialize
+replay h"(.u.sub[`trade;",(.Q.s1 s),"];.u `i`L)";
+upd:upd_rt;
+
+/ client function to retrieve vwap
+/ e.g. getVWAP[`IBM.N`MSFT.O]
+getVWAP:{select sym,vwap:price%size from ttrades where sym in x}
+```
+
+The code required to perform a replay will now be discussed using this example.
+
+#### Retrieving TP Log information
+
+The log information in the example is retreived at the same time as the subscription is made. 
+It is important to register all subscriptions at the same time as retrieving log information, and immediately process the log before processing any updates.
+The ensures that no messages update prior to processing the log, nor are sent between processing the log and regaining real-time updates.
+
+In the example provided, several steps are performed in one line of code:
+```q
+replay h"(.u.sub[`trade;",(.Q.s1 s),"];.u `i`L)";
+```
+We can break this down into the following steps
+
+1. Retrieve [log information](../../architecture/tickq.md#variables) stored in TP to get the current number of messages and the log file location and perform the subscription. The following shows an example of requesting log information without making a subscription:
+```q
+q)h:hopen `::5000;
+q)h".u `i`L"
+942
+`:./sym2024.08.30
+```
+2. Register subscription for real-time data. The following shows an example of a TP client making a subscription for two symbols within the trade table and also requesting the log information shown in the previous step. The return value is a two item list, with the first item being the the schema information (returned by [`.u.sub`](../../architecture/uq.md#usub)) and the second element being the log file information.
+```q
+q)h"(.u.sub[`trade;`MSFT.O`IBM.N];.u `i`L)"
+`trade +`time`sym`price`size!(`timespan$();`g#`symbol$();`float$();`int$())
+942   `:./sym2024.08.30
+```
+3. Call a function to perform the replay of data from the TP log file given the information returned from the previous steps. In the example we call our custom `replay` function with both the schema information and log information.
+```q
+replay h"(.u.sub[`trade;",(.Q.s1 s),"];.u `i`L)";
+```
+
+#### TP Log replay
+
+Replaying a log file is detailed [here](../../kb/logging.md#replaying-log-files).
+
+The data replayed has two potential differences from the live data that should be considered:
+
+1. The TP log file contains all of todays data. The RTE real-time subscription may have been subscribing to a subset of the data. For example, the RTE subscription could be filtering for particular tables or symbols. Therefore the replay action must include the logic to filter for required data.
+2. Each message passed to `upd` structures its data using a list of vectors for each column. Real-time data uses a table structure.
+
+In order to handle the difference of data between replay and live data, the `upd` function is changed before/after replay. The VWAP example has
+```q
+upd::upd_replay; / set upd to upd_replay function which will then be called for each message in the log file
+...
+-11!logf;        / replay log file
+...
+upd:upd_rt;      / set upd to upd_rt function which will be used for all real-time messages
+```
+
+As can be seen from the VWAP example, each message stored in the log file executes `upd` (which has been set to `upd_replay`). 
+The VWAP example is only interested in updates to the `trade` table for specific symbols, so  `upd_replay` filters the data for messages matching that criteria. The data is then tranformed into the format that would normally call `upd_rt` so the logic to calculate VWAP is reused by passing the data to that function.
+
+## Further reading
+
+The default RDB ([r.q](../../architecture/rq.md)) is a form of RTE, so it can be useful to understand how it works and read the related source code. 
+A number of [examples](#further-examples) are also provided for study.
+
+## Further examples
 
 ### `c.q` collection
 
@@ -738,187 +588,6 @@ sym   | time                                                                    
 ------| -------------------------------------------------------------------------------------------------------------------------------------
 MSFT.O| 0D11:06:24.370938000 0D11:06:25.374533000 0D11:06:26.373827000 0D11:06:27.376053000 45.14767 45.14413 45.1419 45.1402 360 585 869 694
 ```
-
-
-### Real-time VWAP subscriber
-
-#### Overview
-
-This section describes how to build an RTE which enriches trade with VWAP (volume-weighted average price) information on a per-symbol basis.
-If a situation occurs were this RTE is restarted, it will recalculate VWAP from the TP log file. Upon an end-of-day event it will clear current records.
-
-A VWAP can be defined as:
-
-$$ VWAP = \frac{\sum_{i} (tradevolume_i)(tradeprice_i)}{\sum_{i} (trade price_i)}$$
-
-Consider the following sample trade table:
-
-```q
-q)trade /examine the first few trade records 
-time                 sym    price     size 
-------------------------------------------
-0D21:46:24.977505000 GS.N   178.56665 28
-0D21:46:24.977505000 IBM.N  191.22174 66
-0D21:46:25.977501000 MSFT.O 45.106284 584
-0D21:46:26.977055000 GS.N   178.563   563
-0D21:46:26.977055000 GS.N   178.57841 624
-0D21:46:27.977626000 GS.N   178.58783 995
-0D21:46:27.977626000 MSFT.O 45.110017 225
-..
-```
-
-An additional column called `rvwap` (running VWAP) will be added to this table. In any given row, `rvwap` will contain the VWAP up until and including that particular trade record (for that particular symbol):
-
-```q
-time                 sym    price     size rvwap 
-----------------------------------------------------
-0D21:46:24.977505000 GS.N   178.56665 28   178.47318
-0D21:46:24.977505000 IBM.N  191.22174 66   191.17041
-0D21:46:25.977501000 MSFT.O 45.106284 584  45.147046
-0D21:46:26.977055000 GS.N   178.563   563  178.47366
-0D21:46:26.977055000 GS.N   178.57841 624  178.47428
-0D21:46:27.977626000 GS.N   178.58783 995  178.47533
-0D21:46:27.977626000 MSFT.O 45.110017 225  45.146982
-..
-```
-
-This `rvwap` column will need to be maintained as new trade records arrive from the TP. In order to achieve this, two additional columns need to be maintained per row – `v` and `s`:
-
-column | content
--------|--------
-`v`    | cumulative value of all trades for that symbol (define value as the trade price multiplied by the trade size)
-`s`    | cumulative size (quantity) of all trades for that symbol
-
-`v` and `s` are the numerator and denominator respectively in the formula given at the start of this section. `rvwap` can then be simply calculated as `v` divided by `s`. The `trade` table would then become:
-
-```q
-time                 sym    price     size v         s      rvwap 
---------------------------------------------------------------------- 
-0D21:46:24.977505000 GS.N   178.56665 28   18687391  104707 178.47318 
-0D21:46:24.977505000 IBM.N  191.22174 66   20497292  107220 191.17041 
-0D21:46:25.977501000 MSFT.O 45.106284 584  5865278.4 129915 45.147046 
-0D21:46:26.977055000 GS.N   178.563   563  18787922  105270 178.47366 
-0D21:46:26.977055000 GS.N   178.57841 624  18899355  105894 178.47428 
-0D21:46:27.977626000 GS.N   178.58783 995  19077050  106889 178.47533 
-0D21:46:27.977626000 MSFT.O 45.110017 225  5875428.2 130140 45.146982 
-..
-```
-
-A simple keyed table called `vwap` is also maintained. This table simply maps a symbol to its current VWAP. Based on the above sample data, `vwap` would look like:
-
-```q
-sym    | rvwap
--------| --------
-GS.N   | 178.47533
-IBM.N  | 191.17041
-MSFT.O | 45.146982
-```
-
-#### Example script
-
-Just like the previous RTE example, this solution will comprise a heavily modified version of [`r.q`](../../architecture/rq.md), written by the author and named `real_time_vwap.q`.
-
-```q
-/initialize schema function
-InitializeTrade:{[TradeInfo;logfile]
-  `trade set TradeInfo 1;
-  if[null first logfile;update v:0n,s:0Ni,rvwap:0n from `trade;:()];
-  -11!logfile;
-  update v:sums (size*price),s:sums size by sym from `trade;
-  update rvwap:v%s from `trade;
-  `vwap upsert select last rvwap by sym from trade;}
-
-/this keyed table maps a symbol to its current vwap
-vwap:([sym:`$()] rvwap:`float$())
-
-/For TP logfile replay, upd is a simple insert for trades
-upd:{if[not `trade=x;:()];`trade insert y}
-
-/
-This intraday function is triggered upon incoming updates from TP.
-Its behavior is as follows:
-1. Add s and v columns to incoming trade records
-2. Increment incoming records with the last previous s and v values
-   (on per sym basis)
-3. Add rvwap column to incoming records (rvwap is v divided by s)
-4. Insert these enriched incoming records to the trade table
-5. Update vwap table
-\
-updIntraDay:{[t;d]
-  d:update s:sums size,v:sums size*price by sym from d;
-  d:d pj select last v,last s by sym from trade;
-  d:update rvwap:v%s from d;
-  `trade insert d;
-  `vwap upsert select last rvwap by sym from trade; }
-
-/end of day function - triggered by tickerplant at EOD
-/Empty tables
-.u.end:{{delete from x}each tables `. } /clear out trade and vwap tables
-
-args:.Q.opt .z.x
-args:`$args
-h:hopen hsym first args`tp /connect to tickerplant
-InitializeTrade . h "(.u.sub[`trade;",(.Q.s1 args`syms),"];`.u `i`L)"
-upd:updIntraDay /switch upd to intraday update mode
-```
-
-This process should be started off as follows:
-
-```bash
-q tick/real_time_vwap.q -tp localhost:5000 -syms MSFT.O IBM.N GS.N -p 5004
-```
-
-This process will subscribe to only the `trade` table for symbols `MSFT.O`, `IBM.N` and `GS.N` and will listen on port 5004. The structure and design philosophy behind `real_time_vwap.q` is very similar to `RealTimeTradeWithAsofQuotes.q`.
-
-The first section of the script simply parses the command-line
-arguments and uses these to update some default values – identical
-code to the start of `RealTimeTradeWithAsofQuotes.q`.
-
-
-#### Initialization
-
-`InitializeTrade` defines the behavior of this RTE after connecting to the TP and subscribing to the `trade` table. 
-This RTE will replay the TP’s logfile, much like the RDB. The `InitializeTrade` function replaces [`.u.rep`](../../architecture/rq.md#urep).
-
-This binary function `InitializeTrade` will be executed upon startup. It is passed two arguments, just like `.u.rep`:
-
-argument    | semantics
-------------|----------
-`TradeInfo` | pair: table name (`` `trade``); empty table definition
-`Logfile`   | pair: TP logfile record count and location
-
-The `vwap` table is then simply defined as:
-
-```q
-/this keyed table maps a symbol to its current vwap
-vwap:([sym:`$()] rvwap:`float$())
-```
-
-When `InitializeTrade` is executed, the TP logfile will be replayed and its contents executed using [`-11!`](../../basics/internal.md#-11-streaming-execute). 
-
-Replaying will cause the `upd` function to be executed, which in this script is defined as insert `trade` records into the `trade` table and ignoring `quote` records.
-
-#### Intraday update behavior
-
-`updIntraDay` is called whenever a trade update comes in, the VWAP for each affected symbol is updated and the new trades are enriched with this information.
-
-#### End of day
-
-At end of day, the tickerplant sends a message to all RTEs telling them to invoke their EOD function (`.u.end`). The function will clear tables used on this RTE.
-
-#### Subscribe to TP
-
-The RTE connects to the TP and subscribes to the `trade` table for user specified symbols. 
-The RTE also requests TP logfile information (for replay purposes):
-
-```q
-h:hopen args`tp /connect to tickerplant
-InitializeTrade . h "(.u.sub[`trade;",(.Q.s1 args`syms),"];`.u `i`L)" 
-upd:updIntraDay /switch upd to intraday update mode
-```
-
-The message returned from the TP is passed to the function `InitializeTrade`. 
-Once the RTE has finished initializing or replaying the TP logfile, the definition of `upd` is then switched to `updIntraDay` so the RTE can deal with intraday updates appropriately.
 
 ### Real-time trade with as-of quotes
 
