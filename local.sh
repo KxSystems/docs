@@ -23,7 +23,6 @@ echo '### Deriving temporary config (converting mkdocs.yml to local.yml)'
 rm -f local.yml
 cat mkdocs.yml | sed \
 	-e 's#^INHERIT.*##' \
-	-e 's#^site_url.*$#site_url: ""#' \
 	-e 's#favicon: https://code.kx.com/#favicon: local/#' \
 	-e 's#logo: https://code.kx.com/#logo: local/#' \
 	-e 's#- https://code.kx.com/#- local/#' \
