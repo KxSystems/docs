@@ -311,9 +311,7 @@ determining these requirements include the peak message rate, expected
 daily data volumes, schema width, query load and complexity and many
 others.
 
-If a real-time database does go down, then it is usual practice to
-trigger a failover to the secondary RDB, such that the gateway will
-only route queries to the secondary RDB while the primary is offline
+If a real-time database does go down, a failover to the secondary RDB is generally triggered. The gateway then only routes queries to the secondary RDB while the primary is offline.
 or recovering. Failover can be signaled via [`.z.pc`](../../ref/dotz.md#zpc-close). Usually, the
 handles to the secondary RDB are opened prior to any failover occurring, allowing you to point the query to the secondary RDB handle in place of the primary RDB handle. In larger
 applications, an application delivery controller (ADC) is often used
