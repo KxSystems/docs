@@ -109,7 +109,7 @@ Actions performed:
 
 ### .u.rep
 
-Initialise RDB by creating tables, which is then [populated with any existing tickerplant log](#recovery). Will set the HDB directory to use at end-of-day.
+Initialise RDB by creating tables, which is then [populated with any existing tickerplant log](#recovery). Sets the HDB directory to be used at end-of-day.
 
 ```q
 .u.rep[x;y]
