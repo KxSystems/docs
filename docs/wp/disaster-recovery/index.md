@@ -473,7 +473,7 @@ processes instead of the entire system. In this scenario, if the
 tickerplant dies, this could trigger a failover of the subscriber to
 the secondary process. The subscriber isn’t lost and could reconnect
 to the secondary TP, allowing seamless transition. Clients that have
-subscribed to the tickerplant will receive a closed connection
+subscribed to the tickerplant receive a closed connection
 callback to [`.z.pc`](../../ref/dotz.md#zpc-close). They could then use this to seamlessly switch over
 to the secondary. Depending on the time taken to switch and connect to
 the secondary tickerplant, there may be some data loss. However, the
