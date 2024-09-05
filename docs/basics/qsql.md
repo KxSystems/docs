@@ -297,9 +297,7 @@ b  20 2.2
 q)select from t where (c2>15) and c3<3.0
 c1 c2 c3
 ---------
-a  10 1.1
 b  20 2.2
-c  30 3.3
 ```
 
 The examples above return the same result but have different performance characteristics.
