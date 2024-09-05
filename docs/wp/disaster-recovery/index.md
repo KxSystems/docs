@@ -315,9 +315,7 @@ If a real-time database does go down, then it is usual practice to
 trigger a failover to the secondary RDB, such that the gateway will
 only route queries to the secondary RDB while the primary is offline
 or recovering. Failover can be signaled via [`.z.pc`](../../ref/dotz.md#zpc-close). Usually, the
-handles to the secondary RDB are opened prior to any failover
-occurring, and it is simply a case of pointing the query to the
-secondary RDB handle, in place of the primary RDB handle. In larger
+handles to the secondary RDB are opened prior to any failover occurring, allowing you to point the query to the secondary RDB handle in place of the primary RDB handle. In larger
 applications, an application delivery controller (ADC) is often used
 to control the routing of queries between the application and the
 client. It is up to the system architect to decide if the secondary
