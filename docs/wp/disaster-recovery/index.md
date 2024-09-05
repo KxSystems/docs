@@ -156,7 +156,7 @@ and used to construct or amend a database. The basic steps are:
 
 Note that as part of setting a splayed table, the column `.d` file is
 automatically written by kdb+. After these steps, the database can now
-be loaded into q via a simple [`\l` command](../../basics/syscmds.md#l-load-file-or-directory).
+be loaded into q using a simple [`\l` command](../../basics/syscmds.md#l-load-file-or-directory).
 
 These step-by-step methods can become useful for fixing issues that
 may occur on specific files or date partitions. For example, if we
