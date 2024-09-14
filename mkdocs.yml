@@ -411,7 +411,6 @@ nav:
       - Exposed infrastructure: basics/exposed-infrastructure.md
       - File system: basics/files.md
       - Function notation: basics/function-notation.md
-      - Functional qSQL: basics/funsql.md
       - Glossary: basics/glossary.md
       - Internal functions: basics/internal.md
       - Joins: basics/joins.md
@@ -421,7 +420,9 @@ nav:
       - Namespaces: basics/namespaces.md
       - Parse trees: basics/parsetrees.md
       - Parse trees, functional SQL: wp/parse-trees.md
-      - QSQL queries: basics/qsql.md
+      - qSQL:
+        - qSQL queries: basics/qsql.md
+        - Functional qSQL: basics/funsql.md
       - Regular Expressions: basics/regex.md
       - Syntax: basics/syntax.md
       - System commands: basics/syscmds.md
