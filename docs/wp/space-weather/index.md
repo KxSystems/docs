@@ -579,14 +579,6 @@ For 24-hour prediction, both accuracy and TSS results increased by an average of
 
 **Deanna Morgan** joined First Derivatives in June 2018 as a Data Scientist in the Capital Markets Training Program.
 
-Other papers by Deanna Morgan
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-regular-map: [Sobol’ option pricing in q](../option-pricing/index.md){: .publications}
-</ul>
-
-
 ## References and data sources
 
 [1] Canadian High Arctic Ionospheric Network: [Data Download](http://chain.physics.unb.ca/chain/pages/data_download), accessed 30 October 2018.

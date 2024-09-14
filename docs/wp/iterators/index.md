@@ -1029,22 +1029,9 @@ All tests were run using kdb+ 3.6 (2018.10.23).
 
 **Conor Slattery** is a financial engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
 
-An earlier version of this paper by Slattery was published in 2013 as [“Efficient use of adverbs”](/download/wp/efficient_use_of_adverbs.pdf).
-
 ![Stephen Taylor](../../img/faces/stephentaylor.png)
 {: .small-face}
 
 **Stephen Taylor** FRSA has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
-<br>
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;
-[:fontawesome-brands-twitter:](https://twitter.com/sjt5jt)
 
-Other papers by Stephen Taylor
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-regular-map: [Parse trees and functional forms](../parse-trees.md)
--   :fontawesome-solid-globe: [Pair programming with the users](http://archive.vector.org.uk/art10009900)
--   :fontawesome-solid-globe: [Three principles of coding clarity](http://archive.vector.org.uk/art10009750)
-</ul>
 

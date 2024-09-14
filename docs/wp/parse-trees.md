@@ -647,43 +647,15 @@ To further help those learning how to construct functional statements, and also 
 
 All tests were run using kdb+ version 3.2 (2015.01.14).
 
-:fontawesome-solid-print:
-[An earlier version of this paper](/download/wp/parse_trees_and_functional_forms.pdf)
-by Peter Storeng
-
 
 ## Authors
 
 **Peter Storeng** is a mathematician and software developer who has been using kdb+ since&nbsp;2012.
 
-Other papers by Peter Storeng
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-solid-file-pdf: [Implementing Marked Nulls in PostgreSQL](https://project-archive.inf.ed.ac.uk/msc/20161877/msc_proj.pdf)
-</ul>
-
-&nbsp;
-{: style="clear: both"}
-
-
 ![Stephen Taylor](../img/faces/stephentaylor.png)
 {: .small-face}
 
 **Stephen Taylor** FRSA has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
-&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;
-[:fontawesome-brands-twitter:](https://twitter.com/sjt5jt)
-
-Other papers by Stephen Taylor
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-regular-map: [Iterators](iterators/index.md)
--   :fontawesome-solid-globe: [Pair programming with the users](http://archive.vector.org.uk/art10009900)
--   :fontawesome-solid-globe: [Three principles of coding clarity](http://archive.vector.org.uk/art10009750)
-</ul>
-
 
 ## Appendix
 

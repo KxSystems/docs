@@ -659,13 +659,4 @@ by kdb+ can be found under _Featured Resources_ at
 &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/samantha-gallagher-kdb) 
 
-Other papers by Samantha Gallagher
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-solid-globe: [kdb+ and Microsoft Azure](https://blog.neueda.com/kdb/kdb-and-microsoft-azure/)
--   :fontawesome-solid-globe: [Free byte-sized kdb+ training](https://blog.neueda.com/kdb/free-byte-sized-kdb-training/)
--   :fontawesome-solid-globe: [We DARE you to learn about kdb+ encryption](https://blog.neueda.com/kdb/we-dare-you-to-learn-about-kdb-encryption/)
-</ul>
-
 

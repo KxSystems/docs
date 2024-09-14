@@ -1009,13 +1009,6 @@ He has worked on real-time Best Execution projects for a major multinational
 banking institution, and a _Kx for Surveillance_ implementation 
 at a leading options and futures exchange.
 
-Other papers by Jeremy Lucid
-{: .publications}
-
--   :fontawesome-regular-map: [C API for kdb+](../capi/index.md){: .publications}
--   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md){: .publications}
-
-
 ## Appendix
 
 Qbitcoind is is a q library found on
