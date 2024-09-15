@@ -651,5 +651,4 @@ Tests performed using kdb+ version 3.1 (2014.02.08)
 
 ## Author
 
-**Colm McCarthy** is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes. &nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/colm-mccarthy-11a60864/)
+**Colm McCarthy** is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes.

@@ -600,7 +600,5 @@ The framework outlined in this paper is a simplified version of a framework that
 {: .small-face}
 
 **Enda Gildea** is a senior kdb+ consultant for KX who has implemented several eFX post-trade analytics and cross-asset surveillance solutions in Singapore and Sydney.
-<br>
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/endagildea/) 
 
 

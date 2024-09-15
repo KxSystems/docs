@@ -906,10 +906,5 @@ _KX POC Blog Series_:
 
 **Rian Ó Cuinneagáin** is a manager at KX.
 Rian is currently based in Dublin working on industrial applications of kdb+.
-<br>
-&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/rocuinneagain/)
-&nbsp;
-[:fontawesome-brands-twitter:](https://twitter.com/rianoc)
 
 

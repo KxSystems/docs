@@ -1238,8 +1238,7 @@ The best results from the models above were obtained by continuously adjusting t
 ![Diane O’Donoghue](../../img/faces/dianeodonoghue.jpg)
 {: .small-face}
 
-**Diane O’Donoghue** joined First Derivative in 2018 as a data scientist in the Capital Markets Training Program and is currently on the Machine Learning team based in London. Within the team, Diane has been involved with expanding the Machine Learning Toolkit and the automated machine-learning platform.&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/diane-o-donoghue-699230144/) 
+**Diane O’Donoghue** joined First Derivative in 2018 as a data scientist in the Capital Markets Training Program and is currently on the Machine Learning team based in London. Within the team, Diane has been involved with expanding the Machine Learning Toolkit and the automated machine-learning platform.
 
 
 ## Code

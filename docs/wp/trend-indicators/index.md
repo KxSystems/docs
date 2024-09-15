@@ -589,6 +589,3 @@ The combination of this library of functions and KX Analyst provides the user fa
 {: .small-face}
 
 **James Galligan** is a kdb+ consultant who has designed and developed data-capture and data-analytics platforms for trading and analytics across multiple asset classes in multiple leading financial institutions. 
-&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/james-galligan-50629997/) &nbsp;
-[:fontawesome-brands-github:](https://github.com/jgalligan1993/)

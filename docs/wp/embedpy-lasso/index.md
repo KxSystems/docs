@@ -656,7 +656,5 @@ by kdb+ can be found under _Featured Resources_ at
 {: .small-face}
 
 **Samantha (Gallagher) Devlin** has worked on implementing kdb+ solutions for financial institutions globally. 
-&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/samantha-gallagher-kdb) 
 
 
