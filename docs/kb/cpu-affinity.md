@@ -1,6 +1,6 @@
 ---
-title: CPU affinity | Knowledge Base | kdb+ and q documentation
-description: kdb+ can be constrained to run on specific cores through the setting of CPU affinity. Typically, you can set the CPU affinity for the shell you are in, and then processes started within that shell will inherit the affinity.
+title: CPU affinity – Knowledge Base – kdb+ and q documentation
+description: Kdb+ can be constrained to run on specific cores through the setting of CPU affinity. Typically, you can set the CPU affinity for the shell you are in, and then processes started within that shell will inherit the affinity.
 keywords: affinity, cpu, kdb+, kernel, linux, numa, q, solaris, unix, windows, zone_reclaim_mode
 ---
 # CPU affinity
@@ -8,37 +8,84 @@ keywords: affinity, cpu, kdb+, kernel, linux, numa, q, solaris, unix, windows, z
 
 
 
-kdb+ can be constrained to run on specific cores through the setting of CPU affinity.
+Kdb+ can be constrained to run on specific cores through the setting of CPU affinity.
 
 Typically, you can set the CPU affinity for the shell you are in, and then processes started within that shell will inherit the affinity.
 
 :fontawesome-regular-hand-point-right: 
-[`.Q.w`](../ref/dotq.md#w-memory-stats) (memory stats)  
+[`.Q.w`](../ref/dotq.md#qw-memory-stats) (memory stats)  
 Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace), 
 [System command `\w`](../basics/syscmds.md#w-workspace)
 
 
-## :fontawesome-brands-linux: Linux
+## Linux
 
-Use the `taskset` command to limit to a certain set of cores, e.g.
+:fontawesome-regular-hand-point-right: 
+[Non-Uniform Access Memory (NUMA)](linux-production.md#non-uniform-access-memory-numa-hardware)
 
-```bash
-taskset -c 0-2,4 q
-```
 
-will run q on cores 0, 1, 2 and 4. Or
+### Detecting NUMA
 
-```bash
-taskset -c 0-2,4 bash
-```
-
-and then all processes started from within that new shell will automatically be restricted to those cores.
-
-You can also use numactl -S to specify the cores, perhaps combined with -l to always allocate on the current node or other policies discussed in the [linux production notes](linux-production.md#non-uniform-access-memory-numa-hardware):
+The following commands will show if NUMA is active.
 
 ```bash
-numactl --interleave=all --physcpubind=0,1,2 q
+$ grep NUMA=y /boot/config-`uname -r`
+CONFIG_NUMA=y
+CONFIG_AMD_NUMA=y
+CONFIG_X86_64_ACPI_NUMA=y
+CONFIG_ACPI_NUMA=y
 ```
+
+Or test for the presence of NUMA maps.
+
+```bash
+$ find /proc -name numa_maps
+/proc/12108/numa_maps
+/proc/12109/task/12109/numa_maps
+/proc/12109/numa_maps
+...
+```
+
+
+### Q and NUMA
+
+Until Linux kernels 3.x, q and NUMA did not work well together. 
+
+When activating NUMA, substitute parameter settings according to the [recommendations for different Linux kernels](linux-production.md#non-uniform-access-memory-numa-hardware).
+
+
+### Activating NUMA
+
+When NUMA is 
+
+-   **not active**, use the `taskset` command, e.g.
+
+	```bash
+	taskset -c 0,1,2 q
+	```
+
+	will run q on cores 0, 1 and 2. Or
+
+	```bash
+	taskset -c 0,1,2 bash
+	```
+
+	and then all processes started from within that new shell will automatically be restricted to those cores.
+
+-   **active**, use `numactl` instead of `taskset`
+
+	```bash
+	numactl --interleave=all --physcpubind=0,1,2 q
+	```
+
+	and set
+
+	```bash
+	echo 0 > /proc/sys/vm/zone_reclaim_mode
+	```
+
+You can change `zone_reclaim_mode` without restarting q.
+
 
 ### Other ways to limit resources
 
@@ -68,7 +115,7 @@ psrset -e 2 bash
 ```
 
 
-## :fontawesome-brands-windows: Windows
+## Windows
 
 Start `q.exe` with the OS command `start` with the `/affinity` flag set
 

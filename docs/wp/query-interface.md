@@ -24,10 +24,7 @@ Implementing this idea in full generality would rely on being able to solve a di
     The solution uses an undocumented feature of the q interpreter which allows a handler for a custom language to be defined. We will define a handler which will parse qSQL queries. It will determine which elements of a query refer to tables on other processes and execute these elements of the query remotely as appropriate. Certain internal kdb+ optimizations (in particular join optimizations) may be lost when using the implementation described in this paper.
 
 
-## Implementation
-
-
-### Background
+## Background
 
 Before describing the implementation, it is worth noting two important caveats:
 
@@ -61,9 +58,7 @@ k){.Q.ft[,\:[;y];x]} //this is the definition of lj
  (?;`q;();(,`sym)!,`sym;(,`clo)!,(last;`mid)) //second select
 ```
 
-
-
-### `.H.q`
+## `.H.q`
 
 We will use the tools discussed above to provide a simple implementation of the idea described at the outset. Our handler will scan q statements for queries to remote datasets and evaluate them as specified in the configuration.
 
@@ -163,13 +158,13 @@ All that remains is to define the key `.e` function, the point of entry for quer
 In the next section we will use the above to demonstrate seamless querying of tables from remote processes within a q session.
 
 
-## Example
+### Example
 
 It is easy to demonstrate where this idea may be useful. Consider a simple case where there is a quote table on one RDB process and a trade table on another along with a supplementary metadata.
 
 We use the following files to initialize q processes with a quote, trade and traders table, populated with some sample data:
 
-### `quote.q`
+#### `quote.q`
 
 ```q
 \p 29002
@@ -197,7 +192,7 @@ update ask:bid + count[i]?0.5 from `q
 ```
 
 
-### `trade.q`
+#### `trade.q`
 
 ```q
 \p 29001 
@@ -214,7 +209,7 @@ t:([]time:asc 100?00:00:00.000000000;
 ```
 
 
-### Gateway
+#### Gateway
 
 Then, we start up our gateway process, using the code above in section
 [`.H.q`](#hq). This opens the necessary connections to the remote instances and
@@ -343,11 +338,4 @@ All tests were run using kdb+ version 3.2 (2014.10.04).
 ## Author
 
 **Sean Keevey** is a kdb+ consultant and has developed data and analytic systems for some of the world’s largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
-
-Other papers by Sean Keevey
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-regular-map: [Dynamically shrinking big data using timeseries database kdb+](ts-shrink/index.md)
-</ul>
 

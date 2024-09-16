@@ -23,7 +23,7 @@ Sample on-disk test databases can be created using the `tq.q` script.
 :fontawesome-brands-github:
 [KxSystems/kdb-taq](https://github.com/KxSystems/kdb-taq)
 
-Code examples are intended for readers with at least a beginner-level knowledge of kdb+ and the q language. However we encourage any interested reader to contact us at [lectureseries@firstderivatives.com](mailto:lectureseries@firstderivatives.com) with questions regarding code syntax or any other aspect of the paper.
+Code examples are intended for readers with at least a beginner-level knowledge of kdb+ and the q language.
 
 <!--
 ## Multiple enumeration files

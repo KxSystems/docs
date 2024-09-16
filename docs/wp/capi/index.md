@@ -255,7 +255,7 @@ I isRemoteErr(K x) {
         fprintf(stderr, "Network error: %s\n", strerror(errno));
         return 1;
     } else if(-128 == xt) {
-        fprintf(stderr, "Error message returned : %s\\n", x-\>s); 
+        fprintf(stderr, "Error message returned : %s\n", x->s); 
         r0(x);
         return 1;
     }
@@ -1725,10 +1725,3 @@ This document covered multiple aspects of the C API interface for connecting wit
 
 **Jeremy Lucid**, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
 
-Other papers by Jeremy Lucid
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-regular-map: [Storing and exploring the Bitcoin blockchain](../blockchain/index.md)
--   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md)
-</ul>

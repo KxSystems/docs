@@ -134,13 +134,13 @@ Where
 * `y` is list of syms used to filter table data, with empty sym representing for all table data
 
 If `x` is empty symbol, client is subscribed to all known tables using `y` criteria. This is achieved by calling .u.sub for each table in [`.u.t`](#variables). 
-It then returns a list of all the return values provided by .u.sub (i.e. a list of pairs comprising of table name and table definition).
-
-An error is returned if the table does not exist.
-
 For the subscribing  client, any previous registered in the given tables are removed prior to reinstating new criteria provided i.e. calls [`.u.del`](#udel).
+Calls [`.u.add`](#uadd) to record the client subscription.
 
-Calls [`.u.add`](#uadd) to record the client subscription and passes the returned values to client.
+Returns 
+* a two item list if x is an indivial table name. First item is the table name subscribed to as a symbol. Second item is an empty table (table schema).
+* a list of two item lists as described above for each individual table, if x is an empty symbol (i.e. subscribe to all tables)
+* an error if the table does not exist.
 
 ### .u.end
 

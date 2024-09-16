@@ -1,0 +1,2 @@
+drawio.io - export as svg, 65% zoom, transparent background, embed fonts
+font is google font 'Inter'

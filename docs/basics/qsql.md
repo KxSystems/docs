@@ -5,8 +5,6 @@ keywords: exec, delete, kdb+, q, query, select, sql, update, upsert
 ---
 # QSQL query templates
 
-
-
 <div markdown="1" class="typewriter">
 [delete](../ref/delete.md)  delete rows or columns from a table
 [exec](../ref/exec.md)    return columns from a table, possibly with new columns
@@ -16,9 +14,6 @@ keywords: exec, delete, kdb+, q, query, select, sql, update, upsert
 
 The query templates of qSQL share a query syntax that varies from the [syntax of q](syntax.md) and closely resembles [conventional SQL](https://www.w3schools.com/sql/).
 For many use cases involving ordered data it is significantly more expressive.
-
-:fontawesome-brands-wikipedia-w:
-[Structured Query Language](https://en.wikipedia.org/wiki/SQL "Wikipedia")
 
 
 ## Template syntax

@@ -30,6 +30,8 @@ If known/common queries can be designed, the RDB can load additional scripts to 
 
 ### End-of-day
 
+![RDB_end-of-day](../img/rdb_end_of_day.svg)
+
 The end-of-day event is governed by the tickerplant process. The tickerplant calls the RDB [`.u.end`](#uend) function when this event occurs.
 The main end-of-day event for an RDB is to save todays data from memory to disk, clear its tables and uses IPC to instruct the HDB to be aware of a new days dataset for it to access.
 
@@ -41,6 +43,10 @@ Using IPC ([sync request](../basics/ipc.md#sync-request-get)), the RDB process c
 The function [`.u.rep`](#urep) is then used to [replay the log](../kb/logging.md#replaying-log-files), repopulating the RDB.
 
 !!! Note "The RDB should be able to access the tickerplant log from a directory on the same machine. The RDB/tickerplant can be changed to reside on different hosts but this increases the resources needed to transmit the log file contents over the network."
+
+The following diagram shows the steps taken by an RDB to recover from a TP log:
+
+![RDB_end-of-day](../img/TP_log_recovery.svg)
 
 ## Usage
 
@@ -84,12 +90,12 @@ Where
 
 ### .u.end
 
-Perform end-of-day actions of saving tables to disk, clearing tables and running reload on HDB instance to make it aware of new day of data.
+Perform [end-of-day actions](end-of-day) of saving tables to disk, clearing tables and running reload on HDB instance to make it aware of new day of data.
 
 ```q
 .u.end[x]
 ```
-Where x is the date that has ended.
+Where x is the date that has ended, as a date atom type.
 
 Actions performed:
 
@@ -103,7 +109,7 @@ Actions performed:
 
 ### .u.rep
 
-Initialise RDB by creating tables, which is then populated with any existing tickerplant log. Will set the HDB directory to use at end-of-day.
+Initialise RDB by creating tables, which is then [populated with any existing tickerplant log](#recovery). Sets the HDB directory to be used at end-of-day.
 
 ```q
 .u.rep[x;y]

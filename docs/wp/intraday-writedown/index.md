@@ -1,25 +1,26 @@
 ---
-title: Intraday writedown solutions | q and kdb+ documentation
+title: RDB Intraday writedown solutions | q and kdb+ documentation
 description: Compares two methods for dealing with insufficient RAM on a server, when a full day’s worth of data cannot be held in memory. 
 author: Colm McCarthy
 date: March 2014
-keywords: end of day, eod, hdb, intraday, kdb+, partition, performance, q, query speed, rdb, save, tick, write
+keywords: rdb, end of day, eod, hdb, intraday, kdb+, partition, performance, q, query speed, rdb, save, tick, write
 ---
-# Intraday writedown solutions
+# RDB Intraday writedown solutions
 
 by [Colm McCarthy](#author)
 {: .wp-author}
 
 
-With data volumes in the financial-services sector continuing to grow at exponential rates, kdb+ is the data-storage technology of choice for many financial institutions due to its efficiency in storing and retrieving large volumes of data. kdb+ is uniquely equipped to deal with these growing data volumes as it is extremely scalable and can deal with increasing data volumes with ease. As volumes grow the amount of data that can be kept in memory will eventually be limited by the RAM available on the server. There exist two types of solution to this problem.
+With data volumes in the financial-services sector continuing to grow at exponential rates, kdb+ is the data-storage technology of choice for many financial institutions due to its efficiency in storing and retrieving large volumes of data. kdb+ is uniquely equipped to deal with these growing data volumes as it is extremely scalable and can deal with increasing data volumes with ease. 
 
-The easiest and most obvious is the hardware solution which would involve increasing the RAM available or to scale across multiple machines, splitting the data up across servers by region, table or symbol. However, some existing users who are experiencing large data growth may be prevented from using this solution because of operational restrictions or hardware limitations.
+As volumes grow the amount of data that an RDB can keep in memory may eventually be limited by the RAM available on the server. 
 
-The second solution – the software solution – continues to use a server which has inadequate RAM to store a whole day’s data. In this solution, the reliance on RAM is reduced by periodically writing the data to disk and then purging it from memory. This intraday write to disk allows a full day’s worth of data to be contained on a single server. This is not the ideal setup for kdb+ and as such will come with some penalties attached.
+There exist two types of solution to this problem.
+
+1. The easiest and most obvious is the hardware solution which would involve increasing the RAM available or to scale across multiple machines, splitting the data up across servers by region, table or symbol.
+2. The second solution – the software solution – continues to use a server which has inadequate RAM to store a whole day’s data. In this solution, the reliance on RAM is reduced by periodically writing the data to disk and then purging it from memory. This intraday write to disk allows a full day’s worth of data to be contained on a single server. This is not the ideal setup for kdb+ and as such will come with some penalties attached.
 
 This paper discusses various software approaches to performing intraday writedowns in kdb+, which help overcome memory limitations.
-
-Tests performed using kdb+ version 3.1 2014.02.08
 
 
 ## Standard tick setup
@@ -28,12 +29,21 @@ A common kdb+ [vanilla tick setup](../../architecture/index.md), has a tickerpla
 
 The standard approach above can be limited by available RAM if daily data volumes grow too large. It is important to realize also that extra RAM is required to query the data, on top of what is required to keep it in memory. The extra amount required will vary depending on the different use cases and queries that are run on it. Consideration must also be given to other processes such as chained RDBs or HDBs which will need to share the resources on the server.
 
-One solution is to write down some of the data from the RDB to a temporary directory on disk at different points throughout the day and then delete the data from memory, thus freeing up RAM. Various methods to achieve this will be discussed. Initially, the TP is publishing data asynchronously to the RDB and calling a `upd` function equivalent to the `insert` function.
+One solution is to write down some of the data from the RDB to a temporary directory on disk at different points throughout the day and then delete the data from memory, thus freeing up RAM. Various methods to achieve this will be discussed. 
 
 
 ## `w.q`
 
-A [write-only RDB](../../kb/kdb-tick.md#write-only-rdb) script (`w.q`) can easily be modified to work with any standard kdb+ setup. The important changes begin with the callback function `upd` which no longer simply inserts data into the table.
+`w.q` is available from :fontawesome-brands-github:[simongarland/tick/w.q](https://github.com/simongarland/tick/blob/master/w.q)
+
+`w.q` is an RDB, an alternative solution from the standard [`r.q`](../../architecture/rq.md) RDB script. A [write-only RDB](../../kb/kdb-tick.md#write-only-rdb) script (`w.q`) can easily be modified to work with any standard kdb+ setup.
+
+### Handling real-time updates
+
+In a standard tick setup that uses `r.q`, the TP is publishing data asynchronously to the RDB and calling a [`upd`](../../architecture/rq.md#upd) function equivalent to the [`insert`](../../ref/insert.md) function. 
+
+The important changes in `w.q` begin with the callback function `upd` which no longer simply inserts data into the table.
+
 ```q
 append:{[t;data]
   t insert data;
@@ -41,15 +51,20 @@ append:{[t;data]
     // append enumerated buffer to disk
     .[` sv TMPSAVE,t,`;();,;.Q.en[`:.]`. t];
     // clear buffer
-    @[`.;t;0#] ] }
+    @[`.;t;0#];
+    ]}
 upd:append
 ```
 
 The new `upd` function inserts the data into the table, and then if the count has exceeded a pre-configured value – `MAXROWS` – all data in the table is enumerated and is appended to a splayed table on disk in the `TMPSAVE` temporary directory. The data is then deleted from the RDB, thus reducing the memory used by the process.
 
-At the end of the day all data has been written to disk in splayed tables, in time order. Most HDBs however are partitioned by date and a parted attribute is applied to the `sym` column, while also retaining time order within each sym. Therefore the on-disk temporary tables need to be reorganized before they can be added to the HDB as a new date partition.
+### End-of-day processing
 
-The end-of-day logic is invoked by calling `.u.end`. This generally consists of writing the RDB data to a new partition and then deleting all data from the RDB tables. In `w.q`, `.u.end` is overridden to save any remaining data in the tables to the temporary directory before purging them. The data is then sorted on disk, moved from the temporary directory to a new date partition in the main HDB directory and made available to clients by reloading the HDB.
+The end-of-day logic is invoked by the TP communicating with the RDB to call [`.u.end`](../../architecture/rq.md#uend). In the standard RDB (`r.q`), this consists of writing the RDB data to a new partition and then deleting all data from the RDB tables.
+
+At the end of the day all data has been written to disk in splayed tables, in time order. Most HDBs however are partitioned by date and a [parted attribute](../../ref/set-attribute.md#grouped-and-parted) is applied to the `sym` column, while also retaining time order within each sym. Therefore the on-disk temporary tables need to be reorganized before they can be added to the HDB as a new date partition.
+
+In `w.q`, `.u.end` is overridden to save any remaining data in the tables to the temporary directory before purging them. The data is then sorted on disk, moved from the temporary directory to a new date partition in the main HDB directory and made available to clients by reloading the HDB.
 
 ```q
 / end of day: save, clear, sort on disk, move, hdb reload
@@ -75,7 +90,7 @@ Instead of using [`xasc`](../../ref/asc.md#xasc) to sort the table, the script i
 
 -   the handle to the on-disk table
 -   the column name to part the table by, generally `sym`
--   a function to [apply an attribute](../../ref/set-attribute.md), e.g. `` `p#`` for parted
+-   a function to [apply an attribute](../../ref/set-attribute.md), e.g. [`` `p#`` for parted](../../ref/set-attribute.md#grouped-and-parted)
 
 ```q
 disksort:{[t;c;a]
@@ -97,9 +112,7 @@ The table is not reorganized if the column we are parting the table by is alread
 
 The `w.q` script has an additional option to delete the temporary data on exit to handle recovery scenarios. The default behavior is to delete the temporary data and recover from the TP log as it is difficult to locate the point in the TP log which was last committed to disk.
 
-
 ### Limitations of `w.q` 
-
 
 #### Downtime
 
@@ -638,6 +651,4 @@ Tests performed using kdb+ version 3.1 (2014.02.08)
 
 ## Author
 
-**Colm McCarthy** is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes. &nbsp;
-[:fontawesome-solid-envelope:](mailto:cmccarthy@kx.com?subject=White paper: Intraday writedowns) &nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/colm-mccarthy-11a60864/)
+**Colm McCarthy** is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes.

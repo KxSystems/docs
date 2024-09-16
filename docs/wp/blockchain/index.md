@@ -998,8 +998,6 @@ He worked on a global cross-asset _Kx for Surveillance_ implementation
 for a major international banking group before moving to one of 
 Asia’s largest sovereign-wealth funds to develop a solution for 
 best execution and transaction-cost analysis.
-&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/irwin-daniel)
 
 ![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
 {: .small-face}
@@ -1008,13 +1006,6 @@ best execution and transaction-cost analysis.
 He has worked on real-time Best Execution projects for a major multinational 
 banking institution, and a _Kx for Surveillance_ implementation 
 at a leading options and futures exchange.
-
-Other papers by Jeremy Lucid
-{: .publications}
-
--   :fontawesome-regular-map: [C API for kdb+](../capi/index.md){: .publications}
--   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md){: .publications}
-
 
 ## Appendix
 

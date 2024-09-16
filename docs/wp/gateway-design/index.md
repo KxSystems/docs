@@ -41,34 +41,32 @@ Let’s consider a basic example where a user makes a request for trade data for
 -   Gain access to data in the required services
 -   Provide best possible service and query performance
 
-As the gateway serves as the sole client interface it is the logical point for entitlement validation. Permissioning is commonly broken into two components; user level access using the `.z.pw` function, and execution access using either `.z.pg` or `.z.ps`. These functions can be customized to control access at several levels including by symbol, table, service or region.
-
-:fontawesome-regular-hand-point-right:
-Reference:
-[`.z.pg`](../../ref/dotz.md#zpg-get),
-[`.z.ps`](../../ref/dotz.md#zps-set),
-[`.z.pw`](../../ref/dotz.md#zpw-validate-user)
+As the gateway serves as the sole client interface it is the logical point for entitlement validation. Permissioning is commonly broken into two components; user level access using the [`.z.pw`](../../ref/dotz.md#zpw-validate-user) function, and execution access using either [`.z.pg`](../../ref/dotz.md#zpg-get) or [`.z.ps`](../../ref/dotz.md#zps-set). These functions can be customized to control access at several levels including by symbol, table, service or region.
 
 Any user requests that fail entitlement checks should be returned to the client with an appropriate message without proceeding any further. At this point it is worth noting that gateways are primarily used for data retrieval and not for applying updates to data.
 
 Once the user’s request has been verified, the gateway needs to retrieve the data from the real-time and historic services that store the data for the particular symbol requested. The most basic gateway would create and maintain connections to these services on startup. The gateway would then send the query to these services using a function similar to the sample outlined below, in which we make use of an access function to correctly order the constraint clause of the query.
 
 ```q
-/ stored procedure in gateway
-/ sd:start date; ed:end date; ids:list of ids or symbols
-getTradeData:{[sd;ed;ids]
-  hdb:hdbHandle(`selectFunc;`trade;sd;ed;ids);
-  rdb:rdbHandle(`selectFunc;`trade;sd;ed;ids);
-  hdb,rdb }
-
-/ access function in RDB/HDB
+/ access function in RDB and HDB
+/ tlb: table to query; sd:start date; ed:end date; ids:list of ids or symbols
 selectFunc:{[tbl;sd;ed;ids]
   $[`date in cols tbl;
   select from tbl where date within (sd;ed),sym in ids;
   [res:$[.z.D within (sd;ed); select from tbl where sym in ids;0#value tbl];
     `date xcols update date:.z.D from res]] }
-
-/ client request
+```
+```q
+/ stored procedure in gateway. 
+/ calls access function in RDB/HDB and joins results
+/ sd:start date; ed:end date; ids:list of ids or symbols
+getTradeData:{[sd;ed;ids]
+  hdb:hdbHandle(`selectFunc;`trade;sd;ed;ids);
+  rdb:rdbHandle(`selectFunc;`trade;sd;ed;ids);
+  hdb,rdb }
+```
+```q
+/ client calls stored procedure in gateway
 gatewayHandle "getTradeData[.z.D-1;.z.D;`ABC.X]"
 ```
 
@@ -134,7 +132,8 @@ requestForService:{serv]
   res:(det(sum det`counter)mod count det)`addr;
   update counter:counter+1 from `t where addr=res;
   res }
-
+```
+```q
 / gateway request
 loadBalancerHandle "requestForService[`rdb]"
 ```
@@ -166,7 +165,8 @@ addRequestToQueue{[hdl;serv]
   serviceQueue[serv]::serviceQueue[serv],hdl; }
 
 returnOfService:{[ad] update inUse:0b from `t where addr=ad; }
-
+```
+```q
 / gateway callback and requests
 receiveService:{[addr]-1”Received Service:”,string[addr]; }
 
@@ -179,7 +179,9 @@ Whilst both the pass-through and connection-manager methods can incorporate simi
 
 ## Synchronous vs asynchronous
 
-With each of the communications, outlined in Figure. 3, between the client and the gateway (1,8), gateway and load balancer (2,3), and gateway and service (4-7), we have the option of making synchronous or asynchronous requests. In addition to the standard asynchronous request type we can also make use of blocking-asynchronous requests where the client sends a request asynchronously and blocks until it receives a callback from the server. Which method is used is largely driven by the communication between the client and the gateway.
+With each of the communications, outlined in Figure. 3, between the client and the gateway (1,8), gateway and load balancer (2,3), and gateway and service (4-7), we have the option of making [synchronous](../../basics/ipc.md#sync-request-get) or [asynchronous](../../basics/ipc.md#async-message-set) requests. 
+
+In addition to the standard asynchronous request type we can also make use of blocking-asynchronous requests where the client sends a request asynchronously and blocks until it receives a callback from the server. Which method is used is largely driven by the communication between the client and the gateway.
 
 If the client makes a synchronous request to the gateway, both the subsequent requests to the load balancer and the service are required to be synchronous or blocking-asynchronous requests. In this case each gateway is only able to process a single user request at a time. As noted earlier this is an inefficient design as the gateway will largely be idle awaiting responses from the load balancer or service.
 
@@ -221,7 +223,9 @@ Incorporating failover at each level also makes it possible to create maintenanc
 
 ### Disconnections
 
-In addition to service failure which may result in a sustained outage of a particular process or server, there can also be shorter-term disconnect events caused by network problems. This can occur between any of the three connections we looked at earlier, client to gateway, gateway to load balancer and gateway to service. While client-to-gateway disconnects will require failure logic to be implemented on the client side, disconnects between the gateway and the other processes should be handled seamlessly to the client. By using the [`.z.pc`](../../ref/dotz.md#zpc-close) handler, the gateway can recognize when processes with outstanding requests disconnect before returning a result. In these scenarios the gateway can reissue the request to an equivalent process using the failover mentioned above.
+In addition to service failure which may result in a sustained outage of a particular process or server, there can also be shorter-term disconnect events caused by network problems. This can occur between any of the three connections we looked at earlier, client to gateway, gateway to load balancer and gateway to service. While client-to-gateway disconnects will require failure logic to be implemented on the client side, disconnects between the gateway and the other processes should be handled seamlessly to the client. 
+
+By using the [`.z.pc`](../../ref/dotz.md#zpc-close) handler, the gateway can recognize when processes with outstanding requests disconnect before returning a result. In these scenarios the gateway can reissue the request to an equivalent process using the failover mentioned above.
 
 
 ### Code error
@@ -237,7 +241,7 @@ This point raises the issue of client expectation and whether it may be desirabl
 
 For systems where there may be legitimate requests that take an extended period of time at the service level, compared to an average request, it would obviously not be desirable to terminate the request, particularly when it would not be possible for the gateway to terminate the request at the service level.
 
-In these cases it may be preferable to use the query timeout `-T` parameter selectively at the service level to prevent any individual requests impacting the application. In other scenarios were the quantity of requests may be too large, resulting in long queuing in the load balancer process, it can be desirable to reject the request for a service and return an error to the client. This method can provide stability where it isn’t possible for the underlying services to process the requests at the rate at which they are being made.
+In these cases it may be preferable to use the query timeout [`-T`](../../basics/cmdline.md#-t-timeout) parameter selectively at the service level to prevent any individual requests impacting the application. In other scenarios were the quantity of requests may be too large, resulting in long queuing in the load balancer process, it can be desirable to reject the request for a service and return an error to the client. This method can provide stability where it isn’t possible for the underlying services to process the requests at the rate at which they are being made.
 
 
 ## Data caching
@@ -269,7 +273,4 @@ All code included is using kdb+ 3.0 (2012.11.12).
 {: .small-face}
 
 **Michael McClintock** has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data-capture and analytics platforms across a number of different asset classes.
-&nbsp;
-[:fontawesome-solid-envelope:](mailto:mmcclintock@kx.com?subject=White paper: Gateway design) 
-&nbsp;
-[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/michael-mcclintock-93488841/)
+

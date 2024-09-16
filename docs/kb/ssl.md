@@ -74,9 +74,17 @@ Configuration of keys/certificates and checks performed is controlled by the fol
 
 !!! info "KX first"
 
-    Since V3.6, kdb+ gives preference to the `KX_` prefix for the `SSL_*` environment variables to avoid clashes with other OpenSSL based products.
+    Since V3.6, kdb+ gives preference to the **`KX_`** prefix for the `SSL_*` environment variables to avoid clashes with other OpenSSL based products.
 
-    For example, the value for `` getenv`KX_SSL_CERT_FILE`` has a higher precedence than `` getenv`SSL_CERT_FILE`` for determining config.
+    For example, the value for 
+    ```q
+    getenv `KX_SSL_CERT_FILE
+    ``` 
+    has a higher precedence than 
+    ```q
+    getenv `SSL_CERT_FILE
+    ``` 
+    for determining config.
 
 #### SSL_CERT_FILE
 
@@ -165,10 +173,9 @@ Configured TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../ba
 
 ## Certificates
 
-If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. An example script to do so follows; customize as necessary.
+If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. An example script (`makeCerts.sh`) to do so follows; customize as necessary.
 
 ```bash
-$ more makeCerts.sh
 mkdir -f $HOME/certs && cd $HOME/certs
 
 # create private key for CA (certificate authority)
@@ -197,13 +204,13 @@ Using this script the server settings can be configured as:
 ```bash
 $ export SSL_CERT_FILE=$HOME/certs/server-cert.pem
 $ export SSL_KEY_FILE=$HOME/certs/server-private-key.pem
-$ export KX_SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem 
+$ export SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem 
 ```
 with the client as:
 ```bash
 $ export SSL_CERT_FILE=$HOME/certs/client-cert.pem 
 $ export SSL_KEY_FILE=$HOME/certs/client-private-key.pem
-$ export KX_SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem
+$ export SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem
 ```
 
 :fontawesome-brands-github:

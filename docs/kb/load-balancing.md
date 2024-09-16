@@ -19,7 +19,6 @@ The arguments are the number of secondary servers, and the name of a q script th
 $ q mserve.q -p 5001 2 startup.q
 ```
 
-
 ## Client request
 
 In the client, connect to the server with `hopen`
@@ -43,16 +42,14 @@ q)(neg h) "select sym,price from trade where size > 50000" ; h[]
 ```
 
 Deferred synchronous requests can also be made from non-q clients. 
-For example, the 
+For example, the Java based
 [example grid viewer](https://github.com/KxSystems/javakdb/blob/master/javakdb-examples/src/main/java/com/kx/examples/GridViewer.java) 
 code can be modified to issue a deferred synchronous request rather than a synchronous request by sending an async request and blocking on the handle in exactly the same way. The line
 
 ```java
 model.setFlip((c.Flip) c.k(query));
 ```
-
 should be modified to
-
 ```java
 c.ks(query);
 model.setFlip((c.Flip) c.k());
