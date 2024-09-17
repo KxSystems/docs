@@ -20,6 +20,8 @@ q)?[t;();0b;(enlist `n)!enlist `n]
 
     The q interpreter parses `delete`, `exec`, `select`, and `update` into their equivalent functional forms, so there is no performance difference.
 
+
+
 The functional forms are
 
 ```syntax
@@ -34,46 +36,29 @@ The functional forms are
 
 where: 
 
-`t`
-: is a table, or the name of a table as a symbol atom. 
-
-`c`
-: is the [Where phrase](qsql.md#where-phrase), a list of constraints. 
-: Every constraint in `c` is a [parse tree](parsetrees.md) representing an expression to be evaluated; the result of each being a boolean vector. The parse tree consists of a function followed by a list of its arguments, each an expression containing column names and other variables. (Represented by symbols; distinguish actual symbol constants by enlisting them.) The function is applied to the arguments, producing a boolean vector that selects the rows. The selection is performed in the order of the items in `c`, from left to right: only rows selected by one constraint are evaluated by the next.
+* `t`  is a table, or the name of a table as a symbol atom. 
+* `c` is the [Where phrase](qsql.md#where-phrase), a list of constraints.  
+Every constraint in `c` is a [parse tree](parsetrees.md) representing an expression to be evaluated; the result of each being a boolean vector. The parse tree consists of a function followed by a list of its arguments, each an expression containing column names and other variables. Represented by symbols, it distinguishes actual symbol constants by enlisting them. The function is applied to the arguments, producing a boolean vector that selects the rows. The selection is performed in the order of the items in `c`, from left to right: only rows selected by one constraint are evaluated by the next.
 <!-- : Every item in `c` is a triple consisting of a boolean- or int- valued binary function together with its arguments, each an expression containing column names and other variables. The function is applied to the two arguments, producing a boolean vector. The resulting boolean vector selects the rows that yield non-zero results. The selection is performed in the order of the items in `c`, from left to right. -->
-
-`b`
-: is the [By phrase](qsql.md#by-phrase), one of:
-
+* `b` is the [By phrase](qsql.md#by-phrase).  
+The domain of dictionary `b` is a list of symbols that are the key names for the grouping. Its range is a list of column expressions (parse trees) whose results are used to construct the groups. The grouping is ordered by the domain items, from major to minor.
+`b` is one of:
     -   the general empty list `()`
     -   boolean atom: `0b` for no grouping; `1b` for distinct
     -   a symbol atom or list naming table column/s
-    -   a dictionary of group-by specifications
-
-: The domain of dictionary `b` is a list of symbols that are the key names for the grouping. Its range is a list of column expressions (parse trees) whose results are used to construct the groups. The grouping is ordered by the domain items, from major to minor.
-
-`a`
-: is the [Select phrase](../ref/select.md#select-phrase), one of:
-
+    -   a dictionary of group-by specifications   
+* `a` is the [Select phrase](../ref/select.md#select-phrase).
+The domain of dictionary `a` is a list of symbols containing the names of the produced columns. [QSQL query templates](qsql.md) assign default column names in the result, but here each result column must be named explicitly.  
+Each item of its range is an evaluation list consisting of a function and its argument(s), each of which is a column name or another such result list. For each evaluation list, the function is applied to the specified value(s) for each row and the result is returned. The evaluation lists are resolved recursively when operations are nested.  
+`a` is one of
     -   the general empty list `()`
     -   a symbol atom: the name of a table column
     -   a parse tree
     -   a dictionary of select specifications (aggregations)
-
-: The domain of dictionary `a` is a list of symbols containing the names of the produced columns. ([QSQL query templates](qsql.md) assign default column names in the result, but here each result column must be named explicitly.) 
-: Each item of its range is an evaluation list consisting of a function and its argument/s, each of which is a column name or another such result list. For each evaluation list, the function is applied to the specified value/s for each row and the result is returned. The evaluation lists are resolved recursively when operations are nested.
-
-`i`
-: is a list of indexes
-
-`p`
-: is a [parse tree](parsetrees.md)
-
-`n`
-: is a non-negative integer or infinity, indicating the maximum number of records to be returned
-
-`g`
-: is a unary grade function
+* `i` is a list of indexes
+* `p` is a [parse tree](parsetrees.md)
+* `n` is a non-negative integer or infinity, indicating the maximum number of records to be returned
+* `g` is a unary grade function
 
 
 ## Call by name
