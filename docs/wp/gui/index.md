@@ -841,38 +841,6 @@ more effort, nor would giving the user the ability to choose what
 period time they analyze. Furthermore, WebSockets could be used to
 deliver streaming data from the kdb+ back end to the C# GUI.
 
-
-## Conclusion
-
-Despite its popularity and the potential opportunities for
-development, combining C# and kdb+ remains a relatively unexploited
-area. We have demonstrated a few simple processes and applications
-which could be useful in developing a trading application using kdb+
-and C#.
-
-The applications developed for this example are simple in nature and
-in implementation but the potential for creating more sophisticated
-and powerful tools exists. We have shown very limited analytical and
-GUI elements but these could be expanded upon by the use of Cascading
-Style Sheets and more extensive configuration.
-
-The paper has also demonstrated the potential versatility of kdb+, not
-just in the banking and financial sectors but in all sectors where C#
-is popular and a database is required for back-end data storage and
-management. These examples could be pushed out to analytical or
-performance-based sectors or markets inexperienced in kdb+ but
-requiring tools to help utilize the rapidly growing Big Data
-environment.
-
-All examples of kdb+ were run using version 3.2 (2015.01.14). All
-tests of C# were run using .NET version 4.0. The example applications
-were built with Visual Studio 2010. 
-
-The C# source code for this paper
-can be found on GitHub at :fontawesome-brands-github:
-[kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
-
-
 ## Author
 
 **Michael Reynolds** works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.

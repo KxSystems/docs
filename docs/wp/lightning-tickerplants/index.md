@@ -1089,33 +1089,12 @@ invoice settlement messages back to individual devices to release data to subscr
 In this way, individual devices do not need to run their own node or store Bitcoin private keys.
 
 
-## Conclusion
-
-The technology of Bitcoin and layer-two solutions like Lightning open up the possibility for applications
-to interact directly with a decentralized peer-to-peer payments layer through the use of simple APIs, where the value 
-transfer reduces to the exchange of encoded text messages over TCP/IP.
- 
-This ability to easily send and receive payments in a peer-to-peer fashion, especially micropayments, has the potential 
-to enable the construction of new innovative applications not hindered by third-party friction.
-
-In the tickerplant example, a simple template was provided to demonstrate how market data, or any other form of streaming data, 
-could be monetized with the creation of a pay-per-request system utilizing Lightning micropayments.
-
-While Lightning remains an experimental and rapidly changing technology, with many outstanding challenges, 
-it is hoped that this paper has at least helped explain some of the key concepts and techniques, and also showcased some synergies between the technology and kdb+ for potential integrations.
-
-
 ## Author
 
 ![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
 {: .small-face}
 
 **Jeremy Lucid** is a kdb+ consultant, based in Ireland, who has worked on real-time Best Execution projects for a major multinational banking institution and a _Kx for Surveillance_ implementation at a leading options and futures exchange.
-
-<ul markdown="1" class="publications">
--   :fontawesome-regular-map: [Storing and exploring the Bitcoin blockchain](../blockchain/index.md)
--   :fontawesome-regular-map: [C API for kdb+](../capi/index.md)
-</ul>
 
 
 ## Acknowledgments
