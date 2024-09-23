@@ -120,4 +120,4 @@ q)views[]
 [Parse trees](../basics/parsetrees.md)
 <br>
 :fontawesome-regular-map:
-[Parse trees and functional forms](../wp/parse-trees.md)
+[Convert qSQL to functional forms using parse](../basics/parsetrees.md#conversion-using-parse)

@@ -73,7 +73,6 @@ White papers are flagged in the navigation menus.
 ## :fontawesome-solid-code: Programming in q
 
 -   [**Iterators**](iterators/index.md)<br>Conor&nbsp;Slattery &amp; Stephen&nbsp;Taylor, 2019.03
--   [**Parse trees and functional forms**](parse-trees.md)<br>Peter&nbsp;Storeng &amp; Stephen&nbsp;Taylor, 2019.03 
 -   [**kdb+ query scaling**](query-scaling.md)<br>Ian&nbsp;Lester, 2014.01
 -   [**The application of foreign keys and linked columns in kdb+**](foreign-keys.md)<br>Kevin&nbsp;Smyth, 2013.04 
 -   [**Columnar database and query optimization**](columnar-database/index.md)<br>Ciáran&nbsp;Gorman, 2012.06 

@@ -419,7 +419,6 @@ nav:
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parse trees: basics/parsetrees.md
-      - Parse trees, functional SQL: wp/parse-trees.md
       - qSQL:
         - qSQL queries: basics/qsql.md
         - Functional qSQL: basics/funsql.md
