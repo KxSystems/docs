@@ -297,9 +297,9 @@ q).z.f
 
 ## `.z.H` (active sockets)
 
-Active sockets as a list. (A low-cost method.)
+Active sockets as a list (a low-cost method). Since v4.0 2020.06.01.
 
-Since v4.0 2020.06.01.
+List has [sorted attribute](set-attribute.md#sorted) applied since v4.1 2024.07.08.
 
 ```q
 q).z.H~key .z.W
