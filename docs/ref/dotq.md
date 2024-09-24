@@ -218,12 +218,16 @@ Since V3.6 2018.05.18.
 .Q.bv[`]
 ```
 
-In partitioned DBs, construct the dictionary `.Q.vp` of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition. After loading/re-loading from the filesystem, invoke `.Q.bv[]` to (re)populate `.Q.vt`/`.Q.vp`, which are used inside `.Q.p1` during the partitioned select `.Q.ps`.
+In partitioned DBs, construct the dictionary [`.Q.vp`](#vp-missing-partitions) of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition. 
+
+After loading/re-loading from the filesystem, invoke `.Q.bv[]` to (re)populate `.Q.vt`/`.Q.vp`, which are used inside `.Q.p1` during the partitioned select `.Q.ps`.
 (Since V2.8 2012.01.20, modified  V3.0 2012.01.26)
 
-If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. ``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
+If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. 
 
-Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior.
+``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
+
+!!! note "Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior."
 
 ```q
 q)n:100
@@ -255,7 +259,7 @@ q)@[get;"select from tt";-2@]; / no error
 .Q.Cf x
 ```
 
-A projection of `.Q.Xf`: i.e. ``.Q.Xf[`char;]``
+A projection of [`.Q.Xf`](#xf-create-file): i.e. ``.Q.Xf[`char;]``
 
 
 ## `chk` (fill HDB)
@@ -295,7 +299,7 @@ _Q for Mortals_
 .Q.cn x
 ```
 
-Where `x` is a partitioned table, passed by value, returns its count. Populates `.Q.pn` cache.
+Where `x` is a partitioned table, passed by value, returns its count. Populates [`.Q.pn`](#pn-partition-counts) cache.
 
 
 ## `D` (partitions)
@@ -304,7 +308,7 @@ Where `x` is a partitioned table, passed by value, returns its count. Populates 
 .Q.D
 ```
 
-In segmented DBs, contains a list of the partitions – conformant to `.Q.P` – that are present in each segment.
+In segmented DBs, contains a list of the partitions – conformant to [`.Q.P`](#p-segments) – that are present in each segment.
 
 `.Q.P!.Q.D` can be used to create a dictionary of partition-to-segment information.
 
@@ -554,7 +558,7 @@ Where
 
 returns `y` as a string formatted as a float to `x` decimal places.
 
-Because of the limits of precision in a double, for `y` above `1e13` or the limit set by `\P`, formats in scientific notation.
+Because of the limits of precision in a double, for `y` above `1e13` or the limit set by [`\P`](../basics/syscmds.md#p-precision), formats in scientific notation.
 
 ```q
 q)\P 0
@@ -599,7 +603,7 @@ q)\t .Q.fc[f]vec
 6
 ```
 
-In this case the overhead of creating threads in `peach` significantly outweighs the computational benefit of parallel execution.
+In this case the overhead of creating threads in [`peach`](each.md) significantly outweighs the computational benefit of parallel execution.
 
 ```q
 q)\t f peach vec
@@ -1344,7 +1348,7 @@ q)0W~.Q.M  / defaults to long infinity
 Keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
 (Since V3.1.)
 
-For use with partitioned HDBS, used in tandem with `\l dir`
+For use with partitioned HDBS, used in tandem with [`\l dir`](../basics/syscmds.md#l-load-file-or-directory)
 
 ```q
 q)\l .
@@ -1452,7 +1456,7 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 .Q.PD
 ```
 
-In partitioned DBs, a list of partition locations – conformant to `.Q.PV` – which represents the partition location for each partition.
+In partitioned DBs, a list of partition locations – conformant to [`.Q.PV`](#pv-partition-values) – which represents the partition location for each partition.
 (In non-segmented DBs, this will be simply ``count[.Q.PV]#`:.``.)
 `.Q.PV!.Q.PD` can be used to create a dictionary of partition-to-location information.
 
@@ -1478,7 +1482,7 @@ q).Q.PV!.Q.PD
 .Q.pd
 ```
 
-In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
+In partitioned DBs, [`.Q.PD`](#pd-partition-locations) as modified by [`.Q.view`](#view-subview).
 
 
 ## `pf` (partition field)
@@ -1497,8 +1501,9 @@ Possible values are `` `date`month`year`int``.
 .Q.pn
 ```
 
-In partitioned DBs, returns a dictionary of cached partition counts – conformant to `.Q.pt`, each conformant to `.Q.pv` – as populated by `.Q.cn`.
-Cleared by `.Q.view`.
+In partitioned DBs, returns a dictionary of cached partition counts – conformant to [`.Q.pt`](#pt-partitioned-tables), each conformant to [`.Q.pv`](#pv-modified-partition-values) – as populated by [`.Q.cn`](#cn-count-partitioned-table).
+
+Cleared by [`.Q.view`](#view-subview).
 
 `.Q.pv!flip .Q.pn` can be used to create a crosstab of table-to-partition-counts once `.Q.pn` is fully populated.
 
@@ -1582,7 +1587,7 @@ Returns a list of partitioned tables.
 
 A list of the values of the partition domain: the values corresponding to the slice directories actually found in the root.
 
-In partitioned DBs, `.Q.PV` as modified by `.Q.view`.
+In partitioned DBs, [`.Q.PV`](#pv-partition-values) as modified by [`.Q.view`](#view-subview).
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
@@ -1595,8 +1600,8 @@ _Q for Mortals_
 .Q.PV
 ```
 
-In partitioned DBs, returns a list of partition values – conformant to `.Q.PD` – which represents the partition value for each partition.
-(In a date-partitioned DB, unless the date has been modified by `.Q.view`, this will be simply date.)
+In partitioned DBs, returns a list of partition values – conformant to [`.Q.PD`](#pd-partition-locations) – which represents the partition value for each partition.
+(In a date-partitioned DB, unless the date has been modified by [`.Q.view`](#view-subview), this will be simply date.)
 
 ```q
 q).Q.PD
@@ -1760,7 +1765,7 @@ extends [Trap At](apply.md#trap-at) (`@[f;x;g]`) to collect backtrace: `g` gets 
 1.   the error string
 2.   the backtrace object
 
-You can format the backtrace object with `.Q.sbt`.
+You can format the backtrace object with [`.Q.sbt`](#sbt-string-backtrace).
 
 ```q
 q)f:{`hello+x}
@@ -1831,7 +1836,7 @@ extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` is called w
 1.   the error string
 2.   the backtrace object
 
-You can format the backtrace object with `.Q.sbt`.
+You can format the backtrace object with [`.Q.sbt`](#sbt-string-backtrace).
 
 ```q
 q).Q.trpd[{x+y};(1;2);{2"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
@@ -1983,7 +1988,7 @@ _Q for Mortals_
 .Q.vp
 ```
 
-In partitioned DBs, returns a dictionary of table schemas for tables with missing partitions, as populated by `.Q.bv`.
+In partitioned DBs, returns a dictionary of table schemas for tables with missing partitions, as populated by [`.Q.bv`](#bv-build-vp).
 (Since V3.0 2012.01.26.)
 
 ```q
@@ -2063,7 +2068,7 @@ q)type get`:emptyNestedCharVector
 .Q.x
 ```
 
-Set by `.Q.opt`: a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
+Set by [`.Q.opt`](#opt-command-parameters): a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
 
 ```bash
 ~$ q taq.k path/to/source path/to/destn
