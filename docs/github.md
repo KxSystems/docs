@@ -808,7 +808,7 @@ GitHub topic queries:&nbsp;&nbsp;
 :fontawesome-brands-github: [timeseries/twitter-kdb](https://github.com/timeseries/twitter-kdb)
 </td>
 </tr>
-<tr markdown><td markdown>[Wind资讯](https://www.wind.com.cn/en/)</td><td markdown>:fontawesome-brands-github: [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>
+<tr markdown><td markdown>[Wind资讯](https://www.wind.com.cn/)</td><td markdown>:fontawesome-brands-github: [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>
 <tr markdown><td markdown>:fontawesome-brands-yahoo: Yahoo!</td><td markdown>:fontawesome-brands-github: [fdeleze/tickYahoo](https://github.com/fdeleze/tickYahoo)</td></tr>
 </table>
 
