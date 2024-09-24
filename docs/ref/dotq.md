@@ -1107,7 +1107,7 @@ Where `x` is
     `ab`ab`twowords`a2drifters`a22
     ```
 
-- a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.)
+- a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. Updated in V3.2 to include [`.Q.res`](#res-keywords) for checking collisions.
 
     ```q
     q).Q.id flip (5#.Q.res)!(5#())
@@ -1116,6 +1116,17 @@ Where `x` is
     q).Q.id flip(`$("a";"a/b"))!2#()
     a ab
     ----
+    ```
+
+- a **dictionary** (since v4.1 2024.09.13), supports the same rules as `table` above
+
+    ```q
+    q).Q.id (5#.Q.res)!(5#())
+    abs1 | 
+    acos1| 
+    asin1| 
+    atan1| 
+    avg1 | 
     ```
 
 Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains a single character that is not in [.Q.an](#all-alphanumerics) (it previously produced an empty sym) e.g.
