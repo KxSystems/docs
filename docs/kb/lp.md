@@ -13,7 +13,7 @@ _Linear Programming is a large topic, of which this article reviews just a few a
     [![Ken Iverson](../img/kei01.jpg)](https://en.wikipedia.org/wiki/Kenneth_E._Iverson "Wikipedia: Kenneth E. Iverson")
     Q is a descendant of the notation devised at Harvard by the [Turing Award](https://en.wikipedia.org/wiki/Turing_Award) winner, mathematician [Ken Iverson](https://en.wikipedia.org/wiki/Kenneth_E._Iverson), when he worked with [Howard Aiken](https://en.wikipedia.org/wiki/Howard_H._Aiken) and Nobel Prize winner [Wassily Leontief](https://en.wikipedia.org/wiki/Wassily_Leontief) on the computation of economic input-output tables. At Harvard, Ken Iverson and fellow Turing Award winner [Fred Brooks](https://en.wikipedia.org/wiki/Fred_Brooks) gave the world’s first course in what was then called ‘data processing’.
 
-    Like other descendants of Iverson Notation (e.g. [A+](http://www.aplusdev.org/index.html), [APL](https://en.wikipedia.org/wiki/APL_(programming_language)), [J](https://en.wikipedia.org/wiki/J_(programming_language))), q inherits compact and powerful expression of linear algebra. 
+    Like other descendants of Iverson Notation (e.g. [A+](https://en.wikipedia.org/wiki/A%2B_(programming_language)), [APL](https://en.wikipedia.org/wiki/APL_(programming_language)), [J](https://en.wikipedia.org/wiki/J_(programming_language))), q inherits compact and powerful expression of linear algebra. 
 
     Q Math Library: :fontawesome-brands-github: [zholos/qml](https://github.com/zholos/qml)
 
