@@ -13,7 +13,7 @@ _Environment and callbacks_
 <div markdown="1" class="typewriter">
 Environment                        Callbacks
  [.z.a    IP address](#za-ip-address)                 [.z.ac    HTTP auth](#zac-http-auth)
- [.z.b    dependencies](#zb-dependencies)               [.z.bm    msg validator](#zbm-msg-validator)
+ [.z.b    view dependencies](#zb-view-dependencies)          [.z.bm    msg validator](#zbm-msg-validator)
  [.z.c    cores](#zc-cores)                      [.z.exit  action on exit](#zexit-action-on-exit)
  [.z.D/d  date shortcuts](#zt-zt-zd-zd-timedate-shortcuts)             [.z.pc    close](#zpc-close)
  [.z.e    TLS connection status](#ze-tls-connection-status)      [.z.pd    peach handles](#zpd-peach-handles)
@@ -130,8 +130,8 @@ If the user is not permitted, the client is sent a default 401 HTTP unauthorized
 
 :fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
-
-## `.z.b` (dependencies)
+[](){#zb-dependencies}
+## `.z.b` (view dependencies)
 
 The dependency dictionary.
 
