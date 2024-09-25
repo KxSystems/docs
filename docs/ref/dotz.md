@@ -1074,7 +1074,7 @@ q).z.X
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.x` argv](#zx-argv), [`.z.f` file](#zf-file), [`.z.q` quiet mode](#zq-quiet-mode)
+[`.z.x`](#zx-argv) (argv), [`.z.f`](#zf-file) (file), [`.z.q`](#zq-quiet-mode) (quiet mode), [`.Q.opt`](dotq.md#opt-command-parameters) (command parameters), [`.Q.def`](dotq.md#def-command-defaults) (command defaults), [`.Q.x`](dotq.md#x-non-command-parameters) (non-command parameters)
 
 
 ## `.z.x` (argv)
@@ -1093,7 +1093,7 @@ q).z.x
 Command-line options can be converted to a dictionary using the convenient [`.Q.opt`](dotq.md#opt-command-parameters) function.
 
 :fontawesome-solid-hand-point-right:
-[`.z.X` raw command line](#zx-raw-command-line), [`.z.f` file](#zf-file), [`.z.q` quiet mode](#zq-quiet-mode)
+[`.z.X`](#zx-raw-command-line) (raw command line), [`.z.f`](#zf-file) (file), [`.z.q`](#zq-quiet-mode) (quiet mode), [`.Q.opt`](dotq.md#opt-command-parameters) (command parameters), [`.Q.def`](dotq.md#def-command-defaults) (command defaults), [`.Q.x`](dotq.md#x-non-command-parameters) (non-command parameters)
 
 
 ## `.z.Z` (local datetime)

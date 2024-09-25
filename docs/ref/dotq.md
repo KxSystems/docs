@@ -388,8 +388,8 @@ xyz| 321f
 efg| `foo
 ```
 
-:fontawesome-solid-book:
-[`.z.x`](dotz.md#zx-argv)
+:fontawesome-solid-hand-point-right:
+[`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.opt`](#opt-command-parameters) (command parameters), [`.Q.x`](#x-non-command-parameters) (non-command parameters)
 
 
 ## `dpft` (save table)
@@ -1468,8 +1468,8 @@ q)params`param1
 "val1"
 ```
 
-:fontawesome-solid-book:
-[`.z.x`](dotz.md#zx-argv)
+:fontawesome-solid-hand-point-right:
+[`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.def`](#def-command-defaults) (command defaults), [`.Q.x`](#x-non-command-parameters) (non-command parameters)
 
 
 ## `P` (segments)
@@ -2146,8 +2146,7 @@ q).Q.x
 "path/to/destn"
 ```
 
-:fontawesome-solid-book:
-[`.z.x`](dotz.md#zx-argv),
-[`.z.X`](dotz.md#zx-raw-command-line)
+:fontawesome-solid-hand-point-right:
+[`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.opt`](#opt-command-parameters) (command parameters), [`.Q.def`](#def-command-defaults) (command defaults)
 
 
