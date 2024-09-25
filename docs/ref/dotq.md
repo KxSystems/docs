@@ -249,6 +249,11 @@ q)@[get;"select from tt";-2@]; / no error
 ```
 
 
+## `bvi` (build incremental vp)
+
+Same functionality as [`.Q.bv`](#bv-build-vp), but scans only new partitions loaded in the hdb since the last time `.Q.bv` or `.Q.bvi` was run. Since v4.1 2024.09.13.
+
+
 ## `Cf` (create empty nested char file)
 
 !!! warning "Deprecated"
@@ -1289,6 +1294,32 @@ q).Q.ld read0`:funcs.q
 1                   2                5                    6
 "/ multi line func" "f:{\n  x+y\n }" "/ single line func" "g:{x*y}"
 ```
+
+## `li` (load partitions)
+
+```syntax
+.Q.li[partitions]
+```
+
+In the current hdb, adds any partition(s) which are both in the list supplied and on disk. Partitions can be a list or atomic variable. For example:
+
+```q
+q)`:/tmp/db/2001.01.01/t/ set tt:.Q.en[`:/tmp/db]([]sym:10?`A`B`C;time:10?.z.T;price:10?10f)
+q)\l /tmp/db
+q)`:2001.01.02/t/`:2001.01.03/t/ set\:tt
+q)date
+,2001.01.01
+q).Q.li[2001.01.02];date
+2001.01.01 2001.01.02
+q).Q.li[2001.01.02 2001.01.03];select count i by date from t
+date      | x
+----------| --
+2001.01.01| 10
+2001.01.02| 10
+2001.01.03| 10
+```
+
+Since v4.1 2024.09.20.
 
 
 ## `lo` (load without)
