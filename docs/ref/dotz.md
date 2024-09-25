@@ -1077,47 +1077,13 @@ Command-line arguments as a list of strings
 ```q
 $ q test.q -P 0 -abc 123
 q).z.x
-("-abc";"123")
+"-abc"
+"123"
 ```
 
-Note that the script name and the single-letter options used by q itself are not included.
+!!! Note "The script name and the single-letter options used by q itself are not included."
 
-Command-line options can be converted to a dictionary using the convenient `.Q.opt` function.
-
-```bash
-$ q -abc 123 -xyz 321
-```
-
-```q
-q).Q.opt .z.x
-abc| "123"
-xyz| "321"
-```
-
-Defaults and types can be provided with `.Q.def`.
-
-```bash
-$ q -abc 123 -xyz 321
-```
-
-```q
-q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
-abc| 123
-xyz| 321f
-efg| `a
-q)\\
-```
-
-```bash
-$ q -abc 123 -xyz 321 -efg foo
-```
-
-```q
-q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
-abc| 123
-xyz| 321f
-efg| `foo
-```
+Command-line options can be converted to a dictionary using the convenient [`.Q.opt`](dotq.md#opt-command-parameters) function.
 
 :fontawesome-solid-hand-point-right:
 [`.z.X` raw command line](#zx-raw-command-line), [`.z.f` file](#zf-file), [`.z.q` quiet mode](#zq-quiet-mode)

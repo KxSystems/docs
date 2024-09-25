@@ -365,7 +365,28 @@ _Default values for command-line arguments_
 .Q.def[x;y]
 ```
 
-Provides defaults and types for command-line arguments parsed with [``.Q.opt``](#opt-command-parameters).
+Provides defaults and types for command-line arguments parsed with [`.Q.opt`](#opt-command-parameters).
+
+```bash
+$ q -abc 123 -xyz 321
+```
+```q
+q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
+abc| 123
+xyz| 321f
+efg| `a
+q)\\
+```
+
+```bash
+$ q -abc 123 -xyz 321 -efg foo
+```
+```q
+q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
+abc| 123
+xyz| 321f
+efg| `foo
+```
 
 :fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv)
@@ -1433,7 +1454,19 @@ q).Q.nA
 .Q.opt .z.x
 ```
 
-Returns a dictionary, so you can easily see if a key was defined (flag set or not) or, if a value is passed, to refer to it by its key.
+Presents command-line arguments as a dictionary, using the output of [`.z.x`](dotz.md#zx-argv). Defaults can be added using [`.Q.def`](#def-command-defaults).
+
+```bash
+$ q -param1 val1 -param2 val2
+```
+```q
+q)params:.Q.opt .z.x
+q)show params
+param1| "val1"
+param2| "val2"
+q)params`param1
+"val1"
+```
 
 :fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv)
@@ -2103,9 +2136,8 @@ q)type get`:emptyNestedCharVector
 Set by [`.Q.opt`](#opt-command-parameters): a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
 
 ```bash
-~$ q taq.k path/to/source path/to/destn
+$ q taq.k path/to/source path/to/destn
 ```
-
 ```q
 q)cla:.Q.opt .z.X /command-line arguments
 q).Q.x
