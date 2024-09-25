@@ -145,6 +145,9 @@ y| ,`a
 
 :fontawesome-solid-book-open:
 [`\b`](../basics/syscmds.md#b-views)
+<br>
+:fontawesome-solid-graduation-cap:
+[Views](../learn/views.md)
 
 
 ## `.z.bm` (msg validator)
