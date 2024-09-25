@@ -36,7 +36,7 @@ _Tools_
  [V        table to dict](#v-table-to-dict)
  [v        value](#v-value)                   **Partitioned database state**
  [view     subview](#view-subview)                  [bv          build vp](#bv-build-vp)
-                                   [bvi        build incremental vp](#bvi-build-incremental-vp)
+                                   [bvi         build incremental vp](#bvi-build-incremental-vp)
  **Constants**                         [cn          count partitioned table](#cn-count-partitioned-table)
  [A a an   alphabets](#a-upper-case-alphabet)                [D           partitions](#d-partitions)
  [b6       bicameral alphanums](#b6-bicameral-alphanums)      [ind         partitioned index](#ind-partitioned-index)
@@ -47,7 +47,7 @@ _Tools_
  [w        memory stats](#w-memory-stats)             [pf          partition field](#pf-partition-field)
                                    [pn          partition counts](#pn-partition-counts)
  **Environment (Command-line)**        [pt          partitioned tables](#pt-partitioned-tables)
- [def      parse options](#def-parse-options)            [PV          partition values](#pv-partition-values)
+ [def      command defaults](#def-command-defaults)         [PV          partition values](#pv-partition-values)
  [opt      command parameters](#opt-command-parameters)       [pv          modified partition values](#pv-modified-partition-values) 
  [x        non-command parameters](#x-non-command-parameters)   [qp          is partitioned](#qp-is-partitioned)
                                    [vp          missing partitions](#vp-missing-partitions)
@@ -356,8 +356,8 @@ AAPL O  AAPL.O
 IBM  N  IBM.N
 ```
 
-
-## `def` (parse options)
+[](){#def-parse-options}
+## `def` (command defaults)
 
 _Default values for command-line arguments_
 
