@@ -12,32 +12,35 @@ _Markup tools_
 
 
 <div markdown="1" class="typewriter">
-[`.h.br`](#hbr-linebreak)      linebreak                [`.h.cd`](#hcd-csv-from-data)      CSV from data
-[`.h.code`](#hcode-code-after-tab)    code after Tab           [`.h.d`](#hd-delimiter)       delimiter
-[`.h.fram`](#hfram-frame)    frame                    [`.h.ed`](#hed-excel-from-data)      Excel from data
-[`.h.ha`](#hha-anchor)      anchor                   [`.h.edsn`](#hedsn-excel-from-tables)    Excel from tables
-[`.h.hb`](#hhb-anchor-target)      anchor target            [`.h.hc`](#hhc-escape-lt)      escape lt
-[`.h.ht`](#hht-marqdown-to-html)      Marqdown to HTML         [`.h.hr`](#hhr-horizontal-rule)      horizontal rule
-[`.h.hta`](#hhta-start-tag)     start tag                [`.h.iso8601`](#hiso8601-iso-timestamp) ISO timestamp
-[`.h.htac`](#hhtac-element)    element                  [`.h.jx`](#hjx-table)      table
-[`.h.htc`](#hhtc-element)     element                  [`.h.td`](#htd-tsv-from-data)      TSV from data
-[`.h.html`](#hhtml-document)    document                 [`.h.tx`](#htx-filetypes)      filetypes
-[`.h.http`](#hhttp-hyperlinks)    hyperlinks               [`.h.xd`](#hxd-xml)      XML
-[`.h.nbr`](#hnbr-no-break)     no break                 [`.h.xs`](#hxs-xml-escape)      XML escape
-[`.h.pre`](#hpre-pre)     pre                      [`.h.xt`](#hxt-json)      JSON
-[`.h.text`](#htext-paragraphs)    paragraphs
-[`.h.xmp`](#hxmp-xmp)     XMP
+ [`.h.br`](#hbr-linebreak)      linebreak                 [`.h.cd`](#hcd-csv-from-data)      CSV from data
+ [`.h.code`](#hcode-code-after-tab)    code after Tab           [`.h.d`](#hd-delimiter)       delimiter
+ [`.h.fram`](#hfram-frame)    frame                    [`.h.ed`](#hed-excel-from-data)      Excel from data
+ [`.h.ha`](#hha-anchor)      anchor                   [`.h.edsn`](#hedsn-excel-from-tables)    Excel from tables
+ [`.h.hb`](#hhb-anchor-target)      anchor target            [`.h.hc`](#hhc-escape-lt)      escape lt
+ [`.h.ht`](#hht-marqdown-to-html)      Marqdown to HTML         [`.h.hr`](#hhr-horizontal-rule)      horizontal rule
+ [`.h.hta`](#hhta-start-tag)     start tag                [`.h.iso8601`](#hiso8601-iso-timestamp) ISO timestamp
+ [`.h.htac`](#hhtac-element)    element                  [`.h.jx`](#hjx-table)      table
+ [`.h.htc`](#hhtc-element)     element                  [`.h.td`](#htd-tsv-from-data)      TSV from data
+ [`.h.html`](#hhtml-document)    document                 [`.h.tx`](#htx-filetypes)      filetypes
+ [`.h.http`](#hhttp-hyperlinks)    hyperlinks               [`.h.xd`](#hxd-xml)      XML
+ [`.h.nbr`](#hnbr-no-break)     no break                 [`.h.xs`](#hxs-xml-escape)      XML escape
+ [`.h.pre`](#hpre-pre)     pre                      [`.h.xt`](#hxt-json)      JSON
+ [`.h.text`](#htext-paragraphs)    paragraphs
+ [`.h.xmp`](#hxmp-xmp)     XMP                      [`.h.c0`](#hc0-web-color)    web color
+                                      [`.h.c1`](#hc1-web-color)    web color
+HTTP                                  [`.h.HOME`](#hhome-webserver-root)  webserver root
+ [`.h.he`](#hhe-http-400)      HTTP 400                 [`.h.logo`](#hlogo-kx-logo)  KX logo
+ [`.h.hn`](#hhn-http-response)      HTTP response            [`.h.sa`](#hsa-anchor-style)    anchor style
+ [`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.sb`](#hsb-body-style)    body style
+ [`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.val`](#hval-value)   value
+ [`.h.ka`](#hka-http-keepalive)      HTTP keep-alive
+ [`.h.ty`](#hty-mime-types)      MIME types                                    
 
-[`.h.he`](#hhe-http-400)      HTTP 400                 [`.h.c0`](#hc0-web-color)    web color
-[`.h.hn`](#hhn-http-response)      HTTP response            [`.h.c1`](#hc1-web-color)    web color
-[`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](#hhome-webserver-root)  webserver root
-[`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.logo`](#hlogo-kx-logo)  KX logo
-[`.h.ka`](#hka-http-keepalive)      HTTP keep-alive          [`.h.sa`](#hsa-anchor-style)    anchor style
-                                     [`.h.sb`](#hsb-body-style)    body style
-[`.h.hu`](#hhu-uri-escape)      URI escape               [`.h.ty`](#hty-mime-types)    MIME types
-[`.h.hug`](#hhug-uri-map)     URI map                  [`.h.val`](#hval-value)   value
-[`.h.sc`](#hsc-uri-safe)      URI-safe 
-[`.h.uh`](#huh-uri-unescape)      URI unescape
+URI formatting 
+ [`.h.hu`](#hhu-uri-escape)      URI escape
+ [`.h.hug`](#hhug-uri-map)     URI map
+ [`.h.sc`](#hsc-uri-safe)      URI-safe
+ [`.h.uh`](#huh-uri-unescape)      URI unescape
 </div>
 
 The `.h` [namespace](../basics/namespaces.md) contains objects for 
