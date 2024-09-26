@@ -12,27 +12,31 @@ _Markup tools_
 
 
 <div markdown="1" class="typewriter">
- [`.h.br`](#hbr-linebreak)      linebreak                 [`.h.cd`](#hcd-csv-from-data)      CSV from data
+Markup (HTML and XML)                Data Serialization
+ [`.h.br`](#hbr-linebreak)      linebreak                [`.h.cd`](#hcd-csv-from-data)      CSV from data
  [`.h.code`](#hcode-code-after-tab)    code after Tab           [`.h.d`](#hd-delimiter)       delimiter
  [`.h.fram`](#hfram-frame)    frame                    [`.h.ed`](#hed-excel-from-data)      Excel from data
  [`.h.ha`](#hha-anchor)      anchor                   [`.h.edsn`](#hedsn-excel-from-tables)    Excel from tables
- [`.h.hb`](#hhb-anchor-target)      anchor target            [`.h.hc`](#hhc-escape-lt)      escape lt
- [`.h.ht`](#hht-marqdown-to-html)      Marqdown to HTML         [`.h.hr`](#hhr-horizontal-rule)      horizontal rule
- [`.h.hta`](#hhta-start-tag)     start tag                [`.h.iso8601`](#hiso8601-iso-timestamp) ISO timestamp
- [`.h.htac`](#hhtac-element)    element                  [`.h.jx`](#hjx-table)      table
- [`.h.htc`](#hhtc-element)     element                  [`.h.td`](#htd-tsv-from-data)      TSV from data
- [`.h.html`](#hhtml-document)    document                 [`.h.tx`](#htx-filetypes)      filetypes
- [`.h.http`](#hhttp-hyperlinks)    hyperlinks               [`.h.xd`](#hxd-xml)      XML
- [`.h.nbr`](#hnbr-no-break)     no break                 [`.h.xs`](#hxs-xml-escape)      XML escape
- [`.h.pre`](#hpre-pre)     pre                      [`.h.xt`](#hxt-json)      JSON
- [`.h.text`](#htext-paragraphs)    paragraphs
- [`.h.xmp`](#hxmp-xmp)     XMP                      [`.h.c0`](#hc0-web-color)    web color
-                                      [`.h.c1`](#hc1-web-color)    web color
-HTTP                                  [`.h.HOME`](#hhome-webserver-root)  webserver root
- [`.h.he`](#hhe-http-400)      HTTP 400                 [`.h.logo`](#hlogo-kx-logo)  KX logo
- [`.h.hn`](#hhn-http-response)      HTTP response            [`.h.sa`](#hsa-anchor-style)    anchor style
- [`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.sb`](#hsb-body-style)    body style
- [`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.val`](#hval-value)   value
+ [`.h.hb`](#hhb-anchor-target)      anchor target            [`.h.ht`](#hht-marqdown-to-html)      Marqdown to HTML
+ [`.h.hc`](#hhc-escape-lt)      escape lt                [`.h.iso8601`](#hiso8601-iso-timestamp) ISO timestamp
+ [`.h.hr`](#hhr-horizontal-rule)      horizontal rule          [`.h.jx`](#hjx-table)      table
+ [`.h.hta`](#hhta-start-tag)     start tag                [`.h.td`](#htd-tsv-from-data)      TSV from data
+ [`.h.htac`](#hhtac-element)    element                  [`.h.tx`](#htx-filetypes)      filetypes
+ [`.h.htc`](#hhtc-element)     element                  [`.h.xd`](#hxd-xml)      XML
+ [`.h.html`](#hhtml-document)    document                 [`.h.xt`](#hxt-json)      JSON
+ [`.h.http`](#hhttp-hyperlinks)    hyperlinks
+ [`.h.logo`](#hlogo-kx-logo)    KX logo                  Web Console
+ [`.h.nbr`](#hnbr-no-break)     no break                 [`.h.c0`](#hc0-web-color)    web color
+ [`.h.pre`](#hpre-pre)     pre                      [`.h.c1`](#hc1-web-color)    web color
+ [`.h.text`](#htext-paragraphs)    paragraphs               [`.h.HOME`](#hhome-webserver-root)  webserver root
+ [`.h.xmp`](#hxmp-xmp)     XMP                      [`.h.sa`](#hsa-anchor-style)    anchor style
+ [`.h.xs`](#hxs-xml-escape)      XML escape               [`.h.sb`](#hsb-body-style)    body style
+                                      [`.h.val`](#hval-value)   value
+HTTP
+ [`.h.he`](#hhe-http-400)      HTTP 400
+ [`.h.hn`](#hhn-http-response)      HTTP response
+ [`.h.hp`](#hhp-http-response-pre)      HTTP response pre
+ [`.h.hy`](#hhy-http-response-content)      HTTP response content
  [`.h.ka`](#hka-http-keepalive)      HTTP keep-alive
  [`.h.ty`](#hty-mime-types)      MIME types                                    
 
