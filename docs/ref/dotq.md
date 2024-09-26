@@ -1467,6 +1467,16 @@ param2| "val2"
 q)params`param1
 "val1"
 ```
+Example of a command-line parameter with no value and a parameter with multiple values:
+```bash
+$ q -param1 -param2 as asd -param3
+```
+```q
+q).Q.opt .z.x
+param1| ()
+param2| ("as";"asd")
+param3| ()
+```
 
 :fontawesome-solid-hand-point-right:
 [`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.def`](#def-command-defaults) (command defaults), [`.Q.x`](#x-non-command-parameters) (non-command parameters)
