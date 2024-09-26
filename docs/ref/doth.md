@@ -33,18 +33,12 @@ Markup (HTML and XML)                Data Serialization
  [`.h.xs`](#hxs-xml-escape)      XML escape               [`.h.sb`](#hsb-body-style)    body style
                                       [`.h.val`](#hval-value)   value
 HTTP
- [`.h.he`](#hhe-http-400)      HTTP 400
- [`.h.hn`](#hhn-http-response)      HTTP response
- [`.h.hp`](#hhp-http-response-pre)      HTTP response pre
- [`.h.hy`](#hhy-http-response-content)      HTTP response content
- [`.h.ka`](#hka-http-keepalive)      HTTP keep-alive
- [`.h.ty`](#hty-mime-types)      MIME types                                    
-
-URI formatting 
- [`.h.hu`](#hhu-uri-escape)      URI escape
- [`.h.hug`](#hhug-uri-map)     URI map
- [`.h.sc`](#hsc-uri-safe)      URI-safe
- [`.h.uh`](#huh-uri-unescape)      URI unescape
+ [`.h.he`](#hhe-http-400)      HTTP 400                URI formatting 
+ [`.h.hn`](#hhn-http-response)      HTTP response            [`.h.hu`](#hhu-uri-escape)      URI escape
+ [`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.hug`](#hhug-uri-map)     URI map
+ [`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.sc`](#hsc-uri-safe)      URI-safe
+ [`.h.ka`](#hka-http-keepalive)      HTTP keep-alive          [`.h.uh`](#huh-uri-unescape)      URI unescape
+ [`.h.ty`](#hty-mime-types)      MIME types
 </div>
 
 The `.h` [namespace](../basics/namespaces.md) contains objects for 
