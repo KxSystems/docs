@@ -32,7 +32,7 @@ Environment                              Callbacks
                                           [.z.pm    HTTP methods](#zpm-http-methods)
 Environment (Connections)                 [.z.pp    HTTP post](#zpp-http-post)
  [.z.e    TLS connection status](#ze-tls-connection-status)
- [.z.H    active sockets](#zh-active-sockets)                   Callbacks (WebSockets)
+ [.z.H    active sockets](#zh-active-sockets)                  Callbacks (WebSockets)
  [.z.W/w  handles/handle](#zw-handles)                   [.z.wc    WebSocket close](#zwc-websocket-close)
                                           [.z.wo    WebSocket open](#zwo-websocket-open)
 Environment (Time/Date)                   [.z.ws    WebSockets](#zws-websockets)
