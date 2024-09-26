@@ -359,13 +359,15 @@ IBM  N  IBM.N
 [](){#def-parse-options}
 ## `def` (command defaults)
 
-_Default values for command-line arguments_
+_Default values and type checks for command-line arguments parsed with [`.Q.opt`](#opt-command-parameters)_
 
 ```syntax
 .Q.def[x;y]
 ```
 
-Provides defaults and types for command-line arguments parsed with [`.Q.opt`](#opt-command-parameters).
+Where `x` is a dictionary of default parameter names and values, and `y` is the output of `.Q.opt`.
+
+Types are inferred from the default values provided, which must be an atom type.
 
 ```bash
 $ q -abc 123 -xyz 321
@@ -375,17 +377,18 @@ q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
 abc| 123
 xyz| 321f
 efg| `a
-q)\\
 ```
 
+If a command-line value cannot be [converted to the data type](tok.md) of the default value, a [null](../basics/datatypes.md) will be produced
+
 ```bash
-$ q -abc 123 -xyz 321 -efg foo
+$ q -param1 11 -param2 2000.01.01 -param3 wrong
 ```
 ```q
-q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
-abc| 123
-xyz| 321f
-efg| `foo
+q).Q.def[`param1`param2`param3!(1;1999.01.01;23.1)].Q.opt .z.x
+param1| 11
+param2| 2000.01.01
+param3| 0n
 ```
 
 :fontawesome-solid-hand-point-right:
