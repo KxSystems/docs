@@ -22,7 +22,7 @@ Markup (HTML and XML)                Data Serialization
  [`.h.hr`](#hhr-horizontal-rule)      horizontal rule          [`.h.jx`](#hjx-table)      table
  [`.h.hta`](#hhta-start-tag)     start tag                [`.h.td`](#htd-tsv-from-data)      TSV from data
  [`.h.htac`](#hhtac-element)    element                  [`.h.tx`](#htx-filetypes)      filetypes
- [`.h.htc`](#hhtc-element)     element                  [`.h.xd`](#hxd-xml)      XML
+ [`.h.htc`](#hhtc-element)     element                  [`.h.xd`](#hxd-xml)      XML from data
  [`.h.html`](#hhtml-document)    document                 [`.h.xt`](#hxt-json)      JSON
  [`.h.http`](#hhttp-hyperlinks)    hyperlinks
  [`.h.logo`](#hlogo-kx-logo)    KX logo                  Web Console
@@ -868,3 +868,5 @@ q)first .h.xt[`json;("{\"foo\":\"bar\"}";"{\"this\":\"that\"}")]
 foo| "bar"
 ```
 
+:fontawesome-regular-hand-point-right:
+[`.j` namespace](dotj.md) (JSON serialization)
