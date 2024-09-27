@@ -93,6 +93,8 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 
 Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V4.0 2020.03.17.)
 
+:fontawesome-regular-hand-point-right:
+[0: load csv](file-text.md#load-csv)
 
 
 ## `.h.code` (code after Tab)
@@ -863,4 +865,4 @@ foo| "bar"
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.j` namespace](dotj.md) (JSON serialization)
+[`.j` namespace](dotj.md) (JSON de/serialization)
