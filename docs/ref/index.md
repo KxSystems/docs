@@ -257,24 +257,23 @@ milliseconds: time mod 1000
 
 ## Namespaces
 
-### [`.h`](doth.md)
+### [`.h`](doth.md) (markup)
 
-Markup output for HTTP
+HTTP, markup and data conversion.
 
-### [`.j`](dotj.md)
+### [`.j`](dotj.md) (JSON)
 
-De/serialize as JSON
+De/serialize as JSON.
 
-### `.m`
+### [`.m`](dotm.md) (memory backed files)
 
-:fontawesome-regular-hand-point-right:
-[Memory backed by files](dotm.md)
+Memory backed by files.
 
-### [`.Q`](dotq.md)
+### [`.Q`](dotq.md) (utils)
 
-Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
+Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O, debugging, profiling.
 
-### [`.z`](dotz.md)
+### [`.z`](dotz.md) (system, callbacks)
 
 System variables, callbacks
 
