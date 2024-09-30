@@ -217,7 +217,7 @@ You may consider increasing the size of TCP send/receive buffers on your system 
 Messages can be queued for sending to a remote process through using async messaging. 
 kdb+ queues the serialized message in user space, later writing it to the socket as the remote end drains the message queue. 
 
-You can see how many messages are queued on a handle and their sizes as a dictionary using the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
+You can see the queue size using [-38!](internal.md#-38x-socket-table), or [`.z.W`](../ref/dotz.md#zw-handles "handles") for all handles.
 
 Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. 
 This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. 
