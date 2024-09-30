@@ -466,6 +466,13 @@ where `x` is a list of socket handles, returns a table with columns
 Since v4.0 2020.06.01.
 
 ```q
+q)h:hopen 5000
+q)-38!h
+p| "q"
+f| "t"
+z| 0b
+n| 0
+m| 0
 q){([]h)!-38!h:.z.H}[]
 h| p f z n m
 -| ---------
@@ -473,8 +480,9 @@ h| p f z n m
 9| q t 0 0 0
 ```
 
-:fontawesome-solid-book:
-[`.z.H` active sockets](../ref/dotz.md#zh-active-sockets)
+:fontawesome-solid-hand-point-right:
+[`.z.H` active sockets](../ref/dotz.md#zh-active-sockets), [`.z.W` handles](../ref/dotz.md#zw-handles), [`.z.w` handle](../ref/dotz.md#zw-handle)
+
 ## `-120!x` (memory domain)
 
 ```syntax

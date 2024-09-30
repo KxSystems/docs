@@ -273,7 +273,7 @@ Memory backed by files.
 
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O, debugging, profiling.
 
-### [`.z`](dotz.md) (system, callbacks)
+### [`.z`](dotz.md) (environment, callbacks)
 
-System variables, callbacks
+Environment, callbacks
 

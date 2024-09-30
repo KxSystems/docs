@@ -314,10 +314,7 @@ q).z.H~key .z.W
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.W` handles](#zw-handles), [`.z.w` handle](#zw-handle)
-<br>
-:fontawesome-solid-book-open:
-[`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.W` handles](#zw-handles), [`.z.w` handle](#zw-handle), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
 
 
 ## `.z.h` (host)
@@ -958,11 +955,17 @@ q)neg[h]({};til 1000000); neg[h]({};til 10); sum each .z.W
 6| 8000140
 ```
 
+Querying known handles can also be performed using [`-38!`](../basics/internal.md#-38x-socket-table), which can be more performant than using `.z.W` to return the entire dataset of handles.
+```q
+q)h:hopen 5000
+q)neg[h]"11+1111111";.z.W h
+24
+q)neg[h]"11+1111111";(-38!h)`m
+24
+```
+
 :fontawesome-solid-hand-point-right:
-[`.z.h` active sockets](#zh-active-sockets), [`.z.w` handle](#zw-handle)
-<br>
-:fontawesome-solid-book-open:
-[`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.h` active sockets](#zh-active-sockets), [`.z.w` handle](#zw-handle), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
 
 
 ## `.z.w` (handle)
@@ -977,10 +980,7 @@ q).z.w
 !!! warning "Inside a `.z.p`* callback it returns the handle of the client session, not the current session."
 
 :fontawesome-solid-hand-point-right:
-[`.z.h` active sockets](#zh-active-sockets), [`.z.W` handles](#zw-handles)
-<br>
-:fontawesome-solid-book-open:
-[`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.h` active sockets](#zh-active-sockets), [`.z.W` handles](#zw-handles), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
 
 
 ## `.z.wc` (websocket close)
