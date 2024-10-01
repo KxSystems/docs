@@ -154,22 +154,18 @@ q)h(`add;2;3)         / execute the 'add' function as defined on the server, pas
 
 #### One-shot message
 
-A sync message can also be sent on a short-lived connection. 
+A sync message can also be sent on a short-lived connection (called a [one-shot](../ref/hopen.md#one-shot-request)). 
 When sending multiple messages, this is less efficient than [using a pre-existing connection](#sync-request-get) due to the effort of repeated connections/disconnections.
 
 A useful shorthand for a one-shot get is:
 
 ```q
-q)`::5001 "1+1"
+q)`::5001 "1+1" 
 2
 ```
-
-Since V4.0 2020.03.09, a one-shot query can be run with a timeout (in milliseconds), as in the second example below:
-
+which is equivalent to 
 ```q
-q)`::4567"2+2"
-4
-q)`::[(`::4567;100);"1+1"]
+q)`:localhost:5001 "1+1"
 2
 ```
 
