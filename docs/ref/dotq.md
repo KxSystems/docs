@@ -1679,7 +1679,7 @@ _Q for Mortals_
 ```
 
 In partitioned DBs, returns a list of partition values – conformant to [`.Q.PD`](#pd-partition-locations) – which represents the partition value for each partition.
-(In a date-partitioned DB, unless the date has been modified by [`.Q.view`](#view-subview), this will be simply date.)
+(In a date-partitioned DB, unless the date has been modified by [`.Q.view`](#view-subview), this is simply date.)
 
 ```q
 q).Q.PD
