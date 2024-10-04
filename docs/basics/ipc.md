@@ -54,7 +54,7 @@ Sync messages can also be sent without a pre-existing connection using [one-shot
 The maximum number of connections is defined by the system limit for protocol (operating system configurable). Prior to 4.1t 2023.09.15, the limit was hardcoded to 1022.
 After the limit is reached, you see the error `'conn` on the server process. All successfully opened connections remain open.
 
-!!! note "It is important to use [`hclose`](../ref/hopen.md#hclose) once finished with any connection. Connections will not automatically close if their associated handle is deleted."
+!!! note "It is important to use [`hclose`](../ref/hopen.md#hclose) once finished with any connection. Connections do not automatically close if their associated handle is deleted."
 
 ## Closing connections
 
