@@ -252,7 +252,7 @@ q)@[get;"select from tt";-2@]; / no error
 
 ## `bvi` (build incremental vp)
 
-Same functionality as [`.Q.bv`](#bv-build-vp), but scans only new partitions loaded in the hdb since the last time `.Q.bv` or `.Q.bvi` was run. Since v4.1 2024.09.13.
+It offers the same functionality as [`.Q.bv`](#bv-build-vp), but scans only new partitions loaded in the hdb since the last time `.Q.bv` or `.Q.bvi` was run. Since v4.1 2024.09.13.
 
 
 ## `Cf` (create empty nested char file)
