@@ -11,7 +11,7 @@ by [Tom Martin](#author)
 {: .wp-author}
 
 
-kdb+ processes often contain sensitive, proprietary information in the form of data or proprietary code and so it is important to restrict who can and cannot access this information. 
+kdb+ processes often contain sensitive, proprietary information in the form of data or proprietary code. Thus, it is important to restrict the access to this information. 
 
 kdb+ offers a number of in-built access functions. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
 
