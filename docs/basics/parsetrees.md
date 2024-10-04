@@ -315,6 +315,6 @@ produce a new function which sums the items of a list.
 
 ## Functional form of a qSQL query
 
-Sometimes you need to translate a [qSQL query](qsql.md) into its [functional form](funsql.md), for example, so you can pass column names as arguments. 
+Sometimes you need to translate a [qSQL query](qsql.md) into its [functional form](funsql.md). For example, so you can pass column names as arguments. 
 Details are provided [here](funsql.md#conversion-using-parse).
 
