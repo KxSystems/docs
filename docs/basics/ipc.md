@@ -54,6 +54,8 @@ Sync messages can also be sent without a pre-existing connection using [one-shot
 The maximum number of connections is defined by the system limit for protocol (operating system configurable). Prior to 4.1t 2023.09.15, the limit was hardcoded to 1022.
 After the limit is reached, you see the error `'conn` on the server process. All successfully opened connections remain open.
 
+!!! note "It is important to use [`hclose`](../ref/hopen.md#hclose) once finished with any connection. Connections do not automatically close if their associated handle is deleted."
+
 ## Closing connections
 
 Client or server connections can be closed using [`hclose`](../ref/hopen.md#hclose).
@@ -154,22 +156,18 @@ q)h(`add;2;3)         / execute the 'add' function as defined on the server, pas
 
 #### One-shot message
 
-A sync message can also be sent on a short-lived connection. 
+A sync message can also be sent on a short-lived connection (called a [one-shot](../ref/hopen.md#one-shot-request)). 
 When sending multiple messages, this is less efficient than [using a pre-existing connection](#sync-request-get) due to the effort of repeated connections/disconnections.
 
 A useful shorthand for a one-shot get is:
 
 ```q
-q)`::5001 "1+1"
+q)`::5001 "1+1" 
 2
 ```
-
-Since V4.0 2020.03.09, a one-shot query can be run with a timeout (in milliseconds), as in the second example below:
-
+which is equivalent to 
 ```q
-q)`::4567"2+2"
-4
-q)`::[(`::4567;100);"1+1"]
+q)`:localhost:5001 "1+1"
 2
 ```
 
@@ -217,7 +215,7 @@ You may consider increasing the size of TCP send/receive buffers on your system 
 Messages can be queued for sending to a remote process through using async messaging. 
 kdb+ queues the serialized message in user space, later writing it to the socket as the remote end drains the message queue. 
 
-You can see how many messages are queued on a handle and their sizes as a dictionary using the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
+You can see the queue size using [-38!](internal.md#-38x-socket-table), or [`.z.W`](../ref/dotz.md#zw-handles "handles") for all handles.
 
 Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. 
 This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. 

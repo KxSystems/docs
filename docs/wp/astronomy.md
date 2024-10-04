@@ -253,20 +253,10 @@ We previously mentioned how astronomy data can often come with a time domain, wh
 We could apply an attribute to this data for optimization, such as the sorted attribute to the class column in the example data set. The benefits of this would become more apparent as more files were being loaded in. Ciaran Gorman’s [“Columnar database and query optimization”](columnar-database/index.md) gives an in-depth explanation as to how they can be applied. 
 
 
-## Conclusion
-
-In this paper, we have taken one sample of astronomy data that came in a format which was initially unfamiliar to us, and subsequently analyzed it in kdb+ with relative ease. We made use of the flexibility that kdb+ has in extending to other languages; in this case C, which effectively only required using the Dynamic Load operator. This approach can be replicated where C utilities have been created for interacting with data sources, or for other reasons.
-
-We were then able to build functionality to calculate the recessional velocity of different object classes, which took less than a tenth of a second to run on a table of one million rows. In doing this we made use of kdb+’s efficient `fby` syntax to make use of an aggregate function as a filter criteria. It is apparent that kdb+ is extremely performant, both in storing and analyzing this data. The nature and expected volumes of data, and the way it will be used, go hand in hand with kdb+ and we have found it to be an ideal fit.
-
-We believe this will be a very attractive solution to the field of astronomy going forward, coping with the predicted expansion of data volumes in the field due to the new projects that are scheduled to begin in the near future.
-
-
 ## Further reading
 
 -   _The Atlantic_: [“How big data is changing astronomy (again)”](https://www.theatlantic.com/technology/archive/2012/04/how-big-data-is-changing-astronomy-again/255917/)
 -   [Cloud Computing and the Square Kilometre Array](http://www.skatelescope.org/uploaded/8762_134_Memo_Newman.pdf)
-
 
 
 ## Authors

@@ -637,18 +637,6 @@ All cols, 3 syms  | partWrite.q | ``select from quote where int in sym?`eurusd`e
 
 As can be seen in Table 3 and Figure 3, the speed-up in query times is substantial and thus may be worth the more complex storage and querying method.
 
-
-## Conclusion
-
-This paper has outlined two different methods for dealing with insufficient RAM on a server, meaning a full day’s worth of data cannot be held in memory. It looked at `w.q`, available from GitHub, which writes to a splayed table on disk and examined a number of customizations that could be made to it.
-
-It also detailed an alternative method using a partitioned temporary directory and how to query this data. The paper also compared the query speed and speed of the end-of-day process of the two solutions and discussed the reasons for their relative performance.
-
-It is important to point out that any of these solutions come with their own drawbacks and as such the best solution for your individual project will depend on the specific requirements. No one solution will provide the performance and ease of use equal to just maintaining a full day’s worth of data in memory. The complexity of how that data is stored and queried will inevitably increase. However, by using some or a combination of the ideas presented in this paper, a workable solution that fits your needs may be possible.
-
-Tests performed using kdb+ version 3.1 (2014.02.08)
-
-
 ## Author
 
 **Colm McCarthy** is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes.

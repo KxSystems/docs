@@ -27,7 +27,7 @@ Below is a summary of changes from V3.3. Commercially licensed users may obtain 
 -   can utilize the [snappy](http://google.github.io/snappy/) compression algorithm as algo \#3 for [File Compression](../kb/file-compression.md).
 -   certain vector types can now be [updated efficiently](../ref/amend.md), directly on disk, rather than having to rewrite the whole file on change.
 -   added async broadcast as [`-25!`(handles;msg)](../basics/internal.md#-25x-async-broadcast) which serializes the msg once, queuing it as async msg to each handle.
--   [`parse`](../basics/parsetrees.md#parse) can now handle k in addition to q code.
+-   [`parse`](../basics/parsetrees.md) can now handle k in addition to q code.
 -   `.Q.en` can now handle lists of sym vectors: [Enumerating nested varchar columns](../kb/splayed-tables.md#enumerating-nested-varchar-columns-in-a-table)
 
 ## Not upwardly compatible

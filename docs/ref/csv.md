@@ -18,8 +18,8 @@ A synonym for `","` for use in preparing text for CSV files, or reading them.
 
 :fontawesome-solid-book:
 [Prepare Text](file-text.md#prepare-text),
-[`.h.cd`](doth.md#hcd-csv-from-data), 
-[`.h.td`](doth.md#htd-tsv)
+[`.h.cd`](doth.md#hcd-csv-from-data) (csv from data), 
+[`.h.td`](doth.md#htd-tsv) (tsv from data)
 <br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)

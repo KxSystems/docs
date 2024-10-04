@@ -330,7 +330,7 @@ As time progresses up to 12 hours, we can see that runtime memory usage fluctuat
 These results show that the use of event ID windows instead of timestamp windows causes a marginal but acceptable hit on the performance of the window-join approach.
 
 
-## Conclusions
+## Conclusion
 
 There are other factors that we have not experimented with – the distribution of the twenty runs of the alert analytics out to different secondary threads, implementing intraday memory management techniques in the alert engines or varying the hard-coded lookback threshold of five minutes on top of varying the intraday execution point frequency.
 

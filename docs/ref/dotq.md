@@ -11,53 +11,54 @@ _Tools_
 <div markdown="1" class="typewriter">
 **General**                           **Datatype**
  [addmonths](#addmonths)                         [btoa        b64 encode](#btoa-b64-encode)
- [bt       backtrace](#bt-backtrace)                [j10         encode binhex](#j10-encode-binhex)
- [dd       join symbols](#dd-join-symbols)             [j12         encode base 36](#j12-encode-base-36)
- [def      parse options](#def-parse-options)            [ty          type](#ty-type)
- [f        format](#f-format)                   [x10         decode binhex](#x10-decode-binhex)
- [fc       parallel on cut](#fc-parallel-on-cut)          [x12         decode base 36](#x12-decode-base-36)
- [ff       append columns](#ff-append-columns)
- [fmt      format](#fmt-format)                  **Database**
- [ft       apply simple](#ft-apply-simple)             [chk         fill HDB](#chk-fill-hdb)
- [fu       apply unique](#fu-apply-unique)             [dpft dpfts  save table](#dpft-save-table)
- [gc       garbage collect](#gc-garbage-collect)          [dpt  dpts   save table unsorted](#dpt-save-table-unsorted)
- [gz       GZip](#gz-gzip)                     [dsftg       load process save](#dsftg-load-process-save)
- [id       sanitize](#id-sanitize)                 [en          enumerate varchar cols](#en-enumerate-varchar-cols)
- [prf0     code profiler](#prf0-code-profiler)            [ens         enumerate against domain](#ens-enumerate-against-domain)
- [qt       is table](#qt-is-table)                 [fk          foreign key](#fk-foreign-key)
- [res      keywords](#res-keywords)                 [hdpf        save tables](#hdpf-save-tables)
- [s        plain text](#s-plain-text)               [l           load](#l-load)
- [s1       string representation](#s1-string-representation)    [ld          load and group](#ld-load-and-group)
- [sbt      string backtrace](#sbt-string-backtrace)         [lo          load without](#lo-load-without)
- [sha1     SHA-1 encode](#sha1-sha-1-encode)             [M           chunk size](#m-chunk-size)
- [trp      extend trap at](#trp-extend-trap-at)           [qp          is partitioned](#qp-is-partitioned)
- [trpd     extend trap](#trpd-extend-trap)              [qt          is table](#qt-is-table)
- [ts       time and space](#ts-time-and-space)
- [u        date based](#u-date-based)              **Partitioned database state**
- [V        table to dict](#v-table-to-dict)            [bv          build vp](#bv-build-vp)
- [v        value](#v-value)                    [cn          count partitioned table](#cn-count-partitioned-table)
- [view     subview](#view-subview)                  [D           partitions](#d-partitions)
-                                   [ind         partitioned index](#ind-partitioned-index)
-**Constants**                          [MAP         maps partitions](#map-maps-partitions)
- [A a an   alphabets](#a-upper-case-alphabet)                [par         locate partition](#par-locate-partition)
- [b6       bicameral alphanums](#b6-bicameral-alphanums)      [PD          partition locations](#pd-partition-locations)
- [n nA     nums & alphanums](#n-nums)         [pd          modified partition locns](#pd-modified-partition-locations)
-                                   [pf          partition field](#pf-partition-field)
-**Environment**                        [pn          partition counts](#pn-partition-counts)
- [K k      version](#k-version-date)                  [pt          partitioned tables](#pt-partitioned-tables) 
- [opt      command parameters](#opt-command-parameters)       [PV          partition values](#pv-partition-values)
- [w        memory stats](#w-memory-stats)             [pv          modified partition values](#pv-modified-partition-values) 
- [x        non-command parameters](#x-non-command-parameters)   [qp          is partitioned](#qp-is-partitioned)
-                                   [vp          missing partitions](#vp-missing-partitions) 
-**IPC**
- [addr     IP address](#addr-ip-address)              **Segmented database state**
- [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [P           segments](#p-segments)
- [fs  fsn  streaming algorithm](#fs-streaming-algorithm)      [u           date based](#u-date-based) 
- [hg       HTTP get](#hg-http-get) 
- [host     hostname](#host-hostname)                **File I/O**
- [hp       HTTP post](#hp-http-post)                [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
-                                   [Xf          create file](#xf-create-file)
-
+ [dd       join symbols](#dd-join-symbols)             [j10         encode binhex](#j10-encode-binhex)
+ [f        format](#f-format)                   [j12         encode base 36](#j12-encode-base-36)
+ [fc       parallel on cut](#fc-parallel-on-cut)          [ty          type](#ty-type)
+ [ff       append columns](#ff-append-columns)           [x10         decode binhex](#x10-decode-binhex)
+ [fmt      format](#fmt-format)                   [x12         decode base 36](#x12-decode-base-36)
+ [ft       apply simple](#ft-apply-simple) 
+ [fu       apply unique](#fu-apply-unique)            **Database**
+ [gc       garbage collect](#gc-garbage-collect)          [chk         fill HDB](#chk-fill-hdb)
+ [gz       GZip](#gz-gzip)                     [dpft dpfts  save table](#dpft-save-table)
+ [id       sanitize](#id-sanitize)                 [dpt  dpts   save table unsorted](#dpt-save-table-unsorted)
+ [qt       is table](#qt-is-table)                 [dsftg       load process save](#dsftg-load-process-save)
+ [res      keywords](#res-keywords)                 [en          enumerate varchar cols](#en-enumerate-varchar-cols)
+ [s        plain text](#s-plain-text)               [ens         enumerate against domain](#ens-enumerate-against-domain)
+ [s1       string representation](#s1-string-representation)    [fk          foreign key](#fk-foreign-key)
+ [sha1     SHA-1 encode](#sha1-sha-1-encode)             [hdpf        save tables](#hdpf-save-tables)
+ [V        table to dict](#v-table-to-dict)            [l           load](#l-load)
+ [v        value](#v-value)                    [ld          load and group](#ld-load-and-group)
+ [view     subview](#view-subview)                  [li          load partitions](#li-load-partitions)
+                                   [lo          load without](#lo-load-without)
+ **Constants**                         [M           chunk size](#m-chunk-size)
+ [A a an   alphabets](#a-upper-case-alphabet)                [qp          is partitioned](#qp-is-partitioned)
+ [b6       bicameral alphanums](#b6-bicameral-alphanums)      [qt          is table](#qt-is-table)
+ [n nA     nums & alphanums](#n-nums)
+                                  **Partitioned database state**
+ **Debug/Profile**                     [bv          build vp](#bv-build-vp)
+ [bt       backtrace](#bt-backtrace)                [bvi         build incremental vp](#bvi-build-incremental-vp)
+ [prf0     code profiler](#prf0-code-profiler)            [cn          count partitioned table](#cn-count-partitioned-table)
+ [sbt      string backtrace](#sbt-string-backtrace)         [D           partitions](#d-partitions)
+ [trp      extend trap at](#trp-extend-trap-at)           [ind         partitioned index](#ind-partitioned-index)
+ [trpd     extend trap](#trpd-extend-trap)              [MAP         maps partitions](#map-maps-partitions)
+ [ts       time and space](#ts-time-and-space)           [par         locate partition](#par-locate-partition)
+                                   [PD          partition locations](#pd-partition-locations)
+ **Environment**                       [pd          modified partition locns](#pd-modified-partition-locations)
+ [K k      version](#k-version-date)                  [pf          partition field](#pf-partition-field)
+ [w        memory stats](#w-memory-stats)             [pn          partition counts](#pn-partition-counts)
+                                   [pt          partitioned tables](#pt-partitioned-tables)
+ **Environment (Command-line)**        [PV          partition values](#pv-partition-values)
+ [def      command defaults](#def-command-defaults)         [pv          modified partition values](#pv-modified-partition-values) 
+ [opt      command parameters](#opt-command-parameters)       [qp          is partitioned](#qp-is-partitioned)
+ [x        non-command parameters](#x-non-command-parameters)   [vp          missing partitions](#vp-missing-partitions)
+  
+ **IPC**                               **Segmented database state**
+ [addr     IP address](#addr-ip-address)               [P           segments](#p-segments)
+ [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [u           date based](#u-date-based) 
+ [fs  fsn  streaming algorithm](#fs-streaming-algorithm)
+ [hg       HTTP get](#hg-http-get)                **File I/O**
+ [host     hostname](#host-hostname)                 [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
+ [hp       HTTP post](#hp-http-post)                [Xf          create file](#xf-create-file)
 </div>
 
 
@@ -218,12 +219,16 @@ Since V3.6 2018.05.18.
 .Q.bv[`]
 ```
 
-In partitioned DBs, construct the dictionary `.Q.vp` of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition. After loading/re-loading from the filesystem, invoke `.Q.bv[]` to (re)populate `.Q.vt`/`.Q.vp`, which are used inside `.Q.p1` during the partitioned select `.Q.ps`.
+In partitioned DBs, construct the dictionary [`.Q.vp`](#vp-missing-partitions) of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition. 
+
+After loading/re-loading from the filesystem, invoke `.Q.bv[]` to (re)populate `.Q.vt`/`.Q.vp`, which are used inside `.Q.p1` during the partitioned select `.Q.ps`.
 (Since V2.8 2012.01.20, modified  V3.0 2012.01.26)
 
-If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. ``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
+If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. 
 
-Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior.
+``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
+
+!!! note "Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior."
 
 ```q
 q)n:100
@@ -245,6 +250,11 @@ q)@[get;"select from tt";-2@]; / no error
 ```
 
 
+## `bvi` (build incremental vp)
+
+It offers the same functionality as [`.Q.bv`](#bv-build-vp), but scans only new partitions loaded in the hdb since the last time `.Q.bv` or `.Q.bvi` was run. Since v4.1 2024.09.13.
+
+
 ## `Cf` (create empty nested char file)
 
 !!! warning "Deprecated"
@@ -255,7 +265,7 @@ q)@[get;"select from tt";-2@]; / no error
 .Q.Cf x
 ```
 
-A projection of `.Q.Xf`: i.e. ``.Q.Xf[`char;]``
+A projection of [`.Q.Xf`](#xf-create-file): i.e. ``.Q.Xf[`char;]``
 
 
 ## `chk` (fill HDB)
@@ -295,7 +305,7 @@ _Q for Mortals_
 .Q.cn x
 ```
 
-Where `x` is a partitioned table, passed by value, returns its count. Populates `.Q.pn` cache.
+Where `x` is a partitioned table, passed by value, returns its count. Populates [`.Q.pn`](#pn-partition-counts) cache.
 
 
 ## `D` (partitions)
@@ -304,7 +314,7 @@ Where `x` is a partitioned table, passed by value, returns its count. Populates 
 .Q.D
 ```
 
-In segmented DBs, contains a list of the partitions – conformant to `.Q.P` – that are present in each segment.
+In segmented DBs, contains a list of the partitions – conformant to [`.Q.P`](#p-segments) – that are present in each segment.
 
 `.Q.P!.Q.D` can be used to create a dictionary of partition-to-segment information.
 
@@ -346,19 +356,43 @@ AAPL O  AAPL.O
 IBM  N  IBM.N
 ```
 
+[](){#def-parse-options}
+## `def` (command defaults)
 
-## `def` (parse options)
-
-_Default values for command-line arguments_
+_Default values and type checks for command-line arguments parsed with [`.Q.opt`](#opt-command-parameters)_
 
 ```syntax
 .Q.def[x;y]
 ```
 
-Provides defaults and types for command-line arguments parsed with [``.Q.opt``](#opt-command-parameters).
+Where `x` is a dictionary of default parameter names and values, and `y` is the output of `.Q.opt`.
 
-:fontawesome-solid-book:
-[`.z.x`](dotz.md#zx-argv)
+Types are inferred from the default values provided, which must be an atom type.
+
+```bash
+$ q -abc 123 -xyz 321
+```
+```q
+q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
+abc| 123
+xyz| 321f
+efg| `a
+```
+
+If a command-line value cannot be [converted to the data type](tok.md) of the default value, a [null](../basics/datatypes.md) is produced
+
+```bash
+$ q -param1 11 -param2 2000.01.01 -param3 wrong
+```
+```q
+q).Q.def[`param1`param2`param3!(1;1999.01.01;23.1)].Q.opt .z.x
+param1| 11
+param2| 2000.01.01
+param3| 0n
+```
+
+:fontawesome-solid-hand-point-right:
+[`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.opt`](#opt-command-parameters) (command parameters), [`.Q.x`](#x-non-command-parameters) (non-command parameters)
 
 
 ## `dpft` (save table)
@@ -554,7 +588,7 @@ Where
 
 returns `y` as a string formatted as a float to `x` decimal places.
 
-Because of the limits of precision in a double, for `y` above `1e13` or the limit set by `\P`, formats in scientific notation.
+Because of the limits of precision in a double, for `y` above `1e13` or the limit set by [`\P`](../basics/syscmds.md#p-precision), formats in scientific notation.
 
 ```q
 q)\P 0
@@ -599,7 +633,7 @@ q)\t .Q.fc[f]vec
 6
 ```
 
-In this case the overhead of creating threads in `peach` significantly outweighs the computational benefit of parallel execution.
+In this case the overhead of creating threads in [`peach`](each.md) significantly outweighs the computational benefit of parallel execution.
 
 ```q
 q)\t f peach vec
@@ -1107,7 +1141,7 @@ Where `x` is
     `ab`ab`twowords`a2drifters`a22
     ```
 
-- a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.)
+- a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. Updated in V3.2 to include [`.Q.res`](#res-keywords) for checking collisions.
 
     ```q
     q).Q.id flip (5#.Q.res)!(5#())
@@ -1116,6 +1150,17 @@ Where `x` is
     q).Q.id flip(`$("a";"a/b"))!2#()
     a ab
     ----
+    ```
+
+- a **dictionary** (since v4.1 2024.09.13), supports the same rules as `table` above
+
+    ```q
+    q).Q.id (5#.Q.res)!(5#())
+    abs1 | 
+    acos1| 
+    asin1| 
+    atan1| 
+    avg1 | 
     ```
 
 Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains a single character that is not in [.Q.an](#all-alphanumerics) (it previously produced an empty sym) e.g.
@@ -1275,6 +1320,32 @@ q).Q.ld read0`:funcs.q
 "/ multi line func" "f:{\n  x+y\n }" "/ single line func" "g:{x*y}"
 ```
 
+## `li` (load partitions)
+
+```syntax
+.Q.li[partitions]
+```
+
+In the current hdb, adds any partition(s) which are both in the list supplied and on disk. Partitions can be a list or atomic variable. For example:
+
+```q
+q)`:/tmp/db/2001.01.01/t/ set tt:.Q.en[`:/tmp/db]([]sym:10?`A`B`C;time:10?.z.T;price:10?10f)
+q)\l /tmp/db
+q)`:2001.01.02/t/`:2001.01.03/t/ set\:tt
+q)date
+,2001.01.01
+q).Q.li[2001.01.02];date
+2001.01.01 2001.01.02
+q).Q.li[2001.01.02 2001.01.03];select count i by date from t
+date      | x
+----------| --
+2001.01.01| 10
+2001.01.02| 10
+2001.01.03| 10
+```
+
+Since v4.1 2024.09.20.
+
 
 ## `lo` (load without)
 
@@ -1333,7 +1404,7 @@ q)0W~.Q.M  / defaults to long infinity
 Keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
 (Since V3.1.)
 
-For use with partitioned HDBS, used in tandem with `\l dir`
+For use with partitioned HDBS, used in tandem with [`\l dir`](../basics/syscmds.md#l-load-file-or-directory)
 
 ```q
 q)\l .
@@ -1386,10 +1457,32 @@ q).Q.nA
 .Q.opt .z.x
 ```
 
-Returns a dictionary, so you can easily see if a key was defined (flag set or not) or, if a value is passed, to refer to it by its key.
+Presents command-line arguments as a dictionary, using the output of [`.z.x`](dotz.md#zx-argv). Defaults can be added using [`.Q.def`](#def-command-defaults).
 
-:fontawesome-solid-book:
-[`.z.x`](dotz.md#zx-argv)
+```bash
+$ q -param1 val1 -param2 val2
+```
+```q
+q)params:.Q.opt .z.x
+q)show params
+param1| "val1"
+param2| "val2"
+q)params`param1
+"val1"
+```
+Example of a command-line parameter with no value and a parameter with multiple values:
+```bash
+$ q -param1 -param2 as asd -param3
+```
+```q
+q).Q.opt .z.x
+param1| ()
+param2| ("as";"asd")
+param3| ()
+```
+
+:fontawesome-solid-hand-point-right:
+[`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.def`](#def-command-defaults) (command defaults), [`.Q.x`](#x-non-command-parameters) (non-command parameters)
 
 
 ## `P` (segments)
@@ -1441,7 +1534,7 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 .Q.PD
 ```
 
-In partitioned DBs, a list of partition locations – conformant to `.Q.PV` – which represents the partition location for each partition.
+In partitioned DBs, a list of partition locations – conformant to [`.Q.PV`](#pv-partition-values) – which represents the partition location for each partition.
 (In non-segmented DBs, this will be simply ``count[.Q.PV]#`:.``.)
 `.Q.PV!.Q.PD` can be used to create a dictionary of partition-to-location information.
 
@@ -1467,7 +1560,7 @@ q).Q.PV!.Q.PD
 .Q.pd
 ```
 
-In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
+In partitioned DBs, [`.Q.PD`](#pd-partition-locations) as modified by [`.Q.view`](#view-subview).
 
 
 ## `pf` (partition field)
@@ -1486,8 +1579,9 @@ Possible values are `` `date`month`year`int``.
 .Q.pn
 ```
 
-In partitioned DBs, returns a dictionary of cached partition counts – conformant to `.Q.pt`, each conformant to `.Q.pv` – as populated by `.Q.cn`.
-Cleared by `.Q.view`.
+In partitioned DBs, returns a dictionary of cached partition counts – conformant to [`.Q.pt`](#pt-partitioned-tables), each conformant to [`.Q.pv`](#pv-modified-partition-values) – as populated by [`.Q.cn`](#cn-count-partitioned-table).
+
+Cleared by [`.Q.view`](#view-subview).
 
 `.Q.pv!flip .Q.pn` can be used to create a crosstab of table-to-partition-counts once `.Q.pn` is fully populated.
 
@@ -1571,7 +1665,7 @@ Returns a list of partitioned tables.
 
 A list of the values of the partition domain: the values corresponding to the slice directories actually found in the root.
 
-In partitioned DBs, `.Q.PV` as modified by `.Q.view`.
+In partitioned DBs, [`.Q.PV`](#pv-partition-values) as modified by [`.Q.view`](#view-subview).
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
@@ -1584,8 +1678,8 @@ _Q for Mortals_
 .Q.PV
 ```
 
-In partitioned DBs, returns a list of partition values – conformant to `.Q.PD` – which represents the partition value for each partition.
-(In a date-partitioned DB, unless the date has been modified by `.Q.view`, this will be simply date.)
+In partitioned DBs, returns a list of partition values – conformant to [`.Q.PD`](#pd-partition-locations) – which represents the partition value for each partition.
+(In a date-partitioned DB, unless the date has been modified by [`.Q.view`](#view-subview), this is simply date.)
 
 ```q
 q).Q.PD
@@ -1749,7 +1843,7 @@ extends [Trap At](apply.md#trap-at) (`@[f;x;g]`) to collect backtrace: `g` gets 
 1.   the error string
 2.   the backtrace object
 
-You can format the backtrace object with `.Q.sbt`.
+You can format the backtrace object with [`.Q.sbt`](#sbt-string-backtrace).
 
 ```q
 q)f:{`hello+x}
@@ -1820,7 +1914,7 @@ extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` is called w
 1.   the error string
 2.   the backtrace object
 
-You can format the backtrace object with `.Q.sbt`.
+You can format the backtrace object with [`.Q.sbt`](#sbt-string-backtrace).
 
 ```q
 q).Q.trpd[{x+y};(1;2);{2"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
@@ -1972,7 +2066,7 @@ _Q for Mortals_
 .Q.vp
 ```
 
-In partitioned DBs, returns a dictionary of table schemas for tables with missing partitions, as populated by `.Q.bv`.
+In partitioned DBs, returns a dictionary of table schemas for tables with missing partitions, as populated by [`.Q.bv`](#bv-build-vp).
 (Since V3.0 2012.01.26.)
 
 ```q
@@ -2052,12 +2146,11 @@ q)type get`:emptyNestedCharVector
 .Q.x
 ```
 
-Set by `.Q.opt`: a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
+Set by [`.Q.opt`](#opt-command-parameters): a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
 
 ```bash
-~$ q taq.k path/to/source path/to/destn
+$ q taq.k path/to/source path/to/destn
 ```
-
 ```q
 q)cla:.Q.opt .z.X /command-line arguments
 q).Q.x
@@ -2066,8 +2159,7 @@ q).Q.x
 "path/to/destn"
 ```
 
-:fontawesome-solid-book:
-[`.z.x`](dotz.md#zx-argv),
-[`.z.X`](dotz.md#zx-raw-command-line)
+:fontawesome-solid-hand-point-right:
+[`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.opt`](#opt-command-parameters) (command parameters), [`.Q.def`](#def-command-defaults) (command defaults)
 
 

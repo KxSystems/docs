@@ -1006,25 +1006,6 @@ BB  80.14611
 CC  67.48254
 ```
 
-
-## Conclusion
-
-This white paper summarizes the q iterators, showing how they derive new functions from values – functions, file- and process handles, lists and dictionaries. 
-
-It showed with examples how the effect of the iterator is determined sometimes by the rank of the applicable value, and sometimes also by the rank at which the derived function is applied. Even complicated examples, composing multiple iterators, can be analyzed to understand the behavior.
-
-Certain uses of iterators, such as the creation of recursive functions and applying iterators to functions within select statements, were examined in more detail, as these are often poorly understood, but useful in many situations. 
-Some common uses were looked at in to demonstrate the ability of iterators to reduce execution times.
-
-This white paper illustrates how iterators can be used easily to extend the
-application of inbuilt and user-defined functions, allowing code to take full advantage of kdb+’s ability to process large volumes of data quickly. 
-
-Using iterators correctly minimizes the amount of data manipulation and produces code that is concise and easier to maintain.
-
-All tests were run using kdb+ 3.6 (2018.10.23).
-
-
-
 ## Authors 
 
 **Conor Slattery** is a financial engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.

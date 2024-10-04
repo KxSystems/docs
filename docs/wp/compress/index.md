@@ -16,7 +16,7 @@ overall performance.
 
 Early versions of kdb+ achieved compression via file systems with inbuilt compression, such as ZFS. V2.7 introduced built-in OS-agnostic compression, which allowed on-disk data to be converted to compressed format using a range of algorithms and compression levels. This was expanded (V2.8), with the ability to stream in-memory data directly to compressed format on disk. ZFS compression is still useful for some kdb+ applications, as it keeps cached data available for multiple processes. However, this paper will focus on the inbuilt data-compression options provided by kdb+, available on all supported architectures.
 
-Each system will have its own characteristics which determine the appropriate compression configurations to use. This paper will cover an introduction to compression in kdb+, a discussion of contributing factors to compression ratios and performance, and an analysis of how the use of compressed data can affect performance of some sample use cases.
+Each system has its own characteristics, which determine the appropriate compression configurations to use.
 
 All tests were run using kdb+ version 3.1 (2013.09.05)
 

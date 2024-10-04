@@ -49,7 +49,28 @@ db                 db                        db
 
       `/0/db` is good, but `/0/db/` can be bad, depending on the filesystem.
 
+### Using symlinks
 
+Security related options such as [`reval`](../ref/eval.md#reval), or the command line option [`-u 1`](../basics/cmdline.md#-u-usr-pwd), restrict access to within the current directory. 
+This can prevent users from accessing a segmented database when `par.txt` contains references to partitions that are situated outside the current directory.
+
+In order to provide access, symlinks can be used. An example of using symlinks is as follows:
+
+```bash
+$ ln -s /db1 db1$
+$ ln -s /db2 db2$
+$ ls -l
+total 16
+lrwxr-xr-x  1 user  kx   6 18 Sep 12:30 db1$ -> /db1
+lrwxr-xr-x  1 user  kx   6 18 Sep 12:30 db2$ -> /db2
+-rw-r--r--  1 user  kx  10 18 Sep 12:30 par.txt
+-rw-r--r--  1 user  kx  48 18 Sep 12:30 sym
+$ cat par.txt
+db1$
+db2$
+```
+
+Using a trailing `$` in the directory name ensures the originating symlinks are not picked up by kdb+, instead using the directory referenced.
 
 ## Multithreading
 

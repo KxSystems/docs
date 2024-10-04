@@ -682,9 +682,6 @@ In this paper we demonstrated that it is possible to calculate option prices usi
 
 Looking at the results produced, it is clear that both the option price produced and the resulting RMSE/log RMSE converged fastest when compared with the Black-Scholes price for the Quasi-Monte Carlo approach, with Sobol’ sequence number generation and Brownian-bridge construction.
 
-Additionally, by plotting results we have shown that the q implementation replicates the original results produced in C++, presented in the paper by [S. Kucherenko et al. 2007](http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf "Wilmott").
-
-
 ## Author
 
 **Deanna Morgan** joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and currently works as a machine-learning engineer in London.

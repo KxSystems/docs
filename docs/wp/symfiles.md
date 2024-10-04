@@ -742,35 +742,12 @@ system"mv sym zym" /make backup of sym file
   } peach symFiles
 ```
 
-
-## Conclusion
-
-While the q language provides tools to easily create and update HDBs
-through functions in the `.Q` namespace, understanding how the underlying
-code and concepts work is integral to creating and maintaining a
-functioning database.
-
-In this paper, we demonstrated, through examples, enumeration in kdb+
-and various methods of using symbols within an HDB; using multiple sym
-files and moving data between HDBs. In situations where you need new
-columns `dbmaint.q` provides utility functions to manage this with ease.
-
-We discussed datatype considerations in order to utilize the performance
-benefits of enumerations while maintaining a sym universe containing
-only necessary symbols. However, if there is still a need to perform
-maintenance on the sym file because of bloat we walked through two
-methods to reduce the size of the sym file.
-
-All tests performed using kdb+ version 3.6 (2018.05.17).
-
-
 ## Author
 
 ![Paula Clarke](../img/faces/paulaclarke.jpg)
 {: .small-face}
 
 **Paula Clarke** is a senior kdb+ consultant for KX who has worked for some of the world’s largest financial institutions designing, developing and maintaining global tick-capture kdb+ systems.
-
 
 ## Related articles
 

@@ -374,7 +374,7 @@ Timeout in seconds for client queries, i.e. maximum time a client call will exec
 `-u 1` disables 
 
 -   system commands from a remote (signals `'access`), including exit via `"\\"` 
--   access to files outside the current directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0
+-   access to files outside the current directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0. Segmented database partitions using directories outside the current working directory can be enabled using the method described [here](../database/segment.md#using-symlinks).
 -   hopen on a fifo (since 4.1t 2021.10.13, 4.0 2023.08.11)
 -   hopen of a file (since 4.1t 2021.10.13, 4.0 2023.08.11)
 -   the [`exit`](../ref/exit.md) keyword (since 4.1t 2021.07.12)

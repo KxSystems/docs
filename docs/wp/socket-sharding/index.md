@@ -329,9 +329,7 @@ The reconnect attempt immediately connected resulting in minimal downtime.
 
 ## Conclusion
 
-In this white paper, we demonstrated the set-up and use of socket sharding in kdb+ as well as investigating several example scenarios.
-
-From results generated throughout this paper, it is evident that there are both pros and cons of using socket sharding in kdb+. If processes listening on the sharded socket are all running with the same performance, socket sharding can reduce the response time for requests to clients and processing load on a listener process.
+It is evident that there are both pros and cons of using socket sharding in kdb+. If processes listening on the sharded socket are all running with the same performance, socket sharding can reduce the response time for requests to clients and processing load on a listener process.
 
 As the processes are all listening on the same port, clients do not need configuration changes in order for connection requests to be assigned to new servers.
 

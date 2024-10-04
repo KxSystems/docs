@@ -11,32 +11,36 @@ keywords: callbacks, environment, kdb+, q
 _Environment and callbacks_
 
 <div markdown="1" class="typewriter">
-Environment                        Callbacks
- [.z.a    IP address](#za-ip-address)                 [.z.ac    HTTP auth](#zac-http-auth)
- [.z.b    dependencies](#zb-dependencies)               [.z.bm    msg validator](#zbm-msg-validator)
- [.z.c    cores](#zc-cores)                      [.z.exit  action on exit](#zexit-action-on-exit)
- [.z.D/d  date shortcuts](#zt-zt-zd-zd-timedate-shortcuts)             [.z.pc    close](#zpc-close)
- [.z.e    TLS connection status](#ze-tls-connection-status)      [.z.pd    peach handles](#zpd-peach-handles)
- [.z.ex   failed primitive](#zex-failed-primitive)           [.z.pg    get](#zpg-get)
- [.z.ey   arg to failed primitive](#zey-argument-to-failed-primitive)    [.z.ph    HTTP get](#zph-http-get)
- [.z.f    file](#zf-file)                       [.z.pi    input](#zpi-input)
- [.z.H    active sockets](#zh-active-sockets)             [.z.pm    HTTP methods](#zpm-http-methods)
- [.z.h    host](#zh-host)                       [.z.po    open](#zpo-open)
- [.z.i    PID](#zi-pid)                        [.z.pp    HTTP post](#zpp-http-post)
- [.z.K    version](#zk-version)                    [.z.pq    qcon](#zpq-qcon)
- [.z.k    release date](#zk-release-date)               [.z.r     blocked](#zr-blocked)
- [.z.l    license](#zl-license)                    [.z.ps    set](#zps-set)
- [.z.N/n  local/UTC timespan](#zn-local-timespan)         [.z.pw    validate user](#zpw-validate-user)
- [.z.o    OS version](#zo-os-version)                 [.z.ts    timer](#zts-timer)
- [.z.P/p  local/UTC timestamp](#zp-local-timestamp)        [.z.vs    value set](#zvs-value-set)
- [.z.q    quiet mode](#zq-quiet-mode)                 [.z.wc    WebSocket close](#zwc-websocket-close)
- [.z.s    self](#zs-self)                       [.z.wo    WebSocket open](#zwo-websocket-open)
- [.z.T/t  time shortcuts](#zt-zt-zd-zd-timedate-shortcuts)             [.z.ws    WebSockets](#zws-websockets)
- [.z.u    user ID](#zu-user-id) 
- [.z.W/w  handles/handle](#zw-handles)
- [.z.X/x  raw/parsed command line](#zx-raw-command-line)
+Environment                              Callbacks
+ [.z.a    IP address](#za-ip-address)                       [.z.bm    msg validator](#zbm-msg-validator)
+ [.z.b    view dependencies](#zb-view-dependencies)                [.z.exit  action on exit](#zexit-action-on-exit)
+ [.z.c    cores](#zc-cores)                            [.z.pc    close](#zpc-close)
+ [.z.ex   failed primitive](#zex-failed-primitive)                 [.z.pd    peach handles](#zpd-peach-handles)
+ [.z.ey   arg to failed primitive](#zey-argument-to-failed-primitive)          [.z.pg    get](#zpg-get)
+ [.z.f    file](#zf-file)                             [.z.pi    input](#zpi-input)
+ [.z.h    host](#zh-host)                             [.z.po    open](#zpo-open)
+ [.z.i    PID](#zi-pid)                              [.z.pq    qcon](#zpq-qcon)
+ [.z.K    version](#zk-version)                          [.z.r     blocked](#zr-blocked)
+ [.z.k    release date](#zk-release-date)                     [.z.ps    set](#zps-set)
+ [.z.l    license](#zl-license)                          [.z.pw    validate user](#zpw-validate-user)
+ [.z.o    OS version](#zo-os-version)                       [.z.ts    timer](#zts-timer)
+ [.z.q    quiet mode](#zq-quiet-mode)                       [.z.vs    value set](#zvs-value-set)
+ [.z.s    self](#zs-self)
+ [.z.u    user ID](#zu-user-id)                         Callbacks (HTTP)
+ [.z.X/x  raw/parsed command line](#zx-raw-command-line)          [.z.ac    HTTP auth](#zac-http-auth)
+ [.z.zd   compression/encryption defaults](#zzd-compressionencryption-defaults)  [.z.ph    HTTP get](#zph-http-get)
+                                          [.z.pm    HTTP methods](#zpm-http-methods)
+Environment (Connections)                 [.z.pp    HTTP post](#zpp-http-post)
+ [.z.e    TLS connection status](#ze-tls-connection-status)
+ [.z.H    active sockets](#zh-active-sockets)                  Callbacks (WebSockets)
+ [.z.W/w  handles/handle](#zw-handles)                   [.z.wc    WebSocket close](#zwc-websocket-close)
+                                          [.z.wo    WebSocket open](#zwo-websocket-open)
+Environment (Time/Date)                   [.z.ws    WebSockets](#zws-websockets)
+ [.z.D/d  date shortcuts](#zt-zt-zd-zd-timedate-shortcuts)
+ [.z.N/n  local/UTC timespan](#zn-local-timespan)
+ [.z.P/p  local/UTC timestamp](#zp-local-timestamp)
+ [.z.T/t  time shortcuts](#zt-zt-zd-zd-timedate-shortcuts)
  [.z.Z/z  local/UTC datetime](#zz-local-datetime)
- [.z.zd   compression/encryption defaults](#zzd-compressionencryption-defaults)
 </div>
 
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
@@ -130,8 +134,8 @@ If the user is not permitted, the client is sent a default 401 HTTP unauthorized
 
 :fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
-
-## `.z.b` (dependencies)
+[](){#zb-dependencies}
+## `.z.b` (view dependencies)
 
 The dependency dictionary.
 
@@ -145,6 +149,9 @@ y| ,`a
 
 :fontawesome-solid-book-open:
 [`\b`](../basics/syscmds.md#b-views)
+<br>
+:fontawesome-solid-graduation-cap:
+[Views](../learn/views.md)
 
 
 ## `.z.bm` (msg validator)
@@ -297,9 +304,9 @@ q).z.f
 
 ## `.z.H` (active sockets)
 
-Active sockets as a list. (A low-cost method.)
+Active sockets as a list (a low-cost method). Since v4.0 2020.06.01.
 
-Since v4.0 2020.06.01.
+List has [sorted attribute](set-attribute.md#sorted) applied since v4.1 2024.07.08.
 
 ```q
 q).z.H~key .z.W
@@ -307,10 +314,7 @@ q).z.H~key .z.W
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.W` handles](#zw-handles), [`.z.w` handle](#zw-handle)
-<br>
-:fontawesome-solid-book-open:
-[`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.W` handles](#zw-handles), [`.z.w` handle](#zw-handle), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
 
 
 ## `.z.h` (host)
@@ -951,11 +955,17 @@ q)neg[h]({};til 1000000); neg[h]({};til 10); sum each .z.W
 6| 8000140
 ```
 
+Querying known handles can also be performed using [`-38!`](../basics/internal.md#-38x-socket-table), which can be more performant than using `.z.W` to return the entire dataset of handles.
+```q
+q)h:hopen 5000
+q)neg[h]"11+1111111";.z.W h
+24
+q)neg[h]"11+1111111";(-38!h)`m
+24
+```
+
 :fontawesome-solid-hand-point-right:
-[`.z.h` active sockets](#zh-active-sockets), [`.z.w` handle](#zw-handle)
-<br>
-:fontawesome-solid-book-open:
-[`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.h` active sockets](#zh-active-sockets), [`.z.w` handle](#zw-handle), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
 
 
 ## `.z.w` (handle)
@@ -970,10 +980,7 @@ q).z.w
 !!! warning "Inside a `.z.p`* callback it returns the handle of the client session, not the current session."
 
 :fontawesome-solid-hand-point-right:
-[`.z.h` active sockets](#zh-active-sockets), [`.z.W` handles](#zw-handles)
-<br>
-:fontawesome-solid-book-open:
-[`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.h` active sockets](#zh-active-sockets), [`.z.W` handles](#zw-handles), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
 
 
 ## `.z.wc` (websocket close)
@@ -1067,7 +1074,7 @@ q).z.X
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.x` argv](#zx-argv), [`.z.f` file](#zf-file), [`.z.q` quiet mode](#zq-quiet-mode)
+[`.z.x`](#zx-argv) (argv), [`.z.f`](#zf-file) (file), [`.z.q`](#zq-quiet-mode) (quiet mode), [`.Q.opt`](dotq.md#opt-command-parameters) (command parameters), [`.Q.def`](dotq.md#def-command-defaults) (command defaults), [`.Q.x`](dotq.md#x-non-command-parameters) (non-command parameters)
 
 
 ## `.z.x` (argv)
@@ -1077,50 +1084,16 @@ Command-line arguments as a list of strings
 ```q
 $ q test.q -P 0 -abc 123
 q).z.x
-("-abc";"123")
+"-abc"
+"123"
 ```
 
-Note that the script name and the single-letter options used by q itself are not included.
+!!! Note "The script name and the single-letter options used by q itself are not included."
 
-Command-line options can be converted to a dictionary using the convenient `.Q.opt` function.
-
-```bash
-$ q -abc 123 -xyz 321
-```
-
-```q
-q).Q.opt .z.x
-abc| "123"
-xyz| "321"
-```
-
-Defaults and types can be provided with `.Q.def`.
-
-```bash
-$ q -abc 123 -xyz 321
-```
-
-```q
-q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
-abc| 123
-xyz| 321f
-efg| `a
-q)\\
-```
-
-```bash
-$ q -abc 123 -xyz 321 -efg foo
-```
-
-```q
-q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
-abc| 123
-xyz| 321f
-efg| `foo
-```
+Command-line options can be converted to a dictionary using the convenient [`.Q.opt`](dotq.md#opt-command-parameters) function.
 
 :fontawesome-solid-hand-point-right:
-[`.z.X` raw command line](#zx-raw-command-line), [`.z.f` file](#zf-file), [`.z.q` quiet mode](#zq-quiet-mode)
+[`.z.X`](#zx-raw-command-line) (raw command line), [`.z.f`](#zf-file) (file), [`.z.q`](#zq-quiet-mode) (quiet mode), [`.Q.opt`](dotq.md#opt-command-parameters) (command parameters), [`.Q.def`](dotq.md#def-command-defaults) (command defaults), [`.Q.x`](dotq.md#x-non-command-parameters) (non-command parameters)
 
 
 ## `.z.Z` (local datetime)
