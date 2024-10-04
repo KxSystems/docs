@@ -55,7 +55,7 @@ q)type
 @:
 ```
 
-The `parse` keyword on an operation involving the example above will expose the `k` code. Using the underlying code, it can be run using kdb+ in-build k interpreter to show that it produces the same result:
+The `parse` keyword on an operation involving the example above exposes the `k` code. Using the underlying code, it can be run using kdb+ in-build k interpreter to show that it produces the same result:
 ```q
 q)type 6
 -7h
