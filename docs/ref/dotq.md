@@ -379,7 +379,7 @@ xyz| 321f
 efg| `a
 ```
 
-If a command-line value cannot be [converted to the data type](tok.md) of the default value, a [null](../basics/datatypes.md) will be produced
+If a command-line value cannot be [converted to the data type](tok.md) of the default value, a [null](../basics/datatypes.md) is produced
 
 ```bash
 $ q -param1 11 -param2 2000.01.01 -param3 wrong
