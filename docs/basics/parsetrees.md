@@ -165,7 +165,7 @@ q)eval(,;enlist `a;enlist `b)
 
 ## Variadic operators
 
-Many operators and some keywords in k and q are [variadic](glossary.md#variadic): they are overloaded so that the behavior of the operator changes depending on the number and type of arguments. In q (not k) the unary form of operators such as (`+`, `$`, `.`, `&` etc.) is disabled: keywords are provided instead.
+Many operators and some keywords in k and q are [variadic](glossary.md#variadic). That means they are overloaded so that the behavior of the operator changes depending on the number and type of arguments. In q (not k), the unary form of operators such as (`+`, `$`, `.`, `&` etc.) is disabled, and keywords are provided instead.
 
 For example, in k the unary form of the `$` operator equates to the `string`
 keyword in q.
