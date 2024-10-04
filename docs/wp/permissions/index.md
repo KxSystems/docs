@@ -11,7 +11,9 @@ by [Tom Martin](#author)
 {: .wp-author}
 
 
-Due to its efficiency in storing and retrieving large volumes of data, kdb+ is the data-storage technology of choice for many financial institutions. kdb+ processes thus often contain sensitive, proprietary information in the form of data or proprietary code and so it is important to restrict who can and cannot access this information. kdb+ offers a number of in-built access functions, though in a default kdb+ instance these are not activated. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
+kdb+ processes often contain sensitive, proprietary information in the form of data or proprietary code and so it is important to restrict who can and cannot access this information. 
+
+kdb+ offers a number of in-built access functions. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
 
 !!! tip "Commercial-grade products"
 
@@ -1092,7 +1094,9 @@ poweruser1 "select from quote"       1     ""
 
 ## Conclusion
 
-This paper was an introduction to permissioning in kdb+ without using LDAP or any other external entitlements system. As kdb+ is the market leader in the storage and retrieval of big data, it is the database technology of choice for the world’s top financial institutions and as such it is used to store sensitive, proprietary information. In order to pass a security audit, access to this data should be controlled and logged to ensure that only those who are entitled to view the information are able to do so.
+This paper was an introduction to permissioning in kdb+ without using LDAP or any other external entitlements system.
+
+In order to pass a security audit, access to this data should be controlled and logged to ensure that only those who are entitled to view the information are able to do so.
 
 We have described a number of methods of securing a kdb+ process. We examined the concept of splitting clients into separate groups or classes, each with different permission levels. We examined how to block write access on a kdb+ process, and how to restrict certain users from viewing proprietary code. While the system described in the paper offers a broad coverage, including blocking some forms of code injection, it is not intended to be complete.
 

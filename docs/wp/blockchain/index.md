@@ -972,22 +972,6 @@ time.
 ![](img/media/image28.png)
 
 
-## Conclusion
-
-This paper described how a q process can be built to interact with a
-Bitcoin full node to extract and store blockchain transaction data in
-kdb+ format. By making use of appropriate schemas, partitioned database
-structures and query performance techniques it was possible to create a
-simple blockchain explorer process to look up transaction information and
-perform some interesting blockchain analytics. This application of kdb+
-to the area of blockchain explorer technology is a further step toward
-better understanding blockchain data, the unique challenges associated
-with data retrieval and storage, and potential for application
-development using the technology within the domain.
-
-[:fontawesome-solid-print:](/download/wp/blockchain-a4.pdf)
-
-
 ## Authors
 
 ![Daniel Irwin](../../img/faces/danielirwin.png)
