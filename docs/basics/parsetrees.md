@@ -77,7 +77,7 @@ like
 
 A parse tree is a q construct which represents an expression but which is not immediately evaluated. It takes the form of a list where the first item is a function and the remaining items are the arguments. Any of the items of the list can be parse trees themselves.
 
-Note that in a parse tree a variable is represented by a symbol containing its name. Thus to distinguish a symbol or a list of symbols from a variable it is necessary to enlist that expression. When we apply the `parse` function to create a parse tree, explicit definitions in `.q` are shown in their full k form. In particular, an enlisted element is represented by a preceding comma.
+Note that, in a parse tree, a variable is represented by a symbol containing its name. Thus, to distinguish a symbol or a list of symbols from a variable, it is necessary to enlist that expression. When we apply the `parse` function to create a parse tree, explicit definitions in `.q` are shown in their full k form. In particular, an enlisted element is represented by a preceding comma.
 
 ```q
 q)parse"5 6 7 8 + 1 2 3 4"
