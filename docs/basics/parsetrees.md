@@ -8,7 +8,7 @@ author: [Peter Storeng, Stephen Taylor, Simon Shanks]
 
 ## Overview
 
-[`parse`](../ref/parse.md) is a useful tool for seeing how a statement in q is evaluated. Pass the `parse` keyword a q statement as a string and it will return the parse tree of that expression.
+[`parse`](../ref/parse.md) is a useful tool for seeing how a statement in q is evaluated. Pass the `parse` keyword a q statement as a string and it returns the parse tree of that expression.
 
 A _parse tree_ represents an expression, not immediately evaluated. Its virtue is that the expression can be evaluated whenever and in whatever context it is needed. The two main functions dealing with parse trees are:
 
