@@ -184,7 +184,7 @@ Once the orchestrator recognizes that a batch has arrived (through either file n
 !!! tip "What functions to apply to specific batches/files can be managed with configuration based on the filename."
 
 
-### Step 1: Orchestrator distributes read and save task per file
+#### Step 1: Orchestrator distributes read and save task per file
 
 Upon the orchestrator recognizing that a batch with its required files is available (files 1, 2, and 3), the following is executed within the `.mi.sendToFreeWorker` function.
 
@@ -248,7 +248,7 @@ and updates in memory tables for tracking.
 ```
 
 
-### Step 2: Worker receives task to read and write a file
+#### Step 2: Worker receives task to read and write a file
 
 The worker receives a run task command `.mi.runTask` from the orchestrator:
 
@@ -332,7 +332,7 @@ Once the read and save task is complete, the tracked information i.e. the name o
     The column memory statistics are available so memory required for any further jobs on these columns could be estimated as part of distributing tasks to extend memory management.
 
 
-### Step 3: Orchestrator appends to sym and sends next task
+#### Step 3: Orchestrator appends to sym and sends next task
 
 After a success message is received from a worker via `.mi.workerResponse`, the orchestrator updates the tasks and workers tables.
 
@@ -449,7 +449,7 @@ In order to maintain sym file integrity the following method is used to ensure a
 [Working with symfiles](../symfiles.md)
 
 
-### Step 4: Indexing
+#### Step 4: Indexing
 
 The orchestrator sends another `.mi.runTask` to index the data by the chosen sorting columns (`` `sym`time`` in this example) to an available worker.
 
@@ -501,7 +501,7 @@ set[` sv mdb,`.d;key x`colSizes]
 ```
 
 
-###Step 5: Merge
+#### Step 5: Merge
 
 Once the index task is complete, the orchestrator assigns each worker a distinct subset of columns to merge one by one based on the index created in Step 4.
 
@@ -531,14 +531,14 @@ set[toPath;data]
 ```
 
 
-### Step 6: Move table/s
+#### Step 6: Move table/s
 
 After receiving a callback message from each worker that the merge has been completed, a worker is assigned via `.mi.runTask` to move the table/s to the relevant HDB directory. The merged table is moved using system `mv` (`MOVE` on Windows) command and during the move, the main HDB can be temporarily locked from queries.
 
 Once the orchestrator receives a success message for the move task the batch is considered complete and the processing of the next batch can commence.
 
 
-### Post-batch tasks
+#### Post-batch tasks
 
 In order to reduce downtime between batches, each worker is killed and restarted by the orchestrator process after the batch. Killing workers and restarting them has been found to free up memory faster rather than each worker running garbage collection, which can be time-consuming.
 
@@ -546,6 +546,7 @@ Once the batch successfully completes, any post-ingestion event-driven tasks can
 
 :fontawesome-regular-map:
 [Surveillance techniques to effectively monitor algo- and high-frequency trading](../surveillance/index.md)<br>
+:fontawesome-regular-map:
 [Transaction-cost analysis using kdb+](../transaction-cost.md)
 
 
@@ -580,18 +581,6 @@ Key elements and benefits of the proposed framework are:
 
 -   Easily scalable with the addition of more workers and memory
 -   Post-ingestion actions can be added – e.g. trigger the running regulatory reports, benchmarks or alerts
-
-
-## Conclusion
-
-For use cases where real-time feeds are unfeasible (due to cost, technical limitations or time), this style of batch ingestion framework is a great solution which can handle and scale to ever increasing data volumes. The need to ingest batch data as fast as possible due to reporting, regulatory obligations, post-trade requirements or other business needs means kdb+ is perfectly suited for the task.
-
-In this paper we discussed batch processing and use cases where it may be most appropriate: high volumes and throughput, large number of files, hardware constraints. We then described a proposed mass ingestion framework using kdb+, discussing the technical aspects of the framework such as the number of workers to utilize, maintaining sym file integrity and task allocation. Finally, we went through an example ingestion scenario and concluded by outlining the benefits of the framework.
-
-:fontawesome-brands-github:
-[kxcontrib/massIngestionDataloader](https://github.com/kxcontrib/massIngestionDataloader)
-
-The framework outlined in this paper is a simplified version of a framework that has been used in several KX implementations for batch ingestion. It has proven to be fast, efficient and scalable.
 
 
 ## Author
