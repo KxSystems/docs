@@ -212,7 +212,7 @@ q)parse"6(+)4"
 (+:;4)
 ```
 
-The items of a `parse` result use k syntax. Since (most of) the q keywords are defined in the `.q` namespace, we can use dictionary reverse lookup to find the meaning.
+The items of a `parse` result use k syntax. Since (most of) the q keywords are defined in the `.q` namespace, you can use dictionary reverse lookup to find the meaning.
 
 ```q
 q).q?(+:)
