@@ -611,7 +611,7 @@ nav:
     - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
     - White papers: wp/index.md
     - About this site: about/thissite.md
-  - kdb Insights: 'https://code.kx.com/insights'
+  - kdb Insights SDK: 'https://code.kx.com/insights'
   - kdb Insights Enterprise: 'https://code.kx.com/insights/enterprise'
   - KDB.AI: 'https://code.kx.com/kdbai'
   - PyKX: 'https://code.kx.com/pykx'
