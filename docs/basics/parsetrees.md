@@ -141,7 +141,7 @@ q)function[arg 1;..;arg n] ~ value(function;arg 1;..;arg n)
 1b
 ```
 
-When `eval` and `value` operate on a parse tree with no nested parse trees they return the same result. However it is not true that `eval` and `value` are equivalent in general. `eval` operates on parse trees, evaluating any nested parse trees, whereas `value` operates on the literals.
+When `eval` and `value` operate on a parse tree with no nested parse trees, they return the same result. However it is not true that `eval` and `value` are equivalent in general. `eval` operates on parse trees, evaluating any nested parse trees, whereas `value` operates on the literals.
 
 ```q
 q)value(+;7;3)                  //parse tree, with no nested trees
