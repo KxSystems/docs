@@ -179,7 +179,6 @@ nav:
         - Scrabble: learn/reading/scrabble.md
       - Application examples:
         - Astronomy: wp/astronomy.md
-        - Bitcoin blockchains: wp/blockchain/index.md
         - Card counters: wp/card-counters/index.md
         - Corporate actions: wp/corporate-actions.md
         - Disaster management: wp/disaster-management/index.md
@@ -563,7 +562,6 @@ nav:
       - Excel: interfaces/excel-client-for-q.md
       - FIX messaging: wp/fix-messaging.md
       - GPUs: interfaces/gpus.md
-      - Lightning tickerplants: wp/lightning-tickerplants/index.md
       - Matlab: interfaces/matlab-client-for-q.md
       - ODBC: interfaces/q-client-for-odbc.md
       - ODBC3: interfaces/q-server-for-odbc3.md

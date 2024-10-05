@@ -5,12 +5,6 @@
     "authors": ["Andrew Magowan", "James Neill"]
 },
 {
-    "title": "Storing and exploring the Bitcoin blockchain",
-    "slug": "blockchain",
-    "date": "December 2018",
-    "authors": ["Daniel Irwin", "Jeremy Lucid"]
-},
-{
     "title": "C API for kdb+",
     "slug": "capi",
     "date": "December 2018",
@@ -128,12 +122,6 @@
     "slug": "java-api",
     "date": "May 2018",
     "authors": ["Peter Lyness"]
-},
-{
-    "title": "Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network",
-    "slug": "lightning-tickerplants",
-    "date": "May 2019",
-    "authors": ["Jeremy Lucid"]
 },
 {
     "title": "Machine Learning in kdb+: k-Nearest Neighbor classification and pattern recognition with q",
