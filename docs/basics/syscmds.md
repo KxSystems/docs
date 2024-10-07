@@ -998,6 +998,9 @@ q)read0`:t1.q_          / file contents are scrambled
 "S\014%\210\0273\245"
 ```
 
+:fontawesome-solid-book-open:
+[Protecting proprietary code](../wp/permissions/index.md#protecting-proprietary-code)
+
 
 ## `\` (terminate)
 

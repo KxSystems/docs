@@ -14,7 +14,7 @@ Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e
 
 :fontawesome-solid-book-open:
 Command-line options [`-m`](cmdline.md#-m-memory-domain),
-[`-w`](cmdline.md#-m-workspace),
+[`-w`](cmdline.md#-w-workspace),
 System command [`\w`](syscmds.md#w-workspace)
 <br>
 :fontawesome-solid-book:
