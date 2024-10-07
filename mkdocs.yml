@@ -471,7 +471,6 @@ nav:
         - Unit tests: kb/unit-tests.md
         - Monitor & control execution: kb/using-dotz.md
       - Coding:
-        - Data visualization: wp/data-visualization/index.md
         - Geospatial indexing: kb/geospatial.md
         - Linear programming: kb/lp.md
         - Multithreaded input: kb/multithreaded-input.md
@@ -563,8 +562,10 @@ nav:
       - FIX messaging: wp/fix-messaging.md
       - GPUs: interfaces/gpus.md
       - Matlab: interfaces/matlab-client-for-q.md
-      - ODBC: interfaces/q-client-for-odbc.md
-      - ODBC3: interfaces/q-server-for-odbc3.md
+      - ODBC:
+        - ODBC: interfaces/q-client-for-odbc.md
+        - ODBC3: interfaces/q-server-for-odbc3.md
+        - ODBC3 and Tableau: wp/data-visualization/index.md
     #  - ODBC/Simba: interfaces/odbc-simba.md
       - Pub/sub with Solace: wp/solace/index.md
       - Open source: github.md
