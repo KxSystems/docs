@@ -179,7 +179,6 @@ nav:
         - Scrabble: learn/reading/scrabble.md
       - Application examples:
         - Astronomy: wp/astronomy.md
-        - Bitcoin blockchains: wp/blockchain/index.md
         - Card counters: wp/card-counters/index.md
         - Corporate actions: wp/corporate-actions.md
         - Disaster management: wp/disaster-management/index.md
@@ -393,11 +392,11 @@ nav:
         - if: ref/if.md
         - while: ref/while.md
       - Namespaces:
-        - .h: ref/doth.md
-        - .j: ref/dotj.md
-        - .m: ref/dotm.md
-        - .Q: ref/dotq.md
-        - .z: ref/dotz.md
+        - .h (markup): ref/doth.md
+        - .j (JSON): ref/dotj.md
+        - .m (memory backed files): ref/dotm.md
+        - .Q (utils): ref/dotq.md
+        - .z (env, callbacks): ref/dotz.md
       - Application: basics/application.md
       - Atomic functions: basics/atomic.md
       - Comparison: basics/comparison.md
@@ -415,7 +414,6 @@ nav:
       - Internal functions: basics/internal.md
       - Joins: basics/joins.md
       - Mathematics: basics/math.md
-      - Memory backed by files: basics/memory-backed.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parse trees: basics/parsetrees.md
@@ -472,7 +470,6 @@ nav:
         - Unit tests: kb/unit-tests.md
         - Monitor & control execution: kb/using-dotz.md
       - Coding:
-        - Data visualization: wp/data-visualization/index.md
         - Geospatial indexing: kb/geospatial.md
         - Linear programming: kb/lp.md
         - Multithreaded input: kb/multithreaded-input.md
@@ -563,10 +560,11 @@ nav:
       - Excel: interfaces/excel-client-for-q.md
       - FIX messaging: wp/fix-messaging.md
       - GPUs: interfaces/gpus.md
-      - Lightning tickerplants: wp/lightning-tickerplants/index.md
       - Matlab: interfaces/matlab-client-for-q.md
-      - ODBC: interfaces/q-client-for-odbc.md
-      - ODBC3: interfaces/q-server-for-odbc3.md
+      - ODBC:
+        - ODBC: interfaces/q-client-for-odbc.md
+        - ODBC3: interfaces/q-server-for-odbc3.md
+        - ODBC3 and Tableau: wp/data-visualization/index.md
     #  - ODBC/Simba: interfaces/odbc-simba.md
       - Pub/sub with Solace: wp/solace/index.md
       - Open source: github.md

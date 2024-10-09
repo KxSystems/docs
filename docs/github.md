@@ -151,13 +151,6 @@ GitHub topic queries:&nbsp;&nbsp;
 </td>
 </tr>
 <tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/jlucid/qbitcoind">qbitcoin</a></td>
-<td markdown>Enables communication with a running Bitcoin core node and wallet, via HTTP JSON-RPC messages; supports most calls in bitcoin-cli. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
-						(Jeremy Lucid)
-					</a></span>
-</td>
-</tr>
-<tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/sandybradley/qMachineTrader">qMachineTrader</a></td>
 <td markdown>Reinforcement learning method for incrementally estimating the optimal action-value function. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
 						(Sandy Bradley)
@@ -774,20 +767,11 @@ GitHub topic queries:&nbsp;&nbsp;
 <td markdown>:fontawesome-brands-bitcoin: Bitcoin</td>
 <td markdown>
 :fontawesome-brands-github: [bitmx/btceQ](https://github.com/bitmx/btceQ)<br/>
-:fontawesome-brands-github: [jlucid/qbitcoind](https://github.com/jlucid/qbitcoind)<br/>
-:fontawesome-brands-github: [jlucid/qexplorer](https://github.com/jlucid/qexplorer)
 </td>
 </tr>
 <tr markdown><td markdown>BosonNLP</td><td markdown>:fontawesome-brands-github: [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
 <tr markdown><td markdown>COMTRADE</td><td markdown>:fontawesome-brands-github: [diamondrod/q_comtrade](https://github.com/diamondrod/q_comtrade)</td></tr>
 <tr markdown><td markdown>Expat XML parser</td><td markdown>:fontawesome-brands-github: [felixlungu/qexpat](https://github.com/felixlungu/qexpat)</td></tr>
-<tr markdown>
-<td markdown>Factom blockchain</td>
-<td markdown>
-:fontawesome-brands-github: [jlucid/qfactom](https://github.com/jlucid/qfactom)<br/>
-:fontawesome-brands-github: [jlucid/qfactomconnect](https://github.com/jlucid/qfactomconnect)
-</td>
-</tr>
 <tr markdown><td markdown>ForexConnect</td><td markdown>:fontawesome-brands-github: [mortensorensen/qfxcm](https://github.com/mortensorensen/qfxcm)</td></tr>
 <tr markdown><td markdown>[gRPC](https://grpc.io)</td><td markdown>:fontawesome-brands-github: [diamondrod/qrpc](https://github.com/diamondrod/qrpc)</td></tr>
 <tr markdown><td markdown>Interactive Brokers</td><td markdown>:fontawesome-brands-github: [mortensorensen/QInteractiveBrokers](https://github.com/mortensorensen/QInteractiveBrokers)</td></tr>
@@ -795,7 +779,6 @@ GitHub topic queries:&nbsp;&nbsp;
 <tr markdown><td markdown>J</td><td markdown>[Q client for J](https://github.com/kxcontrib/zuoqianxu/tree/master/qj)</td></tr>
 <tr markdown><td markdown>JDBC</td><td markdown>:fontawesome-brands-github: [CharlesSkelton/babel](https://github.com/CharlesSkelton/babel)</td></tr>
 <tr markdown><td markdown>Kafka</td><td markdown>:fontawesome-brands-github: [ajayrathore/krak](https://github.com/ajayrathore/krak)</td></tr>
-<tr markdown><td markdown>Lightning</td><td markdown>:fontawesome-brands-github: [jlucid/qlnd](https://github.com/jlucid/qlnd)</td></tr>
 <tr markdown><td markdown>MQTT</td><td markdown>:fontawesome-brands-github: [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q)</td></tr>
 <tr markdown><td markdown>ODBC</td><td markdown>:fontawesome-brands-github: [johnanthonyludlow/kdb/docs/odbc.pdf](https://github.com/johnanthonyludlow/kdb/blob/master/docs/odbc.pdf)</td></tr>
 <tr markdown><td markdown>Philips Hue</td><td markdown>:fontawesome-brands-github: [jparmstrong/qphue](https://github.com/jparmstrong/qphue)</td></tr>
@@ -1161,13 +1144,6 @@ GitHub topic queries:&nbsp;&nbsp;
 <td markdown class="nowrap"><a href="https://github.com/lmartinking/qgz">qgz</a></td>
 <td markdown>[GZip](http://www.gzip.org/) decompression. <span class="author"><a href="https://github.com/lmartinking?tab=repositories">
 						(Lucas Martin-King)
-					</a></span>
-</td>
-</tr>
-<tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/jlucid/qhandle">qhandle</a></td>
-<td markdown>Manage open handles and backup switchover. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
-						(Jeremy Lucid)
 					</a></span>
 </td>
 </tr>

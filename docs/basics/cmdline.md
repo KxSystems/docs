@@ -85,7 +85,7 @@ q)h"aa:10#aa"
 q)
 ```
 
-Use `\_` to check if client write-access is blocked:
+Use [`\_`](syscmds.md#_-hide-q-code) to check if client write-access is blocked:
 
 ```q
 ~/q$ q -b
@@ -184,7 +184,7 @@ Log updates to filesystem.
 -L
 ```
 
-As `-l`, but sync logging.
+As [`-l`](#-l-log-updates), but sync logging.
 
 :fontawesome-solid-graduation-cap:
 [Logging](../kb/logging.md)

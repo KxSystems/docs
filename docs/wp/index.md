@@ -14,7 +14,6 @@ White papers are flagged in the navigation menus.
 -   [**Implementing trend indicators in kdb+**](trend-indicators/index.md)<br>James Galligan, 2020.04
 -   [**Comparing option-pricing methods in q**](option-pricing/index.md)<br>Deanna Morgan, 2019.10
 -   [**kdb+ in astronomy**](astronomy.md)<br>Andrew Magowan &amp; James Neill, 2019.09
--   [**Storing and exploring the Bitcoin blockchain**](blockchain/index.md)<br>Jeremy Lucid &amp; Daniel Irwin, 2018.12
 -   [**Signal processing and q**](signal-processing/index.md)<br>Callum Biggs, 2018.08
 -   [**Streaming analytics**: detecting card counters in Blackjack](card-counters/index.md)<br>Caolan&nbsp;Rafferty &amp; Krishan&nbsp;Subherwal, 2017.05
 -   [**Surveillance techniques to effectively monitor algo and high-frequency trading**](surveillance/index.md)<br>Sam Stanton-Cook, Ryan Sparks, Dan O’Riordan &amp; Rob Hodgkinson, 2014.03
@@ -27,7 +26,6 @@ White papers are flagged in the navigation menus.
 
 -   [**Internet of Things with MQTT**](iot-mqtt/index.md)<br>Rian&nbsp;Ó&nbsp;Cuinneagáin, 2021.06
 -   [**Publish/subscribe with the Solace event broker**](solace/index.md)<br>Himanshu&nbsp;Gupta, 2020.11
--   [**Lightning tickerplants**: pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md)<br>Jeremy&nbsp;Lucid, 2019.05
 -   [**C API for kdb+**](capi/index.md)<br>Jeremy&nbsp;Lucid, 2018.12
 -   [**Data visualization with kdb+ using ODBC:** a Tableau case study](data-visualization/index.md)<br>Michaela&nbsp;Woods, 2018.07
 -   [**Building real-time tick subscribers**](rt-tick/index.md)<br>Nathan&nbsp;Perrem, 2014.08
