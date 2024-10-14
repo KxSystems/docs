@@ -117,6 +117,13 @@ GitHub topic queries:&nbsp;&nbsp;
 </td>
 </tr>
 <tr markdown>
+<td markdown class="nowrap"><a href="https://github.com/lukebrit27/surv-cloud">surv-cloud</a></td>
+<td markdown>Small market surveillance application for cloud/kubernetes. <span class="author"><a href="https://github.com/lukebrit27?tab=repositories">
+                        (Luke Britton)
+                    </a></span>
+</td>
+</tr>
+<tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/simongarland/tickrecover">tickrecover</a></td>
 <td markdown>Recover from tickerplant crash. <span class="author"><a href="https://github.com/simongarland?tab=repositories">
 						(Simon Garland)

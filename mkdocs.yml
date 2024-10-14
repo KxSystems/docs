@@ -566,7 +566,7 @@ nav:
         - ODBC3: interfaces/q-server-for-odbc3.md
         - ODBC3 and Tableau: wp/data-visualization/index.md
     #  - ODBC/Simba: interfaces/odbc-simba.md
-      - Pub/sub with Solace: wp/solace/index.md
+      - Solace pub/sub: wp/solace/index.md
       - Open source: github.md
       - Machine learning: ml.md
     - Using kdb+ in the cloud:
@@ -595,7 +595,6 @@ nav:
         - Amazon Web Services: cloud/autoscale/aws.md
         - Realtime data cluster: cloud/autoscale/rdc.md
         - Costs and risks: cloud/autoscale/cost-risk.md
-      - Surveillance in the Cloud: wp/surv-cloud/index.md
       - Other file systems:
           - MapR-FS: cloud/otherfs/mapr.md
           - Goofys: cloud/otherfs/goofys.md
