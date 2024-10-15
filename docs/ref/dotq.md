@@ -140,7 +140,7 @@ q)256 vs .Q.addr`localhost
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.host`](#host-hostname)
+[`.Q.host`](#host-hostname) (hostname)
 <br>
 :fontawesome-solid-book-open:
 [`vs`](vs.md)
@@ -501,7 +501,7 @@ Where
 loops `.Q.M&1000000` rows at a time.
 
 :fontawesome-solid-hand-point-right:
-[`.Q.M`](#m-chunk-size)
+[`.Q.M`](#m-chunk-size) (chunk size)
 
 For example, loading TAQ DVD:
 
@@ -608,6 +608,9 @@ The `1e13` limit is dependent on `x`. The maximum then becomes `y*10 xexp x` and
 q)10 xlog 0Wj-1
 18.964889726830812
 ```
+
+:fontawesome-regular-hand-point-right:
+[`.Q.fmt`](#fmt-format) (format)
 
 
 ## `fc` (parallel on cut)
@@ -750,6 +753,9 @@ q)fmt[9] each 34.4 343434.358
 "     34.4"
 "343434.36"
 ```
+
+:fontawesome-regular-hand-point-right:
+[`.Q.f`](#f-format) (format) 
 
 
 ## `fpn` (streaming algorithm)
@@ -991,6 +997,9 @@ So if you have many nested data, e.g. columns of char vectors, or much grouping,
 Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations performed by `.Q.gc[]` (i.e. only return unused blocks >= 64MB to os). 
 This has the advantage of running return faster than `.Q.gc[]`, but with the disadvantage of not defragmenting unused memory blocks of a smaller size (therefore may not free as much unused memory).
 
+:fontawesome-solid-hand-point-right:
+[`.Q.w`](#w-memory-stats) (memory stats)
+
 
 ## `gz` (GZip)
 
@@ -1095,10 +1104,7 @@ q).Q.addr `netbox.com
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.addr`](#addr-ip-address)
-<br>
-:fontawesome-solid-book:
-[Tok](tok.md)
+[`.Q.addr`](#addr-ip-address) (IP address), [`$`](tok.md#ip-address) tok (IP address as int)
 
 
 ## `hp` (HTTP post)
@@ -1747,7 +1753,7 @@ q).Q.res,key`.q
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.id`](#id-sanitize)
+[`.Q.id`](#id-sanitize) (sanitize)
 
 
 ## `s` (plain text)
@@ -2109,6 +2115,8 @@ syms| 577
 symw| 25436
 ```
 
+:fontawesome-solid-hand-point-right:
+[`.Q.gc`](#gc-garbage-collect) (garbage collect)<br>
 :fontawesome-solid-book-open:
 [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace)
 <br>
