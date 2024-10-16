@@ -398,8 +398,8 @@ The compression/decompression algorithms are proprietary and implemented as the 
 <br>
 [`.z` namespace](../ref/dotz.md) for callback functions
 <br> 
-[`.Q.addr`](../ref/dotq.md##addr-iphost-as-int) (IP/host as int), 
-[`.Q.host`](../ref/dotq.md#host-hostname) (hostname), 
+[`.Q.addr`](../ref/dotq.md#addr-iphost-as-int) (IP/host as int), 
+[`.Q.host`](../ref/dotq.md#host-ip-to-hostname) (IP to hostname), 
 <br>
 :fontawesome-solid-book-open:
 [Connection handles](handles.md)

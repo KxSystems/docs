@@ -57,7 +57,7 @@ _Tools_
  [fps fpn  pipe streaming](#fpn-pipe-streaming)           [u           date based](#u-date-based) 
  [fs  fsn  file streaming](#fs-file-streaming)
  [hg       HTTP get](#hg-http-get)                **File I/O**
- [host     hostname](#host-hostname)                 [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
+ [host     IP to hostname](#host-ip-to-hostname)           [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
  [hp       HTTP post](#hp-http-post)                [Xf          create file](#xf-create-file)
 </div>
 
@@ -140,7 +140,7 @@ q)256 vs .Q.addr`localhost
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.host`](#host-hostname) (hostname)
+[`.Q.host`](#host-ip-to-hostname) (IP to hostname)
 <br>
 :fontawesome-solid-book-open:
 [`vs`](vs.md)
@@ -1092,8 +1092,8 @@ The server then decides whether to gzip the returned payload, which is uncompres
 
 :fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
-
-## `host` (hostname)
+[](){#host-hostname}
+## `host` (IP to hostname)
 
 ```syntax
 .Q.host x
