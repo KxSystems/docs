@@ -773,12 +773,18 @@ _[`.Q.fs`](#fs-file-streaming) for pipes_
 .Q.fpn[x;y;z]
 ```
 
+Where
+
+-   `x` is a unary function
+-   `y` is a filepath to a fifo (named pipe)
+-   `z` is an integer
+
 (Since V3.4)
 
-Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
+Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm for various purposes such as converting a large compressed CSV file into an on-disk kdb+ database without holding the data in memory all at once or using disk space required for the uncompressed file.
 
 :fontawesome-solid-graduation-cap:
-[Named Pipes](../kb/named-pipes.md)
+[Streaming data from named pipes](../kb/named-pipes.md#streaming)
 
 !!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
 
