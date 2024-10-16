@@ -5,9 +5,6 @@ keywords: fifo, kdb+, named, pipe, q, unix
 ---
 # Named pipes
 
-
-
-
 Since V3.4 it has been possible to read FIFOs/named pipes on Unix.
 
 ```q
@@ -19,8 +16,8 @@ q)/ At most, n bytes will be read, perhaps fewer
 q)hclose h             / Close the file to clean up
 ```
 
-[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm "streaming algorithm") is [`.Q.fs`](../ref/dotq.md#fs-streaming-algorithm "streaming algorithm") for pipes. 
-(`.Q.fpn` corresponds to [`.Q.fsn`](../ref/dotq.md#fsn-streaming-algorithm "streaming algorithm").) 
+[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm "streaming algorithm") is [`.Q.fs`](../ref/dotq.md#fs-file-streaming "file streaming") for pipes. 
+(`.Q.fpn` corresponds to [`.Q.fsn`](../ref/dotq.md#fsn-file-streaming "file streaming").) 
 
 The following example loads a CSV via FIFO, avoiding decompressing to disk:
 

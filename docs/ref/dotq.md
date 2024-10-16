@@ -55,7 +55,7 @@ _Tools_
  **IPC**                               **Segmented database state**
  [addr     IP address](#addr-ip-address)               [P           segments](#p-segments)
  [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [u           date based](#u-date-based) 
- [fs  fsn  streaming algorithm](#fs-streaming-algorithm)
+ [fs  fsn  file streaming](#fs-file-streaming)
  [hg       HTTP get](#hg-http-get)                **File I/O**
  [host     hostname](#host-hostname)                 [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
  [hp       HTTP post](#hp-http-post)                [Xf          create file](#xf-create-file)
@@ -781,9 +781,10 @@ Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and appli
 
 !!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
 
-
-## `fs` (streaming algorithm)
-## `fsn` (streaming algorithm)
+[](){#fs-streaming-algorithm}
+## `fs` (file streaming)
+[](){#fsn-streaming-algorithm}
+## `fsn` (file streaming)
 
 ```syntax
 .Q.fs[x;y]
@@ -792,7 +793,7 @@ Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and appli
 
 Where
 
--   `x` is a unary value
+-   `x` is a unary function
 -   `y` is a filepath
 -   `z` is an integer
 
