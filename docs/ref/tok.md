@@ -160,7 +160,7 @@ q)"NT"$\:"123456123987654"  / since V3.4
 ```
 
 :fontawesome-solid-book:
-[`.Q.addr`](dotq.md#addr-ip-address),
+[`.Q.addr`](dotq.md#addr-iphost-as-int),
 [`.Q.host`](dotq.md#host-hostname)
 
 

@@ -53,7 +53,7 @@ _Tools_
  [x        non-command parameters](#x-non-command-parameters)   [vp          missing partitions](#vp-missing-partitions)
   
  **IPC**                               **Segmented database state**
- [addr     IP address](#addr-ip-address)               [P           segments](#p-segments)
+ [addr     IP/host as int](#addr-iphost-as-int)           [P           segments](#p-segments)
  [fps fpn  pipe streaming](#fpn-pipe-streaming)           [u           date based](#u-date-based) 
  [fs  fsn  file streaming](#fs-file-streaming)
  [hg       HTTP get](#hg-http-get)                **File I/O**
@@ -119,8 +119,8 @@ q).Q.addmonths[2006.10.29;4]
 :fontawesome-solid-graduation-cap:
 [How to handle temporal data in q](../kb/temporal-data.md)
 
-
-## `addr` (IP address)
+[](){#addr-ip-address}
+## `addr` (IP/host as int)
 
 ```syntax
 .Q.addr x
@@ -1116,7 +1116,7 @@ q).Q.addr `netbox.com
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.addr`](#addr-ip-address) (IP address), [`$`](tok.md#ip-address) tok (IP address as int)
+[`.Q.addr`](#addr-iphost-as-int) (IP/host as int), [`$`](tok.md#ip-address) tok (IP address as int)
 
 
 ## `hp` (HTTP post)
