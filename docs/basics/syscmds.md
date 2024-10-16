@@ -530,8 +530,8 @@ q)1%3
     ```
 
 :fontawesome-solid-book:
-[`.Q.f`](../ref/dotq.md#f-format) (format),
-[`.Q.fmt`](../ref/dotq.md#fmt-format) (format with length)
+[`.Q.f`](../ref/dotq.md#f-precision-format) (precision format),
+[`.Q.fmt`](../ref/dotq.md#fmt-precision-format) (precision format with length)
 <br>
 :fontawesome-solid-book-open:
 [Precision](precision.md),

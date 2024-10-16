@@ -12,10 +12,10 @@ _Tools_
 **General**                           **Datatype**
  [addmonths](#addmonths)                         [btoa        b64 encode](#btoa-b64-encode)
  [dd       join symbols](#dd-join-symbols)             [j10         encode binhex](#j10-encode-binhex)
- [f        format](#f-format)                   [j12         encode base 36](#j12-encode-base-36)
+ [f        precision format](#f-precision-format)         [j12         encode base 36](#j12-encode-base-36)
  [fc       parallel on cut](#fc-parallel-on-cut)          [ty          type](#ty-type)
  [ff       append columns](#ff-append-columns)           [x10         decode binhex](#x10-decode-binhex)
- [fmt      format](#fmt-format)                   [x12         decode base 36](#x12-decode-base-36)
+ [fmt      precision format](#fmt-precision-format)         [x12         decode base 36](#x12-decode-base-36)
  [ft       apply simple](#ft-apply-simple) 
  [fu       apply unique](#fu-apply-unique)            **Database**
  [gc       garbage collect](#gc-garbage-collect)          [chk         fill HDB](#chk-fill-hdb)
@@ -574,8 +574,8 @@ _Q for Mortals_
 [§14.2.8 Working with sym files](/q4m3/14_Introduction_to_Kdb%2B/#1428-working-with-sym-files)
 
 
-
-## `f` (format)
+[](){#f-format}
+## `f` (precision format)
 
 ```syntax
 .Q.f[x;y]
@@ -610,7 +610,9 @@ q)10 xlog 0Wj-1
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.fmt`](#fmt-format) (format)
+[`.Q.fmt`](#fmt-precision-format) (precision format with length)
+<br>:fontawesome-solid-book-open:
+[`\P`](../basics/syscmds.md#p-precision) (precision)
 
 
 ## `fc` (parallel on cut)
@@ -699,8 +701,8 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 
 Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.
 
-
-## `fmt` (format)
+[](){#fmt-format}
+## `fmt` (precision format)
 
 ```syntax
 .Q.fmt[x;y;z]
@@ -755,7 +757,9 @@ q)fmt[9] each 34.4 343434.358
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.f`](#f-format) (format) 
+[`.Q.f`](#f-precision-format) (precision format) 
+<br>:fontawesome-solid-book-open:
+[`\P`](../basics/syscmds.md#p-precision) (precision)
 
 
 ## `fpn` (streaming algorithm)

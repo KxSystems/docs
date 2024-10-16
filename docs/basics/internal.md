@@ -359,7 +359,7 @@ q)-27!(3i;0 1+123456789.4567)
 "123456790.457"
 ```
 
-This is a more precise, built-in version of [`.Q.f`](../ref/dotq.md#f-format) but uses IEEE754 rounding:
+This is a more precise, built-in version of [`.Q.f`](../ref/dotq.md#f-precision-format) but uses IEEE754 rounding:
 
 ```q
 q).045

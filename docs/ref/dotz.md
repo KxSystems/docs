@@ -87,7 +87,7 @@ q)"i"$0x0 vs .z.a
     When invoked via a Unix Domain Socket, it is 0.
 
 :fontawesome-solid-hand-point-right:
-[`.z.h` host](#zh-host) (host)
+[`.z.h`](#zh-host) (host)
 
 ## `.z.ac` (HTTP auth)
 
@@ -148,7 +148,7 @@ y| ,`a
 ```
 
 :fontawesome-solid-book-open:
-[`\b`](../basics/syscmds.md#b-views)
+[`\b`](../basics/syscmds.md#b-views) (views)
 <br>
 :fontawesome-solid-graduation-cap:
 [Views](../learn/views.md)

@@ -71,8 +71,8 @@ Range: `c`
 <br>
 :fontawesome-solid-book: 
 [`.Q.addr`](dotq.md#addr-ip-address) (IP address),
-[`.Q.f`](dotq.md#f-format) (format),
-[`.Q.fmt`](dotq.md#fmt-format) (format)
+[`.Q.f`](dotq.md#f-precision-format) (precision format),
+[`.Q.fmt`](dotq.md#fmt-precision-format) (precision format with length)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
