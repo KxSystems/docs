@@ -99,8 +99,8 @@ Variants of `.Q.fs` extend it to [named pipes](named-pipes.md) and control chunk
 [`.Q.fsn`](../ref/dotq.md#fsn-file-streaming) for chunk size
 <br>
 :fontawesome-solid-book:
-[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm),
-[`.Q.fpn`](../ref/dotq.md#fpn-streaming-algorithm) for named pipes
+[`.Q.fps`](../ref/dotq.md#fps-pipe-streaming),
+[`.Q.fpn`](../ref/dotq.md#fpn-pipe-streaming) for named pipes
 
 <!-- 
 To write to a partitioned database, some utility functions generalizing [`.Q.dpft`](../ref/dotq.md#dpft-save-table) are useful.
@@ -444,7 +444,7 @@ openssl enc -aes-256-cbc -d –k password -in trades.csv.dat > named_pipe &
 
 :fontawesome-solid-book:
 [`set`](../ref/get.md#set), 
-[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm)
+[`.Q.fps`](../ref/dotq.md#fps-pipe-streaming) (pipe streaming)
 <br>
 :fontawesome-solid-laptop:
 [Named pipes](../kb/named-pipes.md)

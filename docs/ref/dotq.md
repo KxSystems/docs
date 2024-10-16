@@ -54,7 +54,7 @@ _Tools_
   
  **IPC**                               **Segmented database state**
  [addr     IP address](#addr-ip-address)               [P           segments](#p-segments)
- [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [u           date based](#u-date-based) 
+ [fps fpn  pipe streaming](#fpn-pipe-streaming)           [u           date based](#u-date-based) 
  [fs  fsn  file streaming](#fs-file-streaming)
  [hg       HTTP get](#hg-http-get)                **File I/O**
  [host     hostname](#host-hostname)                 [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
@@ -761,11 +761,12 @@ q)fmt[9] each 34.4 343434.358
 <br>:fontawesome-solid-book-open:
 [`\P`](../basics/syscmds.md#p-precision) (precision)
 
+[](){#fpn-streaming-algorithm}
+## `fpn` (pipe streaming)
+[](){#fps-streaming-algorithm}
+## `fps` (pipe streaming)
 
-## `fpn` (streaming algorithm)
-## `fps` (streaming algorithm)
-
-_`.Q.fs` for pipes_
+_[`.Q.fs`](#fs-file-streaming) for pipes_
 
 ```syntax
 .Q.fps[x;y]
