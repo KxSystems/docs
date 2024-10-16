@@ -70,6 +70,8 @@ Ensure you have `ps.k` loaded into the kdb+ process specified in your DSN:
 q)\l ps.k
 ```
 
+The kdb+ process should also be [listening on port](../basics/listening-port.md) which relates to the port choosen and defined in the odbc configuration.
+
 
 ## Notes
 

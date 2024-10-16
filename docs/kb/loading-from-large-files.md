@@ -13,7 +13,7 @@ The [Load CSV](../ref/file-text.md#load-csv) form of the File Text operator load
 
 If the data in the CSV file is too large to fit into memory, we need to break the large CSV file into manageable chunks and process them in sequence. 
 
-Function [`.Q.fs`](../ref/dotq.md#fs-streaming-algorithm) and its variants help automate this process. `.Q.fs` loops over a file in conveniently-sized chunks of complete records, and applies a function to each chunk. This lets you implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding all the data in memory at once.
+Function [`.Q.fs`](../ref/dotq.md#fs-file-streaming) (file streaming) and its variants help automate this process. `.Q.fs` loops over a file in conveniently-sized chunks of complete records, and applies a function to each chunk. This lets you implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding all the data in memory at once.
 
 
 ## Using `.Q.fs`
@@ -96,11 +96,11 @@ date       open  high  low   close volume   sym
 Variants of `.Q.fs` extend it to [named pipes](named-pipes.md) and control chunk size.
 
 :fontawesome-solid-book:
-[`.Q.fsn`](../ref/dotq.md#fsn-streaming-algorithm) for chunk size
+[`.Q.fsn`](../ref/dotq.md#fsn-file-streaming) for chunk size
 <br>
 :fontawesome-solid-book:
-[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm),
-[`.Q.fpn`](../ref/dotq.md#fpn-streaming-algorithm) for named pipes
+[`.Q.fps`](../ref/dotq.md#fps-pipe-streaming),
+[`.Q.fpn`](../ref/dotq.md#fpn-pipe-streaming) for named pipes
 
 <!-- 
 To write to a partitioned database, some utility functions generalizing [`.Q.dpft`](../ref/dotq.md#dpft-save-table) are useful.
@@ -163,7 +163,7 @@ Unfortunately it is not always possible or is too expensive to structure the inp
 
 We must
 
--   read data in chunks using [`.Q.fsn`](../ref/dotq.md#fsn-streaming-algorithm)
+-   read data in chunks using [`.Q.fsn`](../ref/dotq.md#fsn-file-streaming)
 -   append data to splayed tables using manual enumerations and [`upsert`](../basics/qsql.md#upsert)
 -   re-sort and set attributes on disk when all the data is loaded
 -   write a daily statistics table as a splayed table at the top level of the database
@@ -444,7 +444,7 @@ openssl enc -aes-256-cbc -d –k password -in trades.csv.dat > named_pipe &
 
 :fontawesome-solid-book:
 [`set`](../ref/get.md#set), 
-[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm)
+[`.Q.fps`](../ref/dotq.md#fps-pipe-streaming) (pipe streaming)
 <br>
 :fontawesome-solid-laptop:
 [Named pipes](../kb/named-pipes.md)

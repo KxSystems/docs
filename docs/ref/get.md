@@ -124,7 +124,7 @@ q)(`:ztbl/;17;16;6) set t           / splay table encrypted (since v4.0 2019.12.
 `:ztbl/
 ```
 
-Anymap write detects consecutive deduplicated (address matching) top-level objects, skipping them to save space; since V4.1t 2021.06.04.
+Anymap write detects consecutive deduplicated (address matching) top-level objects, skipping them to save space (since v4.1t 2021.06.04, v4.0 2023.01.20)
 
 ```q
 q)a:("hi";"there";"world")

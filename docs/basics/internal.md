@@ -17,8 +17,8 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-10!x](#-10x-type-enum)       type enum                     -5!   [parse](../ref/parse.md)
 [-11!](#-11-streaming-execute)        streaming execute             -6!   [eval](../ref/eval.md)
 [-14!x](#-14x-quote-escape)       quote escape                  -7!   [hcount](../ref/hcount.md)
-[-16!x](#-16x-ref-count)       ref count                     -12!  [.Q.host](../ref/dotq.md#host-hostname)
-[-18!x](#-18x-compress-byte)       compress byte                 -13!  [.Q.addr](../ref/dotq.md#addr-ip-address)
+[-16!x](#-16x-ref-count)       ref count                     -12!  [.Q.host](../ref/dotq.md#host-ip-to-hostname)
+[-18!x](#-18x-compress-byte)       compress byte                 -13!  [.Q.addr](../ref/dotq.md#addr-iphost-as-int)
 [-21!x](#-21x-compressionencryption-stats)       compression/encryption stats  -15!  [md5](../ref/md5.md)
 [-22!x](#-22x-uncompressed-length)       uncompressed length           -19!  [set](../ref/get.md#set)
 [-23!x](#-23x-memory-map)       memory map                    -20!  [.Q.gc](../ref/dotq.md#gc-garbage-collect)
@@ -359,7 +359,7 @@ q)-27!(3i;0 1+123456789.4567)
 "123456790.457"
 ```
 
-This is a more precise, built-in version of [`.Q.f`](../ref/dotq.md#f-format) but uses IEEE754 rounding:
+This is a more precise, built-in version of [`.Q.f`](../ref/dotq.md#f-precision-format) but uses IEEE754 rounding:
 
 ```q
 q).045

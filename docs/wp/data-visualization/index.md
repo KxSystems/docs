@@ -18,8 +18,7 @@ visualization tool, [_Dashboards for KX_](/dashboards/), but clients might have 
 
 Alternatively, many organizations might wish to migrate their back-end
 database to kdb+ for increased efficiency and scalability, while
-retaining their current visualization front end. This paper
-offers guidance.
+retaining their current visualization front end. 
 
 [Tableau](https://www.tableau.com) is an example of a widely-used BI tool. 
 This paper
@@ -27,9 +26,7 @@ outlines how it can be used to access kdb+ via ODBC
 (Open Database Connectivity), a standard application-programming
 interface used to connect different database management
 systems, specifically designed to be independent of
-databases and operating systems. Version 3.4 of kdb+ included an updated
-version of its Windows ODBC driver (ODBCv3) to support wider access to
-kdb+ data.
+databases and operating systems.
 
 This paper illustrates the flexibility with which kdb+ data can be
 accessed by Tableau using ODBC. It explains further how kdb+’s caching
@@ -47,13 +44,7 @@ capabilities. Such features and their ability to support high-volume,
 low-latency access to streaming data cannot be assumed in third-party
 products.
 
-Guidelines on connection, setup, queries and advice on how to maximize
-performance are discussed. For both new and
-existing users, this paper aims to reduce the learning curve, boost
-efficiency and increase usability when combining these two technologies.
-
 All tests were run using kdb+ version 3.5 and Tableau 10.3.
-
 
 ## Connecting to kdb+ using ODBC
 
@@ -64,9 +55,8 @@ For an ODBC driver to connect to an application, it needs a DSN
 (Data Source Name). 
 A DSN contains the name, directory and driver of the database, and (depending on the type of DSN) the access credentials of the user.
 
-With administrator rights, adding a new DSN is relatively
-straightforward. See the instructions linked
-to above. 
+With administrator rights, [adding a new DSN](../../interfaces/q-server-for-odbc3.md) is relatively
+straightforward. 
 
 A second way to add a
 DSN does not require administrator access, and might be useful
@@ -535,35 +525,6 @@ Using `tabcmd` and a script to edit the workbook can be an effective
 way to make the publishing process smoother when connecting to
 kdb+, especially when scaling use cases and looking to publish across
 multiple environments and DSNs.
-
-
-## Conclusion
-
-kdb+ is well known as the world’s fastest time-series database. KX’s
-own visualization tool, _Dashboards for KX_, is optimized for this
-technology. However, kdb+ is flexible enough to connect with a
-range of different visualization tools. This white paper demonstrates how to connect to one such visualization tool,
-Tableau, by means of the KX ODBC driver.
-
-You have seen how to set up a connection between kdb+ and Tableau
-using ODBC, with detailed instructions on how best to use Tableau’s query
-functionality, datatypes, parameters and filters with the q language.
-
-The key takeaways include how kdb+’s caching feature may be used to
-improve performance by optimizing repeated queries from Tableau. Further
-to this, improving performance when using filters with multiple data
-sources was explored. The methods provided in this paper demonstrate
-that kdb+ and Tableau can be combined in an efficient way despite
-limitations that occur when combining the two technologies.
-
-If the question is “Is Tableau the best, and best performing visualization
-tool when combining with kdb+?”, the answer is “No. There are other
-visualization tools better tailored to the kdb+
-technology, for example KX’s visualization solution _Dashboards for KX_.”
-But if the question is “Can you combine these two technologies in an
-effective way?” the answer is “Yes”, and by applying the functionality
-described in this paper to work around limitations, to connect a Tableau
-visualization front-end to a kdb+ back end.
 
 
 ## Author

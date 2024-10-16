@@ -94,7 +94,7 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V4.0 2020.03.17.)
 
 :fontawesome-regular-hand-point-right:
-[0: load csv](file-text.md#load-csv)
+[0: load csv](file-text.md#load-csv), [save](save.md#save) (save and format data)
 
 
 ## `.h.code` (code after Tab)
@@ -161,6 +161,8 @@ q).h.ed ([]a:1 2 3;b:`x`y`z)
 "<Workbook xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:o=\"u..
 ```
 
+:fontawesome-regular-hand-point-right:
+[save](save.md#save) (save and format data)
 
 ## `.h.edsn` (Excel from tables)
 
@@ -203,7 +205,8 @@ q)`:/Users/sjt/tmp/excel.xls 0: .h.edsn `test1`test2!(t1;t2)
 
 ![excel.xls](../img/h.edsn.png "Excel spreadsheet")
 
-
+:fontawesome-regular-hand-point-right:
+[save](save.md#save) (save and format data)
 
 ## `.h.fram` (frame)
 
@@ -819,6 +822,9 @@ q).h.xd ([]a:1 2 3;b:`x`y`z)
 "</R>"
 ```
 
+:fontawesome-regular-hand-point-right:
+[save](save.md#save) (save and format data)
+
 
 ## `.h.xmp` (XMP)
 
@@ -865,4 +871,4 @@ foo| "bar"
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.j` namespace](dotj.md) (JSON de/serialization)
+[`.j` namespace](dotj.md) (JSON de/serialization), [save](save.md#save) (save and format data)
