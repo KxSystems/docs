@@ -59,7 +59,7 @@ IBM,12:01:20.990,A,O,100,61.11
 ```
 
 If the file is compressed into a ZIP archive (t.zip), the system command `unzip` has the option to uncompress to stdout, which can be combined with a `fifo`.
-The following loads the CSV file via a FIFO without having the intermediary step of creating the unzipped file:
+The following loads the CSV file through a FIFO without having the intermediary step of creating the unzipped file:
 
 ```q
 q)system"rm -f fifo && mkfifo fifo"
