@@ -11,7 +11,7 @@ _Write global data to file or splayed to a directory_
 
 ## `save`
 
-_Write a global variable to file_
+_Write a global variable to file and optionally format data_
 
 ```syntax
 save x     save[x]
@@ -20,35 +20,24 @@ save x     save[x]
 Where `x` is a symbol atom or vector of the form `[path/to/]v[.ext]` in which 
 
 -   `v` is the name of a global variable
--   `path/to/` is a file path (optional)
--   `.ext` is a file extension (optional)
+-   `path/to/` is a file path (optional). If a file
+    - exists, it is overwritten
+    - does not exist, it is created, with any required parent directories
+-   `.ext` is a file extension (optional) which effects the file content format. Options are:
+    - `(none)` for binary format
+    - `csv` for comma-separated values
+    - `txt` for plain text)
+    - `xls` for Excel spreadsheet format
+    - `xml` for Extensible Markup Language (XML))
+    - `json` for JavaScript Object Notation (JSON) Since v3.2 2014.07.31.
+
 
 writes global variable/s `v` etc. to file and returns the filename/s.
 
-
-### File path
-
-If a file 
-
--   exists, it is overwritten
--   does not exist, it is created, with any required parent directories
-
-
-### Format 
-
-The format used depends on the file extension:
-
-```txt
-(none)   binary
- csv     comma-separated values
- txt     plain text
- xls     Excel spreadsheet
- xml     Extensible Markup Language (XML)
- json    JavaScript Object Notation (JSON), available since v3.2 2014.07.31
-```
-
 !!! tip "There are no corresponding formats for [`load`](load.md). Instead, use [File Text](file-text.md)."
 
+:fontawesome-regular-hand-point-right:
+[.h](doth.md) (data serialization tools)
 
 ### Examples
 
@@ -130,9 +119,6 @@ rsave x     rsave[x]
 
 Where `x` is a table name as a symbol atom, saves the table, in binary format, splayed to a directory of the same name.
 The table must be fully enumerated and not keyed.
-
-
-### File path
 
 If the file 
 

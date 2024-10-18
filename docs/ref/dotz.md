@@ -87,7 +87,7 @@ q)"i"$0x0 vs .z.a
     When invoked via a Unix Domain Socket, it is 0.
 
 :fontawesome-solid-hand-point-right:
-[`.z.h` host](#zh-host)
+[`.z.h`](#zh-host) (host)
 
 ## `.z.ac` (HTTP auth)
 
@@ -148,7 +148,7 @@ y| ,`a
 ```
 
 :fontawesome-solid-book-open:
-[`\b`](../basics/syscmds.md#b-views)
+[`\b`](../basics/syscmds.md#b-views) (views)
 <br>
 :fontawesome-solid-graduation-cap:
 [Views](../learn/views.md)
@@ -206,7 +206,7 @@ In a [debugger](../basics/debug.md#debugger) session, `.z.ex` is set to the fail
 Since V3.5 2017.03.15.
 
 :fontawesome-solid-hand-point-right:
-[`.z.ey` argument to failed primitive](#zey-argument-to-failed-primitive)
+[`.z.ey`](#zey-argument-to-failed-primitive) (argument to failed primitive)
 
 
 ## `.z.exit` (action on exit)
@@ -269,7 +269,7 @@ os>..
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.pc` port close](#zpc-close)
+[`.z.pc`](#zpc-close) (port close)
 <br>
 :fontawesome-solid-book:
 [`exit`](exit.md)
@@ -285,7 +285,7 @@ In a [debugger](../basics/debug.md#debugger) session, `.z.ey` is set to the argu
 Since V3.5 2017.03.15.
 
 :fontawesome-solid-hand-point-right:
-[`.z.ex` failed primitive](#zex-failed-primitive)
+[`.z.ex`](#zex-failed-primitive) (failed primitive)
 
 
 ## `.z.f` (file)
@@ -299,7 +299,7 @@ q).z.f
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.x` argv](#zx-argv)
+[`.z.x`](#zx-argv) (argv)
 
 
 ## `.z.H` (active sockets)
@@ -314,7 +314,7 @@ q).z.H~key .z.W
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.W` handles](#zw-handles), [`.z.w` handle](#zw-handle), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.W`](#zw-handles) (handles), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 
 ## `.z.h` (host)
@@ -355,7 +355,7 @@ q).Q.host .z.a
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.a` IP address](#za-ip-address)
+[`.z.a`](#za-ip-address) (IP address)
 
 ## `.z.i` (PID)
 
@@ -380,7 +380,7 @@ q).z.k
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.k` release date](#zk-release-date)
+[`.z.k`](#zk-release-date) (release date)
 
 
 ## `.z.k` (release date)
@@ -396,7 +396,7 @@ q)
 This value is checked against `.Q.k` as part of the startup to make sure that the executable and the version of q.k being used are compatible.
 
 :fontawesome-solid-hand-point-right:
-[`.z.K` version](#zk-version)
+[`.z.K`](#zk-version) (version)
 
 
 ## `.z.l` (license)
@@ -430,7 +430,7 @@ q).z.N
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.n` UTC timespan](#zn-utc-timespan), [`.z.P` local timestamp](#zp-local-timestamp), [`.z.p` UTC timestamp](#zp-utc-timestamp), [`.z.Z` local datetime](#zz-local-datetime), [`.z.z` UTC datetime](#zz-utc-datetime)
+[`.z.n`](#zn-utc-timespan) (UTC timespan), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
 
 ## `.z.n` (UTC timespan)
@@ -448,7 +448,7 @@ q).z.n
     Linux clock source returns a nanosecond precision timespan
 
 :fontawesome-solid-hand-point-right:
-[`.z.n` local timespan](#zn-local-timespan), [`.z.P` local timestamp](#zp-local-timestamp), [`.z.p` UTC timestamp](#zp-utc-timestamp), [`.z.Z` local datetime](#zz-local-datetime), [`.z.z` UTC datetime](#zz-utc-datetime)
+[`.z.n`](#zn-local-timespan) (local timespan), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
 ## `.z.o` (OS version)
 
@@ -485,7 +485,7 @@ q).z.P
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.p` UTC timestamp](#zp-utc-timestamp), [`.z.N` local timespan](#zn-local-timespan), [`.z.n` UTC timespan](#zn-utc-timespan), [`.z.Z` local datetime](#zz-local-datetime), [`.z.z` UTC datetime](#zz-utc-datetime)
+[`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
 
 ## `.z.p` (UTC timestamp)
@@ -502,7 +502,7 @@ q).z.p
     Linux clock source returns a nanosecond precision timestamp
 
 :fontawesome-solid-hand-point-right:
-[`.z.P` local timestamp](#zp-local-timestamp), [`.z.N` local timespan](#zn-local-timespan), [`.z.n` UTC timespan](#zn-utc-timespan), [`.z.Z` local datetime](#zz-local-datetime), [`.z.z` UTC datetime](#zz-utc-datetime)
+[`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
 ## `.z.pc` (close)
 
@@ -538,7 +538,7 @@ q)
 !!! info "`.z.pc` is not called by `hclose`."
 
 :fontawesome-solid-hand-point-right:
-[`.z.po` port open](#zpo-open)
+[`.z.po`](#zpo-open) (port open)
 
 
 ## `.z.pd` (peach handles)
@@ -602,7 +602,7 @@ Where `f` is a unary function, called with the object that is passed to the q se
 The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and executes in the root context.
 
 :fontawesome-solid-hand-point-right:
-[`.z.ps` set](#zps-set)
+[`.z.ps`](#zps-set) (set)
 
 
 ## `.z.ph` (HTTP get)
@@ -623,7 +623,7 @@ The function returns a string representation of an HTTP response message e.g. [H
 Since V3.6 and V3.5 2019.11.13, the default implementation calls [`.h.val`](doth.md#hval-value) instead of [`value`](value.md), allowing users to interpose their own valuation code. It is called with `requestText` as the argument.
 
 :fontawesome-solid-hand-point-right:
-[`.z.pp` HTTP post](#zpp-http-post), [`.z.pm` HTTP methods](#zpm-http-methods), [`.z.ac` HTTP auth](#zac-http-auth)
+[`.z.pp`](#zpp-http-post) (HTTP post), [`.z.pm`](#zpm-http-methods) (HTTP methods), [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
 :fontawesome-solid-book:
 [`.h` namespace](doth.md)
@@ -690,7 +690,7 @@ Each method is passed to `f` as a 3-item list e.g.
 For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-http-get).
 
 :fontawesome-solid-hand-point-right:
-[`.z.ph` HTTP get](#zph-http-get), [`.z.pp` HTTP post](#zpp-http-post), [`.z.ac` HTTP auth](#zac-http-auth)
+[`.z.ph`](#zph-http-get) (HTTP get), [`.z.pp`](#zpp-http-post) (HTTP post), [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
 :fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
@@ -706,8 +706,8 @@ Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ 
 Its argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`
 
 :fontawesome-solid-hand-point-right:
-[`.z.pc` port close](#zpc-close),
-[`.z.pw` validate user](#zpw-validate-user)
+[`.z.pc`](#zpc-close) (port close),
+[`.z.pw`](#zpw-validate-user) (validate user)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
@@ -729,7 +729,7 @@ See [`.z.ph`](#zph-http-get) for details of the argument and return value.
 Allows empty requests since 4.1t 2021.03.30 (previously signalled `length` error).
 
 :fontawesome-solid-hand-point-right:
-[`.z.ph` HTTP get](#zph-http-get), [`.z.pm` HTTP methods](#zpm-http-methods), [`.z.ac` HTTP auth](#zac-http-auth)
+[`.z.ph`](#zph-http-get) (HTTP get), [`.z.pm`](#zpm-http-methods) (HTTP methods), [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
 :fontawesome-solid-book:
 [`.h` namespace](doth.md)
@@ -779,7 +779,7 @@ q)0 "2+2"
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.pg` get](#zpg-get)
+[`.z.pg`](#zpg-get) (get)
 
 
 ## `.z.pw` (validate user)
@@ -799,7 +799,7 @@ If `.z.pw` returns `0b` the task attempting to establish the connection will get
 The default definition is `{[user;pswd]1b}`
 
 :fontawesome-solid-hand-point-right:
-[`.z.po` port open](#zpo-open)
+[`.z.po`](#zpo-open) (port open)
 <br>
 :fontawesome-solid-book:
 [Changes in 2.4](../releases/ChangesIn2.4.md#zpw)
@@ -965,7 +965,7 @@ q)neg[h]"11+1111111";(-38!h)`m
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.h` active sockets](#zh-active-sockets), [`.z.w` handle](#zw-handle), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.h`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 
 ## `.z.w` (handle)
@@ -980,7 +980,7 @@ q).z.w
 !!! warning "Inside a `.z.p`* callback it returns the handle of the client session, not the current session."
 
 :fontawesome-solid-hand-point-right:
-[`.z.h` active sockets](#zh-active-sockets), [`.z.W` handles](#zw-handles), [`-38!` socket table](../basics/internal.md#-38x-socket-table)
+[`.z.h`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 
 ## `.z.wc` (websocket close)
@@ -1002,9 +1002,9 @@ As the connection has been closed by the time `.z.wc` is called, there are stric
 This allows you to clean up things like tables of users keyed by handle.
 
 :fontawesome-solid-hand-point-right:
-[`.z.wo` websocket open](#zwo-websocket-open),
-[`.z.ws` websockets](#zws-websockets),
-[`.z.ac` HTTP auth](#zac-http-auth)
+[`.z.wo`](#zwo-websocket-open) (websocket open),
+[`.z.ws`](#zws-websockets) (websockets),
+[`.z.ac`](#zac-http-auth) (HTTP auth)
 
 
 ## `.z.wo` (websocket open)
@@ -1024,9 +1024,9 @@ Where
 The handle argument is typically used by `f` to build a dictionary of handles to session information such as the value of `.z.a`, `.z.u`.
 
 :fontawesome-solid-hand-point-right:
-[`.z.wc` websocket close](#zwc-websocket-close),
-[`.z.ws` websockets](#zws-websockets),
-[`.z.ac` HTTP auth](#zac-http-auth)
+[`.z.wc`](#zwc-websocket-close) (websocket close),
+[`.z.ws`](#zws-websockets) (websockets),
+[`.z.ac`](#zac-http-auth) (HTTP auth)
 
 
 ## `.z.ws` (websockets)
@@ -1040,9 +1040,9 @@ Where `f` is a unary function, it is evaluated on a message arriving at a websoc
 Sending a websocket message is limited to async messages only (sync is `'nyi`). A string will be sent as a text message; a byte vector as a binary message.
 
 :fontawesome-solid-hand-point-right:
-[`.z.wo` websocket open](#zwo-websocket-open),
-[`.z.wc` websocket close](#zwc-websocket-close),
-[`.z.ac` HTTP auth](#zac-http-auth)
+[`.z.wo`](#zwo-websocket-open) (websocket open),
+[`.z.wc`](#zwc-websocket-close) (websocket close),
+[`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
 :fontawesome-solid-graduation-cap:
 [WebSockets](../kb/websockets.md)
@@ -1110,7 +1110,7 @@ The offset from UTC is fetched from the OS: kdb+ does not have its own time-offs
 Which avoids problems like [this](https://it.slashdot.org/story/07/02/25/2038217/software-bug-halts-f-22-flight).
 
 :fontawesome-solid-hand-point-right:
-[`.z.z` UTC datetime](#zz-utc-datetime), [`.z.P` local timestamp](#zp-local-timestamp), [`.z.p` UTC timestamp](#zp-utc-timestamp) [`.z.N` local timespan](#zn-local-timespan), [`.z.n` UTC timespan](#zn-utc-timespan)
+[`.z.z`](#zz-utc-datetime) (UTC datetime), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan)
 
 ## `.z.z` (UTC datetime)
 
@@ -1123,7 +1123,7 @@ q).z.z
 !!! detail "`z.z` calls `gettimeofday` and so has microsecond precision"
 
 :fontawesome-solid-hand-point-right:
-[`.z.Z` local datetime](#zz-local-datetime), [`.z.P` local timestamp](#zp-local-timestamp), [`.z.p` UTC timestamp](#zp-utc-timestamp) [`.z.N` local timespan](#zn-local-timespan), [`.z.n` UTC timespan](#zn-utc-timespan)
+[`.z.Z`](#zz-local-datetime) (local datetime), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan)
 
 
 [](){#zzd-zip-defaults}
@@ -1165,7 +1165,7 @@ Shorthand forms:
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.Z` local datetime](#zz-local-datetime), [`.z.z` UTC datetime](#zz-utc-datetime)
+[`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
 
 ---

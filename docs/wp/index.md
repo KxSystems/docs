@@ -10,7 +10,6 @@ White papers are flagged in the navigation menus.
 
 ## :fontawesome-solid-desktop: Applications of kdb+
 
--   [**Surveillance in the Cloud**](surv-cloud/index.md)<br>Luke Britton, 2022.04
 -   [**Implementing trend indicators in kdb+**](trend-indicators/index.md)<br>James Galligan, 2020.04
 -   [**Comparing option-pricing methods in q**](option-pricing/index.md)<br>Deanna Morgan, 2019.10
 -   [**kdb+ in astronomy**](astronomy.md)<br>Andrew Magowan &amp; James Neill, 2019.09
@@ -28,7 +27,6 @@ White papers are flagged in the navigation menus.
 -   [**Publish/subscribe with the Solace event broker**](solace/index.md)<br>Himanshu&nbsp;Gupta, 2020.11
 -   [**C API for kdb+**](capi/index.md)<br>Jeremy&nbsp;Lucid, 2018.12
 -   [**Data visualization with kdb+ using ODBC:** a Tableau case study](data-visualization/index.md)<br>Michaela&nbsp;Woods, 2018.07
--   [**Building real-time tick subscribers**](rt-tick/index.md)<br>Nathan&nbsp;Perrem, 2014.08
 -   [**kdb+ and FIX messaging**](fix-messaging.md)<br>Damien&nbsp;Barker, 2014.01
 -   [**An introduction to graphical interfaces for kdb+ using C#**](gui/index.md)<br>Michael&nbsp;Reynolds, 2013.05
 -   [**Common design principles for kdb+ gateways**](gateway-design/index.md)<br>Michael&nbsp;McClintock, 2012.12
@@ -44,7 +42,6 @@ White papers are flagged in the navigation menus.
 -   [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/index.md)<br>Kevin Holsgrove, 2015.11
 -   [**Time-series simplification in kdb+:** a method for dynamically shrinking Big Data](ts-shrink/index.md)<br>Sean Keevey &amp; Kevin Smyth, 2015.02
 -   [**A natural query interface for distributed systems**](query-interface.md)<br>Sean Keevey, 2014.11
--   [**Data recovery for kdb+tick**](data-recovery.md)<br>Fionnbharr Gaston, 2014.07
 -   [**Multi-partitioned kdb+ databases:** an equity options case study](multi-partitioned-dbs/index.md)<br>James Hanna, 2014.04
 -   [**Temporal data: a kdb+ framework for corporate actions**](corporate-actions.md)<br>Sean Rodgers, 2014.03
 -   [**kdb+tick profiling for throughput optimization**](tick-profiling.md)<br>Ian Kilpatrick, 2014.03

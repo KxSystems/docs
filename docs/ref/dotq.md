@@ -12,10 +12,10 @@ _Tools_
 **General**                           **Datatype**
  [addmonths](#addmonths)                         [btoa        b64 encode](#btoa-b64-encode)
  [dd       join symbols](#dd-join-symbols)             [j10         encode binhex](#j10-encode-binhex)
- [f        format](#f-format)                   [j12         encode base 36](#j12-encode-base-36)
+ [f        precision format](#f-precision-format)         [j12         encode base 36](#j12-encode-base-36)
  [fc       parallel on cut](#fc-parallel-on-cut)          [ty          type](#ty-type)
  [ff       append columns](#ff-append-columns)           [x10         decode binhex](#x10-decode-binhex)
- [fmt      format](#fmt-format)                   [x12         decode base 36](#x12-decode-base-36)
+ [fmt      precision format](#fmt-precision-format)         [x12         decode base 36](#x12-decode-base-36)
  [ft       apply simple](#ft-apply-simple) 
  [fu       apply unique](#fu-apply-unique)            **Database**
  [gc       garbage collect](#gc-garbage-collect)          [chk         fill HDB](#chk-fill-hdb)
@@ -53,11 +53,11 @@ _Tools_
  [x        non-command parameters](#x-non-command-parameters)   [vp          missing partitions](#vp-missing-partitions)
   
  **IPC**                               **Segmented database state**
- [addr     IP address](#addr-ip-address)               [P           segments](#p-segments)
- [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [u           date based](#u-date-based) 
- [fs  fsn  streaming algorithm](#fs-streaming-algorithm)
+ [addr     IP/host as int](#addr-iphost-as-int)           [P           segments](#p-segments)
+ [fps fpn  pipe streaming](#fpn-pipe-streaming)           [u           date based](#u-date-based) 
+ [fs  fsn  file streaming](#fs-file-streaming)
  [hg       HTTP get](#hg-http-get)                **File I/O**
- [host     hostname](#host-hostname)                 [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
+ [host     IP to hostname](#host-ip-to-hostname)           [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
  [hp       HTTP post](#hp-http-post)                [Xf          create file](#xf-create-file)
 </div>
 
@@ -119,8 +119,8 @@ q).Q.addmonths[2006.10.29;4]
 :fontawesome-solid-graduation-cap:
 [How to handle temporal data in q](../kb/temporal-data.md)
 
-
-## `addr` (IP address)
+[](){#addr-ip-address}
+## `addr` (IP/host as int)
 
 ```syntax
 .Q.addr x
@@ -140,7 +140,7 @@ q)256 vs .Q.addr`localhost
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.host`](#host-hostname)
+[`.Q.host`](#host-ip-to-hostname) (IP to hostname)
 <br>
 :fontawesome-solid-book-open:
 [`vs`](vs.md)
@@ -501,7 +501,7 @@ Where
 loops `.Q.M&1000000` rows at a time.
 
 :fontawesome-solid-hand-point-right:
-[`.Q.M`](#m-chunk-size)
+[`.Q.M`](#m-chunk-size) (chunk size)
 
 For example, loading TAQ DVD:
 
@@ -574,8 +574,8 @@ _Q for Mortals_
 [§14.2.8 Working with sym files](/q4m3/14_Introduction_to_Kdb%2B/#1428-working-with-sym-files)
 
 
-
-## `f` (format)
+[](){#f-format}
+## `f` (precision format)
 
 ```syntax
 .Q.f[x;y]
@@ -608,6 +608,11 @@ The `1e13` limit is dependent on `x`. The maximum then becomes `y*10 xexp x` and
 q)10 xlog 0Wj-1
 18.964889726830812
 ```
+
+:fontawesome-regular-hand-point-right:
+[`.Q.fmt`](#fmt-precision-format) (precision format with length)
+<br>:fontawesome-solid-book-open:
+[`\P`](../basics/syscmds.md#p-precision) (precision)
 
 
 ## `fc` (parallel on cut)
@@ -696,8 +701,8 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 
 Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.
 
-
-## `fmt` (format)
+[](){#fmt-format}
+## `fmt` (precision format)
 
 ```syntax
 .Q.fmt[x;y;z]
@@ -751,29 +756,42 @@ q)fmt[9] each 34.4 343434.358
 "343434.36"
 ```
 
+:fontawesome-regular-hand-point-right:
+[`.Q.f`](#f-precision-format) (precision format) 
+<br>:fontawesome-solid-book-open:
+[`\P`](../basics/syscmds.md#p-precision) (precision)
 
-## `fpn` (streaming algorithm)
-## `fps` (streaming algorithm)
+[](){#fpn-streaming-algorithm}
+## `fpn` (pipe streaming)
+[](){#fps-streaming-algorithm}
+## `fps` (pipe streaming)
 
-_`.Q.fs` for pipes_
+_[`.Q.fs`](#fs-file-streaming) for pipes_
 
 ```syntax
 .Q.fps[x;y]
 .Q.fpn[x;y;z]
 ```
 
+Where
+
+-   `x` is a unary function
+-   `y` is a filepath to a fifo (named pipe)
+-   `z` is an integer
+
 (Since V3.4)
 
-Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
+Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm for various purposes such as converting a large compressed CSV file into an on-disk kdb+ database without holding the data in memory all at once or using disk space required for the uncompressed file.
 
 :fontawesome-solid-graduation-cap:
-[Named Pipes](../kb/named-pipes.md)
+[Streaming data from named pipes](../kb/named-pipes.md#streaming)
 
 !!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
 
-
-## `fs` (streaming algorithm)
-## `fsn` (streaming algorithm)
+[](){#fs-streaming-algorithm}
+## `fs` (file streaming)
+[](){#fsn-streaming-algorithm}
+## `fsn` (file streaming)
 
 ```syntax
 .Q.fs[x;y]
@@ -782,7 +800,7 @@ Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and appli
 
 Where
 
--   `x` is a unary value
+-   `x` is a unary function
 -   `y` is a filepath
 -   `z` is an integer
 
@@ -991,6 +1009,9 @@ So if you have many nested data, e.g. columns of char vectors, or much grouping,
 Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations performed by `.Q.gc[]` (i.e. only return unused blocks >= 64MB to os). 
 This has the advantage of running return faster than `.Q.gc[]`, but with the disadvantage of not defragmenting unused memory blocks of a smaller size (therefore may not free as much unused memory).
 
+:fontawesome-solid-hand-point-right:
+[`.Q.w`](#w-memory-stats) (memory stats)
+
 
 ## `gz` (GZip)
 
@@ -1071,8 +1092,8 @@ The server then decides whether to gzip the returned payload, which is uncompres
 
 :fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
-
-## `host` (hostname)
+[](){#host-hostname}
+## `host` (IP to hostname)
 
 ```syntax
 .Q.host x
@@ -1095,10 +1116,7 @@ q).Q.addr `netbox.com
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.addr`](#addr-ip-address)
-<br>
-:fontawesome-solid-book:
-[Tok](tok.md)
+[`.Q.addr`](#addr-iphost-as-int) (IP/host as int), [`$`](tok.md#ip-address) tok (IP address as int)
 
 
 ## `hp` (HTTP post)
@@ -1747,7 +1765,7 @@ q).Q.res,key`.q
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.id`](#id-sanitize)
+[`.Q.id`](#id-sanitize) (sanitize)
 
 
 ## `s` (plain text)
@@ -2109,6 +2127,8 @@ syms| 577
 symw| 25436
 ```
 
+:fontawesome-solid-hand-point-right:
+[`.Q.gc`](#gc-garbage-collect) (garbage collect)<br>
 :fontawesome-solid-book-open:
 [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace)
 <br>
