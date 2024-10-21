@@ -620,7 +620,7 @@ On launch
 
 error | explanation
 ------|------------
-{timestamp} couldn't connect to license daemon | Could not connect to KX license server ([kdb+ On Demand](../learn/licensing.md#licensing-server-for-kdb-on-demand))
+{timestamp} couldn't connect to license daemon | Could not connect to KX license server ([kdb+ On Demand](../learn/licensing.md#licensing-server))
 [](){#cores}cores | The license is for [fewer cores than available](../learn/licensing.md#core-restrictions)
 [](){#cpu}cpu | The license is for fewer CPUs than available
 [](){#exp}exp | License expiry date is prior to system date
