@@ -6,7 +6,7 @@ description: The ODBC3 server allows applications to query kdb+ via the ODBC int
 
 
 
-The ODBC3 server allows applications to query kdb+ via the ODBC interface.  
+The ODBC3 driver allows applications to query kdb+ via the ODBC interface.  
 :fontawesome-brands-github: [KxSystems/kdb/c/qodbc3.zip](https://github.com/KxSystems/kdb/blob/master/c/qodbc3.zip)
 
 Currently the applications may run on the following platforms: w64, w32, l64, l32. Primary compatibility target has been [Tableau](https://www.tableau.com/), although other uses are welcome.
@@ -22,6 +22,11 @@ Requirements: V3.2 or later.
 
 ## Installation
 
+Software that uses ODBC connections refer to individual connections via a `DSN`(Data Source Name). 
+The DSN details the ODBC driver (e.g. qodbc3) and connection details specific to the data source (e.g. hostname, username, etc).
+
+The following details adding a new DSN to connect to kdb+:
+
 ### Windows
 
 1.  Close Tableau or anything that uses ODBC
@@ -31,7 +36,6 @@ Requirements: V3.2 or later.
 5.  In the ODBC data source administrator, click _Start Tracing_ on the _Tracing_ tab.
 6.  Copy `q.tdc` to My Documents\My Tableau Repository\Datasources
 7.  Copy `ps.k` to `$QHOME`
-
 
 ### Linux
 
@@ -60,7 +64,6 @@ You should now be able to connect to your DSN with `isql`:
 ```bash
 $ isql -3 -v -k 'DSN=your_dsn_name;'
 ```
-
 
 ## Running
 
