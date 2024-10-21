@@ -507,9 +507,9 @@ within the workbook itself. Take the following scenario:
 -   The workbook must be reopened, and the DSN details changed to the production DSN, before final promotion to `Production`.
 
 This process is manual and prone to errors. For kdb+
-connections, it is recommended to use the `tabcmd` command-line utility
-which, among other things, enables the user to publish to Tableau Server
-from the command line. This utility allows the user to deploy sheets
+connections, it is recommended to use the [`tabcmd`](https://help.tableau.com/current/server/en-us/tabcmd.htm) command-line utility
+which, among other things, enables the user to [publish to Tableau Server
+from the command line](https://help.tableau.com/current/server/en-us/tabcmd_cmd.htm#iddf805b62-18ff-4497-9245-adc6905b2084). This utility allows the user to deploy sheets
 programmatically, streamlining the process hugely. It also means that as
 part of the deploy procedure, the workbook can be edited by a script
 before publishing via `tabcmd`. This means you can do some efficient
