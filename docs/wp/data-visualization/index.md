@@ -93,7 +93,7 @@ details reside in a separate text file rather than in the Windows
 Registry.
 
 
-### Connecting to Tableau Desktop
+### Connecting to kdb+ from Tableau Desktop
 
 Once a kdb+ DSN has been added, and the rest of the set-up instructions
 are followed, you are ready to connect to kdb+ from
@@ -111,7 +111,7 @@ connection to the kdb+ process, enabling the database to be queried via
 Tableau’s Custom SQL, as demonstrated in the following section.
 
 
-### Connecting to Tableau Server
+### Connecting to kdb+ from Tableau Server
 
 The set-up instructions above, both explicit and linked, are
 specifically for a user connecting from Tableau Desktop. This is the
@@ -123,7 +123,7 @@ only Tableau Desktop.
 
 Tableau workbooks can be shared between both by publishing from Tableau
 Desktop to Tableau Server. This procedure is detailed in the
-section _Publishing to Tableau Server_.
+section [`Publishing to Tableau Server`](#publishing-from-tableau-desktop-to-tableau-server).
 
 To connect via Tableau Server, the Registry file that was presented in
 the previous section needs to be configured. This process may be handled
@@ -148,7 +148,7 @@ management, when sharing workbooks between developers or when publishing
 them to Tableau Server, this can become problematic. One workaround
 solution to manage this is to wipe these details from the workbook with
 a script before sharing or publishing workbooks. This concept is
-explored below in _Publishing to Tableau Server_.
+explored below in [`Publishing to Tableau Server`](#publishing-from-tableau-desktop-to-tableau-server).
 
 
 ## Tableau functionality for kdb+
@@ -199,9 +199,9 @@ demonstrated in the next section.
     -   SQL selects from partitioned tables are not supported – one should pre-select from a partitioned table using the `q()` function instead
 
 
-### Datatypes
+### Datatype Mapping
 
-Tableau caters for multiple q datatypes.
+Tableau caters for multiple [q datatypes](../../basics/datatypes.md).
 
 Tableau               | q 
 --------------------- | -------------- 
@@ -221,8 +221,9 @@ _Data_ pane as shown below.
 
 ![](img/image4.png)
 
+### Function Parameters
 
-### Simple parameters
+#### Simple parameters
 
 Tableau parameters provide further flexibility when working with q
 functions. To demonstrate, define a function `func` that selects from
@@ -253,6 +254,61 @@ Tableau parameters are limited to static values, and a single select
 option when placed in a view. However, there are ways to make them more
 dynamic and flexible. This will be explored below in
 _Dynamic Parameters_.
+
+#### Dynamic parameters
+
+As mentioned above in _Simple parameters_, Tableau
+parameters are limited to static values, and a single select option when
+placed in a view. However, there are a number of ways to make parameters
+smarter, and can increase their usability and flexibility. Below, two
+such methods are described. 
+
+
+##### Predefining parameter options in a q function
+
+From the previous example, the input parameter Category is limited to
+single values. This can be made more flexible by
+defining in the function a range of acceptable values.
+In the example below, the
+argument `` `all`` leads to a select with no restriction on `category`.
+
+```q
+func:{[mydate;mycategory]
+  $[mycategory=`all;
+    select from tab where date in mydate;
+    select from tab where date in mydate, category in mycategory]
+  };
+```
+
+Then `all` can be added to the list of predefined values in Tableau’s
+definition of Category:
+
+![](img/image11.png)
+
+
+##### Parameters with calculated fields
+
+Using parameters in conjunction with Tableau’s calculated-field
+functionality can be a convenient and flexible tool in calculations as
+well as graphical representation. This is useful when the output the
+user wants to see is dependent on an input parameter, and a field needs
+to be adjusted accordingly.
+
+For example, in the user-defined `Calculation1` logic below, the quantity
+field will be divided by a different amount depending on the chosen
+Category value. 
+
+![](img/image12.png)
+
+Below is sample output from when the user selects
+a _Category_ value of `EQ`.
+
+![](img/image13.png)
+
+In contrast, when the user selects `CORP` the calculated field will be
+divided by 50.
+
+![](img/image14.png)
 
 
 ### Tableau filters
@@ -358,61 +414,6 @@ number of symbols | time (1st query) | time (2nd query)
 100,000,000       | 1021 ms         | <0ms                         
 
 
-### Dynamic parameters
-
-As mentioned above in _Simple parameters_, Tableau
-parameters are limited to static values, and a single select option when
-placed in a view. However, there are a number of ways to make parameters
-smarter, and can increase their usability and flexibility. Below, two
-such methods are described. 
-
-
-#### Predefining parameter options in a q function
-
-From the previous example, the input parameter Category is limited to
-single values. This can be made more flexible by
-defining in the function a range of acceptable values.
-In the example below, the
-argument `` `all`` leads to a select with no restriction on `category`.
-
-```q
-func:{[mydate;mycategory]
-  $[mycategory=`all;
-    select from tab where date in mydate;
-    select from tab where date in mydate, category in mycategory]
-  };
-```
-
-Then `all` can be added to the list of predefined values in Tableau’s
-definition of Category:
-
-![](img/image11.png)
-
-
-#### Using parameters with calculated fields
-
-Using parameters in conjunction with Tableau’s calculated-field
-functionality can be a convenient and flexible tool in calculations as
-well as graphical representation. This is useful when the output the
-user wants to see is dependent on an input parameter, and a field needs
-to be adjusted accordingly.
-
-For example, in the user-defined `Calculation1` logic below, the quantity
-field will be divided by a different amount depending on the chosen
-Category value. 
-
-![](img/image12.png)
-
-Below is sample output from when the user selects
-a _Category_ value of `EQ`.
-
-![](img/image13.png)
-
-In contrast, when the user selects `CORP` the calculated field will be
-divided by 50.
-
-![](img/image14.png)
-
 
 ### Multiple data sources
 
@@ -439,7 +440,7 @@ they are the same datatype. This can be controlled and edited in
 _Data > Edit Relationships_.
 
 
-#### Actions
+#### Dashboard Actions
 
 Once a dashboard is created, the filters are controlled in _Dashboard >
 Actions_. When setting up actions for kdb+ data sources, it is important
@@ -465,7 +466,7 @@ q) t:([] sym:N?`3;volume:N?10.0)
 ![](img/image16.png)
 
 Step-by-step instructions on how to build the dashboard shown below and
-performance tests can be found in Appendix A.
+performance tests can be found in [`Appendix A`](#appendix-a).
 
 ![](img/image17.png)
 
@@ -486,9 +487,9 @@ Exploiting this feature can be hugely useful when working with kdb+ and
 Tableau where the volume of datasets can be very large.
 
 
-## Publishing to Tableau Server
+## Publishing from Tableau Desktop to Tableau Server
 
-As mentioned above, to share workbooks
+To share workbooks
 between Tableau Desktop and Tableau Server you can publish the former to
 the latter. 
 Tableau provides [detailed documentation and instructions](https://help.tableau.com/current/pro/desktop/en-us/publish_workbooks_howto.htm)
@@ -498,7 +499,9 @@ on the general publishing procedure, which involves publishing from within an al
 
 This is not an ideal way to publish workbooks that are connected to a
 kdb+ database, because connection details are stored
-within the workbook itself. Take the following scenario:
+within the workbook itself. 
+
+Take the following scenario:
 
 -   A workbook has been developed in Tableau Desktop and is ready to share to the `Testing` partition in Tableau Server.
 -   Throughout development, a development DSN has been used. But the workbook needs to be published to a UAT DSN.
@@ -506,7 +509,11 @@ within the workbook itself. Take the following scenario:
 -   The workbook again needs to be promoted, this time to the `Production` partition.
 -   The workbook must be reopened, and the DSN details changed to the production DSN, before final promotion to `Production`.
 
-This process is manual and prone to errors. For kdb+
+This process is manual and prone to errors. 
+
+### Publishing using tabcmd
+
+For kdb+
 connections, it is recommended to use the [`tabcmd`](https://help.tableau.com/current/server/en-us/tabcmd.htm) command-line utility
 which, among other things, enables the user to [publish to Tableau Server
 from the command line](https://help.tableau.com/current/server/en-us/tabcmd_cmd.htm#iddf805b62-18ff-4497-9245-adc6905b2084). This utility allows the user to deploy sheets
