@@ -49,49 +49,11 @@ All tests were run using kdb+ version 3.5 and Tableau 10.3.
 ## Connecting to kdb+ using ODBC
 
 Instructions on how to connect kdb+ from Tableau Desktop for both
-Windows and Linux can be found at [Interfaces: kdb+ server for ODBC3](../../interfaces/q-server-for-odbc3.md).
+Windows and Linux can be found at [Interfaces: kdb+ server for ODBC3](../../interfaces/q-server-for-odbc3.md), ensuring that the [extra step](../../interfaces/q-server-for-odbc3.md#tableau-configuration) is performed for Tableau.
 
 For an ODBC driver to connect to an application, it needs a DSN
 (Data Source Name). 
 A DSN contains the name, directory and driver of the database, and (depending on the type of DSN) the access credentials of the user.
-
-With administrator rights, [adding a new DSN](../../interfaces/q-server-for-odbc3.md) is relatively
-straightforward. 
-
-A second way to add a
-DSN does not require administrator access, and might be useful
-for some users. This defines the DSN connection
-details in a Registry file rather than adding new DSNs directly in the
-ODBC Data Source Administrator. This is an alternative to steps
-3, 4 and 5 in the instructions linked to above.
-
-1.  Copy `qodbc3.dll` to the correct location.
-
-2.  Define the Registry file and save it to `C:\Users\<username>` with
-    a `.reg` extension. Here is an example of what the file might look
-    like.
-
-    ```txt
-    Windows Registry Editor Version 5.00
-    [HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\DEV]
-    "Driver"="P:\…\qodbc3\w64\qodbc3.dll"
-    "Description"="KDB ODBC3 Driver"
-    "HOST"="hostname:port"
-    "UID"="username"
-    "PWD"="password"
-    [HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\ODBC Data Sources]
-    "DEV"="KDB ODBC3 Driver"
-    ```
-
-3.  Double-click on the file when saved. This will create the correct
-    driver entries, which for this example will be a new kdb+ DSN called
-    `DEV`.
-
-This second method makes it easier to
-maintain and share connection details with multiple users, as the DSN
-details reside in a separate text file rather than in the Windows
-Registry.
-
 
 ### Connecting to kdb+ from Tableau Desktop
 

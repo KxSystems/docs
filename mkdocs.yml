@@ -562,8 +562,8 @@ nav:
       - GPUs: interfaces/gpus.md
       - Matlab: interfaces/matlab-client-for-q.md
       - ODBC:
-        - ODBC: interfaces/q-client-for-odbc.md
-        - ODBC3: interfaces/q-server-for-odbc3.md
+        - ODBC client: interfaces/q-client-for-odbc.md
+        - ODBC3 server: interfaces/q-server-for-odbc3.md
         - ODBC3 and Tableau: wp/data-visualization/index.md
     #  - ODBC/Simba: interfaces/odbc-simba.md
       - Solace pub/sub: wp/solace/index.md
