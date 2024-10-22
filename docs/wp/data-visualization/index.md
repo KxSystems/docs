@@ -65,7 +65,7 @@ details in a Registry file rather than adding new DSNs directly in the
 ODBC Data Source Administrator. This is an alternative to steps
 3, 4 and 5 in the instructions linked to above.
 
-1.  Copy `qodbc.dll` to the correct location.
+1.  Copy `qodbc3.dll` to the correct location.
 
 2.  Define the Registry file and save it to `C:\Users\<username>` with
     a `.reg` extension. Here is an example of what the file might look
