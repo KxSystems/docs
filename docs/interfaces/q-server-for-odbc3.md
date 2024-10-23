@@ -44,7 +44,7 @@ q ps.k -p 5000
 
 ### ODBC driver and DSN configuration
 
-Software that uses ODBC connections refer to individual connections via a `DSN`(Data Source Name). 
+Software that uses ODBC connections refer to individual connections using a `DSN`(Data Source Name). 
 The DSN details the ODBC driver (e.g. qodbc3) and connection details specific to the data source (e.g. hostname, username, etc).
 
 The following details adding a new DSN to connect to kdb+:
