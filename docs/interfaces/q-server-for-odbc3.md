@@ -5,7 +5,7 @@ description: The ODBC3 server allows applications to query kdb+ via the ODBC int
 # :fontawesome-solid-database: kdb+ server for ODBC3
 
 
-The ODBC3 driver allows applications to query kdb+ via the ODBC interface.  
+The ODBC3 driver allows applications to query kdb+ through the ODBC interface.  
 :fontawesome-brands-github: [KxSystems/kdb/c/qodbc3.zip](https://github.com/KxSystems/kdb/blob/master/c/qodbc3.zip)
 
 Currently the applications may run on the following platforms: w64, w32, l64, l32. Primary compatibility target has been [Tableau](https://www.tableau.com/), although other uses are welcome.
