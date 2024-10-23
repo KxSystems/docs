@@ -67,10 +67,10 @@ database you wish to connect to, select the option _Other Databases
 
 Next, select the correct DSN from the dropdown list and click _Connect_.
 This will automatically populate the Connection Attributes in the bottom
-half of the window using the details defined earlier in the Registry
-file. The final step is to click the _Sign In_ button, which creates a
+half of the window using the DSN details defined previously.
+The final step is to click the _Sign In_ button, which creates a
 connection to the kdb+ process, enabling the database to be queried via
-Tableau’s Custom SQL, as demonstrated in the following section.
+Tableau’s Custom SQL, as demonstrated in the following sections.
 
 
 ### Connecting to kdb+ from Tableau Server
@@ -87,8 +87,7 @@ Tableau workbooks can be shared between both by publishing from Tableau
 Desktop to Tableau Server. This procedure is detailed in the
 section [`Publishing to Tableau Server`](#publishing-from-tableau-desktop-to-tableau-server).
 
-To connect via Tableau Server, the Registry file that was presented in
-the previous section needs to be configured. This process may be handled
+This process may be handled
 by an organization’s support team, depending on the installation setup.
 The driver also needs to be installed, and then the connection can be
 initialized much as for Tableau Desktop.
