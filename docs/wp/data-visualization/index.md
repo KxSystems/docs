@@ -249,7 +249,7 @@ user wants to see is dependent on an input parameter, and a field needs
 to be adjusted accordingly.
 
 For example, in the user-defined `Calculation1` logic below, the quantity
-field will be divided by a different amount depending on the chosen
+field is divided by a different amount depending on the chosen
 Category value. 
 
 ![](img/image12.png)
