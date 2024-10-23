@@ -188,7 +188,7 @@ Please ensure tracing is disabled after debugging complete.
 
 ### Linux
 
-In the `[ODBC]` section of the driver ini file (`/etc/odbcinst.ini`), set `Trace` to `1` to enable tracing and `TraceFile` to the location of the log file to create. 
+In the `[ODBC]` section of the driver `ini` file (`/etc/odbcinst.ini`), set `Trace` to `1` to enable tracing and `TraceFile` to the location of the log file to create. 
 Additional configuration options are available. For example:
 
 ```txt
