@@ -159,7 +159,7 @@ Also, SQL selects from partitioned tables are not supported – one should pre-s
 ODBC implementations provide a tracing capability to log interactions with an ODBC driver. This can aid in diagnosing any issues. Tracing can have a detremental 
 effect to ODBC performance.
 
-This is a feature of the ODBC system, and not a feature unique to the kdb+ driver. Associated documentation, features and troubleshooting can be found online for your OS.
+This is a feature of the ODBC system, and not a feature unique to the kdb+ driver. Associated documentation, features, and troubleshooting can be found online for your OS.
 
 !!! warn "Connection details can be logged, therefore the log file should be stored in a private location"
 
