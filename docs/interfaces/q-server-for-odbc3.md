@@ -36,7 +36,7 @@ q).s.ver
 1.15
 ```
 
-The following is an example of staring kdb+ with ps.k listening on port 5000
+The following is an example of starting kdb+ with ps.k listening on port 5000
 
 ```bash
 q ps.k -p 5000
