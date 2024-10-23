@@ -141,9 +141,6 @@ To use q from Tableau’s Custom SQL use the `q()` function, e.g.:
 
 Parameters can be supplied by Tableau. Note that Tableau’s _string_ type corresponds to q’s symbol and _datetime_ corresponds to timestamp.
 
-`test.q` provides additional examples of SQL usage, including the create/insert/update/delete statement syntax.
-
-
 ## Compatibility
 
 The driver translates SQL expressions into q and inherits q’s data model. This gives rise to the following SQL compatibility issues:
@@ -154,6 +151,8 @@ The driver translates SQL expressions into q and inherits q’s data model. This
 4.  `COUNT` and `COUNT DISTINCT` don’t ignore nulls
 
 Also, SQL selects from partitioned tables are not supported – one should pre-select from a partitioned table using the `q()` function instead.
+
+`test.q` provides additional examples of SQL usage, including the create/insert/update/delete statement syntax.
 
 ## Debugging
 

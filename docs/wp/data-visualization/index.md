@@ -151,14 +151,7 @@ Queries can be a simple select statement or can become much more complex
 and flexible using inbuilt parameters supplied by Tableau, which will be
 demonstrated in the next section.
 
-!!! warning "Known SQL compatibility issues"
-
-    -   SQL string literals are trimmed like q symbols
-    -   `MIN()` and `MAX()` don’t work on strings
-    -   q strings and booleans lack nulls, therefore SQL operations on null data resulting in these types ‘erase’ nulls
-    -   `COUNT` and `COUNT DISTINCT` don’t ignore nulls
-    -   SQL selects from partitioned tables are not supported – one should pre-select from a partitioned table using the `q()` function instead
-
+!!! warning "List of [known SQL compatibility issues](../../interfaces/q-server-for-odbc3.md#compatibility)"
 
 ### Datatype Mapping
 
