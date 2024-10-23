@@ -17,29 +17,6 @@ Everyone. All use of kdb+ is governed by a license.
 
 <!-- :fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com -->
 
-
-=== "Non-commercial use"
-
-    Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use. 
-    Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers. 
-    It may not be used for any commercial purposes.
-    See the [full terms and conditions](https://kx.com/download-kdb/). 
-
-    It requires a `kc.lic` license key file and an always-on internet connection to operate.
-
-
-=== "Commercial use"
-
-    Use of commercial kdb+ is covered by your license agreement with KX.
-
-    Your copy of kdb+ will need access to a valid license key file.
-
-    If you wish to begin using kdb+ commercially, please contact sales@kx.com.
-
-
-## License key files
-
-All 64-bit versions of kdb+ need a valid license key file to run.
 Without one, kdb+ signals an [error](../basics/errors.md#license-errors) `'k4.lic` and aborts.
 
 ```txt
@@ -56,13 +33,35 @@ If both are found, the `kc.lic` file is used.
 
 ## Obtain a license key file
 
+A license file can be a commercial license or an on-demand person license (for non-commercial use).
+
 ### On-Demand
 
-Follow the [download instructions](https://kx.com/kdb-personal-edition-download/) to get your kc.lic.
+Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use.
+Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers.
+It may not be used for any commercial purposes.
+See the [full terms and conditions](https://kx.com/download-kdb/). Follow the [download instructions](https://kx.com/kdb-personal-edition-download/) to get your kc.lic.
+
+It requires a `kc.lic` license key file and an always-on internet connection to operate.
+
+#### Licensing server
+
+If kdb+ with an on-demand license cannot contact the KX license server it will abort with a timestamped message.
+
+```q
+'2018.03.28T11:20:03.831 couldn't connect to license daemon -- exiting
+```
+
+If an HTTP proxy is required, the environment variables `http_proxy` or `HTTP_PROXY` define the URL of the HTTP proxy to use.
+Since 4.1t 2022.11.01,4.0 2022.10.26,4.0ce 2022.09.16 the on-demand system honours the NO_PROXY/no_proxy environment variables, with the lowercase version taking precedence.
 
 ### Commercial
 
-To begin using kdb+ commercially, contact sales@kx.com.
+Use of commercial kdb+ is covered by your license agreement with KX.
+
+Your copy of kdb+ will need access to a valid license key file.
+
+If you wish to begin using kdb+ commercially, please contact sales@kx.com.
 
 ## Install the license key file
 
@@ -88,7 +87,7 @@ If you are sharing use of a commercial license, you will probably want to set th
 A list of possible errors can be found [here](../basics/errors.md#license-errors).
 
 
-## Keeping the license key file elsewhere
+### Keeping the license key file elsewhere
 
 The default location for the license key file is the `QHOME` folder. You do not have to keep the license key file there. You can use the environment variable `QLIC` to specify a different filepath.
 
@@ -99,22 +98,6 @@ The default location for the license key file is the `QHOME` folder. You do not 
     ```bash
     QLIC='/Users/simon/q'
     ```
-
-
-## Licensing server for kdb+ On Demand
-
-As well as a license key file, kdb+ On Demand also requires frequent contact with the KX licensing server. 
-For this you need an always-on Net connection.
-
-If kdb+ cannot contact the KX server it will abort with a timestamped message.
-
-```q
-'2018.03.28T11:20:03.831 couldn't connect to license daemon -- exiting
-```
-
-If an HTTP proxy is required, the environment variables `http_proxy` or `HTTP_PROXY` define the URL of the HTTP proxy to use.
-Since 4.1t 2022.11.01,4.0 2022.10.26,4.0ce 2022.09.16 the on-demand system honours the NO_PROXY/no_proxy environment variables, with the lowercase version taking precedence.
-
 
 ## Core restrictions
 
@@ -149,7 +132,6 @@ The number of licensed cores is always 16 for the on-demand license.
     ```bash
     scutil --set HostName "mymbp.local"
     ```
-
 
 ## License questions
 
