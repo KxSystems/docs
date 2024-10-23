@@ -213,7 +213,7 @@ _Dynamic Parameters_.
 
 As mentioned above in _Simple parameters_, Tableau
 parameters are limited to static values, and a single select option when
-placed in a view. However, there are a number of ways to make parameters
+placed in a view. However, there are several ways to make parameters
 smarter, and can increase their usability and flexibility. Below, two
 such methods are described. 
 
