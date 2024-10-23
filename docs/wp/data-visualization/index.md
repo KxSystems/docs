@@ -259,7 +259,7 @@ a _Category_ value of `EQ`.
 
 ![](img/image13.png)
 
-In contrast, when the user selects `CORP` the calculated field will be
+In contrast, when the user selects `CORP` the calculated field is
 divided by 50.
 
 ![](img/image14.png)
