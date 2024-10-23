@@ -167,7 +167,7 @@ This is a feature of the ODBC system, and not a feature unique to the kdb+ drive
 
 In the ODBC data source administrator, click _Start Tracing_ on the _Tracing_ tab. 
 
-An example of the data recorded to the `SQL.LOG`:
+See below an example of the data recorded to the `SQL.LOG`:
 
 ```txt
 powershell      da8-9a0	ENTER SQLExecDirectW
