@@ -14,7 +14,7 @@ Requirements: V3.2 or later.
 
 !!! tip "Reporting problems"
 
-    When reporting a problem (e.g. SQL error, wrong results, slowness, segfault etc.) make sure to include steps to reproduce along with your ODBC trace.
+    When reporting a problem (e.g. SQL error, wrong results, slowness, segfault etc.) make sure to include steps to reproduce along with your [ODBC trace](#debugging).
 
 :fontawesome-regular-map: [**Data visualization with kdb+ using ODBC**: a Tableau case study](../wp/data-visualization/index.md "White paper")
 
@@ -42,7 +42,7 @@ The following is an example of staring kdb+ with ps.k listening on port 5000
 q ps.k -p 5000
 ```
 
-### ODBC DSN configuration
+### ODBC driver and DSN configuration
 
 Software that uses ODBC connections refer to individual connections via a `DSN`(Data Source Name). 
 The DSN details the ODBC driver (e.g. qodbc3) and connection details specific to the data source (e.g. hostname, username, etc).
@@ -70,18 +70,52 @@ $ cd qodbc3/l64
 $ ld -o qodbc3.so -shared qodbc3.o c.o -lodbc -lodbcinst -lm
 ```
 
-Add a DSN entry to your `~/.odbc.ini` file:
+The ODBC driver should be installed in the corresponding system `ini` file and a DSN entry created in either the system data sources (for all users) or user data source (current user).
+The linux `odbcinst` tool can be used to find these locations if not known, for example:
+
+```bash
+$ odbcinst -j
+unixODBC 2.3.7
+DRIVERS............: /etc/odbcinst.ini
+SYSTEM DATA SOURCES: /etc/odbc.ini
+FILE DATA SOURCES..: /etc/ODBCDataSources
+USER DATA SOURCES..: /root/.odbc.ini
+SQLULEN Size.......: 8
+SQLLEN Size........: 8
+SQLSETPOSIROW Size.: 8
+```
+
+Add the driver to your list of drivers by editing the driver ini file ( `/etc/odbcinst.ini`). An example of the definition follows (note: the driver locaton should be altered to the location choosen on your system):
+
+```ini
+[kdb+(odbc3)]
+Description     = ODBC for kdb+
+Driver          = /src/qodbc3/l64/qodbc3.so
+```
+
+After adding, this can be verified by listing the system ODBC drivers:
+
+```bash
+$ odbcinst -q -d
+[PostgreSQL]
+[MySQL]
+[FreeTDS]
+[MariaDB]
+[kdb+(odbc3)]
+```
+
+Add a DSN entry to your system data source file (`/etc/odbc.ini`) or user data source file (`~/.odbc.ini`), with the appropriate settings to communicate with the kdb+ server. For example:
 
 ```ini
 [your_dsn_name]
 Description=kdb+
-Driver=/path/to/qodbc3.so
-HOST=your.host:port
+Driver=kdb+(odbc3)
+HOST=localhost:5000
 UID=username
 PWD=password
 ```
 
-You should now be able to connect to your DSN with `isql`:
+You should now be able to connect to kdb+ represented by the DSN with `isql`:
 
 ```bash
 $ isql -3 -v -k 'DSN=your_dsn_name;'
@@ -91,7 +125,9 @@ $ isql -3 -v -k 'DSN=your_dsn_name;'
 
 If there is a requirement to connect Tableau with kdb+, copy `q.tdc` to the appropriate directory for your application as detailed [here](https://help.tableau.com/current/pro/desktop/en-us/connect_customize.htm#installing-tdc-and-properties-files). 
 
-The `q.tdc` file is a `Tableau Datasource Customization` (TDC) file to customize Tableau-specific settings for the kdb+ ODBC connection.
+Follow the Tableau directions for restarting Tableau Desktop/Server after the file is copied to the appropriate location.
+
+The `q.tdc` file is a `Tableau Datasource Customization` (TDC) file to customize Tableau-specific settings for the kdb+ ODBC connection. The driver name within the file must match the name of the kdb+ driver installed (`kdb+(odbc3)`).
 
 !!! note "The destination directory can be different depending on whether Tableau Desktop or Tableau Server is being used"
 
@@ -124,9 +160,13 @@ Also, SQL selects from partitioned tables are not supported – one should pre-s
 ODBC implementations provide a tracing capability to log interactions with an ODBC driver. This can aid in diagnosing any issues. Tracing can have a detremental 
 effect to ODBC performance.
 
+This is a feature of the ODBC system, and not a feature unique to the kdb+ driver. Associated documentation, features and troubleshooting can be found online for your OS.
+
+!!! warn "Connection details can be logged, therefore the log file should be stored in a private location"
+
 ### Windows
 
-In the ODBC data source administrator, click _Start Tracing_ on the _Tracing_ tab. Please ensure tracing is disabled after debugging complete.
+In the ODBC data source administrator, click _Start Tracing_ on the _Tracing_ tab. 
 
 An example of the data recorded to the `SQL.LOG`:
 
@@ -145,13 +185,36 @@ powershell      da8-9a0	EXIT  SQLGetData  with return code 0 (SQL_SUCCESS)
 		        SQLLEN *            0x000000DAA198E160 (2)
 ```
 
+Please ensure tracing is disabled after debugging complete.
+
 ### Linux
 
-Set the `Trace` and `TraceFile` keyword/value pairs in the [ODBC] section of the odbc.ini file, for example
+In the `[ODBC]` section of the driver ini file (`/etc/odbcinst.ini`), set `Trace` to `1` to enable tracing and `TraceFile` to the location of the log file to create. 
+Additional configuration options are available. For example:
 
 ```txt
-TraceFile  = /tmp/odbc.trace
-Trace      = 1
+[ODBC]
+Trace           = 1
+TraceFile       = /tmp/odbc.log
+TraceOptions    = 3
+ODBCTraceFlush  = 1
+```
+
+An example of the data recorded:
+```txt
+[ODBC][194][1729684200.251390][SQLPrepare.c][196]
+                Entry:
+                        Statement = 0x55ba1f4cdb30
+                        SQL = [select * from t][length = 15]
+...
+[ODBC][194][1729684200.252562][SQLGetData.c][237]
+                Entry:
+                        Statement = 0x55ba1f4cdb30
+                        Column Number = 1
+                        Target Type = 1 SQL_CHAR
+                        Buffer Length = 301
+                        Target Value = 0x55ba1f4cfd10
+                        StrLen Or Ind = 0x7ffe4093ef20
 ```
 
 Please ensure tracing is disabled after debugging complete.

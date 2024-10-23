@@ -78,19 +78,19 @@ Tableau’s Custom SQL, as demonstrated in the following sections.
 The set-up instructions above, both explicit and linked, are
 specifically for a user connecting from Tableau Desktop. This is the
 local version of Tableau installed on a desktop or laptop. Tableau
-Server, on the other hand, is installed on a Windows server and is
-accessible to users via a browser. Tableau Server brings additional
-collaboration, security and scalability capabilities not available using
-only Tableau Desktop.
+Server, on the other hand, is installed on a server and is
+accessible to users via a browser.
 
 Tableau workbooks can be shared between both by publishing from Tableau
 Desktop to Tableau Server. This procedure is detailed in the
 section [`Publishing to Tableau Server`](#publishing-from-tableau-desktop-to-tableau-server).
 
-This process may be handled
-by an organization’s support team, depending on the installation setup.
+This process may be handled by an organization’s support team, depending on the installation setup.
 The driver also needs to be installed, and then the connection can be
 initialized much as for Tableau Desktop.
+
+Note that Tableau Server can require that the dependent kdb+ configuration file `q.tdc`
+be placed in a [different location than Tableau Desktop](../../interfaces/q-server-for-odbc3.md#tableau-configuration), in addition to restarting Tableau Server and all nodes in use.
 
 
 ### Other considerations
