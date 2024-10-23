@@ -85,7 +85,7 @@ SQLLEN Size........: 8
 SQLSETPOSIROW Size.: 8
 ```
 
-Add the driver to your list of drivers by editing the driver ini file ( `/etc/odbcinst.ini`). An example of the definition follows (note: the driver locaton should be altered to the location choosen on your system):
+Add the driver to your list of drivers by editing the driver `ini` file ( `/etc/odbcinst.ini`). An example of the definition follows (note: the driver location should be altered to the location chosen on your system):
 
 ```ini
 [kdb+(odbc3)]
