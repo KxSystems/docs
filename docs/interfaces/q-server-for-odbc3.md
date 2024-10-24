@@ -154,6 +154,11 @@ Also, SQL selects from partitioned tables are not supported – one should pre-s
 
 `test.q` provides additional examples of SQL usage, including the create/insert/update/delete statement syntax.
 
+## Custom authentication
+
+Custom authentication is supported whereby the username and password as set in a DSN or connection string are transformed by a user supplied function. 
+See `customauth.txt` in the [qodbc3.zip](https://github.com/KxSystems/kdb/blob/master/c/qodbc3.zip) for details.
+
 ## Debugging
 
 ODBC implementations provide a tracing capability to log interactions with an ODBC driver. This can aid in diagnosing any issues. Tracing can have a detremental 
@@ -182,6 +187,21 @@ powershell      da8-9a0	EXIT  SQLGetData  with return code 0 (SQL_SUCCESS)
 		        PTR                 0x00000256A79BB1D0 [       2] "1"
 		        SQLLEN                  4092
 		        SQLLEN *            0x000000DAA198E160 (2)
+```
+
+Note that Windows ODBC tracing can present a misleading invalid length error for connections that are null-terminated. 
+The `-3` (SQL_NTS) length value is used by ODBC to indicate a null-terminated string.
+
+```txt
+powershell      127c-12c4	EXIT  SQLDriverConnectW  with return code 0 (SQL_SUCCESS)
+		HDBC                0x0000028E2F1EDAD0
+		HWND                0x0000000000000000
+		WCHAR *             0x00007FF9A40772C0 [      -3] "******\ 0"
+		SWORD                       -3
+		WCHAR *             0x00007FF9A40772C0 <Invalid buffer length!> [-3]
+		SWORD                       -3
+		SWORD *             0x0000000000000000
+		UWORD                        0 <SQL_DRIVER_NOPROMPT>
 ```
 
 Please ensure tracing is disabled after debugging complete.
