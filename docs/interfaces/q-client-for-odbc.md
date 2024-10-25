@@ -136,7 +136,7 @@ Loads an entire database into the session:
 Where x is the same parameter defintion as that passed to [`.odbc.open`](#open).
 
 ```q
-q).odbc.load `northwind
+q).odbc.load "dsn=northwind"
 q)\a
 `Categories`Customers`Employees`OrderDetails`Orders`Products`Shippers`Supplie..
 q)Shippers
@@ -150,14 +150,43 @@ ShipperID| CompanyName        Phone
 
 ### `open`
 
-Open a connection to a database, returning an ODBC connection handle. For example:
+Open a connection to a database.
 
 ```q
-q)h:.odbc.open `northwind
-q)h
-77932560
+.odbc.open x
 ```
 
+Where x is a
+
+* string representing an ODBC connection string. Can include DSN and various driver/vendor defined values. For example: 
+    ```q
+    q)h:.odbc.open "dsn=kdb"                     
+    q)h:.odbc.open "driver=Microsoft Access Driver (*.mdb, *.accdb);dbq=C:\\CDCollection.mdb"
+    q)h:.odbc.open "dsn=kdb;uid=my_username;pwd=my_password"
+    ```
+* mixed list of connection string and timeout (long), for example:
+    ```q
+    q)h:.odbc.open ("dsn=kdb;";60)
+    ```
+* symbol representing a DSN. The symbol value may end with the following supported values for shortcut operations:
+    * `.dsn` is a shortcut for file DSN, for example:
+    ```q
+    h:.odbc.open `test.dsn                   / uses C:\Program Files\Common Files\odbc/data source\test.dsn on windows
+                                             / and /etc/ODBCDataSources/test.dsn on linux
+    ```
+    * `.mdb` is a shortcut for the Microsoft Access driver. For example:
+    ```q
+    q)h:.odbc.open `$"C:\\CDCollection.mdb"  / resolves to "driver=Microsoft Access Driver (*.mdb);dbq=C:\\CDCollection"
+    ```
+    Note that the driver name above must match the driver installed. If the driver name differs, an alternative is to the use a string value rather than this shortcut.
+    * `.mdf` is a shortcut for the SQL Server driver. For example:
+    ```q
+    q)h:.odbc.open `my_db.mdf                / resolves to "driver=sql server;server=(local);trusted_connection=yes;database=my_db"
+    ```
+    Note that the driver name above must match the driver installed. If the driver name differs, an alternative is to the use a string value rather than this shortcut.
+* list of three symbols. First symbol represents the DSN, second for username, third for password.
+
+Returns an ODBC connection handle.
 
 ### `tables`
 
