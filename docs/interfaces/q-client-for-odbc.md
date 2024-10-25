@@ -5,11 +5,7 @@ keywords: api, interface, kdb+, library, odbc, q
 ---
 # :fontawesome-solid-database: Q client for ODBC
 
-
-
-
 In Windows and Linux, you can use ODBC to connect to a non-kdb+ database from q. 
-
 
 ## Installation
 
@@ -47,7 +43,7 @@ This returns a connection handle, which is used for subsequent ODBC calls:
 
 ```q
 q)\l odbc.k
-q)h:.odbc.open `northwind               / open northwind database
+q)h:.odbc.open "dsn=northwind"          / use DSN to connect northwind database
 q).odbc.tables h                        / list tables
 `Categories`Customers`Employees`Order Details`Orders`Products..
 q).odbc.eval[h;"select * from Orders"]  / run a select statement
@@ -61,7 +57,7 @@ OrderID CustomerID EmployeeID OrderDate  RequiredDate..
 Alternatively, use `.odbc.load` to load the entire database into q:
 ```q
 q)\l odbc.k
-q).odbc.load `northwind                 / load northwind database
+q).odbc.load "dsn=northwind"           / load northwind database
 q)Orders
 OrderID| CustomerID EmployeeID OrderDate  RequiredDate ..
 -------| ----------------------------------------------..
@@ -88,13 +84,25 @@ Functions defined in the `.odbc` context:
 Closes an ODBC connection handle:
 
 ```q
-q).odbc.close h
+.odbc.close x
 ```
 
+Where x is the connection value returned from [`.odbc.open`](#open).
 
 ### `eval`
 
 Evaluate a SQL expression:
+
+```q
+.odbc.eval[x;y]
+```
+
+Where
+
+* x is either
+    * the connection value returned from [`.odbc.open`](#open).
+    * a 2 item list containing the connection value returned from [`.odbc.open`](#open), and a timeout (long).
+* y is the statement to execute on the data source.
 
 ```q
 q)sel:"select CompanyName,Phone from Customers where City='London'"
@@ -113,12 +121,19 @@ CompanyName          Phone
 -------------------------------------
 "B's Beverages"      "(171) 555-1212"
 "Seven Seas Imports" "(171) 555-1717"
+q)b:.odbc.eval[(h;5);sel)       / same query with 5 second timeout
 ```
 
 
 ### `load`
 
 Loads an entire database into the session:
+
+```q
+.odbc.load x
+```
+
+Where x is the same parameter defintion as that passed to [`.odbc.open`](#open).
 
 ```q
 q).odbc.load `northwind
@@ -149,6 +164,12 @@ q)h
 List tables in database:
 
 ```q
+.odbc.tables x
+```
+
+Where x is the connection value returned from [`.odbc.open`](#open).
+
+```q
 q).odbc.tables h
 `Categories`Customers`Employees`Order Details`Orders`Products...
 ```
@@ -157,6 +178,12 @@ q).odbc.tables h
 ### `views`
 
 List views in database:
+
+```q
+.odbc.views x
+```
+
+Where x is the connection value returned from [`.odbc.open`](#open).
 
 ```q
 q).odbc.views h
