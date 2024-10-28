@@ -911,12 +911,12 @@ Put the function `K f(I d){…}` on the q main event loop given a socket `d`.
 
 If `d` is negative, the socket is switched to non-blocking.
 
-The function `f` should return `NULL` or a pointer to a K object, and its reference count will be decremented.
-(It is the return value of `f` that will be `r0`’d – and only if not null.)
+The function `f` should return `NULL` or a pointer to a K object.
+If the return value of `f` is  a pointer to a K object, its reference count will be decremended i.e. passed to [`r0`](#r0-decrement-refcount).
 
 Shared library only.
 
-On success, returns int K object containing `d`. On error, `NULL` is returned, `d` is closed.
+On success, `sd1` returns an K object of type integer, containing `d`. On error, `NULL` is returned and `d` is closed.
 
 Since 4.1t 2023.09.15, sd1 no longer imposes a limit of 1023 on the value of the descriptor submitted.
 
