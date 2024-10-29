@@ -26,7 +26,6 @@ returns `y` as an atom value interpreted according to `x`.
 q){([result:key'[x$\:()]];short:neg x;char:upper .Q.t x)}5h$where" "<>20#.Q.t
 result   | short char
 ---------| ----------
-string   |  0    *
 boolean  | -1    B
 guid     | -2    G
 byte     | -4    X
