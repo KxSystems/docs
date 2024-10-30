@@ -885,7 +885,7 @@ Increment an object‘s reference count.
 V sd0(I d)
 ```
 
-Remove the callback on `d` and call `kclose`.
+Remove the callback on `d`  and call `kclose`. Should only be called from main thread.
 
 Shared library only.
 
@@ -896,9 +896,9 @@ Shared library only.
 V sd0x(I d, I f)
 ```
 
-Remove the callback on `d` and call `kclose` on `d` if `f` is 1.
+Remove the callback on `d` and call `kclose` on `d` if `f` is 1. Should only be called from main thread.
 
-Shared library only. Since V3.0 2013.04.04.
+Shared library only. Ssince V3.0 2013.04.04.
 
 
 ### `sd1` (set function on loop)
@@ -907,18 +907,18 @@ Shared library only. Since V3.0 2013.04.04.
 K sd1(I d, f)
 ```
 
-Put the function `K f(I d){…}` on the q main event loop given a socket `d`.
+Put the function `K f(I d){…}` on the q main event loop given a socket `d`. Should only be called from main thread.
 
 If `d` is negative, the socket is switched to non-blocking.
 
 The function `f` should return `NULL` or a pointer to a K object.
 If the return value of `f` is  a pointer to a K object, its reference count will be decremended i.e. passed to [`r0`](#r0-decrement-refcount).
 
-Shared library only.
-
 On success, `sd1` returns an K object of type integer, containing `d`. On error, `NULL` is returned and `d` is closed.
 
 Since 4.1t 2023.09.15, sd1 no longer imposes a limit of 1023 on the value of the descriptor submitted.
+
+Shared library only.
 
 :fontawesome-regular-hand-point-right:
 [Callbacks](c-client-for-q.md#callbacks)
