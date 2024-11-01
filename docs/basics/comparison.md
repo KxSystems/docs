@@ -162,6 +162,9 @@ q)tab.timeStamp>09:29
 _Q for Mortals_
 [§4.9.1 Temporal Comparison](/q4m3/4_Operators/#491-temporal-comparison)
 
+## Floating point
+
+Comparison of floating-point types are discussed in [`comparison tolerance`](precision.md#comparison-tolerance).
 
 ## Different types
 
@@ -201,7 +204,6 @@ q)n < neg inf
 11111b
 ```
 
-
 ## Infinities
 
 Infinities of different type are ordered by their width. 
@@ -238,9 +240,6 @@ Keyword [`differ`](../ref/differ.md) is a uniform unary function that returns a 
 [Match](../ref/match.md) (`~`) compares its arguments and returns a boolean atom to say whether they are the same.
 
 
-:fontawesome-solid-book: 
-[Comparison tolerance](precision.md#comparison-tolerance)
-<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§4.3.3 Order](/q4m3/4_Operators/#433-order)
