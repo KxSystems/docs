@@ -73,7 +73,7 @@ q)(1 + 1e-13) = 1
 
 ## Temporal values 
 
-Matrix of the [type](datatypes.md) used when the temporal types differ in a comparison (note: scrolling to the right may be required to view full table):
+Below is a matrix of the [type](datatypes.md) used when the temporal types differ in a comparison (note: scrolling to the right may be required to view full table):
 
 | comparison types | **timestamp** | **month**       | **date**        | **datetime** | **timespan**    | **minute** | **second** | **time** |
 | ---              | ---           | ---             | ---             | ---          | ---             | ---        | ---        | ---      |
@@ -98,27 +98,66 @@ Particularly notice the comparison of ordinal with cardinal datatypes, such as t
 
 ```q
 q)times: 09:15:37 09:29:01 09:29:15 09:29:15 09:30:01 09:35:27
-q)spans:`timespan$times  / timespans:  cardinal
-q)stamps:.z.D+times      / timestamps: ordinal 
-q)t:09:29                / minute:     cardinal
+q)tab:([] timeSpan:`timespan$times; timeStamp:.z.D+times)
+q)meta tab
+c        | t f a
+---------| -----
+timeSpan | n
+timeStamp| p
 ```
 
-When comparing ordinals with cardinals, ordinal is converted to the cardinal type first: `stamps=t` is equivalent to ``(`minute$stamps)=t`` and thus 
+When comparing `timestamp` with `minute`, the timestamps are converted to minutes such that `` `minute$2024.11.01D09:29:15.000000000 `` becomes `09:29` and therefore doesnt appear in the output:
 
 ```q
-q)(stamps<t;stamps=t;stamps>t)
-100000b
-011100b
-000011b
-q)(spans<t;spans=t;spans>t)
-100000b
-000000b
-011111b
+q)select from tab where timeStamp>09:29     / comparing timestamp with minute
+timeSpan             timeStamp
+--------------------------------------------------
+0D09:30:01.000000000 2016.09.06D09:30:01.000000000
+0D09:35:27.000000000 2016.09.06D09:35:27.000000000
 ```
 
-:fontawesome-solid-graduation-cap: 
-[Comparing temporals](../kb/temporal-data.md#comparing-temporals)
-<br>
+When comparing `timespan` with `minute`, the minute is converted to timespan such that `09:29` becomes `0D09:29:00.000000000` for the following comparison:
+
+```q
+q)select from tab where timeSpan>09:29     / comparing timespan with minute
+timeSpan             timeStamp
+--------------------------------------------------
+0D09:29:01.000000000 2016.09.06D09:29:01.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+0D09:30:01.000000000 2016.09.06D09:30:01.000000000
+0D09:35:27.000000000 2016.09.06D09:35:27.000000000
+```
+
+Therefore, when comparing ordinals with cardinals (i.e. timestamp with minute), ordinal is converted to the cardinal type first. 
+
+For example:
+```q
+q)select from tab where timeStamp=09:29
+timeSpan             timeStamp
+--------------------------------------------------
+0D09:29:01.000000000 2016.09.06D09:29:01.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+
+q)tab.timeStamp=09:29
+011100b
+```
+
+is equivalent to
+
+```q
+q)(`minute$tab.timeStamp)=09:29
+011100b
+```
+and thus
+```q
+q)tab.timeStamp<09:29
+100000b
+q)tab.timeStamp>09:29
+000011b
+```
+
 :fontawesome-solid-street-view: 
 _Q for Mortals_
 [§4.9.1 Temporal Comparison](/q4m3/4_Operators/#491-temporal-comparison)
@@ -126,7 +165,7 @@ _Q for Mortals_
 
 ## Different types
 
-The comparison operators also work on text values (characters, symbols) – not always intuitively.
+The comparison operators also work on text values (characters, symbols).
 
 ```q
 q)"0" < ("4"; "f"; "F"; 4)  / characters are treated as their numeric value

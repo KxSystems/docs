@@ -96,63 +96,7 @@ To update such a dict, remove the `` `s`` attribute, upsert, and add the `` `s``
 
 ## Comparing temporals
 
-Particularly notice the [comparison of ordinal with cardinal datatypes](../basics/comparison.md#temporal-values), such as timestamps with minutes.
-
-```q
-q)times: 09:15:37 09:29:01 09:29:15 09:29:15 09:30:01 09:35:27
- 
-q)tab:([] timeSpan:`timespan$times; timeStamp:.z.D+times)
-q)meta tab
-c        | t f a
----------| -----
-timeSpan | n
-timeStamp| p
- 
-q)select from tab where timeStamp>09:29
-timeSpan             timeStamp
---------------------------------------------------
-0D09:30:01.000000000 2016.09.06D09:30:01.000000000
-0D09:35:27.000000000 2016.09.06D09:35:27.000000000
- 
-q)select from tab where timeSpan>09:29
-timeSpan             timeStamp
---------------------------------------------------
-0D09:29:01.000000000 2016.09.06D09:29:01.000000000
-0D09:29:15.000000000 2016.09.06D09:29:15.000000000
-0D09:29:15.000000000 2016.09.06D09:29:15.000000000
-0D09:30:01.000000000 2016.09.06D09:30:01.000000000
-0D09:35:27.000000000 2016.09.06D09:35:27.000000000
-```
-
-It looks like the timestamp filter is searching for any _minute_ greater than `09:29`, while the timespan is returning any _times_ that are greater than `09:29`.
-
-When comparing ordinals with cardinals (i.e. timestamp with minute), ordinal is converted to the cardinal type first. E.g. in
-
-```q
-q)select from tab where timeStamp=09:29
-timeSpan             timeStamp                    
---------------------------------------------------
-0D09:29:01.000000000 2016.09.06D09:29:01.000000000
-0D09:29:15.000000000 2016.09.06D09:29:15.000000000
-0D09:29:15.000000000 2016.09.06D09:29:15.000000000
-
-q)tab.timeStamp=09:29
-011100b
-```
-
-is equivalent to 
-
-```q
-q)(`minute$tab.timeStamp)=09:29
-011100b
-```
-and thus 
-```q
-q)tab.timeStamp<09:29
-100000b
-q)tab.timeStamp>09:29
-000011b
-```
+Note the [comparison of ordinal with cardinal datatypes](../basics/comparison.md#temporal-values), particularly when the types differ.
 
 :fontawesome-solid-book-open:
 [Comparison](../basics/comparison.md)
