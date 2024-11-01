@@ -5,11 +5,6 @@ keywords: data, kdb+, q, temporal
 ---
 # How to handle temporal data in q
 
-
-
-
-
-
 ## Stepped attribute
 
 In traditional RDMSs temporal changes in data are often represented by adding valid-time-interval information to each relationship, usually achieved by adding start and end columns to the relational tables. This approach is often wasteful because in many cases the end of each interval is the start of the next leading to a lot of repetition. Q offers a better alternative. Recall that adding an `` `s `` attribute to a dictionary makes it behave as a step function.
@@ -101,7 +96,7 @@ To update such a dict, remove the `` `s`` attribute, upsert, and add the `` `s``
 
 ## Comparing temporals
 
-Particularly notice the comparison of ordinal with cardinal datatypes, such as timestamps with minutes.
+Particularly notice the [comparison of ordinal with cardinal datatypes](../basics/comparison.md#temporal-values), such as timestamps with minutes.
 
 ```q
 q)times: 09:15:37 09:29:01 09:29:15 09:29:15 09:30:01 09:35:27

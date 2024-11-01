@@ -73,6 +73,27 @@ q)(1 + 1e-13) = 1
 
 ## Temporal values 
 
+Matrix of the [type](datatypes.md) used when the temporal types differ in a comparison (note: scrolling to the right may be required to view full table):
+
+| comparison types | **timestamp** | **month**       | **date**        | **datetime** | **timespan**    | **minute** | **second** | **time** |
+| ---              | ---           | ---             | ---             | ---          | ---             | ---        | ---        | ---      |
+| **timestamp**    | _timestamp_   | _timestamp_     | _timestamp_     | _timestamp_  | _timespan_      | _minute_   | _second_   | _time_   |
+| **month**        | _timestamp_   | _month_         | _date_          | _not supported_ | _not supported_ | _not supported_ |_not supported_   | _not supported_ |
+| **date**         | _timestamp_   | _date_          | _date_          | _datetime_   | _not supported_ | _not supported_ |_not supported_   | _not supported_ |
+| **datetime**     | _timestamp_   | _not supported_ | _datetime_      | _datetime_   | _timespan_      | _minute_   | _second_   | _time_   |
+| **timespan**     | _timespan_    | _not supported_ | _not supported_ | _timespan_   | _timespan_      | _timespan_ | _timespan_ | _timespan_ |
+| **minute**       | _minute_      | _not supported_ | _not supported_ | _minute_     | _timespan_      | _minute_   | _second_   | _time_   |
+| **second**       | _second_      | _not supported_ | _not supported_ | _second_     | _timespan_      | _second_   | _second_   | _time_   |
+| **time**         | _time_        | _not supported_ | _not supported_ | _time_       | _timespan_      | _time_     | _time_     | _time_   |
+
+For example
+```q
+q)20:00:00.000603286 within 13:30 20:00t            / comparison of timespan and time, time converted to timespan values 0D13:30:00.000000000 0D20:00:00.000000000
+0b
+q)2024.10.07D20:00:00.000603286 within 13:30 20:00t / comparison of timestamp and time, timestamp converted to time value 20:00:00.000
+1b
+```
+
 Particularly notice the comparison of ordinal with cardinal datatypes, such as timestamps with minutes.
 
 ```q
