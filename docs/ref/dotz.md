@@ -87,7 +87,7 @@ q)"i"$0x0 vs .z.a
     When invoked via a Unix Domain Socket, it is 0.
 
 :fontawesome-solid-hand-point-right:
-[`.z.h`](#zh-host) (host)
+[`.z.h`](#zh-host) (host), [`.Q.host`](dotq.md#host-ip-to-hostname) (IP to hostname)
 
 ## `.z.ac` (HTTP auth)
 
@@ -355,7 +355,7 @@ q).Q.host .z.a
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.a`](#za-ip-address) (IP address)
+[`.z.a`](#za-ip-address) (IP address), [`.Q.addr`](dotq.md#addr-iphost-as-int) (IP/host as int)
 
 ## `.z.i` (PID)
 
