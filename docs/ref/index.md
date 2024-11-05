@@ -152,7 +152,7 @@ author: Stephen Taylor
 <tr markdown><td markdown>[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)</td><td markdown>listening port</td><td markdown>[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td markdown>hide q code</td></tr>
 <tr markdown><td markdown>[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)</td><td markdown>display precision</td><td markdown>[`\`](../basics/syscmds.md#terminate)</td><td markdown>terminate</td></tr>
 <tr markdown><td markdown>[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td markdown>quiet mode</td><td markdown>[`\`](../basics/syscmds.md#toggle-qk)</td><td markdown>toggle q/k</td></tr>
-<tr markdown><td markdown>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td markdown>replicate</td><td markdown>[`\\`](../basics/syscmds.md#quit)</td><td markdown>quit</td></tr>
+<tr markdown><td markdown>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-primary)</td><td markdown>replicate</td><td markdown>[`\\`](../basics/syscmds.md#quit)</td><td markdown>quit</td></tr>
 </table>
 
 :fontawesome-solid-book:
