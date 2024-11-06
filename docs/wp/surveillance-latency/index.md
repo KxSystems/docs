@@ -465,7 +465,7 @@ includeEachLoopTest       | Boolean to toggle on or off the running of the perfo
 replayFinishTime          | If set, only data up to this timestamp will be replayed. Otherwise, 5 minutes of data will be replayed.
 intradayFrequency         | 0 for realTime, 1, 5 or 10 for the number of minutes to run intraday. This test has 4 alert engines running. `99` to run all execution points (all 16 alert engines). Defaults to 1.
 
-These options can be set when starting the master kdb+ process, for
+These options can be set when starting the primary kdb+ process, for
 example:
 
 ```bash
