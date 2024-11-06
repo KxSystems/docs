@@ -70,21 +70,42 @@ The IP address as a 32-bit integer
 
 ```q
 q).z.a
--1062731737i
+-1408172030i
+```
+
+Note its relationship to [`.z.h`](#zh-host) for the hostname, converted to an int using [`.Q.addr`](dotq.md#host-ip-to-hostname).
+```q
+q).Q.addr .z.h
+-1408172030i
 ```
 
 It can be split into components as follows:
 
 ```q
 q)"i"$0x0 vs .z.a
-127 0 0 1
+172 17 0 2i
 ```
 
-!!! warning "Callbacks"
+When invoked inside a `.z.p*` callback via a TCP/IP connection, it is the IP address of the client session, not the current session. For example, connecting from a remote machine:
 
-    When invoked inside a `.z.p*` callback via a TCP/IP connection, it is the IP address of the client session, not the current session.
+```q
+q)h:hopen myhost:1234
+q)h"\"i\"$0x0 vs .z.a"
+192 168 65 1i
+```
+or from same machine:
+```q
+q)h:hopen 1234
+q)h"\"i\"$0x0 vs .z.a"
+127 0 0 1i
+```
 
-    When invoked via a Unix Domain Socket, it is 0.
+When invoked via a Unix Domain Socket, it is 0.
+```q
+q)h:hopen `:unix://1234
+q)h".z.a"
+0i
+```
 
 :fontawesome-solid-hand-point-right:
 [`.z.h`](#zh-host) (host), [`.Q.host`](dotq.md#host-ip-to-hostname) (IP to hostname)
