@@ -41,7 +41,7 @@ Where `x` is:
 
 -   **`0h` or `"*"`**, and `y` is not a string, returns `y` ([Identity](#identity))
 
--   an **upper-case letter** or a **negative short int**, see [Tok](tok.md)
+-   an **upper-case letter** or a **negative short int** interprets the value from a string, see [Tok](tok.md)
 
 Casting does not change the underlying bit pattern of the data, only how it is represented.
 
