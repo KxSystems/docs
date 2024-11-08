@@ -164,7 +164,7 @@ _Q for Mortals_
 
 ## Floating point
 
-Comparison of floating-point types are discussed in [`comparison tolerance`](precision.md#comparison-tolerance).
+The comparison of floating-point types are discussed in [`comparison tolerance`](precision.md#comparison-tolerance).
 
 ## Different types
 
