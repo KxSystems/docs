@@ -164,7 +164,7 @@ Where x is a
     q)h:.odbc.open "driver=Microsoft Access Driver (*.mdb, *.accdb);dbq=C:\\CDCollection.mdb"
     q)h:.odbc.open "dsn=kdb;uid=my_username;pwd=my_password"
     ```
-* mixed list of connection string and timeout (long), for example:
+* mixed list of connection string and timeout (long). For example:
     ```q
     q)h:.odbc.open ("dsn=kdb;";60)
     ```
