@@ -156,7 +156,7 @@ Also, SQL selects from partitioned tables are not supported – one should pre-s
 
 ## Custom authentication
 
-Custom authentication is supported whereby the username and password as set in a DSN or connection string are transformed by a user supplied function. 
+Custom authentication is supported, allowing the username and password specified in a DSN or connection string to be transformed by a user-defined function. 
 See `customauth.txt` in the [qodbc3.zip](https://github.com/KxSystems/kdb/blob/master/c/qodbc3.zip) for details.
 
 ## Debugging
