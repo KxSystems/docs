@@ -31,4 +31,4 @@ Use [`.odbc.eval`](../interfaces/q-client-for-odbc.md#eval) to evaluate SQL comm
 q).odbc.eval[h;"select * from aa"]
 ```
 
-An alternative to querying via SQL is to load the entire database into kdb+ via the [.odbc.load](../interfaces/q-client-for-odbc.md#load) command, where the data can then be queried using kdb+ directly..
+An alternative to querying through SQL is to load the entire database into kdb+ via the [.odbc.load](../interfaces/q-client-for-odbc.md#load) command, where the data can then be queried using kdb+ directly.
