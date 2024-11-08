@@ -169,7 +169,7 @@ Where x is a
     q)h:.odbc.open ("dsn=kdb;";60)
     ```
 * symbol representing a DSN. The symbol value may end with the following supported values for shortcut operations:
-    * `.dsn` is a shortcut for file DSN, for example:
+    * `.dsn` is a shortcut for file DSN. For example:
     ```q
     h:.odbc.open `test.dsn                   / uses C:\Program Files\Common Files\odbc/data source\test.dsn on windows
                                              / and /etc/ODBCDataSources/test.dsn on linux
