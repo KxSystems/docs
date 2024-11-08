@@ -73,7 +73,7 @@ q)(1 + 1e-13) = 1
 
 ## Temporal values 
 
-Below is a matrix of the [type](datatypes.md) used when the temporal types differ in a comparison (note: scrolling to the right may be required to view full table):
+Below is a matrix of the [type](datatypes.md) used when the temporal types differ in a comparison (note: you may need to scroll to the right to view the full table):
 
 | comparison types | **timestamp** | **month**       | **date**        | **datetime** | **timespan**    | **minute** | **second** | **time** |
 | ---              | ---           | ---             | ---             | ---          | ---             | ---        | ---        | ---      |
