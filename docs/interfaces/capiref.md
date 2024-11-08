@@ -912,7 +912,8 @@ Put the function `K f(I d){…}` on the q main event loop given a socket `d`. Sh
 If `d` is negative, the socket is switched to non-blocking.
 
 The function `f` should return `NULL` or a pointer to a K object.
-If the return value of `f` is  a pointer to a K object, its reference count will be decremended i.e. passed to [`r0`](#r0-decrement-refcount).
+If the return value of `f` is  a pointer to a K object, its reference count is decremented i.e. passed to [`r0`](#r0-decrement-refcount).
+
 
 On success, `sd1` returns a K object of type integer, containing `d`. On error, `NULL` is returned and `d` is closed.
 
