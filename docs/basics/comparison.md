@@ -106,7 +106,7 @@ timeSpan | n
 timeStamp| p
 ```
 
-When comparing `timestamp` with `minute`, the timestamps are converted to minutes such that `` `minute$2024.11.01D09:29:15.000000000 `` becomes `09:29` and therefore doesnt appear in the output:
+When comparing `timestamp` with `minute`, the timestamps are converted to minutes such that `` `minute$2024.11.01D09:29:15.000000000 `` becomes `09:29` and therefore doesn't appear in the output:
 
 ```q
 q)select from tab where timeStamp>09:29     / comparing timestamp with minute
