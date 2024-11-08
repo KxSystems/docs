@@ -16,7 +16,7 @@ Using the driver installed, a MDB file can be opened using the following example
 q)h:.odbc.open "driver=Microsoft Access Driver (*.mdb, *.accdb);dbq=C:\\mydb.mdb"
 ```
 
-!!! note "The name of the driver may differ between versions. The above command should be altered to reflect the driver name installed."
+!!! note "The name of the driver may differ between versions. The command above should be altered to reflect the driver name installed."
 
 Use [`.odbc.tables`](../interfaces/q-client-for-odbc.md#tables) to list the tables.
 
