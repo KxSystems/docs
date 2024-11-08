@@ -5,11 +5,7 @@ keywords: api, interface, kdb+, library, odbc, q
 ---
 # :fontawesome-solid-database: Q client for ODBC
 
-
-
-
 In Windows and Linux, you can use ODBC to connect to a non-kdb+ database from q. 
-
 
 ## Installation
 
@@ -47,7 +43,7 @@ This returns a connection handle, which is used for subsequent ODBC calls:
 
 ```q
 q)\l odbc.k
-q)h:.odbc.open `northwind               / open northwind database
+q)h:.odbc.open "dsn=northwind"          / use DSN to connect northwind database
 q).odbc.tables h                        / list tables
 `Categories`Customers`Employees`Order Details`Orders`Products..
 q).odbc.eval[h;"select * from Orders"]  / run a select statement
@@ -61,7 +57,7 @@ OrderID CustomerID EmployeeID OrderDate  RequiredDate..
 Alternatively, use `.odbc.load` to load the entire database into q:
 ```q
 q)\l odbc.k
-q).odbc.load `northwind                 / load northwind database
+q).odbc.load "dsn=northwind"           / load northwind database
 q)Orders
 OrderID| CustomerID EmployeeID OrderDate  RequiredDate ..
 -------| ----------------------------------------------..
@@ -88,13 +84,25 @@ Functions defined in the `.odbc` context:
 Closes an ODBC connection handle:
 
 ```q
-q).odbc.close h
+.odbc.close x
 ```
 
+Where x is the connection value returned from [`.odbc.open`](#open).
 
 ### `eval`
 
 Evaluate a SQL expression:
+
+```q
+.odbc.eval[x;y]
+```
+
+Where
+
+* x is either
+    * the connection value returned from [`.odbc.open`](#open).
+    * a 2 item list containing the connection value returned from [`.odbc.open`](#open), and a timeout (long).
+* y is the statement to execute on the data source.
 
 ```q
 q)sel:"select CompanyName,Phone from Customers where City='London'"
@@ -113,6 +121,7 @@ CompanyName          Phone
 -------------------------------------
 "B's Beverages"      "(171) 555-1212"
 "Seven Seas Imports" "(171) 555-1717"
+q)b:.odbc.eval[(h;5);sel)       / same query with 5 second timeout
 ```
 
 
@@ -121,7 +130,13 @@ CompanyName          Phone
 Loads an entire database into the session:
 
 ```q
-q).odbc.load `northwind
+.odbc.load x
+```
+
+Where x is the same parameter defintion as that passed to [`.odbc.open`](#open).
+
+```q
+q).odbc.load "dsn=northwind"
 q)\a
 `Categories`Customers`Employees`OrderDetails`Orders`Products`Shippers`Supplie..
 q)Shippers
@@ -135,18 +150,53 @@ ShipperID| CompanyName        Phone
 
 ### `open`
 
-Open a connection to a database, returning an ODBC connection handle. For example:
+Open a connection to a database.
 
 ```q
-q)h:.odbc.open `northwind
-q)h
-77932560
+.odbc.open x
 ```
 
+Where x is a
+
+* string representing an ODBC connection string. Can include DSN and various driver/vendor defined values. For example: 
+    ```q
+    q)h:.odbc.open "dsn=kdb"                     
+    q)h:.odbc.open "driver=Microsoft Access Driver (*.mdb, *.accdb);dbq=C:\\CDCollection.mdb"
+    q)h:.odbc.open "dsn=kdb;uid=my_username;pwd=my_password"
+    ```
+* mixed list of connection string and timeout (long). For example:
+    ```q
+    q)h:.odbc.open ("dsn=kdb;";60)
+    ```
+* symbol representing a DSN. The symbol value may end with the following supported values for shortcut operations:
+    * `.dsn` is a shortcut for file DSN. For example:
+    ```q
+    h:.odbc.open `test.dsn                   / uses C:\Program Files\Common Files\odbc/data source\test.dsn on windows
+                                             / and /etc/ODBCDataSources/test.dsn on linux
+    ```
+    * `.mdb` is a shortcut for the Microsoft Access driver. For example:
+    ```q
+    q)h:.odbc.open `$"C:\\CDCollection.mdb"  / resolves to "driver=Microsoft Access Driver (*.mdb);dbq=C:\\CDCollection"
+    ```
+    Note that the driver name above must match the driver installed. If the driver name differs, an alternative is to the use a string value rather than this shortcut.
+    * `.mdf` is a shortcut for the SQL Server driver. For example:
+    ```q
+    q)h:.odbc.open `my_db.mdf                / resolves to "driver=sql server;server=(local);trusted_connection=yes;database=my_db"
+    ```
+    Note that the driver name above must match the driver installed. If the driver name differs, an alternative is to the use a string value rather than this shortcut.
+* list of three symbols. First symbol represents the DSN, the second is the username, and the third symbol is for password.
+
+Returns an ODBC connection handle.
 
 ### `tables`
 
 List tables in database:
+
+```q
+.odbc.tables x
+```
+
+Where x is the connection value returned from [`.odbc.open`](#open).
 
 ```q
 q).odbc.tables h
@@ -157,6 +207,12 @@ q).odbc.tables h
 ### `views`
 
 List views in database:
+
+```q
+.odbc.views x
+```
+
+Where x is the connection value returned from [`.odbc.open`](#open).
 
 ```q
 q).odbc.views h

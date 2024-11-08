@@ -10,7 +10,7 @@ keywords: comparison, float, precision, tolerance
 
 ## Float precision
 
-Precision of floats is a tricky issue since floats (_doubles_ in other languages) are actually binary rational approximations to real numbers. Whenever you are concerned with precision, set `\P 0` before doing anything else, so that you can see what’s really going on.
+Precision of floats is a complex issue because floats (known as _doubles_ in other programming languages) are actually binary rational approximations of real numbers. If you are concerned with precision, make sure to set [`\P 0`](syscmds.md#p-precision) before proceeding with anything else. This helps you understand what's really happening with your data.
 
 Due to the finite accuracy of the binary representation of floating-point numbers, the last decimal digit of a float is not reliable. This is not peculiar to kdb+.
 
@@ -22,7 +22,7 @@ q)1%3
 
 Efficient algorithms for complex calculations such as log and sine introduce imprecision. Moreover, even basic calculations raise issues of rounding. The IEEE floating-point spec addresses many such issues, but the topic is complex.
 
-Q takes this into account in its implementation of the equality operator `=`, which should actually be read as “tolerantly equal.” Roughly speaking, this means that the difference is relatively small compared to some acceptable representation error. This makes the following hold:
+Q takes this into account in its implementation of the equality operator [`=`](comparison.md), which should actually be read as “tolerantly equal.” Roughly speaking, this means that the difference is relatively small compared to some acceptable representation error. This makes the following hold:
 
 ```q
 q)r7:1%7
@@ -102,7 +102,7 @@ The l64 builds of kdb+ now have a faster SIMD [`sum`](../ref/sum.md) implementat
 
 Consider the task of calculating the sum of `1e-10*til 10000000`.
 
-The SIMD code is equivalent to the following (`\P 0`):
+The SIMD code is equivalent to the following ([`\P 0`](syscmds.md#p-precision)):
 
 ```q
 q){x+y}over{x+y}over 0N 8#1e-10*til 10000000

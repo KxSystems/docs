@@ -73,39 +73,102 @@ q)(1 + 1e-13) = 1
 
 ## Temporal values 
 
+Below is a matrix of the [type](datatypes.md) used when the temporal types differ in a comparison (note: you may need to scroll to the right to view the full table):
+
+| comparison types | **timestamp** | **month**       | **date**        | **datetime** | **timespan**    | **minute** | **second** | **time** |
+| ---              | ---           | ---             | ---             | ---          | ---             | ---        | ---        | ---      |
+| **timestamp**    | _timestamp_   | _timestamp_     | _timestamp_     | _timestamp_  | _timespan_      | _minute_   | _second_   | _time_   |
+| **month**        | _timestamp_   | _month_         | _date_          | _not supported_ | _not supported_ | _not supported_ |_not supported_   | _not supported_ |
+| **date**         | _timestamp_   | _date_          | _date_          | _datetime_   | _not supported_ | _not supported_ |_not supported_   | _not supported_ |
+| **datetime**     | _timestamp_   | _not supported_ | _datetime_      | _datetime_   | _timespan_      | _minute_   | _second_   | _time_   |
+| **timespan**     | _timespan_    | _not supported_ | _not supported_ | _timespan_   | _timespan_      | _timespan_ | _timespan_ | _timespan_ |
+| **minute**       | _minute_      | _not supported_ | _not supported_ | _minute_     | _timespan_      | _minute_   | _second_   | _time_   |
+| **second**       | _second_      | _not supported_ | _not supported_ | _second_     | _timespan_      | _second_   | _second_   | _time_   |
+| **time**         | _time_        | _not supported_ | _not supported_ | _time_       | _timespan_      | _time_     | _time_     | _time_   |
+
+For example
+```q
+q)20:00:00.000603286 within 13:30 20:00t            / comparison of timespan and time, time converted to timespan values 0D13:30:00.000000000 0D20:00:00.000000000
+0b
+q)2024.10.07D20:00:00.000603286 within 13:30 20:00t / comparison of timestamp and time, timestamp converted to time value 20:00:00.000
+1b
+```
+
 Particularly notice the comparison of ordinal with cardinal datatypes, such as timestamps with minutes.
 
 ```q
 q)times: 09:15:37 09:29:01 09:29:15 09:29:15 09:30:01 09:35:27
-q)spans:`timespan$times  / timespans:  cardinal
-q)stamps:.z.D+times      / timestamps: ordinal 
-q)t:09:29                / minute:     cardinal
+q)tab:([] timeSpan:`timespan$times; timeStamp:.z.D+times)
+q)meta tab
+c        | t f a
+---------| -----
+timeSpan | n
+timeStamp| p
 ```
 
-When comparing ordinals with cardinals, ordinal is converted to the cardinal type first: `stamps=t` is equivalent to ``(`minute$stamps)=t`` and thus 
+When comparing `timestamp` with `minute`, the timestamps are converted to minutes such that `` `minute$2024.11.01D09:29:15.000000000 `` becomes `09:29` and therefore doesn't appear in the output:
 
 ```q
-q)(stamps<t;stamps=t;stamps>t)
-100000b
-011100b
-000011b
-q)(spans<t;spans=t;spans>t)
-100000b
-000000b
-011111b
+q)select from tab where timeStamp>09:29     / comparing timestamp with minute
+timeSpan             timeStamp
+--------------------------------------------------
+0D09:30:01.000000000 2016.09.06D09:30:01.000000000
+0D09:35:27.000000000 2016.09.06D09:35:27.000000000
 ```
 
-:fontawesome-solid-graduation-cap: 
-[Comparing temporals](../kb/temporal-data.md#comparing-temporals)
-<br>
+When comparing `timespan` with `minute`, the minute is converted to timespan such that `09:29` becomes `0D09:29:00.000000000` for the following comparison:
+
+```q
+q)select from tab where timeSpan>09:29     / comparing timespan with minute
+timeSpan             timeStamp
+--------------------------------------------------
+0D09:29:01.000000000 2016.09.06D09:29:01.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+0D09:30:01.000000000 2016.09.06D09:30:01.000000000
+0D09:35:27.000000000 2016.09.06D09:35:27.000000000
+```
+
+Therefore, when comparing ordinals with cardinals (i.e. timestamp with minute), ordinal is converted to the cardinal type first. 
+
+For example:
+```q
+q)select from tab where timeStamp=09:29
+timeSpan             timeStamp
+--------------------------------------------------
+0D09:29:01.000000000 2016.09.06D09:29:01.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+0D09:29:15.000000000 2016.09.06D09:29:15.000000000
+
+q)tab.timeStamp=09:29
+011100b
+```
+
+is equivalent to
+
+```q
+q)(`minute$tab.timeStamp)=09:29
+011100b
+```
+and thus
+```q
+q)tab.timeStamp<09:29
+100000b
+q)tab.timeStamp>09:29
+000011b
+```
+
 :fontawesome-solid-street-view: 
 _Q for Mortals_
 [§4.9.1 Temporal Comparison](/q4m3/4_Operators/#491-temporal-comparison)
 
+## Floating point
+
+The comparison of floating-point types are discussed in [`comparison tolerance`](precision.md#comparison-tolerance).
 
 ## Different types
 
-The comparison operators also work on text values (characters, symbols) – not always intuitively.
+The comparison operators also work on text values (characters, symbols).
 
 ```q
 q)"0" < ("4"; "f"; "F"; 4)  / characters are treated as their numeric value
@@ -140,7 +203,6 @@ q)inf: (0Wh;0Wi;0W;0We;0w)  / numeric infinities
 q)n < neg inf
 11111b
 ```
-
 
 ## Infinities
 
@@ -178,9 +240,6 @@ Keyword [`differ`](../ref/differ.md) is a uniform unary function that returns a 
 [Match](../ref/match.md) (`~`) compares its arguments and returns a boolean atom to say whether they are the same.
 
 
-:fontawesome-solid-book: 
-[Comparison tolerance](precision.md#comparison-tolerance)
-<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§4.3.3 Order](/q4m3/4_Operators/#433-order)

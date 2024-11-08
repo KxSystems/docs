@@ -25,7 +25,7 @@ keywords: command, kdb+, q, system
 [\o  offset from UTC](#o-offset-from-utc)                  [\\_       hide q code](#_-hide-q-code)
 [\p  listening port](#p-listening-port)                   [\\        terminate](#terminate)
 [\P  precision](#p-precision)                        [\\        toggle q/k](#toggle-qk)
-[\r  replication master](#r-replication-primary)               [\\\\       quit](#quit)
+[\r  replication primary](#r-replication-primary)              [\\\\       quit](#quit)
 [\r  rename](#r-rename)                                              
 </div>
 

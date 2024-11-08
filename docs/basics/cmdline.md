@@ -307,7 +307,7 @@ and with `-q`
 Replicate from `:host:port`.
 
 :fontawesome-solid-book-open:
-[`\r` system command](syscmds.md#r-replication-master)
+[`\r` system command](syscmds.md#r-replication-primary)
 
 
 ## `-s` (secondary threads)
