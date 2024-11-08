@@ -184,7 +184,7 @@ Where x is a
     q)h:.odbc.open `my_db.mdf                / resolves to "driver=sql server;server=(local);trusted_connection=yes;database=my_db"
     ```
     Note that the driver name above must match the driver installed. If the driver name differs, an alternative is to the use a string value rather than this shortcut.
-* list of three symbols. First symbol represents the DSN, second for username, third for password.
+* list of three symbols. First symbol represents the DSN, the second is the username, and the third symbol is for password.
 
 Returns an ODBC connection handle.
 
