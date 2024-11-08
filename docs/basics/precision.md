@@ -10,7 +10,7 @@ keywords: comparison, float, precision, tolerance
 
 ## Float precision
 
-Precision of floats is a tricky issue since floats (_doubles_ in other languages) are actually binary rational approximations to real numbers. Whenever you are concerned with precision, set [`\P 0`](syscmds.md#p-precision) before doing anything else, so that you can see what’s really going on.
+Precision of floats is a complex issue because floats (known as _doubles_ in other programming languages) are actually binary rational approximations of real numbers. If you are concerned with precision, make sure to set [`\P 0`](syscmds.md#p-precision) before proceeding with anything else. This helps you understand what's really happening with your data.
 
 Due to the finite accuracy of the binary representation of floating-point numbers, the last decimal digit of a float is not reliable. This is not peculiar to kdb+.
 
