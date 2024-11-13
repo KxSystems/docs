@@ -386,7 +386,7 @@ For releases since 2012.05.29, kdb+ and the C-API will compress an outgoing mess
 -   Connection does not resolve to being localhost (since 4.1t 2021.06.04)
 -   Size of compressed data is less than &frac12; the size of uncompressed data
 
-The compression/decompression algorithms are proprietary and implemented as the `compress` and `uncompress` methods in `c.java`. The message validator does not validate the integrity of compressed messages.
+The compression/decompression algorithms are proprietary and implemented as the `compress` and `uncompress` methods in the [Java API](https://github.com/kxsystems/javakdb). The message validator does not validate the integrity of compressed messages.
 
 !!! note "Enumerations are automatically converted to values before sending through IPC."
 
