@@ -986,7 +986,7 @@ q)neg[h]"11+1111111";(-38!h)`m
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.h`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
+[`.z.H`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 
 ## `.z.w` (handle)
@@ -1001,7 +1001,7 @@ q).z.w
 !!! warning "Inside a `.z.p`* callback it returns the handle of the client session, not the current session."
 
 :fontawesome-solid-hand-point-right:
-[`.z.h`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
+[`.z.H`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 
 ## `.z.wc` (websocket close)
