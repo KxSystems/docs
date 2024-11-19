@@ -6,9 +6,6 @@ date: August 2022
 ---
 # File compression
 
-
-
-
 kdb+ can compress data as it is written to disk.
 Q operators and keywords read both compressed and uncompressed files.
 
@@ -42,7 +39,6 @@ Cautions:
 -   Do not use streaming compression with **log files**. After a crash, the log file would be unusable as it will be missing meta information from the end of the file. Streaming compression maintains the last block in memory and compresses/purges it as needed or latest on close of file handle.
 -   When a **nested data** column file, e.g. `name`, is compressed, its companion file `name#` or `name##` is also compressed: do not try to compress it explicitly.
 -   Use `set` and not **gzip**: they produce different results.
-
 
 
 ### Compression parameters
@@ -229,32 +225,39 @@ However, multiple files can be read or written from their own threads concurrent
 
 ## Requirements
 
-Libraries for Gzip and Snappy may already be installed on your system.
-kdb+ binds dynamically to [Zlib](http://zlib.net) and looks for certain files for Snappy.
+Compression libraries may already be installed on your system.
+kdb+ binds dynamically to the compression libraries when required.
 
 !!! detail "64-bit and 32-bit kdb+ require corresponding 64-bit and 32-bit libs"
 
 If in doubt, consult your system administrator for assistance.
 
-algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
----|---|---|---|---
-2 (Gzip) | [Zlib](http://zlib.net) | `zlib` | (pre-installed) | [WinImage](http://www.winimage.com/zLibDll/index.html "winimage.com")
-3 (Snappy) | [GitHub](http://google.github.io/snappy/) | `libsnappy.so.1` | `libsnappy.dylib` | `snappy.dll`
-4 (Lz4hc) | [GitHub](https://github.com/lz4/lz4) | `liblz4.so.1` | `liblz4.dylib` | `liblz4.dll`
-5 (zstd) | [GitHub](https://github.com/facebook/zstd) | `libzstd.so.1` | `libzstd.1.dylib` | `libzstd.dll`
+### Gzip
 
-=== ":fontawesome-brands-apple: macOS"
+Compression algoritm `2` uses Gzip. Source and algorithm details can be found [here](http://zlib.net).
+The following libraries are required by kdb+:
 
-    To install Snappy or Lz4 on macOS, use a package manager such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/):
+| :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
+---|---|---
+libz.so.1 | libz.dylib<br>(pre-installed) | zlibwapi.dll<br>(32-bit and 64-bit versions available from [WinImage](http://www.winimage.com/zLibDll/index.html "winimage.com"))
 
-        # install with MacPorts
-        sudo port install snappy +universal
-        export LD_LIBRARY_PATH=/opt/local/lib
+### Snappy
 
-=== ":fontawesome-brands-windows: Windows"
+Compression algoritm `3` uses Snappy. Source and algorithm details can be found [here](http://google.github.io/snappy/).
+The following libraries are required by kdb+:
 
-    Build the `liblz4-dll` project on Windows as outlined in the [README at GitHub](https://github.com/lz4/lz4/tree/release/build).
+| :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
+---|---|---
+libsnappy.so.1 | libsnappy.dylib<br>(available via package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | snappy.dll
 
+### LZ4
+
+Compression algoritm `4` uses LZ4. Source and algorithm details can be found [here](https://github.com/lz4/lz4).
+The following libraries are required by kdb+:
+
+| :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
+---|---|---
+liblz4.so.1 | liblz4.dylib<br>(available via package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | liblz4.dll <br>(build the `liblz4-dll` project on Windows as outlined in the [README at GitHub](https://github.com/lz4/lz4/tree/release/build))
 
 !!! danger "Certain releases of `lz4` do not function correctly within kdb+"
 
@@ -263,6 +266,15 @@ algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-appl
     kdb+ requires at least `lz4-r129`.
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` [release](https://github.com/lz4/lz4/releases) available.
+
+### Zstd
+
+Compression algoritm `5` uses zstd (Zstandard). Source and algorithm details can be found [here](https://github.com/facebook/zstd).
+The following libraries are required by kdb+:
+
+| :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
+---|---|---
+libzstd.so.1 | libzstd.1.dylib<br>(available via package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | libzstd.dll
 
 
 ## Running kdb+ under Gdb
