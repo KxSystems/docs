@@ -442,8 +442,9 @@ nav:
       - Maintenance:
         - Data management: wp/data-management.md
         - Data-At-Rest Encryption: kb/dare.md
-        - File compression: kb/file-compression.md
-        - Compression: wp/compress/index.md
+        - Compression:
+          - File compression: kb/file-compression.md
+          - Compression examples: wp/compress/index.md
         - Permissions: wp/permissions/index.md
         - Query optimization: wp/columnar-database/index.md
         - Query scaling: wp/query-scaling.md
