@@ -7,51 +7,42 @@ description: How to install kdb+ on Linux, macOS, or Windows
 
 _You can run kdb+ on Linux, macOS, or Windows_
 
+## :fontawesome-solid-download: Step 1: Download
 
 === "Non-commercial users"
 
-    You have the 64-bit kdb+ Personal Edition interpreter, licensed for non-commercial use. 
-    (32-bit interpreters are licensed only for commercial use.)
-    
-    The interpreter is enabled by a `kc.lic` license-key file and requires an always-on Internet connection. 
-    
-    This version of kdb+ is not licensed for use on cloud servers.
+    <button style="background: #0088ff; border-radius: 5px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); padding: 10px;" type="button">
+      <a href="https://kx.com/kdb-personal-edition-download/" style="color: white">
+        <span style="font-size: 2em;">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
+        :fontawesome-brands-linux:
+        :fontawesome-brands-apple:
+        :fontawesome-brands-windows:
+      </a>
+    </button>
 
+    The 64-bit kdb+ Personal Edition interpreter is licensed for non-commercial use. 
+    It is not licensed for use on cloud servers.
+    
+    The provided license-key file (`kc.lic`) requires an always-on Internet connection. 
 
 
 === "Commercial users"
 
-    You have the 64-bit interpreter and a `k4.lic` or `kc.lic` license-key file 
+    Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). (Credentials are available from customers’ [Designated Contacts](licensing.md#obtain-a-license-key-file)).
+
+    Requires a 64-bit interpreter and a `k4.lic` or `kc.lic` license-key file 
 
     OR
 
-    You have a 32-bit interpreter.
+    a 32-bit interpreter.
 
     !!! warning "32-bit applications will not run in macOS 10.15+ (Catalina and later)"
 
+    !!! tip "Internal distribution at customer sites"
 
-:fontawesome-regular-hand-point-right:
-[More about licensing](licensing.md)
+        Most customers download the latest release of kdb+ (along with the accompanying `README.txt`, the detailed change list) and make a limited number of approved kdb+ versions available from a central file server.
 
-
-## :fontawesome-solid-download: Step 1: Download
-
-<button style="background: #0088ff; border-radius: 5px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); padding: 10px;" type="button">
-  <a href="https://kx.com/kdb-personal-edition-download/" style="color: white">
-    <span style="font-size: 2em;">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
-      :fontawesome-brands-linux:
-      :fontawesome-brands-apple:
-      :fontawesome-brands-windows:
-  </a>
-</button>
-
-Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). (Credentials are available from customers’ [Designated Contacts](licensing.md#obtain-a-license-key-file)).
-
-!!! tip "Internal distribution at customer sites"
-
-    Most customers download the latest release of kdb+ (along with the accompanying `README.txt`, the detailed change list) and make a limited number of approved kdb+ versions available from a central file server.
-
-    Designated Contacts should encourage developers to keep production systems up to date with these versions of kdb+. This can greatly simplify development, deployment and debugging.
+        Designated Contacts should encourage developers to keep production systems up to date with these versions of kdb+. This can greatly simplify development, deployment and debugging.
 
 
 !!! info "Platforms and versions"
@@ -59,6 +50,9 @@ Commercial versions of kdb+ are available to customers from [downloads.kx.com](h
     The names of the ZIPs denote the platform: `l64.zip` – 64-bit Linux; `w32.zip` – 32-bit Windows, etc. m64 contains a universal binary suitable for both Intel and Apple Silicon Macs. l64 contains the Linux x86 build, with l64arm containing the Linux build suitable for ARM processors.
 
     Numerical release versions of the form 3.5, or 4.0 are production code. Versions of kdb+ with a trailing `t` in the name such as `3.7t` are test versions and are neither intended nor supported for production use.
+
+:fontawesome-regular-hand-point-right:
+[More about licensing](licensing.md)
 
 
 ## :fontawesome-solid-file-zipper: Step 2: Unzip your download
