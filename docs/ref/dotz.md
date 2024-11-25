@@ -1167,9 +1167,9 @@ q).z.zd:17 2 6        / set zip defaults
 q)\x .z.zd            / clear zip defaults
 ```
 
-:fontawesome-solid-book:
-[`set`](get.md#set)
-<br>
+:fontawesome-solid-hand-point-right:
+[`-21!x`](../basics/internal.md#-21x-compressionencryption-stats) (compression/encryption stats), [`set`](get.md#set) (per file/dir compression)
+
 :fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
 <br>
