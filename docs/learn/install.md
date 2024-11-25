@@ -91,19 +91,6 @@ Unzip the downloaded ZIP to produce a folder `q` in your install location.
     Expand-Archive w64.zip -DestinationPath C:\q
     ```
 
-
-!!! tip "Recommended: `rlwrap` for Linux and macOS"
-
-    On Linux and macOS the `rlwrap` command allows the Up arrow to retrieve earlier expressions in the q session. It is very useful and we recommend installing it.
-
-    :fontawesome-solid-globe:
-    [Unwrapping rlwrap](https://kx.com/blog/unwrapping-rlwrap/)
-
-    Ask for its version number: `rlwrap -v`. If you see one, `rlwrap` is already installed. Otherwise, you will see `rlwrap: command not found`.
-
-    Install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). (Common package managers: `apt`, `dnf` and `yum` for Linux; [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.)
-
-
 ??? note "How to run 32-bit kdb+ on 64-bit Linux"
 
     Use the `uname -m` command to determine whether your machine is using the 32-bit or 64-bit Linux distribution.
@@ -154,9 +141,6 @@ Your `QHOME` directory will then contain:
 (32-bit versions have `32` in the folder name instead of `64`.)
 
 kdb+ looks for a license file in `QHOME`. To keep your license file elsewhere, set its path in environment variable `QLIC`.
-
-:fontawesome-solid-laptop-code:
-[Working with multiple versions of kdb+](../kb/versions.md)
 
 
 ## :fontawesome-solid-check: Step 4: Confirm success
@@ -245,13 +229,15 @@ The `QLIC` environment variable tells kdb+ where to find [a license key file](li
 === ":fontawesome-brands-linux: Linux"
 
     1.  Open `~/.bash_profile` in a text editor, append the following line, and save the file. (Edit `~/.bashrc` to define a q command for non-console processes.)
-    1.   `alias q='QHOME=~/q rlwrap -r ~/q/l64/q'`
+    1.   `export QHOME=~/q`  
+         `export PATH=~/q/l64/:$PATH`
     1.   In the command shell, use the revised profile: `source .bash_profile`
 
 === ":fontawesome-brands-apple: macOS"
 
     1.  Open `~/.zshrc` in a text editor, append the following lines, and save the file. 
-    1.   `alias q='QHOME=~/q rlwrap -r ~/q/m64/q'`
+    1.   `export QHOME=~/q`  
+         `export PATH=~/q/m64/:$PATH`
     1.   In the command shell, use the revised profile: `source ~/.zshrc`
 
 === ":fontawesome-brands-windows: Windows"
@@ -274,11 +260,25 @@ m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE…
 q)
 ```
 
-:fontawesome-solid-laptop-code:
-[Installing multiple versions of kdb+](../kb/versions.md)
+## Further customization
+
+### rlwrap for Linux and macOS
+
+On Linux and macOS the `rlwrap` command allows the Up arrow to retrieve earlier expressions in the q session. It is very useful and we recommend installing it.
+
+Run `rlwrap -v` to check if currently installed. If not, install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). (Common package managers: `apt`, `dnf` and `yum` for Linux; [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.)
+
+After installation, the q command can be changed to always run with `rlwrap`:
+```bash
+alias q="rlwap -r q"
+```
+This can be added to the end of the users [profile](#step-5-edit-your-profile) to take affect on every session.
+
+:fontawesome-solid-globe:
+[Unwrapping rlwrap](https://kx.com/blog/unwrapping-rlwrap/)
 
 
-## :fontawesome-solid-laptop-code: Interactive development environments
+### :fontawesome-solid-laptop-code: Interactive development environments
 
 If you are a solo student, we recommend learning q by running it from a command shell, as a REPL, writing scripts in a text editor.
 The examples on this site are produced that way; visual fidelity should help you as you learn.
@@ -291,6 +291,9 @@ Notebooks are not, however, an IDE, and are unsuitable for studying features suc
 
 For more advanced study, use either the bare q REPL, or download and install our interactive development environment, [KX Developer](/developer/).
 
+### Multiple versions
+
+Multiple versions of kdb+ can be installed on a system by following this [guide](../kb/versions.md).
 
 ## :fontawesome-solid-hand-point-right: What’s next?
 
