@@ -18,7 +18,7 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-11!](#-11-streaming-execute)        streaming execute             -6!   [eval](../ref/eval.md)
 [-14!x](#-14x-quote-escape)       quote escape                  -7!   [hcount](../ref/hcount.md)
 [-16!x](#-16x-ref-count)       ref count                     -12!  [.Q.host](../ref/dotq.md#host-ip-to-hostname)
-[-18!x](#-18x-compress-byte)       compress byte                 -13!  [.Q.addr](../ref/dotq.md#addr-iphost-as-int)
+[-18!x](#-18x-compress-bytes)       compress bytes                -13!  [.Q.addr](../ref/dotq.md#addr-iphost-as-int)
 [-21!x](#-21x-compressionencryption-stats)       compression/encryption stats  -15!  [md5](../ref/md5.md)
 [-22!x](#-22x-uncompressed-length)       uncompressed length           -19!  [set](../ref/get.md#set)
 [-23!x](#-23x-memory-map)       memory map                    -20!  [.Q.gc](../ref/dotq.md#gc-garbage-collect)
@@ -112,7 +112,7 @@ q)-9!-8!1 2 3
 ```
 
 :fontawesome-solid-hand-point-right:
-[`-8!x`](#-8x-to-bytes) (to bytes)
+[`-8!x`](#-8x-to-bytes) (to bytes), [-18!x](#-18x-compress-bytes) (compress bytes)
 
 ## `-10!x` (type enum)
 
@@ -180,9 +180,9 @@ q)-16!a
 ```
 
 
-## `-18!x` (compress byte)
+## `-18!x` (compress bytes)
 
-Returns IPC byte representation of `x` (as per [`-8!x`](#-8x-to-bytes)), applying compression given [compression rules](ipc.md#compression):
+Returns IPC byte representation of `x` (as per [`-8!x`](#-8x-to-bytes)), applying compression given [IPC compression rules](ipc.md#compression):
 
 * Uncompressed serialized data has a length greater than 2000 bytes
 * Size of compressed data is less than &frac12; the size of uncompressed data
@@ -291,7 +291,7 @@ q)(-22!v)=count -8!v
 ```
 
 :fontawesome-solid-hand-point-right:
-[`-18!x`](#-18x-compress-byte) (compress bytes)
+[`-18!x`](#-18x-compress-bytes) (compress bytes)
 
 
 ## `-23!x` (memory map)
