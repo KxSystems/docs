@@ -7,12 +7,6 @@ description: How to install kdb+ on Linux, macOS, or Windows
 
 _You can run kdb+ on Linux, macOS, or Windows_
 
-!!! info "kdb+ Personal Edition"
-
-    If you have downloaded the **kdb+ Personal Edition** simply follow the installation instructions that came with it.
-
-    Installation instructions on this page are for reference and cover a variety of use cases.
-
 
 === "Non-commercial users"
 
