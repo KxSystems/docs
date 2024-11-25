@@ -21,23 +21,31 @@ wget -q -r -np -nH -P $tempdir $site/favicon.ico $site/img/ $site/scripts/ $site
 
 echo '### Deriving temporary config (converting mkdocs.yml to local.yml)'
 rm -f local.yml
-cat mkdocs.yml | sed \
-	-e 's#^INHERIT.*##' \
-	-e 's#favicon: https://code.kx.com/#favicon: local/#' \
-	-e 's#logo: https://code.kx.com/#logo: local/#' \
-	-e 's#- https://code.kx.com/#- local/#' \
-	-e 's#- scripts/qsearch\.js##' \
-	> local.yml
-
-docker_image="$(cat docker-image-name.txt):$(cat docker-image-version.txt)"
-work_dir="/docs"
-cmd="build --clean -s -f local.yml --site-dir $localdir"
-echo "### Building docs in $localdir/ using mkdocs"
 
 if [ $# -eq 0 ]; then
-    echo "### Using docker image $docker_image"
+    cat mkdocs.yml | sed \
+        -e 's#^INHERIT.*##' \
+        -e 's#^site_url.*$#site_url: ""#' \
+        -e 's#favicon: https://code.kx.com/#favicon: local/#' \
+        -e 's#logo: https://code.kx.com/#logo: local/#' \
+        -e 's#- https://code.kx.com/#- local/#' \
+        -e 's#- scripts/qsearch\.js##' \
+        > local.yml
+    work_dir="/docs"
+    docker_image="$(cat docker-image-name.txt):$(cat docker-image-version.txt)"
+    cmd="build --clean -s -f local.yml --no-directory-urls --site-dir $localdir"
+    echo "### Using docs in $localdir/ using docker image $docker_image"
     docker run --rm -v $(pwd):$work_dir --workdir $work_dir $docker_image $cmd
 else
+    cat mkdocs.yml | sed \
+        -e 's#^INHERIT.*##' \
+        -e 's#favicon: https://code.kx.com/#favicon: local/#' \
+        -e 's#logo: https://code.kx.com/#logo: local/#' \
+        -e 's#- https://code.kx.com/#- local/#' \
+        -e 's#- scripts/qsearch\.js##' \
+        > local.yml
+    cmd="build --clean -s -f local.yml --site-dir $localdir"
+    echo "### Building docs in $localdir/ using mkdocs"
     mkdocs $cmd
 fi
 
@@ -47,9 +55,10 @@ if [ $retval -ne 0 ]; then
     exit $retval
 fi
 
-echo "### Zipping $localdir directory"
-if ! zip -qr local.zip $localdir; then
-    echo "*** ERROR *** Failed to zip $localdir/"
-    exit 1
+if [ $# -ne 0 ]; then
+    echo "### Zipping $localdir directory"
+    if ! zip -qr local.zip $localdir; then
+        echo "*** ERROR *** Failed to zip $localdir/"
+        exit 1
+    fi
 fi
-
