@@ -98,6 +98,9 @@ q)-8!1 2 3
 0x010000001a000000060003000000010000000200000003000000
 ```
 
+:fontawesome-solid-hand-point-right:
+[`-9!x`](#-9x-from-bytes) (from bytes)
+
 
 ## `-9!x` (from bytes)
 
@@ -107,6 +110,9 @@ Creates data from IPC byte representation `x`.
 q)-9!-8!1 2 3
 1 2 3
 ```
+
+:fontawesome-solid-hand-point-right:
+[`-8!x`](#-8x-to-bytes) (to bytes)
 
 ## `-10!x` (type enum)
 
@@ -176,7 +182,29 @@ q)-16!a
 
 ## `-18!x` (compress byte)
 
-Returns compressed IPC byte representation of `x`, see notes about network compression in [Changes in V2.6](../releases/ChangesIn2.6.md)
+Returns IPC byte representation of `x` (as per [`-8!x`](#-8x-to-bytes)), applying compression given [compression rules](ipc.md#compression):
+
+* Uncompressed serialized data has a length greater than 2000 bytes
+* Size of compressed data is less than &frac12; the size of uncompressed data
+
+```q
+q)count -8!til 1000     / uncompressed
+8014
+q)count -18!til 1000    / compressed
+3276
+```
+
+[-9!x](#-9x-from-bytes) can be used to uncompress and deserialise.
+
+```q
+q)a:til 1000           / original data to convert 
+q)x:-18!a              / serialize and compression to bytes using IPC serialisation
+q)a~-9!x               / test if deserialised version is same as original
+1b
+```
+
+:fontawesome-solid-hand-point-right:
+[`-22!x`](#-22x-uncompressed-length) (uncompressed length), [`-9!x`](#-9x-from-bytes) (from bytes)
 
 <!-- 
 ## `-19!` (compress file)
@@ -261,6 +289,9 @@ q)\t do[5000;count -8!v]
 q)(-22!v)=count -8!v
 1b
 ```
+
+:fontawesome-solid-hand-point-right:
+[`-18!x`](#-18x-compress-byte) (compress bytes)
 
 
 ## `-23!x` (memory map)
