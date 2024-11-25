@@ -37,11 +37,6 @@ A license file can be a commercial license or an on-demand person license (for n
 
 ### On-Demand License
 
-Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use.
-Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers.
-It may not be used for any commercial purposes.
-See the [full terms and conditions](https://kx.com/download-kdb/). Follow the [download instructions](https://kx.com/kdb-personal-edition-download/) to get your kc.lic.
-
 It requires a `kc.lic` license key file and an always-on internet connection to operate.
 
 #### Licensing server
