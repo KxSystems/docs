@@ -610,7 +610,7 @@ q)10 xlog 0Wj-1
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.fmt`](#fmt-precision-format) (precision format with length)
+[`.Q.fmt`](#fmt-precision-format) (precision format with length), [-27!(x;y)](../basics/internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
 <br>:fontawesome-solid-book-open:
 [`\P`](../basics/syscmds.md#p-precision) (precision)
 
@@ -757,7 +757,7 @@ q)fmt[9] each 34.4 343434.358
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.f`](#f-precision-format) (precision format) 
+[`.Q.f`](#f-precision-format) (precision format), [-27!(x;y)](../basics/internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
 <br>:fontawesome-solid-book-open:
 [`\P`](../basics/syscmds.md#p-precision) (precision)
 

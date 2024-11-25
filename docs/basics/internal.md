@@ -373,7 +373,7 @@ In the result, all keys except `SSLEAY_VERSION` are initialized from their corre
 [SSL](../kb/ssl.md)
 
 
-## `-27!(x;y)` (format)
+## `-27!(x;y)` (IEEE754 precision format)
 
 Where
 
@@ -382,7 +382,7 @@ Where
 
 returns `y` as a string or strings formatted as a float to `x` decimal places.
 (Since V3.6 2018.09.26.)
-It is atomic and doesn’t take `\P` into account. e.g.
+It is atomic and doesn’t take [`\P`](syscmds.md#p-precision) into account. e.g.
 
 ```q
 q)-27!(3i;0 1+123456789.4567)

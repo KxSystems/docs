@@ -536,7 +536,7 @@ q)1%3
 :fontawesome-solid-book-open:
 [Precision](precision.md),
 [`-P` command-line option](cmdline.md#-p-display-precision),
-[`-27!` internal function](internal.md#-27xy-format)
+[`-27!` precision format with IEEE754 rounding](internal.md#-27xy-ieee754-precision-format)
 <br>
 :fontawesome-solid-globe:
 [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
