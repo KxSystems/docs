@@ -35,7 +35,7 @@ If both are found, the `kc.lic` file is used.
 
 A license file can be a commercial license or an on-demand person license (for non-commercial use).
 
-### On-Demand
+### On-Demand License
 
 Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use.
 Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers.
@@ -55,7 +55,7 @@ If kdb+ with an on-demand license cannot contact the KX license server it will a
 If an HTTP proxy is required, the environment variables `http_proxy` or `HTTP_PROXY` define the URL of the HTTP proxy to use.
 Since 4.1t 2022.11.01,4.0 2022.10.26,4.0ce 2022.09.16 the on-demand system honours the NO_PROXY/no_proxy environment variables, with the lowercase version taking precedence.
 
-### Commercial
+### Commercial License
 
 Use of commercial kdb+ is covered by your license agreement with KX.
 
