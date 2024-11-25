@@ -11,6 +11,10 @@ description: Errors signalled by the interpreter, and what triggers them
 
 <style>dt {color:#F23A66}</style>
 
+{directory}/q.k. OS reports: No such file or directory
+
+:   Using enviornment variable `QHOME` (or `<HOME DIRECTORY>/q` if not set), `q.k` not found in the directory specified. Check `QHOME` environment variable correctly set to provide directory of `q.k`, which is provided in the kdb+ installation files.
+
 [](){#access}
 access
 
@@ -623,15 +627,15 @@ error | explanation
 {timestamp} couldn't connect to license daemon | Could not connect to KX license server ([kdb+ On Demand](../learn/licensing.md#licensing-server))
 [](){#cores}cores | The license is for [fewer cores than available](../learn/licensing.md#core-restrictions)
 [](){#cpu}cpu | The license is for fewer CPUs than available
-[](){#exp}exp | License expiry date is prior to system date
+[](){#exp}exp | License expiry date is prior to system date. License has expired. Commercial license holders should have their Designated Contacts contact licadmin@kx.com, or contact sales@kx.com to beging a new commercial agreement.
 [](){#host}host | The hostname reported by the OS does not match the hostname or hostname-pattern in the license.<br><br>If you see `255.255.255.255` in the kdb+ banner, the machine likely cannot resolve its hostname to an IP address, which will cause a `host` error.<br><br>Since 4.1t 2022.07.01,4.0 2022.07.01 the detected hostname is printed. It can be used to compare with the hostname used within the license.
-[](){#k4.lic}k4.lic | `k4.lic` file not found, check contents of environment variables [`QHOME`](../learn/install.md#step-2-put-kdb-in-qhome) and [`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere)
+[](){#k4.lic}k4.lic | `k4.lic` file not found. If the enviroment variable [`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere) is set, check it is set to the directory containing the license file (note: it should not be set to the location of the license file itself, but the directory that holds the license file).  If `QLIC` unset, check the directory specified by the  environment variables [`QHOME`](../learn/install.md#step-2-put-kdb-in-qhome) contains the license file.
 [](){#os}os | Wrong OS or operating-system error (if runtime error)
 [](){#srv}srv | Client-only license in server mode
 [](){#upd}upd | Version of kdb+ more recent than update date, _or_ the function `upd` is undefined (sometimes encountered during ``-11!`:logfile``)
 [](){#user}user | Unlicensed user
-[](){#wha}wha | System date is prior to kdb+ version date
-[](){#wrong-q.k-version}wrong q.k version | `q` and `q.k` versions do not match
+[](){#wha}wha | System date is prior to kdb+ version date. Check system date shows the correct date.
+[](){#wrong-q.k-version}wrong q.k version | `q` and `q.k` versions do not match. Check that the `q.k` file (found in the directory specified by the `QHOME` environment variable) is the same version as that supplied with the q binary.
 
 
 License-related errors are reported with the prefix `licence error: ` since V4.0 2019.10.22.

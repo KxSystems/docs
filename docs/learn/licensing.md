@@ -7,27 +7,12 @@ keywords: commercial, free, kdb+, key file, license, license key file, licensing
 # :fontawesome-solid-certificate: Licensing
 
 
-
-
 ## Who needs a license for kdb+?
 
-Everyone. All use of kdb+ is governed by a license. 
+Everyone. All use of kdb+ is governed by a license. Without one, kdb+ signals an error [`'k4.lic`](../basics/errors.md#k4.lic) and aborts.
 
-64-bit installations require a **license key file**: `k4.lic` or `kc.lic`.
+64-bit installations require a **license key file**: `k4.lic`, or `kc.lic` for kdb+ On Demand.
 
-<!-- :fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com -->
-
-Without one, kdb+ signals an [error](../basics/errors.md#license-errors) `'k4.lic` and aborts.
-
-```txt
-tom@mb13:~/q$ q
-KDB+ 3.6 2018.07.30 Copyright (C) 1993-2018 Kx Systems
-m64/ 2()core 8192MB tom mb13.local 192.168.1.44
-'k4.lic
-tom@mb13:~/q$ 
-```
-
-The license key file is `k4.lic`, or `kc.lic` for kdb+ On Demand.
 If both are found, the `kc.lic` file is used.
 
 
