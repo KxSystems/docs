@@ -204,7 +204,7 @@ q)a~-9!x               / test if deserialised version is same as original
 ```
 
 :fontawesome-solid-hand-point-right:
-[`-22!x`](#-22x-uncompressed-length) (uncompressed length), [`-9!x`](#-9x-from-bytes) (from bytes)
+[`-22!x`](#-22x-uncompressed-length) (uncompressed length), [`-9!x`](#-9x-from-bytes) (from bytes), [.Q.gz](../ref/dotq.md#gz-gzip) (gzip)
 
 <!-- 
 ## `-19!` (compress file)

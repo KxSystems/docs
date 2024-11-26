@@ -1040,6 +1040,9 @@ q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 "helloworldhelloworldhelloworldhelloworldhelloworldhelloworldhelloworldhellow..
 ```
 
+:fontawesome-solid-hand-point-right:
+[-18!x](../basics/internal.md#-18x-compress-bytes) (ipc compress bytes)
+
 
 ## `hdpf` (save tables)
 
