@@ -4,13 +4,13 @@ description: Functions can be written in C or C++ as shared objects and loaded i
 author: Charles Skelton
 keywords: api, c, c++, interface, kdb+, library, q
 ---
-# C/C++ functions
+# Extending q using C/C++ functions
 
 
 
-Q functionality can be extended using dynamically-loaded modules. 
+Q functionality can be extended using dynamically-loaded modules, allowing C/C++ functions to be called directly from the q language.
 
-To make a function `foo` defined in a shared object `bar.so` available in a q session, we use [2:](../ref/dynamic-load.md) to load the function dynamically.
+For example, to make a function `foo` defined in a shared object `bar.so` available in a q session, we use [2:](../ref/dynamic-load.md) to load the function dynamically.
 
 ```q
 q)foo:`bar 2:(`foo;n)

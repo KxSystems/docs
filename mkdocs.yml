@@ -547,7 +547,7 @@ nav:
           - Quick guide: interfaces/c-client-for-q.md
           - API reference: interfaces/capiref.md
           - C API for kdb+: wp/capi/index.md
-          - Using C/C++ functions: interfaces/using-c-functions.md
+          - Extending q with C/C++: interfaces/using-c-functions.md
           - Async callbacks (C client): kb/server-calling-client.md
         - C#: interfaces/csharp.md
         - Foreign Function Interface (FFI): interfaces/ffi.md
