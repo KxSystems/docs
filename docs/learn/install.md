@@ -266,7 +266,7 @@ q)
 
 On Linux and macOS, the `rlwrap` command allows the Up arrow to retrieve earlier expressions in the q session. This can be very useful and it is recommended you install it.
 
-Run `rlwrap -v` to check if currently installed. If not, install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). (Common package managers: `apt`, `dnf` and `yum` for Linux; [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.)
+Run `rlwrap -v` to check if it's currently installed. If not, install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). Common package managers are: `apt`, `dnf` and `yum` for Linux, and [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.
 
 After installation, the q command can be changed to always run with `rlwrap`:
 ```bash
