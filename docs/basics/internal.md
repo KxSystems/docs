@@ -182,7 +182,7 @@ q)-16!a
 
 ## `-18!x` (compress bytes)
 
-Returns IPC byte representation of `x` (as per [`-8!x`](#-8x-to-bytes)), applying compression given [IPC compression rules](ipc.md#compression):
+Returns the IPC byte representation of `x` according to [`-8!x`](#-8x-to-bytes), applying compression based on [IPC compression rules](ipc.md#compression):
 
 * Uncompressed serialized data has a length greater than 2000 bytes
 * Size of compressed data is less than &frac12; the size of uncompressed data
