@@ -635,7 +635,7 @@ error | explanation
 [](){#upd}upd | Version of kdb+ more recent than update date, _or_ the function `upd` is undefined (sometimes encountered during ``-11!`:logfile``)
 [](){#user}user | Unlicensed user
 [](){#wha}wha | System date is prior to kdb+ version date. Check that the system date shows the correct date.
-[](){#wrong-q.k-version}wrong q.k version | `q` and `q.k` versions do not match. Check that the `q.k` file (found in the directory specified by the `QHOME` environment variable) is the same version as that supplied with the q binary.
+[](){#wrong-q.k-version}wrong q.k version | `q` and `q.k` versions do not match. Check that the `q.k` file found in the directory specified by the `QHOME` environment variable is the same version as that supplied with the q binary.
 
 
 License-related errors are reported with the prefix `licence error: ` since V4.0 2019.10.22.
