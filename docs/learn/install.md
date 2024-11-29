@@ -28,7 +28,7 @@ _You can run kdb+ on Linux, macOS, or Windows_
 
 === "Commercial users"
 
-    Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). (Credentials are available from customers’ [Designated Contacts](licensing.md#obtain-a-license-key-file)).
+    Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). Credentials are available from the customer's [Designated Contacts](licensing.md#obtain-a-license-key-file).
 
     Requires a 64-bit interpreter and a `k4.lic` or `kc.lic` license-key file 
 
