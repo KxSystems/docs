@@ -382,7 +382,7 @@ Where
 
 returns `y` as a string or strings formatted as a float to `x` decimal places.
 (Since V3.6 2018.09.26.)
-It is atomic and doesn’t take [`\P`](syscmds.md#p-precision) into account. e.g.
+It is atomic and doesn’t take [`\P`](syscmds.md#p-precision) into account. For example:
 
 ```q
 q)-27!(3i;0 1+123456789.4567)
