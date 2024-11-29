@@ -257,7 +257,7 @@ The following libraries are required by kdb+:
 
 | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
 ---|---|---
-liblz4.so.1 | liblz4.dylib<br>(available via package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | liblz4.dll <br>(build the `liblz4-dll` project on Windows as outlined in the [README at GitHub](https://github.com/lz4/lz4/tree/release/build))
+liblz4.so.1 | liblz4.dylib<br>(available through package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | liblz4.dll <br>(build the `liblz4-dll` project on Windows as outlined in the [README at GitHub](https://github.com/lz4/lz4/tree/release/build))
 
 !!! danger "Certain releases of `lz4` do not function correctly within kdb+"
 
