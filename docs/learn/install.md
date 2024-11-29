@@ -272,7 +272,7 @@ After installation, the q command can be changed to always run with `rlwrap`:
 ```bash
 alias q="rlwap -r q"
 ```
-This can be added to the end of the users [profile](#step-5-edit-your-profile) to take affect on every session.
+This can be added to the end of the user's [profile](#step-5-edit-your-profile) to take effect on every session.
 
 :fontawesome-solid-globe:
 [Unwrapping rlwrap](https://kx.com/blog/unwrapping-rlwrap/)
