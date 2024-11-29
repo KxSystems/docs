@@ -13,7 +13,7 @@ description: Errors signalled by the interpreter, and what triggers them
 
 {directory}/q.k. OS reports: No such file or directory
 
-:   Using enviornment variable `QHOME` (or `<HOME DIRECTORY>/q` if not set), `q.k` not found in the directory specified. Check `QHOME` environment variable correctly set to provide directory of `q.k`, which is provided in the kdb+ installation files.
+:   Using the environment variable `QHOME` (or `<HOME DIRECTORY>/q` if not set), `q.k` was not found in the directory specified. Check that the `QHOME` environment variable is correctly set to the directory containing `q.k`, which is provided in the kdb+ installation files.
 
 [](){#access}
 access
