@@ -404,6 +404,9 @@ q).[+;2 3;{"Wrong ",x}]
 
 Use Trap At as a simpler form of Trap, for unary values.
 
+:fontawesome-solid-book:
+[.Q.trp](dotq.md#trp-extend-trap-at) (extend trap at)
+
 
 ### Limit of the trap
 

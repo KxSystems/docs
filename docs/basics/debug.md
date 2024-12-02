@@ -98,7 +98,7 @@ q)). / down
 q))
 ```
 
-In a debugger session, `.z.ex` and `.z.ey` are set to the failed primitive and its argument list.
+In a debugger session, [`.z.ex`](../ref/dotz.md#zex-failed-primitive) and [`.z.ey`](../ref/dotz.md#zey-argument-to-failed-primitive) are set to the failed primitive and its argument list.
 
 ```q
 q)).z.ex
@@ -159,7 +159,7 @@ q)):17
 
 ## Abort
 
-Use `\` to exit the debugger and abort execution.
+Use [`\`](syscmds.md#terminate) to exit the debugger and abort execution.
 
 ```q
 q))\
@@ -247,7 +247,7 @@ View calculations and system commands, including [`\l`](syscmds.md#l-load), corr
 
 ### Trap
 
-[`.Q.trp[f;x;g]`](../ref/dotq.md#trp-extend-trap-at) extends `trap at` (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
+[`.Q.trp[f;x;g]`](../ref/dotq.md#trp-extend-trap-at) extends [`trap at` (`@[f;x;g]`)](../ref/apply.md#trap-at) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with [`.Q.sbt`](../ref/dotq.md#sbt-string-backtrace) to make it legible.
 
 ```q
 q)f:{`hello+x}

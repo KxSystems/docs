@@ -15,19 +15,19 @@ Environment                              Callbacks
  [.z.a    IP address](#za-ip-address)                       [.z.bm    msg validator](#zbm-msg-validator)
  [.z.b    view dependencies](#zb-view-dependencies)                [.z.exit  action on exit](#zexit-action-on-exit)
  [.z.c    cores](#zc-cores)                            [.z.pc    close](#zpc-close)
- [.z.ex   failed primitive](#zex-failed-primitive)                 [.z.pd    peach handles](#zpd-peach-handles)
- [.z.ey   arg to failed primitive](#zey-argument-to-failed-primitive)          [.z.pg    get](#zpg-get)
- [.z.f    file](#zf-file)                             [.z.pi    input](#zpi-input)
- [.z.h    host](#zh-host)                             [.z.po    open](#zpo-open)
- [.z.i    PID](#zi-pid)                              [.z.pq    qcon](#zpq-qcon)
- [.z.K    version](#zk-version)                          [.z.r     blocked](#zr-blocked)
- [.z.k    release date](#zk-release-date)                     [.z.ps    set](#zps-set)
- [.z.l    license](#zl-license)                          [.z.pw    validate user](#zpw-validate-user)
- [.z.o    OS version](#zo-os-version)                       [.z.ts    timer](#zts-timer)
- [.z.q    quiet mode](#zq-quiet-mode)                       [.z.vs    value set](#zvs-value-set)
- [.z.s    self](#zs-self)
- [.z.u    user ID](#zu-user-id)                         Callbacks (HTTP)
- [.z.X/x  raw/parsed command line](#zx-raw-command-line)          [.z.ac    HTTP auth](#zac-http-auth)
+ [.z.f    file](#zf-file)                             [.z.pd    peach handles](#zpd-peach-handles)
+ [.z.h    host](#zh-host)                             [.z.pg    get](#zpg-get)
+ [.z.i    PID](#zi-pid)                              [.z.pi    input](#zpi-input)
+ [.z.K    version](#zk-version)                          [.z.po    open](#zpo-open)
+ [.z.k    release date](#zk-release-date)                     [.z.pq    qcon](#zpq-qcon)
+ [.z.l    license](#zl-license)                          [.z.r     blocked](#zr-blocked)
+ [.z.o    OS version](#zo-os-version)                       [.z.ps    set](#zps-set)
+ [.z.q    quiet mode](#zq-quiet-mode)                       [.z.pw    validate user](#zpw-validate-user)
+ [.z.s    self](#zs-self)                             [.z.ts    timer](#zts-timer)
+ [.z.u    user ID](#zu-user-id)                          [.z.vs    value set](#zvs-value-set)
+ [.z.X/x  raw/parsed command line](#zx-raw-command-line)
+                                         Callbacks (HTTP)
+Environment (Compression/Encryption)      [.z.ac    HTTP auth](#zac-http-auth)
  [.z.zd   compression/encryption defaults](#zzd-compressionencryption-defaults)  [.z.ph    HTTP get](#zph-http-get)
                                           [.z.pm    HTTP methods](#zpm-http-methods)
 Environment (Connections)                 [.z.pp    HTTP post](#zpp-http-post)
@@ -35,7 +35,11 @@ Environment (Connections)                 [.z.pp    HTTP post](#zpp-http-post)
  [.z.H    active sockets](#zh-active-sockets)                  Callbacks (WebSockets)
  [.z.W/w  handles/handle](#zw-handles)                   [.z.wc    WebSocket close](#zwc-websocket-close)
                                           [.z.wo    WebSocket open](#zwo-websocket-open)
-Environment (Time/Date)                   [.z.ws    WebSockets](#zws-websockets)
+Environment (Debug)                       [.z.ws    WebSockets](#zws-websockets)
+ [.z.ex   failed primitive](#zex-failed-primitive)
+ [.z.ey   arg to failed primitive](#zey-argument-to-failed-primitive)
+
+Environment (Time/Date)
  [.z.D/d  date shortcuts](#zt-zt-zd-zd-timedate-shortcuts)
  [.z.N/n  local/UTC timespan](#zn-local-timespan)
  [.z.P/p  local/UTC timestamp](#zp-local-timestamp)
@@ -986,7 +990,7 @@ q)neg[h]"11+1111111";(-38!h)`m
 ```
 
 :fontawesome-solid-hand-point-right:
-[`.z.h`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
+[`.z.H`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 
 ## `.z.w` (handle)
@@ -1001,7 +1005,7 @@ q).z.w
 !!! warning "Inside a `.z.p`* callback it returns the handle of the client session, not the current session."
 
 :fontawesome-solid-hand-point-right:
-[`.z.h`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
+[`.z.H`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 
 ## `.z.wc` (websocket close)
@@ -1163,9 +1167,9 @@ q).z.zd:17 2 6        / set zip defaults
 q)\x .z.zd            / clear zip defaults
 ```
 
-:fontawesome-solid-book:
-[`set`](get.md#set)
-<br>
+:fontawesome-solid-hand-point-right:
+[`-21!x`](../basics/internal.md#-21x-compressionencryption-stats) (compression/encryption stats), [`set`](get.md#set) (per file/dir compression)
+
 :fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
 <br>

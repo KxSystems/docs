@@ -55,7 +55,3 @@ IDE: KX Developer](https://code.kx.com/developer/ "Download and install the free
 :fontawesome-solid-cloud:
 For cloud deployment, see [kdb Insights Core](https://code.kx.com/insights/core).
 
-
-:fontawesome-solid-globe:
-[Careers at KX and FD Technologies](http://www.firstderivatives.com/careers/)
-

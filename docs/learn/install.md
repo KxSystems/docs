@@ -7,57 +7,42 @@ description: How to install kdb+ on Linux, macOS, or Windows
 
 _You can run kdb+ on Linux, macOS, or Windows_
 
-!!! info "kdb+ Personal Edition"
-
-    If you have downloaded the **kdb+ Personal Edition** simply follow the installation instructions that came with it.
-
-    Installation instructions on this page are for reference and cover a variety of use cases.
-
+## :fontawesome-solid-download: Step 1: Download
 
 === "Non-commercial users"
 
-    You have the 64-bit kdb+ Personal Edition interpreter, licensed for non-commercial use. 
-    (32-bit interpreters are licensed only for commercial use.)
-    
-    The interpreter is enabled by a `kc.lic` license-key file and requires an always-on Internet connection. 
-    
-    This version of kdb+ is not licensed for use on cloud servers.
+    <button style="background: #0088ff; border-radius: 5px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); padding: 10px;" type="button">
+      <a href="https://kx.com/kdb-personal-edition-download/" style="color: white">
+        <span style="font-size: 2em;">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
+        :fontawesome-brands-linux:
+        :fontawesome-brands-apple:
+        :fontawesome-brands-windows:
+      </a>
+    </button>
 
+    The 64-bit kdb+ Personal Edition interpreter is licensed for non-commercial use. 
+    It is not licensed for use on cloud servers.
+    
+    The provided license-key file (`kc.lic`) requires an always-on Internet connection. 
 
 
 === "Commercial users"
 
-    You have the 64-bit interpreter and a `k4.lic` or `kc.lic` license-key file 
+    Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). Credentials are available from the customer's [Designated Contacts](licensing.md#obtain-a-license-key-file).
+
+    Requires a 64-bit interpreter and a `k4.lic` or `kc.lic` license-key file 
 
     OR
 
-    You have a 32-bit interpreter.
+    a 32-bit interpreter.
 
     !!! warning "32-bit applications will not run in macOS 10.15+ (Catalina and later)"
 
+    !!! tip "Internal distribution at customer sites"
 
-:fontawesome-regular-hand-point-right:
-[More about licensing](licensing.md)
+        Most customers download the latest release of kdb+ (along with the accompanying `README.txt`, the detailed change list) and make a limited number of approved kdb+ versions available from a central file server.
 
-
-## :fontawesome-solid-download: Step 1: Download
-
-<button style="background: #0088ff; border-radius: 5px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); padding: 10px;" type="button">
-  <a href="https://kx.com/kdb-personal-edition-download/" style="color: white">
-    <span style="font-size: 2em;">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
-      :fontawesome-brands-linux:
-      :fontawesome-brands-apple:
-      :fontawesome-brands-windows:
-  </a>
-</button>
-
-Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). (Credentials are available from customers’ [Designated Contacts](licensing.md#obtain-a-license-key-file)).
-
-!!! tip "Internal distribution at customer sites"
-
-    Most customers download the latest release of kdb+ (along with the accompanying `README.txt`, the detailed change list) and make a limited number of approved kdb+ versions available from a central file server.
-
-    Designated Contacts should encourage developers to keep production systems up to date with these versions of kdb+. This can greatly simplify development, deployment and debugging.
+        Designated Contacts should encourage developers to keep production systems up to date with these versions of kdb+. This can greatly simplify development, deployment and debugging.
 
 
 !!! info "Platforms and versions"
@@ -65,6 +50,9 @@ Commercial versions of kdb+ are available to customers from [downloads.kx.com](h
     The names of the ZIPs denote the platform: `l64.zip` – 64-bit Linux; `w32.zip` – 32-bit Windows, etc. m64 contains a universal binary suitable for both Intel and Apple Silicon Macs. l64 contains the Linux x86 build, with l64arm containing the Linux build suitable for ARM processors.
 
     Numerical release versions of the form 3.5, or 4.0 are production code. Versions of kdb+ with a trailing `t` in the name such as `3.7t` are test versions and are neither intended nor supported for production use.
+
+:fontawesome-regular-hand-point-right:
+[More about licensing](licensing.md)
 
 
 ## :fontawesome-solid-file-zipper: Step 2: Unzip your download
@@ -102,19 +90,6 @@ Unzip the downloaded ZIP to produce a folder `q` in your install location.
     ```poqwershell
     Expand-Archive w64.zip -DestinationPath C:\q
     ```
-
-
-!!! tip "Recommended: `rlwrap` for Linux and macOS"
-
-    On Linux and macOS the `rlwrap` command allows the Up arrow to retrieve earlier expressions in the q session. It is very useful and we recommend installing it.
-
-    :fontawesome-solid-globe:
-    [Unwrapping rlwrap](https://kx.com/blog/unwrapping-rlwrap/)
-
-    Ask for its version number: `rlwrap -v`. If you see one, `rlwrap` is already installed. Otherwise, you will see `rlwrap: command not found`.
-
-    Install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). (Common package managers: `apt`, `dnf` and `yum` for Linux; [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.)
-
 
 ??? note "How to run 32-bit kdb+ on 64-bit Linux"
 
@@ -166,9 +141,6 @@ Your `QHOME` directory will then contain:
 (32-bit versions have `32` in the folder name instead of `64`.)
 
 kdb+ looks for a license file in `QHOME`. To keep your license file elsewhere, set its path in environment variable `QLIC`.
-
-:fontawesome-solid-laptop-code:
-[Working with multiple versions of kdb+](../kb/versions.md)
 
 
 ## :fontawesome-solid-check: Step 4: Confirm success
@@ -257,13 +229,15 @@ The `QLIC` environment variable tells kdb+ where to find [a license key file](li
 === ":fontawesome-brands-linux: Linux"
 
     1.  Open `~/.bash_profile` in a text editor, append the following line, and save the file. (Edit `~/.bashrc` to define a q command for non-console processes.)
-    1.   `alias q='QHOME=~/q rlwrap -r ~/q/l64/q'`
+    1.   `export QHOME=~/q`  
+         `export PATH=~/q/l64/:$PATH`
     1.   In the command shell, use the revised profile: `source .bash_profile`
 
 === ":fontawesome-brands-apple: macOS"
 
     1.  Open `~/.zshrc` in a text editor, append the following lines, and save the file. 
-    1.   `alias q='QHOME=~/q rlwrap -r ~/q/m64/q'`
+    1.   `export QHOME=~/q`  
+         `export PATH=~/q/m64/:$PATH`
     1.   In the command shell, use the revised profile: `source ~/.zshrc`
 
 === ":fontawesome-brands-windows: Windows"
@@ -286,11 +260,25 @@ m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE…
 q)
 ```
 
-:fontawesome-solid-laptop-code:
-[Installing multiple versions of kdb+](../kb/versions.md)
+## Further customization
+
+### rlwrap for Linux and macOS
+
+On Linux and macOS, the `rlwrap` command allows the Up arrow to retrieve earlier expressions in the q session. This can be very useful and it is recommended you install it.
+
+Run `rlwrap -v` to check if it's currently installed. If not, install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). Common package managers are: `apt`, `dnf` and `yum` for Linux, and [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.
+
+After installation, the q command can be changed to always run with `rlwrap`:
+```bash
+alias q="rlwap -r q"
+```
+This can be added to the end of the user's [profile](#step-5-edit-your-profile) to take effect on every session.
+
+:fontawesome-solid-globe:
+[Unwrapping rlwrap](https://kx.com/blog/unwrapping-rlwrap/)
 
 
-## :fontawesome-solid-laptop-code: Interactive development environments
+### :fontawesome-solid-laptop-code: Interactive development environments
 
 If you are a solo student, we recommend learning q by running it from a command shell, as a REPL, writing scripts in a text editor.
 The examples on this site are produced that way; visual fidelity should help you as you learn.
@@ -303,6 +291,9 @@ Notebooks are not, however, an IDE, and are unsuitable for studying features suc
 
 For more advanced study, use either the bare q REPL, or download and install our interactive development environment, [KX Developer](/developer/).
 
+### Multiple versions
+
+Multiple versions of kdb+ can be installed on a system by following this [guide](../kb/versions.md).
 
 ## :fontawesome-solid-hand-point-right: What’s next?
 

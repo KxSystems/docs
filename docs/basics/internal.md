@@ -18,7 +18,7 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-11!](#-11-streaming-execute)        streaming execute             -6!   [eval](../ref/eval.md)
 [-14!x](#-14x-quote-escape)       quote escape                  -7!   [hcount](../ref/hcount.md)
 [-16!x](#-16x-ref-count)       ref count                     -12!  [.Q.host](../ref/dotq.md#host-ip-to-hostname)
-[-18!x](#-18x-compress-byte)       compress byte                 -13!  [.Q.addr](../ref/dotq.md#addr-iphost-as-int)
+[-18!x](#-18x-compress-bytes)       compress bytes                -13!  [.Q.addr](../ref/dotq.md#addr-iphost-as-int)
 [-21!x](#-21x-compressionencryption-stats)       compression/encryption stats  -15!  [md5](../ref/md5.md)
 [-22!x](#-22x-uncompressed-length)       uncompressed length           -19!  [set](../ref/get.md#set)
 [-23!x](#-23x-memory-map)       memory map                    -20!  [.Q.gc](../ref/dotq.md#gc-garbage-collect)
@@ -98,6 +98,9 @@ q)-8!1 2 3
 0x010000001a000000060003000000010000000200000003000000
 ```
 
+:fontawesome-solid-hand-point-right:
+[`-9!x`](#-9x-from-bytes) (from bytes)
+
 
 ## `-9!x` (from bytes)
 
@@ -107,6 +110,9 @@ Creates data from IPC byte representation `x`.
 q)-9!-8!1 2 3
 1 2 3
 ```
+
+:fontawesome-solid-hand-point-right:
+[`-8!x`](#-8x-to-bytes) (to bytes), [-18!x](#-18x-compress-bytes) (compress bytes)
 
 ## `-10!x` (type enum)
 
@@ -174,9 +180,31 @@ q)-16!a
 ```
 
 
-## `-18!x` (compress byte)
+## `-18!x` (compress bytes)
 
-Returns compressed IPC byte representation of `x`, see notes about network compression in [Changes in V2.6](../releases/ChangesIn2.6.md)
+Returns the IPC byte representation of `x` according to [`-8!x`](#-8x-to-bytes), applying compression based on [IPC compression rules](ipc.md#compression):
+
+* Uncompressed serialized data has a length greater than 2000 bytes
+* Size of compressed data is less than &frac12; the size of uncompressed data
+
+```q
+q)count -8!til 1000     / uncompressed
+8014
+q)count -18!til 1000    / compressed
+3276
+```
+
+[-9!x](#-9x-from-bytes) can be used to uncompress and deserialise.
+
+```q
+q)a:til 1000           / original data to convert 
+q)x:-18!a              / serialize and compression to bytes using IPC serialisation
+q)a~-9!x               / test if deserialised version is same as original
+1b
+```
+
+:fontawesome-solid-hand-point-right:
+[`-22!x`](#-22x-uncompressed-length) (uncompressed length), [`-9!x`](#-9x-from-bytes) (from bytes), [.Q.gz](../ref/dotq.md#gz-gzip) (gzip)
 
 <!-- 
 ## `-19!` (compress file)
@@ -262,6 +290,9 @@ q)(-22!v)=count -8!v
 1b
 ```
 
+:fontawesome-solid-hand-point-right:
+[`-18!x`](#-18x-compress-bytes) (compress bytes)
+
 
 ## `-23!x` (memory map)
 
@@ -342,7 +373,7 @@ In the result, all keys except `SSLEAY_VERSION` are initialized from their corre
 [SSL](../kb/ssl.md)
 
 
-## `-27!(x;y)` (format)
+## `-27!(x;y)` (IEEE754 precision format)
 
 Where
 
@@ -351,7 +382,7 @@ Where
 
 returns `y` as a string or strings formatted as a float to `x` decimal places.
 (Since V3.6 2018.09.26.)
-It is atomic and doesn’t take `\P` into account. e.g.
+It is atomic and doesn’t take [`\P`](syscmds.md#p-precision) into account. For example:
 
 ```q
 q)-27!(3i;0 1+123456789.4567)

@@ -7,27 +7,12 @@ keywords: commercial, free, kdb+, key file, license, license key file, licensing
 # :fontawesome-solid-certificate: Licensing
 
 
-
-
 ## Who needs a license for kdb+?
 
-Everyone. All use of kdb+ is governed by a license. 
+Everyone. All use of kdb+ is governed by a license. Without one, kdb+ signals an error [`'k4.lic`](../basics/errors.md#k4.lic) and aborts.
 
-64-bit installations require a **license key file**: `k4.lic` or `kc.lic`.
+64-bit installations require a **license key file**: `k4.lic`, or `kc.lic` for kdb+ On Demand.
 
-<!-- :fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com -->
-
-Without one, kdb+ signals an [error](../basics/errors.md#license-errors) `'k4.lic` and aborts.
-
-```txt
-tom@mb13:~/q$ q
-KDB+ 3.6 2018.07.30 Copyright (C) 1993-2018 Kx Systems
-m64/ 2()core 8192MB tom mb13.local 192.168.1.44
-'k4.lic
-tom@mb13:~/q$ 
-```
-
-The license key file is `k4.lic`, or `kc.lic` for kdb+ On Demand.
 If both are found, the `kc.lic` file is used.
 
 
@@ -35,12 +20,7 @@ If both are found, the `kc.lic` file is used.
 
 A license file can be a commercial license or an on-demand person license (for non-commercial use).
 
-### On-Demand
-
-Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use.
-Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers.
-It may not be used for any commercial purposes.
-See the [full terms and conditions](https://kx.com/download-kdb/). Follow the [download instructions](https://kx.com/kdb-personal-edition-download/) to get your kc.lic.
+### On-Demand License
 
 It requires a `kc.lic` license key file and an always-on internet connection to operate.
 
@@ -55,7 +35,7 @@ If kdb+ with an on-demand license cannot contact the KX license server it will a
 If an HTTP proxy is required, the environment variables `http_proxy` or `HTTP_PROXY` define the URL of the HTTP proxy to use.
 Since 4.1t 2022.11.01,4.0 2022.10.26,4.0ce 2022.09.16 the on-demand system honours the NO_PROXY/no_proxy environment variables, with the lowercase version taking precedence.
 
-### Commercial
+### Commercial License
 
 Use of commercial kdb+ is covered by your license agreement with KX.
 
