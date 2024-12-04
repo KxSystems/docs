@@ -111,7 +111,6 @@ nav:
     - About: index.md
     - Get Started:
       - Install: learn/install.md
-      - Licenses: learn/licensing.md
     - Learn:
       - Overview: learn/index.md  # merge with learn/tour/overview.md, learn/startingkdb/index.md
       - Begin here: learn/tour/index.md  # merge with learn/startingkdb/language.md
@@ -465,6 +464,7 @@ nav:
       - IDE: learn/tour/ide.md
       - CPU affinity: kb/cpu-affinity.md
       - Origins: learn/archive.md
+      - Licenses: learn/licensing.md
     - Release notes:
       - History: releases/index.md
       - Changes in 4.1: releases/ChangesIn4.1.md
