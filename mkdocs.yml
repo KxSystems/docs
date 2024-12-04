@@ -130,12 +130,12 @@ nav:
       - Timezones: kb/timezones.md
       - Streaming Overview: architecture/index.md
       - Multi-threading: wp/multi-thread/index.md    # Convert to learn merging with basic/peach.md
+      - Linux production notes: kb/linux-production.md
       - Additional resources:
         - Q for quants: learn/brief-introduction.md
         - Q by Examples: learn/q-by-examples.md
         - Q for All (video): learn/q-for-all.md
         - Q for Mortals 3: https://code.kx.com/q4m3/
-      - Linux production notes: kb/linux-production.md
     - How to:
       - Interact with Databases:
         - Tables in the filesystem: database/index.md
