@@ -177,7 +177,6 @@ nav:
         - Load balancing: kb/load-balancing.md
         - Profiling: wp/tick-profiling.md
         - Disaster recovery: wp/disaster-recovery/index.md
-        - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
         - Order Book: wp/order-book.md
         - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
         - Corporate actions: kb/corporate-actions.md
@@ -188,6 +187,8 @@ nav:
       - Firewalling: kb/firewalling.md
       - Multiple versions: kb/versions.md     # Rename to manage multiple versions of q
       - Parallel processing: basics/peach.md  # Convert to how-to with content from wp/multi-thread/index.md
+      - Additional Resources:
+        - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Reference:
       - Reference card: ref/index.md
       - Phrasebook: https://code.kx.com/phrases/     # Merge as appendix with reference card
@@ -428,13 +429,10 @@ nav:
         - Python: interfaces/python.md
         - R: interfaces/r.md
         - Rust: interfaces/rust.md
-        - Scala: interfaces/scala-client-for-q.md
       - GPUs: interfaces/gpus.md
-      - Matlab: interfaces/matlab-client-for-q.md
       - ODBC:
         - ODBC client: interfaces/q-client-for-odbc.md
         - ODBC3 server: interfaces/q-server-for-odbc3.md
-      - Open source community extensions: github.md
       - Cloud vendor integrations:
         - About: cloud/index.md
         - Amazon Web Services:
@@ -446,6 +444,11 @@ nav:
            - Reference architecture: cloud/azure/architecture.md
         - Google Cloud:
           - Reference architecture: cloud/gcpm/architecture.md
+      - Additional Resources:
+        - Open source community extensions: github.md
+        - Matlab: interfaces/matlab-client-for-q.md
+        - Scala: interfaces/scala-client-for-q.md
+        - Excel: interfaces/excel-client-for-q.md
     - Examples:
       - Geospatial indexing: kb/geospatial.md
       - Linear programming: kb/lp.md
