@@ -109,106 +109,88 @@ nav:
   - Home: 'https://code.kx.com/home'
   - kdb+ and q:
     - About: index.md
-    - Getting Started:
+    - Get Started:
       - Install: learn/install.md
-      - Licenses: learn/licensing.md
     - Learn:
-      - Overview: learn/index.md
-      - Mountain tour:
-        - Overview: learn/tour/overview.md
-        - Begin here: learn/tour/index.md
-        - The q session: learn/tour/session.md
-        # - Databases: learn/tour/databases.md
-        - Tables: learn/tour/tables.md
-        - CSVs: learn/tour/csvs.md
-        - Datatypes: learn/tour/datatypes.md
-        # - Dictionaries: learn/tour/dictionaries.md
-        # - Queries: learn/tour/queries.md
-        # - Functions: learn/tour/functions.md
-        # - Iteration: learn/tour/iteration.md
-        # - Files: learn/tour/files.md
-        # - TCP/IP: learn/tour/tcp-ip.md
-        # - HTTP, HTTPS: learn/tour/http.md
-        - Scripts: learn/tour/scripts.md
-        - IDE: learn/tour/ide.md
-      - Q for quants: learn/brief-introduction.md
-      - Q by Examples: learn/q-by-examples.md
-      - Q for All (video): learn/q-for-all.md
-      # - Q for Pythons:
-      #   - Introduction: learn/python/index.md
-      #   - Primer:
-      #     - Datatypes: learn/python/primer/datatypes.md
-      #     - Dictionaries: learn/python/primer/dictionaries.md
-      #     - Tables: learn/python/primer/tables.md
-      #     - Operations: learn/python/primer/operations.md
-      #     - Operations on dictionaries: learn/python/primer/operations-dict.md
-      #     - Iterators: learn/python/primer/iterators.md
-      #     - Table operations (qSQL): learn/python/primer/table-operations.md
-      #     - Semantic extensions to SQL: learn/python/primer/extensions-to-sql.md
-      #     - Modifying tables: learn/python/primer/modify-tables.md
-      #     - Temporal primitives: learn/python/primer/temporal-primitives.md
-      #     - Execution control: learn/python/primer/control.md
-      #     - Input/output to files: learn/python/primer/file-io.md
-      #     - Interprocess communication: learn/python/primer/ipc.md
-      #     - Type and cast: learn/python/primer/type-cast.md
-      #     - Debugging: learn/python/primer/debug.md
-      #     - Namespaces: learn/python/primer/namespace.md
-      - Examples from Python:
-        - Basic: learn/python/examples/index.md
-        - Array: learn/python/examples/array.md
-        - List: learn/python/examples/list.md
-        - Strings: learn/python/examples/string.md
-        - Dictionaries: learn/python/examples/dict.md
-      - Q for Mortals 3: https://code.kx.com/q4m3/
-      - Q by Puzzles:
-        - About: learn/pb/index.md
-        - 12 Days of Xmas: learn/pb/xmas-days.md
-        - ABC problem: learn/pb/abc-problem.md
-        - Abundant odds: learn/pb/abundant-odds.md
-        - Four is magic: learn/pb/four-magic.md
-        - Name Game: learn/pb/name-game.md
-        - Summarize and Say: learn/pb/sum-say.md
-        - Word wheel: learn/pb/word-wheel.md
-      - Reading room:
-        - Information desk: learn/reading/index.md
-        - Boggle: learn/reading/boggle.md
-        - Cats cradle: learn/reading/strings.md
-        - Fizz buzz: learn/reading/fizzbuzz.md
-        - Klondike: learn/reading/klondike.md
-        - Phrasebook: https://code.kx.com/phrases/
-        - Scrabble: learn/reading/scrabble.md
-      - Application examples:
-        - Astronomy: wp/astronomy.md
-        - Detecting card counters: wp/card-counters/index.md
-        - Corporate actions: wp/corporate-actions.md
-        - Disaster management: wp/disaster-management/index.md
-        - Exoplanets: wp/exoplanets/index.md
-        - Market depth: wp/market-depth/index.md
-        - Market fragmentation: wp/market-fragmentation/index.md
-        - Option pricing: wp/option-pricing/index.md
-        - Predicting floods: wp/disaster-floods/index.md
-        - Signal processing: wp/signal-processing/index.md
-        - Space weather: wp/space-weather/index.md
-        - Trading surveillance: wp/surveillance/index.md
-        - Transaction-cost analysis: wp/transaction-cost.md
-        - Trend indicators: wp/trend-indicators/index.md
-      - Advanced q:
-        - Remarks on Style: https://github.com/qbists/style
-        - Shifts & scans: learn/shifts-scans.md
-        - Technical articles: learn/blogs.md
-        - Views: learn/views.md
-        - Origins: learn/archive.md
-        # - Kx technology: about/kxtechnology.md
-        - Terminology: about/terminology.md
-      - Starting kdb+:
-        - Overview: learn/startingkdb/index.md
-        - The q language: learn/startingkdb/language.md
-        - IPC: learn/startingkdb/ipc.md
-        - Tables: learn/startingkdb/tables.md
-        - Historical database: learn/startingkdb/hdb.md
-        - Realtime database: learn/startingkdb/tick.md
-    - Language:
+      - Overview: learn/index.md  # merge with learn/tour/overview.md, learn/startingkdb/index.md
+      - Begin here: learn/tour/index.md  # merge with learn/startingkdb/language.md
+      - The q session: learn/tour/session.md
+      - Tables: learn/tour/tables.md # mege with learn/startingkdb/tables
+      - CSVs: learn/tour/csvs.md
+      - Datatypes: learn/tour/datatypes.md
+      - Scripts: learn/tour/scripts.md
+      - Historical database: learn/startingkdb/hdb.md
+      - Realtime database: learn/startingkdb/tick.md
+      - IPC: learn/startingkdb/ipc.md
+      - Shifts & scans: learn/shifts-scans.md
+      - Views: learn/views.md
+      - Guide to iterators: wp/iterators/index.md
+      - Pivoting tables: kb/pivoting-tables.md
+      - Timezones: kb/timezones.md
+      - Streaming Overview: architecture/index.md
+      - Multi-threading: wp/multi-thread/index.md    # Convert to learn merging with basic/peach.md
+      - Linux production notes: kb/linux-production.md
+      - Additional resources:
+        - Q for quants: learn/brief-introduction.md
+        - Q by Examples: learn/q-by-examples.md
+        - Q for All (video): learn/q-for-all.md
+        - Q for Mortals 3: https://code.kx.com/q4m3/
+    - How to:
+      - Interact with Databases:
+        - Tables in the filesystem: database/index.md
+        - Populating tables:
+          - Loading from large files: kb/loading-from-large-files.md
+          - Foreign keys: wp/foreign-keys.md
+          - Linking columns: kb/linking-columns.md
+        - Persisting tables:
+          - Serializing an object: database/object.md
+          - Splayed tables: kb/splayed-tables.md
+          - Partitioned tables: kb/partition.md
+          - Segmented databases: database/segment.md
+        - Maintenance:
+          - Data-At-Rest Encryption: kb/dare.md
+          - File compression: kb/file-compression.md
+          - Time-series simplification: wp/ts-shrink/index.md
+          - Working with sym files: wp/symfiles.md
+      - Optimize queries: wp/columnar-database/index.md
+      - Communicate via IPC:
+        - Overview: basics/ipc.md
+        - Listening port: basics/listening-port.md
+        - Deferred response: kb/deferred-response.md
+        - Async callbacks: kb/callbacks.md
+        - Named pipes: kb/named-pipes.md
+        - Serialization examples: kb/serialization.md
+        - Socket sharding: wp/socket-sharding/index.md
+        - SSL/TLS: kb/ssl.md
+        - HTTP: kb/http.md
+        - WebSockets: kb/websockets.md
+      - Profile your code: kb/profiler.md
+      - Debug your code: basics/debug.md
+      - Manage streaming data:
+        - Alternative architecture: kb/kdb-tick.md
+        - TP Log (data recovery): wp/data-recovery.md
+        - Log Files: kb/logging.md
+        - RTEs (real-time engines): wp/rt-tick/index.md
+        - Gateway design: wp/gateway-design/index.md
+        - Query routing: wp/query-routing/index.md
+        - Load balancing: kb/load-balancing.md
+        - Profiling: wp/tick-profiling.md
+        - Disaster recovery: wp/disaster-recovery/index.md
+        - Order Book: wp/order-book.md
+        - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
+        - Corporate actions: kb/corporate-actions.md
+        - Distributed systems: wp/query-interface.md
+        - RDB intraday writedown: wp/intraday-writedown/index.md
+      - Ingest Bloomberg Data: interfaces/q-client-for-bloomberg.md
+      - Handle FIX message format: wp/fix-messaging.md
+      - Firewalling: kb/firewalling.md
+      - Multiple versions: kb/versions.md     # Rename to manage multiple versions of q
+      - Parallel processing: basics/peach.md  # Convert to how-to with content from wp/multi-thread/index.md
+      - Additional Resources:
+        - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
+    - Reference:
       - Reference card: ref/index.md
+      - Phrasebook: https://code.kx.com/phrases/     # Merge as appendix with reference card
       - By topic: basics/by-topic.md
       - Iteration:
         - Overview: basics/iteration.md
@@ -425,188 +407,82 @@ nav:
       - System commands: basics/syscmds.md
       - Tables: kb/faq.md
       - Variadic syntax: basics/variadic.md
-    - Database:
-      - Tables in the filesystem: database/index.md
-      - Populating tables:
-        - Loading from large files: kb/loading-from-large-files.md
-        - Foreign keys: wp/foreign-keys.md
-        - Linking columns: kb/linking-columns.md
-        - Data loaders: wp/data-loaders/index.md
-        - From MDB via ODBC: database/mdb-odbc.md
-      - Persisting tables:
-        - Serializing an object: database/object.md
-        - Splayed tables: kb/splayed-tables.md
-        - Partitioned tables: kb/partition.md
-        - Segmented databases: database/segment.md
-        - Multiple partitions: wp/multi-partitioned-dbs/index.md
-      - Maintenance:
-        - Data management: wp/data-management.md
-        - Data-At-Rest Encryption: kb/dare.md
-        - Compression:
-          - File compression: kb/file-compression.md
-          - Compression examples: wp/compress/index.md
-        - Permissions: wp/permissions/index.md
-        - Query optimization: wp/columnar-database/index.md
-        - Query scaling: wp/query-scaling.md
-        - Time-series simplification: wp/ts-shrink/index.md
-        - Compacting HDB sym: kb/compacting-hdb-sym.md
-        - Working with sym files: wp/symfiles.md
-    - Developing:
-      - IPC:
-        - Overview: basics/ipc.md
-        - Listening port: basics/listening-port.md
-        - Deferred response: kb/deferred-response.md
-        - Async callbacks: kb/callbacks.md
-        - Named pipes: kb/named-pipes.md
-        - Serialization examples: kb/serialization.md
-        - Socket sharding: wp/socket-sharding/index.md
-        - SSL/TLS: kb/ssl.md
-        - HTTP: kb/http.md
-        - WebSockets: kb/websockets.md
-      - Tools:
-        - Code profiler: kb/profiler.md
-        - Debugging: basics/debug.md
-        - Errors: basics/errors.md
-        - man.q: about/man.md
-        - Unit tests: kb/unit-tests.md
-        - Monitor & control execution: kb/using-dotz.md
-      - Coding:
-        - Geospatial indexing: kb/geospatial.md
-        - Linear programming: kb/lp.md
-        - Multithreaded input: kb/multithreaded-input.md
-        - Multithreaded primitives: kb/mt-primitives.md
-        - Pivoting tables: kb/pivoting-tables.md
-        - Precision: basics/precision.md
-        - Programming examples: kb/programming-examples.md
-        - Programming idioms: kb/programming-idioms.md
-        - Temporal data: kb/temporal-data.md
-        - Timezones: kb/timezones.md
-        - Unicode: kb/unicode.md
-      - DevOps:
-        - CPU affinity: kb/cpu-affinity.md
-        - Daemon: kb/daemon.md
-        - Firewalling: kb/firewalling.md
-        - inetd, xinetd: kb/inetd.md
-        - Linux production notes: kb/linux-production.md
-        - Log Files: kb/logging.md
-        - Multi-threading: wp/multi-thread/index.md
-        - Multiple versions: kb/versions.md
-        - Parallel processing: basics/peach.md
-        - Performance tips: kb/performance-tips.md
-        - Shebang script: develop/shebang.md
-        - Surveillance latency: wp/surveillance-latency/index.md
-        - Windows service: kb/windows-service/index.md
-        - Optane Memory:
-          - Optane Memory and kdb+: kb/optane.md
-          - Performance tests: architecture/optane-tests.md
-      - Release notes:
-        - History: releases/index.md
-        - Changes in 4.1: releases/ChangesIn4.1.md
-        - Changes in 4.0: releases/ChangesIn4.0.md
-        - Changes in 3.6: releases/ChangesIn3.6.md
-        - Changes in 3.5: releases/ChangesIn3.5.md
-        - Changes in 3.4: releases/ChangesIn3.4.md
-        - Changes in 3.3: releases/ChangesIn3.3.md
-        - Changes in 3.2: releases/ChangesIn3.2.md
-        - Changes in 3.1: releases/ChangesIn3.1.md
-        - Changes in 3.0: releases/ChangesIn3.0.md
-        - Changes in 2.8: releases/ChangesIn2.8.md
-        - Changes in 2.7: releases/ChangesIn2.7.md
-        - Changes in 2.6: releases/ChangesIn2.6.md
-        - Changes in 2.5: releases/ChangesIn2.5.md
-        - Changes in 2.4: releases/ChangesIn2.4.md
-        - Withdrawn: releases/withdrawn.md
-      # - Environment: basics/environment.md
-      - Developer tools: devtools.md
-      - FAQ: kb/faq-listbox.md
-    - Streaming:
-      - General architecture:
-        - Overview: architecture/index.md
-        - kdb+tick:
-          - Tickerplant (tick.q): architecture/tickq.md
-          - Tickerplant pub/sub (u.q): architecture/uq.md
-          - RDB (r.q): architecture/rq.md
-      - Alternative architecture: kb/kdb-tick.md
-      - TP Log (data recovery): wp/data-recovery.md
-      - RTEs (real-time engines): wp/rt-tick/index.md
-      - Gateway design: wp/gateway-design/index.md
-      - Query routing: wp/query-routing/index.md
-      - Load balancing: kb/load-balancing.md
-      - Profiling: wp/tick-profiling.md
-      - Disaster recovery: wp/disaster-recovery/index.md
-      - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
-      - Order Book: wp/order-book.md
-      - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
-      - Corporate actions: kb/corporate-actions.md
-      - Advanced:
-        - Distributed systems: wp/query-interface.md
-        - RDB intraday writedown: wp/intraday-writedown/index.md
-    - Interfaces:
-      - Languages:
+      - Errors: basics/errors.md
+      - Temporal data: kb/temporal-data.md
+      - Precision: basics/precision.md
+      - Multithreaded input: kb/multithreaded-input.md
+      - Multithreaded primitives: kb/mt-primitives.md
+      - kdb+tick:
+        - Tickerplant (tick.q): architecture/tickq.md
+        - Tickerplant pub/sub (u.q): architecture/uq.md
+        - RDB (r.q): architecture/rq.md
+    - Integrations:
+      - Language:
         - C/C++:
           - Quick guide: interfaces/c-client-for-q.md
           - API reference: interfaces/capiref.md
           - C API for kdb+: wp/capi/index.md
-          - Extending q with C/C++: interfaces/using-c-functions.md
-          - Async callbacks (C client): kb/server-calling-client.md
         - C#: interfaces/csharp.md
         - Foreign Function Interface (FFI): interfaces/ffi.md
         - Java: interfaces/java.md
         - Python: interfaces/python.md
         - R: interfaces/r.md
         - Rust: interfaces/rust.md
-        - Scala: interfaces/scala-client-for-q.md
-      - KX libraries: interfaces/index.md
-      - Bloomberg: interfaces/q-client-for-bloomberg.md
-      - Excel: interfaces/excel-client-for-q.md
-      - FIX messaging: wp/fix-messaging.md
       - GPUs: interfaces/gpus.md
-      - Matlab: interfaces/matlab-client-for-q.md
       - ODBC:
         - ODBC client: interfaces/q-client-for-odbc.md
         - ODBC3 server: interfaces/q-server-for-odbc3.md
-        - ODBC3 and Tableau: wp/data-visualization/index.md
-    #  - ODBC/Simba: interfaces/odbc-simba.md
-      - Solace pub/sub: wp/solace/index.md
-      - Open source: github.md
-      - Machine learning: ml.md
-    - Using kdb+ in the cloud:
-      - About: cloud/index.md
-      - Amazon Web Services:
-        #- Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
-        - Reference architecture: cloud/aws/index.md
-        #- License: license/aws.md
-        - Amazon EC2 & Storage Services:
+      - Cloud vendor integrations:
+        - About: cloud/index.md
+        - Amazon Web Services:
+          - Reference architecture: cloud/aws/index.md
+          - Amazon EC2 & Storage Services:
           - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/migration.md
-          - Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
-          - EFS (NFS): cloud/aws/app-b-efs-nfs.md
-          - Amazon Storage Gateway: cloud/aws/app-c-asg.md
-          - FSx for Lustre: cloud/aws/lustre.md
-        - AWS Lambda: cloud/aws-lambda/index.md
-      - Microsoft Azure:
-        #- Marketplace: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview'
-         - Reference architecture: cloud/azure/architecture.md
-        #- License: license/azure.md
-      - Google Cloud:
-        #- Marketplace: cloud/gcpm/index.md
-        - Reference architecture: cloud/gcpm/architecture.md
-        #- License: license/gcp.md
-      - Auto Scaling:
-        - About: cloud/autoscale/index.md
-        - Amazon Web Services: cloud/autoscale/aws.md
-        - Realtime data cluster: cloud/autoscale/rdc.md
-        - Costs and risks: cloud/autoscale/cost-risk.md
-      - Other file systems:
-          - MapR-FS: cloud/otherfs/mapr.md
-          - Goofys: cloud/otherfs/goofys.md
-          - S3FS: cloud/otherfs/s3fs.md
-          - S3QL: cloud/otherfs/s3ql.md
-          - ObjectiveFS: cloud/otherfs/objectivefs.md
-          - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
-          - Quobyte: cloud/otherfs/quobyte.md
-    - Academy: https://learninghub.kx.com
-    - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
-    - White papers: wp/index.md
+          - AWS Lambda: cloud/aws-lambda/index.md
+        - Microsoft Azure:
+           - Reference architecture: cloud/azure/architecture.md
+        - Google Cloud:
+          - Reference architecture: cloud/gcpm/architecture.md
+      - Additional Resources:
+        - Open source community extensions: github.md
+        - Matlab: interfaces/matlab-client-for-q.md
+        - Scala: interfaces/scala-client-for-q.md
+        - Excel: interfaces/excel-client-for-q.md
+    - Examples:
+      - Geospatial indexing: kb/geospatial.md
+      - Linear programming: kb/lp.md
+      - Programming examples: kb/programming-examples.md
+      - Programming idioms: kb/programming-idioms.md
+      - Unicode: kb/unicode.md
+      - Daemon: kb/daemon.md
+      - inetd, xinetd: kb/inetd.md
+      - Performance tips: kb/performance-tips.md
+    - Help and Support:
+      - Academy: https://learninghub.kx.com
+      - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
+      - FAQ: kb/faq-listbox.md
+      - IDE: learn/tour/ide.md
+      - CPU affinity: kb/cpu-affinity.md
+      - Origins: learn/archive.md
+      - Licenses: learn/licensing.md
+    - Release notes:
+      - History: releases/index.md
+      - Changes in 4.1: releases/ChangesIn4.1.md
+      - Changes in 4.0: releases/ChangesIn4.0.md
+      - Changes in 3.6: releases/ChangesIn3.6.md
+      - Changes in 3.5: releases/ChangesIn3.5.md
+      - Changes in 3.4: releases/ChangesIn3.4.md
+      - Changes in 3.3: releases/ChangesIn3.3.md
+      - Changes in 3.2: releases/ChangesIn3.2.md
+      - Changes in 3.1: releases/ChangesIn3.1.md
+      - Changes in 3.0: releases/ChangesIn3.0.md
+      - Changes in 2.8: releases/ChangesIn2.8.md
+      - Changes in 2.7: releases/ChangesIn2.7.md
+      - Changes in 2.6: releases/ChangesIn2.6.md
+      - Changes in 2.5: releases/ChangesIn2.5.md
+      - Changes in 2.4: releases/ChangesIn2.4.md
+      - Withdrawn: releases/withdrawn.md
+    # - White papers: wp/index.md
     - About this site: about/thissite.md
   - kdb Insights SDK: 'https://code.kx.com/insights'
   - kdb Insights Enterprise: 'https://code.kx.com/insights/enterprise'
