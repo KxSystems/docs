@@ -436,7 +436,6 @@ nav:
         - About: cloud/index.md
         - Amazon Web Services:
           - Reference architecture: cloud/aws/index.md
-          - Amazon EC2 & Storage Services:
           - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/migration.md
           - AWS Lambda: cloud/aws-lambda/index.md
         - Microsoft Azure:
