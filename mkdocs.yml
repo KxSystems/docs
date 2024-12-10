@@ -115,7 +115,7 @@ nav:
       - Overview: learn/index.md  # merge with learn/tour/overview.md, learn/startingkdb/index.md
       - Begin here: learn/tour/index.md  # merge with learn/startingkdb/language.md
       - The q session: learn/tour/session.md
-      - Tables: learn/tour/tables.md # mege with learn/startingkdb/tables
+      - Tables: learn/tour/tables.md # merge with learn/startingkdb/tables
       - CSVs: learn/tour/csvs.md
       - Datatypes: learn/tour/datatypes.md
       - Scripts: learn/tour/scripts.md
@@ -130,6 +130,8 @@ nav:
       - Streaming Overview: architecture/index.md
       - Multi-threading: wp/multi-thread/index.md    # Convert to learn merging with basic/peach.md
       - Linux production notes: kb/linux-production.md
+      - CPU affinity: kb/cpu-affinity.md # Combine with the Linux Production Notes
+      - inetd, xinetd: kb/inetd.md #Combine with production notes
       - Additional resources:
         - Q for quants: learn/brief-introduction.md
         - Q by Examples: learn/q-by-examples.md
@@ -181,13 +183,9 @@ nav:
         - Corporate actions: kb/corporate-actions.md
         - Distributed systems: wp/query-interface.md
         - RDB intraday writedown: wp/intraday-writedown/index.md
-      - Ingest Bloomberg Data: interfaces/q-client-for-bloomberg.md
-      - Handle FIX message format: wp/fix-messaging.md
-      - Firewalling: kb/firewalling.md
+      - Firewalling: kb/firewalling.md # Can be combined with permissions whitepaper
       - Multiple versions: kb/versions.md     # Rename to manage multiple versions of q
       - Parallel processing: basics/peach.md  # Convert to how-to with content from wp/multi-thread/index.md
-      - Additional Resources:
-        - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Reference:
       - Reference card: ref/index.md
       - Phrasebook: https://code.kx.com/phrases/     # Merge as appendix with reference card
@@ -443,25 +441,23 @@ nav:
         - Google Cloud:
           - Reference architecture: cloud/gcpm/architecture.md
       - Additional Resources:
-        - Open source community extensions: github.md
+        - Open source community extensions: github.md # Move to crowd sourced on GIthub instead - like: https://github.com/qbists/awesome-q
         - Matlab: interfaces/matlab-client-for-q.md
         - Scala: interfaces/scala-client-for-q.md
         - Excel: interfaces/excel-client-for-q.md
+        - Handle FIX message format: wp/fix-messaging.md # Convert from WP - add code to repo/cookbook
+        - Geospatial indexing: kb/geospatial.md # Needs a rework or just delete - KX have a much better version internally, open source?
     - Examples:
-      - Geospatial indexing: kb/geospatial.md
       - Linear programming: kb/lp.md
       - Programming examples: kb/programming-examples.md
-      - Programming idioms: kb/programming-idioms.md
+      - Programming idioms: kb/programming-idioms.md # Phrasebook
       - Unicode: kb/unicode.md
-      - Daemon: kb/daemon.md
-      - inetd, xinetd: kb/inetd.md
       - Performance tips: kb/performance-tips.md
     - Help and Support:
-      - Academy: https://learninghub.kx.com
-      - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
-      - FAQ: kb/faq-listbox.md
-      - IDE: learn/tour/ide.md
-      - CPU affinity: kb/cpu-affinity.md
+      - Academy: https://learninghub.kx.com # Avoid linking to different site from ToC - jarring
+      - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb # Avoid linking to different site from ToC - jarring
+      - FAQ: kb/faq-listbox.md # This page is a mess - remove it and maybe reuse little bits only
+      - IDE: learn/tour/ide.md # Needs updating and to mention VS Code plugin - move to 
       - Origins: learn/archive.md
       - Licenses: learn/licensing.md
     - Release notes:

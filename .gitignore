@@ -2,6 +2,7 @@
 !.gitignore
 !.gitkeep
 
+site
 local
 local.zip
 local.yml
