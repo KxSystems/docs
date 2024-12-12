@@ -18,9 +18,13 @@ There are 5 types of table that you'll encounter as you learn more about kdb+:
 1. Partitioned Table
 1. Segmented Table
 
-In this page we will concentrate on the first two of these table types which form the basic building blocks for the more complex tables.
+When dealing with these forms of tables there is a distinction between in-memory and on-disk datasets. We will deal with these two cases separately.
 
-## What is a Table?
+## In-Memory Tables
+
+In-memory tables live RAM of a process. This memory is volatile and limited in size but allows for fast data retrieval. Typically you will be in a position to generate and access a maximum of 10s of gigabytes of data. As the data stored in RAM is volatile until the data is persisted any exiting of a process will result in the data being lost and will require the data to be regenerated, a task which may be complex.
+
+### What is a Table?
 
 At its most basic a table is a mapping between a list of column names which each have an associated list of corresponding column values. This column to list mapping form the basis behind why q tables are described as being column-oriented, this is in contrast to row-oriented tables in most relational databases. Additionally because lists are ordered so are the content of a column.
 
@@ -127,126 +131,177 @@ t:([c~1~:v~1~; … ; c~j~:v~j~] c~j+1~:v~j+1~; … ;c~n~:v~n~)
 
 Here table `t` is defined with column names $c_{1-n}$, and corresponding values $v_{1-n}. The square brackets are for primary keys.
 
-## Working with tables
+## On-disk Data
 
-There are a number of ways to interact with the table types we've introduced above and you can mix and match them to suit yourself.
+Unlike in-memory data, on-disk storage provides reassurances that data which persisted will be available on process restart immediately. In this case the constraints on the size of data which can be stored is limited by the amount of physical disk available which can be on the order of terabytes. On-disk data access and query is typically slower than querying data in RAM but allows for larger than memory queries to be produced and allows individual tables to scale as part of databases.
 
-- Q-SQL
-- Using the q operators/keywords
+How your tables are persisted to disk with q varies based on the size of the data you are ultimately looking to query and the data volumes that need to be stored. How the data can be persisted is summarized below:
 
-### Q-SQL
+| Type              | On-Disk Representation                                                                               | Best Used Where                                                                |
+| :---------------- | :--------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------- |
+| Table Object      | Single binary file                                                                                   | Small data volume with most queries using most columns                         |
+| Splayed Table     | Directory of files containing a file per column                                                      | Up to 100 million records                                                      |
+| Partitioned Table | A Directory containing multiple folders (partitions) typically dates each containing a splayed table | More than 100 million records or a steadily growing data volume                |
+| Segmented Table   | Partitioned tables distributed across multiple disks                                                 | When tables are larger than available disk size or access needs to parallelize |
 
-Covered in greater depth when we talk about querying data q makes use of a set of functions for manipulating tables called Q-SQL the name deriving from the similarity of its syntax to SQL and the existence of similar functionality.
+### Table Object
 
-q provides users with keywords for [`insert`](../../ref/insert.md) and [`upsert`](../../ref/upsert.md) to allow tables to be augmented while additionally providing access to [`select`](../../ref/select.md), [`exec`](../../ref/exec.md), [`update`](../../ref/update.md) and [`delete`](../../ref/delete.md) operations to allow filtered and modified.
+In-memory objects in q can be persisted to disk as a single binary file, this is the simplest way that you can persist a table.
 
-To show these in action we can take a simple example of upserting some data and filtering data using a select. Before we do that let's generate some data to use in the examples
+Persisting both single binary table objects and splayed tables uses the keyword [`set`](../../ref/set.md) passing the file path to which the binary object will be persisted as the first argument. As a simple example
 
 ```q
-q)cities:([]region:`EMEA`AMER`EMEA;country:`Ireland`USA`UK;city:`Dublin`NYC`London;pop:0.7 8.9 8.2)
+q)table:([]id:neg[1000]?1000;power:1000?1f;voltage:1000?10f)
+q)`:object set table
+`:object
 ```
 
-Firstly let's append some new data to the table, adding this using [`upsert`](../../ref/upsert.md):
- 
-```q
-q)`cities upsert ([]region:`APAC`AMER;country:`Japan`Canada;city:`Osaka`Montreal;pop:2.8 1.8)
-`cities
-q)cities
-region country city     pop
----------------------------
-EMEA   Ireland Dublin   0.7
-AMER   USA     NYC      8.9
-EMEA   UK      London   8.2
-APAC   Japan   Osaka    2.8
-AMER   Canada  Montreal 1.8
-```
+Exiting the process you can now check that the table has been persisted by listing the contents of your working folder
 
-We can then filter the data using a [`select`](../../ref/select.md) statement:
+=== "Linux/Mac"
+
+	```bash
+	$ ls
+	object
+	```
+
+=== "Windows"
+
+	```bash
+	$ dir
+	object
+	```
+
+Starting a new q proces you can then query the on-disk data by file reference
 
 ```q
-q)select from cities where region=`EMEA
-region country city   pop
+q)select from `:object where id>500
+id  power      voltage   
 -------------------------
-EMEA   Ireland Dublin 0.7
-EMEA   UK      London 8.2
+769 0.1870281  3.927524  
+591 0.6333324  3.017723  
+618 0.4418975  5.347096  
+645 0.5569152  0.8388858 
+541 0.3877172  1.959907
 ```
 
-### Using q operators/keywords
+### Splayed Table
 
-Many functions and operations in q operate directly on q tables or work exclusively with these first class objects.
+Medium-sized tables (up to 100 million rows) and those with many columns are best stored on disk [splayed](https://en.wiktionary.org/wiki/splay "Wiktionary"): each column is stored as a separate file, rather than using a single file for the whole table. For example 
 
-The [Join](../../ref/join.md) operator `,` catenates lists.
+```treeview
+splay/
+├── .d
+├── id
+├── power
+└── voltage
+```
+
+The hidden file `.d` lists the columns in the order they appear in the table.
+
+The principle advantages of saving data in this way is that it allows for on-demand access to data in the columns required to perform a query. Limiting the required I/O for a query in this way allows us to deal with larger data volumes than binary tables or in-memory tables.
+
+Persisting a splayed table is very similar to persisting a binary file, the key difference being that the supplied path should be a directory rather than a file
 
 ```q
-q)1 2 3,10 20
-1 2 3 10 20
-q)"abc","def"
-"abcdef"
+q)N:1000000
+q)table:([]id:neg[N]?N;power:N?1f;voltage:N?10f)
+q)`:splay/ set table
 ```
 
-Two tables are two lists of dictionaries. 
+This table will be persisted in line with the directory view we saw previously.
+
+This data can then be loaded and queried by other q processes as follows:
 
 ```q
-q)ec2,ec1
-city         country pop
------------------------------
-Berlin       Germany 3748148
-Kyiv         Ukraine 3703100
-Madrid       Spain   3223334
-Istanbul     Turkey  15067724
-Moscow       Russia  12615279
-London       UK      9126366
-StPetersburg Russia  5383890
+q)\l splay
+q)select 2*voltage from splay where id>500000
 ```
 
+You can read more about how splayed tables are created and managed you can follow the how-to guide [here](../../kb/splayed-tables.md).
 
-## Persisting Tables
+### Partitioned Table
 
-Any object can be persisted to a file.
+When data volumes reach more than 100 million records accessing and interrogating data in individual columns can become time-consuming. A partitioned table is stored on-disk as a set of splayed tables stored in separate folders logically split by date, month, year or long. Once stored on-disk this presents as follows where in this example we are storing a financial trade table across multiple dates:
+
+```treeview
+db
+├── 2020.10.04
+│   └── trades
+│       ├── .d
+│       ├── price
+│       ├── sym
+│       ├── time
+│       └── vol
+├── 2020.10.05
+│   └── trades
+..
+└── sym
+```
+
+When dealing with splayed data the on-demand access to data per column when querying provided advantages in limiting the I/O per query, similarly partitioned database queries provide a second level of filtering. When querying  a partitioned database use of the `where` clause allows us to selectively access data from only the partitions we are interested in. For example taking the table above we could query only for trade data in the `2020.10.04` partition as follows:
 
 ```q
-q)conts:`Africa`Asia`Australia`Europe`NorthAmerica`SouthAmerica
-q)`:path/to/continents set conts
-`:path/to/continents
-q)get `:path/to/continents
-`Africa`Asia`Australia`Europe`NorthAmerica`SouthAmerica
-
-q)`:path/to/ec set ec
-`:path/to/ec
-q)select from `:path/to/ec where pop>5000000
-city         country pop
------------------------------
-Istanbul     Turkey  15067724
-Moscow       Russia  12615279
-London       UK      9126366
-StPetersburg Russia  5383890
+q)\l db
+q)select max price by sym from trades where date=2020.10.04
 ```
 
+In this case we will only access data in the following files within the treeview
 
-## Scaling your tables
+```treeview
+db
+├── 2020.10.04
+│   └── trades  
+│       ├── price
+│       └── sym
+└── sym
+```
 
-Tables up to 100 million rows can be _splayed_ (one file for each column) across directories.
+For a guide showing how splayed tables are created and managed you can follow the associated how-to guide on this topic [here](../../kb/partition.md).
 
-If your table is larger – or grows – you can _partition_ it; usually by time period. 
+### Segmented Table
 
-If your table exceeds disk size, you can _segment_ it. (This can also improve I/O performance of a partitioned table.)
+When your database becomes too large to be stored on an individual disk you can distribute it across multiple storage devices. This is often done for two reasons:
+
+- To allow a database to store more data than available memory on a disk
+- To support parallelization of queries 
+
+The root of a segmented database contains only the sym list and a file named `par.txt`. This file provides a mapping which allows you to unify the partitions of a database, presenting them as a single database for querying.
+
+#### The par.txt file
+
+A file `par.txt` defines the top-level partitioning of the database into directories. Each row of `par.txt` is a directory path. Each such directory is itself partitioned in the usual way, typically by date. The directories should not be empty.
 
 
-:fontawesome-regular-hand-point-right:
-<!-- [Files](files.md)
-<br>
- -->:fontawesome-solid-book:
-[`get`, `set`](../../ref/get.md),
-[`save`](../../ref/save.md)
-<br>
-:fontawesome-solid-graduation-cap:
-[Splayed tables](../../kb/splayed-tables.md),
-[Partitioned tables](../../kb/partition.md)
-<br>
-:fontawesome-solid-graduation-cap:
-_Q for Mortals_ [§8. Tables](/q4m3/8_Tables/), 
-[§14. Introduction to kdb+](/q4m3/14_Introduction_to_Kdb%2B)
+```txt
+DISK 0             DISK 1                     DISK 2  
+db                 db                        db             
+├── par.txt        ├── 2020.10.03            ├── 2020.10.04                         
+└── sym            │   ├── quotes            │   ├── quotes                         
+                   │   │   ├── price         │   │   ├── price                            
+                   │   │   ├── sym           │   │   ├── sym                          
+                   │   │   └── time          │   │   └── time                           
+                   │   └── trades            │   └── trades                         
+                   │       ├── price         │       ├── price                            
+                   │       ├── sym           │       ├── sym                          
+                   │       ├── time          │       ├── time                           
+                   │       └── vol           │       └── vol                          
+                   ├── 2020.10.05            ├── 2020.10.06                         
+                   │   ├── quotes            │   ├── quotes      
+               ..                    ..
+```
+
+The `par.txt` for the above:
+
+
+```txt
+/1/db
+/2/db
+```
+
+You can read more about how splayed tables are created and managed you can follow the how-to guide [here](../../database/segment.md).
 
 ## Next Steps
 
-- [Learn how to ingest a CSV file as a common source of your first table data](csvs.md)
+- [Learn about CSV file ingestion in q a common source of your first table data](csvs.md)
+- Learn about querying your tabular data
