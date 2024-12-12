@@ -43,6 +43,7 @@ q)type (0|+)                    / composition
 ----
 
 :fontawesome-solid-book:
+[`key`](key.md#type-of-a-vector),
 [.Q.ty](dotq.md#ty-type)
 <br>
 :fontawesome-solid-book-open:

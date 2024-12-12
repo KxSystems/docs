@@ -1994,7 +1994,7 @@ Since V3.6 2018.05.18.
 .Q.ty x
 ```
 
-Where `x` is a list, returns the type of `x` as a character code:
+Where `x` is a list, returns the [type](../basics/datatypes.md) of `x` as a character code:
 
 -   lower case for a vector
 -   upper case for a list of uniform type
