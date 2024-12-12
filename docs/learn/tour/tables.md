@@ -10,7 +10,7 @@ This page introduces you to the types of tables which exist in q, how these tabl
 
 Unlike in many other programming languages where the tables you encounter are added as a second-class extension to the language, in q they are first-class objects. 
 
-There are 5 types of table that you'll encounter as you learn more about kdb+:
+Based on their storage and structure, there are 4 types of tables in kdb+:
 
 1. Table
 1. Keyed Table 
