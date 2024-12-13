@@ -67,7 +67,7 @@ Here table `t` is defined with column names $c_{1-n}$, and corresponding values 
 
 Tables in q have a [datatype](datatypes.md) `98h`.
 
-## What is a Keyed Table?
+### What is a Keyed Table?
 
 At its most simple a Keyed Table is a dictionary mapping a table of key records to a table of value records. This construct has advantages when retrieving data associated with a particular unique record.
 
