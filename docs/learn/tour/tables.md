@@ -6,7 +6,7 @@ description: A brief tour of tables in kdb+/q
 ---
 # Tables in kdb+
 
-This page introduces you to the types of tables which exist in q, how these tables are created and what makes tables in q so powerful.
+_This page explains the types of tables in q, how to create them, and their powerful features._
 
 Unlike in many other programming languages where the tables you encounter are added as a second-class extension to the language, in q they are first-class objects. 
 
@@ -26,7 +26,7 @@ In-memory tables live RAM of a process. This memory is volatile and limited in s
 
 ### What is a Table?
 
-At its most basic a table is a mapping between a list of column names which each have an associated list of corresponding column values. This column to list mapping form the basis behind why q tables are described as being column-oriented, this is in contrast to row-oriented tables in most relational databases. Additionally because lists are ordered so are the content of a column.
+A table is essentially a mapping between column names and their corresponding lists of values. This column-to-list mapping is why q tables are considered column-oriented, unlike the row-oriented tables in most relational databases. Additionally, since lists are ordered, the contents of each column are also ordered.
 
 These two points (column oriented and ordered) in particular help to make kdb+/q extremely efficient at storing, manipulating and retrieving sequential data, which is critically important to interactions with time-series data.
 
@@ -73,7 +73,7 @@ At its most simple a Keyed Table is a dictionary mapping a table of key records 
 
 Unlike in SQL where the records in a primary key are unique kdb+ does not enforce this, as such retrieval of all rows in a value table associated with duplicate keys is not possible.
 
-As mentioned despite the name a keyed table has a [datatype](datatypes.md) `99h` and is actually a dictionary.
+As mentioned, despite the name, a keyed table has a [datatype](datatypes.md) `99h` and is actually a dictionary.
 
 We can generate a keyed tables in a number of ways:
 
@@ -133,7 +133,7 @@ Here table `t` is defined with column names $c_{1-n}$, and corresponding values 
 
 ## On-disk Data
 
-Unlike in-memory data, on-disk storage provides reassurances that data which persisted will be available on process restart immediately. In this case the constraints on the size of data which can be stored is limited by the amount of physical disk available which can be on the order of terabytes. On-disk data access and query is typically slower than querying data in RAM but allows for larger than memory queries to be produced and allows individual tables to scale as part of databases.
+Unlike in-memory data, on-disk storage provides reassurances that data which persisted will be available on process restart immediately. In this case, the constraints on the size of data which can be stored are limited by the amount of physical disk available which can be on the order of terabytes. On-disk data access and query is typically slower than querying data in RAM but allows for larger than memory queries to be produced and allows individual tables to scale as part of databases.
 
 How your tables are persisted to disk with q varies based on the size of the data you are ultimately looking to query and the data volumes that need to be stored. How the data can be persisted is summarized below:
 
@@ -172,7 +172,7 @@ Exiting the process you can now check that the table has been persisted by listi
 	object
 	```
 
-Starting a new q proces you can then query the on-disk data by file reference
+Starting a new q process you can then query the on-disk data by file reference:
 
 ```q
 q)select from `:object where id>500
@@ -199,9 +199,9 @@ splay/
 
 The hidden file `.d` lists the columns in the order they appear in the table.
 
-The principle advantages of saving data in this way is that it allows for on-demand access to data in the columns required to perform a query. Limiting the required I/O for a query in this way allows us to deal with larger data volumes than binary tables or in-memory tables.
+The main advantage of this data saving method is that it enables on-demand access to specific columns needed for a query. By reducing the I/O required for queries, you can handle larger data volumes more efficiently than with binary or in-memory tables.
 
-Persisting a splayed table is very similar to persisting a binary file, the key difference being that the supplied path should be a directory rather than a file
+Persisting a splayed table is very similar to persisting a binary file, the key difference being that the supplied path should be a directory rather than a file.
 
 ```q
 q)N:1000000
@@ -222,7 +222,7 @@ You can read more about how splayed tables are created and managed you can follo
 
 ### Partitioned Table
 
-When data volumes reach more than 100 million records accessing and interrogating data in individual columns can become time-consuming. A partitioned table is stored on-disk as a set of splayed tables stored in separate folders logically split by date, month, year or long. Once stored on-disk this presents as follows where in this example we are storing a financial trade table across multiple dates:
+When data volumes exceed 100 million records, accessing and querying individual columns can become time-consuming. A partitioned table addresses this by storing data on disk as a set of splayed tables, each in separate folders logically divided by date, month, year, or long value. For example, you can store a financial trade table across multiple dates in this manner:
 
 ```treeview
 db
@@ -246,7 +246,7 @@ q)\l db
 q)select max price by sym from trades where date=2020.10.04
 ```
 
-In this case we will only access data in the following files within the treeview
+In this case we will only access data in the following files within the tree view:
 
 ```treeview
 db
@@ -257,7 +257,7 @@ db
 └── sym
 ```
 
-For a guide showing how splayed tables are created and managed you can follow the associated how-to guide on this topic [here](../../kb/partition.md).
+For a guide showing how splayed tables are created and managed you can follow this [How to partition guide](../../kb/partition.md).
 
 ### Segmented Table
 
