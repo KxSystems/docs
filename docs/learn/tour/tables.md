@@ -148,7 +148,7 @@ How your tables are persisted to disk with q varies based on the size of the dat
 
 In-memory objects in q can be persisted to disk as a single binary file, this is the simplest way that you can persist a table.
 
-Persisting both single binary table objects and splayed tables uses the keyword [`set`](../../ref/set.md) passing the file path to which the binary object will be persisted as the first argument. As a simple example
+Persisting both single binary table objects and splayed tables uses the keyword [`set`](../../ref/get.md) passing the file path to which the binary object will be persisted as the first argument. As a simple example
 
 ```q
 q)table:([]id:neg[1000]?1000;power:1000?1f;voltage:1000?10f)
