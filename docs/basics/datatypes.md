@@ -69,6 +69,7 @@ The type is a short int:
 [Cast](../ref/cast.md),
 [Tok](../ref/tok.md),
 [`type`](../ref/type.md),
+[`key`](../ref/key.md#type-of-a-vector),
 [`.Q.ty`](../ref/dotq.md#ty-type) (type)
 <br>
 :fontawesome-solid-book-open:
