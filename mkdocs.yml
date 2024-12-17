@@ -112,26 +112,192 @@ nav:
     - Get Started:
       - Install: learn/install.md
     - Learn:
-      - Overview: learn/index.md  # merge with learn/tour/overview.md, learn/startingkdb/index.md
-      - Begin here: learn/tour/index.md  # merge with learn/startingkdb/language.md
-      - The q session: learn/tour/session.md
-      - Tables: learn/tour/tables.md # merge with learn/startingkdb/tables
-      - CSVs: learn/tour/csvs.md
-      - Datatypes: learn/tour/datatypes.md
-      - Scripts: learn/tour/scripts.md
-      - Historical database: learn/startingkdb/hdb.md
-      - Realtime database: learn/startingkdb/tick.md
-      - IPC: learn/startingkdb/ipc.md
-      - Shifts & scans: learn/shifts-scans.md
-      - Views: learn/views.md
-      - Guide to iterators: wp/iterators/index.md
-      - Pivoting tables: kb/pivoting-tables.md
-      - Timezones: kb/timezones.md
-      - Streaming Overview: architecture/index.md
-      - Multi-threading: wp/multi-thread/index.md    # Convert to learn merging with basic/peach.md
-      - Linux production notes: kb/linux-production.md
-      - CPU affinity: kb/cpu-affinity.md # Combine with the Linux Production Notes
-      - inetd, xinetd: kb/inetd.md #Combine with production notes
+      - q:
+        - Basics:
+          - Hello, World: learn/q/basics/helloworld.md
+          - REPL and the Terminal: learn/q/basics/repl.md
+          - Syntax:
+            - Indentation: learn/q/basics/syntax/indentation.md
+            - Comments: learn/q/basics/syntax/comments.md
+            - Naming Conventions: learn/q/basics/syntax/naming.md
+            - Brackets: learn/q/basics/syntax/brackets.md
+            - White space: learn/q/basics/syntax/whitespace.md
+          - Variables:
+            - Local: learn/q/basics/variables/local.md
+            - Global: learn/q/basics/variables/global.md
+          - Datatypes:
+            - Built-in types: learn/q/basics/datatypes/builtins.md
+            - Symbols: learn/q/basics/datatypes/symbols.md
+            - Nulls and Infinites: learn/q/basics/datatypes/nullinf.md
+            - Getting the type: learn/q/basics/datatypes/gettypes.md
+            - Setting the type: learn/q/basics/datatypes/settypes.md
+            - Casting: learn/q/basics/datatypes/casting.md
+        - Data Structures:
+          - Lists Arrays and Sets:
+            - Add/Edit: learn/q/data_structures/lists_arrays/add_edit.md
+            - Remove: learn/q/data_structures/lists_arrays/remove.md
+            - Indexing and slicing: learn/q/data_structures/lists_arrays/index_slice.md
+            - List operations: learn/q/data_structures/lists_arrays/list_operations.md
+            - Regex: learn/q/data_structures/lists_arrays/regex.md
+            - String operations: learn/q/data_structures/lists_arrays/string_operations.md
+          - Dictionaries:
+            - Add/Edit: learn/q/data_structures/dictionaries/add_edit.md
+            - Remove: learn/q/data_structures/dictionaries/remove.md
+            - Indexing and slicing: learn/q/data_structures/dictionaries/index_slice.md
+            - Sorting: learn/q/data_structures/dictionaries/sorting.md
+            - Joining: learn/q/data_structures/dictionaries/joining.md
+            - Nested Dictionaries: learn/q/data_structures/dictionaries/nested.md
+          - Tables: learn/q/data_structures/tables.md
+          - Databases: learn/q/data_structures/databases.md
+          - Views: learn/q/data_structures/views.md
+          - Namespaces: learn/q/data_structures/namespaces.md
+        - Control Flow:
+          - If.. Else: learn/q/control_flow/ifelse.md
+          - Case: learn/q/control_flow/case.md
+          - Conditionals: learn/q/control_flow/conditionals.md
+          - Loops:
+            - Avoiding loops: learn/q/control_flow/loops/avoid.md
+            - Do: learn/q/control_flow/loops/do.md
+            - While: learn/q/control_flow/loops/while.md
+          - Iterators:
+            - Iterators: learn/q/control_flow/iterators/iterators.md
+            - Maps: learn/q/control_flow/iterators/maps.md
+            - Accumulators: learn/q/control_flow/iterators/accumulators.md
+          - Explicit Return: learn/q/control_flow/return.md
+          - Exception Handling: learn/q/control_flow/exceptions.md
+          - Exit: learn/q/control_flow/exit.md
+        - Input/Output:
+          - File handling:
+            - Supported types: learn/q/input_output/files/types.md
+            - Read: learn/q/input_output/files/read.md
+            - Append: learn/q/input_output/files/append.md
+            - Write: learn/q/input_output/files/write.md
+            - Get: learn/q/input_output/files/get.md
+            - Set: learn/q/input_output/files/set.md
+            - Delete: learn/q/input_output/files/delete.md
+            - Connect: learn/q/input_output/files/connect.md
+            - Utilities: learn/q/input_output/files/utils.md
+        - Functions:
+          - Built-in functions: learn/q/functions/builtins.md
+          - Function Definition: learn/q/functions/definition.md
+          - Typing: learn/q/functions/typing.md
+          - Operators:
+            - Operator Precedence: learn/q/functions/operators/precedence.md
+            - Arithmetic: learn/q/functions/operators/math.md
+            - 'Assignment (: +: -: etc)': learn/q/functions/operators/assignment.md
+            - Bitwise (and/or/not etc): learn/q/functions/operators/bitwise.md
+            - Comparison (=<> etc): learn/q/functions/operators/comparison.md
+            - Identity (is/is not): learn/q/functions/operators/identity.md
+            - Logic (and/or/not): learn/q/functions/operators/logic.md
+          - Function overloading: learn/q/functions/overload.md
+          - Composition: learn/q/functions/composition.md
+          - Expressions:
+            - Evaluation: learn/q/functions/expressions/eval.md
+            - Parse Trees: learn/q/functions/expressions/parse.md
+        - Inter-process Communication (IPC):
+          - Introduction to IPC: learn/q/ipc/intro.md
+          - Open connection: learn/q/ipc/open.md
+          - Close connection: learn/q/ipc/close.md
+          - Synchronous messaging: learn/q/ipc/sync.md
+          - Asynchronous messaging: learn/q/ipc/async.md
+          - Websockets: learn/q/ipc/websockets.md
+          - Connecting to files: learn/q/ipc/file_connect.md
+      - kdb:
+        - Introduction to kdb+ databases:
+          - Tables:
+            - In memory tables: learn/kdb/intro/tables/in_memory.md
+            - On disk tables: learn/kdb/intro/tables/on_disk.md
+            - Pivot tables: learn/kdb/intro/tables/pivot.md
+          - Databases:
+            - Time series databases: learn/kdb/intro/database/time_series.md
+          - Database file structures:
+            - Splayed: learn/kdb/intro/file_structure/splayed.md
+            - Partitioned: learn/kdb/intro/file_structure/partitioned.md
+            - Segmented: learn/kdb/intro/file_structure/segmented.md
+        - Database Operations:
+          - Tables:
+            - Columns: learn/kdb/dbops/tables/columns.md
+            - Rows: learn/kdb/dbops/tables/rows.md
+          - Create: learn/kdb/dbops/create.md
+          - Insert / Upsert: learn/kdb/dbops/insert_upsert.md
+          - Update: learn/kdb/dbops/update.md
+          - Delete: learn/kdb/dbops/delete.md
+          - Joins:
+            - Inner Join: learn/kdb/dbops/joins/inner.md
+            - Left Join: learn/kdb/dbops/joins/left.md
+            - Union Join: learn/kdb/dbops/joins/union.md
+            - Plus Join: learn/kdb/dbops/joins/plus.md
+            - Equi Join: learn/kdb/dbops/joins/equi.md
+          - Time based joins:
+            - Asof join: learn/kdb/dbops/temporal_join/asof.md
+            - Window join: learn/kdb/dbops/temporal_join/wjoin.md
+          - Sorting: learn/kdb/dbops/sorting.md
+        - Querying:
+          - Syntax: 
+            - qSQL: learn/kdb/query/syntax/qsql.md
+            - Functional: learn/kdb/query/syntax/functional.md
+            - SQL: learn/kdb/query/syntax/sql.md
+          - Select: learn/kdb/query/select.md
+          - Where: learn/kdb/query/where.md
+          - And/ Or/ Not: learn/kdb/query/and_or_not.md
+          - Group by: learn/kdb/query/groupby.md
+          - Filtering: learn/kdb/query/filtering.md
+          - Conditions: learn/kdb/query/conditions.md
+          - Column Operations: learn/kdb/query/column_ops.md
+          - Pivot Tables: learn/kdb/query/pivot.md
+          - Query efficiency: learn/kdb/query/efficiency.md
+        - Database Design:
+          - Comparisons with other database: learn/kdb/design/comparisons.md
+          - Database design principles:
+            - Database purpose: learn/kdb/design/principles/database.md
+            - Table purpose: learn/kdb/design/principles/tables.md
+            - Query patterns: learn/kdb/design/principles/query.md
+            - Very important fields: learn/kdb/design/principles/important_fields.md
+            - Table relationships: learn/kdb/design/principles/relationships.md
+            - Size matters: learn/kdb/design/principles/size.md
+          - Schemas:
+            - Schemas in kdb+: learn/kdb/design/schemas/schemas.md
+            - Naming conventions: learn/kdb/design/schemas/naming.md
+            - Schema consistency: learn/kdb/design/schemas/consistency.md
+            - Ordering data: learn/kdb/design/schemas/ordering.md
+            - Metadata attributes: learn/kdb/design/schemas/attributes.md
+          - Keys:
+            - Primary keys: learn/kdb/design/keys/primary.md
+            - Foreign keys: learn/kdb/design/keys/foreign.md
+          - Enumeration: learn/kdb/design/enumeration.md
+          - Structure for high performance:
+            - Reducing redundant data: learn/kdb/design/performance/reducing_data.md
+            - XL databases: learn/kdb/design/performance/large_dbs.md
+        - Ingesting data:
+          - Core structure: learn/kdb/ingest/core.md
+          - Feedhandler: learn/kdb/ingest/feedhandler.md
+          - Data capture:
+            - Tickerplant: learn/kdb/ingest/capture/tick.md
+            - Logging: learn/kdb/ingest/capture/log.md
+            - Zero latency: learn/kdb/ingest/capture/zero_latency.md
+          - Real time processing:
+            - Chained tickerplants: learn/kdb/ingest/real_time_processing/chained.md
+            - Batch processing: learn/kdb/ingest/real_time_processing/batch.md
+          - Real time database (RDB):
+            - Raw data: learn/kdb/ingest/real_time_database/raw_data.md
+            - Top of book calculations: learn/kdb/ingest/real_time_database/top_of_book.md
+            - Real time analytics: learn/kdb/ingest/real_time_database/real_time_analytics.md
+          - Interval database (IDB): learn/kdb/ingest/interval.md
+        - Persisting data: 
+          - Historical database (HDB): learn/kdb/persist/hdb.md
+          - Segmented database: learn/kdb/persist/segmented.md
+          - Preparing data for save:
+            - End of day processing: learn/kdb/persist/prep/eod.md
+            - Interval processing: learn/kdb/persist/prep/interval.md
+            - Batch processing: learn/kdb/persist/prep/batch.md
+          - Data resilience:
+            - Data recovery: learn/kdb/persist/resilience/recovery.md
+            - Failovers and Backups: learn/kdb/persist/resilience/failover.md
+            - High availability: learn/kdb/persist/resilience/high_availability.md
+        - Accessing data:
+          - Managing load:
+            - Gateways: learn/kdb/access/managing/gateways.md
+            - Query routing: learn/kdb/access/managing/routing.md
       - Additional resources:
         - Q for quants: learn/brief-introduction.md
         - Q by Examples: learn/q-by-examples.md
