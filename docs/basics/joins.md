@@ -16,7 +16,7 @@ Keyed:                As of:
  [uj ujf](../ref/uj.md)    union
  [upsert](../ref/upsert.md)
  [,         join](../ref/join.md)
- [\^         coalesce](../ref/coalesce.md)
+ [^         coalesce](../ref/coalesce.md)
 </div>
 
 
