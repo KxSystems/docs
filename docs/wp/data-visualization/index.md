@@ -361,7 +361,7 @@ Tableau queries against this modified function are significantly faster
 and become sub-millisecond when symbols are already present within the
 `volumeCache`. This approach greatly reduces the effect of filtering previously highlighted:
 
-number of symbols | time (1st query) | time (2nd query)
+number of symbols | time (1<sup>st</sup> query) | time (2<sup>nd</sup> query)
 ----------------- | --------------- | ---------------
 1,000,000         | 3 ms            | <0ms                         
 10,000,000        | 96 ms           | <0ms                         

@@ -464,7 +464,7 @@ roc:{[c;n]
 q)update ROC:roc[close;10] from bitcoinKraken
 ```
 
-A positive move in the ROC indicates that there was a sharp price advance. This can be seen on the graph in Figure 11 between the 8th and 22nd of June. A downward drop indicates steep decline in the price. This oscillator is prone to whipsaw around the zero line as can be seen in the graph. For the graph  below `n` is set to 9, a value commonly used by short-term traders.
+A positive move in the ROC indicates that there was a sharp price advance. This can be seen on the graph in Figure 11 between the 8<sup>th</sup> and 22<sup>nd</sup> of June. A downward drop indicates steep decline in the price. This oscillator is prone to whipsaw around the zero line as can be seen in the graph. For the graph  below `n` is set to 9, a value commonly used by short-term traders.
 
 ![roc](img/roc.png)
 <br>

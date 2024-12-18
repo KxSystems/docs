@@ -802,7 +802,7 @@ EBS was tested for both `gp2` and its brethren the `io1` flash variation. kdb+ a
 
 ### `st1`
 
-EBS results for the `st1` devices (low cost traditional disk drives, lower cost per GB) show good (90th-percentile) results for streaming and random 1-MB reads, but, as expected, significantly slower results for random 64-KB and 1-MB reads, and 4× the latencies for metadata ops. Consider these as a good candidate for storing longer term, older HDB data to reduce costs for owned EBS storage.
+EBS results for the `st1` devices (low cost traditional disk drives, lower cost per GB) show good (90<sup>th</sup>-percentile) results for streaming and random 1-MB reads, but, as expected, significantly slower results for random 64-KB and 1-MB reads, and 4× the latencies for metadata ops. Consider these as a good candidate for storing longer term, older HDB data to reduce costs for owned EBS storage.
 
 
 ### ObjectiveFS and WekaIO Matrix

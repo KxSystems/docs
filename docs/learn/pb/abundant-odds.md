@@ -319,7 +319,7 @@ We had however recalculated $s(n)$ for the abundant numbers, so we amended the e
 
 Q3 took us to the While iterator to proceed from 1,000,000,001 to the next abundant odd number, returning both the number and its $s(n)$.
 
-From that we could adapt the technique to solve Q2 with a While iteration that stops when the 25th value has been found.
+From that we could adapt the technique to solve Q2 with a While iteration that stops when the 25<sup>th</sup> value has been found.
 
 The While iterator uses a truth condition that tests the result of the function being iterated. 
 Where the truth condition 

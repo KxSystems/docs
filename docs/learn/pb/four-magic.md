@@ -239,7 +239,7 @@ Replace `s each(count s@)\` with an expression that applies `s` once only to eac
         (4;"five")
         (4;"four")
 
-    Note above that the 0th item of the result comes from applying `f` zero times to the argument 12345678, i.e. a no-op. 
+    Note above that the 0<sup>th</sup> item of the result comes from applying `f` zero times to the argument 12345678, i.e. a no-op. 
     When you apply a function derived by the Scan form of the [Converge, Do or While iterators](../../ref/accumulators.md), the first item of the result is always the derived function’s argument unchanged. 
     It follows that items of the resulting list might not have uniform type.
 

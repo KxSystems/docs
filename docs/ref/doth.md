@@ -378,7 +378,7 @@ Basic Marqdown formatting rules:
 - Lines beginning with `"\t"` get wrapped in `code` tags
 - Line data beginning with `" "` get wrapped in `xmp` tags
 - If second line of data starts with `"-"`, draw a horizontal rule to format the header
-- Aligns two-column data if 2nd column starts with `"\t "`
+- Aligns two-column data if 2<sup>nd</sup> column starts with `"\t "`
 
 
 ## `.h.hta` (start tag)

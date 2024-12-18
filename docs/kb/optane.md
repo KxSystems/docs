@@ -168,7 +168,7 @@ Vertical partitioning
 ​
 Storage over App Direct Mode is a specialized application of App Direct Mode, in which Intel Optane PMem behaves like a storage device accessible via a filesystem. As the filesystem is explicitly optimized for the underlying technology, it offers better operational latencies. With extremely low read/write speeds, data is passed quickly between storage and memory, enabling faster queries. Intel Optane PMem is particularly fast at small, random reads, which makes it particularly effective at speeding up kdb+ historical queries.
 
-Storage over App Direct Mode was recently benchmarked, publicly, using the **STAC M3** industry-standard benchmarks. Tests ran on Lenovo ThinkSystem servers with Intel Optane PMem, 2nd Generation Intel® Xeon® processors, and kdb+ 3.6.
+Storage over App Direct Mode was recently benchmarked, publicly, using the **STAC M3** industry-standard benchmarks. Tests ran on Lenovo ThinkSystem servers with Intel Optane PMem, 2<sup>nd</sup> Generation Intel® Xeon® processors, and kdb+ 3.6.
 
 Using a 2-socket server:
 
