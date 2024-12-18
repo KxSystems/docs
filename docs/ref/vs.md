@@ -67,7 +67,7 @@ q)` vs "abc\r\ndef\r\nghi"
 "ghi"
 ```
 
-??? detail "Elides trailing linebreaks"
+!!! detail "Elides trailing linebreaks"
 
 	The treatment of linebreaks varies usefully from a left argument of `\n`.
 

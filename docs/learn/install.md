@@ -91,7 +91,7 @@ Unzip the downloaded ZIP to produce a folder `q` in your install location.
     Expand-Archive w64.zip -DestinationPath C:\q
     ```
 
-??? note "How to run 32-bit kdb+ on 64-bit Linux"
+!!! note "How to run 32-bit kdb+ on 64-bit Linux"
 
     Use the `uname -m` command to determine whether your machine is using the 32-bit or 64-bit Linux distribution.
 
@@ -197,7 +197,7 @@ q)
 [License errors](../basics/errors.md#license-errors),
 [Licensing](licensing.md)
 
-??? warning "License files and 32-bit kdb+"
+!!! warning "License files and 32-bit kdb+"
 
     32-bit kdb+ does not require a license file to run, but if it finds one at launch it will signal a license error if the license is not valid.
 

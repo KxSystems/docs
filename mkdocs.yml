@@ -21,7 +21,6 @@ markdown_extensions:
   - admonition
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

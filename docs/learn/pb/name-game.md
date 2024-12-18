@@ -8,7 +8,7 @@ date: December 2020
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5MJLi5_dyn0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-??? summary "Make substitutions in a string or list of strings"
+!!! summary "Make substitutions in a string or list of strings"
 
     Two solutions, using respectively, **`ssr`** and **Amend At**.
     Both use **projections**.
@@ -56,7 +56,7 @@ Fee-fimo-mephen
 Stephen!
 ```
 
-??? tip "`"$1"` and `"$2"` have no special significance here"
+!!! tip "`"$1"` and `"$2"` have no special significance here"
 
     Although they resemble tokens in Posix regular expression syntax, here they are just substrings that are easy to spot.
 
@@ -235,7 +235,7 @@ Test your understanding:
 `@[;0 1 2;,[;sfx]]` uses the ternary form of Amend At.
 Rewrite it using the quaternary form.
 
-??? success "Answer"
+!!! success "Answer"
 
         @[;0 1 2;,;3#enlist sfx]
 

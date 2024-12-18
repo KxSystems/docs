@@ -9,7 +9,7 @@ date: December 2020
 
 ![Number series](../../img/alamy/G36AKX.jpg)
 
-??? summary "Use iterators to find values in a series that pass a test"
+!!! summary "Use iterators to find values in a series that pass a test"
 
     Filter a list for items that pass a test that may be CPU-intensive. 
 
@@ -155,7 +155,7 @@ Here `x` is 1, `y` is `25#A` and `f` is `sd'`.
 
 Lastly we note that iterators such as `'` (Each) and `\` (Do) are unary operators with _postfix_ syntax, i.e. an iterator is written to the _right_ of its argument.
 
-??? detail "Iterator syntax"
+!!! detail "Iterator syntax"
 
     In `sd'`, the argument of Each is `sd`, and in `sd'\`, the argument of Scan is `sd'`.
 
@@ -299,7 +299,7 @@ q)flip{x 1}r:{25>count x 1}({(x;y,(x<sm)#enlist x,sm:sd x)}. 2 0+)/(1;())
 Test your understanding:
 What is `r 0` above?
 
-??? success "Answer"
+!!! success "Answer"
 
         q)r 0
         11025

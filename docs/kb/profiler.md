@@ -9,7 +9,7 @@ date: March 2020
 
 
 
-??? info "Experimental feature :fontawesome-brands-linux:"
+!!! info "Experimental feature :fontawesome-brands-linux:"
 
     Currently implemented for x86\_64 Linux (kdb+ `l64`).
 
