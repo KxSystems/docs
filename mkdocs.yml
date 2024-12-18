@@ -33,7 +33,6 @@ markdown_extensions:
   - pymdownx.highlight:
       use_pygments: false
   - pymdownx.keys
-  - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets
   - pymdownx.superfences:
