@@ -175,7 +175,7 @@ Using return as value column. Use the value argument to cast to override this ch
   0.950   0.048   0.998
 ```
 
-We can see that the time to extract the data increases by \~90 ms.
+We can see that the time to extract the data increases by ~90 ms.
 The q query time increases by 4 ms, so the majority of the increase is due to shipping the larger dataset from q to R.
 
 ```q
@@ -184,7 +184,7 @@ q)\t select time,sym,return
 138
 ```
 
-The pivot time on the larger data set grows from 40 ms to \~1000 ms giving a total time to do the analysis of approximately 2300 ms.
+The pivot time on the larger data set grows from 40 ms to ~1000 ms giving a total time to do the analysis of approximately 2300 ms.
 As the dataset grows, the time to pivot the data in R starts to dominate the overall time.
 
 

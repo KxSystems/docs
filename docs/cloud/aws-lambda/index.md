@@ -182,7 +182,7 @@ exit​ 0
     -   Request and response (synchronous calls) body payload size can be up to 6 MB.
     -   Event request (asynchronous calls) body can be up to 128 KB.
 
-Technically the limit for the deployment package size can be much higher if you let your lambda function pull the deployment package from S3. AWS S3 allows for deploying function code with a substantially higher deployment package limit (\~250 MB) as compared to directly uploading to Lambda or any other AWS service.
+Technically the limit for the deployment package size can be much higher if you let your lambda function pull the deployment package from S3. AWS S3 allows for deploying function code with a substantially higher deployment package limit (~250 MB) as compared to directly uploading to Lambda or any other AWS service.
 
 
 ## Deploy using Serverless Application Repository

@@ -25,15 +25,15 @@ For the Select operator `?`, see
 Below, square brackets mark optional elements.
 
 <div markdown="1" class="typewriter">
-select [_L~exp~_] [_p~s~_] [by _p~b~_] from _t~exp~_ [where _p~w~_]
+select [_L<sub>exp</sub>_] [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 
 where
 
-_L~exp~_  Limit expression
-_p~s~_    Select phrase
-_p~b~_    By phrase
-_t~exp~_  Table expression
-_p~w~_    Where phrase
+_L<sub>exp</sub>_  Limit expression
+_p<sub>s</sub>_    Select phrase
+_p<sub>b</sub>_    By phrase
+_t<sub>exp</sub>_  Table expression
+_p<sub>w</sub>_    Where phrase
 </div>
 
 :fontawesome-solid-book-open:
