@@ -234,6 +234,8 @@ Beeblebrox 42  22
 Prefect    126 25
 ```
 
+!!! note "Not currently supported for partitioned tables. [`.Q.ind`](dotq.md#ind-partitioned-index) can be used as an alternative to access indices."
+
 ### Columns
 
 Where
@@ -252,6 +254,8 @@ Dent       20
 Beeblebrox 22
 Prefect    25
 ```
+
+!!! note "Not currently supported for partitioned tables."
 
 
 ## Keyed table
