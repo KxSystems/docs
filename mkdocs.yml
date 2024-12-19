@@ -30,7 +30,6 @@ markdown_extensions:
   - pymdownx.extra
   - pymdownx.highlight:
       use_pygments: false
-  - pymdownx.snippets
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
