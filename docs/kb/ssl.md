@@ -158,13 +158,14 @@ Can be set to one of the following values:
 
 #### SSL_VERIFY_SERVER
 
-Controls the processing of certificates from a server. Checks the X509 certificate the peer presented by verifying the server’s certificate against a trusted source, using the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the server’s certificate.
-In the interests of not interrupting service, verification of certificates accepts expired certificates.
+Controls the processing of certificates from a server. Default value is `YES`.
 
-If the verification process fails, the TLS/SSL handshake is immediately terminated with an alert message containing the reason for the verification failure. 
-If no server certificate is sent, because an anonymous cipher is used, processing is ignored.
+Checks the X509 certificate the peer presented by verifying the server’s certificate against a trusted source, using the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the server’s certificate.
+Expired certificates will fail the verification process.
 
-Default value is `YES`.
+If the verification process fails or no server certificate provided, the TLS/SSL handshake is immediately terminated with an alert message containing the reason for the verification failure.
+
+Setting to `NO` does not terminate the connection due to a failure verifying the certificate.
 
 ### Checking Configuration
 
@@ -176,7 +177,7 @@ Configured TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../ba
 If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. An example script (`makeCerts.sh`) to do so follows; customize as necessary.
 
 ```bash
-mkdir -f $HOME/certs && cd $HOME/certs
+mkdir $HOME/certs && cd $HOME/certs
 
 # create private key for CA (certificate authority)
 openssl genrsa -out ca-private-key.pem 2048
@@ -268,7 +269,7 @@ Extra protocol details for a connection handle are available via [`.z.e`](../ref
 
 ## Suitability and restrictions
 
-Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is ~1.5× assuming your OpenSSL library can utilize AES-NI.
+Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is \~1.5× assuming your OpenSSL library can utilize AES-NI.
 
 OpenSSL 1.1 is supported since V4.0 2020.03.17.
 

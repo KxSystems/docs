@@ -5,10 +5,6 @@ author: Stephen Taylor
 ---
 # `#` Take
 
-
-
-
-
 _Select leading or trailing items from a list or dictionary, named entries from a dictionary, or named columns from a table_
 
 
@@ -175,6 +171,8 @@ q)4 0N#til 9
 
 ## Dictionary
 
+### Leading/Trailing
+
 Where
 
 -   `x` is an **int atom**
@@ -187,7 +185,12 @@ q)d:`a`b`c!1 2 3
 q)2#d
 a| 1
 b| 2
+q)-2#d
+b| 2
+c| 3
 ```
+
+### Keys
 
 Where
 
@@ -208,6 +211,8 @@ a| 1
 
 ## Table
 
+### Rows
+
 Where
 
 -   `x` is an **int atom** 
@@ -216,17 +221,22 @@ Where
 returns `x` rows from `y`.
 
 ```q 
-q)\l sp.q
-..
-q)5#sp
-s  p  qty
----------
-s1 p1 300
-s1 p2 200
-s1 p3 400
-s1 p4 200
-s4 p5 100
+q)t:([] name:`Dent`Beeblebrox`Prefect; iq:98 42 126; age:20 22 25)
+q)2#t
+name       iq age
+-----------------
+Dent       98 20
+Beeblebrox 42 22
+q)-2#t
+name       iq  age
+------------------
+Beeblebrox 42  22
+Prefect    126 25
 ```
+
+!!! note "Not currently supported for partitioned tables. [`.Q.ind`](dotq.md#ind-partitioned-index) can be used as an alternative to access indices."
+
+### Columns
 
 Where
 
@@ -236,22 +246,16 @@ Where
 returns column/s `x` from `y`.
 
 ```q 
-q)`p`qty#sp
-p  qty
-------
-p1 300
-p2 200
-p3 400
-p4 200
-p5 100
-p6 100
-p1 300
-p2 400
-p2 200
-p2 200
-p4 300
-p5 400
+t:([] name:`Dent`Beeblebrox`Prefect; iq:98 42 126; age:20 22 25)
+q)`name`age#t
+name       age
+--------------
+Dent       20
+Beeblebrox 22
+Prefect    25
 ```
+
+!!! note "Not currently supported for partitioned tables."
 
 
 ## Keyed table
