@@ -55,7 +55,7 @@ For `wj`, the prevailing quote on entry to the window is considered valid as quo
 
 `wj1` considers quotes on or after entry to the window. If the join is to consider quotes that arrive from the beginning of the interval, use `wj1`.
 
-??? detail "Behavior prior to V3.0"
+!!! detail "Behavior prior to V3.0"
 
     Prior to V3.0, `wj1` considered only quotes in the window except for the window end (i.e. quotes ≥start and &lt;end of the interval).
 

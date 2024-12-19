@@ -43,7 +43,7 @@ There are two ways of creating a table. One way explicitly associates lists of c
 
 The form for the second method, for a table with `j` primary keys and `n` columns in total, is:
 <div markdown="1" class="typewriter">
-t:([c~1~:v~1~; … ; c~j~:v~j~] c~j+1~:v~j+1~; … ;c~n~:v~n~)
+t:([c<sub>1</sub>:v<sub>1</sub>; … ; c<sub>j</sub>:v<sub>j</sub>] c<sub>j+1</sub>:v<sub>j+1</sub>; … ;c<sub>n</sub>:v<sub>n</sub>)
 </div>
 
 Here table `t` is defined with column names $c_{1-n}$, and corresponding values $v_{1-n}. The square brackets are for primary keys, and are required even if there are no primary keys.

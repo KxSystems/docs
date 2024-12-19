@@ -100,8 +100,8 @@ bytes | semantics
 06 | type (6 – integer vector)
 00 | attributes
 02000000 | vector length
-02000000 | 1st item (2)
-03000000 | 2nd item (3)
+02000000 | 1<sup>st</sup> item (2)
+03000000 | 2<sup>nd</sup> item (3)
 
 ## Sorted dictionary with atom values
 
@@ -124,8 +124,8 @@ bytes | semantics
 06 | type (6 – integer vector)
 00 | attributes
 02000000 | vector length
-02000000 | 1st item (2)
-03000000 | 2nd item (3)
+02000000 | 1<sup>st</sup> item (2)
+03000000 | 2<sup>nd</sup> item (3)
 
 
 ## Dictionary with vector values
@@ -152,11 +152,11 @@ bytes | semantics
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-02000000 | 1st item (2)
+02000000 | 1<sup>st</sup> item (2)
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-03000000 | 1st item (3)
+03000000 | 1<sup>st</sup> item (3)
 
 ## Table
 
@@ -187,11 +187,11 @@ bytes | semantics
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-02000000 | 1st item (2)
+02000000 | 1<sup>st</sup> item (2)
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-03000000 | 1st item (3)
+03000000 | 1<sup>st</sup> item (3)
 
 ## Sorted table
 
@@ -221,11 +221,11 @@ bytes | semantics
 06 | type (6 – int vector)
 03 | attributes (`` `p#``)
 01000000 | vector length (1)
-02000000 | 1st item (2)
+02000000 | 1<sup>st</sup> item (2)
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-03000000 | 1st item (3)
+03000000 | 1<sup>st</sup> item (3)
 
 
 ## Keyed table
@@ -254,7 +254,7 @@ bytes | semantics
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-02000000 | 1st item (2)
+02000000 | 1<sup>st</sup> item (2)
 62 | type (98 – table)
 00 | attributes
 63 | type (99 – dict)
@@ -268,7 +268,7 @@ bytes | semantics
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-03000000 | 1st item (3)
+03000000 | 1<sup>st</sup> item (3)
 
 
 ## Sorted keyed table
@@ -299,7 +299,7 @@ bytes | semantics
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-02000000 | 1st item (2)
+02000000 | 1<sup>st</sup> item (2)
 62 | type (98 – table)
 00 | attributes
 63 | type (99 – dict)
@@ -313,7 +313,7 @@ bytes | semantics
 06 | type (6 – int vector)
 00 | attributes
 01000000 | vector length (1)
-03000000 | 1st item (3)
+03000000 | 1<sup>st</sup> item (3)
 
 
 ## Function

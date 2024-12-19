@@ -98,7 +98,7 @@ Dealing with social-media data and in particular Twitter data, poses a number of
 These are just a small number of potential issues which can arise when dealing with social media data but can be rectified in the following manner.
 
 -   Dealing with noise is handled in the preprocessing step through the removal of emojis, email links etc. The decisions made here can improve the ability to classify the data through standardizing the text, but can also remove important information if taken too far.            
--   Both the 2nd and 3rd issues are mitigated through the use of models or techniques with an understanding of the ordering of language. For example, in the the Hoover dam example, knowing that the words _damage_ and _terrible_ preceded the word _Hoover_ may indicate that there has been some infrastructural damage. The use of a model to solve this issue is presented within this paper.
+-   Both the 2<sup>nd</sup> and 3<sup>rd</sup> issues are mitigated through the use of models or techniques with an understanding of the ordering of language. For example, in the the Hoover dam example, knowing that the words _damage_ and _terrible_ preceded the word _Hoover_ may indicate that there has been some infrastructural damage. The use of a model to solve this issue is presented within this paper.
 
 
 ## Pre-processing

@@ -9,7 +9,7 @@ date: December 2020
 
 ![Number series](../../img/alamy/G36AKX.jpg)
 
-??? summary "Use iterators to find values in a series that pass a test"
+!!! summary "Use iterators to find values in a series that pass a test"
 
     Filter a list for items that pass a test that may be CPU-intensive. 
 
@@ -155,7 +155,7 @@ Here `x` is 1, `y` is `25#A` and `f` is `sd'`.
 
 Lastly we note that iterators such as `'` (Each) and `\` (Do) are unary operators with _postfix_ syntax, i.e. an iterator is written to the _right_ of its argument.
 
-??? detail "Iterator syntax"
+!!! detail "Iterator syntax"
 
     In `sd'`, the argument of Each is `sd`, and in `sd'\`, the argument of Scan is `sd'`.
 
@@ -299,7 +299,7 @@ q)flip{x 1}r:{25>count x 1}({(x;y,(x<sm)#enlist x,sm:sd x)}. 2 0+)/(1;())
 Test your understanding:
 What is `r 0` above?
 
-??? success "Answer"
+!!! success "Answer"
 
         q)r 0
         11025
@@ -319,7 +319,7 @@ We had however recalculated $s(n)$ for the abundant numbers, so we amended the e
 
 Q3 took us to the While iterator to proceed from 1,000,000,001 to the next abundant odd number, returning both the number and its $s(n)$.
 
-From that we could adapt the technique to solve Q2 with a While iteration that stops when the 25th value has been found.
+From that we could adapt the technique to solve Q2 with a While iteration that stops when the 25<sup>th</sup> value has been found.
 
 The While iterator uses a truth condition that tests the result of the function being iterated. 
 Where the truth condition 

@@ -418,7 +418,7 @@ And a partridge in a pear tree.
 :fontawesome-solid-circle-question:
 Using string-search-and-replace to change the days looks like a sledgehammer to crack a nut. Can you find an alternative?
 
-??? success "Answer"
+!!! success "Answer"
 
     Replace the unary projection `ssr[;"twelfth";y]` with `{(7#x),y,14_x}[;y]`.
     
@@ -427,7 +427,7 @@ Using string-search-and-replace to change the days looks like a sledgehammer to 
 :fontawesome-solid-circle-question:
 If you `raze` the verses before fixing the last line of the first verse, how else must you change the definition of `lyric`?
 
-??? success "Answer"
+!!! success "Answer"
 
         lyric:@[;2;{"A",5_x}]raze(stanza lines){@[x;0;ssr[;"twelfth";y]]}'days
 
@@ -437,7 +437,7 @@ If you `raze` the verses before fixing the last line of the first verse, how els
 :fontawesome-solid-circle-question:
 Write an expression to generate all the first lines.
 
-??? success "Answer"
+!!! success "Answer"
 
         {"On the ",x," day of Christmas"}each days
 

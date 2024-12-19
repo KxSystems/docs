@@ -10,7 +10,7 @@ date: December 2020
 
 
 
-??? summary "Search a tree of possibilities, stop when you find one"
+!!! summary "Search a tree of possibilities, stop when you find one"
 
     A simple problem requires **recursively searching a tree** of possible solutions. 
     
@@ -220,7 +220,7 @@ Can you test `.cmw.done` outside the [Cond](../../ref/cond.md) with `or` as e.g.
 .cmw.done or {[s;b]
 ```
 
-??? success "Answer"
+!!! success "Answer"
 
     No – both arguments of `or` are evaluated.
     (You are thinking of another programming language.)

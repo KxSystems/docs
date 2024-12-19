@@ -179,7 +179,7 @@ s4 p4 300 1
 s1 p5 400 1
 ```
 
-??? info "`fby` before V2.7"
+!!! info "`fby` before V2.7"
 
     In V2.6 and below, `fby`’s behavior is undefined if the aggregation function returns a list; it usually signals an error from the k definition of `fby`. However, if the concatenation of all list results from the aggregation function results `raze` has the same length as the original vectors, a list of some form is returned, but the order of its items is not clearly defined.
 

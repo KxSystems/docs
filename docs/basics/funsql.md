@@ -893,7 +893,7 @@ q)buildQuery "select[10 20] from trade"
 q)//5th parameter included
 ```
 
-The 6th argument is a column and a direction to order the results by. Use `<` for ascending and `>` for descending.
+The 6<sup>th</sup> argument is a column and a direction to order the results by. Use `<` for ascending and `>` for descending.
 
 ```q
 q)parse"select[10;<price] from trade"
@@ -913,7 +913,7 @@ hopen
 hclose
 ```
 
-We see that the k function for the 6th argument of the functional form is `<:` (ascending) or `>:` (descending). At first glance this appears to be `hopen` or `hclose`. In fact in earlier versions of q, `iasc` and `hopen` were equivalent (as were `idesc` and `hclose`). The definitions of `iasc` and `idesc` were later altered to signal a rank error if not applied to a list.
+We see that the k function for the 6<sup>th</sup> argument of the functional form is `<:` (ascending) or `>:` (descending). At first glance this appears to be `hopen` or `hclose`. In fact in earlier versions of q, `iasc` and `hopen` were equivalent (as were `idesc` and `hclose`). The definitions of `iasc` and `idesc` were later altered to signal a rank error if not applied to a list.
 
 ```q
 q)iasc
@@ -928,7 +928,7 @@ q)iasc 7
 
 Since the columns of a table are lists, it is irrelevant whether the functional form uses the old or new version of `iasc` or `idesc`.
 
-The `buildQuery` function handles the 6th argument as a special case so will produce `iasc` or `idesc` as appropriate.
+The `buildQuery` function handles the 6<sup>th</sup> argument as a special case so will produce `iasc` or `idesc` as appropriate.
 
 ```q
 q)buildQuery "select[10 20;>price] from trade"

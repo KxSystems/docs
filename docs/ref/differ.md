@@ -61,7 +61,7 @@ range:  b b b b b b b b b b b b b b b b b b
 
 `differ` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-??? warning "Binary use deprecated"
+!!! warning "Binary use deprecated"
 
     As of V3.6 the keyword is [variadic](../basics/variadic.md). 
     Binary application is deprecated and may disappear in future versions.

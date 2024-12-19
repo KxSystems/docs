@@ -21,31 +21,31 @@ For many use cases involving ordered data it is significantly more expressive.
 Below, square brackets mark optional elements; a slash begins a trailing comment.
 
 <div markdown="1" class="typewriter">
-select [_L~exp~_]     [_p~s~_] [by _p~b~_] from _t~exp~_ [where _p~w~_]
-exec   [distinct] [_p~s~_] [by _p~b~_] from _t~exp~_ [where _p~w~_]
-update             _p~s~_  [by _p~b~_] from _t~exp~_ [where _p~w~_]
-delete                         from _t~exp~_ [where _p~w~_]        / rows
-delete             _p~s~_          from _t~exp~_                   / columns
+select [_L<sub>exp</sub>_]     [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+exec   [distinct] [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+update             _p<sub>s</sub>_  [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+delete                         from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]        / rows
+delete             _p<sub>s</sub>_          from _t<sub>exp</sub>_                   / columns
 </div>
 
 A template is evaluated in the following order.
 
 <div markdown="1" class="typewriter">
-[From phrase](#from-phrase)        _t~exp~_
-[Where phrase](#where-phrase)       _p~w~_
-[By phrase](../ref/select.md#by-phrase)          _p~b~_
-[Select phrase](../ref/select.md#select-phrase)      _p~s~_
-[Limit expression](../ref/select.md#limit-expression)   _L~exp~_
+[From phrase](#from-phrase)        _t<sub>exp</sub>_
+[Where phrase](#where-phrase)       _p<sub>w</sub>_
+[By phrase](../ref/select.md#by-phrase)          _p<sub>b</sub>_
+[Select phrase](../ref/select.md#select-phrase)      _p<sub>s</sub>_
+[Limit expression](../ref/select.md#limit-expression)   _L<sub>exp</sub>_
 </div>
 
 
 ### From phrase
 
 The From phrase 
-<code markdown="1">from _t~exp~_</code> 
+<code markdown="1">from _t<sub>exp</sub>_</code> 
 is required in all query templates. 
 
-The table expression _t~exp~_ is
+The table expression _t<sub>exp</sub>_ is
 
 -   a table or dictionary (call-by-value)
 -   the name of a table or dictionary, in memory or on disk, as a symbol atom (call-by-name)
@@ -98,11 +98,11 @@ q)t1~t2   / t1 changed
 
 ### Phrases and subphrases
 
-_p~s~_, _p~b~_, and _p~w~_ are 
+_p<sub>s</sub>_, _p<sub>b</sub>_, and _p<sub>w</sub>_ are 
 respectively the Select, By, and Where _phrases_.
 Each phrase is a comma-separated list of subphrases.
 
-A _subphrase_ is a q expression in which names are resolved with respect to _t~exp~_ and any table/s linked by foreign keys. Subphrases are evaluated in order from the left, but each subphrase expression is evaluated right-to-left in normal q syntax. 
+A _subphrase_ is a q expression in which names are resolved with respect to _t<sub>exp</sub>_ and any table/s linked by foreign keys. Subphrases are evaluated in order from the left, but each subphrase expression is evaluated right-to-left in normal q syntax. 
 
 !!! tip "To use the Join operator within a subphrase, parenthesize the subphrase."
 

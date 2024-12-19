@@ -15,7 +15,7 @@ date: February 202
 
 Find all the words containing K that can be composed from the letters in the grid. Use letters no more times than they appear in the grid.
 
-??? summary "Multiple levels of iteration and nested indexes"
+!!! summary "Multiple levels of iteration and nested indexes"
 
     Test whether a word can be composed from a grid by examining the difference of their letter counts.
 
@@ -31,7 +31,7 @@ Find all the words containing K that can be composed from the letters in the gri
     :fontawesome-solid-circle-check:
     No loops, no counters, no control structures.
 
-???+ question "Write a program to solve the word-wheel puzzle"
+!!! question "Write a program to solve the word-wheel puzzle"
 
     Words must contain at least three letters and appear in the [National Puzzlers’ League dictionary](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt).
 

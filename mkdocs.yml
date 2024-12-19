@@ -18,16 +18,9 @@ extra_javascript:
   - scripts/qsearch.js # site-specific search engine
 
 markdown_extensions:
-  - abbr
   - admonition
-  - attr_list
-  - def_list
-  - meta
-  # - mkdocs-click
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.caret
-  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -37,20 +30,8 @@ markdown_extensions:
   - pymdownx.extra
   - pymdownx.highlight:
       use_pygments: false
-  - pymdownx.keys
-  # - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.tilde
-  - tables
   - toc:
       permalink: true
       title: On this page
@@ -64,7 +45,6 @@ plugins:
         - "*.gz"
       regex:
         - '.*\.(tmp|bin|tar)$'
-  - render_swagger
 
 remote_branch: master
 repo_name: ''

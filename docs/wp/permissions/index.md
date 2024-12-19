@@ -316,7 +316,7 @@ Generally we could classify a select statement by saying:
 1.  It has 5 items
 2.  The first item is `?`
 
-However, there are optional 5th and 6th arguments to a functional select statement. The fifth argument is used to select the first or last rows from a table, while the 6th argument allows you to extract rows from the table based on indexes.
+However, there are optional 5<sup>th</sup> and 6<sup>th</sup> arguments to a functional select statement. The fifth argument is used to select the first or last rows from a table, while the 6<sup>th</sup> argument allows you to extract rows from the table based on indexes.
 
 Our classification function for select statements is:
 

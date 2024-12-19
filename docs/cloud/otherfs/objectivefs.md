@@ -32,7 +32,7 @@ It provides snapshots and client-side encryption.
 ObjectiveFS also scales aggregate bandwidth as more kdb+ nodes use the same S3 bucket.
 It scales up close to linearly for reads, as the number of reader nodes increase, since Amazon automatically partitions a bucket across service nodes, as needed to support higher request rates.
 
-??? detail "The results below were generated on ObjectiveFS V5.3.1 from December 2017." 
+!!! detail "The results below were generated on ObjectiveFS V5.3.1 from December 2017." 
 
 	Results from the newest V6.8 will be published soon.
 

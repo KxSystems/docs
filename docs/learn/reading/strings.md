@@ -30,7 +30,7 @@ q)f["mississippi";"s"]
 q)f["life";"."]
 0
 ```
-??? success "Answer"
+!!! success "Answer"
 
         {sum x=y}
 
@@ -50,7 +50,7 @@ q)f "wasitaratisaw"
 q)f "palindrome"
 0
 ```
-??? success "Answer"
+!!! success "Answer"
 
         {x~reverse x}
 
@@ -66,7 +66,7 @@ q)f "foo"
 q)f "baz"
 ""
 ```
-??? success "Answer"
+!!! success "Answer"
     
     {where 1<count each group x}
 
@@ -84,7 +84,7 @@ q)f["apple";"elap"]
 q)f["listen";"silent"]
 1
 ```
-??? success "Answer"
+!!! success "Answer"
 
         {asc[x]~asc y}
 
@@ -99,7 +99,7 @@ q)f "somewhat heterogenous"
 q)f "aaabccddefffgg"
 "be"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {where 1=count each group x}
 
@@ -117,7 +117,7 @@ q)f["fboaro";"foobar"]
 q)f["abcde";"deabc"]
 1
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {x in (1 rotate)scan y}
 
@@ -137,7 +137,7 @@ q)f ("books";"apple";"peanut";"aardvark";"melon";"pie")
 "peanut"
 "aardvark"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {x iasc count each x}
 
@@ -154,7 +154,7 @@ q)f "CCCBBBAA"
 q)f "CCCBBBBAA"
 "B"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {first key desc count each group x}  / (AV/DL)
 
@@ -171,7 +171,7 @@ q)f "zoop"
 q)f "one two three four"
 "eno owt eerht ruof"
 ```
-??? success "Answer"
+!!! success "Answer"
 
         {" "sv reverse each " "vs x}
 
@@ -186,7 +186,7 @@ q)f["foobar";100101b]
 q)f["embiggener";0011110011b]
 "bigger"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {x where y}
 
@@ -201,7 +201,7 @@ q)f["fbr";100101b]
 q)f["bigger";0011110011b]
 "__bigg__er"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {("_",x)y*sums y}
 
@@ -218,7 +218,7 @@ q)f "FLAPJACKS"
 q)f "Several normal words"
 "S_v_r_l n_rm_l w_rds"
 ```
-??? success "Answer"
+!!! success "Answer"
 
         V:"AEIOUYaeiouy"            / vowels
         {?[x in V;"_";x]}           / Vector Conditional; in
@@ -239,7 +239,7 @@ q)f "Several normal words"
 q)f "FLAPJACKS"
 "FLPJCKS"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         except[;V]
 
@@ -256,7 +256,7 @@ q)f["one fish two fish";"fish"]
 q)f["I don't give a care";"care"]
 "I don't give a XXXX"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {ssr[x;y;count[y]#"X"]}
 
@@ -274,7 +274,7 @@ q)f "xyz"
 "zxy"
 "zyx"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {x {flip[y]where x=sum y}[s;] s vs til"j"$s xexp s:count x}
 
@@ -293,7 +293,7 @@ We have used up nearly our entire monthly allowance of parens and local variable
 q)f "   abc def  "
 "abc def"
 ```
-??? success "Answer"
+!!! success "Answer"
     
         {{y _ x}/[x;] 1 -1*?'[;0b]1 reverse\null x}
 

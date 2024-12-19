@@ -380,7 +380,7 @@ Timeout in seconds for client queries, i.e. maximum time a client call will exec
 -   the [`exit`](../ref/exit.md) keyword (since 4.1t 2021.07.12)
 -   the [`hdel`](../ref/hdel.md) keyword (since V4.1t 2021.10.13, V4.0 2023.08.11)
 
-??? danger "Only a simple protection against “wrong” queries"
+!!! danger "Only a simple protection against “wrong” queries"
 
     For example, setting a system command in `.z.ts` and starting the timer still works. The right system command could for example expose a terminal, so the user running the database could be fully impersonated and compromised from then on.
 

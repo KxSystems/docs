@@ -166,7 +166,7 @@ typedef struct k0 {
 As an exercise, it is instructive to count the minimum and the maximum number of bytes a K object can use on your system, taking into account any padding or alignment constraints.
 
 Given a K object `x`, we can use the accessors noted in the table above to access elements of the object.
-For example, given a K object containing a vector of floats, we can access `kF(x)[42]` to get the 42nd element of the vector.
+For example, given a K object containing a vector of floats, we can access `kF(x)[42]` to get the 42<sup>nd</sup> element of the vector.
 For accessing atoms, use the following accessors:
 
 
@@ -202,7 +202,7 @@ Where `x->t` is:
 -   exactly zero, the K object contains a mixed list of other K objects.
 Each item in the list is a pointer to another K object.
 To access each item of `x` we use the `kK` object accessor.
-For example: `kK(x)[42]` to access the 42nd element of the mixed list.
+For example: `kK(x)[42]` to access the 42<sup>nd</sup> element of the mixed list.
 
 
 ## Nulls and infinities

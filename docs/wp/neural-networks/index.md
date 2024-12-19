@@ -623,7 +623,7 @@ Plot of error vs training epoch is given in
 Figure 6. We see that the error settles into an oscillation pattern
 around training epoch 700. While these oscillations are slowly
 converging it is likely that overfitting begins to take place shortly
-after the 700th iteration of training.
+after the 700<sup>th</sup> iteration of training.
 
 ![](img/image9.png)  
 <small>_Figure 6: Error while training network on Iris dataset_</small>

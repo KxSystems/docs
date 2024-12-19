@@ -202,7 +202,7 @@ More general cross-sectional indexing occurs when the items of `i` are rectangul
 
 ### Nulls in `i`
 
-Nulls in `i` mean “select all”: if `i[0]` is null, then continue on with `d` and the rest of `i`, i.e. `1_i`; if `i[1]` is null, then for every selection made through `i[0]`, continue on with that selection and the rest of `i`, i.e. `2_i`; and so on. For example, `d .(::;0)` means that the 0th item of every item of `d` is selected.
+Nulls in `i` mean “select all”: if `i[0]` is null, then continue on with `d` and the rest of `i`, i.e. `1_i`; if `i[1]` is null, then for every selection made through `i[0]`, continue on with that selection and the rest of `i`, i.e. `2_i`; and so on. For example, `d .(::;0)` means that the 0<sup>th</sup> item of every item of `d` is selected.
 
 ```q
 q)d

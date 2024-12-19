@@ -221,7 +221,7 @@ This requires little code and no comment.
 
 The next line composes the display of the tableau. It is a long line and it looks intimidating.
 
-??? question "Q: Why is a line of my Java code so much easier to read than a line of q?"
+!!! question "Q: Why is a line of my Java code so much easier to read than a line of q?"
 
     A: Because the Java line isn’t doing very much.
 
@@ -304,7 +304,7 @@ q)SYM {flip x[;til max ce x]} g[`c;TABLEAU]|HC*not g[`c;TABLEAU] in g`x
                   8H
 ```
 
-??? question "How did we lose the backtick symbols?"
+!!! question "How did we lose the backtick symbols?"
 
     `x[;til max ce x]` changed the general list into a symbol matrix, which is displayed without backticks.
 
@@ -387,7 +387,7 @@ That gives us a list of triples: from-column, from-index, and to-column. We pass
 cards:c ./:m[;0 1];
 ```
 
-??? tip "A list is a function of its indexes."
+!!! tip "A list is a function of its indexes."
 
     The use here of Apply with an iterator again highlights a founding insight of q: _a list is a function of its indexes_. That has deep implications.
 
@@ -407,7 +407,7 @@ The next code line defines `nof` (next on foundation), the corresponding card th
 
 The first index in `m[;2]` is 2, the first foundation index, i.e. Spades. If the top card on column 2 were 3S, the corresponding `nof` would be 4S.
 
-??? question "The definition of `nof` contains no Add. How is the next value obtained?"
+!!! question "The definition of `nof` contains no Add. How is the next value obtained?"
 
     The `NUMBER` list returns origin-1 numbers, e.g. a 1 for an ace indexes a `"2"` from `NUMBERS`.
 
@@ -419,7 +419,7 @@ The last line of the lambda
 
 returns items (triples) from `m` where either the card-to-be-moved is the next wanted on the foundation, or it is the ace of the suit for that foundation pile. (There is no need to see if the pile is empty. If the ace is available for moving, its foundation pile is empty.)
 
-??? example "Aces next?"
+!!! example "Aces next?"
 
     The last line of the lambda tests to see if a card _either_ matches its `nof` _or_ is an ace of the target column’s suit. That test (ace and suit) could be omitted if the `nof` list included aces. How could that be arranged? (Clue: `le c m[;2]` returns nulls from empty piles.)
 

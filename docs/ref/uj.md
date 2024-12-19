@@ -63,7 +63,7 @@ a b| c  d
 !!! note "`uj` generalizes the [`,` Join](join.md) operator."
 
 
-??? detail "Changes in V3.0"
+!!! detail "Changes in V3.0"
 
     The union join of two keyed tables is equivalent to a [left join](lj.md) of the two tables with the catenation of unmatched rows from the second table.
 

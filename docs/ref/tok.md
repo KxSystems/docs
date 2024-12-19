@@ -81,7 +81,7 @@ q)"D"$"2147483648"
 
 !!! note "Changes since 4.1t 2021.09.03,4.0 2021.10.01"
 
-    Short converts to 0Nh instead of +/-0Wh 
+    Short converts to 0Nh instead of &plusmn;0Wh 
 
 ## :fontawesome-solid-sitemap: Iteration
 

@@ -268,7 +268,7 @@ Extra protocol details for a connection handle are available via [`.z.e`](../ref
 
 ## Suitability and restrictions
 
-Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is \~1.5× assuming your OpenSSL library can utilize AES-NI.
+Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is ~1.5× assuming your OpenSSL library can utilize AES-NI.
 
 OpenSSL 1.1 is supported since V4.0 2020.03.17.
 

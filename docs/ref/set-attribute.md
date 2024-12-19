@@ -98,7 +98,7 @@ q)2,`p#2 2 2 1 1 4 4 4 4 3 3
 2 2 2 2 1 1 4 4 4 4 3 3
 ```
 
-??? warning "The _grouped_ attribute is presently unsuitable for cycling through a small window of a domain, due to the retention of keys backing the attribute."
+!!! warning "The _grouped_ attribute is presently unsuitable for cycling through a small window of a domain, due to the retention of keys backing the attribute."
 
     ```q
     q)v:`g#1#0

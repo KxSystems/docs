@@ -122,7 +122,7 @@ q)"x"$"abc"
 0x616263
 ```
 
-??? danger "Casting longs above int infinity"
+!!! danger "Casting longs above int infinity"
 
     Longs greater than `0wi` cast to `0xff`
 

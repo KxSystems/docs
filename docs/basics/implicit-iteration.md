@@ -267,7 +267,7 @@ q)show s:read0`:sensors.txt
 "850884046457214232200714"
 ```
 
-??? question "a. For each of the 24 hours, on how many days of the period did the sensor reading for that hour fall to zero?"
+!!! question "a. For each of the 24 hours, on how many days of the period did the sensor reading for that hour fall to zero?"
 
     Converting the sensor readings to numbers is not necessary: they can be compared directly to `"0"`.
     ```q
@@ -296,7 +296,7 @@ q)show s:read0`:sensors.txt
 
 Your maintenance manager gets automated reports printed, but the last report got damaged. She needs your help. 
 
-??? question "b. On which days did the sensor readings begin (8, 6, 1, 5, …) and (1, 1, 6, 4, …)?"
+!!! question "b. On which days did the sensor readings begin (8, 6, 1, 5, …) and (1, 1, 6, 4, …)?"
 
     We can search the first four columns of `s` for these sequences.
 
@@ -327,7 +327,7 @@ Even simple visualizations can be valuable.
 
 Normal operating levels are in the range (2,7).
 
-??? question "c. Display a simple plot showing when the sensors reported levels outside that range."
+!!! question "c. Display a simple plot showing when the sensors reported levels outside that range."
 
     The `within` keyword take as right argument a 2-item vector of sortable type. 
     It has atomic iteration in its left domain.
@@ -369,7 +369,7 @@ Normal operating levels are in the range (2,7).
 
 At level 9 productivity is highest.
 
-??? question "d. Plot when in the period this occurred."
+!!! question "d. Plot when in the period this occurred."
 
     ```q
     ".#"s="9"
@@ -449,7 +449,7 @@ q)read0 `:fudadj.csv / fuddling adjustments
 "2,-1,2,-1,3,0,1,1,0,-1,2,2,3,3,0,0,-1,1,3,-1,1,2,2,3,2,-1,0,2,0,3,0,1,1,0,3,3,-1..
 ```
 
-??? question "What were the fuddling levels corresponding to the sensor readings in Exercise 1?"
+!!! question "What were the fuddling levels corresponding to the sensor readings in Exercise 1?"
 
     The file has no column headers, so [Load CSV](https://code.kx.com/q/ref/file-text/#load-csv) returns not a table but a list of columns.
 
