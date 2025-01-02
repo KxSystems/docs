@@ -90,7 +90,7 @@ Where
 
 ### .u.end
 
-Perform [end-of-day actions](end-of-day) of saving tables to disk, clearing tables and running reload on HDB instance to make it aware of new day of data.
+Perform [end-of-day actions](#end-of-day) of saving tables to disk, clearing tables and running reload on HDB instance to make it aware of new day of data.
 
 ```q
 .u.end[x]
@@ -129,4 +129,3 @@ Actions performed:
 * if a tickerplant log file has been provided
     * log file is replayed using [`-11!`](../basics/internal.md#-11-streaming-execute) to populate tables
     * set the HDB directory by changing the working directory to the same directory as used by the log file (see [`tick.q`](tickq.md#usage) for details on how to alter the log file directory).
-
