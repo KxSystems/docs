@@ -139,6 +139,4 @@ The [.h namespace](../ref/doth.md) provides a range of markup and HTTP protocol 
 ----
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§11.7.1 HTTP Connections](/q4m3/q4m3/11_IO/#1171-http-connections)
-
-
+[§11.7.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)

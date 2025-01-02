@@ -1547,7 +1547,7 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 
 !!! warning "Does not look into the segment directories."
 
-    The function calculates only the path, based on the partition and the contents of `par.txt` in a round-robin fashion. It does not check the contents of the segments to see if the partition is there. See [Segmented databases](..database/segment/#considerations) for details.
+    The function calculates only the path, based on the partition and the contents of `par.txt` in a round-robin fashion. It does not check the contents of the segments to see if the partition is there. See [Segmented databases](../database/segment.md#considerations) for details.
 
 ## `PD` (partition locations)
 
@@ -2184,5 +2184,3 @@ q).Q.x
 
 :fontawesome-solid-hand-point-right:
 [`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.opt`](#opt-command-parameters) (command parameters), [`.Q.def`](#def-command-defaults) (command defaults)
-
-
