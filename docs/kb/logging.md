@@ -372,7 +372,7 @@ The knowledge of how to create a log file, and how to replay part of a log file 
 Note that this does not fix the corrupted section, only removes the corrupted section from the file.
 
 The following example shows converting a `bad.log` into a `good.log` by temporarly overriding [`.z.ps`](../ref/dotz.md#zps-set) which is called for each valid chunk (as defined by [`-11!`](../basics/internal.md#-11-streaming-execute)). 
-It resets `.z.ts` to the system default after processing using [`\x`](../basics/syscmds/#x-expunge).
+It resets `.z.ts` to the system default after processing using [`\x`](../basics/syscmds.md#x-expunge).
 
 ```q
 goodfile:hsym `:good.log;
@@ -404,4 +404,3 @@ _Q for Mortals_
 :fontawesome-brands-github: 
 [prodrive11/log4q](https://github.com/prodrive11/log4q)
 A concise implementation of logger for q applications
-
