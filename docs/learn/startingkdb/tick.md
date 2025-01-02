@@ -107,12 +107,12 @@ From the downloaded `kdb-tick` directory create a tickerplant:
 ```q
 q tick.q -p 5010
 ```
-from a seperate terminal window, start an RDB:
+from a separate terminal window, start an RDB:
 ```q
 q tick/r.q -p 5011
 ```
 
-From the demo scripts directory run each of the following realtime engines in seperate terminal windows:
+From the demo scripts directory run each of the following realtime engines in separate terminal windows:
 
 ```q
 q cx.q hlcv -p 5014 -t 1000

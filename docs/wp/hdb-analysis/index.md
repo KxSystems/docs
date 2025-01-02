@@ -39,7 +39,7 @@ dbmaint: perform maintenance on the hdb. default is 0 (no maintenance)
 level  : level of analysis, least to most intensive. default is 6
       0: check if specified tables exist in specified partitions
       1: check if .d files exist in specified partitions
-      2: check if partition field (.Q.pf) exists in the .d file per partiton
+      2: check if partition field (.Q.pf) exists in the .d file per partition
       3: check if partition field (.Q.pf) exists on disk per partition
       4: check if all columns in the .d file exist in the same partition
       5: check if all columns from the latest partition exist in each partition
@@ -69,7 +69,7 @@ q)lastdotd`trade
 The `init` function runs the script. This calls several functions; in order:
 * `lh` - load hdb; attempts to load the specified hdb and prints some general information if successful. Exits on failure.
 * `pa` - parse arguments; parse command line arguments and supply defaults values, these are documented above.
-* `rp` - restrict partitions; attempts to restrict the hdb view using `.Q.view`, but always includes the last partiton found on disk. Exits on failure.
+* `rp` - restrict partitions; attempts to restrict the hdb view using `.Q.view`, but always includes the last partition found on disk. Exits on failure.
 * `ra` - run analysis; runs each of the `al?` functions found and populates the analysis results table (`ar`).
 * `rw` - run warnings; runs each of the `wl?` functions found and populates the warning results table (`wr`).
 * `ld` - load dbmaint; attempts to load `dbmaint.q`. Only called if the `dbmaint` flag is true. Exits on failure.
@@ -599,7 +599,7 @@ q)count select from trade where date in 2013.05.13
 26269
 ```
 
-Ensuring consistent lengths is straightforward but involved; we need to read each column file in each partition. We use the `.d` file from the last partition to retrive the columns of interest. The `paths` function constructs the full path to the file. Once the column has been read, `differ` tells us if any of the counts do not match the previous entry.
+Ensuring consistent lengths is straightforward but involved; we need to read each column file in each partition. We use the `.d` file from the last partition to retrieve the columns of interest. The `paths` function constructs the full path to the file. Once the column has been read, `differ` tells us if any of the counts do not match the previous entry.
 
 ```q
 al8:{
@@ -660,7 +660,7 @@ q)count select from trade where date in 2013.05.13
 
 ## Warnings
 
-The analysis and maintenance section above covers most of the common issues, however there are other scenarios that won't neccesarily break the hdb, but may impact performance etc. These are included as warnings.
+The analysis and maintenance section above covers most of the common issues, however there are other scenarios that won't necessarily break the hdb, but may impact performance etc. These are included as warnings.
 
 ### Level 0
 
@@ -701,7 +701,7 @@ quote| sym
 
 ### Level 1
 
-This is opposite to analysis level 4. While the hdb requires that all columns mentioned in the `.d` file exist in that partition, it does not require that all column files in the partition exist in the `.d` file. This offers an easy, non-permament method to delete columns; we can simply remove it from the latest `.d` file, but preserve the data on disk. For this reason, this is flagged as a warning only.
+This is opposite to analysis level 4. While the hdb requires that all columns mentioned in the `.d` file exist in that partition, it does not require that all column files in the partition exist in the `.d` file. This offers an easy, non-permanent method to delete columns; we can simply remove it from the latest `.d` file, but preserve the data on disk. For this reason, this is flagged as a warning only.
 
 ```q
 q)cols trade
@@ -793,7 +793,7 @@ quote| (`date$())!()
 
 ## Profiles
 
-Profile of analyis and warnings for speed and memory usage. The number of repitions used was 1380 - this simulates a 5 year hdb using this sample data set `60*count .Q.pv`. Of course, there is some small additional small overhead in this method vs querying an actual hdb of 5 years (logging etc).
+Profile of analysis and warnings for speed and memory usage. The number of repetitions used was 1380 - this simulates a 5 year hdb using this sample data set `60*count .Q.pv`. Of course, there is some small additional small overhead in this method vs querying an actual hdb of 5 years (logging etc).
 
 ```q
    | time  space
@@ -818,7 +818,7 @@ wl2| 50163 4203008
 wl3| 49800 4203008
 ```
 
-Analyis levels 7 and 8 are the most time consuming, for this reason, the default analysis level is set to 6. Similar for warnings, levels 2 and 3 are the most comsumptive, the default is set to 1 here.
+Analysis levels 7 and 8 are the most time consuming, for this reason, the default analysis level is set to 6. Similar for warnings, levels 2 and 3 are the most comsumptive, the default is set to 1 here.
 
 ## Future improvements
 

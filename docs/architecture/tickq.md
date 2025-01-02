@@ -201,8 +201,8 @@ Add each received message to the batch and record message to the tickerplant log
 
 Actions performed:
 * If the first element of  `y` is not a timespan (or list of timespan)
-    * inspect [`.u.d`](#variables), if a new day has occured call [`.z.ts`](#batch-mode_1)
-    * add a new timespan column populated with the current local time ([`.z.P`](../ref/dotz.md#zp-local-timestamp)). If mutiple rows of data, all rows receive the same time.
+    * inspect [`.u.d`](#variables), if a new day has occurred call [`.z.ts`](#batch-mode_1)
+    * add a new timespan column populated with the current local time ([`.z.P`](../ref/dotz.md#zp-local-timestamp)). If multiple rows of data, all rows receive the same time.
 * Add data to current batch (i.e. new data `y` inserted into table `x`), which will be published on batch timer [`.z.ts`](#batch-mode_1).
 * If tickerplant log file created, write upd function call & params to the log and increment [`.u.j`](#variables) so that an RDB can execute what was originally called during recovery.
 
@@ -214,7 +214,7 @@ Publish each received message to all interested clients & record message to tick
 Actions performed:
 
 * Checks if end-of-day procedure should be run by calling [`.u.ts`](#uts) with the current date
-* If the first element of `y` is not a timespan (or list of timespan), add a new timespan column populated with the current local time ([`.z.P`](../ref/dotz.md#zp-local-timestamp)). If mutiple rows of data, all rows receive the same time.
+* If the first element of `y` is not a timespan (or list of timespan), add a new timespan column populated with the current local time ([`.z.P`](../ref/dotz.md#zp-local-timestamp)). If multiple rows of data, all rows receive the same time.
 * Retrieves the column names of table `x`
 * Publish data to all interested clients, by calling [`.u.pub`](uq.md#upub) with table name `x` and table generated from `y` and column names.
 * If tickerplant log file created, write upd function call & params to the log and increment [`.u.i`](#variables) so that an RDB can execute what was originally called during recovery
@@ -239,7 +239,7 @@ Actions performed:
 
 #### Realtime Mode
 
-If batch timer not specified, system timer is set to run every 1000 milliseconds to check if end-of-day has occured.
+If batch timer not specified, system timer is set to run every 1000 milliseconds to check if end-of-day has occurred.
 End-of-day is checked by calling [`.u.ts`](#uts), passing current local date ([`.z.D`](../ref/dotz.md#zt-zt-zd-zd-timedate-shortcuts)).
 
 ### Pub/Sub functions

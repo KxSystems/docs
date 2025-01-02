@@ -100,7 +100,7 @@ We could treat this as a possible third string replacement.
 :fontawesome-solid-lightbulb:
 Lightbulb moment. We do not need to test the first letter to see if the third replacement is needed. If it is not, the replacement, e.g. _so-s_ with _so-_, is harmless: a no-op.
 
-If we define the third substition
+If we define the third substitution
 
 ```q
 s3:{1(-1_)\x,"o-",x}lower first Name

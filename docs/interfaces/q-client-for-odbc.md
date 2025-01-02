@@ -133,7 +133,7 @@ Loads an entire database into the session:
 .odbc.load x
 ```
 
-Where x is the same parameter defintion as that passed to [`.odbc.open`](#open).
+Where x is the same parameter definition as that passed to [`.odbc.open`](#open).
 
 ```q
 q).odbc.load "dsn=northwind"

@@ -1016,7 +1016,7 @@ Returns an int as `yyyymmdd`.
 ```syntax
 K vi(K x,UJ j)
 ```
-Access elements of the types 77..97 inclusive (anymap and nested homogenous vectors), akin to the macro usage kK(x)[j] for x of type 0. Increments the reference count of the object at x[j], and hence the result should be freed via r0(result) when it is no longer needed. If j is out of bounds, i.e. j>=xn, a null object for the first element's type is returned. Available within shared library only.
+Access elements of the types 77..97 inclusive (anymap and nested homogeneous vectors), akin to the macro usage kK(x)[j] for x of type 0. Increments the reference count of the object at x[j], and hence the result should be freed via r0(result) when it is no longer needed. If j is out of bounds, i.e. j>=xn, a null object for the first element's type is returned. Available within shared library only.
 
 
 ### `vk` (collapse homogeneous list)

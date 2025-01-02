@@ -36,7 +36,7 @@ q chainedtick.q [host]:port[:usr:pwd] [-p 5110] [-t N]
 
 !!! note
 
-    chainedtick.q contains `\l tick/u.q` therefore has a dependancy on [`u.q`](https://github.com/KxSystems/kdb-tick/blob/master/tick/u.q) existing within the directory `tick`.
+    chainedtick.q contains `\l tick/u.q` therefore has a dependency on [`u.q`](https://github.com/KxSystems/kdb-tick/blob/master/tick/u.q) existing within the directory `tick`.
 
 If the primary tickerplant is running on the same host (port 5010), the following starts a chained tickerplant on port 5010 sending bulk updates, every 1000 milliseconds.
 ```bash

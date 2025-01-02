@@ -1215,7 +1215,7 @@ plt[`:show][]
 ```
 ![Figure_9](imgs/peak.png)
 
-The above plot gives an indication to how close the time to peak models prediction was compared with the time that the actual flood peak occured. In a real life scenario, being able to create an upper bound time limit predicting when a flood will reach its peak, allows emergency services to take appropriate action, possibly reducing the damages caused by floods.
+The above plot gives an indication to how close the time to peak models prediction was compared with the time that the actual flood peak occurred. In a real life scenario, being able to create an upper bound time limit predicting when a flood will reach its peak, allows emergency services to take appropriate action, possibly reducing the damages caused by floods.
 
 
 ## Conclusion

@@ -142,7 +142,7 @@ For example, run the following to create a server instance with a function calle
 q)\p 5000
 q)add:{x+y}           / define a function 'add' on the server
 ```
-Using a seperate kdb+ instance, connect to the server and execute the functions:
+Using a separate kdb+ instance, connect to the server and execute the functions:
 ```q
 q)add:{x+2*y}         / define a function 'add' on the client
 q)h:hopen 5000        / connect to the server

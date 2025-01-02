@@ -334,7 +334,7 @@ bidx ridx lidx lwt rwt sigma
 ```
 ![Brownian-bridge sigma plot](img/sigma.png)
 
-Once the Brownian bridge has been intialized, it can be used to transform Gaussian variates into a Wiener-path random walk. Below, a Wiener path with 512 timesteps is constructed using a Sobol’ sequence (of length 512) and the Brownian bridge constructed previously. Note that the function `wpath` takes two arguments:
+Once the Brownian bridge has been initialized, it can be used to transform Gaussian variates into a Wiener-path random walk. Below, a Wiener path with 512 timesteps is constructed using a Sobol’ sequence (of length 512) and the Brownian bridge constructed previously. Note that the function `wpath` takes two arguments:
 
 1.  Sequence of generated numbers, Sobol’ or random.
 2.  Dictionary indicating whether to use standard discretization or Brownian-bridge construction, and whether to use Sobol’ sequences (`1b`) or pseudo-random numbers (`0b`). If using a Brownian bridge, the initial Brownian bridge must be passed in, if not use `(::)`.
@@ -363,7 +363,7 @@ Where $S_0$ and $S(t)$ are the asset prices at time $0$ and $t$ respectively, $r
 This process can be done using the function `spath`, detailed below.
 
 ```q
-/* u  = guassian variates
+/* u  = gaussian variates
 /* n  = number of timesteps
 /* d  = dictionary with bbridge and boolean for random/sobol
 /* pd = dictionary of parameters s,v,r,t,q

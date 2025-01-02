@@ -177,7 +177,7 @@ The task of the gateway can be broken down into the following steps.
 -   Gain access to data in the required services (TP, RDB, HDB)
 -   Provide the best possible service and query performance
 
-The KX gateway must be accessible through Amazon GC2 security rules from all clients of the kdb+ service. In addition, the location of the gateway service needs to be visibile to the remaining kdb+ processes constituting the full KX service.
+The KX gateway must be accessible through Amazon GC2 security rules from all clients of the kdb+ service. In addition, the location of the gateway service needs to be visible to the remaining kdb+ processes constituting the full KX service.
 
 
 ## Storage and filesystem
@@ -303,7 +303,7 @@ The kdb+tick architecture can also be set up with [placement groups](https://doc
 
 Cluster placement group
 
-: The cluster placement group configuration allows you to place your group of interrelated instances close together in order to achieve the best throughput and low latency results. This option lets you pack the instances together oly inside the same availability zone, either in the same Virtual Private Cloud (VPC) or between peered VPCs.
+: The cluster placement group configuration allows you to place your group of interrelated instances close together in order to achieve the best throughput and low latency results. This option lets you pack the instances together only inside the same availability zone, either in the same Virtual Private Cloud (VPC) or between peered VPCs.
 
 
 Spread placement groups

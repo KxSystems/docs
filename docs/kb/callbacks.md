@@ -135,7 +135,7 @@ The result is that the list is summed on the server and then 6 is displayed on t
 It is also possible to send a function to be executed remotely on the server using an alternative form of IPC. 
 In this case, nothing needs to be defined on the server in advance. Here we show an example sending an anonymous function that returns its value to the client. 
 
-Start a kdb+ server listening on a choosen port e.g.
+Start a kdb+ server listening on a chosen port e.g.
 
 ```bash
 $ q -p 5000

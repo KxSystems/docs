@@ -1,5 +1,5 @@
 ---
-title: flip – transpose a matrix or column disctionary | Reference | kdb+ and q documentation
+title: flip – transpose a matrix or column dictionary | Reference | kdb+ and q documentation
 description: flip is a q keyword that transposes its argument.
 author: Stephen Taylor
 ---
