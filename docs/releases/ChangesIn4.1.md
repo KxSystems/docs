@@ -293,7 +293,7 @@ q))
 
 ### .z.W
 
-[.z.W](../ref/dotz.md#zw-handles) now returns `handles!bytes` as `I!J`, instead of the former `handles!list` of individual msg sizes. Use `sum each .z.W` if writing code targetting 4.0 and 4.1.
+[.z.W](../ref/dotz.md#zw-handles) now returns `handles!bytes` as `I!J`, instead of the former `handles!list` of individual msg sizes. Use `sum each .z.W` if writing code targeting 4.0 and 4.1.
 
 ### Dictionary update contains by clause
 

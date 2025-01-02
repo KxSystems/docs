@@ -132,7 +132,7 @@ Ensure that the directory given in `dsp` is the full pathname, and that it is cr
 
 !!! warning "This example writes approximately 7GB of created data to disk."
 
-Load the modified script, which should now take a minute or so. This should write the partioned data to subdirectories of the directory specified by `dsp`
+Load the modified script, which should now take a minute or so. This should write the partitioned data to subdirectories of the directory specified by `dsp`
 `par.txt` can be found within the `dsp` directory, which lists the disks/directories containing the data of the segmented database.
 
 ```txt

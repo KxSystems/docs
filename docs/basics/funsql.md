@@ -11,7 +11,7 @@ author: [Peter Storeng, Stephen Taylor, Simon Shanks]
 
 The functional forms of [`delete`](../ref/delete.md), [`exec`](../ref/exec.md), [`select`](../ref/select.md) and [`update`](../ref/update.md) are particularly useful for programmatically-generated queries, such as when column names are dynamically produced. 
 
-Functional form is an alternative to using a [qSQL template](qsql.md) to construct a query. For example, the folowing are equivalent:
+Functional form is an alternative to using a [qSQL template](qsql.md) to construct a query. For example, the following are equivalent:
 ```q
 q)select n from t
 q)?[t;();0b;(enlist `n)!enlist `n]

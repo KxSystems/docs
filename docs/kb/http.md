@@ -116,7 +116,7 @@ e.g.
 ```q
 q)/ x will be complete HTTP response
 q)x:`:http://httpbin.org "DELETE /delete HTTP/1.1\r\nConnection: close\r\nHost: httpbin.org\r\n\r\n"
-q)/ seperate body from headers, get body
+q)/ separate body from headers, get body
 q)@["\r\n\r\n" vs x;1]
 "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-66572924-7396cee34f268fcd406e94d5\"\n  }, \n  \"json\": null, \n  \"origin\": \"78.147.173.108\", \n  \"url\": \"http://httpbin.org/delete\"\n}\n"
 ```

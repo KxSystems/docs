@@ -9,7 +9,7 @@ date: February 2020
 
 Different types of data have different representations in q, corresponding to different internal representations in kdb+.
 This is of particular importance in the representation of _vectors_: 
-Lists of atoms of the same type are called _vectors_ (sometimes _simple_ or _homogenous_ lists) and have representations that vary by type.
+Lists of atoms of the same type are called _vectors_ (sometimes _simple_ or _homogeneous_ lists) and have representations that vary by type.
 
 Every object in q has a datatype, reported by the [`type`](../../ref/type.md) keyword.
 

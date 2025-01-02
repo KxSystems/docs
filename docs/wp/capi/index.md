@@ -176,7 +176,7 @@ typedef char *S;   // already defined within k.h
 I khpun(S hostname, I portnumber, S usernamePassword, I timeout)
 
 // Timeout is specified in milliseconds
-// A 5-second timout would have a value of5000
+// A 5-second timeout would have a value of5000
 ```
 
 

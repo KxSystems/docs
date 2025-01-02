@@ -50,7 +50,7 @@ Initialise variables used to track registered clients.
 .u.init[]
 ```
 
-Initialises [variables](#variables) by retreiving all tables defined in the root namespace. Used to track client interest in data being published.
+Initialises [variables](#variables) by retrieving all tables defined in the root namespace. Used to track client interest in data being published.
 
 ### .u.del
 
@@ -94,7 +94,7 @@ Actions performed:
 
 * find interested client handles for table `x` and any filter they may have (using [`.u.w`](#variables))
 * for each client
-    * filter `y` using [`.u.sel`](#usel) (if client specifed a filter at subscription time)
+    * filter `y` using [`.u.sel`](#usel) (if client specified a filter at subscription time)
     * publish [asynchronously](../basics/ipc.md#async-message-set) to client, calling their `upd` function with parameters _table name_ and _table data_.
 
 
@@ -144,7 +144,7 @@ Returns
 
 ### .u.end
 
-Inform all registered clients that end-of-day has occured.
+Inform all registered clients that end-of-day has occurred.
 
 ```q
 .u.end[x]
@@ -152,7 +152,7 @@ Inform all registered clients that end-of-day has occured.
 
 Where `x` is a date, representing the day that is ending.
 
-Iterates over all client handles via [`.u.w`](#variables) and asyncronously calls their `.u.end` function passing `x`.
+Iterates over all client handles via [`.u.w`](#variables) and asynchronously calls their `.u.end` function passing `x`.
 
 ### .z.pc
 

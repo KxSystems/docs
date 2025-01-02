@@ -135,7 +135,7 @@ h(".u.sub";`trade;`MSFT.O`IBM.N);
 #### Intraday updates
 
 In order to receive real-time updates for the subscriptions made, the RTE must implement the upd function.
-This should contain the logic required for your choosen analytic or alert.
+This should contain the logic required for your chosen analytic or alert.
 ```q
 upd[x;y]
 ```
@@ -228,7 +228,7 @@ Where x is the date that has ended, as a date atom type.
 
 A RTE will execute its `.u.end` function once at end-of-day, regardless of whether it has one or many subscriptions.
 
-In the VWAP example, it logs that the end-of-day has occured and clears the table holding the current calculation.
+In the VWAP example, it logs that the end-of-day has occurred and clears the table holding the current calculation.
 
 #### Client interaction
 

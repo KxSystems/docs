@@ -22,7 +22,7 @@ Requirements: V3.2 or later.
 
 ### kdb+ configuration
 
-The kdb+ process should be [listening on port](../basics/listening-port.md) which relates to the port choosen and defined in the odbc configuration.
+The kdb+ process should be [listening on port](../basics/listening-port.md) which relates to the port chosen and defined in the odbc configuration.
 
 Unzip qodbc3.zip, and copy `ps.k` to `$QHOME`. Ensure you have `ps.k` loaded into the kdb+ process:
 

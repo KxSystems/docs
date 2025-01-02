@@ -100,7 +100,7 @@ q).[(5 2.14; "abc"); 1 2; :; "x"]    / replace at depth 2
 
 ### Amend At
 
-Indicies results are accumulated when repeated:
+Indices results are accumulated when repeated:
 
 ```q
 q)@[(0 1 2;1 2 3 4;7 8 9) ;1 1; 2*]
