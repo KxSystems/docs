@@ -270,7 +270,7 @@ Run `rlwrap -v` to check if it's currently installed. If not, install `rlwrap` u
 
 After installation, the q command can be changed to always run with `rlwrap`:
 ```bash
-alias q="rlwap -r q"
+alias q="rlwrap -r q"
 ```
 This can be added to the end of the user's [profile](#step-5-edit-your-profile) to take effect on every session.
 
