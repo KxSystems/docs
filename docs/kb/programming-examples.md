@@ -143,7 +143,7 @@ tagit:{[tagname; v]
   tagname: string [tagname];
   "<",tagname,">", v,"</",tagname,">"};
 
-/convert a table (of numbers, strings and time vaues) into xml
+/convert a table (of numbers, strings and time values) into xml
 
 toxml:{
   f: {flip value flip x};

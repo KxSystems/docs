@@ -34,7 +34,7 @@ q)asc key kv
 <big>:fontawesome-regular-comment:</big>
 A dictionary is a mapping between two lists: the keys and the values. 
 Keys are commonly of the same datatype; as are values. 
-So most dictionaries are a mapping between two vectors. (Homogenous lists.)
+So most dictionaries are a mapping between two vectors. (Homogeneous lists.)
 Above, dictionary `kv` is formed from two vectors by the [Dict](../../../ref/dict.md) operator `!`. 
 
 A list of key-value pairs can be flipped into two lists, and passed to `(!).` to form a dictionary. 

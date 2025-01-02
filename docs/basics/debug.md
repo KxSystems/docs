@@ -186,7 +186,7 @@ q)
 ### Backtrace
 
 [`.Q.bt[]`](../ref/dotq.md#bt-backtrace) will dump the backtrace to stdout at any point during execution or debug.
-It will highlight the curent stack frame with `>>`. (Since V4.0 2020.03.17.)
+It will highlight the current stack frame with `>>`. (Since V4.0 2020.03.17.)
 
 ```q
 q)g:{a:x*2;a+y}

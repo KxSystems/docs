@@ -416,7 +416,7 @@ The first step of this `.u.end` is to write down any tables that are not part of
 
 At this point, the tables can be emptied, and reset to their initial schema, as can the `.mem` structure. The `appendHDB` function is detailed below and moves/appends the temporary directory into a regular HDB partition.
 
-Similarily to `w.q`, this step could easily be performed by a separate process, thus freeing up the RDB to continue to receive data for the next day. Finally, the HDB process is notified to reload, the temporary directory is cleared and the `LASTTIME` variable is reset.
+Similarly to `w.q`, this step could easily be performed by a separate process, thus freeing up the RDB to continue to receive data for the next day. Finally, the HDB process is notified to reload, the temporary directory is cleared and the `LASTTIME` variable is reset.
 
 The EOD move/append logic is divided into four functions/steps:
 

@@ -72,7 +72,7 @@ alg  algorithm  level  since
 
 !!! detail "Level 0 for `lz4hc` default compression; level>16 behaves the same as 16"
 
-!!! note "Algorithm is also used to specifiy the [encryption](dare.md#encryption) algorithm which can be [used with compression](dare.md#compression-with-encryption)"
+!!! note "Algorithm is also used to specify the [encryption](dare.md#encryption) algorithm which can be [used with compression](dare.md#compression-with-encryption)"
 
 
 ### Selective compression
@@ -234,7 +234,7 @@ If in doubt, consult your system administrator for assistance.
 
 ### Gzip
 
-Compression algoritm `2` uses Gzip. Source and algorithm details can be found [here](http://zlib.net).
+Compression algorithm `2` uses Gzip. Source and algorithm details can be found [here](http://zlib.net).
 The following libraries are required by kdb+:
 
 | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
@@ -243,7 +243,7 @@ libz.so.1 | libz.dylib<br>(pre-installed) | zlibwapi.dll<br>(32-bit and 64-bit v
 
 ### Snappy
 
-Compression algoritm `3` uses Snappy. Source and algorithm details can be found [here](http://google.github.io/snappy/).
+Compression algorithm `3` uses Snappy. Source and algorithm details can be found [here](http://google.github.io/snappy/).
 The following libraries are required by kdb+:
 
 | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
@@ -252,7 +252,7 @@ libsnappy.so.1 | libsnappy.dylib<br>(available via package managers such as [Hom
 
 ### LZ4
 
-Compression algoritm `4` uses LZ4. Source and algorithm details can be found [here](https://github.com/lz4/lz4).
+Compression algorithm `4` uses LZ4. Source and algorithm details can be found [here](https://github.com/lz4/lz4).
 The following libraries are required by kdb+:
 
 | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
@@ -269,7 +269,7 @@ liblz4.so.1 | liblz4.dylib<br>(available through package managers such as [Homeb
 
 ### Zstd
 
-Compression algoritm `5` uses zstd (Zstandard). Source and algorithm details can be found [here](https://github.com/facebook/zstd).
+Compression algorithm `5` uses zstd (Zstandard). Source and algorithm details can be found [here](https://github.com/facebook/zstd).
 The following libraries are required by kdb+:
 
 | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows

@@ -271,7 +271,7 @@ K q_get_first_cpu_frequency(K x)
 }
 ```
 
-opens and parses the processor information file and extracts the first frequency reading. This is then wrapped as a double precison floating point number in a K object and returned.
+opens and parses the processor information file and extracts the first frequency reading. This is then wrapped as a double precision floating point number in a K object and returned.
 
 Compile as follows, and place in the l64 directory (which is searched for extensions by default):
 

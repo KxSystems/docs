@@ -23,7 +23,7 @@ All messages sent across a WebSocket connection are asynchronous.
 To enable kdb+ to accept websocket connection, simply start a q session [listening on a port](../basics/listening-port.md) of your choice.
 
 The [`.z.ws`](../ref/dotz.md#zws-websockets) function will be called by the server for every client message.
-To customise the kdb+ websocket server, define the [`.z.ws`](../ref/dotz.md#zws-websockets) function to your choosen logic.
+To customise the kdb+ websocket server, define the [`.z.ws`](../ref/dotz.md#zws-websockets) function to your chosen logic.
 Note that [`.z.w`](../ref/dotz.md#zw-handle) is used for obtaining the current connection handle, which represents the client connection when called within the `.z.ws` callback.
 
 [.z.wo](../ref/dotz.md#zwo-websocket-open) and [.z.wc](../ref/dotz.md#zwc-websocket-close) are used to define callback functions in the event of a client connection opening or closing respectively.
@@ -94,7 +94,7 @@ Data should be sent [async](../basics/ipc.md#async-message-set) to a websocket c
 
 When no longer required, connection handles are closed using [`hclose`](../ref/hopen.md#hclose).
 
-As communiction is async, if you wish to flush any pending data prior to close, see the following example where h is a connection handle:
+As communication is async, if you wish to flush any pending data prior to close, see the following example where h is a connection handle:
 ```q
 q)neg[h][] / flush any pending data (blocks til all data sent)
 q)hclose h / close handle
@@ -146,7 +146,7 @@ This have no default action, and can be customised with user required logic. The
 
 Open 2 terminal windows, one for the websocket server, and one for the client.
 
-In the server q session, listen on a choosen port (e.g. 5000) and define a callback that replies with a string to client
+In the server q session, listen on a chosen port (e.g. 5000) and define a callback that replies with a string to client
 ```q
 q)\p 5000
 q).z.ws:{neg[.z.w] "server replied with ",$[10=type x;x;raze string x];}
@@ -277,7 +277,7 @@ in view_</small>
 3. Run `q fh.q`. This will generate dummy trade and quote data and push it to the pubsub process. The script can be edited to change the number of symbols and frequency of updates.
 4. Open `websockets.html` in your browser. This will connect to kdb+ and display trade data in real-time, which can be filtered.
 
-### Explaination
+### Explanation
 
 The idea behind the pubsub mechanism here is that a client will make
 subscriptions to specific functions and provide parameters that they

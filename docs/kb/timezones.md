@@ -67,7 +67,7 @@ q)t:flip `timezoneID`gmtDateTime`gmtOffset`dst!("S  JIB";csv)0:`:time_zone.csv
 q)delete from `t where gmtDateTime>=10170056837;      / remove any unix timestamps greater than our max timestamp
 q)update gmtDateTime:12h$-946684800000000000+gmtDateTime*1000000000 from `t; / change datatype timestamp
 q)update gmtOffset:16h$gmtOffset*1000000000 from `t;  / change datatype to timespan
-q)update localDateTime:gmtDateTime+gmtOffset from `t; / create localtime when change occured
+q)update localDateTime:gmtDateTime+gmtOffset from `t; / create localtime when change occurred
 q)`gmtDateTime xasc `t;
 q)update `g#timezoneID from `t;
 ```
