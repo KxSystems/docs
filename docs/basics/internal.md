@@ -406,17 +406,31 @@ You might want to apply a rounding before applying `-27!`.
 
 ## `-30!x` (deferred response)
 
-```syntax
--30!(::)
--30!(handle;isError;msg)
+Defer response to a sync message. Since V3.6 2018.05.18.
+
+`-30!(::)` 
+
+: allows the currently-executing callback to complete without responding to the client, for example [`.z.pg`](../ref/dotz.md#zpg-get). The handle to use for the subsequent deferred reply can be obtained via [`.z.w`](../ref/dotz.md#zw-handle). The deferred reply should be provided later via one of the following methods:
+
+`-30!(handle;1b;errorMsg)` 
+
+: responds to the deferred sync call with an error message populated with the string/symbol provided in `errorMsg`
+
+`-30!(handle;0b;msg)` 
+
+: responds to the deferred sync call with the contents of `msg`
+
+A `'domain` error will returned if the handle is not  a member of [`.z.W`](../ref/dotz.md#zw-handles).
+
+Using a handle that is not expecting a response message will return an error, for example:
+```q
+q)key .z.W / list of socket handles being monitored by kdb+ main thread
+, 8i
+q)-30!(8i;0b;`hello`world) / try to send a response of (0b;`hello`world)
+'Handle 8 was not expecting a response msg
+  [0]  -30!(8i;0b;`hello`world)
+          ^
 ```
-
-Where `handle` is an int, `isError` is a boolean, and `msg` is a string
-
-- `-30!(::)` allows the currently-executing callback to complete without responding
-- `-30!(handle;isError;msg)` responds to the deferred sync call
-
-Since V3.6 2018.05.18.
 
 :fontawesome-solid-graduation-cap:
 [Deferred response](../kb/deferred-response.md)

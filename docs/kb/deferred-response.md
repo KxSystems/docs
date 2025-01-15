@@ -10,24 +10,11 @@ keywords: async, concurrency, deferred, kdb+_, q, response, sync
 
 Ideally, for concurrency, all messaging would be async. However, sync messaging is a convenient paradigm for client apps. 
 
-You can use [`-30!x`](../basics/internal.md#-30x-deferred-response) to allow processing of a sync message to be ‘suspended’, by indicating the response for the currently-executing sync message to be sent explicitly later. This allows other messages to be processed prior to sending a response message. 
+You can use [`-30!x`](../basics/internal.md#-30x-deferred-response) to allow processing of a sync message to be ‘suspended’, by indicating the response for the currently-executing sync message to be sent explicitly later. 
+
+This allows other messages to be processed prior to sending a response message. 
 
 You can use `-30!(::)` at any place in the execution path of [`.z.pg`](../ref/dotz.md#zpg-get), start up some work, allow `.z.pg` to complete without sending a response, and then when the workers complete the task, send the response explicitly.
-
-## Handle Tracking
-
-kdb+ tracks which handles are expecting a response. If you try to send a response to a handle that is not expecting one, you’ll see
-
-```q
-q)key .z.W / list of socket handles being monitored by kdb+ main thread
-, 8i 
-q)-30!(8i;0b;`hello`world) / try to send a response of (0b;`hello`world)
-'Handle 8 was not expecting a response msg
-  [0]  -30!(8i;0b;`hello`world)
-          ^
-```
-
-and if the handle is not a member of [`.z.W`](../ref/dotz.md#zw-handles), you’ll observe a `'domain` error.
 
 ## Example
 
@@ -65,10 +52,6 @@ callback:{[clientHandle;result]
  }
 ```
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Internal `-30!x`](../basics/internal.md#-30x-deferred-response)  
 :fontawesome-regular-hand-point-right:
 Blog: [Deferred Response](https://kx.com/blog/kdb-q-insights-deferred-response/)
-<br>
-[Namespace `.z`](../ref/dotz.md)
 
