@@ -627,7 +627,7 @@ Where `f` is a unary function, called with the object that is passed to the q se
 The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and executes in the root context.
 
 :fontawesome-solid-hand-point-right:
-[`.z.ps`](#zps-set) (set)
+[`.z.ps`](#zps-set) (set), [`-30!(x)`](../basics/internal.md#-30x-deferred-response) (deferred response)
 
 
 ## `.z.ph` (HTTP get)
