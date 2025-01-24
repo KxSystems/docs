@@ -22,15 +22,17 @@ Where
 
 returns for each item in `y` the bucket into which it falls, represented as a long from 0 to `x-1`.
 
-If the total number of items is evenly divisible by `x`, then each bucket will have the same number of items; otherwise the first items of the result are longer.
+If the total number of items is evenly divisible by `x`, then each bucket will have the same number of items; otherwise some bucket sizes will differ by 1 dispersed through the result.
 
 `xrank` is right-uniform.
 
 ```q
 q)4 xrank til 8          / equal size buckets
 0 0 1 1 2 2 3 3
-q)4 xrank til 9          / first bucket has extra
+q)4 xrank til 9          / 1 bucket size differs
 0 0 0 1 1 2 2 3 3
+q)7 xrank til 9          / multiple bucket sizes differ
+0 0 1 2 3 3 4 5 6
 q)
 q)3 xrank 1 37 5 4 0 3   / outlier 37 does not get its own bucket
 0 2 2 1 0 1
