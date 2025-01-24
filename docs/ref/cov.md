@@ -74,7 +74,7 @@ Applies to all numeric data types and signals an error with temporal types, char
 
 ```q
 q)2 3 5 7 scov 3 3 5 9
-8
+6f
 q)2 3 5 7 scov 4 3 0 2
 -2.416667
 q)select price scov size by sym from trade
