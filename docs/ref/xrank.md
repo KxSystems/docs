@@ -22,7 +22,7 @@ Where
 
 returns for each item in `y` the bucket into which it falls, represented as a long from 0 to `x-1`.
 
-If the total number of items is evenly divisible by `x`, then each bucket will have the same number of items; otherwise some bucket sizes will differ by 1 dispersed through the result.
+If the total number of items is evenly divisible by `x`, then each bucket will have the same number of items; otherwise some bucket sizes will differ by 1 dispersed throughout the result.
 
 `xrank` is right-uniform.
 
