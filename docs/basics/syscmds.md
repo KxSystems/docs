@@ -315,41 +315,41 @@ q){x where x like"ht??"}system"f .h"
 ## `\g` (garbage collection mode)
 
 ```syntax
-\g mode
+\g            / current garbage-collection mode
+\g mode       / set garbage-collection mode
 ```
 
-Show or set garbage-collection mode.
-The default mode is 0.
+Show or set garbage-collection mode. The default mode is 0 (deferred). Setting the garbage-collection mode will automatically call [`.Q.gc[]`](../ref/dotq.md#gc-garbage-collect) after setting the provided value.
+
+Q manages its own thread-local heap. Objects in q use reference counting. As soon as there are no references to an object, its memory is eligable to be returned to the heap.
 
 0 (deferred)
 
-: returns memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence has a performance advantage, but can be more difficult to dimension or manage memory requirements.
+: Returns memory to the thread-local heap. Will subsequently return memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence has a performance advantage, but can be more difficult to dimension or manage memory requirements.
 
 1 (immediate)
 
-: returns (certain types of) memory to the OS as soon as no longer referenced; has an associated performance overhead.
-
-Q manages its own thread-local heap.
-
-Vectors always have a capacity and a used size (the count).
-
-There is no garbage since q uses reference counting. As soon as there are no references to an object, its memory is returned to the heap.
-
-During that return of memory, q checks if the capacity of the object is ≥64MB. If it is and `\g` is 1, the memory is returned immediately to the OS; otherwise, the memory is returned to the thread-local heap for reuse.
-
-Executing [`.Q.gc[]`](../ref/dotq.md#qgc-garbage-collect) additionally attempts to coalesce pieces of the heap into their original allocation units and returns any units ≥64MB to the OS.
-
-Since V3.3 2015.08.23 (Linux only) unused pages in the heap are dropped from RSS during `.Q.gc[]`.
+: As memory is returned to the thread-local heap, if the object is ≥64MB then the memory is returned to the OS instead. This has an associated performance overhead. As per `defered mode`, memory used by the heap may be subsequently returned to the OS when either `.Q.gc[]` is called or an allocation fails.
 
 When q is denied additional address space from the OS, it invokes `.Q.gc[]` and retries the request to the OS. 
 If the subsequent attempt fail, the request exits with [`'wsfull`](../basics/errors.md#wsfull).
 
-When secondary threads are configured and `.Q.gc[]` is invoked in the main thread, `.Q.gc[]` is automatically invoked in each secondary thread. 
-If the call is instigated in a secondary thread, it affects that thread’s local heap only.
-
 !!! detail "Notes on the allocator"
 
     Q’s allocator bins objects in power-of-two size categories, from 16b (e.g. an atom) to 64MB. 
+   
+    In this example, various vectors of longs (8 bytes per long) are created of different sizes using [`til`](../ref/til.md). 
+    The memory used for the operation is shown via [`\ts`](#ts-time-and-space). Note that more bytes are reported
+    that only the pure vector size due to other house keeping, for example the type information.
+    ```q
+    q)\ts til 800     / 800*8=6400, needs a 2^13=8192 byte slab (too big for a 2^12=4096 byte slab)
+    0 8368
+    q)\ts til 1000    / 1000*8=8000, needs a 2^13=8192 byte slab (memory same as smaller vector above)
+    0 8368
+    q)\ts til 1200    / 1200*8=9600, cant fit in a 2^13=8192 bytes slab, needs 2^14=16384 byte slab
+    0 16560
+    ```
+
     If there is already a slab in the object category’s freelist, it is reused. 
     If there are no available slabs, a larger slab is recursively split in two until the needed category size is reached. 
     If there are no free slabs available, a new 64MB slab is requested from the system. 
@@ -365,15 +365,61 @@ If the call is instigated in a secondary thread, it affects that thread’s loca
     
     split slab
     
-    : Suppose that at some point q needed a 32MB allocation. It requested a new 64MB slab from the OS, split it in half, used and freed the object, and returned the two 32MB slabs to the freelist. Now if q needs to allocate 64MB, it will have to make another request to the OS. running `.Q.gc` would attempt to coalesce these two 32MB slabs together back into one 64MB, which would allow it to be returned to the OS (or reused for larger allocations, if the resulting slab is <64MB).
+    : Suppose that at some point q needed a 32MB allocation. It requested a new 64MB slab from the OS, split it in half, used and freed the object, and returned the two 32MB slabs to the freelist. Now if q needs to allocate 64MB, it will have to make another request to the OS. When `.Q.gc` is called (or an allocation fails), it would attempt to coalesce these two 32MB slabs together back into one 64MB, which would allow it to be returned to the OS (or reused for larger allocations, if the resulting slab is <64MB).
     
     leftover objects
 
-    : If most of the objects allocated from a 64MB slab are freed but one remains, the slab still cannot be returned to the OS (or coalesced). In this case, `.Q.gc` notifies the OS that the physical memory backing the unused pages in the block can be reclaimed.
+    : If most of the objects allocated from a 64MB slab are freed but one remains, the slab still cannot be returned to the OS (or coalesced). 
 
+The following example shows freeing an object ≥64MB in `deferred` mode, while inspecting memory usage via [`.Q.w[]`](../ref/dotq.md##w-memory-stats):
+```q
+q).Q.w[]`used`heap    / original memory used and memory reserved by kdb+ at time of test
+371552 67108864
+q)a:til 10000000      / need memory ≥64MB to store value
+q).Q.w[]`used`heap    / heap (memory reserved by kdb+) has grown, and used memory grown from the heap has grown
+134589328 201326592
+q)a:1                 / variable assigned different value, old value no longer used
+q).Q.w[]`used`heap    / heap (memory reserved by kdb+) hasn't reduced as it is kept for future use, used memory has reduced
+371616 201326592
+q)a:til 10000000      / need memory ≥64MB to store value again
+q).Q.w[]`used`heap    / heap memory (no increase) as memory used has been taken from the available heap
+134589328 201326592
+```
+The same example will differ when using `immediate` mode, by returning memory to the OS (as the object free'd is greater than 64MB):
+```q
+q).Q.w[]`used`heap    / original memory used and memory reserved by kdb+ at time of test
+371648 67108864
+q)a:til 10000000      / need memory ≥64MB to store value
+q).Q.w[]`used`heap    / heap (memory reserved by kdb+) has grown, and used memory from the heap has grown
+134589424 201326592
+q)a:1                 / variable assigned different value, old value no longer used
+q).Q.w[]`used`heap    / heap (memory reserved by kdb+) has reduced, it has been returned to OS
+371712 67108864
+q)a:til 10000000      / need memory ≥64MB to store value again
+q).Q.w[]`used`heap    / heap memory has increased (requested from OS) as memory used is more than whats available to use in heap
+134589328 201326592
+```
+`Immediate mode` will not return the memory to the OS when several objects less than 64MB each are freed, even though their sum may be more than 64MB. 
+In this situation, `immediate` and `deferred` mode operate identically by adding the freed memory to the heap for future use.
+
+The following examples shows this effect when running in `immediate mode`. 
+No memory is returned to the OS on freeing the objects, and only when [`.Q.gc[]`](../ref/dotq.md#gc-garbage-collect) is run is the memory coalesced and freed.
+```q
+q).Q.w[]`used`heap               / original memory used and memory reserved by kdb+ at time of test
+371648 67108864
+q)v:`a`b`c`d`e`f`g`h`i`j         / create a list of 10 variable names to use
+q){set[x;til 1000000]} each v    / create a global variable using each of the names in v, each containing 1000000 longs
+q).Q.w[]`used`heap               / heap (memory reserved by kdb+) has grown, and used memory from the heap has grown
+84258096 134217728
+q)![`.;();0b;v]                  / delete all the variables and their contents
+q).Q.w[]`used`heap               / used memory has been reduced, but none of the heap memory has returned to the OS
+371824 134217728
+q).Q.gc[]                        / running garbage collection freed over 64MB
+67108864
+```
 
 :fontawesome-solid-book-open:
-[Command-line option `-g`](cmdline.md#-g-garbage-collection)
+[Command-line option `-g`](cmdline.md#-g-garbage-collection) (garbage collection mode), [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace) (workspace memory limit), [System command `\w`](../basics/syscmds.md#w-workspace) (memory stats and workspace memory limit)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
@@ -789,10 +835,10 @@ q){x where x like"????"}system"v .h"
 With no parameter, returns current memory usage, as a list of 6 long integers.
 
 ```txt
-0   number of bytes allocated
-1   bytes available in heap
+0   number of bytes from the heap that are currently in use
+1   heap size in bytes
 2   maximum heap size so far
-3   limit on thread heap size, from -w command-line option
+3   limit on thread heap size, from -w command-line option or \w system command
 4   mapped bytes
 5   physical memory
 ```
@@ -819,8 +865,8 @@ The utility [`.Q.w`](../ref/dotq.md#w-memory-stats) formats all this information
 
 **Run-time increase**
 Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, if it was initialized via the
-[`-w` command-line option](cmdline.md#-w-workspace).
-E.g. `system "w 128"` sets the `-w` limit to the larger of 128 MB and the current setting and returns it.
+[`-w` command-line option](cmdline.md#-w-workspace). For example `\w 128` sets the limit to 128MB if the `-w` command line option was specified
+with a smaller value. The operation will return the current setting in bytes.
 
 If the system tries to allocate more memory than allowed, it signals `-w abort` and terminates with exit code 1. 
 
@@ -858,9 +904,9 @@ q)value each ("\\d .m";"\\w";"\\d .";"\\w")
 ```
 
 :fontawesome-solid-book-open:
-[`-w` command-line option](cmdline.md#-w-workspace)<br>
+[`-w` workspace command-line option](cmdline.md#-w-workspace), [`\g`](#g-garbage-collection-mode) (garbage-collection mode)<br>
 :fontawesome-solid-book:
-[`.m` namespace](../ref/dotm.md)
+[`.m` namespace](../ref/dotm.md) (DAX-enabled filesystems)
 
 
 ## `\W` (week offset)
