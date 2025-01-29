@@ -923,94 +923,114 @@ q)r1~r2
 .Q.gc[]
 ```
 
-Returns the amount of memory that was returned to the OS.
+Run garbage-collection and returns the amount of memory that was returned to the OS.
 <!-- (Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in secondary threads since V2.7 2011.09.21) -->
+It attempts to coalesce pieces of the heap into their original allocation units and returns any units ≥64MB to the OS.
+Refer to [`\g`](../basics/syscmds.md#g-garbage-collection-mode) (garbage collection mode) for details on how memory is created on the heap.
 
-!!! detail "How it works: reference counting and [buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)"
+When secondary threads are configured and `.Q.gc[]` is invoked in the main thread, `.Q.gc[]` is automatically invoked in each secondary thread.
+If the call is instigated in a secondary thread, it affects that thread’s local heap only.
 
+Example of garbage collection in the default `deferred` mode, using [`.Q.w[]`](#w-memory-stats) to view memory stats:
 ```q
-q)a:til 10000000
-q).Q.w[]
-used| 67233056
-heap| 134217728
-peak| 134217728
+q)a:til 10000000      / create an object that is ≥64MB
+q).Q.w[]              / view current heap size and how many bytes used of the heap (all objects plus previously allocated object)
+used| 134589136
+heap| 201326592
+peak| 201326592
 wmax| 0
 mmap| 0
-syms| 534
-symw| 23926
-q).Q.gc[]
+mphy| 17179869184
+syms| 689
+symw| 37406
+q).Q.gc[]             / garbage collection doesnt return any memory to OS
 0
-q)delete a from `.
+q)delete a from `.    / delete the original object, placing it on the heap
 `.
-q).Q.gc[]
-67108864
-q).Q.w[]
-used| 128768
-heap| 67108864
-peak| 134217728
+q).Q.w[]              / used memory has decreased, heap remains the same
+used| 371376
+heap| 201326592
+peak| 201326592
 wmax| 0
 mmap| 0
-syms| 535
-symw| 23956
+mphy| 17179869184
+syms| 690
+symw| 37436
+q).Q.gc[]             / garbage collection has returned 134217728 to the OS from the heap
+134217728
+q).Q.w[]              / heap size has reduced, while used memory remains the same
+used| 371376
+heap| 67108864
+peak| 201326592
+wmax| 0
+mmap| 0
+mphy| 17179869184
+syms| 690
+symw| 37436
 ```
 
-Note that memory can become fragmented and therefore difficult to release back to the OS.
+Depending on your data, memory can become fragmented and therefore difficult to release back to the OS. The following demonstrates an example:
 
 ```q
-q)v:{(10#"a";10000#"b")}each til 10000000;
-q).Q.w[]
-used| 164614358256
-heap| 164752261120
-peak| 164752261120
+q).Q.w[]              / initial memory stats
+used| 371360
+heap| 67108864
+peak| 67108864
 wmax| 0
 mmap| 0
-mphy| 270538350592
-syms| 569
-symw| 24934
-q).Q.gc[]
-134217728
-q).Q.w[]
-used| 164614358256
-heap| 164618043392
-peak| 164752261120
+mphy| 17179869184
+syms| 689
+symw| 37406
+q)v:{(10#"a";10000#"b")}each til 1000000;   / create 1000000 rows, each containing 2 elements of 10 chars and 10000 chars
+q).Q.w[]                                    / both heap and used memory has grown
+used| 16456760016
+heap| 16508780544
+peak| 16508780544
 wmax| 0
 mmap| 0
-mphy| 270538350592
-syms| 570
-symw| 24964
-q)v:v[;0] / just retain refs to the small char vectors of "aaaaaaaa"
-q)/the vectors of "bbb.."s will come from the same memory chunks
-q)/so can't be freed
-q).Q.gc[]
-134217728
-q).Q.w[]
-used| 454358256
-heap| 164618043392
-peak| 164752261120
+mphy| 17179869184
+syms| 689
+symw| 37406
+q).Q.gc[]             / garbage collection has found no slab of contiguous unused memory of ≥64MB to free
+0
+q)v:v[;0]             / change v to 1000000 rows, each only containing the 1st element of 10 chars (2nd element removed)
+q).Q.w[]              / used memory has decreased, heap remains the same
+used| 40760016
+heap| 16508780544
+peak| 16508780544
 wmax| 0
 mmap| 0
-mphy| 270538350592
-syms| 570
-symw| 24964
-q)v:-8!v;0N!.Q.gc[];v:-9!v;.Q.w[] / serialize, release, deserialize
-164483825664 / amount freed by gc
-used| 454358848
-heap| 738197504
-peak| 164886478848
+mphy| 17179869184
+syms| 690
+symw| 37436
+q).Q.gc[]             / garbage collection has found no contiguous unused memory of ≥64MB to free
+0
+q)v:-8!v              / convert v into its serialised form, return vector used by v to heap
+q).Q.gc[]             / garbage collection now found unused contiguous memory slab ≥64MB to return to OS
+16374562816
+q)v:-9!v              / convert serialised form of v back to its original state
+q).Q.w[]              / used memory remains the same as before, but heap has reduced
+used| 40760016
+heap| 134217728
+peak| 16508780544
 wmax| 0
 mmap| 0
-mphy| 270538350592
-syms| 570
-symw| 24964
+mphy| 17179869184
+syms| 690
+symw| 37436
 ```
 
-So if you have many nested data, e.g. columns of char vectors, or much grouping, you may be fragmenting memory quite heavily.
+If you have nested data, e.g. columns of char vectors, or much grouping, you may be fragmenting memory.
+
+Since V3.3 2015.08.23 (Linux only) unused pages in the heap are dropped from RSS during `.Q.gc[]`.
 
 Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations performed by `.Q.gc[]` (i.e. only return unused blocks >= 64MB to os). 
 This has the advantage of running return faster than `.Q.gc[]`, but with the disadvantage of not defragmenting unused memory blocks of a smaller size (therefore may not free as much unused memory).
 
 :fontawesome-solid-hand-point-right:
-[`.Q.w`](#w-memory-stats) (memory stats)
+[`.Q.w`](#w-memory-stats) (memory stats), 
+[`\g`](../basics/syscmds.md#g-garbage-collection-mode) (garbage collection mode), 
+[`\w`](../basics/syscmds.md#w-workspace) (workspace)
 
 
 ## `gz` (GZip)
@@ -2118,7 +2138,7 @@ q)@[get;"select from tt";-2@]; / no error
 .Q.w[]
 ```
 
-Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary.
+Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary. Refer to [`\w`](../basics/syscmds.md#w-workspace) for an explaination of each statistic.
 
 ```q
 q).Q.w[]
@@ -2135,10 +2155,10 @@ symw| 25436
 :fontawesome-solid-hand-point-right:
 [`.Q.gc`](#gc-garbage-collect) (garbage collect)<br>
 :fontawesome-solid-book-open:
-[Command-line parameter `-w`](../basics/cmdline.md#-w-workspace)
+[Command-line parameter `-w`](../basics/cmdline.md#-w-workspace) (workspace memory limit)
 <br>
 :fontawesome-solid-book-open:
-[System command `\w`](../basics/syscmds.md#w-workspace)
+[System command `\w`](../basics/syscmds.md#w-workspace) (memory stats and workspace memory limit)
 
 
 ## `Xf` (create file)
