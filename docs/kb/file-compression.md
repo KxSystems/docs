@@ -184,13 +184,14 @@ If you experience [`wsfull`](../basics/errors.md#wsfull) even with sufficient sw
 There are three key aspects of compression algorithms:
 
    1. **Compression ratio**: This indicates how much the final data file size is reduced. A high compression ratio means smaller files and lower storage, I/O costs. If the column files are smaller, we can store more data on a storage of a given size. Similarly, more storage space costs more (especially in the cloud). Smaller files may reduce query execution time if the storage is slow because smaller files are read.
-   1. **Compression and encryption speed**: This measures the time required to compress a file. Compression is typically CPU-intensive, so a high compression speed minimizes CPU usage and associated costs. High compression speed is good. The time to save a column file determines the upper bound of data ingestion. The faster we can save a file, the more a kdb+ system can ingest. In the [kdb+ tick](../architecture/tickq.md) system, the RDB is unavailable for queries during write, meaning that write speed also affects system availability.
-   1. **Decompression and encryption speed**: This reflects the time taken to restore the original file from the compressed (encrypted) version. High decompression speed means faster queries.
+   1. **Compression speed**: This measures the time required to compress a file. Compression is typically CPU-intensive, so a high compression speed minimizes CPU usage and associated costs. High compression speed is good. The time to save a column file determines the upper bound of data ingestion. The faster we can save a file, the more a kdb+ system can ingest. In the [kdb+ tick](../architecture/tickq.md) system, the RDB is unavailable for queries during write, meaning that write speed also affects system availability.
+   1. **Decompression speed**: This reflects the time taken to restore the original file from the compressed (encrypted) version. High decompression speed means faster queries.
 
 There is no single best compression algorithm that outperforms all others in all aspects. You need to select compression (or avoid compression) based on your priorities:
-- Is achieving the fastest possible query execution more important to you, or do you prefer to minimize storage costs?
-- Does your kdb+ system handle a high volume of incoming data, requiring a reliable intraday write process to manage the data effectively?
-- Are you looking for a general solution that provides balanced performance across various aspects without excelling or underperforming in any particular area?
+
+  - Is achieving the fastest possible query execution more important to you, or do you prefer to minimize storage costs?
+  - Does your kdb+ system handle a high volume of incoming data, requiring a reliable intraday write process to manage the data effectively?
+  - Are you looking for a general solution that provides balanced performance across various aspects without excelling or underperforming in any particular area?
 
 A single thread with full use of a core can decompress approx 300MB/s, depending on data/algorithm and level.
 
