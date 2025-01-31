@@ -252,7 +252,7 @@ The following libraries are required by kdb+:
 ---|---|---
 libz.so.1 | libz.dylib<br>(pre-installed) | zlibwapi.dll<br>(32-bit and 64-bit versions available from [WinImage](http://www.winimage.com/zLibDll/index.html "winimage.com"))
 
-Gzip has very good compression ratio and average compression/decompression speed. Avoid high compression levels (like 8 and 9) if write speed is important for you. Gzip with level 5 is probably a good general solution.
+Gzip has very good compression ratio and average compression/decompression speed. Avoid high compression levels (like 8 and 9) if write speed is important for you. Gzip with level 5 is a good general solution.
 
 ### Snappy
 
