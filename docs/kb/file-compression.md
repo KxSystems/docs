@@ -263,7 +263,7 @@ The following libraries are required by kdb+:
 ---|---|---
 libsnappy.so.1 | libsnappy.dylib<br>(available via package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | snappy.dll
 
-Snappy has excellent compression and decompression speed so it is a good choice if you optimize for query speed and ingestion times. Snappy falls behing the other compression solutions in compression ratio.
+Snappy has excellent compression and decompression speed so it is a good choice if you optimize for query speed and ingestion times. Snappy falls behind the other compression solutions in compression ratio.
 
 ### LZ4
 
