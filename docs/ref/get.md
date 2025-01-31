@@ -214,6 +214,7 @@ q)(`:ztbl/;dic) set t               / splay table compressed
 `:ztbl/
 ```
 
+!!! warning "Compression may speed up or slow down the execution of `set`. The [performance impact](../kb/file-compression.md#performance) depends mainly on the data characteristics and the storage speed."
 
 ----
 :fontawesome-solid-database:
