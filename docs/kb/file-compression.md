@@ -282,7 +282,7 @@ liblz4.so.1 | liblz4.dylib<br>(available through package managers such as [Homeb
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` [release](https://github.com/lz4/lz4/releases) available.
     
-LZ4 is great at decompression speed and compression ratio but does not perform well in compression speed. Compression level 5 is probably a good choice if you aim fast queries and low storage costs. Avoid high compression levels (above 11).
+LZ4 is great at decompression speed and compression ratio but does not perform well in compression speed. Compression level 5 is a good choice if you aim fast queries and low storage costs. Avoid high compression levels (above 11).
 
 ### Zstd
 
