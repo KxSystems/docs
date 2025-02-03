@@ -1,8 +1,8 @@
 ---
 title: File compression | Database | kdb+ and q documentation
 description: How to work with compressed files in kdb+
-author: Stephen Taylor
-date: August 2022
+author: [Stephen Taylor, Ferenc Bodon]
+date: February 2025
 ---
 # File compression
 
@@ -181,8 +181,19 @@ If you experience [`wsfull`](../basics/errors.md#wsfull) even with sufficient sw
 
 ## Performance
 
-A single thread with full use of a core can decompress approx 300MB/s, depending on data/algorithm and level.
+There are three key aspects of compression algorithms:
 
+   1. **Compression ratio**: This indicates how much the final data file size is reduced. A high compression ratio means smaller files and lower storage, I/O costs. If the column files are smaller, we can store more data on a storage of a given size. Similarly, more storage space costs more (especially in the cloud). Smaller files may reduce query execution time if the storage is slow because smaller files are read.
+   1. **Compression speed**: This measures the time required to compress a file. Compression is typically CPU-intensive, so a high compression speed minimizes CPU usage and associated costs. High compression speed is good. The time to save a column file determines the upper bound of data ingestion. The faster we can save a file, the more a kdb+ system can ingest. In the [kdb+ tick](../architecture/tickq.md) system, the RDB is unavailable for queries during write, meaning that write speed also affects system availability.
+   1. **Decompression speed**: This reflects the time taken to restore the original file from the compressed (encrypted) version. High decompression speed means faster queries.
+
+There is no single best compression algorithm that outperforms all others in all aspects. You need to select compression (or avoid compression) based on your priorities:
+
+  - Is achieving the fastest possible query execution more important to you, or do you prefer to minimize storage costs?
+  - Does your kdb+ system handle a high volume of incoming data, requiring a reliable intraday write process to manage the data effectively?
+  - Are you looking for a general solution that provides balanced performance across various aspects without excelling or underperforming in any particular area?
+
+A single thread with full use of a core can decompress approx 300MB/s, depending on data/algorithm and level.
 
 ### Benchmarking
 
@@ -241,6 +252,8 @@ The following libraries are required by kdb+:
 ---|---|---
 libz.so.1 | libz.dylib<br>(pre-installed) | zlibwapi.dll<br>(32-bit and 64-bit versions available from [WinImage](http://www.winimage.com/zLibDll/index.html "winimage.com"))
 
+Gzip has very good compression ratio and average compression/decompression speed. Avoid high compression levels (like 8 and 9) if write speed is important for you. Gzip with level 5 is a good general solution.
+
 ### Snappy
 
 Compression algorithm `3` uses Snappy. Source and algorithm details can be found [here](http://google.github.io/snappy/).
@@ -249,6 +262,8 @@ The following libraries are required by kdb+:
 | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
 ---|---|---
 libsnappy.so.1 | libsnappy.dylib<br>(available via package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | snappy.dll
+
+Snappy has excellent compression and decompression speed so it is a good choice if you optimize for query speed and ingestion times. Snappy falls behind the other compression solutions in compression ratio.
 
 ### LZ4
 
@@ -266,6 +281,8 @@ liblz4.so.1 | liblz4.dylib<br>(available through package managers such as [Homeb
     kdb+ requires at least `lz4-r129`.
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` [release](https://github.com/lz4/lz4/releases) available.
+    
+LZ4 is great at decompression speed and compression ratio but does not perform well in compression speed. Compression level 5 is a good choice if you aim fast queries and low storage costs. Avoid high compression levels (above 11).
 
 ### Zstd
 
@@ -276,6 +293,7 @@ The following libraries are required by kdb+:
 ---|---|---
 libzstd.so.1 | libzstd.1.dylib<br>(available via package managers such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/)) | libzstd.dll
 
+Zstd is outstanding in compression ratio of low entropy columns. Use low compression level (like 1) if you optimize for compression (write) speed and increase level to achieve better compression ratio. Avoid high levels (above 14).
 
 ## Running kdb+ under Gdb
 
