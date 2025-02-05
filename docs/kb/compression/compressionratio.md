@@ -13,7 +13,7 @@ In this document, we display the relative sizes after compression, which is the 
 
 The table-level results are presented below.
 
-![png](../img/Compression_performance_comparison_17_0.png)
+![png](../img/compression_rel_size_total.png)
 
 `zstd` performs nearly twice as well as `lz4` and `snappy` but is only marginally better than `gzip`.
 
