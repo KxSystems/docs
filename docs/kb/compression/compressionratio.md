@@ -17,7 +17,7 @@ The table-level results are presented below.
 
 `zstd` performs nearly twice as well as `lz4` and `snappy` but is only marginally better than `gzip`.
 
-The following tables provide a column-level breakdown. The columns are ordered by entropy in decreasing order, meaning the top of the table likely contributes the most to the final disk space usage.
+The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order, meaning the top of the table likely contributes the most to the final disk space usage.
 
 <style type="text/css">
 .kx-perf-compact table:not([class]) th {
