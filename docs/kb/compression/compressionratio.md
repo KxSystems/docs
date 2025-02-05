@@ -7,7 +7,7 @@ date: February 2025
 
 # Compression ratio
 
-Compression ratio is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio expressed as a percentage, calculated by dividing the uncompressed size by the compressed size. For example, a value of 50 indicates that the data consumes half the disk space after compression. Lower numbers are better.
+Compression ratio is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio expressed as a percentage, calculated by dividing the uncompressed size by the compressed size. For example, a value of 25 indicates that the data consumes a quarter of the disk space after compression. Lower numbers are better.
 
 We compared compression ratios using a popular financial dataset from the New York Stock Exchange (NYSE)
 
