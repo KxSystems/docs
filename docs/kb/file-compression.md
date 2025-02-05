@@ -183,7 +183,7 @@ If you experience [`wsfull`](../basics/errors.md#wsfull) even with sufficient sw
 
 There are three key aspects of compression algorithms:
 
-   1. **Compression ratio**: This indicates how much the final data file size is reduced. A high compression ratio means smaller files and lower storage, I/O costs. If the column files are smaller, we can store more data on a storage of a given size. Similarly, more storage space costs more (especially in the cloud). Smaller files may reduce query execution time if the storage is slow because smaller files are read. You can check the compression ratio of a popular financial database [here](compression/compressionratio.md).
+   1. **Compression ratio**: This indicates how much the final data file size is reduced. A high compression ratio means smaller files and lower storage, I/O costs. If the column files are smaller, we can store more data on a storage of a given size. Similarly, more storage space costs more (especially in the cloud). Smaller files may reduce query execution time if the storage is slow because smaller files are faster read. You can check the compression ratio of a popular financial database [here](compression/compressionratio.md).
    1. **Compression speed**: This measures the time required to compress a file. Compression is typically CPU-intensive, so a high compression speed minimizes CPU usage and associated costs. High compression speed is good. The time to save a column file determines the upper bound of data ingestion. The faster we can save a file, the more a kdb+ system can ingest. In the [kdb+ tick](../architecture/tickq.md) system, the RDB is unavailable for queries during write, meaning that write speed also affects system availability.
    1. **Decompression speed**: This reflects the time taken to restore the original file from the compressed (encrypted) version. High decompression speed means faster queries.
 
@@ -282,7 +282,7 @@ liblz4.so.1 | liblz4.dylib<br>(available through package managers such as [Homeb
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` [release](https://github.com/lz4/lz4/releases) available.
     
-LZ4 is great at decompression speed is average in [compression ratio](compression/compressionratio.md). The compression level has a significant impact on compression speed. Level 5 is a good choice if you aim fast queries and low storage costs. Avoid high compression levels (above 11).
+LZ4 is great at decompression speed, but is average in [compression ratio](compression/compressionratio.md). The compression level has a significant impact on compression speed. Level 5 is a good choice if you aim fast queries and low storage costs. Avoid high compression levels (above 11).
 
 ### Zstd
 
