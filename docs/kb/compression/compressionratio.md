@@ -7,9 +7,9 @@ date: February 2025
 
 # Compression ratio
 
-Compression ratio is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio expressed as a percentage, calculated by dividing the uncompressed size by the compressed size. For example, a value of 25 indicates that the data consumes a quarter of the disk space after compression. Lower numbers are better.
+Compression ratio is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio is calculated by dividing the uncompressed size by the compressed size. For example, a value of 4 indicates that the data consumes a quarter of the disk space after compression. Higher numbers are better.
 
-We compared compression ratios using a popular financial dataset from the New York Stock Exchange (NYSE)
+In this document, we display the relative sizes after compression, which is the inverse of compression ratios. The numbers are in percentages, so 25 corresponds to compression ratio 4. We used a popular financial dataset from the New York Stock Exchange (NYSE). The block size parameter was set to 17, which translates to logical block size of 128 KB.
 
 The table-level results are presented below.
 
@@ -17,7 +17,7 @@ The table-level results are presented below.
 
 `zstd` performs nearly twice as well as `lz4` and `snappy` but is only marginally better than `gzip`.
 
-The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order, meaning the top of the table likely contributes the most to the final disk space usage.
+The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order. Low-entropy columns are typically well compressable so the top of the table likely contributes the most to the final disk space usage.
 
 <style type="text/css">
 .kx-perf-compact table:not([class]) th {
@@ -2008,7 +2008,7 @@ Table `trade`:
 </table>
 
 
-`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that compression ratios of 0.025% vs. 0.1% do not save much space, whereas a compression ratio of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
+`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that relative sizes of 0.025% vs. 0.1% do not save much space, whereas a relative size of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
 
 `qipc` does not compress all columns by default. The conditions under which qipc applies compression are [documented](https://code.kx.com/q/basics/ipc/#compression) precisely.
 
