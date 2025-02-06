@@ -2024,7 +2024,7 @@ The compression ratios depend on the compression library. The versions of the li
 
 ## Data
 
-We used [publicly available](https://ftp.nyse.com/Historical%20Data%20Samples/DAILY%20TAQ/) NYSE TAQ data for this analysis. Tables `quote` (180 GB) and `trade` (5.7 GB) were generated using the script [taq.k](https://github.com/KxSystems/kdb-taq). All tables were parted by the instrument ID (column `Symbol`). The data corresponds to a single day in 2022.
+We used [publicly available](https://ftp.nyse.com/Historical%20Data%20Samples/DAILY%20TAQ/) NYSE TAQ data for this analysis. Tables `quote` and `trade` were generated using the script [taq.k](https://github.com/KxSystems/kdb-taq). Table `quote` had 1.78 billion rows and consumed 180 GB disk space uncompressed. Table `trade` was smaller, contained 76 million rows and required 5.7 GB space. All tables were parted by the instrument ID (column `Symbol`). The data corresponds to a single day in 2022.
 
 Below you can find some column details, including
 
