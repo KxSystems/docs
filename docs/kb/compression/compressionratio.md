@@ -1998,7 +1998,7 @@ Table `trade`:
 </table>
 
 
-`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that relative sizes of 0.025% vs. 0.1% do not save much space, whereas a relative size of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. `Sequence_Number` is an integer column that is typical of capital markets. It is a monotonically increasing number (with some exceptions) that helps order related rows received simultaneously (e.g. at millisecond granularity). Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
+`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that relative sizes of 0.025% vs. 0.1% do not save much space, whereas a relative size of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. `Sequence_Number` is an integer column that is typical of capital markets. It is a monotonically increasing number (with many repetition) that helps order related rows received simultaneously (e.g. at millisecond granularity). Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
 
 `qipc` does not compress all columns by default. The conditions under which qipc applies compression are [documented](https://code.kx.com/q/basics/ipc/#compression) precisely.
 
