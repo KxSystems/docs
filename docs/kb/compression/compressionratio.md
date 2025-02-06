@@ -20,18 +20,6 @@ The table-level results are presented below.
 The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order. Low-entropy columns are typically well compressable so the top of the table likely contributes the most to the final disk space usage. The background coloring is gradient based on the cell value, so for example dark red cells indicate poor compression ratios. 
 
 <style type="text/css">
-.kx-perf-compact table:not([class]) th {
-    padding: 2px 8px;
-	font-size: 12px;
-	min-width: 70px;
-}
-
-.kx-perf-compact table:not([class]) td {
-    padding: 2px 8px;
-	font-size: 12px;
-	min-width: 70px;
-}
-
 #T_2fe37 th, #T_2fe37 td, #T_3dd48 th , #T_3dd48 td{
     padding: 2px 4px;
 	font-size: 12px;
@@ -2043,6 +2031,19 @@ Below you can find some column details, including
    * number of unique items,
    * number of value changes,
    * entropy using logarithm base 2.
+
+<style type="text/css">
+.kx-perf-compact table:not([class]) th {
+	min-width: 70px;
+}
+
+.kx-perf-compact table:not([class]) td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+	font-size: 12px;
+	min-width: 70px;
+}
+</style>
 
 Table `trade`:
 
