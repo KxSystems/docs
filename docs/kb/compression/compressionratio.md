@@ -2022,6 +2022,16 @@ Table `trade`:
    * The compression ratio of `gzip` level 1 is poor for low-entropy columns.
    * `qipc` has the worst compression ratio among the tested algorithms.   
 
+## Test environment
+Version 2025.01.17 of kdb+ 4.1 was used in the experiments.
+
+The compression ratios depend on the compression library. The versions of the libraries are listed below:
+
+   * zlib: 1.2.11
+   * lz4: 1.9.3
+   * snappy: 1.1.8
+   * zstd: 1.5.1
+
 ## Data
 
 We used [publicly available](https://ftp.nyse.com/Historical%20Data%20Samples/DAILY%20TAQ/) NYSE TAQ data for this analysis. Tables `quote` (180 GB) and `trade` (5.7 GB) were generated using the script [taq.k](https://github.com/KxSystems/kdb-taq). All tables were parted by the instrument ID (column `Symbol`). The data corresponds to a single day in 2022.
