@@ -7,11 +7,11 @@ date: February 2025
 
 # Compression ratio
 
-**Compression ratio** is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio is calculated by dividing the uncompressed size by the compressed size. For example, a value of 4 indicates that the data consumes a quarter of the disk space after compression. Higher numbers are better.
+**Compression ratio** is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio is calculated by dividing the uncompressed size by the compressed size. For example, a value of 4 indicates that the data consumes a quarter of the disk space after compression.
 
 ## Detailed results
 
-In this document, we display the **relative sizes** after compression, which is the inverse of compression ratios. The numbers are in percentages, so 25 corresponds to compression ratio 4. We used a popular financial dataset from the New York Stock Exchange (NYSE). The block size parameter was set to 17, which translates to logical block size of 128 KB.
+In this document, we display the **relative sizes** after compression, which is the inverse of compression ratios. Lower numbers are better. The numbers are in percentages, so 25 corresponds to compression ratio 4. We used a popular financial dataset from the New York Stock Exchange (NYSE). The block size parameter was set to 17, which translates to logical block size of 128 KB.
 
 The table-level results are presented below.
 
@@ -1998,7 +1998,7 @@ Table `trade`:
 </table>
 
 
-`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that relative sizes of 0.025% vs. 0.1% do not save much space, whereas a relative size of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
+`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that relative sizes of 0.025% vs. 0.1% do not save much space, whereas a relative size of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. `Sequence_Number` is an integer column that is typical of capital markets. It is a monotonically increasing number (with some exceptions) that helps order related rows received simultaneously (e.g. at millisecond granularity). Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
 
 `qipc` does not compress all columns by default. The conditions under which qipc applies compression are [documented](https://code.kx.com/q/basics/ipc/#compression) precisely.
 
