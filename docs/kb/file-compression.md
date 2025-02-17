@@ -214,7 +214,7 @@ and on macOS, the OS command `purge` can be used.
 
 ### Compression parameters
 
-The `logicalBlockSize` represents how much data is taken as a compression unit, and consequently the minimum size of a block to decompress. E.g. using a `logicalBlockSize` of 128kB, a file of size 128000kB would be cut into 1000 blocks, and each block compressed independently of the others. Later, if a single byte is requested from that compressed file, a minimum of 128kB would be decompressed to access that byte. Fortunately those types of access patterns are rare, and typically you would be extracting clumps of data that make a logical block size of 128kB quite reasonable.
+The `logicalBlockSize` represents how much data is taken as a compression unit, and consequently the minimum size of a block to decompress. E.g. using a `logicalBlockSize` of 128kB, a file of size 128000kB would be cut into 1000 blocks, and each block compressed independently of the others. Later, if a single byte is requested from that compressed file, a minimum of 128kB would be decompressed to access that byte. Fortunately, those types of access patterns are rare, and typically you would be extracting clumps of data that make a logical block size of 128kB quite reasonable.
 
 Experiment to discover what suits your data, hardware and access patterns best.
 
