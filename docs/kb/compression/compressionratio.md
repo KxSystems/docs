@@ -19,7 +19,7 @@ The table-level results are presented below.
 
 `zstd` performs nearly twice as well as `lz4` and `snappy` but is only marginally better than `gzip`.
 
-The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order. Low-entropy columns are typically well compressable so the top of the table likely contributes the most to the final disk space usage. The background coloring is gradient based on the cell value, so for example dark red cells indicate poor compression ratios. 
+The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order. Low-entropy columns are typically well compressible so the top of the table likely contributes the most to the final disk space usage. The background coloring is gradient based on the cell value, so for example dark red cells indicate poor compression ratios. 
 
 <style type="text/css">
 #T_2fe37 th, #T_2fe37 td, #T_3dd48 th , #T_3dd48 td{
