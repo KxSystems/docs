@@ -1,5 +1,5 @@
 ---
-title: File compression ratio – File compression - Knowledge Base – kdb+ and q documentation
+title: Compression case study – File compression - Knowledge Base – kdb+ and q documentation
 description: Compression ratios of NYSE TAQ data
 author: [Ferenc Bodon]
 date: February 2025
@@ -7,31 +7,21 @@ date: February 2025
 
 # Compression ratio
 
-Compression ratio is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio is calculated by dividing the uncompressed size by the compressed size. For example, a value of 4 indicates that the data consumes a quarter of the disk space after compression. Higher numbers are better.
+**Compression ratio** is one of the [three key metrics](../file-compression.md#performance) to evaluate a compression algorithm. It measures the relative reduction in size of data. This ratio is calculated by dividing the uncompressed size by the compressed size. For example, a value of 4 indicates that the data consumes a quarter of the disk space after compression.
 
-In this document, we display the relative sizes after compression, which is the inverse of compression ratios. The numbers are in percentages, so 25 corresponds to compression ratio 4. We used a popular financial dataset from the New York Stock Exchange (NYSE). The block size parameter was set to 17, which translates to logical block size of 128 KB.
+## Detailed results
+
+In this document, we display the **relative sizes** after compression, which is the inverse of compression ratios. Lower numbers are better. The numbers are in percentages, so 25 corresponds to compression ratio 4. We used a popular financial dataset from the New York Stock Exchange (NYSE). The block size parameter was set to 17, which translates to logical block size of 128 KB.
 
 The table-level results are presented below.
 
-![png](../img/Compression_performance_comparison_17_0.png)
+![png](../img/compression_rel_size_total.png)
 
 `zstd` performs nearly twice as well as `lz4` and `snappy` but is only marginally better than `gzip`.
 
-The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order. Low-entropy columns are typically well compressable so the top of the table likely contributes the most to the final disk space usage.
+The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order. Low-entropy columns are typically well compressible so the top of the table likely contributes the most to the final disk space usage. The background coloring is gradient based on the cell value, so for example dark red cells indicate poor compression ratios. 
 
 <style type="text/css">
-.kx-perf-compact table:not([class]) th {
-    padding: 2px 8px;
-	font-size: 12px;
-	min-width: 70px;
-}
-
-.kx-perf-compact table:not([class]) td {
-    padding: 2px 8px;
-	font-size: 12px;
-	min-width: 70px;
-}
-
 #T_2fe37 th, #T_2fe37 td, #T_3dd48 th , #T_3dd48 td{
     padding: 2px 4px;
 	font-size: 12px;
@@ -2008,11 +1998,11 @@ Table `trade`:
 </table>
 
 
-`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that relative sizes of 0.025% vs. 0.1% do not save much space, whereas a relative size of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
+`zstd` excels at column-level compression, but the difference compared to `gzip` is less significant at the table level. To understand why this happens, consider that relative sizes of 0.025% vs. 0.1% do not save much space, whereas a relative size of 40% vs. 80% for `Sequence_Number` is a significant advantage for `gzip`. `Sequence_Number` is an integer column that is typical of capital markets. It is a monotonically increasing number (with many repetition) that helps order related rows received simultaneously (e.g. at millisecond granularity). Interestingly, `lz4`, `snappy`, and `qipc` are unable to compress the `Sequence_Number` column at all.
 
 `qipc` does not compress all columns by default. The conditions under which qipc applies compression are [documented](https://code.kx.com/q/basics/ipc/#compression) precisely.
 
-## Summary
+## Result summary
 
    * `gzip` and `zstd` deliver the best compression ratios.
    * `gzip` significantly outperforms `zstd` for `Sequence_Number`, except for high `zstd` compression levels.
@@ -2022,9 +2012,19 @@ Table `trade`:
    * The compression ratio of `gzip` level 1 is poor for low-entropy columns.
    * `qipc` has the worst compression ratio among the tested algorithms.   
 
+## Test environment
+Version 2025.01.17 of kdb+ 4.1 was used in the experiments.
+
+The compression ratios depend on the compression library. The versions of the libraries are listed below:
+
+   * zlib: 1.2.11
+   * lz4: 1.9.3
+   * snappy: 1.1.8
+   * zstd: 1.5.1
+
 ## Data
 
-We used [publicly available](https://ftp.nyse.com/Historical%20Data%20Samples/DAILY%20TAQ/) NYSE TAQ data for this analysis. Tables `quote` (180 GB) and `trade` (5.7 GB) were generated using the script [taq.k](https://github.com/KxSystems/kdb-taq). All tables were parted by the instrument ID (column `Symbol`). The data corresponds to a single day in 2022.
+We used [publicly available](https://ftp.nyse.com/Historical%20Data%20Samples/DAILY%20TAQ/) NYSE TAQ data for this analysis. Tables `quote` and `trade` were generated using the script [taq.k](https://github.com/KxSystems/kdb-taq). Table `quote` had 1.78 billion rows and consumed 180 GB disk space uncompressed. Table `trade` was smaller, contained 76 million rows and required 5.7 GB space. All tables were parted by the instrument ID (column `Symbol`). The data corresponds to a single day in 2022.
 
 Below you can find some column details, including
 
@@ -2033,6 +2033,19 @@ Below you can find some column details, including
    * number of unique items,
    * number of value changes,
    * entropy using logarithm base 2.
+
+<style type="text/css">
+.kx-perf-compact table:not([class]) th {
+	min-width: 70px;
+}
+
+.kx-perf-compact table:not([class]) td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+	font-size: 12px;
+	min-width: 70px;
+}
+</style>
 
 Table `trade`:
 
