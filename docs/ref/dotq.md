@@ -1340,7 +1340,7 @@ q).Q.k
 .Q.l x
 ```
 
-Where `x` is a symbol atom naming a directory in the current directory, loads
+Where `x` is a hsym or symbol atom naming a directory in the current directory, loads
 it recursively as in [`load`](load.md), but into the default namespace.
 
 (Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
@@ -1391,12 +1391,12 @@ Since v4.1 2024.09.20.
 ## `lo` (load without)
 
 ```syntax
-.Q.lo[`database;cd;scripts]
+.Q.lo[`:database;cd;scripts]
 ```
 
 Where
 
--   `database` is a symbol atom (as per parameter to [.Q.l](#l-load))
+-   `database` is a hsym or symbol atom (as per parameter to [.Q.l](#l-load))
 -   `cd` is a boolean flag indicating whether to cd to the database dir
 -   `scripts` is a boolean flag indicating whether to execute any scripts in the database dir
 
@@ -1407,7 +1407,7 @@ q)\cd
 "/tmp"
 q)key`:db/2023.02.01
 `s#,`trade
-q).Q.lo[`db;0;0]
+q).Q.lo[`:db;0;0]
 q)trade
 date       sym time         price
 ------------------------------------
