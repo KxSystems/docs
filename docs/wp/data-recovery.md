@@ -114,7 +114,7 @@ A client of the tickerplant may have originally been subscribed to a subset of t
 perform alternative logic on the data recovered from the log file. 
 
 To filter on the data from the tp log, we can set the function(s) originally logged e.g. `upd` to a different value prior to playback and reinstate it after
-playback completes. With this playback specific function, logic can be implemented to filter on the data provided or perform alternative logic.§
+playback completes. With this playback specific function, logic can be implemented to filter on the data provided or perform alternative logic.
 
 ## Logging via an RTE/RDB
 

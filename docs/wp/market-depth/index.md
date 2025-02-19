@@ -371,7 +371,7 @@ It is worth noting that the `u` attribute is applied to the majority of data str
 _Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
 <br>
 :fontawesome-solid-book:
-[Set Attribute](../../ref/set-attribute)
+[Set Attribute](../../ref/set-attribute.md)
 
 
 ## Author

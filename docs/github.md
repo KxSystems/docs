@@ -924,11 +924,6 @@ GitHub topic queries:&nbsp;&nbsp;
 
 ## :fontawesome-solid-share: Machine learning
 
-<small>
-	:fontawesome-regular-hand-point-right:
-	[Repositories maintained by KX](#kx)
-</small>
-
 <table class="kx-compact" markdown>
 <tr markdown>
 <td markdown class="nowrap">[funq](https://github.com/psaris/funq)</td>

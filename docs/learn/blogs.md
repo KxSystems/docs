@@ -18,10 +18,10 @@ _A selection of technical articles of interest to kdb+ developers_
 -   [Logging best practices](https://kx.com/blog/logging-best-practices/), by Jamie McKeown
 -   [Advanced pattern matching and text manipulation in kdb+ with embedPy](https://kx.com/blog/advanced-pattern-matching-and-text-manipulation-in-kdb-with-embedpy/), Jun Bing Neo
 -   Single-page applications and kdb+: [AngularJS](https://kx.com/blog/single-page-applications-and-kdb-angularjs/), [Angular](https://kx.com/blog/single-page-applications-and-kdb-angular/), [React](https://kx.com/blog/single-page-applications-and-kdb-react/), by Stephen Trainor
--   [Partitioning data in kdb+](https://kx.com/blog/partitioning-data-in-kdb/), by Rian O’Cuinneagain 
+-   [Partitioning data in kdb+](https://kx.com/blog/partitioning-data-in-kdb/), by Rian Ó Cuinneagáin 
 -   [Tables with calculated columns](http://archive.vector.org.uk/art10500650), by Stevan Apter, _Vector_ **25**:1
 -   [Treetable: a case-study in q](http://archive.vector.org.uk/art10500340), by Stevan Apter, _Vector_ **24**:4
--   [Parsing data in kdb+](https://kx.com/blog/kx-product-insights-parsing-data-in-kdb/), by Rian O’Cuinneagain
+-   [Parsing data in kdb+](https://kx.com/blog/kx-product-insights-parsing-data-in-kdb/), by Rian Ó Cuinneagáin
 -   [Server-as-a-Function: Providing RESTful JSON APIs in q](https://kx.com/blog/server-as-a-function-providing-restful-json-apis-in-q/), by Rob Moore
 -   [Deferred response](https://kx.com/blog/kdb-q-insights-deferred-response/), by Gopala Bhat
 -   [Scripting with q](https://kx.com/blog/kdb-q-insights-scripting-with-q/), by David Crossey

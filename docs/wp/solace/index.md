@@ -227,7 +227,7 @@ Event mesh
 
 ![Open APIs and Protocols supported by Solace PubSub+](img/open_apis_protocols.png)
 
-KX recently published an open-source [kdb+ interface to Solace](../../interfaces/solace/) as one of its Fusion interfaces. This interface, or API, makes it extremely easy to use PubSub+ event broker from within your q code. 
+KX recently published an open-source [kdb+ interface to Solace](https://github.com/KxSystems/solace) as one of its Fusion interfaces. This interface, or API, makes it extremely easy to use PubSub+ event broker from within your q code. 
 
 Currently, the API supports:
 

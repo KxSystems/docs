@@ -19,7 +19,7 @@ by [Rian Ó Cuinneagáin ](#author)
 
 KX has released an MQTT interface with source code available on [GitHub](https://github.com/KXSystems/mqtt). The interface supports Linux, macOS, and Windows platforms.
 
-This interface can be used with the enterprise [KX Streaming Analytics](https://kx.com/platform/) platform. For this paper the underlying [kdb+](../../) language will be used to explore the core functionality available.
+This interface can be used with the enterprise [KX Streaming Analytics](https://kx.com/platform/) platform. For this paper the underlying [kdb+](../../index.md) language will be used to explore the core functionality available.
 
 
 !!! detail "Edge devices"

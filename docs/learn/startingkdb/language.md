@@ -12,7 +12,7 @@ Q is the programming system for working with kdb+. This corresponds to SQL for t
 
 Q is an interpreted language. Q expressions can be entered and executed in the q console, or loaded from a q script, which is a text file with extension `.q`.
 
-You need at least some familiarity with q to use kdb+. Try following the examples here in the q console interface. Also, ensure that you have installed the [example files](index.md#15-example-files).
+You need at least some familiarity with q to use kdb+. Try following the examples here in the q console interface.
 
 The following pages will also be useful:
 

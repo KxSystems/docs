@@ -93,7 +93,7 @@ y     (any)            any q object
 ```
 
 :fontawesome-solid-database:
-[Compression parameters `alg`, `lbs`, and `lvl`](../kb/file-compression.md#parameters)
+[Compression parameters `alg`, `lbs`, and `lvl`](../kb/file-compression.md#compression-parameters)
 <br>
 :fontawesome-solid-database:
 [Encryption parameters `alg` and `lbs`](../kb/dare.md#encryption)
@@ -182,7 +182,7 @@ For
 (dir;lbs;alg;lvl) set t   / splay t to dir, compressed and/or encrypted
 ```
 
-Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parametrers) and/or [encryption parameters](../kb/dare.md#encryption).
+Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#encryption).
 
 Splay table `t` to directory `ztbl/` with gzip compression:
 

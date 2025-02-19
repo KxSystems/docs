@@ -35,7 +35,7 @@ kdb+ starts in single-threaded mode by default. This ensures data consistency an
 
 To perform parallel operations in kdb+, the process is started up using the [`–s n` command-line option](../../basics/cmdline.md#-s-secondary-processes). When called with a value of `n`>1, kdb+ will start `n` secondary threads. For optimal performance when using multi-threading, the number of secondary processes should be equal to or greater than the number of available cores. One should take into consideration the overall usage of the host when determining the number of secondary processes to allocate.
 
-Parallel execution is explicitly invoked by using two built-in functions: [`peach`](../../ref/each/) and [`.Q.fc`](../../ref/dotq.md#fc-parallel-on-cut). Parallel execution is also implicitly invoked in kdb+ when used as part of a multi-threaded HDB. This mode of operation will be reviewed in more detail below.
+Parallel execution is explicitly invoked by using two built-in functions: [`peach`](../../ref/each.md#each-peach) and [`.Q.fc`](../../ref/dotq.md#fc-parallel-on-cut). Parallel execution is also implicitly invoked in kdb+ when used as part of a multi-threaded HDB. This mode of operation will be reviewed in more detail below.
 
 
 ### Functions for parallel execution
@@ -301,9 +301,7 @@ One area in which there are significant advantages to using parallel operation i
 
 For example, if we wanted to calculate an average value over multiple days we can calculate the sum and count for each partition. We then take the total sum over the total row count to reduce to a final value. This saves the overhead of loading the data from all partitions into memory to perform the calculation.
 
-Map-reduce can be used for the following operations: `avg`, `cor`, `count`,
-`cov`, `dev`, `first`, `last`, `max`, `min`, `prd`, `sum`, `var`, `wavg`, and `wsum`. If kdb+ detects that a compatible operation is being used in the query then it will map the query over the partitions.
-
+Map-reduce can be used for the following operations: [`avg`](../../ref/avg.md), [`cor`](../../ref/cor.md), [`count`](../../ref/count.md), [`cov`](../../ref/cov.md), [`dev`](../../ref/dev.md), [`distinct`](../../ref/distinct.md), [`first`](../../ref/first.md), [`last`](../../ref/first.md#last), [`max`](../../ref/max.md), [`med`](../../ref/med.md), [`min`](../../ref/min.md), [`prd`](../../ref/prd.md), [`sum`](../../ref/sum.md), [`var`](../../ref/var.md), [`wavg`](../../ref/avg.md#wavg), [`wsum`](../../ref/sum.md#wsum). If kdb+ detects that a compatible operation is being used in the query then it will map the query over the partitions.
 The advantage of map-reduce can be seen by comparing the following queries which calculate a VWAP over multiple days.
 
 ```q

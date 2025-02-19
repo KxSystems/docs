@@ -15,7 +15,7 @@ After writing data to disk, it communicates with a HDB to load the written data.
 
 ### Customization
 
-`r.q` provides a starting point to most environments. The source code is freely available and can be tailered to individual needs. For example:
+`r.q` provides a starting point to most environments. The source code is freely available and can be tailored to individual needs. For example:
 
 #### Memory use
 

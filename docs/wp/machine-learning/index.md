@@ -130,7 +130,7 @@ class| a  b  c  d  e   f   g   h   i   j   k   l   m   n   o   p
 
 The q keyword `sums` adds up the columns from the left to the right starting at `a`. Thus, the last column, `p`, holds the total: 590, which represents the Manhattan distance between `tra1` and `tes1`. Expanding to run this against the whole training set, `tra`, will return the Manhattan distances between `tes1` and all the instances in `tra`.
 
-Calculating the distance metric is possibly the heaviest computing step of a k-NN classifier. We can use `\ts` to compare the performance between the use of [Each Left and Each Right](../../ref/maps/#each-left-and-each-right), displaying the total execution time after many iterations (5000 in the example below was enough to show a difference). As both data sets are keyed on `class`, and `tra` contains more than one instance, a change of paradigm and iterator is necessary:
+Calculating the distance metric is possibly the heaviest computing step of a k-NN classifier. We can use `\ts` to compare the performance between the use of [Each Left and Each Right](../../ref/maps.md#each-left-and-each-right), displaying the total execution time after many iterations (5000 in the example below was enough to show a difference). As both data sets are keyed on `class`, and `tra` contains more than one instance, a change of paradigm and iterator is necessary:
 
 -   Un-key and remove the `class` column from `tes1`
 
@@ -193,7 +193,7 @@ apply_dist_manh:{[d;t]
   flip `class`dst!(exec class from d; dist) }
 ```
 
-The test instance can be passed as a dictionary removing the `class` column; or as a table using the iterator [Each](../../ref/maps/#each) after removing the column `class`. The returned result will be a list of tables if the parameter is passed as a table of length&gt;1, otherwise, a single table.
+The test instance can be passed as a dictionary removing the `class` column; or as a table using the iterator [Each](../../ref/maps.md#each) after removing the column `class`. The returned result will be a list of tables if the parameter is passed as a table of length&gt;1, otherwise, a single table.
 
 ```q
 q) apply_dist_manh[tra;]each delete class from tes1

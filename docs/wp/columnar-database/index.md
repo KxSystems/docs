@@ -85,7 +85,7 @@ For partitioned and non-partitioned tables, one should aim to reduce the amount 
 
 ### Query structure example
 
-The purpose of this example is to examine the performance of queries with differently-ordered constraints as the database grows. In order to vary the size of the database, we will use [`.Q.view`](../../ref/dotq/#qview-subview). To measure performance, we will use [`\ts`](../../basics/syscmds.md##ts-time-and-space) to measure the execution time in ms and space used in bytes.
+The purpose of this example is to examine the performance of queries with differently-ordered constraints as the database grows. In order to vary the size of the database, we will use [`.Q.view`](../../ref/dotq.md#view-subview). To measure performance, we will use [`\ts`](../../basics/syscmds.md#ts-time-and-space) to measure the execution time in ms and space used in bytes.
 
 Note that while the non-optimal requests complete successfully in our relatively small test database, these queries run much slower on a larger database. These queries should be executed with caution.
 

@@ -399,7 +399,7 @@ Some common issues along with possible fixes:
 #### A missing table from a partition
 
 This is fixed using either [`.Q.chk`](../../ref/dotq.md#chk-fill-hdb)
-to save empty copies of all tables or [`.Q.bv`](../../ref/dotq/#bv-build-vp) to create in-memory
+to save empty copies of all tables or [`.Q.bv`](../../ref/dotq.md#bv-build-vp) to create in-memory
 mapping of missing tables. This may arise due to a lack of data
 having been received for this date, and the end-of-day write
 function therefore skips this save. Unless `.Q.bv` is in use within

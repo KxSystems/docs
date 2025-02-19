@@ -71,7 +71,7 @@ Alex Shroyer                    Mohammad Noor
 Bob Herrmann                    Peter Storeng
 Chris Shucksmith                Sean Keevey
 Cillian Reilly                  Sean O’Hagan
-Conor McCarthy                  Rian O’Cuinneagain
+Conor McCarthy                  Rian Ó Cuinneagáin
 David Crossey                   Rikesh
 David Lu                        Thomas Smyth
 David Z. Han                    Sergey Vidyuk
