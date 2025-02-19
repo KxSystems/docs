@@ -1391,7 +1391,7 @@ Since v4.1 2024.09.20.
 ## `lo` (load without)
 
 ```syntax
-.Q.lo[`database;cd;scripts]
+.Q.lo[`:database;cd;scripts]
 ```
 
 Where
@@ -1407,7 +1407,7 @@ q)\cd
 "/tmp"
 q)key`:db/2023.02.01
 `s#,`trade
-q).Q.lo[`db;0;0]
+q).Q.lo[`:db;0;0]
 q)trade
 date       sym time         price
 ------------------------------------
