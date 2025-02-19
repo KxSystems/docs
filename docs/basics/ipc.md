@@ -22,7 +22,7 @@ A kdb+ process can communicate with other processes through TCP/IP, which is bak
 :fontawesome-solid-handshake: 
 [Clients for kdb+](../interfaces/c-client-for-q.md) 
 
-!!! tip "This page discusses TCP/IP sockets, but there are other types of IPC, that use the familiar open/request/close paradigm. All use [`hopen`](../ref/hopen.md#) to connect."
+!!! tip "This page discusses TCP/IP sockets, but there are other types of IPC, that use the familiar open/request/close paradigm. All use [`hopen`](../ref/hopen.md) to connect."
 
 :fontawesome-solid-book-open:
 [Connection handles](handles.md),

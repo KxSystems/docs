@@ -57,7 +57,7 @@ Partition a table if either
 :fontawesome-solid-book:
 [`count`](../ref/count.md), 
 [maps](../ref/maps.md),
-[`peach`](../ref/each.md#peach),
+[`peach`](../ref/each.md),
 [`reval`](../ref/eval.md#reval),
 [`select`](../ref/select.md)
 <br>

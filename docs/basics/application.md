@@ -119,7 +119,7 @@ q)count . enlist 1 4 3              / apply count to a list of its 1 argument
 
 ## Apply At operator
 
-Lists, dictionaries and unary functions can be applied more conveniently with the [Apply At](../ref/apply.md#apply-at) operator. 
+Lists, dictionaries and unary functions can be applied more conveniently with the [Apply At](../ref/apply.md#amend-amend-at) operator. 
 
 ```q
 q)"abcdef"@1 4 3

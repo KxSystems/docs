@@ -24,7 +24,7 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-23!x](#-23x-memory-map)       memory map                    -20!  [.Q.gc](../ref/dotq.md#gc-garbage-collect)
 [-25!x](#-25x-async-broadcast)       async broadcast               -24!  [reval](../ref/eval.md#reval)
 [-26!x](#-26x-ssl)       SSL                           -29!  [.j.k](../ref/dotj.md#jk-deserialize)
-[-27!(x;y)](#-27xy-format)   format                        -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[-27!(x;y)](#-27xy-ieee754-precision-format)   format                        -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
 [-30!x](#-30x-deferred-response)       deferred response             -32!  [.Q.btoa](../ref/dotq.md#btoa-b64-encode)
 [-33!x](#-33x-sha-1-hash)       SHA-1 hash                    -34!  [.Q.ts](../ref/dotq.md#ts-time-and-space)
 [-36!](#-36-load-master-key)        load master key               -35!  [.Q.gz](../ref/dotq.md#gz-gzip)
