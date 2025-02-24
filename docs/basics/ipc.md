@@ -355,11 +355,7 @@ This information is provided for debugging and troubleshooting only.
 
 ### Handshake
 
-After a client has opened a socket to the server, it sends a null-terminated ASCII string `"username:password\N"` where `\N` is a single byte (0…3) which represents the client’s capability with respect to compression, timestamp|timespan and UUID, e.g. `"myname:mypassword\3"`. 
-(Since 2012.05.29.) 
-
-- If the server rejects the credentials, it closes the connection immediately. 
-- If the server accepts the credentials, it sends a single-byte response which represents the common capability. 
+After a client has opened a socket to the server, it sends a null-terminated ASCII string `"username:password\N"` where `\N` is a single byte which represents the client’s capability with respect to compression, timestamp|timespan and UUID, e.g. `"myname:mypassword\3"`. 
 
 kdb+ recognizes these capability bytes:
 
@@ -371,6 +367,10 @@ byte | effect
 4    | reserved
 5    | support msgs >2GB; vectors must each have a count ≤ 2 billion
 6    | support msgs >2GB and vectors may each have a count > 2 billion
+
+If the server rejects the credentials, it closes the connection immediately. 
+
+If the server accepts the credentials, it sends a single-byte response which represents the common capability. 
 
 !!! warning "Java and C# have array length limits which make capabilities 5 and 6 inviable with their current object models."
 
