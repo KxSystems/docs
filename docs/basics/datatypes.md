@@ -122,7 +122,7 @@ q)"Zürich"
 
 The valid date range is `0001.01.01` to `9999.12.31`. (Since V3.6 2017.10.23.)
 
-!!! warning "The 4-byte datetime datatype (15) is deprecated in favour of the 8-byte timestamp datatype (12)."
+!!! warning "The datetime datatype (15) is deprecated in favour of the timestamp datatype (12)."
 
 ```q
 q)"D"$"3001.01.01"
