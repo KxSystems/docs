@@ -274,7 +274,7 @@ A projection of [`.Q.Xf`](#xf-create-file): i.e. ``.Q.Xf[`char;]``
 .Q.chk x
 ```
 
-Where `x` is a HDB as a filepath, fills tables missing from partitions using the most recent partition as a template, and reports which partitions (but not which tables) it is fixing.
+Where `x` is a HDB as a filepath, fills tables missing from partitions using the most recent partition containing the table as a template, and reports which partitions (but not which tables) it is fixing.
 
 ```q
 q).Q.chk[`:hdb]
