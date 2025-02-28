@@ -183,11 +183,11 @@ If you experience [`wsfull`](../basics/errors.md#wsfull) even with sufficient sw
 
 There are three key aspects of compression algorithms:
 
-   1. **Compression ratio**: This indicates how much the final data file size is reduced. A high compression ratio means smaller files and lower storage, I/O costs. If the column files are smaller, we can store more data on a storage of a given size. Similarly, more storage space costs more (especially in the cloud). Smaller files may reduce query execution time if the storage is slow because smaller files are faster read. You can check the compression ratio of a popular financial database [here](compression/compressionratio.md).
+   1. **Compression ratio**: This indicates how much the final data file size is reduced. A high compression ratio means smaller files and lower storage, I/O costs. If the column files are smaller, we can store more data on a storage of a given size. Similarly, more storage space costs more (especially in the cloud). Smaller files may reduce query execution time if the storage is slow because smaller files are faster read. You can check the compression ratio of a popular financial database in a [case study](compression/compressionratio.md).
    1. **Compression speed**: This measures the time required to compress a file. Compression is typically CPU-intensive, so a high compression speed minimizes CPU usage and associated costs. High compression speed is good. The time to save a column file determines the upper bound of data ingestion. The faster we can save a file, the more a kdb+ system can ingest. In the [kdb+ tick](../architecture/tickq.md) system, the RDB is unavailable for queries during write, meaning that write speed also affects system availability.
    1. **Decompression speed**: This reflects the time taken to restore the original file from the compressed (encrypted) version. High decompression speed means faster queries.
 
-There is no single best compression algorithm that outperforms all others in all aspects. You need to select compression (or avoid compression) based on your priorities:
+**There is no single best compression algorithm that outperforms all others in all aspects.** You need to select compression (or avoid compression) based on your priorities:
 
   - Is achieving the fastest possible query execution more important to you, or do you prefer to minimize storage costs?
   - Does your kdb+ system handle a high volume of incoming data, requiring a reliable intraday write process to manage the data effectively?
@@ -214,9 +214,9 @@ and on macOS, the OS command `purge` can be used.
 
 ### Compression parameters
 
-The `logicalBlockSize` represents how much data is taken as a compression unit, and consequently the minimum size of a block to decompress. E.g. using a `logicalBlockSize` of 128kB, a file of size 128000kB would be cut into 1000 blocks, and each block compressed independently of the others. Later, if a single byte is requested from that compressed file, a minimum of 128kB would be decompressed to access that byte. Fortunately those types of access patterns are rare, and typically you would be extracting clumps of data that make a logical block size of 128kB quite reasonable.
+The `logicalBlockSize` represents how much data is taken as a compression unit, and consequently the minimum size of a block to decompress. E.g. using a `logicalBlockSize` of 128kB, a file of size 128000kB would be cut into 1000 blocks, and each block compressed independently of the others. Later, if a single byte is requested from that compressed file, a minimum of 128kB would be decompressed to access that byte. Fortunately, those types of access patterns are rare, and typically you would be extracting clumps of data that make a logical block size of 128kB quite reasonable.
 
-Experiment to discover what suits your data, hardware and access patterns best. A good balance for TAQ data and typical TAQ queries is to use algorithm 1 (the same algorithm as used for IPC compression) with 128kB `logicalBlockSize`. To trade performance for better compression, choose gzip with compression level 6.
+Experiment to discover what suits your data, hardware and access patterns best.
 
 
 ### Kernel settings
