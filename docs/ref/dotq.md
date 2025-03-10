@@ -514,12 +514,6 @@ q)g:{x[`stop]=:240h;@[x;`price;%;1e4]}
 q).Q.dsftg[d;s;f;t;g]
 ```
 
-<!--
-## `dtps`
-
-==FIXME==
- -->
-
 ## `en` (enumerate varchar cols)
 ## `ens` (enumerate against domain)
 
@@ -530,17 +524,36 @@ q).Q.dsftg[d;s;f;t;g]
 
 Where
 
--   `dir` is a symbol handle to a folder
+-   `dir` is a symbol handle to a folder or generic null ([`::`](identity.md#null))
 -   `table` is a table
 -   `name` is a symbol atom naming a sym file in `dir`
 
-the function
+When `dir` is a symbol handle, the function
 
 -   creates if necessary the folder `dir`
 -   gets `sym` from `dir` if it exists
--   enumerates against `sym` the symbols in `table`
--   writes `sym` in `dir`
+-   enumerates against in-memory `sym` using the symbols in `table`
+-   writes `sym` to file in `dir`
 -   returns `table` with columns enumerated (for `.Q.ens`, against `name`)
+
+    !!! warning "Locking ensures two processes do not write to the sym file at the same time"
+
+When `dir` is a generic null (since 4.1 2025.01.17), the function
+
+-   does not read/write/lock the `sym` file
+-   enumerates against in-memory `sym` using the symbols in `table`, for example
+    ```q
+    q)t1:([]a:`a`b`c;b:1 2 3)
+    q).Q.en[::;t1];
+    q)sym
+    `a`b`c
+    q)t2:([]a:`a`d`e;b:1 2 3)
+    q).Q.en[::;t2];
+    q)sym
+    `a`b`c`d`e
+    ```
+
+    !!! note "on-disk sym files should be kept in sync with in-memory enum domain"
 
 `.Q.ens` allows enumeration against domains (and therefore filenames) other than `sym`.
 
@@ -549,8 +562,6 @@ q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 ```
 
 Tables splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
-
-!!! warning "Locking ensures two processes do not write to the sym file at the same time"
 
 :fontawesome-solid-book:
 [`dsave`](dsave.md),
@@ -2138,7 +2149,7 @@ q)@[get;"select from tt";-2@]; / no error
 .Q.w[]
 ```
 
-Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary. Refer to [`\w`](../basics/syscmds.md#w-workspace) for an explaination of each statistic.
+Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary. Refer to [`\w`](../basics/syscmds.md#w-workspace) for an explanation of each statistic.
 
 ```q
 q).Q.w[]

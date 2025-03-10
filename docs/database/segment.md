@@ -104,6 +104,8 @@ with directories :
 ...
 ```
 
+Since 4.1 2025.01.17 queries on partitioned tables in segmented databases use secondary threads if available on each segment and partition. Previously parallelism was only at the segment level.
+
 
 ## Considerations
 
