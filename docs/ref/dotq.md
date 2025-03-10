@@ -2138,7 +2138,7 @@ q)@[get;"select from tt";-2@]; / no error
 .Q.w[]
 ```
 
-Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary. Refer to [`\w`](../basics/syscmds.md#w-workspace) for an explaination of each statistic.
+Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary. Refer to [`\w`](../basics/syscmds.md#w-workspace) for an explanation of each statistic.
 
 ```q
 q).Q.w[]
