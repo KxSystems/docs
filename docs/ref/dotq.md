@@ -538,6 +538,30 @@ When `dir` is a symbol handle, the function
 
     !!! warning "Locking ensures two processes do not write to the sym file at the same time"
 
+    The following example uses `.Q.en` to enumerate to both the in-memory and disk `sym` domain, while
+    saving the table output using [`set`](get.md#set):
+    ```q
+    q)t1:([]col1:`a`b`c;col2:1 2 3)
+    q)`:/tmp/db/t1/ set .Q.en[`:/tmp/db;t1];
+    q)sym                                     / contents of in-memory sym populated from symbols in table
+    `a`b`c
+    q)get `:/tmp/db/sym                       / on-disk sym same as in-memory sym
+    `a`b`c
+    q)get `:/tmp/db/t1/col1                   / col1 enumerated against sym domain
+    `sym$`a`b`c
+    ```
+    Providing a new or updated table against an existing `sym` domain will read the existing on-disk sym domain before updating. 
+    Both the in-memory and on-disk version are updated to reflect the new state. Continuing with the same example shows the 
+    existing `sym` domain being altered:
+    ```q
+    q)t2:([]col1:`a`d`e;col2:1 2 3)
+    q)`:/tmp/db/t2/ set .Q.en[`:/tmp/db;t2];  / enumerate additional table against existing sym domain
+    q)sym                                     / in-memory sym now contains additional symbols
+    `a`b`c`d`e
+    q)get `:/tmp/db/sym                       / on-disk sym same as in-memory sym
+    `a`b`c`d`e
+    ```
+
 When `dir` is a generic null (since 4.1 2025.01.17), the function
 
 -   does not read/write/lock the `sym` file
