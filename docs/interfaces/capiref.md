@@ -1032,6 +1032,7 @@ Tries to collapse a general list of homogeneous elements into a simple list, or 
 K f(){J i;K x=ktn(0,0);for(i=0;i<10;i++)jk(&x,g(i));return vk(x);} // g(i) could return different types
 ```
 
+Shared library only.
 
 ### `xD` (create dictionary)
 
