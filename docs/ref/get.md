@@ -206,8 +206,8 @@ q)m1:1000000
 q)t:([]a:m1?10;b:m1?10;c:m1?10;d:m1?10)
 
 q)/specify compression for cols a, b and defaults for others
-q)show dic:``a`b!(17 2 9;17 2 6;17 2 6)
- | 17 2 9
+q)show dic:``a`b!(17 5 3;17 2 6;17 2 6)
+ | 17 5 3
 a| 17 2 6
 b| 17 2 6
 q)(`:ztbl/;dic) set t               / splay table compressed
