@@ -1156,6 +1156,7 @@ q).z.z
 
 ```syntax
 .z.zd:(lbs;alg;lvl)
+.z.zd:dict
 ```
 
 Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#encryption).
@@ -1165,6 +1166,16 @@ Encryption available since 4.0 2019.12.12.
 ```q
 q).z.zd:17 2 6        / set zip defaults
 q)\x .z.zd            / clear zip defaults
+```
+
+You can also assign a dictionary to `.z.zd`. The keys of the dictionary are either column names or the null symbol `` `  ``. The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`. The null symbol is used as a default for columns that do not match the other keys.
+
+```q
+q)show dict:``a`b!(17 5 3;17 2 6;17 2 6)  / default compression is `zstd` with level 3
+ | 17 5 3
+a| 17 2 6
+b| 17 2 6
+q).z.zd:dict
 ```
 
 :fontawesome-solid-hand-point-right:
