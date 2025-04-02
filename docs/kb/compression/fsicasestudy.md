@@ -2055,6 +2055,7 @@ Table `trade`:
    * `qipc` has the worst compression ratio among the tested algorithms.   
 
 # Write speed, compression times
+The typical bottleneck of data ingestion is persiting tables to a storage. The write time determines the maximal ingestion rate.
 
 Writing compressed data to storage involves three sequential steps:
 
