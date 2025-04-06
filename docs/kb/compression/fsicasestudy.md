@@ -4,7 +4,6 @@ description: Compression ratios, set and query times using NYSE TAQ data
 author: [Ferenc Bodon]
 date: February 2025
 ---
-
 # Overview
 
 In this document, we compare compression algorithms using a popular financial dataset from the New York Stock Exchange (NYSE). There are [three key metrics](../file-compression.md#performance) to evaluate compression algorithms.
@@ -15,7 +14,9 @@ In this document, we compare compression algorithms using a popular financial da
 
 These metrics impact **storage cost**, **data write time** and **query response times** respectively. Both compression and decompression speeds depend on the hardware - primarily on storage speed and the compute (CPU) capacity. Our partner, Intel(R), provided access to two systems with different storage characteristics in its FasterLab, a facility dedicated to optimization of Financial Services Industry (FSI) solutions. The first system has fast local disks, while the second system comes with a slower NFS storage. The next section describes these environments in detail.
 
+
 ## Infrastructure
+
 Tests were conducted on version 9.4 of Red Hat Enterprise Linux using kdb+ 4.1 (version 2025.01.17). Compression performance depends on the **compression library versions**, which are listed below:
 
    * `zlib`: 1.2.11
@@ -48,6 +49,7 @@ Key specifications for the two systems:
 
 The tests ran on a single NUMA node, i.e. kdb+ processes were launched with `numactl -N 0 -m 0`.
 
+
 # Compression ratio
 
 **Compression ratio** measures the relative reduction in size of data. This ratio is calculated by dividing the uncompressed size by the compressed size. For example, a ratio of 4 indicates that the data consumes a quarter of the disk space after compression. In this document, we show the **relative sizes** after compression, which is the inverse of compression ratios. Lower values indicate better compression. The numbers are in percentages, so 25 corresponds to compression ratio 4. The block size parameter was set to 17, which translates to logical block size of 128 KB.
@@ -67,11 +69,11 @@ The following tables provide a column-level breakdown. The columns are ordered b
 	min-width: 30px;
 }
 
-#T_77a3c th, #T_6a8bb, #T_86f3c th{
+#T_77a3c th, #T_6a8bb, #T_86f3c, #T_3c57d th{
     text-align: center;
 }
 
-#T_77a3c td, #T_6a8bb, #T_86f3c td{
+#T_77a3c td, #T_6a8bb, #T_86f3c, #T_3c57d td{
     text-align: right;
 }
 
