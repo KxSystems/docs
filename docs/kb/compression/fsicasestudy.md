@@ -63,17 +63,17 @@ The table-level results are presented below.
 The following tables provide a column-level breakdown. The columns are ordered by [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) in decreasing order. Low-entropy columns typically compress well so those at the top of the table likely contribute most to disk savings. Gradient background coloring highlights results (dark red = poor compression). 
 
 <style type="text/css">
-#T_77a3c th, #T_77a3c td, #T_6a8bb th , #T_6a8bb td, #T_86f3c th, #T_86f3c td, #T_3c57d th, #T_3c57d td{
+#T_77a3c th, #T_77a3c td, #T_6a8bb th, #T_6a8bb td, #T_86f3c th, #T_86f3c td, #T_3c57d th, #T_3c57d td{
     padding: 2px 4px;
 	font-size: 12px;
 	min-width: 30px;
 }
 
-#T_77a3c th, #T_6a8bb, #T_86f3c, #T_3c57d th{
+#T_77a3c th, #T_6a8bb th, #T_86f3c th, #T_3c57d th{
     text-align: center;
 }
 
-#T_77a3c td, #T_6a8bb, #T_86f3c, #T_3c57d td{
+#T_77a3c td, #T_6a8bb td, #T_86f3c td, #T_3c57d td{
     text-align: right;
 }
 
