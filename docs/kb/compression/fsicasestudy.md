@@ -34,7 +34,7 @@ Key specifications for the two systems:
          * Thread(s) per core: 1
          * NUMA nodes: 2
       * filesystem: ext4
-      * memory: 502GiB, 8 x DDR5 6400 MT/s
+      * memory: 502GiB, DDR5 6400 MT/s, 8 channels
    1. NFS storage and Intel Xeon 6 performance CPU
       * **Storage**: NFS (version 4.2), mounted in sync mode, with read and write chunk sizes (`wsize` and `rsize`) 1 MB. NFS cache was not set up, i.e `-o fsc` mount parameter was not set.
       * Some network parameters:
@@ -45,7 +45,7 @@ Key specifications for the two systems:
          * Cores per socket: 48
          * Thread(s) per core: 2
          * NUMA nodes: 4
-      * memory: 502GiB, 12 x DDR5 6400 MT/s
+      * memory: 502GiB, DDR5 6400 MT/s, 8 channels
 
 The tests ran on a single NUMA node, i.e. kdb+ processes were launched with `numactl -N 0 -m 0`.
 
