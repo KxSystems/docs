@@ -445,7 +445,7 @@ nav:
         - Compression:
           - File compression: kb/file-compression.md
           - Compression examples: wp/compress/index.md
-          - Case study: kb/compression/compressionratio.md
+          - FSI case study: kb/compression/fsicasestudy.md
         - Permissions: wp/permissions/index.md
         - Query optimization: wp/columnar-database/index.md
         - Query scaling: wp/query-scaling.md
