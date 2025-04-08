@@ -4,14 +4,8 @@ description: vs is a q keyword that performs various functions under the scheme 
 author: Stephen Taylor
 keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 ---
-[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
-{: style="float: right; max-width: 200px"}
-
 
 # `vs`
-
-
-
 
 _“Vector from scalar”_
 
@@ -21,7 +15,6 @@ _“Vector from scalar”_
 ```syntax
 x vs y    vs[x;y]
 ```
-
 
 ## Partition
 
@@ -67,7 +60,7 @@ q)` vs "abc\r\ndef\r\nghi"
 "ghi"
 ```
 
-??? detail "Elides trailing linebreaks"
+!!! detail "Elides trailing linebreaks"
 
 	The treatment of linebreaks varies usefully from a left argument of `\n`.
 

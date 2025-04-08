@@ -20,7 +20,7 @@ kdb+ communicates with the [file system](../basics/files.md) and other processes
 Connections are opened and closed respectively by `hopen` and `hclose`.
 
 
-## :fontawesome-solid-handshake: `hopen`
+## `hopen`
 
 _Open a connection to a file or process_
 
@@ -59,7 +59,7 @@ hopen each(`:mysymbol;
         (":localhost:5000";1000))
 ```
 
-### :fontawesome-solid-database: Files
+### Files
 
 If a filehandle specifies a non-existent filepath, it is created, including directories.
 
@@ -83,7 +83,7 @@ q)r:htxt ` sv("asdf";"qwer")
 ```
 
 
-### :fontawesome-solid-handshake: Processes
+### Processes
 
 #### Communication handles
 
@@ -133,7 +133,7 @@ q)(neg h)"a:2"    / asynchronous (SET)
 ```
 
 
-#### :fontawesome-solid-thumbs-up: One-shot request
+#### One-shot request
 
 If only one synchronous query/request is to be run, then the one-shot synchronous request can be used to connect, send the query, get the results, then disconnect.
 
@@ -154,7 +154,7 @@ One-shot sync queries can now execute via `` `::[(":host:port";timeout);query]``
 `":host:port"` can also be a symbol as `` `:host:port``.
 
 
-## :fontawesome-solid-handshake-slash: `hclose`
+## `hclose`
 
 _Close a connection to a file or process_
 

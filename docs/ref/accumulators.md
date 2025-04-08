@@ -101,11 +101,6 @@ syntax           | name     | number of successive evaluations
 
 ### Converge
 
-<div markdown="1" style="float: right; font-style: italic; font-size: 80%; margin-left: 1em; text-align: center; width: 150px">
-[![St Patrick driving the snakes out of Ireland](../img/snakes.jpg)](../img/snakes.jpg)
-Are we there yet?
-</div>
-
 ```q
 q)(neg\)1                                 / Converge
 1 -1

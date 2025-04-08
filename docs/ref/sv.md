@@ -4,13 +4,7 @@ description: sv is a q keyword that performs a variety of functions under the ge
 author: Stephen Taylor
 ---
 
-[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
-{: style="float: right; max-width: 200px"}
-
 # `sv`
-
-
-
 
 _“Scalar from vector”_
 

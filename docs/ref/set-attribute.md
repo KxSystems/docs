@@ -38,7 +38,9 @@ q)t:([1 2 4]y:7 8 9);`s#t;attr each (t;key t)
 
 Applying `p` attribute is faster and uses less memory since 4.1t 2023.01.20.
 
-## Sorted
+## Attribute types
+
+### Sorted
 
 The _sorted_ attribute can be set on a simple or mixed list, a dictionary, table, or keyed table.
 
@@ -73,12 +75,12 @@ v | f
 Setting the _sorted_ attribute on a dictionary or table, where the key is already in sorted order, in order to obtain a step-function, sets the _sorted_ attribute for the key but copies the outer object.
 
 
-## Unique
+### Unique
 
 The _unique_ attribute can be set on simple and mixed lists where all items are distinct.
 
 
-## Grouped and parted
+### Grouped and parted
 
 Attributes _parted_ and _grouped_ are useful for simple lists (where the datatype has an integral underlying value) in memory with a lot of repetition.
 
@@ -98,7 +100,7 @@ q)2,`p#2 2 2 1 1 4 4 4 4 3 3
 2 2 2 2 1 1 4 4 4 4 3 3
 ```
 
-??? warning "The _grouped_ attribute is presently unsuitable for cycling through a small window of a domain, due to the retention of keys backing the attribute."
+!!! warning "The _grouped_ attribute is presently unsuitable for cycling through a small window of a domain, due to the retention of keys backing the attribute."
 
     ```q
     q)v:`g#1#0

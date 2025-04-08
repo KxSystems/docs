@@ -10,7 +10,7 @@ keywords: cut, kdb+, keyword, operator, q
 
 
 
-## Cut (operator)
+## _ (cut operator)
 
 _Cut a list or table into sub-arrays_
 
@@ -89,7 +89,7 @@ q)4 cut til 10
 8 9
 ```
 
-Otherwise `cut` behaves as `_` Cut.
+Otherwise `cut` behaves as [`_` Cut](#_-cut-operator).
 
 
 ----
