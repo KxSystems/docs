@@ -1,6 +1,6 @@
 ---
 title: Licensing kdb+ – Learn – kdb+ and q documentation
-description: How to ensure your kdb+ processes have thelicenses they need.
+description: How to ensure your kdb+ processes have the licenses they need.
 author: Stephen Taylor
 keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
 ---
