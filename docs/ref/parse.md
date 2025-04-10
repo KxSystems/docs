@@ -81,6 +81,8 @@ k){x'y}
 
 QSQL queries are parsed to the corresponding functional form.
 
+Example using parse on a QSQL statement against table `sp` (created using [`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q)):
+
 ```q
 q)\l sp.q
 q)x:parse "select part:p,qty by sup:s from sp where qty>200,p=`p1"

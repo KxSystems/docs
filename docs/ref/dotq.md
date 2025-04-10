@@ -885,7 +885,7 @@ Where
 
 returns a table with at least as many key columns as `t`.
 
-As an example, note that you can index into a simple table with row indices, but not into a keyed table – for that you should use a select statement. However, to illustrate the method, we show an indexing function being applied to a keyed table.
+As an example, note that you can index into a simple table with row indices, but not into a keyed table – for that you should use a select statement. To illustrate the method, the following example shows an indexing function being applied to a keyed table named `sp` (script [`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q) is used to populate the table).
 
 ```q
 q)\l sp.q

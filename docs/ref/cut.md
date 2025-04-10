@@ -25,6 +25,7 @@ Where
 
 returns `y` cut at the indexes given in `x`. The result is a list with the same count as `x`.
 
+Examples using cut on lists:
 ```q
 q)2 4 9 _ til 10           /first result item starts at index 2
 2 3
@@ -40,6 +41,9 @@ q)2 5 7 _ til 12
 2 3 4
 5 6
 7 8 9 10 11
+```
+Example using cut on table `sp` created using [`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q)
+```q
 q)\l sp.q
 q)count sp
 12
