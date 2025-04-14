@@ -5,19 +5,11 @@ author: Stephen Taylor
 keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, keyed table, q, symbol, til, vector
 ---
 
-[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
-{: style="float: right; max-width: 300px"}
-
 # `key`
-
-
-
 
 ```syntax
 key x     key[x]
 ```
-
-
 
 ## Key of a dictionary
 
