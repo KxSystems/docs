@@ -5853,11 +5853,11 @@ Compression improves performance when large datasets are read from slow storage.
 For an optimal balance of cost and query performance, we recommend a tiered storage strategy
 
    1. **Hot tier** should not employ compression to allow maximal ingestion rate and fastest queries. The hot tier should be located on fast storage. This tier typically stores a few weeks to month of data.
-   1. **The second tier** contains a high volume of less frequently queried data. We recommend using compression. If the goal is ultimate query speed, then `lz4` with level 5 or 6 is a good choice. If the disk space is limited and you would like to achieve a high compression ratio, then use 
+   1. **The second tier** contains a high volume of less frequently queried data. We recommend using compression. If the goal is ultimate query speed, then `snappy` or `lz4` with level 5 or 6 are good choices. Choose `lz4` if the second priority is storage saving and use `snappy` if you would like the data migration process (from the hot tier) to be fast. If the storage space is limited and you would like to achieve a high compression ratio, then use 
       * `zstd` level 10 for most columns.
       * `gzip` level 5 for sequence number-like columns.
       * Columns with parted attribute (e.g. `sym`) are exceptions and should not be compressed.
-   1. The **cold tier** contains high volume, rarely accessed data. It is typically placed on cheaper and slower storage, like object storage or HDD-backed solutions. We recommend using compression. Investigate if recompressing the second tier's data is worth the effort.
+   1. The **cold tier** contains high volume, rarely accessed data. It is typically placed on cheaper and slower storage, like object storage or HDD-backed solutions. We recommend using compression. If the second tier uses `lz4` or `snappy` then you might want to recompress the data with `zstd` to save more storage space.
 
 Not all tables need to be cut the same way. Frequently queried, "favourit" tables may reside in hot tier for longer period. On the contrary, there might be rarely queried columns even in a favourit table. **Make use of symbolic links to relocate column files to the preferred storage**.
 
