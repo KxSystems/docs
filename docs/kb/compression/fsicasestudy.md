@@ -5859,7 +5859,7 @@ For an optimal balance of cost and query performance, we recommend a tiered stor
       * Columns with parted attribute (e.g. `sym`) are exceptions and should not be compressed.
    1. The **cold tier** contains high volume, rarely accessed data. It is typically placed on cheaper and slower storage, like object storage or HDD-backed solutions. We recommend using compression. If the second tier uses `lz4` or `snappy` then you might want to recompress the data with `zstd` to save more storage space.
 
-Not all tables need to be cut the same way. Frequently queried, "favourit" tables may reside in hot tier for longer period. On the contrary, there might be rarely queried columns even in a favourit table. **Make use of symbolic links to relocate column files to the preferred storage**.
+Not all tables require identical partitioning strategies. Frequently accessed tables may remain in the hot tier for extended durations. Conversely, even within a heavily queried table, certain columns might be seldom accessed. In such cases, **symbolic links can be used to migrate column files to the appropriate storage tier**.
 
 # Data
 
