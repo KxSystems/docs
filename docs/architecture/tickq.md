@@ -200,6 +200,7 @@ Where
 Add each received message to the batch and record message to the tickerplant log. Batch is published on running timer.
 
 Actions performed:
+
 * If the first element of  `y` is not a timespan (or list of timespan)
     * inspect [`.u.d`](#variables), if a new day has occurred call [`.z.ts`](#batch-mode_1)
     * add a new timespan column populated with the current local time ([`.z.P`](../ref/dotz.md#zp-local-timestamp)). If multiple rows of data, all rows receive the same time.
