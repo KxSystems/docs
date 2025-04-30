@@ -8,49 +8,13 @@ date: February 2025
 
 In this document, we compare compression algorithms using a popular financial dataset from the New York Stock Exchange (NYSE). There are [three key metrics](../file-compression.md#performance) to evaluate compression algorithms.
 
-   1. Compression ratio
-   1. Compression speed
-   1. Decompression speed
+   1. **Compression ratio**
+   1. **Compression speed**
+   1. **Decompression speed**
 
-These metrics impact **storage cost**, **data write time** and **query response times** respectively. Both compression and decompression speeds depend on the hardware - primarily on storage speed and the compute (CPU) capacity. Our partner, Intel(R), provided access to two systems with different storage characteristics in its FasterLab, a facility dedicated to optimization of Financial Services Industry (FSI) solutions. The first system has fast local disks, while the second system comes with a slower NFS storage. The next section describes these environments in detail.
+These metrics impact **storage cost**, **data write time** and **query response times** respectively. Both compression and decompression speeds depend on the hardware - primarily on storage speed and the compute (CPU) capacity. Our partner, Intel(R), provided access to **two systems with different storage characteristics** in its FasterLab, a facility dedicated to optimization of Financial Services Industry (FSI) solutions. The first system has fast local disks, while the second system comes with a slower NFS storage. The next sections describe the results in detail.
 
-
-## Infrastructure
-
-Tests were conducted on version 9.4 of Red Hat Enterprise Linux using kdb+ 4.1 (version 2025.01.17). Compression performance depends on the **compression library versions**, which are listed below:
-
-   * `zlib`: 1.2.11
-   * `lz4`: 1.9.3
-   * `snappy`: 1.1.8
-   * `zstd`: 1.5.1
-
-Key specifications for the two systems:
-
-   1. Local block storage and Intel Xeon 6 efficient CPU
-      * **Storage**: Intel SSD D7-P5510 (3.84 TB), with interface PCIe 4.0 x4, NVMe
-      * **CPU**: Intel(R) Xeon(R) [6780E](https://www.intel.com/content/www/us/en/products/sku/240362/intel-xeon-6780e-processor-108m-cache-2-20-ghz/specifications.html) (**E**fficient series)
-         * Sockets: 2
-         * Cores per socket: 144
-         * Thread(s) per core: 1
-         * NUMA nodes: 2
-      * filesystem: ext4
-      * memory: 502GiB, DDR5 6400 MT/s, 8 channels
-   1. NFS storage and Intel Xeon 6 performance CPU
-      * **Storage**: NFS (version 4.2), mounted in sync mode, with read and write chunk sizes (`wsize` and `rsize`) 1 MB. NFS cache was not set up, i.e `-o fsc` mount parameter was not set.
-      * Some network parameters:
-        * MTU: 1500
-        * TCP read/write buffer size (`/proc/sys/net/core/rmem_default`, `/proc/sys/net/core/wmem_default`): 212992
-      * **CPU**: Intel(R) Xeon(R) [6747P](https://www.intel.com/content/www/us/en/products/sku/241825/intel-xeon-6747p-processor-288m-cache-2-70-ghz/specifications.html) (**P**erformance series)
-         * Sockets: 2
-         * Cores per socket: 48
-         * Thread(s) per core: 2
-         * NUMA nodes: 4
-      * memory: 502GiB, DDR5 6400 MT/s, 8 channels
-
-The tests ran on a single NUMA node, i.e. kdb+ processes were launched with `numactl -N 0 -m 0`.
-
-
-# Compression ratio
+## Compression ratios
 
 **Compression ratio** measures the relative reduction in size of data. This ratio is calculated by dividing the uncompressed size by the compressed size. For example, a ratio of 4 indicates that the data consumes a quarter of the disk space after compression. In this document, we show the **relative sizes** after compression, which is the inverse of compression ratios. Lower values indicate better compression. The numbers are in percentages, so 25 corresponds to compression ratio 4. The block size parameter was set to 17, which translates to logical block size of 128 KB.
 
@@ -1956,7 +1920,7 @@ Table `trade`:
 
 `qipc` does not compress all columns by default. The conditions under which qipc applies compression are [documented](https://code.kx.com/q/basics/ipc/#compression) precisely.
 
-## Key Observations
+### Key Observations
 
    * **`gzip` and `zstd` deliver the best overall ratios**.
    * `gzip` significantly outperforms `zstd` for `Sequence_Number` (except at `zstd`'s highest levels).
@@ -1965,7 +1929,7 @@ Table `trade`:
    * `gzip` levels 6–9 show minimal difference, but level 1 performs poorly on low-entropy columns.
    * `qipc` has the worst compression ratio among the tested algorithms.   
 
-# Write speed, compression times
+## Write speed, compression times
 The typical bottleneck of data ingestion is persiting tables to a storage. The write time determines the maximal ingestion rate.
 
 Writing compressed data to storage involves three sequential steps:
@@ -2524,7 +2488,7 @@ The following tables provide a column-level breakdown. Green cells mark speed im
   </tbody>
 </table>
 
-## Key Observations
+### Key Observations
    * **Compression typically slows down `set` operations.**
    * Notable exceptions: `snappy` and `zstd` level 1 actually improve write speed for certain column types. For these columns, `zstd` provides significantly better compression ratios than `snappy`.
    * The level has a substantial impact on compression time, even for algorithms like `lz4`; for example, `zstd` level 10 is considerably faster than level 22.
@@ -3103,14 +3067,14 @@ Let us see how compression performs with a slower storage.
 
 These results — smaller ratios compared to uncompressed set and more green cells — indicate that the performance benefits of compression are amplified on slower disks. Notably, only `zstd` at level 1 consistently outperforms uncompressed `set` across all columns, while other compression methods generally slow down the `set` operation.
 
-## Scaling, syncing and appending
+### Scaling, syncing and appending
 Because the `set` command is single-threaded, kdb+ systems often persist columns in parallel by `peach` when memory allows. In our case, the number of columns is smaller than the available cores so parallelizing provided clear speed advantage. Persisting all columns simultaneously took roughly the same time as persisting the largest column (`TradeID`). In real life, the writer process may have other responsibilities like ingesting new data or serving queries. These responsibilities also compete for CPU.
 
 Data persisted via `set` may remain in the OS buffer cache before being written to disk, risking data loss if the system crashes. The user can trigger the flush with the [fsync](https://man7.org/linux/man-pages/man2/fsync.2.html) system call. If kdb+ processes wrote several files simultaneously and a consistent state is desired then system calls fsync and [syncfs](https://linux.die.net/man/2/syncfs) are used. These calls block the kdb+ process and so their execution time contributes to the write time. In our experiment `fsync` times were marginal compared to `set`, especially on NFS. The network is the bottleneck for NFS and the underlying storage system has plenty of time to flush the data.
 
 While `set` is a common persistence method, intraday writedowns often use appends, implemented by [amend at](https://code.kx.com/q/ref/amend/#on-disk) like `.[file; (); ,; chunk]`. `set` also chunks large vector writes behind the scenes, this explains why our test showed no speed difference between the two methods, regardless of compression.
 
-# Query response time
+## Query response times
 When data is stored in a compressed format, it must be decompressed before processing queries. The decompression speed directly impacts query execution time.
 
 In the query test, we executed 14 distinct queries. The queries vary in filtering, grouping and aggregation parameters. Some filters trigger sequential reads, and queries with several filtering constraints perform random reads. We included queries with explicit parallel iteration ([peach](https://code.kx.com/q/ref/each/)) and with [as-of](https://code.kx.com/q/ref/aj/) join as well. Data in the financial sector is streaming in simultaneously and as-of joins play a critical role in joining various tables.
@@ -3124,7 +3088,7 @@ The table below details each query’s performance metrics:
 
 <div class="kx-perf-compact" markdown="1">
 
-|**query**|**elapsed time ms**|storage read (KB)**|**query memory need (KB)**|**result memory need (KB)** |
+|**Query**|**Elapsed time ms**|**Storage read (KB)**|**Query memory need (KB)**|**Result memory need (KB)** |
 |---|---:|---:|---:|---:|
 |**select from quote where date=2022.03.31, i<500000000**|13379|36137692|44023417|39728448|
 |**aj[`sym`time`ex; select from tradeNorm where date=2022.03.31, size>500000; select from quoteNorm where date=2022.03.31]**|6845|2820024|9797897|82|
@@ -3972,7 +3936,7 @@ To isolate caching effects, we cleared the page cache (`echo 3 | sudo tee /proc/
   </tbody>
 </table>
 
-The table below displays the second executions of the queries, i.e., data was sourced from memory (page cache) hence the storage speed impact is smaller. Query `` select medMidSize: med (bsize + asize) % 2 from quoteNorm where date=2022.03.31, sym=`CIIG.W `` without compression executed in less than 1 msec, so we rounded up the execution time to 1 msec to avoid division by zero.
+The table below displays the second executions of the queries, that is, data was sourced from memory. Because these used the page cache, the storage speed impact is smaller. Query `` select medMidSize: med (bsize + asize) % 2 from quoteNorm where date=2022.03.31, sym=`CIIG.W `` without compression executed in less than 1 msec, so we rounded up the execution time to 1 msec to avoid division by zero.
 
 Observe OS cache impact - higher ratios and more dark red cells.
 
@@ -4871,7 +4835,7 @@ Observe OS cache impact - higher ratios and more dark red cells.
   </tbody>
 </table>
 
-## Key Observations
+### Key Observations
 
   * **Compression slows queries**, especially for CPU-bound workloads (e.g., multiple aggregations using [multi-threaded primitives](https://code.kx.com/q/kb/mt-primitives/)). Some queries were 20× slower with compression.
   * **OS caching amplifies slowdowns**: When data resides in memory, compression overhead becomes more pronounced. **Recommendation**: Avoid compression for frequently accessed ("hot") data.
@@ -5848,7 +5812,7 @@ Let us see how compression impacts query times if the data is stored on a slower
 
 Compression improves performance when large datasets are read from slow storage. Thus, it is **recommended for cold tiers** (rarely accessed data).
 
-# Summary
+## Summary
 
 For an optimal balance of cost and query performance, we recommend a tiered storage strategy
 
@@ -5861,7 +5825,42 @@ For an optimal balance of cost and query performance, we recommend a tiered stor
 
 Not all tables require identical partitioning strategies. Frequently accessed tables may remain in the hot tier for extended durations. Conversely, even within a heavily queried table, certain columns might be seldom accessed. In such cases, **symbolic links can be used to migrate column files to the appropriate storage tier**.
 
-# Data
+## Infrastructure
+
+Tests were conducted on version 9.4 of Red Hat Enterprise Linux using kdb+ 4.1 (version 2025.01.17). Compression performance depends on the **compression library versions**, which are listed below:
+
+   * `zlib`: 1.2.11
+   * `lz4`: 1.9.3
+   * `snappy`: 1.1.8
+   * `zstd`: 1.5.1
+
+Key specifications for the two systems:
+
+   1. Local block storage and Intel Xeon 6 efficient CPU
+      * **Storage**: Intel SSD D7-P5510 (3.84 TB), with interface PCIe 4.0 x4, NVMe
+      * **CPU**: Intel(R) Xeon(R) [6780E](https://www.intel.com/content/www/us/en/products/sku/240362/intel-xeon-6780e-processor-108m-cache-2-20-ghz/specifications.html) (**E**fficient series)
+         * Sockets: 2
+         * Cores per socket: 144
+         * Thread(s) per core: 1
+         * NUMA nodes: 2
+      * filesystem: ext4
+      * memory: 502GiB, DDR5 6400 MT/s, 8 channels
+   1. NFS storage and Intel Xeon 6 performance CPU
+      * **Storage**: NFS (version 4.2), mounted in sync mode, with read and write chunk sizes (`wsize` and `rsize`) 1 MB. NFS cache was not set up, i.e `-o fsc` mount parameter was not set.
+      * Some network parameters:
+        * MTU: 1500
+        * TCP read/write buffer size (`/proc/sys/net/core/rmem_default`, `/proc/sys/net/core/wmem_default`): 212992
+      * **CPU**: Intel(R) Xeon(R) [6747P](https://www.intel.com/content/www/us/en/products/sku/241825/intel-xeon-6747p-processor-288m-cache-2-70-ghz/specifications.html) (**P**erformance series)
+         * Sockets: 2
+         * Cores per socket: 48
+         * Thread(s) per core: 2
+         * NUMA nodes: 4
+      * memory: 502GiB, DDR5 6400 MT/s, 8 channels
+
+The tests ran on a single NUMA node, using local node memory only. This is achieved by launching the kdb+ processes with `numactl -N 0 -m 0`.
+
+
+## Data
 
 We used [publicly available](https://ftp.nyse.com/Historical%20Data%20Samples/DAILY%20TAQ/) NYSE TAQ data for this analysis. Tables `quote` and `trade` were generated using the script [taq.k](https://github.com/KxSystems/kdb-taq). Table `quote` had 1.78 billion rows and consumed 180 GB disk space uncompressed. Table `trade` was smaller, contained 76 million rows and required 5.7 GB space. All tables were parted by the instrument ID (column `Symbol`). The data corresponds to a single day in 2022.
 
