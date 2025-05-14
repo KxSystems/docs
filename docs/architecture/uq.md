@@ -106,6 +106,7 @@ Add client subscription interest in table with optional filter.
 .u.add[x;y]
 ```
 Where
+
 * `x` is a table name (sym)
 * `y` is list of syms used to filter table data, with empty sym representing for all table data
 
@@ -138,6 +139,7 @@ For the subscribing  client, any previous registered in the given tables are rem
 Calls [`.u.add`](#uadd) to record the client subscription.
 
 Returns 
+
 * a two item list if x is an indivial table name. First item is the table name subscribed to as a symbol. Second item is an empty table (table schema).
 * a list of two item lists as described above for each individual table, if x is an empty symbol (i.e. subscribe to all tables)
 * an error if the table does not exist.
