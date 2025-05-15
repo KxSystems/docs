@@ -502,17 +502,6 @@ ibm   09:04:59.000
 Column names cannot be parameters of a qSQL query. Use [functional qSQL](../basics/funsql.md) in such cases.
 
 
-## Queries using SQL syntax
-
-Q implements a translation layer from SQL. The syntax is to prepend `s)` to the SQL query.
-
-```q
-q)s)select * from trade
-```
-
-!!! warning "Only a subset of SQL is supported."
-
-
 ----
 :fontawesome-solid-book:
 [`fby`](../ref/fby.md),
