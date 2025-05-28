@@ -7,10 +7,6 @@ keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, r
 # :fontawesome-solid-database: `read1`
 
 
-
-
-
-
 _Read bytes from a file or named pipe_
 
 ```syntax
@@ -23,10 +19,11 @@ read1 (fifo;n)    read1[(fifo;n)]
 Where
 
 -   `f` is a [file symbol](../basics/glossary.md#file-symbol)
+-   `o` is an offset as a non-negative integer/long
 -   `(f;o;n)` is a [file descriptor](../basics/glossary.md#file-descriptor)
 -   `h` is a [system or process handle](../basics/handles.md)
 -   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
--   `n` is a non-negative integer
+-   `n` is a length as a non-negative integer/long
 
 returns bytes from the source, as follows.
 
