@@ -21,7 +21,11 @@ x 1: y     1:[x;y]
 Where 
 
 -   `x` is a 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) of which the order determines whether the data is parsed as little-endian or big-endian
--   `y` is a [file descriptor](../basics/glossary.md#file-descriptor) or string, or byte sequence
+-   `y` is either a
+    -   [file descriptor](../basics/glossary.md#file-descriptor) to repeatidly read all available records (specified by 'x') from a file
+    -   3 element list containing [file descriptor](../basics/glossary.md#file-descriptor), offset (long) and length (long). Enables repeatidly reading all available records (specified by 'x') from a file which stops after the given byte length, starting 'offset' bytes from the start of the file.
+    -   string
+    -   byte sequence
 
 returns the content of `y` as a matrix.
 
