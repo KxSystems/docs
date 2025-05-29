@@ -130,6 +130,7 @@ If the file
 
 !!! tip "The usual and more general way of doing this is to use [`set`](get.md#set), which allows the target directory to be specified."
 
+The following example uses the table `sp` created using the script [`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q)
 ```q
 q)\l sp.q
 q)rsave `sp           / save splayed table
