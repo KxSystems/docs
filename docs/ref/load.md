@@ -48,6 +48,7 @@ x y
 3 30
 ```
 
+The following example uses the tables created using the script [`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q)
 ```q
 q)\l sp.q
 q)\mkdir -p cb
@@ -86,6 +87,7 @@ Where `x` is the table name as a symbol, the table is read from a directory of t
 
 !!! tip "The usual, and more general, way of doing this is to use [`get`](get.md), which allows a table to be defined with a different name than the source directory."
 
+The following example uses the table `sp` created using the script [`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q)
 ```q
 q)\l sp.q
 q)rsave `sp           / save splayed table
