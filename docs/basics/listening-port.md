@@ -91,10 +91,15 @@ q)\p -2000/2010           / use a free port between 2000 and 2010 in multithread
 q)\p myhost:2000/2010     / use a free port between 2000 and 2010, using given hostname
 ```
 
-## Multi-threaded port
+## Multi-threaded input mode
 
-A negative port sets a [multi-threaded](../kb/multithreaded-input.md) port and if used it must be the initial and only mode of operation, 
+A negative port sets a multi-threaded port and if used it must be the initial and only mode of operation, 
 i.e. do not dynamically switch between positive port and negative port.
+
+When active, each IPC connection will create a new thread for its sole use.
+Each connection uses its own heap with a minimum of 64MB, the real amount depending on the working space required by the query being executed. 
+[`\ts`](syscmds.md#ts-time-and-space) can be used to find the memory requirement of a query.
+It is designed for serving in-memory static data to an externally constrained number of clients. It is not intended for use as a gateway, or serving mutable data.
 
 Note that there are a number of restrictions in multithreaded mode:
 
@@ -104,6 +109,15 @@ Note that there are a number of restrictions in multithreaded mode:
 * [.z.W](../ref/dotz.md#zw-handles) has a view on main thread sockets only
 * Cannot send async message
 * Views can be recalculated from the main thread only
+* Uncompressed pages will not be shared between threads (i.e. same situation as with starting a separate hdb for each request). 
+
+The main thread is allowed to update globals. The main thread is responsible for reading from stdin (i.e. the console) and executing any loaded scripts on start-up.
+It also invokes [.z.ts](../ref/dotz.md#zts-timer) on [timer expiry](syscmds.md#t-timer). 
+Any connections made via IPC from the main thread, can be monitored
+for callbacks (for example via an [async callback](../kb/callbacks.md)) which in turn can update globals.
+While the main thread is processing an update (for example, a timer firing or console input) none of the connection threads will be processing any input.
+Updates should not be frequent, as they wait for completion of exiting queries and block new queries (using multiple-read single-write lock), thus slowing processing speeds. 
+If an attempt is made to update globals from threads other than main, a 'no update error is issued.
 
 Multithreaded input mode supports WebSockets and HTTP (but not TLS) since 4.1t 2021.03.30. 
 TLS support available since 4.1t 2023.12.14. A custom [.z.ph](../ref/dotz.md#zph-http-get) which does not update global state should be used with HTTP.
@@ -170,6 +184,3 @@ Once you open a port in q session, it is open to all connections, including HTTP
 Command-line options [`-e`](cmdline.md#-e-tls-server-mode),
 [`-p`](cmdline.md#-p-listening-port); 
 system command [`\p`](syscmds.md#p-listening-port)
-<br>
-:fontawesome-solid-graduation-cap:
-[Multithreaded input mode](../kb/multithreaded-input.md)

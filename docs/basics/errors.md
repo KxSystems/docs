@@ -98,7 +98,7 @@ close
 [](){#con}
 con
 
-:   qcon client is not supported when kdb+ is in [multithreaded input mode](../kb/multithreaded-input.md)
+:   qcon client is not supported when kdb+ is in [multithreaded input mode](listening-port.md#multi-threaded-input-mode)
 
 [](){#cond}
 cond

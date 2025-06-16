@@ -525,7 +525,7 @@ See
 [`-p` command-line option ](cmdline.md#-p-listening-port)
 <br>
 :fontawesome-solid-graduation-cap:
-[Multithreaded input mode](../kb/multithreaded-input.md),
+[Multithreaded input mode](listening-port.md#multi-threaded-input-mode),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
 :fontawesome-regular-map:
