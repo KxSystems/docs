@@ -117,7 +117,7 @@ Any connections made via IPC from the main thread, can be monitored
 for callbacks (for example via an [async callback](../kb/callbacks.md)) which in turn can update globals.
 While the main thread is processing an update (for example, a timer firing or console input) none of the connection threads will be processing any input.
 Updates should not be frequent, as they wait for completion of exiting queries and block new queries (using multiple-read single-write lock), thus slowing processing speeds. 
-If an attempt is made to update globals from threads other than main, a 'no update error is issued.
+If an attempt is made to update globals from threads other than main, a `'no update` error is issued.
 
 Multithreaded input mode supports WebSockets and HTTP (but not TLS) since 4.1t 2021.03.30. 
 TLS support available since 4.1t 2023.12.14. A custom [.z.ph](../ref/dotz.md#zph-http-get) which does not update global state should be used with HTTP.
