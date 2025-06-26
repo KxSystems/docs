@@ -43,7 +43,7 @@ misc:      $(Cast) #(Take) _(Drop/Cut) ,(Join) deltas differ distinct
 
 Multithreaded primitives execute in the same secondary threads as `peach`, and similar limitations apply. System command [`\s`](../basics/syscmds.md#s-number-of-secondary-threads) controls the maximum number of threads. 
 
-!!! tip "Launch q with the [`-s`](../basics/cmdline.md#s-secondary-threads) command-line option to allow primitives to multithread."
+!!! tip "Launch q with the [`-s`](../basics/cmdline.md#-s-secondary-threads) command-line option to allow primitives to multithread."
 
 For example, here we invoke `max` from outside `peach`, and from within `peach`:
 ```q

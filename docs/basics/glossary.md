@@ -135,7 +135,7 @@ Characters ignored by the interpreter.
 A communication handle specifies a network resource.
 
 :fontawesome-solid-book:
-[Communication handles](../ref/hopen.md#Communication-handles)
+[Communication handles](../ref/hopen.md#communication-handles)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

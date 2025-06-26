@@ -41,7 +41,7 @@ where:
 * `c` is the [Where phrase](qsql.md#where-phrase), a list of constraints.  
 Every constraint in `c` is a [parse tree](parsetrees.md) representing an expression to be evaluated; the result of each being a boolean vector. The parse tree consists of a function followed by a list of its arguments, each an expression containing column names and other variables. Represented by symbols, it distinguishes actual symbol constants by enlisting them. The function is applied to the arguments, producing a boolean vector that selects the rows. The selection is performed in the order of the items in `c`, from left to right: only rows selected by one constraint are evaluated by the next.
 <!-- : Every item in `c` is a triple consisting of a boolean- or int- valued binary function together with its arguments, each an expression containing column names and other variables. The function is applied to the two arguments, producing a boolean vector. The resulting boolean vector selects the rows that yield non-zero results. The selection is performed in the order of the items in `c`, from left to right. -->
-* `b` is the [By phrase](qsql.md#by-phrase).  
+* `b` is the [By phrase](../ref/select.md#by-phrase).  
 The domain of dictionary `b` is a list of symbols that are the key names for the grouping. Its range is a list of column expressions (parse trees) whose results are used to construct the groups. The grouping is ordered by the domain items, from major to minor.
 `b` is one of:
     -   the general empty list `()`
@@ -160,7 +160,7 @@ y   | 15 29
 
 ### Select distinct
 
-For special case [`select distinct`](../ref/select.md#distinct) specify `b` as `1b`.
+For special case [`select distinct`](../ref/select.md#limit-expression) specify `b` as `1b`.
 
 ```q
 q)t:([] c1:`a`b`a`c`b`c; c2:1 1 1 2 2 2; c3:10 20 30 40 50 60)
@@ -715,7 +715,7 @@ q)(#;3;enlist `a`b`c`d`e`f)~parse"3#`a`b`c`d`e`f"
 1b
 ```
 
-This causes a difficulty. As [discussed above](#variadic-operators), q has no unary syntax for operators.
+This causes a difficulty as q has no unary syntax for operators.
 
 Which means the following isn’t a valid q expression and so returns an error.
 

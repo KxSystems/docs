@@ -197,10 +197,10 @@ q)10 vs(1995;1996 1997)
 <br>
 :fontawesome-solid-book:
 [`.Q.j10`](dotq.md#j10-encode-binhex) encode binhex, 
-[`.Q.j12`](dotq.md#j12-encode-base36) encode base36
+[`.Q.j12`](dotq.md#j12-encode-base-36) encode base36
 <br>
 :fontawesome-solid-book:
 [`.Q.x10`](dotq.md#x10-decode-binhex) decode binhex,
-[`.Q.x12`](dotq.md#x12-decode-base36) decode base36
+[`.Q.x12`](dotq.md#x12-decode-base-36) decode base36
 
 

@@ -46,7 +46,7 @@ If you wish to begin using kdb+ commercially, please contact sales@kx.com.
 ## Install the license key file
 
 Save a copy of the license key file (`k4.lic` or `kc.lic`) in the `QHOME` folder. 
-(See [installation instructions](install.md#install) for your operating system.) 
+(See [installation instructions](install.md#step-3-install-the-license-file) for your operating system.) 
 Restart your kdb+ session and note the change in the banner. 
 
 ```txt

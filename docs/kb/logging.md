@@ -366,7 +366,7 @@ q)-11!(26;logfile)
 
 ### Replacing a corrupt log
 
-It can be  more efficient to [replay from a corrupt file](##replay-from-corrupt-logs) (due to disk usage), than to directly take the good chunks from a bad log to create a new log.
+It can be  more efficient to [replay from a corrupt file](#replay-from-corrupt-logs) (due to disk usage), than to directly take the good chunks from a bad log to create a new log.
 
 The knowledge of how to create a log file, and how to replay part of a log file can be combined to convert a file that was previously giving the `badtail` error.
 Note that this does not fix the corrupted section, only removes the corrupted section from the file.

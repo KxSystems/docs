@@ -322,7 +322,7 @@ View calculations and `\` system commands, including `\l`, correspond to individ
          ^
 ```
 
-Errors thrown by [`parse`](../ref/parse.md) show up in [`.Q.trp`](../ref/dotq.md#trp-extend-trap) with location information.
+Errors thrown by [`parse`](../ref/parse.md) show up in [`.Q.trp`](../ref/dotq.md#trp-extend-trap-at) with location information.
 
 ```q
 q).Q.trp[parse;"2+2;+2";{1@.Q.sbt 2#y}];

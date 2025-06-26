@@ -7,7 +7,7 @@ keywords: compression, distortion, iterative, kdb+, q, Ramer-Douglas-Peucker, re
 ---
 # Dynamically shrinking big data using time-series database kdb+
 
-by [Sean Keevey &amp; Kevin Smyth](#author)
+by [Sean Keevey &amp; Kevin Smyth](#authors)
 {: .wp-author}
 
 

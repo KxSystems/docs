@@ -69,9 +69,6 @@ q)h"reval(hopen;enlist`:somefile)"
 ```
 
 ----
-:fontawesome-solid-book-open:
-[Internal function `-6!`](../basics/internal.md#-6x-eval)
-<br>
 :fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 

@@ -426,7 +426,7 @@ date       open  high  low   close sym  newcol
 
 ---
 :fontawesome-solid-database:
-[Splaying large files](loading-from-large-files.md#splaying-large files)
+[Splaying large files](loading-from-large-files.md#splaying-large-files)
 <br>
 :fontawesome-solid-database:
 [Partitioned tables](partition.md)

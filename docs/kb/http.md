@@ -27,8 +27,8 @@ This allows kdb+ to be customized with a variety of mechanisms for securing HTTP
 HTTP request handling is customized by using the following callbacks:
 
 * [.z.ph](../ref/dotz.md#zph-http-get) for HTTP GET
-* [.z.pp](../ref/dotz.md##zpp-http-post) for HTTP POST
-* [.z.pm](../ref/dotz.md##zpp-http-post) for HTTP OPTIONS/PATCH/PUT/DELETE
+* [.z.pp](../ref/dotz.md#zpp-http-post) for HTTP POST
+* [.z.pm](../ref/dotz.md#zpp-http-post) for HTTP OPTIONS/PATCH/PUT/DELETE
 
 #### Default .z.ph handling
 

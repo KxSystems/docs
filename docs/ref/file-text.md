@@ -395,9 +395,6 @@ T        time        hh[:]mm[:]ss[[.]ddd]
 [Datatypes](../basics/datatypes.md), 
 [File system](../basics/files.md)
 <br>
-:fontawesome-solid-graduation-cap:
-[How do I import a CSV file into a table?](../kb/faq.md#how-do-i-import-a-csv-file-into-a-table)
-<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)

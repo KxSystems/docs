@@ -164,7 +164,7 @@ Unfortunately it is not always possible or is too expensive to structure the inp
 We must
 
 -   read data in chunks using [`.Q.fsn`](../ref/dotq.md#fsn-file-streaming)
--   append data to splayed tables using manual enumerations and [`upsert`](../basics/qsql.md#upsert)
+-   append data to splayed tables using manual enumerations and [`upsert`](../ref/upsert.md)
 -   re-sort and set attributes on disk when all the data is loaded
 -   write a daily statistics table as a splayed table at the top level of the database
 

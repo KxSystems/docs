@@ -34,7 +34,7 @@ n/a  | `\`                    | [Abort](../basics/syscmds.md#terminate), [Toggle
 1    | `(u\)`, `u\[d]`        | [Converge](accumulators.md#converge)
 2    | `n u\d`, `u\[n;d]`     | [Do](accumulators.md#do)
 2    | `t u\d`, `u\[t;d]`     | [While](accumulators.md#while)
-2    | `x v\y`, `v\[x;y;z;…]` | [map-reduce](accumulators.md#binary-iterators)
+2    | `x v\y`, `v\[x;y;z;…]` | [map-reduce](accumulators.md#binary-values)
 
 ```txt
 d: data                   n: non-negative integer atom

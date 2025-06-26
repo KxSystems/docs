@@ -266,7 +266,7 @@ The RDB server’s memory is monitored for two reasons.
 
 ### Scaling out
 
-As discussed in the [Auto Scaling in q](#auto-scaling-in-q) section, AWS CLI commands can take some time to run.
+As discussed in the [Auto Scaling in q](index.md) section, AWS CLI commands can take some time to run.
 This could create some unwanted buffering in the RDB if they were to run while subscribed to the tickerplant.
 
 To avoid this another q process runs separately on the server to coordinate the scale out.

@@ -9,7 +9,7 @@ description: TCP/IP is used for communicating between processes. The protocol is
 _Simple, powerful, fast_
 
 <div markdown="1" class="typewriter">
-[\p](syscmds.md#listening-port)  [-p](cmdline.md#listening-port)          listen to port
+[\p](syscmds.md#p-listening-port)  [-p](cmdline.md#-p-listening-port)          listen to port
 [hopen hclose](../ref/hopen.md)    open/close connection
 [.z](../ref/dotz.md)              handle message (callbacks)
 </div>

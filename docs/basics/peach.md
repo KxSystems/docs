@@ -13,7 +13,7 @@ keywords: kdb+, parallel, parallel each, peach, q, uniform
 The iterator [Each Parallel](../ref/maps.md#each-parallel) `':` (or its mnemonic keyword `peach`) delegates processing to secondary tasks for parallel execution. 
 This can be useful, for example, for computationally expensive functions, or for accessing several drives at once from a single CPU.
 
-To execute in parallel, start kdb+ with multiple secondary processes, using [`-s` in the command line](cmdline.md#-s-secondary-threads), and (since V3.5) the [`\s`](syscmds.md#s-number-of-secondary-processes) system command.
+To execute in parallel, start kdb+ with multiple secondary processes, using [`-s` in the command line](cmdline.md#-s-secondary-threads), and (since V3.5) the [`\s`](syscmds.md#s-number-of-secondary-threads) system command.
 
 Each Parallel iterates a unary value: the argument list of the derived function is divided between secondary processes for evaluation. 
 
@@ -45,7 +45,7 @@ q)\ts .[g;]peach flip(2#1000000;2 3)
 32 1744
 ```
 
-The secondary processes used by Parallel Each and `peach` are either threads or processes according to the sign of the [value used in the command line](cmdline.md#-s-secondary-processes).
+The secondary processes used by Parallel Each and `peach` are either threads or processes according to the sign of the [value used in the command line](cmdline.md#-s-secondary-threads).
 
 
 ## Threads

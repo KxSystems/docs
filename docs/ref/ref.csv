@@ -22,7 +22,7 @@ cov,cov.md,covariance,math,
 cross,cross.md,cross product,list,
 csv,csv.md,comma delimiter,table,
 cut,cut.md,cut array into pieces,list,
-delete,delete.md#delete-keyword,delete rows or columns from a table,query,
+delete,delete.md,delete rows or columns from a table,query,
 deltas,deltas.md,differences between consecutive pairs,math,uniform
 desc,desc.md,descending sort,sort,uniform
 dev,dev.md,standard deviation,math,aggregate
@@ -73,7 +73,7 @@ log,log.md,natural logarithm,math,atomic
 lower,lower.md,lower case,text,uniform
 lsq,lsq.md,least squares – matrix divide,math,
 ltime,gtime.md#ltime,local timestamp,env,
-ltrim,trim.md#ltrim,function remove leading spaces,text,
+ltrim,trim.md,function remove leading spaces,text,
 mavg,avg.md#mavg,moving average,math,uniform
 max,max.md,maximum,math,aggregate
 maxs,max.md#maxs,maxima of preceding items,math,uniform
@@ -114,7 +114,7 @@ reverse,reverse.md,reverse the order of items,list,uniform
 rload,load.md#rload,load a splayed table,io,
 rotate,rotate.md,rotate items,list,uniform
 rsave,save.md#rsave,,io,
-rtrim,trim.md#rtrim,remove trailing spaces,text,
+rtrim,trim.md,remove trailing spaces,text,
 save,save.md,save global data to file,io,
 scan,over.md,apply value to successive items,iterate,
 scov,cov.md#scov,statistical covariance,math,
@@ -144,7 +144,7 @@ uj ujf,uj.md,union join,join,
 ungroup,ungroup.md,flattened table,table,
 union,union.md,distinct items of combination of two lists,list,
 update,update.md,insert or replace table records,query,
-upper,lower.md#upper,upper-case,text,uniform
+upper,lower.md,upper-case,text,uniform
 upsert,upsert.md,add table records,table,
 value,value.md,value of a variable or dictionary key; value of an executed sting,interpret,
 var,var.md,variance,math,aggregate

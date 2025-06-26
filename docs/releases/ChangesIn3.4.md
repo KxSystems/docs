@@ -28,7 +28,7 @@ Below is a summary of changes from V3.3. Commercially licensed users may obtain 
 -   certain vector types can now be [updated efficiently](../ref/amend.md), directly on disk, rather than having to rewrite the whole file on change.
 -   added async broadcast as [`-25!`(handles;msg)](../basics/internal.md#-25x-async-broadcast) which serializes the msg once, queuing it as async msg to each handle.
 -   [`parse`](../basics/parsetrees.md) can now handle k in addition to q code.
--   `.Q.en` can now handle lists of sym vectors: [Enumerating nested varchar columns](../kb/splayed-tables.md#enumerating-nested-varchar-columns-in-a-table)
+-   [`.Q.en`](../ref/dotq.md#en-enumerate-varchar-cols) can now handle lists of sym vectors
 
 ## Not upwardly compatible
 
