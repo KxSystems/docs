@@ -115,6 +115,9 @@ ghi| 3   -6
 
 ## Domain and range
 
+The following shows the resulting output type given the input type of `x` and `y`. 
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
 xbar| b g x h i j e f c s p m d z n u v t
 ----| -----------------------------------
@@ -138,7 +141,15 @@ v   | v . v v v v f f v . . . . . . . . .
 t   | t . t t t t f f t . . . . . . . . .
 ```
 
-Range: `ijfpmdznuvte`
+For example, rounding down timespans to the nearest multiple of a long will produce a timespan.
+```q
+q)2 xbar 00:00:00.000000001 00:00:00.000000002 00:00:00.000000013
+0D00:00:00.000000000 0D00:00:00.000000002 0D00:00:00.000000012
+q)type 2 xbar 00:00:00.000000001 00:00:00.000000002 00:00:00.000000013
+16h
+```
+
+The possible range of output types are `ijfpmdznuvte`.
 
 ----
 :fontawesome-solid-book:
