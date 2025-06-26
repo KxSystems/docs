@@ -173,7 +173,7 @@ h(reval(value;)enlist@;(key;`$":/home/charlie/db"))
 
 ## :fontawesome-solid-bolt: Multithreaded primitives
 
-kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../kb/multithreaded-input.md).
+kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../basics/listening-port.md#multi-threaded-input-mode).
 
 kdb+ 4.0 adds an additional level of multithreading via primitives.
 It is fully transparent to the user, requiring no code change by the user to exploit it. The underlying framework currently uses the number of threads configured as secondary threads on the command line.

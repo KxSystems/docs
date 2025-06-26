@@ -284,7 +284,7 @@ The CPU requirement of the real-time database (RDB) comes from
 -   appending updates to local tables
 -   user queries
 
-Local table updates are very efficient especially if TP sends batch updates. Nevertheless, faster CPU results in faster ingestion and lower latency. User queries are often CPU-intensive. They perform aggregation and joins, and call expensive functions. If the RDB is set up in [multithreaded input mode](../../kb/multithreaded-input.md) then user queries are executed in parallel. Furthermore, kdb+ 4.0 supports multithreading in most primitives, including `sum`, `avg`, `dev`, etc. If the RDB process is heavily used and hit by many queries, then it is recommended to start with [secondary threads](../../basics/cmdline.md#-s-secondary-threads). VMs with plenty of cores are recommended for RDB processes with large numbers of user queries.
+Local table updates are very efficient especially if TP sends batch updates. Nevertheless, a faster CPU results in faster ingestion and lower latency. User queries are often CPU-intensive. They perform aggregation and joins, and call expensive functions. If the RDB is set up in [multithreaded input mode](../../basics/listening-port.md#multi-threaded-input-mode) then user queries are executed in parallel. Furthermore, kdb+ 4.0 supports multithreading in most primitives, including `sum`, `avg`, `dev`, etc. If the RDB process is heavily used and hit by many queries, then it is recommended to start with [secondary threads](../../basics/cmdline.md#-s-secondary-threads). VMs with plenty of cores are recommended for RDB processes with large numbers of user queries.
 
 If the infrastructure is sensitive to the RDB EOD work, then powerful CPUs are recommended. Sorting tables before splaying is a CPU-intensive task.
 
@@ -365,7 +365,7 @@ EFA provides lower and more consistent latency and higher throughput than the TC
 
 A network load balancer is a type of [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) by Amazon. It is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, Network Load Balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
 
-Load balancers can distribute load among applications that offer the same service. kdb+ is single-threaded by default. You can set [multithreaded input mode](../../kb/multithreaded-input.md) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
+Load balancers can distribute load among applications that offer the same service. kdb+ is single-threaded by default. You can set [multithreaded input mode](../../basics/listening-port.md#multi-threaded-input-mode) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
 
 A better approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway via async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then we recommend a gateway load balancer to avoid query contention in the gateway. Furthermore, there are other tickerplant components that enjoy the benefit of load balancers to handle simultaneous requests better.
 

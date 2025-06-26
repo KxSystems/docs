@@ -474,7 +474,6 @@ nav:
       - Coding:
         - Geospatial indexing: kb/geospatial.md
         - Linear programming: kb/lp.md
-        - Multithreaded input: kb/multithreaded-input.md
         - Multithreaded primitives: kb/mt-primitives.md
         - Pivoting tables: kb/pivoting-tables.md
         - Precision: basics/precision.md
