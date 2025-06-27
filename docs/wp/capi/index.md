@@ -137,7 +137,7 @@ int main()
 
 When `khpu` connects successfully, the handle value returned is always a positive number. Positive values indicate success with negative values being reserved for error conditions. Possible return values for the `khpu` function are listed below, and form the basis for the error handling logic performed by `handleOk`. This function is one of a pair of error-handing utilities which will be used across multiple subsequent examples. All utility functions are defined in the `common.h` header file which is loaded as part of each example. 
 
-Particular attention should be paid towards error handling when using the API, and it is for this reason that such logic is included within examples presented herein. Further details on error signaling will be presented [below](#error-signalling).
+Particular attention should be paid towards error handling when using the API, and it is for this reason that such logic is included within examples presented herein. Further details on error signaling will be presented [below](#error-signaling).
 
 handle | status
 :-----:|----------------

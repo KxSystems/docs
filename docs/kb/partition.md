@@ -33,7 +33,7 @@ db
 !!! tip "Partition data correctly: data for a particular date must reside in the partition for that date."
 
 :fontawesome-solid-book: 
-[`.Q.par`](../ref/dotq.md#par-locate-partition)
+[`.Q.par`](../ref/dotq.md#par-get-expected-partition-location)
 
 
 ## Table counts

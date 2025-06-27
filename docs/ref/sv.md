@@ -196,6 +196,6 @@ q)0b sv 100011000110101110001011011001000110100000010101011000001000010000001010
 [`.Q.x10`](dotq.md#x10-decode-binhex) (decode binhex)
 <br>
 :fontawesome-solid-book:
-[`.Q.j12`](dotq.md#j12-encode-base36) (encode base36), 
-[`.Q.x12`](dotq.md#x12-decode-base36) (decode base36)
+[`.Q.j12`](dotq.md#j12-encode-base-36) (encode base36), 
+[`.Q.x12`](dotq.md#x12-decode-base-36) (decode base36)
 

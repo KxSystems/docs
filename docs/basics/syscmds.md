@@ -371,7 +371,7 @@ If the subsequent attempt fail, the request exits with [`'wsfull`](../basics/err
 
     : If most of the objects allocated from a 64MB slab are freed but one remains, the slab still cannot be returned to the OS (or coalesced). 
 
-The following example shows freeing an object ≥64MB in `deferred` mode, while inspecting memory usage via [`.Q.w[]`](../ref/dotq.md##w-memory-stats):
+The following example shows freeing an object ≥64MB in `deferred` mode, while inspecting memory usage via [`.Q.w[]`](../ref/dotq.md#w-memory-stats):
 ```q
 q).Q.w[]`used`heap    / original memory used and memory reserved by kdb+ at time of test
 371552 67108864
@@ -457,7 +457,7 @@ q)\a                 / with tables quote and trade
 `p`quote`s`sp`trade
 ```
 
-If [logging](../kb/logging.md) is enabled, the command [checkpoints](../kb/logging.md#check-pointing) the `.qdb` file and empties the log file.
+If [logging](../kb/logging.md) is enabled, the command [checkpoints](../kb/logging.md#check-pointing-rolling) the `.qdb` file and empties the log file.
 
 
 !!! danger "Operating systems may create hidden files, such as `DS_Store`, that block `\l` on a directory."

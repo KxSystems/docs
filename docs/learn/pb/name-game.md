@@ -118,7 +118,7 @@ The replacements are all made in the last line:
 -    `Name` for `"$1"`
 -    `tn` for `"$2"`
 
-Should the successive calls to `ssr` be refactored with [Over](../../ref/accumulators.md#ternary values)?
+Should the successive calls to `ssr` be refactored with [Over](../../ref/accumulators.md#ternary-values)?
 
 They could be. The syntax would be `ssr/[s;f;t]`, where `f` and `t` are the lists of from- and to-strings.
 But rather than construct those variables, let’s apply `ssr/` to a 3-list of arguments. The syntax for that would be `(ssr/).(s;f;t)`.
@@ -204,7 +204,7 @@ Successive substitutions:
 @[;0;pfx,] @[;3;Name,] @[;0 1 2;,[;sfx]] @[;where n[0]=last each s;-1_] s 
 ```
 
-We could use the [Over iterator](../../ref/accumulators.md#ternary values) to refactor the successive calls to Amend At as a call to `@/`.
+We could use the [Over iterator](../../ref/accumulators.md#ternary-values) to refactor the successive calls to Amend At as a call to `@/`.
 The refactored syntax would be `@/[s;i;u]` where `i` is a nested list of indexes and `u` is a list of unaries.
 
 ```q

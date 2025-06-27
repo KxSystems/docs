@@ -229,9 +229,6 @@ q)0w + 5
 0w
 ```
 
-:fontawesome-solid-book:
-[`.Q.M`](../ref/dotq.md#m-long-infinity) (long infinity)
-
 ??? detail "To infinity and beyond"
 
     Floating-point arithmetic follows [IEEE754](https://en.wikipedia.org/wiki/IEEE_754 "Wikipedia").

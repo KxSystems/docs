@@ -376,7 +376,7 @@ q c.q CMD [host]:port[:usr:pwd] [-p 5040]
 
 | Parameter Name | Description | Default |
 | ---- | ---- | --- |
-| CMD | See [options](#options) for list of possible options | &lt;none&gt; |
+| CMD | See [features](#features) for list of possible options | &lt;none&gt; |
 | host | host running kdb+ instance that the instance will subscribe to e.g. tickerplant host | localhost | 
 | port | port of kdb+ instance that the instance will subscribe to  e.g. tickerplant port | 5010 |
 | usr   | username | &lt;none&gt; |

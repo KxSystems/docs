@@ -112,7 +112,7 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 ## [Interprocess communication](ipc.md)
 
 <div markdown="1" class="typewriter">
-[\p](syscmds.md#listening-port)  [-p](cmdline.md#listening-port)          listen to port
+[\p](syscmds.md#p-listening-port)  [-p](cmdline.md#-p-listening-port)          listen to port
 [hopen hclose](../ref/hopen.md)    open/close connection
 [.z](../ref/dotz.md)              callbacks
 </div>
@@ -251,11 +251,11 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [lower](../ref/lower.md)   shift to lower case
 [ltrim](../ref/trim.md)   trim leading space
 [md5](../ref/md5.md)     hash from string
-[rtrim](../ref/trim.md#rtrim)   trim trailing space
+[rtrim](../ref/trim.md)   trim trailing space
 [ss](../ref/ss.md#ss)      string search
 [ssr](../ref/ss.md#ssr)     string search and replace
 [trim](../ref/trim.md)    trim leading and trailing space
-[upper](../ref/lower.md#upper)   shift to upper case
+[upper](../ref/lower.md)   shift to upper case
 </div>
 
 

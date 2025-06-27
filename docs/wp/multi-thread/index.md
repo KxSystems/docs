@@ -33,7 +33,7 @@ All tests performed using kdb+ version 3.1 (2013.06.25)
 
 kdb+ starts in single-threaded mode by default. This ensures data consistency and that there are no race conditions, as all commands are executed in the order they are received. Multi-threading in kdb+ is achieved by spawning multiple secondary threads.
 
-To perform parallel operations in kdb+, the process is started up using the [`–s n` command-line option](../../basics/cmdline.md#-s-secondary-processes). When called with a value of `n`>1, kdb+ will start `n` secondary threads. For optimal performance when using multi-threading, the number of secondary processes should be equal to or greater than the number of available cores. One should take into consideration the overall usage of the host when determining the number of secondary processes to allocate.
+To perform parallel operations in kdb+, the process is started up using the [`–s n` command-line option](../../basics/cmdline.md#-s-secondary-threads). When called with a value of `n`>1, kdb+ will start `n` secondary threads. For optimal performance when using multi-threading, the number of secondary processes should be equal to or greater than the number of available cores. One should take into consideration the overall usage of the host when determining the number of secondary processes to allocate.
 
 Parallel execution is explicitly invoked by using two built-in functions: [`peach`](../../ref/each.md#each-peach) and [`.Q.fc`](../../ref/dotq.md#fc-parallel-on-cut). Parallel execution is also implicitly invoked in kdb+ when used as part of a multi-threaded HDB. This mode of operation will be reviewed in more detail below.
 

@@ -572,7 +572,7 @@ q)
 .z.pd: x
 ```
 
-Where q has been [started with secondary processes for use in parallel processing](../basics/cmdline.md#-s-secondarys),  `x` is
+Where q has been [started with secondary processes for use in parallel processing](../basics/cmdline.md#-s-secondary-threads),  `x` is
 
 -    an int vector of handles to secondary processes
 -    a function that returns a list of handles to those secondary processes

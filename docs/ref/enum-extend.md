@@ -107,7 +107,7 @@ Enum Extend is a uniform function.
 [File system](../basics/files.md)
 <br>
 :fontawesome-solid-graduation-cap:
-[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+[Enumerating symbol columns in a table](../kb/splayed-tables.md#enumerating-symbol-columns)
 <br>
 :fontawesome-solid-street-view: 
 _Q for Mortals_

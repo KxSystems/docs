@@ -41,7 +41,7 @@ _Tools_
  [sbt      string backtrace](#sbt-string-backtrace)         [D           partitions](#d-partitions)
  [trp      extend trap at](#trp-extend-trap-at)           [ind         partitioned index](#ind-partitioned-index)
  [trpd     extend trap](#trpd-extend-trap)              [MAP         maps partitions](#map-maps-partitions)
- [ts       time and space](#ts-time-and-space)           [par         locate partition](#par-locate-partition)
+ [ts       time and space](#ts-time-and-space)           [par         locate partition](#par-get-expected-partition-location)
                                    [PD          partition locations](#pd-partition-locations)
  **Environment**                       [pd          modified partition locns](#pd-modified-partition-locations)
  [K k      version](#k-version-date)                  [pf          partition field](#pf-partition-field)
@@ -593,7 +593,7 @@ Tables splayed across a directory must be fully enumerated and not keyed. The so
 [`save`](save.md)
 <br>
 :fontawesome-solid-graduation-cap:
-[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+[Enumerating symbol columns in a table](../kb/splayed-tables.md#enumerating-symbol-columns)
 <br>
 :fontawesome-solid-database:
 [Splayed tables](../kb/splayed-tables.md)
@@ -1192,7 +1192,7 @@ Where
 Returns a string for the result of an HTTP[S] POST query.
 (Since V3.4)
 
-Uses proxy settings (if defined) and compression handling, as described in [hg (HTTP get)](#hp-http-get).
+Uses proxy settings (if defined) and compression handling, as described in [hg (HTTP get)](#hg-http-get).
 
 ```q
 q).Q.hp["http://google.com";.h.ty`json]"my question"
@@ -1239,7 +1239,7 @@ Where `x` is
     avg1 | 
     ```
 
-Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains a single character that is not in [.Q.an](#all-alphanumerics) (it previously produced an empty sym) e.g.
+Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains a single character that is not in [.Q.an](#an-all-alphanumerics) (it previously produced an empty sym) e.g.
 
 ```q
 q).Q.id`$"+"

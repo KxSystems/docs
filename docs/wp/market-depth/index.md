@@ -379,5 +379,5 @@ _Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
 ![Stephen Empsey](../../img/faces/stephendempsey.jpg)
 {: .small-face}
 
-**Stephen Dempsey** is senior kdb+ developer on the KX R&D team. His core responsibility has been developing the [KX Platform](../../devtools.md#kx-platform) and supporting the wide range of applications built upon it. Earlier he implemented various kdb+ applications including large-volume exchange backtesting, and eFX trading.
+**Stephen Dempsey** is senior kdb+ developer on the KX R&D team. His core responsibility has been developing the [KX Platform](../../devtools.md#kx-delta-platform) and supporting the wide range of applications built upon it. Earlier he implemented various kdb+ applications including large-volume exchange backtesting, and eFX trading.
 

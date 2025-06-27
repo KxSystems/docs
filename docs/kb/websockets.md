@@ -186,7 +186,7 @@ q)`:ws://username:password@127.0.0.1:5001 "GET / HTTP/1.1\r\nHost: 127.0.0.1:500
 ### Example
 
 An example, [`wslogin.htm`](https://github.com/KxSystems/cookbook/blob/master/wslogin.htm) shows how to send a JavaScript dictionary to kdb+. It receives a dictionary and replies with a vector of strings to the browser (the dictionaries values).
-To decode a *serialized* string using q, use [`-9!`](../basics/internal.md#-9x-from-bytes) and to encode, use [`-8!`](../basics/internal.md##-8x-to-bytes).
+To decode a *serialized* string using q, use [`-9!`](../basics/internal.md#-9x-from-bytes) and to encode, use [`-8!`](../basics/internal.md#-8x-to-bytes).
 
 To run this example
 

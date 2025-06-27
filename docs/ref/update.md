@@ -40,7 +40,7 @@ update _p~s~_ [by _p~b~_] from _t~exp~_ [where _p~w~_]
 
 ## Select phrase
 
-Names in the [Select phrase](../basics/qsql.md#select-phrase) refer to new or modified columns in the table expression. 
+Names in the [Select phrase](select.md#select-phrase) refer to new or modified columns in the table expression. 
 
 ```q
 q)t:([] name:`tom`dick`harry; age:28 29 35)
@@ -82,7 +82,7 @@ If the query adds a new column it will have values only as determined by the Whe
 
 ## By phrase
 
-The [By phrase](../basics/qsql.md#by-phrase) applies the update along groups. 
+The [By phrase](select.md#by-phrase) applies the update along groups. 
 This is most useful with aggregate and uniform functions.
 
 With an aggregate function, the entire group gets the value of the aggregation on the group.

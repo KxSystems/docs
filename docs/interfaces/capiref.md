@@ -169,7 +169,7 @@ wf         -log(0.0) in Windows or (1/0.0) on Linux   float infinity
 [kb](#kb-create-boolean)  boolean     [knk](#knk-create-list)  list            [ktn](#ktn-create-vector)    vector
 [kc](#kc-create-char)  char        [knt](#knt-create-keyed-table)  keyed table     [ku](#ku-create-guid)     guid
 [kd](#kd-create-date)  date        [kp](#kp-create-string)   char array      [kz](#kz-create-datetime)     datetime
-[ke](#ke-create-real)  real        [kpn](#kpn-create-fixed-string)  char array      [vaknk](#vak-vaknk-va_list-versions-of-k-knk)  va_list version of knk
+[ke](#ke-create-real)  real        [kpn](#kpn-create-fixed-length-string)  char array      [vaknk](#vak-vaknk-va_list-versions-of-k-knk)  va_list version of knk
 [kf](#kf-create-float)  float       [ks](#ks-create-symbol)   symbol          [xD](#xd-create-dictionary)     dictionary
 [kg](#kg-create-byte)  byte        [kt](#kt-create-time)   time            [xT](#xt-table-from-dictionary)     table
 [kh](#kh-create-short)  short       [ktd](#ktd-create-simple-table)  simple table

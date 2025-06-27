@@ -383,7 +383,7 @@ A sequence of expressions separated by semicolons and surrounded by left and rig
 
 The first expression in a function expression can be a _signature_: an argument expression of the form `[name1;name2;…;nameN]` naming the arguments of the function. Like bracket notation, function notation does not require at least one semicolon; one expression (or none) between braces will do.
 
-Within a script, a function may be defined across [multiple lines](#multi-line-expressions).
+Within a script, a function may be defined across [multiple lines](#multiline-expressions).
 
 :fontawesome-solid-book-open: 
 [Function notation](function-notation.md)

@@ -64,7 +64,7 @@ id val
 
 ## Select phrase
 
-The [Select phrase](../basics/qsql.md#select-phrase) specifies the columns of the result table, one per subphrase. 
+The [Select phrase](#select-phrase) specifies the columns of the result table, one per subphrase. 
 
 Absent a Select phrase, all the columns of the table expression are returned.
 (Unlike SQL, no `*` wildcard is required.)
@@ -203,7 +203,7 @@ f  | jill gray
 m  | jack blue
 ```
 
-Where there is a [By phrase](../basics/qsql.md#by-phrase), and no sort order is specified, the result is sorted ascending by its key.
+Where there is a [By phrase](#by-phrase), and no sort order is specified, the result is sorted ascending by its key.
 
 
 ## Cond

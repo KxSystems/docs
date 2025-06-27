@@ -230,7 +230,7 @@ q))&
 
 The debugger restores the original namespace and language (q or k) setting for each frame.
 
-View calculations and system commands, including [`\l`](syscmds.md#l-load), correspond to individual debug stack frames.
+View calculations and system commands, including [`\l`](syscmds.md#l-load-file-or-directory), correspond to individual debug stack frames.
 
 ```q
   .d1 ).Q.bt`

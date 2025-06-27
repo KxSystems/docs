@@ -43,7 +43,7 @@ exec … from select … from …
 
 ## Select phrase
 
-Where the [Select phrase](../basics/qsql.md#select phrase) 
+Where the [Select phrase](select.md) 
 
 -   is omitted, returns the last record
 -   contains a single column, returns the value of that column

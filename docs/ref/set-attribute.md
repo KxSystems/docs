@@ -126,7 +126,7 @@ Some q functions use attributes to work faster:
 
 -    Where-clauses in [`select` and `exec` templates](../basics/qsql.md) run faster with `where =`, `where in` and `where within`
 -    Searching: [`bin`](bin.md), [`distinct`](distinct.md), [Find](find.md) and [`in`](in.md) (if the right argument has an attribute)
--    Sorting: [`iasc`](asc.md#iasc) and [`idesc`](asc.md##idesc)
+-    Sorting: [`iasc`](asc.md#iasc) and [`idesc`](desc.md#idesc)
 -    Dictionaries: [`group`](group.md)
 
 Setting attributes consumes resources and is likely to improve performance only on lists with more than a million items. Test!

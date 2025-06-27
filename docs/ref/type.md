@@ -47,7 +47,7 @@ q)type (0|+)                    / composition
 [.Q.ty](dotq.md#ty-type)
 <br>
 :fontawesome-solid-book-open:
-[Casting and encoding](../basics/by-topic.md#casting),
+[Casting and encoding](../basics/by-topic.md#casting-and-encoding),
 [Datatypes](../basics/datatypes.md)
 
 

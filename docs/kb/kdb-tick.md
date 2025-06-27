@@ -101,7 +101,7 @@ At day end, remaining data is flushed to disk, the database is sorted (on disk) 
 !!! note 
 
     It is not recommended to query the task running `w.q` as it contains a small (and variable-sized) selection of records. 
-    Although it wouldn’t be difficult to modify it to keep the last 5 minutes of data, for example, that sort of custom collection is probably better housed in a task running a [`c.q`](#cq)-like aggregation.
+    Although it wouldn’t be difficult to modify it to keep the last 5 minutes of data, for example, that sort of custom collection is probably better housed in a task running a [`c.q`](../wp/rt-tick/index.md#cq-collection)-like aggregation.
 
 Syntax:
 ```bash
