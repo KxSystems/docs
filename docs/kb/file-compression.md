@@ -176,7 +176,7 @@ If you experience [`wsfull`](../basics/errors.md#wsfull) even with sufficient sw
 
 !!! tip "Memory overcommit settings on Linux"
 
-    `/proc/sys/vm/overcommit\_memory` and `/proc/sys/vm/overcommit\_ratio` – these control how careful Linux is when allocating address space with respect to available physical memory plus swap.
+    `/proc/sys/vm/overcommit_memory` and `/proc/sys/vm/overcommit_ratio` – these control how careful Linux is when allocating address space with respect to available physical memory plus swap.
 
 
 ## Performance
