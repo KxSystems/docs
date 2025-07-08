@@ -39,7 +39,7 @@ q)f[1 2;3]
 
 ## Pattern conditional
 
-The pattern conditional takes the form `:[v;p1;r1;p2;r2;...;rd]` where `v` is a value to be matched, `p1`, `p2`, ... are patterns and `r1`, `r2`, ... `rd` are the corresponding return values. The value is mathced to the patterns in turn, and the value of the expression is the return value corresponding to the first successful match, or `rd` if no patterns match. Similarly to the regular [conditional](../ref/cond.md), the result expressions corresponding to failed matches, as well as any match after the first successful match, are not evaluated.
+The pattern conditional takes the form `:[v;p1;r1;p2;r2;...;rd]` where `v` is a value to be matched, `p1`, `p2`, ... are patterns and `r1`, `r2`, ... `rd` are the corresponding return values. The value is matched to the patterns in turn, and the value of the expression is the return value corresponding to the first successful match, or `rd` if no patterns match. Similarly to the regular [conditional](../ref/cond.md), the result expressions corresponding to failed matches, as well as any match after the first successful match, are not evaluated.
 
 ```q
 q)a: :[1f;r:`f;"float";r:`i;"int";"other"]
