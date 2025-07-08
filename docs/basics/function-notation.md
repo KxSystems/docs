@@ -48,6 +48,9 @@ q){(x*x)+(y*y)+2*x*y}[20;4]       / unsigned lambda
 
     Using other names for the first arguments of a lambda often helps the reader. But using `x`, `y`, or `z` for any other argument sows confusion.
 
+### Pattern matching
+
+The function signature can include patterns - see [pattern matching](pattern.md#function-parameters).
 
 ## Rank
 
