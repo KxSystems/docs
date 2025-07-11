@@ -96,7 +96,7 @@ author: Stephen Taylor
 
 <div markdown class="typewriter">
 [.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](../basics/function-notation.md#explicit-return)        [do](../ref/do.md)  [exit](../ref/exit.md)         [\$[x;y;z] Cond](../ref/cond.md)
-[@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)
+[@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)        [:[v;p1;r1;...] Pattern conditional](../basics/pattern.md#pattern-conditional)
 </div>
 
 :fontawesome-solid-book-open:

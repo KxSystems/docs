@@ -121,6 +121,10 @@ q)bar
 1
 ```
 
+## Pattern match
+
+See [Pattern matching](../basics/pattern.md#assignment)
+
 ## Syntax
 
 An expression with an assignment on the left returns no value to the console. 
