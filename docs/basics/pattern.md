@@ -5,6 +5,8 @@ author: Péter Györök
 ---
 # Pattern Matching
 
+Pattern matching allows an object such as a list or dictionary to be matched to a pattern, assigning variables to its parts, checking types, and/or modifying values via a filter function. It can simplify unpacking multiple objects passed to and returned from functions, and reduce the overhead of type checking.
+
 ## Assignment
 
 The left side of the [assignment](../ref/assign.md) operator may be a pattern. Various kinds of patterns have different effects. When used in an assignment, the pattern must have parentheses around it. A failed match results in no variables being changed.
