@@ -3,7 +3,7 @@ title: Pattern matching | Basics | kdb+ and q documentation
 description: Pattern matching in assignments and function parameters
 author: Péter Györök
 ---
-# Pattern matching
+# Pattern Matching
 
 ## Assignment
 
