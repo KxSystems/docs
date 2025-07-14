@@ -416,6 +416,7 @@ nav:
       - Mathematics: basics/math.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
+      - Pattern matching: basics/pattern.md
       - Parse trees: basics/parsetrees.md
       - qSQL:
         - qSQL queries: basics/qsql.md

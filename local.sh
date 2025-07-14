@@ -35,7 +35,7 @@ if [ $# -eq 0 ]; then
     docker_image="$(cat docker-image-name.txt):$(cat docker-image-version.txt)"
     cmd="build --clean -s -f local.yml --no-directory-urls --site-dir $localdir"
     echo "### Using docs in $localdir/ using docker image $docker_image"
-    docker run --rm -v $(pwd):$work_dir --workdir $work_dir $docker_image $cmd
+    docker run --rm -v $(pwd):$work_dir --workdir $work_dir --user $(id -u):$(id -g) $docker_image $cmd
 else
     cat mkdocs.yml | sed \
         -e 's#^INHERIT.*##' \
