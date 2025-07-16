@@ -118,7 +118,7 @@ The secondary/directory partitioning is for both read and write.
 
 The directories pointed to in `par.txt` may contain only appropriate database subdirectories. Any other content (file or directory) will give an error.
 
-The same subdirectory name may be in multiple `par.txt` partitions. For example, this would allow symbols to be split, as in A-M on `/0/db`, N-Z on `/1/db` (e.g. to work around the 2-billion row limit). Aggregations are handled correctly, as long as data is properly split (not duplicated). Note that in this case, the same day would appear on multiple partitions.
+The same subdirectory name may be in multiple `par.txt` partitions. For example, this would allow symbols to be split, as in A-M on `/0/db`, N-Z on `/1/db`. Aggregations are handled correctly, as long as data is properly split (not duplicated). Note that in this case, the same day would appear on multiple partitions.  There was a 2-billion row limit prior to version 3 of kdb+, which could use this method as a work around.
 
 ----
 :fontawesome-solid-bolt:
