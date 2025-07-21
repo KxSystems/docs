@@ -181,6 +181,13 @@ s1 p5 400 1
 
 Aggregator can be more complex and receive a subset of the table.
 
+We have the following problem:
+- On each name we have a limit on the day that we cannot cross
+- We want to get all trades until the limit is breached
+
+For that we need to have the cumulative quantity by symbol, values lesser than limit are valid trades. Others should be ignored.
+The aggregator is a custom function checking that cumulative quantity is lesser than the limit for each `s`.
+
 ```q
 q)update lmt:0.5*sum qty by s from `sp
 q)select from sp where ({exec lmt>=sums qty from x};([]qty;lmt)) fby s
