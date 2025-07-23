@@ -179,6 +179,27 @@ s4 p4 300 1
 s1 p5 400 1
 ```
 
+Aggregator can be more complex and receive a subset of the table.
+
+We have the following problem:
+- On each name we have a limit on the day that we cannot cross
+- We want to get all trades until the limit is breached
+
+For that we need to have the cumulative quantity by symbol, values lesser than limit are valid trades. Others should be ignored.
+The aggregator is a custom function checking that cumulative quantity is lesser than the limit for each `s`.
+
+```q
+q)update lmt:0.5*sum qty by s from `sp
+q)select from sp where ({exec lmt>=sums qty from x};([]qty;lmt)) fby s
+s  p  qty lmt
+-------------
+s1 p1 300 600
+s1 p2 200 600
+s4 p5 100 500
+s2 p1 300 350
+s4 p2 200 500
+```
+
 ??? info "`fby` before V2.7"
 
     In V2.6 and below, `fby`’s behavior is undefined if the aggregation function returns a list; it usually signals an error from the k definition of `fby`. However, if the concatenation of all list results from the aggregation function results `raze` has the same length as the original vectors, a list of some form is returned, but the order of its items is not clearly defined.
