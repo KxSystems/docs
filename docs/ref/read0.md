@@ -6,14 +6,11 @@ keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, r
 ---
 # :fontawesome-solid-database: `read0`
 
-
-
-
-
 _Read text from a file or process handle_
 
 ```syntax
 read0 f           read0[f]
+read0 (f;o)       read0[(f;o)]
 read0 (f;o;n)     read0[(f;o;n)]
 read0 h           read0[h]
 read0 (fifo;n)    read0[(fifo;n)]
@@ -22,7 +19,7 @@ read0 (fifo;n)    read0[(fifo;n)]
 where
 
 -   `f` is a [file symbol](../basics/glossary.md#file-symbol)
--   `(f;o;n)` is a [file descriptor](../basics/glossary.md#file-descriptor)
+-   `o` is an offset as a non-negative integer/long
 -   `h` is a [system or connection handle](../basics/handles.md)
 -   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
 -   `n` is a non-negative integer
@@ -45,16 +42,24 @@ q)d:raze{read0(`:/tmp/data;x;100000)}each 100000*til 5
 ```
 
 
-## File descriptor
+## File symbol with offset
 
-Returns `n` chars from the file, starting from the position `o`.
+Return chars from file, starting from the position `o`.
 
 ```q
 q)`:foo 0: enlist "hello world"
-q)read0 (`:foo;6;5)
+`:foo
+q)read0 (`:foo;6)
 "world"
 ```
 
+Return `n` chars from the file, starting from the position `o`.
+
+```q
+q)`:foo 0: enlist "hello world"
+q)read0 (`:foo;6;2)
+"wo"
+```
 
 ## System or process handle
 
