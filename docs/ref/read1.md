@@ -11,6 +11,7 @@ _Read bytes from a file or named pipe_
 
 ```syntax
 read1 f           read1[f]
+read1 (f;o)       read1[(f;o)]
 read1 (f;o;n)     read1[(f;o;n)]
 read1 h           read1[h]
 read1 (fifo;n)    read1[(fifo;n)]
@@ -20,21 +21,19 @@ Where
 
 -   `f` is a [file symbol](../basics/glossary.md#file-symbol)
 -   `o` is an offset as a non-negative integer/long
--   `(f;o;n)` is a [file descriptor](../basics/glossary.md#file-descriptor)
 -   `h` is a [system or process handle](../basics/handles.md)
 -   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
 -   `n` is a length as a non-negative integer/long
 
 returns bytes from the source, as follows.
 
-
 ## File
 
 Where the argument is 
 
--   a file symbol, returns the entire content of the file
--   a file descriptor `(f;o;n)`, returns up to `n` bytes from `f` starting at `o`
--   a file descriptor `(f;o)`, returns the entire content of `f` from `o` onwards
+-   a file symbol. Returns the entire content of the file
+-   a file symbol and offset `(f;o)`. Returns the entire content of `f` from `o` onwards
+-   a file symbol, offset and length `(f;o;n)`. Returns up to `n` bytes from `f` starting at `o`
 
 ```q
 q)`:test.txt 0:("hello";"goodbye")      / write some text to a file
@@ -47,13 +46,12 @@ q)/ read 500000 lines, chunks of (up to) 100000 at a time
 q)d:raze{read1(`:/tmp/data;x;100000)}each 100000*til 5 
 ```
 
-
 ## Named pipe
 
 (Since V3.4.) Where `x` is
 
 -   a list `(fifo;length)`, returns `length` bytes read from `fifo`
--   an atom `fifo`, blocks and returns bytes from `fifo` when EOF is encountered (`0#0x` if immediate)
+-   an integer atom `fifo`, blocks and returns bytes from `fifo` when EOF is encountered (`0#0x` if immediate)
 
 ```q
 q)h:hopen`$":fifo:///etc/redhat-release"
