@@ -9,7 +9,7 @@ keywords: byte, character, kdb+, q, text, unicode
 
 
 
-Unicode text can be stored in symbol, byte and character datatypes.
+Unicode text can be stored in symbol, byte list and character list (string) datatypes.
 
 Since the data is simply a sequence of bytes, any Unicode format can be stored. However, it is best to use an encoding such as UTF-8 or GBK that extends 7-bit ASCII, i.e. a single byte in the range `00`–`7f` means the same thing in ASCII. kdb+ will load a script with such encoding, but it will not load other formats. Note that if using these encodings, avoid having a byte-order-mark prefix on the data.
 
