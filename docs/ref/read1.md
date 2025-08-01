@@ -46,6 +46,19 @@ q)/ read 500000 lines, chunks of (up to) 100000 at a time
 q)d:raze{read1(`:/tmp/data;x;100000)}each 100000*til 5 
 ```
 
+### Compression
+
+If the file is compressed, `read1` will return the uncompressed data.
+
+```q
+q)(`:file;17;2;9)1:100#0x0
+`:file
+q)\cat file
+"kxzippedx\332c`\240=\000\000\000d\000\001\003\000\..
+q)read1`:file
+0x0000000000000000000000000000000000000000000000000..
+```
+
 ## Named pipe
 
 (Since V3.4.) Where `x` is
