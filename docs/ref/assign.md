@@ -47,18 +47,46 @@ x[i]:y
 Where 
 
 -   `x` is the name of a list, dictionary or table
--   `i` is a value that indexes `x`
--   `y` is a scalar, or a list of the same length as `i`
+-   `i` is a value that indexes `x` (including a `;`-separated multi-level index)
+-   `y` is a scalar, or a list of the same shape as `i`
 
 the value of `y` is assigned to `x` at indexes `i`. 
 
-!!! warning "Indexed assignment cannot change the type of `x`."
+!!! warning "Indexed assignment to a simple list cannot change the type of `x`."
 
-    If `x` is a vector (has negative type) then `(=). abs type each(x;y)` must be true. 
+    If `x` is a simple list (has type between 1 and 20) then `(=). abs type each(x;y)` must be true. However, a general list that ends up having all items of the same atomic type after assignment _will_ collapse into a simple list.
 
 Where `x` is a dictionary, assignment has upsert semantics.
 
 ```q
+q)s:1 2 3
+q)s[1]:4
+q)s
+1 4 3
+q)s[2]:5f
+'type
+  [0]  s[2]:5f
+           ^
+
+q)s:(1;2f;3)
+q)s
+1
+2f
+3
+q)s[1]:4
+q)s
+1 4 3
+q)s[1]:5f
+'type
+  [0]  s[1]:5f
+           ^
+
+q)m:(1 2;3 4)
+q)m[1;1]:5
+q)m
+1 2
+3 5
+
 q)d:`tom`dick`harry!1 2 3
 q)d[`dick`jane]:100 200
 q)d
@@ -73,16 +101,14 @@ jane | 200
 
 ```syntax
 x op:y     op:[x;y]
-x[i]op:y   op:[x i;y]
+x[i]op:y
 ```
 
 Where 
 
 -   `op` is a binary operator with infix syntax
--   `x` is an applicable value (i.e. not an atom) in the left domain of `op`
--   `i` is a value that indexes `x`
--   `y` is a value in the right domain of `op` that conforms to either `i` or `x`
--   `x op y` (or `x[i]op y`) has the same type as `x`
+-   `x` or `x[i]` is an assignable in the left domain of `op` (the rules of [indexed assign](#indexed-assign) apply for `x[i]`)
+-   `y` is a value in the right domain of `op` that conforms to `x` (or `i`)
 
 the value of `x` (or `x[i]`) becomes `x op y` (or `x[i]op y`). 
 
@@ -120,6 +146,8 @@ q)bar+:1
 q)bar
 1
 ```
+
+Some operators have significant differences between their base and assignment form, for example [`,`](join.md).
 
 ## Pattern match
 

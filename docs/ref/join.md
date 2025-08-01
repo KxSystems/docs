@@ -3,7 +3,8 @@ title: Join atoms, lists, dictionaries or tables | Reference | kdb+ and q docume
 description: Join is a q operator that joins atoms, lists, dictionaries or tables.
 author: Stephen Taylor
 ---
-# `,` Join
+# `,` `,:` Join and Append
+## `,` Join
 
 _Join atoms, lists, dictionaries or tables_
 
@@ -49,7 +50,7 @@ q)v,(type v)$0xab
 `,`(join) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
-## Dictionaries
+### Dictionaries
 
 When both arguments are dictionaries, Join has upsert semantics.
 
@@ -62,7 +63,7 @@ d| 5
 ```
 
 
-## Tables
+### Tables
 
 Tables can be joined row-wise. 
 
@@ -99,6 +100,65 @@ a b c  d
 ```
 
 Join for keyed tables is strict; both the key and data columns must match in names and datatypes.
+
+## `,:` Append
+
+```syntax
+x,:y   ,:[x;y]
+```
+
+Where
+
+* `x` is a variable containing a list or dictionary
+* `y` is an atom or a list if `x` contains a list
+* `y` is a dictionary if `x` contains a dictionary
+
+Appends the item(s) of `y` to the variable `x`. This is the [assign through operator](assign.md#assign-through-operator) form of `,`, but it has major differences.
+
+If `x` contains a simple list, `y` must be an atom or simple list of the same type. If `x` contains a dictionary whose values are a simple list, `y` must be a dictionary with values of the same type.
+
+```q
+q)s:1 2 3
+q)s,:4
+q)s
+1 2 3 4
+q)s,:5f
+'type
+  [0]  s,:5f
+        ^
+q)s:([a:1;b:2])
+q)s,:([a:3;c:4])
+q)s
+a| 3
+b| 2
+c| 4
+q)s,:([d:5f])
+'type
+  [0]  s,:([d:5f])
+        ^
+```
+
+If `x` contains a general list, any item(s) can be appended. However, if the rank (defined as the recursive depth of the first element) of `x` is one higher than that of `y`, `y` is implicitly enlisted. This gives a different result from `x:x,y`.
+
+```q
+q)s:(::;3;4)
+q)s,:5f
+q)s
+::
+3
+4
+5f
+q)s:enlist 1 2 3    / rank 2
+q)s,4 5 6           / rank 1
+1 2 3
+4
+5
+6
+q)s,:4 5 6
+q)s
+1 2 3
+4 5 6
+```
 
 ----
 
