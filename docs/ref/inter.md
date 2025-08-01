@@ -15,11 +15,13 @@ _Intersection of two lists or dictionaries_
 x inter y    inter[x;y]
 ```
 
-Where `x` and `y` are lists or dictionaries, uses the result of `x in y` to return items or entries from `x`.
+Where `x` and `y` are lists or dictionaries, uses the result of `x in y` to return items or entries from `x`. Note that this is only equivalent to set intersection if the items of `x` are unique. If `x` contains duplicated items that are also found in `y`, they remain duplicated in the result.
 
 ```q
 q)1 3 4 2 inter 2 3 5 7 11
 3 2
+q)1 2 3 1 4 inter 4 1 4
+1 1 4
 ```
 
 Returns common values from dictionaries.
