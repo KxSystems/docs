@@ -115,7 +115,7 @@ Where
 -   `x` is a [`filesymbol`](../basics/glossary.md#file-symbol) or (since 4.1t 2023.04.17) a 4 item list ([`filesymbol`](../basics/glossary.md#file-symbol), logical block size, compression algorithm and compression level) to write compressed data
 -   `y` is data to write
 
-writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns it. If `filesymbol`
+writes the raw bytes of `y` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns it. If `filesymbol`
 
 -   does not exist, it is created, with any required directories
 -   exists, it is overwritten
@@ -123,6 +123,25 @@ writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns 
 ```q
 q)`:hello 1: 0x68656c6c6f776f726c64
 `:hello
+q)read1`:hello
+0x68656c6c6f776f726c64
+q)`:hello 1: 1
+`:hello
+q)read1`:hello
+0x0100000000000000
+```
+
+If `y` is a general list, it writes `y` as an anymap instead of the raw bytes. This is similar to [`set`](get.md#set), except that any nested general lists inside `y` are themselves saved in the anymap format.
+
+```q
+q)`:a set ((1 2;3 4);(1 2;3 4))
+`:a
+q)`:b 1: ((1 2;3 4);(1 2;3 4))
+`:b
+q)type get[`:a][0]
+0h
+q)type get[`:b][0]
+77h
 ```
 
 ### Compression
