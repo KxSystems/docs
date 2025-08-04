@@ -146,7 +146,7 @@ q)type get[`:b][0]
 
 ### Compression
 
-Since 4.1t 2023.04.17 data can be compressed while writing, by including [`compression parameters`](../kb/file-compression.md#compression-parameters)
+Since 4.1t 2023.04.17 data can be compressed while writing, by including [`compression parameters`](../kb/file-compression.md#compression-parameters):
 
 ```q
 q)(`:file;17;2;9)1:100#0x0
