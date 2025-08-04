@@ -77,6 +77,7 @@ author: Stephen Taylor
 </tr>
 <tr markdown> <td markdown class="kx-glyph">`0: 1: 2:`</td><td colspan="7" markdown>[File Text](file-text.md), [File Binary](file-binary.md), [Dynamic Load](dynamic-load.md)</td> </tr>
 <tr markdown> <td markdown class="kx-glyph">`0 ±1 ±2 ±n`</td><td colspan="7" markdown>write to [console, stdout, stderr, handle _n_](../basics/handles.md)</td> </tr>
+<tr markdown> <td markdown class="kx-glyph" colspan="6">`.: @: $: !: ?: +: -: *: %: =: ~: <: >: |: &: #: _: ^: ,:`</td><td colspan="2" markdown>[Assign through operator](assign.md#assign-through-operator)</td> </tr>
 </table>
 
 :fontawesome-solid-book:
