@@ -65,6 +65,14 @@ q)a
 
 The null pattern matches anything. It cannot be used as the main pattern in an assignment, but it can appear as a component of more complex patterns by elision.
 
+A function can indicate unused parameters with null patterns.
+
+```q
+q)f:{[x;]x}
+q)f[3;4]
+3
+```
+
 ### Constant value
 
 The simplest pattern is a constant (atom or list). If the assigned value exactly matches (see [~](../ref/match.md)), the assignment does nothing. If the values don't match, a `'match` error is thrown.
