@@ -500,10 +500,10 @@ Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape 
 
 Where
 
--   `x` is an HTTP content type as a symbol atom
+-   `x` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
 -   `y` is a string 
 
-returns as a string an HTTP response for `y` as content-type `x`.
+returns as a string an HTTP response for `y` as content-type `x` with a "200 OK" HTTP response status.
 
 ```q
 q)show t:([]idx: 1 2 3 4 5;val: `a`b`c`d`e)
