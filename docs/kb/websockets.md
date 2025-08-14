@@ -120,7 +120,7 @@ To open a client connection to a server, use the following syntax:
 ```q
 (`$":ws://host:port")"GET / HTTP/1.1\r\nHost: host:port\r\n\r\n"
 ```
-For example, establishing a connection with a web server running on 127.0.0.1 (port 80), with the URI '/subscribe/wss' and virtual host www.kdb-testbox.com :
+For example, to establish a connection with a web server running on 127.0.0.1 (port 80), with the URI '/subscribe/wss' and virtual host www.kdb-testbox.com, run the following command:
 ```q
 (`$":ws://127.0.0.1:80")"GET /subscribe/wss HTTP/1.1\r\nHost: www.kdb-testbox.com\r\n\r\n"
 ```
