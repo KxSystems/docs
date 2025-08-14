@@ -125,7 +125,7 @@ For example, to establish a connection with a web server running on 127.0.0.1 (p
 (`$":ws://127.0.0.1:80")"GET /subscribe/wss HTTP/1.1\r\nHost: www.kdb-testbox.com\r\n\r\n"
 ```
 
-If successful it will return a 2-item list of (handle;HTTP response), e.g.
+If successful, it returns a two-item list of (handle;HTTP response), as follows:
 ```q
 (3i;"HTTP/1.1 101 Switching Protocols\r\nConnection: Upgrade\r\nUpgrade: websocket\r\nSec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=\r\nSec-WebSocket-Extensions: permessage-deflate\r\n\r\n")
 ```
