@@ -478,6 +478,10 @@ loads and validates the master key into memory as the key to use when decrypting
 :fontawesome-solid-graduation-cap:
 [Create master key](../kb/dare.md#configuration)
 
+!!! warning "Iteration count"
+
+    The iteration count of the key must be 50000, otherwise you will get an "Invalid password" error when trying to load the key.
+
 Expect this call to take about 500 milliseconds to execute.
 It can be executed from handle 0 only.
 

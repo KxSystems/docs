@@ -120,6 +120,10 @@ OpenSSL uses a CSPRNG for its rand command. The master key can be generated usin
 $ openssl rand 32 | openssl aes-256-cbc -md SHA256 -salt -pbkdf2 -iter 50000 -out testkek.key # Prompts for the new password
 ```
 
+!!! warning "Iteration count"
+
+    The iteration count must be 50000, otherwise you will get an "Invalid password" error when trying to load the key.
+
 !!! tip "Back up this key file and the associated password"
 
     Back up this key file and the password to open it, but keep them separate and in a secure location – perhaps even deposit them in escrow for key recovery. If either of these is lost, any data encrypted using it will become inaccessible.
