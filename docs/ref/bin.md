@@ -26,7 +26,9 @@ returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` 
 
 They use a binary-search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?` ([Find](find.md)).
 
-The items of `x` should be sorted ascending although `bin` does not verify that; if the items are not sorted ascending, the result is undefined. `y` can be either an atom or a simple list of the same type as the left argument.
+The items of `x` should be sorted ascending although `bin` does not verify this property.
+
+!!! danger "If `x` is not sorted the result is undefined."
 
 The result `r` can be interpreted as follows: for an atom `y`, `r` is an integer atom whose value is either a valid index of `x` or `-1`. In general:
 
@@ -49,13 +51,6 @@ Essentially `bin` gives a half-open interval on the left.
 `bin` also operates on tuples and table columns and is the function used in [`aj`](aj.md) and [`lj`](lj.md).
 
 `bin` and `binr` are [multithreaded primitives](../kb/mt-primitives.md).
-
-!!! danger "If `x` is not sorted the result is undefined."
-
-
-## Three-column argument
-
-`bin` and `?` on three columns find all equijoins on the first two cols and then do `bin` or `?` respectively on the third column. `bin` assumes the third column is sorted within the equivalence classes of the first two column pairs (but need not be sorted overall).
 
 ```q
 q)0 2 4 6 8 10 bin 5
