@@ -306,18 +306,23 @@ q).h.he "<rubbish>"
 
 Where
 
--   `x` is the [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (string)
--   `y` is the [content type](#hty-mime-types) (symbol)
+-   `x` is the [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (string)
+-   `y` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
 -   `z` is the content (string)
 
 returns as a string an HTTP error response.
 
+For example, a request for favicon.ico could be programmed to have a 'not found' response using the 404 HTTP code.
 ```q
 q).h.hn["404";`txt;"Not found: favicon.ico"]
-"HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Len..
+"HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Length: 22\r\n\r\nNot found: favicon.ico"
 ```
-:fontawesome-regular-hand-point-right:
-[`.h.ty` MIME types](#hty-mime-types)
+A request for the binary file 'test.exe' could generate a response using [read1](read1.md) to read the binary file before [casting](cast.md) the bytes to a string.
+An empty string is passed as a MIME type to `.h.hn` to allow it to default to `application/octet-stream`, which is appropriate for a binary file.
+```q
+q).h.hn["200";`;10h$read1`:test.exe]
+"HTTP/1.1 200\r\nContent-Type: application/octet-stream\r\nConnection: close\r\nContent-Length: 164\r\n\r\nPK\003\004\n\000\000\000\000\000\004^\005[\033\013\251;\010\000\000\000\010\000\000\000\003\000\034\000txtUT\t\000\003g\341\221h\203\341\221hux\013\000\001\004\365\001\000\000\004\000\000\000\000aaa bbb\nPK\001\002\036\003\n\000\000\000\000\000\004^\005[\033\013\251;\010\000\000\000\010\000\000\000\003\000\030\000\000\000\000\000\001\000\000\000\244\201\000\000\000\000txtUT\005\000\003g\341\221hux\013\000\001\004\365\001\000\000\004\000\000\000\000PK\005\006\000\000\000\000\001\000\001\000I\000\000\000E\000\000\000\000\000"
+```
 
 
 ## `.h.hp` (HTTP response pre)
@@ -495,10 +500,10 @@ Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape 
 
 Where
 
--   `x` is an HTTP content type as a symbol atom
+-   `x` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
 -   `y` is a string 
 
-returns as a string an HTTP response for `y` as content-type `x`.
+returns as a string an HTTP response for `y` as content-type `x` with a "200 OK" HTTP response status.
 
 ```q
 q)show t:([]idx: 1 2 3 4 5;val: `a`b`c`d`e)
