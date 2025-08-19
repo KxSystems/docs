@@ -22,8 +22,8 @@ Where
 
 -   `x` is a 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) of which the order determines whether the data is parsed as little-endian or big-endian
 -   `y` is either a
-    -   [file descriptor](../basics/glossary.md#file-descriptor) to repeatedly read all available records (specified by `x`) from a file
-    -   3 element list containing [file descriptor](../basics/glossary.md#file-descriptor), offset (long) and length (long). Enables repeatedly reading all available records (specified by `x`) from a file which stops after the given byte length, starting 'offset' bytes from the start of the file.
+    -   file symbol to repeatedly read all available records (specified by `x`) from a file
+    -   3-element list containing the file (symbol), offset (long), and length (long). Enables repeatedly reading all available records (specified by `x`) from a file, which stops after the given byte length, starting 'offset' bytes from the start of the file.
     -   string
     -   byte sequence
 
