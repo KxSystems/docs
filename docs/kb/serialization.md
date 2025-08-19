@@ -13,9 +13,9 @@ q)-8!1i
 0x010000000d000000fa01000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01  | architecture used for encoding the message, big endian (0) or little endian (1)
+01    | architecture used for encoding the message, big endian (0) or little endian (1)
 00    | message type (0 – async, 1 – sync, 2 – response)
 0000
 0d000000 | msg length (13)
@@ -30,9 +30,9 @@ q)-8!enlist 1i
 0x010000001200000006000100000001000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 12000000 | message length
 06 | type (int vector)
@@ -48,9 +48,9 @@ q)-8!`byte$til 5
 0x01000000130000000400050000000001020304
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01   | little endian
 000000 | 
 13000000 | message length
 04 | type (byte vector)
@@ -66,9 +66,9 @@ q)-8!`byte$enlist til 5
 0x01000000190000000000010000000400050000000001020304
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01  | little endian
 000000 | 
 19000000 | message length
 00 | type (list)
@@ -86,9 +86,9 @@ q)-8!`a`b!2 3i
 0x0100000021000000630b0002000000610062000600020000000200000003000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 21000000 | message length
 63 | type (99 – dict)
@@ -110,9 +110,9 @@ q)-8!`s#`a`b!2 3i
 0x01000000210000007f0b0102000000610062000600020000000200000003000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 21000000 | message length
 7f | type (127 – sorted dict)
@@ -135,9 +135,9 @@ q)-8!`a`b!enlist each 2 3i
 0x010000002d000000630b0002000000610062000000020000000600010000000200000006000100000003000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 2d000000 | message length
 63 | type (99 – dict)
@@ -168,9 +168,9 @@ q)-8!'(flip`a`b!enlist each 2 3i;([]a:enlist 2i;b:enlist 3i))
 0x010000002f0000006200630b0002000000610062000000020000000600010000000200000006000100000003000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 2f000000 | message length
 62 | type (98 – table)
@@ -202,9 +202,9 @@ q)-8!`s#([]a:enlist 2i;b:enlist 3i)
 0x010000002f0000006201630b0002000000610062000000020000000603010000000200000006000100000003000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 2f000000 | message length
 62 | type (98 – table)
@@ -235,9 +235,9 @@ q)-8!([a:enlist 2i]b:enlist 3i)
 0x010000003f000000636200630b00010000006100000001000000060001000000020000006200630b0001000000620000000100000006000100000003000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 3f000000 | message length
 63 | type (99 – dict)
@@ -280,9 +280,9 @@ q)-8!`s#([a:enlist 2i]b:enlist 3i)
 0x010000003f0000007f6201630b00010000006100000001000000060001000000020000006200630b0001000000620000000100000006000100000003000000
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 3f000000 | message length
 7f | type (127 – sorted dict)
@@ -323,9 +323,9 @@ q)-8!{x+y}
 0x010000001500000064000a00050000007b782b797d
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 15000000 | message length
 64 | type (100 – lambda)
@@ -345,9 +345,9 @@ q.d)-8!test
 0x01000000160000006464000a00050000007b782b797d
 ```
 
-bytes | semantics
+bytes (in hexadecimal) | semantics
 ------|-------------
-0x01 | little endian
+01 | little endian
 000000 | 
 16000000 | message length
 64 | type (100 – lambda)
