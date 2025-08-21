@@ -75,7 +75,7 @@ x,y: same-length lists
 ## `:` colon
 
 <div markdown="1" class="typewriter">
-a:42   [assign](../basics/syntax.md) 
+a:42   [assign](assign.md)
 :42    [explicit return](../basics/function-notation.md#explicit-return)
 </div>
 
