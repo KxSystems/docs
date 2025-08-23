@@ -18,15 +18,22 @@ x binr y    binr[x;y]
 
 Where
 
--   `x` is a sorted list
+-   `x` is a sorted list, or a dictionary with its values sorted 
 -   `y` is a list or atom of exactly the same type (no type promotion)
 
-returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`.
+returns the index (in case of a list) or key (in case of a dictionary) of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`.
 `binr` _binary search right_, introduced in V3.0 2012.07.26, gives the index of the _first_ item in `x` which is ≥`y`.
 
-They use a binary-search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?` ([Find](find.md)).
+```q
+q)0 2 4 6 8 10 bin 5
+2
+q)0 2 4 6 8 10 bin -10 0 4 5 6 20
+-1 0 2 2 3 5
+```
 
-The items of `x` should be sorted ascending although `bin` does not verify this property.
+`bin` uses a binary-search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?` ([Find](find.md)).
+
+The items of `x` must be sorted ascending although `bin` does not verify this property.
 
 !!! danger "If `x` is not sorted the result is undefined."
 
@@ -44,30 +51,11 @@ and
 r[j]=x bin y[j]    for all j in index of y
 ```
 
-Essentially `bin` gives a half-open interval on the left.
-
 `bin` and `binr` are right-atomic: their results have the same count as `y`.
 
-`bin` also operates on tuples and table columns and is the function used in [`aj`](aj.md) and [`lj`](lj.md).
+`bin` is the function used in [`aj`](aj.md) and [`lj`](lj.md).
 
 `bin` and `binr` are [multithreaded primitives](../kb/mt-primitives.md).
-
-```q
-q)0 2 4 6 8 10 bin 5
-2
-q)0 2 4 6 8 10 bin -10 0 4 5 6 20
--1 0 2 2 3 5
-```
-
-If the left argument items are not distinct the result is not the same as would be obtained with `?`:
-
-```q
-q)1 2 3 3 4 bin 2 3
-1 3
-q)1 2 3 3 4 ? 2 3
-1 2
-```
-
 
 ## Sorted third column
 
