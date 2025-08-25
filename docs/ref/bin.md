@@ -16,6 +16,8 @@ x bin  y    bin[x;y]
 x binr y    binr[x;y]
 ```
 
+## Lists
+
 Where
 
 -   `x` is a sorted list
@@ -73,6 +75,60 @@ r[j]=x bin y[j]    for all j in index of y
 `bin` is the function used in [`aj`](aj.md) and [`lj`](lj.md).
 
 `bin` and `binr` are [multithreaded primitives](../kb/mt-primitives.md).
+
+## Tables
+
+Where
+
+-   `x` is a table of `n` columns
+-   `y` is a table row with the same schema (i.e. a dictionary)
+
+returns the index of the last row of `x` for which 
+
+- the first `n-1` values each match the first `n-1` values of `y`, and
+- the last value is not greater than the last value of `y`.
+
+If `y` is a table with the same schema as `x`, this is repeated for each row of it.
+
+If no items match the criteria, either because there are no rows that match in the first `n-1` columns, or because the last value is smaller than the last value in the first such row, `0N` is returned.
+
+```q
+q)t:([]a:`p`p`p`q`q`q;b:0 2 4 0 2 4)
+q)t bin `a`b!(`p;3)
+1
+q)t bin ([]a:`q;b:-1 1 3 5)
+0N 3 4 5
+q)t bin `a`b!(`r;2)
+0N
+```
+
+To use `bin` with a table, the last column needs not be sorted overall, but it needs to be sorted within the equivalence classes defined by the first `n-1` columns (as shown in the previous example).
+
+`bin` can also be used with keyed tables. Here, `y` needs to contain all value columns, and it's the keys that are going to be returned (as a table).
+
+```q
+q)kt:([k:`c`d`e`f`g`h`j`l]a:`p`p`q`q`p`p`q`q;b:0 1 0 1 0 1 0 1;c:3 3 3 3 7 7 7 7)
+q)kt
+k| a b c
+-| -----
+c| p 0 3
+d| p 1 3
+e| q 0 3
+f| q 1 3
+g| p 0 7
+h| p 1 7
+j| q 0 7
+l| q 1 7
+q)kt bin ([]a:`p`q`q`r;b:1;c:4 8 2 4)
+k
+-
+d
+l
+
+
+q)(kt bin ([]a:`p`q`q`r;b:1;c:4 8 2 4))`k
+`d`l``
+```
 
 ## Sorted third column
 
