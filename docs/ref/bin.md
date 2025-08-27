@@ -38,13 +38,13 @@ q)0 1 1 2 binr 0 1 2
 0 1 3
 ```
 
-`bin` uses a binary search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?` ([Find](find.md)).
+`bin` uses a binary search algorithm, which is generally more efficient on large data than the linear-search algorithm used by [`?` (Find)](find.md).
 
 The items of `x` must be sorted ascending although `bin` does not verify this property.
 
 !!! danger "If `x` is not sorted the result is undefined."
 
-`bin` can be also used if `x` is a dictionary with its values sorted. In this case, instead of indexes, the respective keys are returned. If a value is not found, the null value of the key type is returned.
+`bin` can be also used if `x` is a dictionary with its values sorted.
 
 ```q
 q)(`a`b`c!0 2 4) bin -1 3
