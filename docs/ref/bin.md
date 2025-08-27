@@ -21,9 +21,9 @@ x binr y    binr[x;y]
 Where
 
 -   `x` is a sorted list
--   `y` is an atom or list of exactly the same type (no type promotion)
+-   `y` is an atom of exactly the same type (no type promotion)
 
-returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`. If `y` is a list, the previous is repeated for each item of `y`.
+returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`. If `x` is a simple list, `bin` is [atomic](../basics/atomic.md) in `y`. (For higher ranks of either argument, `bin` works the same way as [`?` (Find)](find.md/#type-specific).)
 `binr` _binary search right_, introduced in V3.0 2012.07.26, gives the index of the _first_ item in `x` which is ≥`y`.
 
 ```q
@@ -81,14 +81,14 @@ r[j]=x bin y[j]    for all j in index of y
 Where
 
 -   `x` is a table of `n` columns
--   `y` is a table row with the same schema (i.e. a dictionary)
+-   `y` is a table row with the same schema (e.g. a list with `n` elements or a dictionary with the same keys as the columns of `x`)
 
 returns the index of the last row of `x` for which 
 
 - the first `n-1` values each match the first `n-1` values of `y`, and
 - the last value is not greater than the last value of `y`.
 
-If `y` is a table with the same schema as `x`, this is repeated for each row of it.
+(For higher ranks, see the examples below as well as the documentation for [`?` (Find)](find.md/#type-specific).)
 
 If no items match the criteria, either because there are no rows that match in the first `n-1` columns, or because the last value is smaller than the last value in the first such row, `0N` is returned.
 
