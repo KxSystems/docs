@@ -38,7 +38,7 @@ It will load the first library that it can locate from the lists below:
     | `w32` | `libssl-3.dll`<br>`libssl-1_1.dll` | `libcrypto-3.dll`<br>`libcrypto-1_1.dll` |
 
 
-The Windows build was tested with the pre-compiled libs [Win32 OpenSSL v1.1.1L Light, Win64 OpenSSL v1.1.1L Light](https://slproweb.com/products/Win32OpenSSL.html).
+The Windows build was tested with the pre-compiled libs [Win32 OpenSSL v1.1.1L Light, Win64 OpenSSL v1.1.1L Light](https://slproweb.com/products/Win32OpenSSL.html). Note that the Microsoft Visual C++ redistributable package must be installed separately from [Microsoft's website](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
 
 Prior to V4.1t 2022.03.25, kdb+ would load the following files:
 
