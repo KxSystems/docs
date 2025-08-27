@@ -38,7 +38,7 @@ q)0 1 1 2 binr 0 1 2
 0 1 3
 ```
 
-`bin` uses a binary-search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?` ([Find](find.md)).
+`bin` uses a binary search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?` ([Find](find.md)).
 
 The items of `x` must be sorted ascending although `bin` does not verify this property.
 
@@ -104,7 +104,7 @@ q)t bin `a`b!(`r;2)
 
 To use `bin` with a table, the last column needs not be sorted overall, but it needs to be sorted within the equivalence classes defined by the first `n-1` columns (as shown in the previous example).
 
-`bin` can also be used with keyed tables. Here, `y` needs to contain all value columns, and it's the keys that are going to be returned (as a table).
+`bin` can also be used with keyed tables. Here, `y` needs to contain all value columns, and it is the keys that are returned (as a table).
 
 ```q
 q)kt:([k:`c`d`e`f`g`h`j`l]a:`p`p`q`q`p`p`q`q;b:0 1 0 1 0 1 0 1;c:3 3 3 3 7 7 7 7)
