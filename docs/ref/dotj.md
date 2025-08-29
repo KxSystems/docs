@@ -42,7 +42,7 @@ Where
 -   `x` is a K object
 -   `d` is a dictionary
 
-returns the result of `.j.j` unless d[`null0w] is 1b, in which case `0w` and `-0w` are mapped to `"null"`.
+returns the result of `.j.j` unless `` d[`null0w]`` is 1b, in which case `0w` and `-0w` are mapped to `"null"`.
 (Since V3.6 2018.12.06.)
 
 ```q
