@@ -278,7 +278,7 @@ nav:
         - lj, ljf: ref/lj.md
         - load, rload: ref/load.md
         - log, xlog: ref/log.md
-        - lower: ref/lower.md
+        - lower, upper: ref/lower.md
         - lsq: ref/lsq.md
         - max, maxs, mmax: ref/max.md
         - md5: ref/md5.md

@@ -29,11 +29,6 @@ q)upper`ibm`msft
 `IBM`MSFT
 ```
 
-```txt
-domain: b g x h i j e f c s p m d z n u v t
-range:  . . . . . . . . c s . . . . . . . .
-```
-
 ## :fontawesome-solid-sitemap: Implicit iteration
 
 `lower` and `upper` are [atomic functions](../basics/atomic.md).
