@@ -51,7 +51,7 @@ A handle is an [applicable value](glossary.md#applicable-value). It (and its neg
 
 ### Console
 
-Where `h` is 0 and `x` is an object, evaluates `.z.ps` (which defaults to `value`) on `x` and returns the result.
+Where `h` is 0 and `x` is an object, evaluates [`.z.ps`](../ref/dotz.md#zps-set) (which defaults to [`value`](../ref/value.md)) on `x` and returns the result.
 
 ```q
 q)0 "1 \"hello\""   /string
@@ -61,7 +61,7 @@ q)0 (+;2;2)         /application in list form
 4
 ```
 
-In kdb+ versions up to 4.0, the expression is evaluated in the current thread, which means it is subject to the restrictions on secondary threads when used in `peach`. Starting from kdb+ version 4.1, attempting to use handle 0 in a thread other than the main thread results in a `nosocket` error.
+In kdb+ versions up to 4.0, the expression is evaluated in the current thread, which means it is subject to the restrictions on secondary threads when used in [`peach`](../ref/each.md). Starting from kdb+ version 4.1, attempting to use handle 0 in a thread other than the main thread results in a [`nosocket`](errors.md#nosocket) error.
 
 :fontawesome-solid-book:
 [`.z.ps`](../ref/dotz.md#zps-set), [`value`](../ref/value.md)
