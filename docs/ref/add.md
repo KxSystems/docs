@@ -38,7 +38,7 @@ Add is generally faster than [Subtract](subtract.md).
 `+` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 Add is an [atomic function](../basics/atomic.md).
 
@@ -78,7 +78,10 @@ ghi| 6   -12
 ```
 
 
-### Range and domains
+## Range and domains
+
+The following shows the resulting output type given the input type of `x` and `y`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
 
 ```txt
     b g x h i j e f c s p m d z n u v t
@@ -104,6 +107,17 @@ t | t . t t t t t f t . p p p z n t t t
 ```
 
 Range: `defijmnptuvz`
+
+For example, adding an integer and a long results in a long.
+
+```q
+q)type 55
+-7h
+q)type 1i
+-6h
+q)type 1i+55
+-7h
+```
 
 
 ----
