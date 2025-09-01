@@ -90,6 +90,9 @@ ghi| 1 1
 
 ## Range and domains
 
+The following shows the resulting output type given the input type of `x` and `y`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
     b g x h i j e f c s p m d z n u v t
 ----------------------------------------

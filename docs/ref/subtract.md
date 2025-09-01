@@ -24,7 +24,7 @@ q)2000.11.22 - 03:44:55.666
 `-` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 Subtract is an [atomic function](../basics/atomic.md).
 
@@ -68,6 +68,9 @@ ghi| 0 0
 
 ## Range and domains
 
+The following shows the resulting output type given the input type of `x` and `y`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
     b g x h i j e f c s p m d z n u v t
 ----------------------------------------
@@ -93,6 +96,16 @@ t | t . t t t t t f t . p p p z n t t t
 
 Range: `defijmnptuvz`
 
+For example, subtracting an integer from a long results in a long.
+
+```q
+q)type 55
+-7h
+q)type 1i
+-6h
+q)type 55-1i
+-7h
+```
 
 ----
 :fontawesome-solid-book:
