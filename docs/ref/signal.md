@@ -96,6 +96,62 @@ q)'type
 q))                 / the server is suspended in a debug session
 ```
 
+## Debugger break location
+
+The signal operation breaks out of the stack frame of the current function and causes the debugger to break one level up in the stack (or not break in the debugger at all if the signalling function was invoked at the top level of the interpreter).
+
+```q
+q)f:{'`bad}
+q)f[]
+'bad
+  [0]  f[]
+       ^
+q)g:{f[]}
+q)g[]
+'bad
+  [2]  f:{'`bad}
+          ^
+  [1]  g:{f[]}
+          ^
+q)).z.s
+{f[]}
+```
+
+This may make debugging functions problematic, since the parameters and local variables of the function are no longer available:
+
+```q
+q)f:{[x]a:1;if[x<a;'`bad]}
+q)g:{f[x]}
+q)g[0]
+'bad
+  [2]  f:{[x]a:1;if[x<a;'`bad]}
+                        ^
+  [1]  g:{f[x]}
+          ^
+q))a
+'a
+  [3]  a
+       ^
+```
+
+To make it easier to debug a complex function, it is recommended to wrap the signal operator in a small inner function such that the up-one-level behavior is canceled out:
+
+```q
+q)f:{[x]a:1;if[x<a;{'x}`bad]}
+
+q)g[0]
+'bad
+  [3]  f@:{'x}
+           ^
+  [2]  f:{[x]a:1;if[x<a;{'x}`bad]}
+                        ^
+q)).z.s
+{[x]a:1;if[x<a;{'x}`bad]}
+q))x
+0
+q))a
+1
+```
 
 ----
 :fontawesome-solid-book:
