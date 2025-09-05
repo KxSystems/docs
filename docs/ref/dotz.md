@@ -1152,6 +1152,7 @@ q).z.z
 
 
 [](){#zzd-zip-defaults}
+
 ## `.z.zd` (compression/encryption defaults)
 
 ```syntax
@@ -1160,15 +1161,50 @@ q).z.z
 ```
 
 Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#encryption).
-They set default values for logical block size, compression/encryption algorithm and compression level that apply when saving to files with no file extension.
+They set default values for logical block size, compression/encryption algorithm and compression level that apply when saving to files.
 Encryption available since 4.0 2019.12.12.
 
 ```q
-q).z.zd:17 2 6        / set zip defaults
-q)\x .z.zd            / clear zip defaults
+q).z.zd:17 2 4            / enable compression
+q)`:fileA set til 1000    / create file, now compressed as .z.zd set
+`:fileA
+q)`:fileB set til 1000    / create file, now compressed as .z.zd set
+`:fileB
+q)-21!`:fileA             / check that file is compressed
+compressedLength  | 1611
+uncompressedLength| 8016
+algorithm         | 2i
+logicalBlockSize  | 17i
+zipLevel          | 4i
+q)-21!`:fileB             / check that file is compressed
+compressedLength  | 1611
+uncompressedLength| 8016
+algorithm         | 2i
+logicalBlockSize  | 17i
+zipLevel          | 4i
 ```
 
-You can also assign a dictionary to `.z.zd`. The keys of the dictionary are either column names or the null symbol `` `  ``. The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`. The null symbol is used as a default for columns that do not match the other keys.
+`.z.zd` will not apply when saving to a file with an extension (a file containing a '.' in its filename).
+To enable compression on a file with an extension, use [`set`](get.md#compressionencryption) passing the required compression settings.
+
+```q
+q).z.zd:17 2 4                            / enable compression
+q)`:file.something til 1000               / create file with extension while .z.zd set
+`:file.something
+q)-21!`:file.something                    / file not compressed, no compression info
+q)(`:file.something;17;2;4) set til 1000  / create file with extension, pass compression settings on creation
+`:file.something
+q)-21!`:file.something                    / file is compressed
+compressedLength  | 1611
+uncompressedLength| 8016
+algorithm         | 2i
+logicalBlockSize  | 17i
+zipLevel          | 4i
+```
+
+A dictionary can be assigned to `.z.zd`. The keys of the dictionary are either column names or the null symbol `` `  ``. 
+The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`. 
+The null symbol is used as a default for columns that do not match the other keys.
 
 ```q
 q)show dict:``a`b!(17 5 3;17 2 6;17 2 6)  / default compression is `zstd` with level 3
@@ -1176,6 +1212,11 @@ q)show dict:``a`b!(17 5 3;17 2 6;17 2 6)  / default compression is `zstd` with l
 a| 17 2 6
 b| 17 2 6
 q).z.zd:dict
+```
+Settings can be cleared using the [`\x`](../basics/syscmds.md#x-expunge) system command.
+```q
+q).z.zd:17 2 6        / set zip defaults
+q)\x .z.zd            / clear zip defaults
 ```
 
 :fontawesome-solid-hand-point-right:
