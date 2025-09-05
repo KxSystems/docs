@@ -170,6 +170,33 @@ q)a
 0 1 7 3 4
 ```
 
+## Pick second argument
+
+If `:` is used as a value (e.g. assigned to a variable, passed as a function parameter, or modified by an iterator), invoking it causes it to discard its first argument and return its second argument, without performing an assignment.
+
+```q
+q)a:3
+q)f:(:)
+q)f[a;4]
+4
+q)a
+3
+```
+
+A common use of this is with [functional amend](amend.md), where it indicates replacing the element at the specified index with a new value, as opposed to performing an operation between the existing and new values:
+
+```q
+q)@[1 2 3 4 5; 2; :; 6]
+1 2 6 4 5
+```
+
+Combining it with [`over`](accumulators.md) has an effect equivalent to [`last`](first.md#last):
+
+```q
+q):/[1 2 3 4 5]
+5
+```
+
 ----
 :fontawesome-solid-book:
 [Amend, Amend At](../ref/amend.md)
