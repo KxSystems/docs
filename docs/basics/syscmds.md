@@ -21,12 +21,12 @@ keywords: command, kdb+, q, system
 [\E  TLS server mode](#e-tls-server-mode)                  [\W       week offset](#w-week-offset)
 [\f  functions](#f-functions)                        [\x       expunge](#x-expunge)
 [\g  garbage collection mode](#g-garbage-collection-mode)          [\z       date parsing](#z-date-parsing)
-[\l  load file or directory](#l-load-file-or-directory)           [\1 & \2  redirect](#1-2-redirect)
-[\o  offset from UTC](#o-offset-from-utc)                  [\\_       hide q code](#_-hide-q-code)
-[\p  listening port](#p-listening-port)                   [\\        terminate](#terminate)
-[\P  precision](#p-precision)                        [\\        toggle q/k](#toggle-qk)
-[\r  replication primary](#r-replication-primary)              [\\\\       quit](#quit)
-[\r  rename](#r-rename)                                              
+[\l  load file or directory](#l-load-file-or-directory)           [\1       stdout redirect](#1-2-redirect)
+[\o  offset from UTC](#o-offset-from-utc)                  [\2       stderr redirect](#1-2-redirect)
+[\p  listening port](#p-listening-port)                   [\\_       hide q code](#_-hide-q-code)
+[\P  precision](#p-precision)                        [\\        terminate](#terminate)
+[\r  replication primary](#r-replication-primary)              [\\        toggle q/k](#toggle-qk)
+[\r  rename](#r-rename)                           [\\\\       quit](#quit)               
 </div>
 
 System commands control the q environment. They have the form:
