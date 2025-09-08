@@ -16,19 +16,13 @@ This way, `inetd` will run the server programs as they are needed by spawning mu
 
 A kdb+ server can work under `inetd` to provide a private server for each connection established on a designated port.
 
-For Windows you might be able to have kdb+ run under `inetd` using Cygwin.
-
--   [Cygwin](http://www.cygwin.com/)
--   [A useful page about configuring Cygwin `inetd`](https://wiki.zmanda.com/index.php/How_To%3ARun_Amanda_Server_on_Cygwin)
-
+!!! warning "This is not compatible with SSL/TLS connections."
 
 ## Configuration
 
 To configure a kdb+ server to work under `inetd` or `xinetd` you have to decide on the name of the service and port on which this server should run and declare it in the `/etc/services` configuration file.
 
-!!! note
-
-    This operation can be performed only by an administrative user (root).
+!!! note "This operation can be performed only by an administrative user (root)."
 
 `/etc/services`:
 
@@ -91,5 +85,13 @@ $ ps -e|grep inetd
 $ kill -HUP 3848
 ```
 
+## Windows
+
+For Windows you might be able to have kdb+ run under `inetd` using Cygwin.
+
+-   [Cygwin](http://www.cygwin.com/)
+-   [A useful page about configuring Cygwin `inetd`](https://wiki.zmanda.com/index.php/How_To%3ARun_Amanda_Server_on_Cygwin)
+
+
 :fontawesome-regular-hand-point-right: 
-[`\1` and `\2`](../basics/syscmds.md#1-2-redirect) for stdout/stderr redirect
+[`\1`](../basics/syscmds.md#1-2-redirect) for stdout redirect, [`\2`](../basics/syscmds.md#1-2-redirect) for stderr rediect
