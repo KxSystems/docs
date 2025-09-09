@@ -1,11 +1,9 @@
 ---
 title: inetd, xinetd – Knowledge Base – kdb+ and q documentation
 description: On *nix-like operating systems, a q server can work under inetd to provide a private server for each connection established on a designated port.
-keywords: cygwin, inetd, kdb+, linux, microsoft, q, sfu, xinetd, unix, windows
+keywords: inetd, kdb+, linux, q, sfu, xinetd, unix
 ---
 # inetd, xinetd
-
-
 
 
 On *nix-like operating systems, `inetd` (or its successor `xinetd`) maintains a list of passive sockets for various services configured to run on that particular machine.
@@ -84,14 +82,6 @@ $ ps -e|grep inetd
  3848 ?        00:00:00 xinetd
 $ kill -HUP 3848
 ```
-
-## Windows
-
-For Windows you might be able to have kdb+ run under `inetd` using Cygwin.
-
--   [Cygwin](http://www.cygwin.com/)
--   [A useful page about configuring Cygwin `inetd`](https://wiki.zmanda.com/index.php/How_To%3ARun_Amanda_Server_on_Cygwin)
-
 
 :fontawesome-regular-hand-point-right: 
 [`\1`](../basics/syscmds.md#1-2-redirect) for stdout redirect, [`\2`](../basics/syscmds.md#1-2-redirect) for stderr rediect
