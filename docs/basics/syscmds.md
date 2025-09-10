@@ -974,7 +974,7 @@ q)"D"$"06/01/2010"
 \2 filename
 ```
 
-`\1` and `\2` let you redirect stdout and stderr to files from within the q session. The files and intermediate directories are created if necessary.
+`\1` and `\2` let you redirect stdout and stderr to files from within the q session. The files and intermediate directories are created if necessary. Additional output is appended to the end of the file if it already exists.
 
 ```bash
 ~/q$ rm -f t1.txt t2.txt
