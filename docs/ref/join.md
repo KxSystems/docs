@@ -47,7 +47,7 @@ q)v,(type v)$0xab
 1.00 2.34 -567.1 20.00 171e
 ```
 
-The result is a general list if the two arugments are [enumeration](enumerate.md) atoms of different domains, or one is an enumeration and the other is a regular symbol:
+The result is a general list if the two arguments are [enumeration](enumerate.md) atoms of different domains, or one is an enumeration and the other is a regular symbol:
 
 ```q
 q)sym:`a`b
