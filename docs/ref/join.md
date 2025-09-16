@@ -47,6 +47,37 @@ q)v,(type v)$0xab
 1.00 2.34 -567.1 20.00 171e
 ```
 
+The result is a general list if the two arguments are [enumeration](enumerate.md) atoms of different domains, or one is an enumeration and the other is a regular symbol:
+
+```q
+q)sym:`a`b
+q)sym2:`c`d
+q)(`sym$`b),`sym2$`b
+`sym$`b
+`sym2$`b
+q)(`sym$`b),`b
+`sym$`b
+`b
+q)`b,(`sym$`b)
+`b
+`sym$`b
+```
+
+On the other hand, if either or both arguments are lists and not of the same enumeration domain, any enumerations are de-enumerated:
+
+```q
+q)(`sym$`a`b),`sym2$`b`c
+`a`b`b`c
+q)(`sym$`a),`c`d
+`a`c`d
+q)(`sym$`a`b),`c
+`a`b`c
+q)`a,`sym2$`b`c
+`a`b`c
+q)`a`b,`sym2$`c
+`a`b`c
+```
+
 `,`(join) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
@@ -158,6 +189,30 @@ q)s,:4 5 6
 q)s
 1 2 3
 4 5 6
+```
+
+If `x` contains an enumeration, append will enumerate `y` against `x`'s domain, which may fail if the appended symbols are not in that domain:
+
+```q
+q)sym:`a`b
+q)e:`sym$`a`b
+q)e,:`b
+q)e
+`sym$`a`b`b
+q)e,:`c
+'cast
+  [0]  e,:`c
+        ^
+
+```
+
+Conversely, if `x` contains unenumerated symbols, any enumerations are de-enumerated as part of the append:
+
+```q
+q)s:`a`c
+q)s,:`sym$`b
+q)s
+`a`c`b
 ```
 
 ----
