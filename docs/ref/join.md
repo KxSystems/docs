@@ -146,7 +146,7 @@ Where
 
 Appends the item(s) of `y` to the variable `x`. This is the [assign through operator](assign.md#assign-through-operator) form of `,`, but it has major differences.
 
-If `x` contains a simple list, `y` must be an atom or simple list of the same type. If `x` contains a dictionary whose values are a simple list, `y` must be a dictionary with values of the same type.
+If `x` contains a simple list, `y` must be an atom or simple list of the same type. If `x` contains a dictionary whose values are a simple list, `y` must be a dictionary with values of the same type. If `x` contains a table, the corresponding elements or columns of `y` must match the types of the columns in `x`.
 
 ```q
 q)s:1 2 3
@@ -166,6 +166,19 @@ c| 4
 q)s,:([d:5f])
 'type
   [0]  s,:([d:5f])
+        ^
+q)t:([]a:1 2i;b:3 4f)
+q)t,:([]a:5 6i;b:7 8f)
+q)t
+a b
+---
+1 3
+2 4
+5 7
+6 8
+q)t,:([]a:5 6f;b:7 8i)
+'type
+  [0]  t,:([]a:5 6f;b:7 8i)
         ^
 ```
 
@@ -213,6 +226,54 @@ q)s:`a`c
 q)s,:`sym$`b
 q)s
 `a`c`b
+```
+
+In contrast to join, append supports appending records from a list to a table, and allows appending tables with some columns missing (any missing values will be filled with nulls):
+
+```q
+q)t:([]a:1 2;b:3 4)
+q)t,:5 6
+q)t,:(7 8;9 10)
+q)t
+a b
+----
+1 3
+2 4
+5 6
+7 8
+9 10
+q)t:([]a:1 2;b:3 4)
+q)t,:([a:5])
+q)t,:([]b:6 7)
+q)t
+a b
+---
+1 3
+2 4
+5
+  6
+  7
+q)t:([k:`a`b]a:1 2;b:3 4)
+q)t,:((`c;5;6);(`d;7;8))
+q)t,:([k:`e;a:1;b:3])
+q)t
+k| a b
+-| ---
+a| 1 3
+b| 2 4
+c| 5 6
+d| 7 8
+e| 1 3
+q)t,:([k:`c`d`f]a:10 11 12)
+q)t
+k| a  b
+-| ----
+a| 1  3
+b| 2  4
+c| 10 6
+d| 11 8
+e| 1  3
+f| 12
 ```
 
 ----
