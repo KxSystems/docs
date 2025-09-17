@@ -14,9 +14,11 @@ This way, `inetd` will run the server programs as they are needed by spawning mu
 
 A kdb+ server can work under `inetd` to provide a private server for each connection established on a designated port.
 
+Only the kdb+ IPC protocol is supported when running with inetd or xinetd.
+
 !!! warning "This is not compatible with SSL/TLS connections."
 
-## Configuration
+## Assigning a TCP port
 
 To configure a kdb+ server to work under `inetd` or `xinetd` you have to decide on the name of the service and port on which this server should run and declare it in the `/etc/services` configuration file.
 
@@ -33,11 +35,26 @@ kdbtaq          2015/tcp    # kdb server for the taq database
 
 If you have multiple databases which should be served over `inetd`, add multiple entries in the /etc/services file and make sure you are using different ports for each service name.
 
+## Logging
+
+Any logging that goes to stdout or stderr will be sent directly to the connected client by the inetd/xinetd service manager.
+As this isnt an IPC message, the client can generate a `badmsg` error when trying to decode it.
+
+There are different options for dealing with logging:
+
+* Use the system commands [`\1`](../basics/syscmds.md#1-2-redirect) for stdout redirect, [`\2`](../basics/syscmds.md#1-2-redirect) for stderr redirect. By passing a q script on the command line to kdb+ which contain these instructions, each instance can log to a specific file.
+* Implement a logging framework. Note that any 3rd party library that is loaded into kdb+ may contain code to log to stdout/stderr without using the logging framework, so this may need accounted for (see next point).
+* Create a shell script to run kdb+, redirecting stdout and stderr. The shell script should be used in the inetd/xinetd configuration instead of directly running the q binary.
+
+## Configuring a service manager
+
 Also, as a safety measure, create one applicative group (ex: `kdb`) and two applicative users on your system, one (e.g. `kdb`) owning the q programs and the databases and another one (e.g. `kdbuser`) having the rights to execute and read data from the database directories.
 
 This can be achieved by assigning the two users to the applicative group mentioned above and setting the permissions on the programs to be readable and executable by the group, and the database directories readable and executable (search) by the group: `rwxr-x---`.
 
 Once this is configured, you'll need to configure `inetd`/`xinetd` to make it  aware of the new service.
+
+### Inetd configuration
 
 If you are running `inetd`, you’ll need to add the service configuration into /etc/inetd.conf (see the inedt.conf man page for more details).
 
@@ -48,6 +65,8 @@ If you are running `inetd`, you’ll need to add the service configuration into 
 kdbtaq   stream  tcp   nowait kdbuser  /home/kdb/q/l64/q   q /home/kdb/taq -s 4
 …
 ```
+
+### Xinetd configuration
 
 For `xinetd`, you’ll need to create a configuration file (`kdbtaq` for example) for the new service in the `/etc/xinetd.d` directory (see the  `xinetd.conf` man page for more details).
 
@@ -75,7 +94,11 @@ service kdbtaq
 }
 ```
 
-After the configuration is finished, you will have to find your process ID for your `inetd`/`xinetd` server and send it the `SIGHUP` signal to read the new configuration:
+### Reloading configuration
+
+If the service manager is already running, you can force it to reload an updated configuration file by sending the process a `SIGHUP` signal.
+
+For example, the following finds the process ID of inetd, in order to send a `SIGHUP` signal to it.
 
 ```bash
 $ ps -e|grep inetd
@@ -83,5 +106,3 @@ $ ps -e|grep inetd
 $ kill -HUP 3848
 ```
 
-:fontawesome-regular-hand-point-right: 
-[`\1`](../basics/syscmds.md#1-2-redirect) for stdout redirect, [`\2`](../basics/syscmds.md#1-2-redirect) for stderr rediect
