@@ -2,7 +2,7 @@
 
 The performance of a kdb+ system is critically dependent on the throughput and latency of its underlying storage. In a Linux environment, the file system is the foundational layer that enables data management on a given storage partition.
 
-This paper presents a comparative performance analysis of various file systems using the [KX Nano](https://github.com/KxSystems/nano) benchmarking utility. The evaluation was conducted across two distinct test environments, each with different operating systems and physical disk bandwidth (6500 vs 14000 MB/s) and IOPS (700K vs 2500K).
+This paper presents a comparative performance analysis of various file systems using the [KX Nano](https://github.com/KxSystems/nano) benchmarking utility. The evaluation was conducted across two distinct test environments, each with different operating systems and storage bandwidth (6500 vs 14000 MB/s) and IOPS (700K vs 2500K).
 
 ### Summary
 
@@ -21,7 +21,7 @@ Our key recommendations are as follows:
 kdb+ also supports **tiering**. For tiered data architectures (e.g., hot, mid, cold tiers), a hybrid approach is advisable.
 
    * **Hot tier**: Data is frequently queried and often resides in the page cache. For this tier, a read-optimized file system like ext4 or XFS is effective.
-   * **Mid/Cold Tier**: Data is queried less often, meaning reads are more likely to come directly from storage. In this scenario, ZFS's strong random read performance from disk provides a distinct advantage.
+   * **Mid/Cold Tier**: Data is queried less often, meaning reads are more likely to come directly from storage. In this scenario, ZFS's strong random read performance from storage provides a distinct advantage.
 
 **Disclaimer**: These guidelines are specific to the tested hardware and workloads. We strongly encourage readers to perform their own benchmarks that reflect their specific application profiles. To facilitate this, the benchmarking suite used in this study is [included with the KX Nano codebase](https://github.com/KxSystems/nano/tree/master/scripts/fsBenchmark), available on GitHub.
 
