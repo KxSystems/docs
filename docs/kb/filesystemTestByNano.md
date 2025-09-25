@@ -714,7 +714,7 @@ The performance of the less critical write operations are below.
 
 
 
-There were two minor test cases where ext4 was faster. The first, "`replace tiny`" `(.[ftinyReplace;();:;tinyVec]`), involves overwriting a very small vector. This discrepancy is considered negligible, as the operation is not representative of typical, performance-critical kdb+ workloads. The second, "`sync column after parted attribute/sort`", also showed ext4 ahead. However, the absolute time difference was minimal, making its impact on overall application performance insignificant in most practical scenarios.
+There were two minor test cases where ext4 was faster. The first, "`replace tiny`", involves overwriting a very small vector. This is a very fast operation anyway, so the discrepancy is negligible. Also, the operation is not representative of typical, performance-critical kdb+ workloads. The second, "`sync column after parted attribute/sort`", also showed ext4 ahead. However, the absolute time difference was minimal, making its impact on overall application performance insignificant in most practical scenarios.
 
 ### Read
 
