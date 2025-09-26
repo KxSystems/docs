@@ -489,6 +489,7 @@ nav:
         - Firewalling: kb/firewalling.md
         - inetd, xinetd: kb/inetd.md
         - Linux production notes: kb/linux-production.md
+        - File system comparison: kb/filesystemTestByNano.md
         - Log Files: kb/logging.md
         - Multi-threading: wp/multi-thread/index.md
         - Multiple versions: kb/versions.md
