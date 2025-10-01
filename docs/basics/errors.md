@@ -121,9 +121,9 @@ d8
 :   The log had a partial transaction at the end but q couldn’t truncate the file
 
 [](){#decompression-error-at-block-[b]-in}
-decompression error at block [b] in 
+decompression error at block [b] in [k]
 
-:   Error signalled by underlying decompression routine
+:   Error signalled by underlying decompression routine. Can be due to file corruption or a file that is concurrently being overwritten.
 
 [](){#domain}
 domain
@@ -294,7 +294,7 @@ name too long
 [](){#need-zlib-to-compress}
 need zlib to compress
 
-:   zlib not available
+:   zlib not available. [Install zlib libraries](file-compression.md#gzip) if ability to compress or decompress gzip is required.
 
 [](){#noamend}
 noamend
@@ -454,7 +454,7 @@ step
 [](){#stop}
 stop
 
-:   User interrupt (Ctrl-c) or [time limit (`-T`)](cmdline.md#-t-timeout)
+:   Current operation stopped due to user interrupt (Ctrl-c) or [time limit (`-T`)](cmdline.md#-t-timeout)
 
 [](){#stype}
 stype
