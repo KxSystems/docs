@@ -56,7 +56,11 @@ c| 30
 
 Fill is an atomic function.
 
-Domain and range:
+### Domain and range
+
+The following shows the resulting output type given the input type of `x` and `y`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
     b g x h i j e f c s p m d z n u v t
 ----------------------------------------
@@ -80,7 +84,18 @@ v | v . v v v v v v v . v . . v n v v t
 t | t . t t t t t t t . t . . t n t t t
 ```
 
-Range: `bcdefghijmnpstuvxz`
+For example, applying a long to a vector of integers will result in a vector of longs.
+
+```q
+q)type 0n 2 3i
+6h
+q)5^0n 2 3i
+5 2 3
+q)type 5^0n 2 3i
+7h
+```
+
+The possible range of output types are `bcdefghijmnpstuvxz`.
 
 
 :fontawesome-solid-book: 
@@ -145,28 +160,3 @@ q)0 ^\ 0N 0N 3 0N 5
 0 0 3 3 5
 ```
 
-Domain and range:
-```txt
-    b g x h i j e f c s p m d z n u v t
-----------------------------------------
-b | b . x h i j e f c . p m d z n u v t
-g | . g . . . . . . . . . . . . . . . .
-x | x . x h i j e f c . p m d z n u v t
-h | h . h h i j e f c . p m d z n u v t
-i | i . i i i j e f c . p m d z n u v t
-j | j . j j j j e f c . p m d z n u v t
-e | e . e e e e e f c . p m d z n u v t
-f | f . f f f f f f c . p m d z n u v t
-c | c . c c c c c c c . p m d z n u v t
-s | . . . . . . . . . s . . . . . . . .
-p | p . p p p p p p p . p p p p n u v t
-m | m . m m m m m m m . p m d . . . . .
-d | d . d d d d d d d . p d d z . . . .
-z | z . z z z z z z z . p . z z n u v t
-n | n . n n n n n n n . n . . n n n n n
-u | u . u u u u u u u . u . . u n u v t
-v | v . v v v v v v v . v . . v n v v t
-t | t . t t t t t t t . t . . t n t t t
-```
-
-Range: `bcdefghijmnpstuvxz`
