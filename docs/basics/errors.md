@@ -294,7 +294,7 @@ name too long
 [](){#need-zlib-to-compress}
 need zlib to compress
 
-:   zlib not available. [Install zlib libraries](file-compression.md#gzip) if ability to compress or decompress gzip is required.
+:   zlib not available. [Install zlib libraries](../kb/file-compression.md#gzip) if ability to compress or decompress gzip is required.
 
 [](){#noamend}
 noamend
