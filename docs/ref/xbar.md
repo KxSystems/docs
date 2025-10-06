@@ -24,7 +24,7 @@ returns `y` rounded down to the nearest multiple of `x`. `xbar` is a [multithrea
 q)3 xbar til 16
 0 0 0 3 3 3 6 6 6 9 9 9 12 12 12 15
 q)2.5 xbar til 16
-0 0 0 2.5 2.5 2.5 5 5 5 7.5 7.5 7.5 10 10 10 12.5
+0 0 0 2.5 2.5 5 5 5 7.5 7.5 10 10 10 12.5 12.5 15
 q)5 xbar 11:00 + 0 2 3 5 7 11 13
 11:00 11:00 11:00 11:05 11:05 11:10 11:10
 ```
