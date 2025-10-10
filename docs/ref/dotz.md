@@ -77,39 +77,39 @@ q).z.a
 -1408172030i
 ```
 
-Note its relationship to [`.z.h`](#zh-host) for the hostname, converted to an int using [`.Q.addr`](dotq.md#host-ip-to-hostname).
-```q
-q).Q.addr .z.h
--1408172030i
-```
+The dotted-decimal string representation can be obtained from an integer using [`vs`](vs.md#integer-based-ip-address).
 
-It can be split into components as follows:
+The return value depends on whether it is invoked in an IPC callback or not.
 
-```q
-q)"i"$0x0 vs .z.a
-172 17 0 2i
-```
-
-When invoked inside a `.z.p*` callback via a TCP/IP connection, it is the IP address of the client session, not the current session. For example, connecting from a remote machine:
-
-```q
-q)h:hopen myhost:1234
-q)h"\"i\"$0x0 vs .z.a"
-192 168 65 1i
-```
-or from same machine:
-```q
-q)h:hopen 1234
-q)h"\"i\"$0x0 vs .z.a"
-127 0 0 1i
-```
-
-When invoked via a Unix Domain Socket, it is 0.
-```q
-q)h:hopen `:unix://1234
-q)h".z.a"
-0i
-```
+* **Not invoking in an IPC callback**
+   <br>Returns the current IP address associated with the hostname.
+   <br>This pre-populated value is equivalent to passing [`.z.h`](#zh-host) to [`.Q.addr`](dotq.md#host-ip-to-hostname) to find the IP address of the current host.
+   ```q
+   q).z.a
+   -1408172030i
+   q).Q.addr .z.h
+   -1408172030i
+   ```
+* **Invoking in an IPC callback**
+   <br>When invoked inside a `.z.p*` callback via a TCP/IP connection, it is the IP address of the client session, not the current session.
+   For example, connecting from a remote machine:
+   ```q
+   q)h:hopen myhost:1234
+   q)h"\"i\"$0x0 vs .z.a"
+   192 168 65 1i
+   ```
+   or from same machine:
+   ```q
+   q)h:hopen 1234
+   q)h"\"i\"$0x0 vs .z.a"
+   127 0 0 1i
+   ```
+   When invoked via a Unix Domain Socket, it is 0.
+   ```q
+   q)h:hopen `:unix://1234
+   q)h".z.a"
+   0i
+   ```
 
 :fontawesome-solid-hand-point-right:
 [`.z.h`](#zh-host) (host), [`.Q.host`](dotq.md#host-ip-to-hostname) (IP to hostname)
@@ -351,33 +351,26 @@ q).z.h
 `demo.kx.com
 ```
 
-On Linux this should return the same as the shell command `hostname`. If you require a fully qualified domain name, and the `hostname` command returns a hostname only (with no domain name), this should be resolved by your system administrators. Often this can be traced to the ordering of entries in `/etc/hosts`, e.g.
+If you require a fully qualified domain name, and the command returns a hostname only (with no domain name), this should be resolved by your system administrators. 
 
-Non-working `/etc/host` looks like :
+**Linux**
 
-```txt
-127.0.0.1    localhost.localdomain localhost
-192.168.1.1  myhost.mydomain.com myhost
+On Linux this should return the same value as the shell command `hostname`. 
+Linux stores the current hostname in `/proc/sys/kernel/hostname`. The operating system reads the hostname from `/etc/hostname`.
+
+**MacOS**
+
+On MacOS this should return the same value as `sysctl kern.hostname` or `scutil --get HostName`.
+
+**Microsoft Windows**
+
+On Windows this should return the same value as `hostname` via cmd.exe or Powershell, 
+which typically gets the hostname from the registry entry `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ComputerName\ActiveComputerName`.
+The `req query` command can be used to retrieve the current value.
 ```
-
-Working one has this ordering :
-
-```txt
-127.0.0.1    localhost.localdomain localhost
-192.168.1.1  myhost myhost.mydomain.com
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ComputerName\ActiveComputerName
 ```
-
-One solution seems to be to flip around the entries, i.e. so the entries should be
-
-```txt
-ip hostname fqdn
-```
-
-A workaround from within kdb+ is
-
-```q
-q).Q.host .z.a
-```
+The value can also be viewed and altered via the Control Panel.
 
 :fontawesome-solid-hand-point-right:
 [`.z.a`](#za-ip-address) (IP address), [`.Q.addr`](dotq.md#addr-iphost-as-int) (IP/host as int)

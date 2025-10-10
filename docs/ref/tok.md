@@ -83,7 +83,7 @@ q)"D"$"2147483648"
 
     Short converts to 0Nh instead of +/-0Wh 
 
-## :fontawesome-solid-sitemap: Iteration
+## Iteration
 
 Tok is a near-[atomic function](../basics/atomic.md).
 Implicit recursion stops at strings, not atoms.
@@ -153,17 +153,24 @@ q)"b"$" ",.Q.an
 ```q
 q)"I"$"192.168.1.34" /an IP address as an int
 -1062731486i
-q)"NT"$\:"123456123987654"  / since V3.4
-0D12:34:56.123987654
-12:34:56.123
 ```
 
 :fontawesome-solid-book:
-[`.Q.addr`](dotq.md#addr-iphost-as-int),
-[`.Q.host`](dotq.md#host-ip-to-hostname)
+[`.Q.addr`](dotq.md#addr-iphost-as-int) (IP/host as int),
+[`.Q.host`](dotq.md#host-ip-to-hostname) (IP to hostname)
 
+## Timestamps
 
-## Unix timestamps
+### Raw numeric timestamps
+
+```q
+q)"N"$"123456123987654"
+0D12:34:56.123987654
+q)"T"$"123456123987654"
+12:34:56.123
+```
+
+### Unix timestamps
 
 (from seconds since Unix epoch), string with 9…11 digits:
 
