@@ -152,10 +152,20 @@ q)0x0 vs 2413e
 0x4516d000
 q)0x0 vs 2413f
 0x40a2da0000000000
-q)"."sv string"h"$0x0 vs .z.a / ip address string from .z.a
-"192.168.1.213"
 ```
 
+#### Integer based IP address
+
+Base-256 is used to encode IP addresses to integers. The following example converts the current IP address reported by [`.z.a`](dotz.md#za-ip-address)
+```q
+q)"i"$0x0 vs .z.a
+192 168 0 3i
+```
+The commonly written dotted-decimal notation can be produced from the list of longs using [`string`](string.md) and [`sv`](sv.md#strings).
+```q
+q)"." sv string "i"$0x0 vs .z.a
+"192.168.0.3"
+```
 
 ### Base-x representation
 

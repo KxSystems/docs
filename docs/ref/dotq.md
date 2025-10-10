@@ -135,15 +135,15 @@ q).Q.host .Q.addr`localhost
 `localhost
 q).Q.addr`localhost
 2130706433i
-q)256 vs .Q.addr`localhost
-127 0 0 1
+q)"i"$0x0 vs .Q.addr`localhost
+127 0 0 1i
 ```
 
 :fontawesome-regular-hand-point-right:
 [`.Q.host`](#host-ip-to-hostname) (IP to hostname)
 <br>
 :fontawesome-solid-book-open:
-[`vs`](vs.md)
+[`vs`](vs.md#byte-representation) (Byte representation)
 
 
 ## `b6` (bicameral-alphanums)
