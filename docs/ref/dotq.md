@@ -126,25 +126,61 @@ q).Q.addmonths[2006.10.29;4]
 .Q.addr x
 ```
 
-Where `x` is a hostname or IP address as a symbol atom, returns the IP address as an integer (same format as [`.z.a`](dotz.md#za-ip-address))
+Where `x` is a hostname or IP address as a symbol atom, returns the IP address as an integer.
+
+The dotted-decimal string representation can be obtained from an integer using [`vs`](vs.md#integer-based-ip-address).
+
+If the symbol represents a standard IPv4 dotted decimal notation, it returns the IP as integer without any DNS look-ups required.
+```q
+q).Q.addr`$"127.0.0.1"
+2130706433i
+```
+
+When given a host name, the underlying operating system will govern how the look-up occurs. The IP address will be returned as an integer.
 
 ```q
 q).Q.addr`localhost
 2130706433i
-q).Q.host .Q.addr`localhost
-`localhost
-q).Q.addr`localhost
-2130706433i
-q)"i"$0x0 vs .Q.addr`localhost
-127 0 0 1i
+```
+If the host cannot be resolved, -1 will be returned
+```q
+q).Q.addr`blah
+-1i
 ```
 
-:fontawesome-regular-hand-point-right:
-[`.Q.host`](#host-ip-to-hostname) (IP to hostname)
-<br>
-:fontawesome-solid-book-open:
-[`vs`](vs.md#byte-representation) (Byte representation)
+Each underlying operating system deals with IP to hostname (and vice-versa) in different ways.
 
+**Linux**
+
+Consults `/etc/nsswitch.conf` to find the `host` entry (consult the man page on `/etc/nsswitch.conf` for further details).
+This configuration and look-up order can be different for each distribution. For example, an entry may exist for the following:
+
+* `hosts` consults `/etc/hosts` which can contain multiple hostnames for a given IP
+* `dns` use DNS resolver (`/etc/resolv.conf`)
+
+Return first entry found to match the provided IP.
+
+**MacOS**
+
+Returns first entry found when consulting the following:
+
+* `/etc/hosts` which can contain multiple hostnames for a given IP
+* consults system settings
+* consults [mDNSResponder](https://github.com/apple-oss-distributions/mDNSResponder)
+
+**Microsoft Windows**
+These can be adjusted by system settings or policies, but typical order is:
+
+* check Windows DNS Client Service (dnscache) for recent query result
+* check hosts file `C:\Windows\System32\drivers\etc\hosts`
+* reverse dns
+* optionally configured services, for example NetBIOS/LLMNR/WINS
+
+If multiple addresses available, it uses a [prefix policy table](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/configure-ipv6-in-windows) 
+and dynamically adjusts preference based on interface reachability and past success.
+
+:fontawesome-regular-hand-point-right:
+[`.Q.host`](#host-ip-to-hostname) (IP to hostname), [`.z.h`](dotz.md#zh-host) (host), [`.z.a`](dotz.md#za-ip-address) (IP address), [`vs`](vs.md#byte-representation) (Byte representation)
 
 ## `b6` (bicameral-alphanums)
 
@@ -1160,21 +1196,51 @@ The server then decides whether to gzip the returned payload, which is uncompres
 Where `x` is an IP address as an int atom, returns its hostname as a symbol atom.
 
 ```q
-q).Q.host .Q.addr`localhost
+q).Q.host 2130706433i
 `localhost
-q).Q.addr`localhost
-2130706433i
+```
 
+The operator [`$`](tok.md#ip-address) (tok) can be used to convert an IP address in dotted-decimal string representation to an integer
+```q
 q)"I"$"104.130.139.23"
 1753385751i
 q).Q.host "I"$"104.130.139.23"
 `netbox.com
-q).Q.addr `netbox.com
-1753385751i
+```
+
+Each underlying operating system deals with resolving a hostname to IP (and vice-versa) in different ways, reference [`.Q.addr`](#addr-iphost-as-int) for details.
+
+When the resolving leads to consulting a DNS server, the DNS server can also have rules on which IP (or the sort order of IPs) it can return when multiple IPs associated with one host. 
+Therefore performing an IP lookup from a given hostname, then using the resuling IP to get its hostname, can return a different hostname. 
+For example:
+
+```q
+q).Q.host .Q.addr `$"www.yahoo.co.uk"
+`a7de0457831fd11f7.awsglobalaccelerator.com   / alternative hostname for IP
+```
+
+When using `/etc/hosts` on MacOS/Linux, the order in which multiple hosts are associated with an IP will effect the value returned.
+For example, `/etc/hosts` with the entry
+```bash
+172.17.0.4      test1 test2
+```
+will cause 172.17.0.4 to be resolved to test1
+```q
+q).Q.host "I"$"172.17.0.4"
+`test1
+```
+but `/etc/hosts` with the machine names in a different order
+```bash
+172.17.0.4      test2 test1
+```
+will cause 172.17.0.4 to be resolved to test2
+```q
+q).Q.host "I"$"172.17.0.4"
+`test2
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.addr`](#addr-iphost-as-int) (IP/host as int), [`$`](tok.md#ip-address) tok (IP address as int)
+[`.Q.addr`](#addr-iphost-as-int) (IP/host as int), [`.z.h`](dotz.md#zh-host) (host), [`.z.a`](dotz.md#za-ip-address) (IP address)
 
 
 ## `hp` (HTTP post)

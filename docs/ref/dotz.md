@@ -77,7 +77,7 @@ q).z.a
 -1408172030i
 ```
 
-The dotted-decimal string representation can be obtained using [`vs`](vs.md#integer-based-ip-address).
+The dotted-decimal string representation can be obtained from an integer using [`vs`](vs.md#integer-based-ip-address).
 
 The return value depends on whether it is invoked in an IPC callback or not.
 
