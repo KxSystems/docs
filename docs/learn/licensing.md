@@ -79,6 +79,8 @@ The default location for the license key file is the `QHOME` folder. You do not 
     QLIC='/Users/simon/q'
     ```
 
+Note: If a license file is found in the current working directory it will be used preferentially over any found in `QLIC` and `QHOME`.
+
 ## Core restrictions
 
 If the license is for fewer cores than the total number on the machine, the number of cores available to kdb+ must be [restricted with OS programs](../kb/cpu-affinity.md), or kdb+ will signal `'cores` and abort.
