@@ -158,14 +158,19 @@ Can be set to one of the following values:
 
 #### SSL_VERIFY_SERVER
 
-Controls the processing of certificates from a server. Default value is `YES`.
+Controls the processing of certificates from a server.
 
-Checks the X509 certificate the peer presented by verifying the server’s certificate against a trusted source, using the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the server’s certificate.
-Expired certificates will fail the verification process.
+Can be set to one of the following values:
 
-If the verification process fails or no server certificate provided, the TLS/SSL handshake is immediately terminated with an alert message containing the reason for the verification failure.
-
-Setting to `NO` does not terminate the connection due to a failure verifying the certificate.
+-   `YES` (default) checks the X509 certificate the peer presented by verifying the server’s certificate against a trusted source, using the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the server’s certificate. Expired certificates will fail the verification process.
+-   `NO` does not terminate the connection due to a failure verifying the certificate.
+-   `HOSTIP` (since 4.1 2025.11.25, kdbx 5.0 2025.10.18). Same as `YES` setting with additional host and IP verfification. OpenSSL 1.0.2 and above is required. When a hostname is used to connect via TLS/SSL, it checks if the server certificate `SAN` (Subject Alternative Name) or `CN` (Subject CommonName) matches the specified hostname (reference [`X509_check_host`](https://docs.openssl.org/master/man3/X509_check_host/#description)).
+When an IP is used to connect via TLS/SSL, checks if the certificate matches a specified IPv4 (reference [`X509_check_ip`](https://docs.openssl.org/master/man3/X509_check_host/#description)). For example, connecting with 127.0.0.1 would required the following in the certificate:
+   ```
+    X509v3 extensions:
+            X509v3 Subject Alternative Name:
+                IP Address:127.0.0.1
+   ```
 
 ### Checking Configuration
 
