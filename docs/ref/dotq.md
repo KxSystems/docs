@@ -10,55 +10,56 @@ _Tools_
 
 <div markdown="1" class="typewriter">
 **General**                           **Datatype**
- [addmonths](#addmonths)                         [btoa        b64 encode](#btoa-b64-encode)
- [dd       join symbols](#dd-join-symbols)             [j10         encode binhex](#j10-encode-binhex)
- [f        precision format](#f-precision-format)         [j12         encode base 36](#j12-encode-base-36)
- [fc       parallel on cut](#fc-parallel-on-cut)          [ty          type](#ty-type)
- [ff       append columns](#ff-append-columns)           [x10         decode binhex](#x10-decode-binhex)
- [fmt      precision format](#fmt-precision-format)         [x12         decode base 36](#x12-decode-base-36)
- [ft       apply simple](#ft-apply-simple) 
- [fu       apply unique](#fu-apply-unique)            **Database**
- [gc       garbage collect](#gc-garbage-collect)          [chk         fill HDB](#chk-fill-hdb)
- [gz       GZip](#gz-gzip)                     [dpft dpfts  save table](#dpft-save-table)
- [id       sanitize](#id-sanitize)                 [dpt  dpts   save table unsorted](#dpt-save-table-unsorted)
- [qt       is table](#qt-is-table)                 [dsftg       load process save](#dsftg-load-process-save)
- [res      keywords](#res-keywords)                 [en          enumerate varchar cols](#en-enumerate-varchar-cols)
- [s        plain text](#s-plain-text)               [ens         enumerate against domain](#ens-enumerate-against-domain)
- [s1       string representation](#s1-string-representation)    [fk          foreign key](#fk-foreign-key)
- [sha1     SHA-1 encode](#sha1-sha-1-encode)             [hdpf        save tables](#hdpf-save-tables)
- [V        table to dict](#v-table-to-dict)            [l           load](#l-load)
- [v        value](#v-value)                    [ld          load and group](#ld-load-and-group)
- [view     subview](#view-subview)                  [li          load partitions](#li-load-partitions)
-                                   [lo          load without](#lo-load-without)
- **Constants**                         [M           chunk size](#m-chunk-size)
- [A a an   alphabets](#a-upper-case-alphabet)                [qp          is partitioned](#qp-is-partitioned)
- [b6       bicameral alphanums](#b6-bicameral-alphanums)      [qt          is table](#qt-is-table)
- [n nA     nums & alphanums](#n-nums)
-                                  **Partitioned database state**
- **Debug/Profile**                     [bv          build vp](#bv-build-vp)
- [bt       backtrace](#bt-backtrace)                [bvi         build incremental vp](#bvi-build-incremental-vp)
- [prf0     code profiler](#prf0-code-profiler)            [cn          count partitioned table](#cn-count-partitioned-table)
- [sbt      string backtrace](#sbt-string-backtrace)         [D           partitions](#d-partitions)
- [trp      extend trap at](#trp-extend-trap-at)           [ind         partitioned index](#ind-partitioned-index)
- [trpd     extend trap](#trpd-extend-trap)              [MAP         maps partitions](#map-maps-partitions)
- [ts       time and space](#ts-time-and-space)           [par         locate partition](#par-get-expected-partition-location)
-                                   [PD          partition locations](#pd-partition-locations)
- **Environment**                       [pd          modified partition locns](#pd-modified-partition-locations)
- [K k      version](#k-version-date)                  [pf          partition field](#pf-partition-field)
- [w        memory stats](#w-memory-stats)             [pn          partition counts](#pn-partition-counts)
-                                   [pt          partitioned tables](#pt-partitioned-tables)
- **Environment (Command-line)**        [PV          partition values](#pv-partition-values)
- [def      command defaults](#def-command-defaults)         [pv          modified partition values](#pv-modified-partition-values) 
- [opt      command parameters](#opt-command-parameters)       [qp          is partitioned](#qp-is-partitioned)
- [x        non-command parameters](#x-non-command-parameters)   [vp          missing partitions](#vp-missing-partitions)
+ [addmonths](#addmonths)                         [atob        b64 decode](#atob-b64-decode)
+ [dd       join symbols](#dd-join-symbols)             [btoa        b64 encode](#btoa-b64-encode)
+ [f        precision format](#f-precision-format)         [j10         encode binhex](#j10-encode-binhex)
+ [fc       parallel on cut](#fc-parallel-on-cut)          [j12         encode base 36](#j12-encode-base-36)
+ [ff       append columns](#ff-append-columns)           [ty          type](#ty-type)
+ [fmt      precision format](#fmt-precision-format)         [x10         decode binhex](#x10-decode-binhex)
+ [ft       apply simple](#ft-apply-simple)             [x12         decode base 36](#x12-decode-base-36) 
+ [fu       apply unique](#fu-apply-unique)
+ [gc       garbage collect](#gc-garbage-collect)         **Database**
+ [gz       GZip](#gz-gzip)                     [chk         fill HDB](#chk-fill-hdb)
+ [id       sanitize](#id-sanitize)                 [dpft dpfts  save table](#dpft-save-table)
+ [qt       is table](#qt-is-table)                 [dpt  dpts   save table unsorted](#dpt-save-table-unsorted)
+ [res      keywords](#res-keywords)                 [dsftg       load process save](#dsftg-load-process-save)
+ [s        plain text](#s-plain-text)               [en          enumerate varchar cols](#en-enumerate-varchar-cols)
+ [s1       string representation](#s1-string-representation)    [ens         enumerate against domain](#ens-enumerate-against-domain)
+ [sha1     SHA-1 encode](#sha1-sha-1-encode)             [fk          foreign key](#fk-foreign-key)
+ [V        table to dict](#v-table-to-dict)            [hdpf        save tables](#hdpf-save-tables)
+ [v        value](#v-value)                    [l           load](#l-load)
+ [view     subview](#view-subview)                  [ld          load and group](#ld-load-and-group)
+                                   [li          load partitions](#li-load-partitions)
+**Constants**                          [lo          load without](#lo-load-without)
+ [A a an   alphabets](#a-upper-case-alphabet)                [M           chunk size](#m-chunk-size)
+ [b6       bicameral alphanums](#b6-bicameral-alphanums)      [qp          is partitioned](#qp-is-partitioned)
+ [n nA     nums & alphanums](#n-nums)         [qt          is table](#qt-is-table)
   
- **IPC**                               **Segmented database state**
- [addr     IP/host as int](#addr-iphost-as-int)           [P           segments](#p-segments)
- [fps fpn  pipe streaming](#fpn-pipe-streaming)           [u           date based](#u-date-based) 
- [fs  fsn  file streaming](#fs-file-streaming)
- [hg       HTTP get](#hg-http-get)                **File I/O**
- [host     IP to hostname](#host-ip-to-hostname)           [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
- [hp       HTTP post](#hp-http-post)                [Xf          create file](#xf-create-file)
+ **Debug/Profile**                     **Partitioned database state**
+ [bt       backtrace](#bt-backtrace)                [bv          build vp](#bv-build-vp)
+ [prf0     code profiler](#prf0-code-profiler)            [bvi         build incremental vp](#bvi-build-incremental-vp)
+ [sbt      string backtrace](#sbt-string-backtrace)         [cn          count partitioned table](#cn-count-partitioned-table)
+ [trp      extend trap at](#trp-extend-trap-at)           [D           partitions](#d-partitions)
+ [trpd     extend trap](#trpd-extend-trap)              [ind         partitioned index](#ind-partitioned-index)
+ [ts       time and space](#ts-time-and-space)           [MAP         maps partitions](#map-maps-partitions)
+                                   [par         locate partition](#par-get-expected-partition-location)
+ **Environment**                       [PD          partition locations](#pd-partition-locations)
+ [K k      version](#k-version-date)                  [pd          modified partition locns](#pd-modified-partition-locations)
+ [w        memory stats](#w-memory-stats)             [pf          partition field](#pf-partition-field)
+                                   [pn          partition counts](#pn-partition-counts)
+ **Environment (Command-line)**        [pt          partitioned tables](#pt-partitioned-tables)
+ [def      command defaults](#def-command-defaults)         [PV          partition values](#pv-partition-values)
+ [opt      command parameters](#opt-command-parameters)       [pv          modified partition values](#pv-modified-partition-values)
+ [x        non-command parameters](#x-non-command-parameters)   [qp          is partitioned](#qp-is-partitioned)
+                                   [vp          missing partitions](#vp-missing-partitions) 
+ **IPC**
+ [addr     IP/host as int](#addr-iphost-as-int)          **Segmented database state**
+ [fps fpn  pipe streaming](#fpn-pipe-streaming)           [P           segments](#p-segments) 
+ [fs  fsn  file streaming](#fs-file-streaming)           [u           date based](#u-date-based)
+ [hg       HTTP get](#hg-http-get)
+ [host     IP to hostname](#host-ip-to-hostname)           **File I/O**
+ [hp       HTTP post](#hp-http-post)                [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
+                                   [Xf          create file](#xf-create-file)
 </div>
 
 
@@ -182,6 +183,27 @@ and dynamically adjusts preference based on interface reachability and past succ
 :fontawesome-regular-hand-point-right:
 [`.Q.host`](#host-ip-to-hostname) (IP to hostname), [`.z.h`](dotz.md#zh-host) (host), [`.z.a`](dotz.md#za-ip-address) (IP address), [`vs`](vs.md#byte-representation) (Byte representation)
 
+## `atob` (b64 decode)
+
+```syntax
+.Q.atob x
+```
+
+Decodes base64 data. Accepts char or byte vector, returns byte vector. Throws domain error if data not correctly padded.
+
+The following decodes a padded base64 value and [`casts`](cast.md) it to a char vector.
+
+```q
+q)10h$.Q.atob "aGVsbG8="
+"hello"
+```
+
+Since 4.1 2025.11.25, kdbx 5.0 2025.10.18.
+
+:fontawesome-regular-hand-point-right:
+[`.Q.btoa`](#btoa-b64-encode) (b64 encode)
+
+
 ## `b6` (bicameral-alphanums)
 
 ```syntax
@@ -239,12 +261,17 @@ The debugger itself occupies a stack frame, but its source is hidden. (Since V3.
 .Q.btoa x
 ```
 
+Encodes data in base64 format.
+
 ```q
 q).Q.btoa"Hello World!"
 "SGVsbG8gV29ybGQh"
 ```
 
 Since V3.6 2018.05.18.
+
+:fontawesome-regular-hand-point-right:
+[`.Q.atob`](#atob-b64-decode) (b64 decode)
 
 
 ## `bv` (build vp)
