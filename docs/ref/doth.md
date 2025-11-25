@@ -308,7 +308,7 @@ Where
 
 -   `x` is the [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (string)
 -   `y` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
--   `z` is the content (string). Since 4.0 2025.11.25 (or kdbx 5.0 2025.10.18) a byte vector is also accepted.
+-   `z` is the content (string). Since 4.1 2025.11.25 (or kdbx 5.0 2025.10.18) a byte vector is also accepted.
 
 returns as a string an HTTP error response.
 
@@ -501,7 +501,7 @@ Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape 
 Where
 
 -   `x` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
--   `y` is a string. Since 4.0 2025.11.25 (or kdbx 5.0 2025.10.18) a byte vector is also accepted.
+-   `y` is a string. Since 4.1 2025.11.25 (or kdbx 5.0 2025.10.18) a byte vector is also accepted.
 
 returns as a string an HTTP response for `y` as content-type `x` with a "200 OK" HTTP response status.
 
