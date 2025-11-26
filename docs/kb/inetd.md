@@ -14,7 +14,7 @@ This way, `inetd` will run the server programs as they are needed by spawning mu
 
 A kdb+ server can work under `inetd` to provide a private server for each connection established on a designated port.
 
-Only the kdb+ IPC protocol is supported when running with inetd or xinetd. SSL/TLS is supported since 4.1 2025.11.25, kdbx 5.0 2025.10.24.
+Only the kdb+ IPC protocol is supported when running with inetd or xinetd. SSL/TLS is supported since 4.1 2025.11.25.
 
 ## Assigning a TCP port
 
