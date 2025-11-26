@@ -164,7 +164,7 @@ Can be set to one of the following values:
 
 -   `YES` (default) checks the X509 certificate the peer presented by verifying the server’s certificate against a trusted source, using the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the server’s certificate. Expired certificates will fail the verification process.
 -   `NO` disables certificate verification. The connection will not be terminated if the certificate cannot be verified.
--   `HOSTIP` (since 4.1 2025.11.25. Performs the same verification as the `YES` setting with additional host and IP verification. OpenSSL 1.0.2 and above is required. When a hostname is used to connect via TLS/SSL, it checks if the server certificate `SAN` (Subject Alternative Name) or `CN` (Subject CommonName) matches the specified hostname (reference [`X509_check_host`](https://docs.openssl.org/master/man3/X509_check_host/#description)).
+-   `HOSTIP` (since 4.1 2025.11.25). Performs the same verification as the `YES` setting with additional host and IP verification. OpenSSL 1.0.2 and above is required. When a hostname is used to connect via TLS/SSL, it checks if the server certificate `SAN` (Subject Alternative Name) or `CN` (Subject CommonName) matches the specified hostname (reference [`X509_check_host`](https://docs.openssl.org/master/man3/X509_check_host/#description)).
 When an IP is used to connect via TLS/SSL, checks if the certificate matches a specified IPv4 (reference [`X509_check_ip`](https://docs.openssl.org/master/man3/X509_check_host/#description)). For example, connecting with 127.0.0.1 would required the following in the certificate:
    ```
     X509v3 extensions:
