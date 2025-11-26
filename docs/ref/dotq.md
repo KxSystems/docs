@@ -198,7 +198,7 @@ q)10h$.Q.atob "aGVsbG8="
 "hello"
 ```
 
-Since 4.1 2025.11.25, kdbx 5.0 2025.10.18.
+Since 4.1 2025.11.25.
 
 :fontawesome-regular-hand-point-right:
 [`.Q.btoa`](#btoa-b64-encode) (b64 encode)
