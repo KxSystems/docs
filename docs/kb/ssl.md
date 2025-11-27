@@ -102,12 +102,14 @@ A file containing certificate authority (CA) certificates in PEM format. The fil
 -----END CERTIFICATE-----
 ```
 sequences. Text is allowed before, between, and after the certificates; it can be used, for example, for descriptions of the certificates.
+The CA certificates are used to establish trust, by checking that a certificate presented to a client/server has been issued (directly or indirectly) by a known certificate authority.
 
 Default value is `<OPENSSLDIR>/cacert.pem`
 
 #### SSL_CA_CERT_PATH
 
-A directory containing certificate authority (CA) certificates in PEM format.
+A directory containing certificate authority (CA) certificates in PEM format. 
+The CA certificates are used to establish trust, by checking that a certificate presented to a client/server has been issued (directly or indirectly) by a known certificate authority.
 
 Default value is `<OPENSSLDIR>`
 
@@ -179,44 +181,72 @@ Configured TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../ba
 
 ## Certificates
 
-If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. An example script (`makeCerts.sh`) to do so follows; customize as necessary.
+If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. 
+An example script (`makeCerts.sh`) to do so follows. 
+Customize as necessary.
 
 ```bash
 mkdir $HOME/certs && cd $HOME/certs
 
 # create private key for CA (certificate authority)
+# ca-private-key.pem will be used by the CA to sign all certificates, must be kept secret
 openssl genrsa -out ca-private-key.pem 2048
-# create X509 certificate for CA (certificate authority)
+# create self-signed X509 certificate, ca-cert.pem, for CA (certificate authority)
 openssl req -x509 -new -nodes -key ca-private-key.pem -sha256 -days 365 -out ca-cert.pem -subj /C=US/ST=CA/L=Somewhere/O=Someone/CN=FoobarCA
 
-# create server private key
+# create server private key (server-private-key.pem)
 openssl genrsa -out server-private-key.pem 2048
 # create servers certificate signing request (CSR)
 # CSR contains the common name(s) you want your certificate to secure, information about your company, and your public key (taken from provided private key)
+# server.csr is used by CA (certificate authority) to issue a certificate for the server
 openssl req -new -sha256 -key server-private-key.pem -subj /C=US/ST=CA/L=Somewhere/O=Someone/CN=Foobar -out server.csr
-# create X509 certificate for the server (signed by CA)
+# create signed X509 certificate for the server (signed by CA)
+# server-cert.pem is the public server certificate that validates server has been trusted by the CA (certificate authority)
 openssl x509 -req -in server.csr -CA ca-cert.pem -CAkey ca-private-key.pem -CAcreateserial -out server-cert.pem -days 365 -sha256
 
-# create client private key
+# create client private key (client-private-key.pem)
 openssl genrsa -out client-private-key.pem 2048
 # create clients certificate signing request (CSR)
 # CSR contains the common name(s) you want your certificate to secure, information about your company, and your public key (taken from provided private key)
+# client.csr is used by CA (certificate authority) to issue a certificate for the client
 openssl req -new -sha256 -key client-private-key.pem -subj /C=US/ST=CA/L=Somewhere/O=Someone/CN=Foobar -out client.csr
 # create X509 certificate for the client (signed by CA)
+# client-cert.pem is the public client certificate that validates client has been trusted by the CA (certificate authority)
 openssl x509 -req -in client.csr -CA ca-cert.pem -CAkey ca-private-key.pem -CAcreateserial -out client-cert.pem -days 365 -sha256
 ```
 
-Using this script the server settings can be configured as:
+To check contents of generated certificates
+
 ```bash
-$ export SSL_CERT_FILE=$HOME/certs/server-cert.pem
-$ export SSL_KEY_FILE=$HOME/certs/server-private-key.pem
-$ export SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem 
+# client signing request (CSR) given to the CA to generate a server certificate
+openssl req -in server.csr -noout -text
+# server X.509 certificate
+openssl x509 -in server-cert.pem -noout -text
+# client signing request (CSR) given to the CA to generate a client certificate
+openssl req -in client.csr -noout -text
+# client X.509 certificate
+openssl x509 -in client-cert.pem -noout -text
+```
+
+To verify generated certificates against the certificte authority (CA)
+```bash
+# verify X.509 server certificate
+openssl verify -CAfile ca-cert.pem server-cert.pem
+# verify X.509 client certificate
+openssl verify -CAfile ca-cert.pem client-cert.pem
+```
+
+The server environment variables can now be set to the appropriate file locations to permit an SSL/TLS connection
+```bash
+export SSL_CERT_FILE=$HOME/certs/server-cert.pem
+export SSL_KEY_FILE=$HOME/certs/server-private-key.pem
+export SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem 
 ```
 with the client as:
 ```bash
-$ export SSL_CERT_FILE=$HOME/certs/client-cert.pem 
-$ export SSL_KEY_FILE=$HOME/certs/client-private-key.pem
-$ export SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem
+export SSL_CERT_FILE=$HOME/certs/client-cert.pem 
+export SSL_KEY_FILE=$HOME/certs/client-private-key.pem
+export SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem
 ```
 
 :fontawesome-brands-github:
