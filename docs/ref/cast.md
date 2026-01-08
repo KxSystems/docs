@@ -136,7 +136,18 @@ q)"x"$"abc"
 
 ## Temporal
 
-Find parts of time:
+The following symbols can be used to extract parts of a temporal type
+
+* `year` to provide year as an integer
+* `month` to provide `month` datatype
+* `mm` to provide month as an integer, where January is 01i
+* `week` to provide a `date` datatype, presenting the week in which the temporal variable resides. The value returned is the start of the week (Monday). If the `date` represents a Monday, it is not altered.
+* `dd` to provide day as an integer, where 1st of the month is 1i
+* `hh` to provide hour as an integer
+* `uu` to provide minutes as an integer
+* `ss` to provide to seconds as an integer
+
+For example:
 
 ```q
 q)`hh`uu`ss$03:55:58.11
@@ -144,6 +155,8 @@ q)`hh`uu`ss$03:55:58.11
 q)`year`dd`mm`hh`uu`ss$2015.10.28D03:55:58
 2015 28 10 3 55 58i
 ```
+
+The following shows which information can be extracted from each temporal [datatype](../basics/datatypes.md)
 
 ```txt
           | year | month | mm | week | dd | hh | uu | ss
@@ -156,13 +169,7 @@ timespan  |      |       |    |      |    | x  | x  | x
 minute    |      |       |    |      |    | x  | x  | x
 second    |      |       |    |      |    | x  | x  | x
 time      |      |       |    |      |    | x  | x  | x
-
-
-milliseconds: "i"$time mod 1000
-milliseconds: "i"$mod[;1000]"t"$datetime
-nanoseconds: "i"$timestamp mod 1000000000
 ```
-
 
 !!! detail "Casting to narrower temporal type truncates rather than rounds"
 
@@ -172,6 +179,13 @@ nanoseconds: "i"$timestamp mod 1000000000
 
     As a consequence `.z.t-.z.n` is typically negative. 
 
+Numeric calculations on the base numeric type can also be used to extract part of a temporal type, for the example using the [`mod`](mod.md) keyword
+
+```q
+milliseconds: "i"$01:00:00.100 mod 1000                         / extract milliseconds from time datatype
+milliseconds: "i"$mod[;1000]"t"$2000.01.01T12:00:00.500         / extract milliseconds from datetime datatype
+nanoseconds: "i"$2014.11.22D17:43:40.123456789 mod 1000000000   / extract nanoseconds from timestamp datatype
+```
 
 ## Identity
 

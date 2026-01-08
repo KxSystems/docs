@@ -464,10 +464,10 @@ Set the start-of-week offset, where 0 is Saturday. The default is 2, i.e Monday.
 -z [0|1]
 ```
 
-Set the format for `"D"$` date parsing: 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
+Set the format for `"D"$` date parsing.
 
 :fontawesome-solid-book-open:
-[`\z` system command](syscmds.md#z-date-parsing)
+[`\z` system command](syscmds.md#z-date-parsing) for detail
 
 
 [![](../img/xkcd.tar.png)](https://xkcd.com/1168/)
