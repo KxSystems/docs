@@ -951,7 +951,7 @@ q)\x .z.pi                    / restore default
 \z 0|1
 ```
 
-Show or set the format for `"D"$` date parsing. `B` is 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
+Show or set the format for `"D"$` date parsing. `0` for mm/dd/yyyy and `1` for dd/mm/yyyy. Default value is `0`.
 
 ```q
 q)\z

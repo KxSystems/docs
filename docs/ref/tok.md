@@ -203,8 +203,8 @@ q)"PZ"$\:"20191122-11:11:11.123"
 [yy]yymmdd
 ddMMM[yy]yy
 yyyy/[mm|MMM]/dd
-[mm|MMM]/dd/[yy]yy  / \z 0  
-dd/[mm|MMM]/[yy]yy  / \z 1
+[mm|MMM]/dd/[yy]yy  / when \z is set to 0 (default)
+dd/[mm|MMM]/[yy]yy  / when \z is set to 1
 ```
 
 :fontawesome-solid-book-open:
