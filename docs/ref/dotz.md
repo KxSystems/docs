@@ -215,7 +215,7 @@ Returns an empty dictionary if the connection is not TLS enabled.
 Displays information on the following
 
 * `CIPHER` is the name of cipher used for the connection
-* `PROTOCOL` is the name of the protocol used for the connection, for example `TLSv1.2
+* `PROTOCOL` is the name of the protocol used for the connection, for example `` `TLSv1.2 ``
 * `CERT` is the X509 certificate the peer presented. It is not present if the peer certificate was not provided.
 
 For example, the following connects to a server, then runs `.z.e` on the server to gain information on the TLS connection handle used by the client. Therefore `CERT` is the client certificate (peer of the server). 
