@@ -209,14 +209,43 @@ The number of physical cores.
 
 ## `.z.e` (TLS connection status)
 
-TLS details used with a connection handle. Returns an empty dictionary if the connection is not TLS enabled. E.g. where `h` is a connection handle.
+TLS details used with the current connection handle. 
+Returns an empty dictionary if the connection is not TLS enabled. 
+
+Displays information on the following
+
+* `CIPHER` is the name of cipher used for the connection
+* `PROTOCOL` is the name of the protocol used for the connection, for example `` `TLSv1.2 ``
+* `CERT` is the X509 certificate the peer presented. It is not present if the peer certificate was not provided.
+
+For example, the following connects to a server, then runs `.z.e` on the server to gain information on the TLS connection handle used by the client. Therefore `CERT` is the client certificate (peer of the server). 
+If [`SSL_VERIFY_CLIENT`](../kb/ssl.md#ssl_verify_client) is not enabled on the server, the client certificate is not requested by the server, and therefore would not be displayed.
 
 ```q
+q)h:hopen `:tcps://localhost:5000
 q)h".z.e"
 CIPHER  | `AES128-GCM-SHA256
 PROTOCOL| `TLSv1.2
 CERT    | `SUBJECT`ISSUER`SERIALNUMBER`NOTVALIDBEFORE`NOTVALIDAFTER`VERIFIED`VERIFYERROR!("/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com";"/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com";,"1";"Jul  6 10:08:57 2021 GMT";"May 15 10:08:57 2031 GMT";1b;0)
 ```
+
+The following shows the client sending a message to the server, which in turn sends `.z.e` to the client (using the current connection handle [`.z.w`](#zw-handle)), displaying the server certificate used by the client connection.
+```q
+q)h:hopen `:tcps://localhost:5000
+q)h".z.w\".z.e\""
+CIPHER    | `TLS_AES_256_GCM_SHA384
+PROTOCOL  | `TLSv1.3
+CERT      | `SUBJECT`ISSUER`SERIALNUMBER`NOTVALIDBEFORE`NOTVALIDAFTER`VERIFIED`VERIFYERROR!("/C=US/ST=CA/L=Somewhere/O=Someone/CN=Foobar";"/C=US/ST=CA/L=Somewhere/O=Someone/CN=FoobarCA";"1399A138267E9EB69529717C24FDA451932AE3FD";"Jan 12 17:20:10 2026 GMT";"Jan 12 17:20:10 2027 GMT";1b;0)
+```
+
+When called from code executing a client callback function due to a client request, it can be used to gain TLS information on the client connection.
+For example, the following implements the connection open callback ([`.z.po`](#zpo-open)) to print TLS information each time a client connects.
+
+```q
+.z.po:{show"SSL server connection info:";show .z.e;show"SSL client connection info:";show .z.w".z.e"}
+```
+
+`.z.w".z.e"` is used to run .z.e on the client (via a [sync request](../basics/ipc.md#sync-request-get) over the connection provided by [`.z.w`](#zw-handle))
 
 Since V3.4 2016.05.16. `CERT` details of `VERIFIED`,`VERIFYERROR` available since 4.1t 2024.02.07.
 
@@ -950,7 +979,9 @@ q)m[1;1]:0
 ## `.z.W` (handles)
 
 Dictionary of IPC handles with the number of bytes waiting in their output queues.
+[`.z.H`](#zh-active-sockets) is a lower cost method if the size of the output queue is not required.
 
+The following demonstrates a client connection which has created [async requests](../basics/ipc.md#async-message-set), causing pending data in its connection output queue.
 ```q
 q)h:hopen ...
 q)h
@@ -988,14 +1019,15 @@ q)neg[h]"11+1111111";(-38!h)`m
 
 ## `.z.w` (handle)
 
-Connection handle; 0 for current session console.
+The current connection handle. When called within the current session console, it will return 0i. 
 
 ```q
 q).z.w
 0i
 ```
 
-!!! warning "Inside a `.z.p`* callback it returns the handle of the client session, not the current session."
+When called from code executing a client callback function due to a client request, for example [`.z.pg`](#zpg-get), it returns the handle of the client connection.
+This can be used for performing tasks such as sending a [sync/async request](../basics/ipc.md#send-messages) to the client or recording the handle upon which a request should be later fulfilled.
 
 :fontawesome-solid-hand-point-right:
 [`.z.H`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
