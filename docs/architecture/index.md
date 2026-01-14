@@ -5,7 +5,7 @@ keywords: hdb, kdb+, q, rdb, tick, tickerplant, streaming
 ---
 # Architecture of kdb+ systems
 
-A kdb+ tick based archecture can be used to capture, process and analyse vasts amount of real-time and historical data.
+A kdb+ tick based architecture can be used to capture, process and analyse vast amounts of real-time and historical data.
 
 The following diagram illustrates the components that are often found in a vanilla kdb+ tick setup:<br>
 
