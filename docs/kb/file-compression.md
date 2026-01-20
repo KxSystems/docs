@@ -250,7 +250,14 @@ The following libraries are required by kdb+:
 
 | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
 ---|---|---
-libz.so.1 | libz.dylib<br>(pre-installed) | zlibwapi.dll<br>(32-bit and 64-bit versions available from [WinImage](http://www.winimage.com/zLibDll/index.html "winimage.com"))
+libz.so.1 | libz.dylib<br>(pre-installed) | zlibwapi.dll
+
+The Windows DLL should be built from the source code. Note that the out-of-the-box build files produce a DLL with the `cdecl` calling convention, which will not work in kdb+. To switch to the required `stdcall` convention, you must define the `ZLIB_WINAPI` preprocessor symbol. For example, with MinGW:
+```cmd
+>make -f win32/Makefile.gcc --eval 'kx-dummy:;@echo $(CFLAGS)'
+-O3 -Wall
+>make -f win32/Makefile.gcc CFLAGS="-O3 -Wall -DZLIB_WINAPI" SHARED_MODE=1 zlib1.dll
+```
 
 Gzip has very good [compression ratio](compression/fsicasestudy.md) and average compression/decompression speed. Avoid high compression levels (like 8 and 9) if write speed is important for you. Gzip with level 5 is a good general solution.
 
