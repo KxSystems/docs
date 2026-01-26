@@ -26,7 +26,7 @@ keywords: command, kdb+, q, system
 [\p  listening port](#p-listening-port)                   [\\_       hide q code](#_-hide-q-code)
 [\P  precision](#p-precision)                        [\\        terminate](#terminate)
 [\r  replication primary](#r-replication-primary)              [\\        toggle q/k](#toggle-qk)
-[\r  rename](#r-rename)                           [\\\\       quit](#quit)               
+[\r  rename](#r-rename)                           [\\\\       quit](#quit)
 </div>
 
 System commands control the q environment. They have the form:
@@ -138,7 +138,7 @@ q)\B              / no longer pending
 _Console maximum rows and columns_
 
 ```syntax
-\c 
+\c
 \c size
 ```
 
@@ -184,7 +184,7 @@ q)til each 20+til 10
 _HTTP display maximum rows and columns_
 
 ```syntax
-\C 
+\C
 \C size
 ```
 
@@ -329,16 +329,16 @@ Q manages its own thread-local heap. Objects in q use reference counting. As soo
 
 1 (immediate)
 
-: As memory is returned to the thread-local heap, if the object is ≥64MB then the memory is returned to the OS instead. This has an associated performance overhead. As per `defered mode`, memory used by the heap may be subsequently returned to the OS when either `.Q.gc[]` is called or an allocation fails.
+: As memory is returned to the thread-local heap, if the object is ≥64MB then the memory is returned to the OS instead. This has an associated performance overhead. As per `deferred mode`, memory used by the heap may be subsequently returned to the OS when either `.Q.gc[]` is called or an allocation fails.
 
-When q is denied additional address space from the OS, it invokes `.Q.gc[]` and retries the request to the OS. 
+When q is denied additional address space from the OS, it invokes `.Q.gc[]` and retries the request to the OS.
 If the subsequent attempt fail, the request exits with [`'wsfull`](../basics/errors.md#wsfull).
 
 !!! detail "Notes on the allocator"
 
-    Q’s allocator bins objects in power-of-two size categories, from 16b (e.g. an atom) to 64MB. 
-   
-    In this example, various vectors of longs (8 bytes per long) are created of different sizes using [`til`](../ref/til.md). 
+    Q’s allocator bins objects in power-of-two size categories, from 16b (e.g. an atom) to 64MB.
+
+    In this example, various vectors of longs (8 bytes per long) are created of different sizes using [`til`](../ref/til.md).
     The memory used for the operation is shown via [`\ts`](#ts-time-and-space). Note that more bytes are reported
     that only the pure vector size due to other house keeping, for example the type information.
     ```q
@@ -350,26 +350,26 @@ If the subsequent attempt fail, the request exits with [`'wsfull`](../basics/err
     0 16560
     ```
 
-    If there is already a slab in the object category’s freelist, it is reused. 
-    If there are no available slabs, a larger slab is recursively split in two until the needed category size is reached. 
-    If there are no free slabs available, a new 64MB slab is requested from the system. 
+    If there is already a slab in the object category’s freelist, it is reused.
+    If there are no available slabs, a larger slab is recursively split in two until the needed category size is reached.
+    If there are no free slabs available, a new 64MB slab is requested from the system.
     When an object is de-allocated, its memory slab is returned to the corresponding category’s freelist.
-    
+
     Allocations larger than 64MB are requested from the OS directly, and this is what `-g 1` causes to be immediately returned.
-    
+
     Note that larger allocations do not cause any fragmentation and in case of `-g 1` always immediately return.
-    
+
     It is the smaller allocations (<64MB) that typically represent the bulk of a process allocation workload that can cause the heap to become fragmented.
-    
+
     There are two primary cases of heap fragmentation:
-    
+
     split slab
-    
+
     : Suppose that at some point q needed a 32MB allocation. It requested a new 64MB slab from the OS, split it in half, used and freed the object, and returned the two 32MB slabs to the freelist. Now if q needs to allocate 64MB, it will have to make another request to the OS. When `.Q.gc` is called (or an allocation fails), it would attempt to coalesce these two 32MB slabs together back into one 64MB, which would allow it to be returned to the OS (or reused for larger allocations, if the resulting slab is <64MB).
-    
+
     leftover objects
 
-    : If most of the objects allocated from a 64MB slab are freed but one remains, the slab still cannot be returned to the OS (or coalesced). 
+    : If most of the objects allocated from a 64MB slab are freed but one remains, the slab still cannot be returned to the OS (or coalesced).
 
 The following example shows freeing an object ≥64MB in `deferred` mode, while inspecting memory usage via [`.Q.w[]`](../ref/dotq.md#w-memory-stats):
 ```q
@@ -399,10 +399,10 @@ q)a:til 10000000      / need memory ≥64MB to store value again
 q).Q.w[]`used`heap    / heap memory has increased (requested from OS) as memory used is more than whats available to use in heap
 134589328 201326592
 ```
-`Immediate mode` will not return the memory to the OS when several objects less than 64MB each are freed, even though their sum may be more than 64MB. 
+`Immediate mode` will not return the memory to the OS when several objects less than 64MB each are freed, even though their sum may be more than 64MB.
 In this situation, `immediate` and `deferred` mode operate identically by adding the freed memory to the heap for future use.
 
-The following examples shows this effect when running in `immediate mode`. 
+The following examples shows this effect when running in `immediate mode`.
 No memory is returned to the OS on freeing the objects, and only when [`.Q.gc[]`](../ref/dotq.md#gc-garbage-collect) is run is the memory coalesced and freed.
 ```q
 q).Q.w[]`used`heap               / original memory used and memory reserved by kdb+ at time of test
@@ -433,7 +433,7 @@ _Q for Mortals_
 \l .
 ```
 
-Where `name` is the name of a 
+Where `name` is the name of a
 
 -   q script, executes the script
 -   serialized object, deserializes it into memory as variable `name`
@@ -441,9 +441,9 @@ Where `name` is the name of a
 -   directory and the value of one of the permitted partition types, the most recent partition directory is inspected for splayed directories and each such directory mapped into memory with the name of the splayed directory
 -   directory containing a kdb+ database, recursively loads whatever it finds there: serialized objects, scripts, splayed tables, etc.
 
-**Current directory** When a directory is opened, it becomes the  current directory. 
+**Current directory** When a directory is opened, it becomes the  current directory.
 
-**Reload current directory** You can reload the current database with `\l .`. This will ignore scripts and reload only data. 
+**Reload current directory** You can reload the current database with `\l .`. This will ignore scripts and reload only data.
 
 **Never mind the dollars** If a file or directory under the path being loaded has a dollar-sign suffix then it is ignored. e.g. `db/tickdata/myfile$` and `db/tickdata/mydir$` would be ignored on `\l db/tickdata` or on `\l .` if `db/tickdata` is the current directory.
 
@@ -458,7 +458,6 @@ q)\a                 / with tables quote and trade
 ```
 
 If [logging](../kb/logging.md) is enabled, the command [checkpoints](../kb/logging.md#check-pointing-rolling) the `.qdb` file and empties the log file.
-
 
 !!! danger "Operating systems may create hidden files, such as `DS_Store`, that block `\l` on a directory."
 
@@ -514,7 +513,7 @@ _Show or set listening port_
 \p [rp,][hostname:][portnumber|servicename]
 ```
 
-See 
+See
 :fontawesome-solid-book-open:
 [Listening port](listening-port.md) for detail.
 
@@ -543,7 +542,8 @@ Show or set display precision for floating-point numbers, i.e. the number of dig
 
 The default value of `n` is 7 and possible values are integers in the range \[0,17\].
 A value of 0 means use maximum precision.
-This is used when exporting to CSV files.
+`\P` is applied when [save](../ref/save.md) exports to text files (CSV, json, etc.) and whenever a floating-point number is converted to a string.
+
 
 ```q
 q)\P                       / default
@@ -607,7 +607,7 @@ This should not be executed manually otherwise it can disrupt replication. It is
 \r src dst
 ```
 
-Rename file `src` to `dst`. 
+Rename file `src` to `dst`.
 
 It is equivalent to the Unix `mv` command, or the windows `move` command (except that it will not rename to a different disk drive).
 
@@ -699,7 +699,7 @@ q)x:system"S 0N";r:10?10;system"S ",string x;r~10?10
     The rng in a secondary thread is assigned a seed based on the secondary thread number.
 
     In multithreaded input mode, the seed is based on the socket descriptor.
-    
+
     Instances started on ports 20000 through 20099 (secondary threads, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
 
 
@@ -819,7 +819,7 @@ q){x where x like"????"}system"v .h"
     delete a from `.
     ```
 
-    :fontawesome-solid-street-view: 
+    :fontawesome-solid-street-view:
     _Q for Mortals_
     [§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
 
@@ -868,7 +868,7 @@ Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, i
 [`-w` command-line option](cmdline.md#-w-workspace). For example `\w 128` sets the limit to 128MB if the `-w` command line option was specified
 with a smaller value. The operation will return the current setting in bytes.
 
-If the system tries to allocate more memory than allowed, it signals `-w abort` and terminates with exit code 1. 
+If the system tries to allocate more memory than allowed, it signals `-w abort` and terminates with exit code 1.
 
 Specifying too large a number will fall back to the same behavior as `\w 0` or `\w 1`.
 
@@ -1125,11 +1125,11 @@ q)
 
 ## Interrupt and terminate
 
-Ctl-c signals an interrupt to the interpreter. 
+Ctl-c signals an interrupt to the interpreter.
 
-Some operations are coded so tightly the interrupt might not be registered. 
+Some operations are coded so tightly the interrupt might not be registered.
 
-Ctl-z will kill the q session. Nothing in memory is saved. 
+Ctl-z will kill the q session. Nothing in memory is saved.
 
 
 ## OS commands
