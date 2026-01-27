@@ -542,7 +542,7 @@ Show or set display precision for floating-point numbers, i.e. the number of dig
 
 The default value of `n` is 7 and possible values are integers in the range \[0,17\].
 A value of 0 means use maximum precision.
-`\P` is applied when [save](../ref/save.md) exports to text files (CSV, json, etc.) and whenever a floating-point number is converted to a string.
+`\P` is applied when [save](../ref/save.md) exports to text files (CSV, JSON, etc.) and whenever a floating-point number is converted to a string.
 
 
 ```q
