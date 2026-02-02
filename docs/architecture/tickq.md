@@ -50,7 +50,7 @@ For example, a RDB may implement [`.u.end`](rq.md#uend) to write down all in-mem
 These record all published messages and permit recovery by downstream clients, by allowing them to replay messages they have missed.
 The directory used should have enough space to record all published data.
 
-As end-day-day causes a file roll, a process should be put in place to remove old log files that are no longer required.
+As end-of-day causes a file roll, a process should be put in place to remove old log files that are no longer required.
 
 !!! note "The tickerplant does not replay log files for clients, but exposes [log file details](#variables) to clients so they can access the current log file"
 
