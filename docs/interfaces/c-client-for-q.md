@@ -664,7 +664,7 @@ It is similar to `krr(S)`, but it appends a system error message to the user-pro
 
 1.  To catch an error code from the results of a call to `r=k(h, …)`, check the return value and type.
 If result is `NULL`, then a network error has occurred.
-If it has type -128, then `r->s` will point to the error string. Note that K object with type -128 acts as a marker only and other uses are not supported(i.e. passing it to other C API or kdb+ functions).
+If it has type -128, then `r->s` will point to the error string. Note that K object with type -128 acts as a marker only and other uses are not supported (i.e. passing it to other C API or kdb+ functions).
 
 ```c
 K r=k(handle, "f", arg1, arg2, (K)0);
@@ -675,6 +675,26 @@ if(r && -128==r->t)
 Under some network-error scenarios, `errno` can be used to obtain the details of the error,
 e.g. `perror(“network”);`
 
+Some functions such as [`dot`](capiref.md#dot-apply) return `NULL` on error. These require calling [`ee`](capiref.md#ee-error-string) to retrieve the error.
+
+The error object returned from `k` or `ee` can be rethrown by returning it. No need to call `krr`, `r1` or `r0`.
+
+```c
+K r=k(0, "1+`a", (K)0);
+if(r && -128==r->t)
+  return r;
+```
+
+On the other hand, to swallow the error, `r0` must be called on it to avoid leaking memory.
+
+```c
+K r=k(0, "1+`a", (K)0);
+if(r && -128==r->t) {
+  printf("error string: %s\n", r->s);
+  r0(r);
+  return kj(0);
+}
+```
 
 ## Return values
 
