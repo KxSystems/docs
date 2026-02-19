@@ -22,7 +22,7 @@ $ cd start/db
 and download the script itself:
 
 ```bash
-$ curl https://raw.githubusercontent.com/cillianreilly/qtools/master/start/ham.q > $QHOME/ham.q
+$ curl https://raw.githubusercontent.com/CillianReilly/qtools/refs/heads/master/ham.q > $QHOME/ham.q
 ```
 
 Let's examine the inputs to the script and some of the functionalites before we get started:
