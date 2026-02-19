@@ -44,11 +44,11 @@ IBM  N   1000
 MSFT CME 250
 
 q)ej[`sym;s;t]
-sym  price     ex  MC
+sym  ex  MC  price
 -----------------------
-IBM  0.7029677 N   1000
-IBM  0.2608152 N   1000
-MSFT 0.5433888 CME 250
+IBM  N  1000  0.7029677
+IBM  N  1000  0.2608152 
+MSFT CME 250  0.5433888
 ```
 
 Duplicate column values are filled from `t2`.
