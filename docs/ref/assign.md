@@ -1,5 +1,5 @@
 ---
-title: Assign operator | Reference | KDB-X and q documentation
+title: Assign operator | Reference | kdb+ and q documentation
 description: Name a value in q
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

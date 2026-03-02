@@ -1,5 +1,5 @@
 ---
-title: view, views | Reference | KDB-X and q documentation
+title: view, views | Reference | kdb+ and q documentation
 description: view and views are q keywords. view returns the expression defining a view. views lists views defined in the default namespace. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

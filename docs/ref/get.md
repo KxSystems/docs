@@ -1,17 +1,17 @@
 ---
-title: get, set – Reference – KDB-X and q documentation
-description: get and set are q keywords that read or set value of a variable or a KDB-X data file.
+title: get, set – Reference – kdb+ and q documentation
+description: get and set are q keywords that read or set value of a variable or a kdb+ data file.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: get, KDB-X, q, set
+keywords: get, kdb+, q, set
 ---
 
 # `get`, `set`
 
-_Read or set the value of a variable or a KDB-X data file_
+_Read or set the value of a variable or a kdb+ data file_
 
 ## `get`
 
-_Read or memory-map a variable or KDB-X data file_
+_Read or memory-map a variable or kdb+ data file_
 
 ```syntax
 get x     get[x]
@@ -24,7 +24,7 @@ Where `x` is
 
 returns its value.
 
-Signals a `type` error if the file is not a KDB-X data file.
+Signals a `type` error if the file is not a kdb+ data file.
 
 Used to map columns of databases in and out of memory when querying splayed databases, and can be used to read q log files, etc.
 

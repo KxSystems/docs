@@ -1,7 +1,7 @@
 ---
-title: deltas – differences between adjacent list items | Reference | KDB-X and q documentation
+title: deltas – differences between adjacent list items | Reference | kdb+ and q documentation
 description: deltas is a q keyword that returns the differences between adjacent list items.
-keywords: diff, difference, item, KDB-X, list, q
+keywords: diff, difference, item, kdb+, list, q
 ---
 # `deltas`
 

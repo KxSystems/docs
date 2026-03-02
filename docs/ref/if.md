@@ -1,8 +1,8 @@
 ---
-title: if control word | Reference | KDB-X and q documentation
+title: if control word | Reference | kdb+ and q documentation
 description: if is a q control construct for conditional evaluation of one or more expressions.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: condition, control, evaluate, KDB-X, q
+keywords: condition, control, evaluate, kdb+, q
 ---
 # `if`
 

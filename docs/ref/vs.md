@@ -1,8 +1,8 @@
 ---
-title: vs – Reference – KDB-X and q documentation
+title: vs – Reference – kdb+ and q documentation
 description: vs is a q keyword that performs various functions under the scheme vector-from-scalar (atom).
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: atom, decode, KDB-X, keyword, q, scalar, vector, vs
+keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 ---
 
 # `vs`

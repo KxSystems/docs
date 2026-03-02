@@ -1,8 +1,8 @@
 ---
-title: differ – Reference – KDB-X and q documentation
+title: differ – Reference – kdb+ and q documentation
 description: differ is a q keyword that flags where items of a list change value.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: diff, differ, KDB-X, item, list, q
+keywords: diff, differ, kdb+, item, list, q
 ---
 # `differ`
 

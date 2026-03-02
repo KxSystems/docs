@@ -1,5 +1,5 @@
 ---
-title: in | Reference | KDB-X and q documentation
+title: in | Reference | kdb+ and q documentation
 description: in is a q keyword that flags whether its left argument is an item in its right argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: November 2020

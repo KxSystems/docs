@@ -1,5 +1,5 @@
 ---
-title: prd, prds – product and running products | Reference | KDB-X and q documentation
+title: prd, prds – product and running products | Reference | kdb+ and q documentation
 description: prd and prds are q keywords that return respectively the product and the cumulating products of their arguments.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

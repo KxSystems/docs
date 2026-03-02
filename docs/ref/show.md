@@ -1,8 +1,8 @@
 ---
-title: show – Reference – KDB-X and q documentation
+title: show – Reference – kdb+ and q documentation
 description: show is a q keyword that formats its argument and displays it at the console.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: console, debug, develop, display, KDB-X, q, tool
+keywords: console, debug, develop, display, kdb+, q, tool
 ---
 # `show`
 

@@ -1,5 +1,5 @@
 ---
-title: signum – the sign of a number | Reference | KDB-X and q documentation
+title: signum – the sign of a number | Reference | kdb+ and q documentation
 description: signum is a q keyword that returns 1, 0,or -1 according to the sign of its argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

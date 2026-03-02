@@ -1,5 +1,5 @@
 ---
-title: neg | Reference | KDB-X and q documentation
+title: neg | Reference | kdb+ and q documentation
 description: neg is a q keyword that returns the negation of its argument. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

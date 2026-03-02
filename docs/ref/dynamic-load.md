@@ -1,7 +1,7 @@
 ---
-title: Dynamic Load – Reference – KDB-X and q documentation
+title: Dynamic Load – Reference – kdb+ and q documentation
 description: Dynamic Load is a q operator that loads C shared objects for use in q programs.
-keywords: c, dynamic, KDB-X, load, object, q, shared
+keywords: c, dynamic, kdb+, load, object, q, shared
 ---
 # `2:` Dynamic Load
 
@@ -35,7 +35,7 @@ assign it to `read_cycles`:
 read_cycles:`cpu 2:(`q_read_cycles_of_this_cpu;1)
 ```
 
-If the shared library, as passed, does not exist, KDB-X will try to load it from `$QHOME/os`, where `os` is the operating system and architecture acronym, e.g. `l64`, `w64`, etc. 
+If the shared library, as passed, does not exist, kdb+ will try to load it from `$QHOME/os`, where `os` is the operating system and architecture acronym, e.g. `l64`, `w64`, etc. 
 
 If using a relative path which does not resolve to reside under `$QHOME/os`, ensure that `LD_LIBRARY_PATH` contains the required absolute search path for that library. (On Windows, use `PATH` instead of `LD_LIBRARY_PATH`.)
 

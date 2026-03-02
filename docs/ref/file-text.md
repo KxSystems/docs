@@ -1,8 +1,8 @@
 ---
-title: File Text | Reference | KDB-X and q documentation
+title: File Text | Reference | kdb+ and q documentation
 description: File Text is a q operator that reads or writes text files.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: file, KDB-X, q, read, text, write
+keywords: file, kdb+, q, read, text, write
 ---
 # `0:` File Text
 
@@ -241,7 +241,7 @@ table: flip `a`b`c!("ISI";",") 0:`data.csv
 
 ### Multithreaded Load
 
-CSV load (excluding embedded line return mode) can use multiple threads when KDB-X is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads).
+CSV load (excluding embedded line return mode) can use multiple threads when kdb+ is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads).
 
 ```q
 q)v:` sv 10000000#","0:10 10#til 100
@@ -295,7 +295,7 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
 
 ### Multithreaded Load
 
-Fixed width load can use multiple threads when KDB-X is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads)
+Fixed width load can use multiple threads when kdb+ is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads)
 
 Since 4.1t 2021.09.28.
 

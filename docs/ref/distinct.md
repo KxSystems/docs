@@ -1,5 +1,5 @@
 ---
-title: distinct – unique items of a list | Reference | KDB-X and q documentation
+title: distinct – unique items of a list | Reference | kdb+ and q documentation
 description: distinct is a q keyword that returns the nub (the unique items) of a list.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

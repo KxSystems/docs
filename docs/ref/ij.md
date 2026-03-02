@@ -1,8 +1,8 @@
 ---
-title: ij, ijf – inner join | Reference | KDB-X and q documentation
+title: ij, ijf – inner join | Reference | kdb+ and q documentation
 description: ij and ijf are q keywords that perform inner joins.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: ij, ijf, inner join, join, KDB-X, q
+keywords: ij, ijf, inner join, join, kdb+, q
 ---
 # `ij`, `ijf`
 

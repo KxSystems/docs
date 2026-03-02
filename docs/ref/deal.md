@@ -1,5 +1,5 @@
 ---
-title: Roll, Deal, Permute | Reference | KDB-X and q documentation
+title: Roll, Deal, Permute | Reference | kdb+ and q documentation
 description: Roll, Deal, and Permute are q operators that return ran dom selections, with or without duplicates
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: July 2019
@@ -170,7 +170,7 @@ q)0N?("the";1 2 4;`ibm`goog)    / permute items
 
 ## Seed
 
-Deal, Roll, Permute and [`rand`](rand.md) use a constant seed on KDB-X startup: scripts using them can be repeated with the same results. You can see and set the value of the seed with system command [`\S`](syscmds.md#s-random-seed).)
+Deal, Roll, Permute and [`rand`](rand.md) use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and set the value of the seed with system command [`\S`](syscmds.md#s-random-seed).)
 
 !!! tip "To use GUIDs as identifiers, use Deal, not Roll"
 

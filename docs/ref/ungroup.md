@@ -1,5 +1,5 @@
 ---
-title: ungroup normalizes a table | Reference | KDB-X and q documentation
+title: ungroup normalizes a table | Reference | kdb+ and q documentation
 description: ungroup is a q keyword that, where x is a table, in which some cells are lists, but for any row, all lists are of the same length, returns the normalized table, with one row for each item of a lists.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

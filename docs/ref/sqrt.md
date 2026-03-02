@@ -1,5 +1,5 @@
 ---
-title: sqrt – square root | Reference | KDB-X and q documentation
+title: sqrt – square root | Reference | kdb+ and q documentation
 description: sqrt is a q keyword that returns the square root of its argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

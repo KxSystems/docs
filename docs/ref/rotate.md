@@ -1,5 +1,5 @@
 ---
-title: rotate shifts the items of a list to the left or right | Reference | KDB-X and q documentation
+title: rotate shifts the items of a list to the left or right | Reference | kdb+ and q documentation
 description: rotate is a q keyword that shifts the items of a list to the left or right.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

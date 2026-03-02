@@ -1,5 +1,5 @@
 ---
-title: Divide | Reference | KDB-X and q documentation
+title: Divide | Reference | kdb+ and q documentation
 description: Divide is a q operator that returns the ratio of its arguments.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

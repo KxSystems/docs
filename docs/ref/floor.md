@@ -1,8 +1,8 @@
 ---
-title: floor | Reference | KDB-X and q documentation
+title: floor | Reference | kdb+ and q documentation
 description: floor is a q keyword that returns the greatest integer smaller than its argument.
 author: Stephen taylor
-keywords: floor, KDB-X, math, mathematics, maximum, q
+keywords: floor, kdb+, math, mathematics, maximum, q
 ---
 
 # `floor`

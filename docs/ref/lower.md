@@ -1,5 +1,5 @@
 ---
-title: Shift to lower or upper case | Reference | KDB-X and q documentation
+title: Shift to lower or upper case | Reference | kdb+ and q documentation
 description: lower and upper are q keywords that shift text to lower or upper case respectively.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

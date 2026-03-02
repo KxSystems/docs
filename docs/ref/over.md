@@ -1,5 +1,5 @@
 ---
-title: over, scan – wrappers for the Over and Scan accumulating iterators | Reference | KDB-X and q documentation
+title: over, scan – wrappers for the Over and Scan accumulating iterators | Reference | kdb+ and q documentation
 description: over and scan are q keywords that are wrappers for the Over and Scan accumulating iterators.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: March 2019

@@ -1,5 +1,5 @@
 ---
-title: cor – correlation coefficient | Reference | KDB-X and q documentation
+title: cor – correlation coefficient | Reference | kdb+ and q documentation
 description: cor is a q keyword that calculates the correlation coefficient of two numeric lists.
 tags: correlation
 ---

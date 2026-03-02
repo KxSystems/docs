@@ -1,5 +1,5 @@
 ---
-title: tan, atan – tangent and arctangent | Reference | KDB-X and q documentation
+title: tan, atan – tangent and arctangent | Reference | kdb+ and q documentation
 description: tan and atan are q keywords that return the tangent or arctangent of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

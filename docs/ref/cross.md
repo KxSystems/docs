@@ -1,5 +1,5 @@
 ---
-title: cross product | Reference | KDB-X and q documentation
+title: cross product | Reference | kdb+ and q documentation
 description: cross is a q keyword that returns the cross-product (all possible combinations) of the items of its arguments.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

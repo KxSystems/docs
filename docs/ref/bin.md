@@ -1,7 +1,7 @@
 ---
-title: bin, binr | Reference | KDB-X and q documentation
+title: bin, binr | Reference | kdb+ and q documentation
 description: bin and binr are q keywords that perform binary searches.
-keywords: bin, binr, KDB-X, q, search, Find
+keywords: bin, binr, kdb+, q, search, Find
 ---
 # `bin`, `binr`
 

@@ -1,5 +1,5 @@
 ---
-title: Connect and disconnect files and processes | Reference | KDB-X and q documentation
+title: Connect and disconnect files and processes | Reference | kdb+ and q documentation
 description: hopen and hclose are q keywords for connecting and disconnecting files and processes.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
@@ -12,7 +12,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 </div>
 
 
-KDB-X communicates with the [file system](files.md) and other processes through
+kdb+ communicates with the [file system](files.md) and other processes through
 
 -   one-shot functions
 -   [handles](handles.md) to persistent connections

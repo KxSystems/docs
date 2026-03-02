@@ -1,5 +1,5 @@
 ---
-title: parse | Reference | KDB-X and q documentation
+title: parse | Reference | kdb+ and q documentation
 description: parse is a q keyword that returns a parse tree for a string expression.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

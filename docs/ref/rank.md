@@ -1,5 +1,5 @@
 ---
-title: rank – position of the items of its argument in the sorted list | Reference | KDB-X and q documentation
+title: rank – position of the items of its argument in the sorted list | Reference | kdb+ and q documentation
 description: rank is a q keyword that returns the position of the items of its argument in the sorted list. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

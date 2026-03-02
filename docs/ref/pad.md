@@ -1,5 +1,5 @@
 ---
-title: Pad strings to a specified length | Reference | KDB-X and q documentation
+title: Pad strings to a specified length | Reference | kdb+ and q documentation
 description: Pad is a q operator that pads a string or list of strings to a specified length
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

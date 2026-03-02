@@ -1,8 +1,8 @@
 ---
-title: The .h namespace | Reference | KDB-X and q documentation
+title: The .h namespace | Reference | kdb+ and q documentation
 description: The .h namespace contains objects useful for marking up data for an HTTP response.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: html, KDB-X, markup, q
+keywords: html, kdb+, markup, q
 ---
 # The `.h` namespace
 

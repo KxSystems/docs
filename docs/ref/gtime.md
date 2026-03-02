@@ -1,5 +1,5 @@
 ---
-title: gtime, ltime – global and local time | Reference | KDB-X and q documentation
+title: gtime, ltime – global and local time | Reference | kdb+ and q documentation
 description: gtime and ltime are q keywords that return, respectively, global and local time.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

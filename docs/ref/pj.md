@@ -1,7 +1,7 @@
 ---
-title: pj – plus join | Reference | KDB-X and q documentation
+title: pj – plus join | Reference | kdb+ and q documentation
 description: pj is a q keyword that performs a plus join.
-keywords: join, KDB-X, pj,plus join, q
+keywords: join, kdb+, pj,plus join, q
 ---
 # `pj`
 

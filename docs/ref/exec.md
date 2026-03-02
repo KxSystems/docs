@@ -1,8 +1,8 @@
 ---
-title: exec keyword | Reference | KDB-X and q documentation
+title: exec keyword | Reference | kdb+ and q documentation
 description: exec is a q keyword that returns selected rows and columns from a table. Exec is a q operator that does the same in functional SQL.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: KDB-X, q, table
+keywords: kdb+, q, table
 ---
 # `exec`
 

@@ -1,8 +1,8 @@
 ---
-title: Dict | Reference | KDB-X and q documentation
+title: Dict | Reference | kdb+ and q documentation
 description: Dict is a q operator that returns a dictionary from vectors of keys and values. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: bang, dict, dictionaries, dictionary, KDB-X, q
+keywords: bang, dict, dictionaries, dictionary, kdb+, q
 ---
 # `!` Dict
 

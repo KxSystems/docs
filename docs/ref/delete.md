@@ -1,8 +1,8 @@
 ---
-title: delete query | Reference | KDB-X and q documentation
+title: delete query | Reference | kdb+ and q documentation
 description: delete is a qSQL template that removes rows or columns from a table, entries from a dictionary, or objects from a namespace.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: delete, functional KDB-X, q, query, qsql, sql
+keywords: delete, functional kdb+, q, query, qsql, sql
 ---
 # `delete`
 

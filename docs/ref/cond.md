@@ -1,8 +1,8 @@
 ---
-title: Cond | Reference | KDB-X and q documentation
+title: Cond | Reference | kdb+ and q documentation
 description: Cond is a q control construct for conditional evaluation.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: cond, conditional, control, dollar, KDB-X, q
+keywords: cond, conditional, control, dollar, kdb+, q
 ---
 # `$` Cond
 

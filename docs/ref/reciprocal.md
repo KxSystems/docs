@@ -1,8 +1,8 @@
 ---
-title: reciprocal of a number | Reference | KDB-X and q documentation
+title: reciprocal of a number | Reference | kdb+ and q documentation
 description: reciprocal is a q keyword that returns the reciprocal of a number.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: divide, division, divisor, KDB-X, math, mathematics, numerator, q
+keywords: divide, division, divisor, kdb+, math, mathematics, numerator, q
 ---
 
 # `reciprocal`

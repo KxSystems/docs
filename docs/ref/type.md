@@ -1,5 +1,5 @@
 ---
-title: type – datatype of an object | Reference | KDB-X and q documentation
+title: type – datatype of an object | Reference | kdb+ and q documentation
 description: type is a q keyword that returns as a short int the datatype of an object
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

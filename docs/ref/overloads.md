@@ -1,5 +1,5 @@
 ---
-title: Overloaded glyphs | Reference | KDB-X and q documentation
+title: Overloaded glyphs | Reference | kdb+ and q documentation
 description: Many non-alphabetic keyboard characters are overloaded by q. This page tabulates their different forms. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

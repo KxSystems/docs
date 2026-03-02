@@ -1,5 +1,5 @@
 ---
-title: Enumerate | Reference | KDB-X and q documentation
+title: Enumerate | Reference | kdb+ and q documentation
 description: Enumerate is a q operator that returns one list as an enumeration of another.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

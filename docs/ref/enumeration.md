@@ -1,8 +1,8 @@
 ---
-title: Enumeration | Reference | KDB-X and q documentation
+title: Enumeration | Reference | kdb+ and q documentation
 description: Enumeration isd a q operator that returns an enumerated symbol list.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: bang, enumerate, enumeration, list, KDB-X, q
+keywords: bang, enumerate, enumeration, list, kdb+, q
 ---
 # `!` Enumeration
 

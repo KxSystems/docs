@@ -1,8 +1,8 @@
 ---
-title: Compose – compose functions together | Reference | KDB-X and q documentation
+title: Compose – compose functions together | Reference | kdb+ and q documentation
 description: Compose is a q operator that composes (or curries) a unary value with another. The rank of the result is the rank of the second argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: adverb, compose, composition, function, KDB-X, map, q, value
+keywords: adverb, compose, composition, function, kdb+, map, q, value
 ---
 # `'` Compose
 

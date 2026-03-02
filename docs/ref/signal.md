@@ -1,5 +1,5 @@
 ---
-title: Signal | Reference | KDB-X and q documentation
+title: Signal | Reference | kdb+ and q documentation
 description: Signal is a q operator that signals an error. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

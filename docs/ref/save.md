@@ -1,5 +1,5 @@
 ---
-title: save, rsave keywords save tables to file | Reference | KDB-X and q documentation
+title: save, rsave keywords save tables to file | Reference | kdb+ and q documentation
 description: save and rsave are q keywords that save global data to file or splayed to a directory.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

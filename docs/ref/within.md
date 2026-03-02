@@ -1,5 +1,5 @@
 ---
-title: within tests whether one argument is within the bounds defined by the other | Reference | KDB-X and q documentation
+title: within tests whether one argument is within the bounds defined by the other | Reference | kdb+ and q documentation
 description: within is a q keyword that tests whether one argument is within the bounds defined by the other.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

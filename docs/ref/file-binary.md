@@ -1,5 +1,5 @@
 ---
-title: File Binary | Reference | KDB-X and q documentation
+title: File Binary | Reference | kdb+ and q documentation
 description: File Binary is a q operator that reads or writes a binary file.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
@@ -97,7 +97,7 @@ _Q for Mortals_
 
 ### Multithreaded Load
 
-Binary load can use multiple threads when KDB-X is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads)
+Binary load can use multiple threads when kdb+ is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads)
 
 Since 4.1t 2021.09.28.
 

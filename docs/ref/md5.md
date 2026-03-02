@@ -1,5 +1,5 @@
 ---
-title: md5 – message Digest Algorithm 5 hash | Reference | KDB-X and q documentation
+title: md5 – message Digest Algorithm 5 hash | Reference | kdb+ and q documentation
 description: md5 is a q keyword that returns the Message Digest (MD5 hash) of a string.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

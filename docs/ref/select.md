@@ -1,8 +1,8 @@
 ---
-title: select keyword, Select operator | Reference | KDB-X and q documentation
+title: select keyword, Select operator | Reference | kdb+ and q documentation
 description: select and Select are (respectively) a q keyword and operator that select all or part of a table, possibly with new columns.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: column, KDB-X, q, qsql, query, select, sql, table
+keywords: column, kdb+, q, qsql, query, select, sql, table
 ---
 # `select`
 

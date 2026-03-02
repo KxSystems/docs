@@ -1,5 +1,5 @@
 ---
-title: ratios between successive items of a list | Reference | KDB-X and q documentation
+title: ratios between successive items of a list | Reference | kdb+ and q documentation
 description: ratios is a q keyword that returns the ratios between successive items of a list.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

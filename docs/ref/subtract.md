@@ -1,5 +1,5 @@
 ---
-title: Subtract | Reference | KDB-X and q documentation
+title: Subtract | Reference | kdb+ and q documentation
 description: Subtract is a q operator that returns the difference of its arguments for a wide range of datatypes.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

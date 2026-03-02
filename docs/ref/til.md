@@ -1,5 +1,5 @@
 ---
-title: til returns the first natural numbers | Reference | KDB-X and q documentation
+title: til returns the first natural numbers | Reference | kdb+ and q documentation
 description: til is a q keyword that returns the natural numbers up to its argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

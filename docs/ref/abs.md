@@ -1,5 +1,5 @@
 ---
-title: abs – absolute value | Reference | KDB-X and q documentation
+title: abs – absolute value | Reference | kdb+ and q documentation
 description: abs is a q keyword that returns the absolute value of its argument
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

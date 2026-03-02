@@ -1,7 +1,7 @@
 ---
-title: lj – left join keyword | Reference | KDB-X and q documentation
+title: lj – left join keyword | Reference | kdb+ and q documentation
 description: lj is a q keyword that performs a left join.
-keywords: join, KDB-X, left, left join, lj, ljf, q
+keywords: join, kdb+, left, left join, lj, ljf, q
 ---
 # `lj`, `ljf`
 

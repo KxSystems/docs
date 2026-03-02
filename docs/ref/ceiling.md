@@ -1,5 +1,5 @@
 ---
-title: ceiling | Reference | KDB-X and q documentation
+title: ceiling | Reference | kdb+ and q documentation
 description: ceiling is a q keyword that returns the least integer greater than its numeric argument.
 ---
 # `ceiling`

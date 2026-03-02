@@ -1,8 +1,8 @@
 ---
-title: Vector Conditional operator | Reference | KDB-X and q documentation
+title: Vector Conditional operator | Reference | kdb+ and q documentation
 description: Vector Conditional is a q operator that replaces selected items of one list with corresponding items of another.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: condition, item, KDB-X, q, vector
+keywords: condition, item, kdb+, q, vector
 ---
 # `?` Vector Conditional
 

@@ -1,8 +1,8 @@
 ---
-title: Drop – Reference – KDB-X and q documentation
+title: Drop – Reference – kdb+ and q documentation
 description: Drop is a q operator that drops items from a list, entries from a dictionary or columns from a table.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: cut, drop, KDB-X, list,q
+keywords: cut, drop, kdb+, list,q
 ---
 # `_` Drop
 

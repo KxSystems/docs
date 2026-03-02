@@ -1,7 +1,7 @@
 ---
-title: load a table | Reference | KDB-X and q documentation
+title: load a table | Reference | kdb+ and q documentation
 description: load is q keyword that loads binary data from a file or directory.
-keywords: directory, file, KDB-X, load, q, rload, splayed, table
+keywords: directory, file, kdb+, load, q, rload, splayed, table
 ---
 # `load`, `rload`
 
@@ -21,7 +21,7 @@ Where `x` is
 - a filesymbol atom or vector for datafile/s (with no extension), reads the datafile/s and assigns the value/s to global variable/s of the same name, which it returns
 - a filesymbol for a directory, creates a global dictionary of the same name and within that dictionary recurses on any datafiles the directory contains
 
-!!! tip "Signals a `type` error if the file is not a KDB-X data file"
+!!! tip "Signals a `type` error if the file is not a kdb+ data file"
 
     There are no text formats corresponding to [` save`](save.md). Instead, use [File Text](file-text.md).
 

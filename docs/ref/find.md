@@ -1,8 +1,8 @@
 ---
-title: Find | Reference | KDB-X and q documentation
+title: Find | Reference | kdb+ and q documentation
 description: Find is a q operator that finds the first occurrence of an item in a list.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: find, KDB-X, q, query, search
+keywords: find, kdb+, q, query, search
 ---
 # `?` Find
 

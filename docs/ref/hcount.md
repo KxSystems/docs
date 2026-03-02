@@ -1,5 +1,5 @@
 ---
-title: hcount returns file size | Reference | q and KDB-X documentation
+title: hcount returns file size | Reference | q and kdb+ documentation
 description: Keyword hcount returns the size in bytes of a file
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: December 2019

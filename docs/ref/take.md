@@ -1,5 +1,5 @@
 ---
-title: Take selects leading or trailing items | Reference | KDB-X and q documentation
+title: Take selects leading or trailing items | Reference | kdb+ and q documentation
 description: Take is a q operator that selects leading or trailing items from a list or dictionary, named entries from a dictionary, or named columns from a table.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

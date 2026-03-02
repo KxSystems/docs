@@ -1,6 +1,6 @@
 ---
-title: Reference card | KDB-X and q documentation
-description: Quick reference for KDB-X and the q programming language
+title: Reference card | kdb+ and q documentation
+description: Quick reference for kdb+ and the q programming language
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 

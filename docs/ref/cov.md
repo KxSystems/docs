@@ -1,5 +1,5 @@
 ---
-title: covariance and sample covariance | Reference | KDB-X and q documentation
+title: covariance and sample covariance | Reference | kdb+ and q documentation
 description: cov and scov are q keyword, that return respectively the covariance and sample covariance of two conforming numeric lists.
 ---
 # `cov`, `scov`

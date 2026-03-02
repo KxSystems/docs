@@ -1,7 +1,7 @@
 ---
-title: ej – equi join | Reference | KDB-X and q documentation
+title: ej – equi join | Reference | kdb+ and q documentation
 description: ej is a q keyword that performs an equi join on two tables.
-keywords: ej, equi join, join, KDB-X, q
+keywords: ej, equi join, join, kdb+, q
 ---
 # `ej`
 

@@ -1,5 +1,5 @@
 ---
-title: sin, asin – sine and arcsine | Reference | KDB-X and q documentation
+title: sin, asin – sine and arcsine | Reference | kdb+ and q documentation
 description: sin and asin are q keywords that return (respectively) the sin and arcsine of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

@@ -1,5 +1,5 @@
 ---
-title: next, prev, xprev – immediate or near neighbors of the items of a list | Reference | KDB-X and q documentation
+title: next, prev, xprev – immediate or near neighbors of the items of a list | Reference | kdb+ and q documentation
 description: next, prev, and xprev are q keywords that return the immediate or near neighbors of the items of a list.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

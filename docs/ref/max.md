@@ -1,5 +1,5 @@
 ---
-title: Maximums | Reference | KDB-X and q documentation
+title: Maximums | Reference | kdb+ and q documentation
 description: max, maxs, and mmax are q keywords that return respectively the largest item from a list or dictionary, the cumulative maximums, and the moving maximums.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

@@ -1,5 +1,5 @@
 ---
-title: xbar | Reference | KDB-X and q documentation
+title: xbar | Reference | kdb+ and q documentation
 description: xbar is a q keyword that returns one argument rounded down to the nearest multiple of the other.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

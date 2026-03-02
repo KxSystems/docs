@@ -1,9 +1,9 @@
 ---
-title: Map iterators | Reference | KDB-X and q documentation
+title: Map iterators | Reference | kdb+ and q documentation
 description: Maps iterators derive uniform functions that apply their values once to each item of a dictionary, a list, or conforming lists.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: March 2019
-keywords: adverb, case, dictionary, each, each both, each left, each parallel, each prior, each right, iterate, iterator, KDB-X, keyword, map, mnemonic, operator, parallel, prior, q, unary
+keywords: adverb, case, dictionary, each, each both, each left, each parallel, each prior, each right, iterate, iterator, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
 ---
 # Map iterators
 
@@ -182,7 +182,7 @@ The Each Parallel map takes a **unary** value as argument and derives a unary fu
 
 ```bash
 ❯ q -s 2
-KDB-X 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
+kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
 ...
 ```
 ```q

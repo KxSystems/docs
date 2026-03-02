@@ -1,8 +1,8 @@
 ---
-title: rand | Reference | KDB-X and q documentation
+title: rand | Reference | kdb+ and q documentation
 description: rand is a q keyword that randomly picks a number, or an item from a list.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: deal, KDB-X, q, rand, random, roll
+keywords: deal, kdb+, q, rand, random, roll
 ---
 # `rand`
 

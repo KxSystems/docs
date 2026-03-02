@@ -1,5 +1,5 @@
 ---
-title: Window join | Reference | KDB-X and q documentation
+title: Window join | Reference | kdb+ and q documentation
 description: wj and wj1 are q keywords that perform window joins.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

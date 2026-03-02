@@ -1,12 +1,12 @@
 ---
-title: dsave saves a list of tables | Reference | KDB-X and q documentation
-description: dsave is a q keyword that saves global tables to disk as splayed, enumerated, indexed KDB-X tables.
+title: dsave saves a list of tables | Reference | kdb+ and q documentation
+description: dsave is a q keyword that saves global tables to disk as splayed, enumerated, indexed kdb+ tables.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: enumerated, indexed, KDB-X, q, splayed, table
+keywords: enumerated, indexed, kdb+, q, splayed, table
 ---
 # `dsave`
 
-_Write global tables to disk as splayed, enumerated, indexed KDB-X tables._
+_Write global tables to disk as splayed, enumerated, indexed kdb+ tables._
 
 ```syntax
 x dsave y     dsave[x;y]

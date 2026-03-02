@@ -1,5 +1,5 @@
 ---
-title: union join of two tables | Reference | KDB-X and q documentation
+title: union join of two tables | Reference | kdb+ and q documentation
 description: union is a q keyword that returns the union of two lists.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

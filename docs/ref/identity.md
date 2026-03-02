@@ -1,5 +1,5 @@
 ---
-title: Identity, Null | Reference | KDB-X and q documentation
+title: Identity, Null | Reference | kdb+ and q documentation
 description: Identity is a q operator that returns its argument unchanged. Null is a generic null value.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

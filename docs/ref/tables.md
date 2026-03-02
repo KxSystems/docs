@@ -1,8 +1,8 @@
 ---
-title: tables – Reference – KDB-X and q documentation
+title: tables – Reference – kdb+ and q documentation
 description: tables is a q keyword that returns a list of tables in a namespace.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: KDB-X, metadata, q, table
+keywords: kdb+, metadata, q, table
 ---
 # `tables`
 

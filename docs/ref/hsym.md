@@ -1,5 +1,5 @@
 ---
-title: hsym converts symbol to file symbol | Reference | q and KDB-X documentation
+title: hsym converts symbol to file symbol | Reference | q and kdb+ documentation
 description: Keyword hsym converts symbol/s to file- or process-symbol/s
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: December 2019

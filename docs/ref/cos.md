@@ -1,5 +1,5 @@
 ---
-title: cos, acos – cosine and arccosine | Reference | KDB-X and q documentation
+title: cos, acos – cosine and arccosine | Reference | kdb+ and q documentation
 description: cos and acos are q keywords. They return the cosine and arccosine respectively of their numeric argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

@@ -1,5 +1,5 @@
 ---
-title: Lesser, and | Reference | KDB-X and q documentation
+title: Lesser, and | Reference | kdb+ and q documentation
 description: Lesser is a q operator that returns the lesser of its arguments. and is a q keyword that performs a logical AND.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

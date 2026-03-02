@@ -1,8 +1,8 @@
 ---
-title: Accumulators – Reference – KDB-X and q documentation
+title: Accumulators – Reference – kdb+ and q documentation
 description: An accumulator is an iterator that takes an applicable value as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of successive evaluations.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: adverb, converge, dictionary, do, iterator, fold, KDB-X, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, value, while
+keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, value, while
 ---
 # Accumulators
 

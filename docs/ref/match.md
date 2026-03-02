@@ -1,8 +1,8 @@
 ---
-title: Match | Reference | KDB-X and q documentation
+title: Match | Reference | kdb+ and q documentation
 description: Match is a q operator that flags whether its arguments have the same value.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: compare, KDB-X, q, value
+keywords: compare, kdb+, q, value
 ---
 # `~` Match
 

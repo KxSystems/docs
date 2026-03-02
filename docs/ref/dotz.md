@@ -1,9 +1,9 @@
 ---
-title: the .z namespace | Reference | KDB-X and q documentation
+title: the .z namespace | Reference | kdb+ and q documentation
 description: The .z namespace contains objects that return or set system information, and callbacks for IPC.
 last_updated: January 2026
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: callbacks, environment, KDB-X, q
+keywords: callbacks, environment, kdb+, q
 ---
 # The `.z` namespace
 
@@ -57,7 +57,7 @@ The `.z` [namespace](namespaces.md) contains environment variables and functions
 
     After they have been assigned, you can restore the default using [`\x`](syscmds.md#x-expunge) to delete the definition that was made.
 
-Prior to KDB-X, `.z` was a pseudo-namespace that could not be retrieved or enumerated using the language features (such as ```key `.z``` or ```value `.z```). In KDB-X, `.z` is a proper namespace that acts like all other namespaces.
+Prior to kdb+, `.z` was a pseudo-namespace that could not be retrieved or enumerated using the language features (such as ```key `.z``` or ```value `.z```). In kdb+, `.z` is a proper namespace that acts like all other namespaces.
 
 [Callbacks](../how_to/io_and_communication/callbacks.md)
 [Using `.z`](https://code.kx.com/q/kb/using-dotz/)
@@ -200,7 +200,7 @@ y| ,`a
 
 Where `x` is a unary function.
 
-KDB-X before V2.7 was sensitive to being fed malformed data structures, sometimes resulting in a crash, but now validates incoming IPC messages to check that data structures are well formed, reporting `'badmsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
+kdb+ before V2.7 was sensitive to being fed malformed data structures, sometimes resulting in a crash, but now validates incoming IPC messages to check that data structures are well formed, reporting `'badmsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
 
 1. calls `.z.bm` with a 2-item list: `(handle;msgBytes)`
 2. close the handle and call `.z.pc`
@@ -276,7 +276,7 @@ Since V3.5 2017.03.15.
 .z.exit:f
 ```
 
-Where `f` is a unary function, `f` is called with the exit parameter as the argument just before exiting the KDB-X session.
+Where `f` is a unary function, `f` is called with the exit parameter as the argument just before exiting the kdb+ session.
 
 The exit parameter is the argument to the [`exit`](exit.md) function, or 0 if manual exit with [`\\` quit](syscmds.md#quit)
 
@@ -415,7 +415,7 @@ q).z.i
 
 ## `.z.K` (version)
 
-The major version number, as a float, of the version of KDB-X being used.
+The major version number, as a float, of the version of kdb+ being used.
 (A test version of 2.4t is reported as 2.4)
 
 ```q
@@ -429,7 +429,7 @@ q).z.k
 
 ## `.z.k` (release date)
 
-Date on which the version of KDB-X being used was released.
+Date on which the version of kdb+ being used was released.
 
 ```q
 q).z.k
@@ -536,7 +536,7 @@ q).z.n
 
 ## `.z.o` (OS version)
 
-KDB-X operating system version as a symbol.
+kdb+ operating system version as a symbol.
 
 ```q
 q).z.o
@@ -554,8 +554,8 @@ Solaris          | s32     | s64
 Solaris on Intel | **v32** | **v64**
 Windows          | **w32** | **w64**
 
-Note this is the version of the KDB-X executable, NOT the OS itself.
-You might run both 32-bit and 64-bit versions of KDB-X on the same machine to support older external interfaces.
+Note this is the version of the kdb+ executable, NOT the OS itself.
+You might run both 32-bit and 64-bit versions of kdb+ on the same machine to support older external interfaces.
 
 ## `.z.P` (local timestamp)
 
@@ -597,7 +597,7 @@ As the connection has been closed by the time `f` is called there are strictly n
 To allow you to clean up things like tables of users keyed by handle, the handle that _was_ being used is passed as a parameter to `.z.pc`
 
 ```q
-KDB-X 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
+kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
 ...
 
 q).z.pc
@@ -630,7 +630,7 @@ Where q has been [started with secondary processes for use in parallel processin
 * an int vector of handles to secondary processes
 * a function that returns a list of handles to those secondary processes
 
-For evaluating the function passed to `peach` or `':`, KDB-X gets the handles to the secondary processes by calling [`.z.pd[]`](#zpd-peach-handles).
+For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to the secondary processes by calling [`.z.pd[]`](#zpd-peach-handles).
 
 !!! danger "The processes with these handles must not be used for other messaging."
 
@@ -651,7 +651,7 @@ q).z.pc:{handles::`u#handles except x;}
 q)handles:`u#`int$();
 ```
 
-Note that (since V3.1) the worker processes are not started automatically by KDB-X.
+Note that (since V3.1) the worker processes are not started automatically by kdb+.
 
 !!! warning "Disabled in V4.1t"
 
@@ -684,7 +684,7 @@ The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and
 .z.ph:f
 ```
 
-Where `f` is a unary function, it is evaluated when a synchronous HTTP request is received by the KDB-X session.
+Where `f` is a unary function, it is evaluated when a synchronous HTTP request is received by the kdb+ session.
 
 `.z.ph` is passed a single argument, a 2-item list `(requestText;requestHeaderAsDictionary)`:
 
@@ -743,7 +743,7 @@ q)\x .z.pi
 .z.pm:f
 ```
 
-Where f is a unary function, .z.pm is evaluated when the following HTTP request methods are received in the KDB-X session.
+Where f is a unary function, .z.pm is evaluated when the following HTTP request methods are received in the kdb+ session.
 
 * OPTIONS
 * PATCH (since V4.1t 2021.03.30)
@@ -768,7 +768,7 @@ For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-ht
 .z.po:f
 ```
 
-Where `f` is a unary function, `.z.po` is evaluated when a connection to a KDB-X session has been initialized, i.e. after it’s been validated against any [`-u`](cmdline.md#-u-usr-pwd-local)/[`-U`](cmdline.md#-u-usr-pwd) file and `.z.pw` checks.
+Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ session has been initialized, i.e. after it’s been validated against any [`-u`](cmdline.md#-u-usr-pwd-local)/[`-U`](cmdline.md#-u-usr-pwd) file and `.z.pw` checks.
 
 Its argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`
 
@@ -785,7 +785,7 @@ _Q for Mortals_
 .z.pp:f
 ```
 
-Where `f` is a unary function, `.z.pp` is evaluated when an HTTP POST request is received in the KDB-X session.
+Where `f` is a unary function, `.z.pp` is evaluated when an HTTP POST request is received in the kdb+ session.
 
 There is no default implementation, but an example would be that it calls [`value`](value.md) on the first item of its argument and returns the result to the calling task.
 
@@ -823,7 +823,7 @@ This allows a user to handle remote qcon connections (via `.z.pq`) without defin
 .z.ps:f
 ```
 
-Where `f` is a unary function, `.z.ps` is evaluated with the object that is passed to this KDB-X session via an asynchronous request. The return value is discarded.
+Where `f` is a unary function, `.z.ps` is evaluated with the object that is passed to this kdb+ session via an asynchronous request. The return value is discarded.
 
 `.z.ps` can be unset with `\x .z.ps`, which restores the default behavior.
 
@@ -847,7 +847,7 @@ q)0 "2+2"
 .z.pw:f
 ```
 
-Where `f` is a binary function, `.z.pw` is evaluated _after_ the [`-u`](cmdline.md#-u-usr-pwd-local)/[`-U`](cmdline.md#-u-usr-pwd) checks, and _before_ `.z.po` when opening a new connection to a KDB-X session.
+Where `f` is a binary function, `.z.pw` is evaluated _after_ the [`-u`](cmdline.md#-u-usr-pwd-local)/[`-U`](cmdline.md#-u-usr-pwd) checks, and _before_ `.z.po` when opening a new connection to a kdb+ session.
 
 The arguments are the user ID (as a symbol) and password (as a string) to be verified; the result is a boolean atom.
 
@@ -920,7 +920,7 @@ q)2010.12.16D17:12:12.849442000
 2010.12.16D17:12:16.849442000
 ```
 
-When KDB-X has completed executing a script passed as a command-line argument, and if there are no open sockets nor a console, KDB-X will exit. The timer alone is not enough to stop the process exiting – it must have an event source which is a file descriptor (socket, console, or some plugin registering a file descriptor and callback via the C API `sd1` function).
+When kdb+ has completed executing a script passed as a command-line argument, and if there are no open sockets nor a console, kdb+ will exit. The timer alone is not enough to stop the process exiting – it must have an event source which is a file descriptor (socket, console, or some plugin registering a file descriptor and callback via the C API `sd1` function).
 
 [`\t`](syscmds.md#t-timer)
 
@@ -1042,7 +1042,7 @@ This can be used for performing tasks such as sending a [sync/async request](../
 Where
 
 * `f` is a unary function
-* `h` is the handle to a websocket connection to a KDB-X session
+* `h` is the handle to a websocket connection to a kdb+ session
 
 `f[h]` is evaluated _after_ a websocket connection has been closed.
 (Since V3.3t 2014.11.26.)
@@ -1064,7 +1064,7 @@ This allows you to clean up things like tables of users keyed by handle.
 Where
 
 * `f` is a unary function
-* `h` is the handle to a websocket connection to a KDB-X session
+* `h` is the handle to a websocket connection to a kdb+ session
 
 `f[h]` is evaluated when the connection has been initialized, i.e. _after_ it has been validated against any `-u`/`-U` file and `.z.pw` checks.
 (Since V3.3t 2014.11.26)
@@ -1098,7 +1098,7 @@ Sending a websocket message is limited to async messages only (sync is `'nyi`). 
 .z.X
 ```
 
-Returns a list of strings of the raw, unfiltered command line with which KDB-X was invoked, including the name under which q was invoked, as well as single-letter arguments.
+Returns a list of strings of the raw, unfiltered command line with which kdb+ was invoked, including the name under which q was invoked, as well as single-letter arguments.
 (Since V3.3 2015.02.12)
 
 ```bash
@@ -1106,7 +1106,7 @@ q somefile.q -customarg 42 -p localhost:17200
 ```
 
 ```q
-KDB-X 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
+kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
 ...
 q).z.X
 ,"q"
@@ -1145,7 +1145,7 @@ q).z.Z
 2006.11.13T21:16:14.601
 ```
 
-The offset from UTC is fetched from the OS: KDB-X does not have its own time-offset database.
+The offset from UTC is fetched from the OS: kdb+ does not have its own time-offset database.
 
 Which avoids problems like [this](https://it.slashdot.org/story/07/02/25/2038217/software-bug-halts-f-22-flight).
 

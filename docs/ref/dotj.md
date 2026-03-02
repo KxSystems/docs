@@ -1,5 +1,5 @@
 ---
-title: The .j namespace – Reference – KDB-X and q documentation
+title: The .j namespace – Reference – kdb+ and q documentation
 description: the .j namespace contains objects useful for converting between JSON and and q dictionaries.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

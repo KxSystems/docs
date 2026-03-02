@@ -1,8 +1,8 @@
 ---
-title: xgroup – Reference – KDB-X and q documentation
+title: xgroup – Reference – kdb+ and q documentation
 description: xgroup is a q keyword that groups a table by values in selected columns.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: column, group, KDB-X, q, xgroup
+keywords: column, group, kdb+, q, xgroup
 ---
 # `xgroup`
 

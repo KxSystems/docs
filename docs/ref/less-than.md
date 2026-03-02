@@ -1,8 +1,8 @@
 ---
-title: Less Than, Up To – Reference – KDB-X and q documentation
+title: Less Than, Up To – Reference – kdb+ and q documentation
 description: Less Than and Up To are q operators that compare the values of their arguments.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: comparison, KDB-X, less-than, less-than-or-equal, q, up to
+keywords: comparison, kdb+, less-than, less-than-or-equal, q, up to
 ---
 # `<` Less Than<br>`<=` Up To
 

@@ -1,8 +1,8 @@
 ---
-title: div | Reference | KDB-X and q documentation
+title: div | Reference | kdb+ and q documentation
 description: div is a q keyword that performs integer division. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: div, divide, division, in, integer, KDB-X, math, mathematics, q
+keywords: div, divide, division, in, integer, kdb+, math, mathematics, q
 ---
 # `div`
 

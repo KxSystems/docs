@@ -1,5 +1,5 @@
 ---
-title: Cast converts data to another datatype | Reference | KDB-X and q documentation
+title: Cast converts data to another datatype | Reference | kdb+ and q documentation
 description: Cast is a q operator that converts a data argument to another datatype.
 ---
 

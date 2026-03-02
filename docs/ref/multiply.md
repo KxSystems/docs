@@ -1,5 +1,5 @@
 ---
-title: Multiply | Reference | KDB-X and q documentation
+title: Multiply | Reference | kdb+ and q documentation
 description: Multiply is a q operator that returns the product of its arguments.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

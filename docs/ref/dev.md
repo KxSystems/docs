@@ -1,5 +1,5 @@
 ---
-title: dev, mdev, sdev – standard, moving, and sample standard deviations | Reference | KDB-X and q documentation
+title: dev, mdev, sdev – standard, moving, and sample standard deviations | Reference | kdb+ and q documentation
 description: dev, mdev, and sdev are q keywords that return, respectively, the standard deviation, moving deviation, and sample standard deviation of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

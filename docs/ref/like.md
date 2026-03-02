@@ -1,5 +1,5 @@
 ---
-title: like – matches patterns | Reference | KDB-X and q documentation
+title: like – matches patterns | Reference | kdb+ and q documentation
 description: like is a q keyword that matches text to a pattern.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

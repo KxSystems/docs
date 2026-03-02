@@ -1,8 +1,8 @@
 ---
-title: while control word | Reference | KDB-X and q documentation
+title: while control word | Reference | kdb+ and q documentation
 description: while is a q control word that governs iteration.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: condition, control, iteration, KDB-X, q, while
+keywords: condition, control, iteration, kdb+, q, while
 ---
 # `while`
 

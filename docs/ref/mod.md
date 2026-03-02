@@ -1,8 +1,8 @@
 ---
-title: mod | Reference | KDB-X and q documentation
+title: mod | Reference | kdb+ and q documentation
 description: mod is a q keyword that returns the modulus of a number.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: KDB-X, math, mathematics, modulus, q
+keywords: kdb+, math, mathematics, modulus, q
 ---
 # `mod`
 

@@ -1,8 +1,8 @@
 ---
-title: Not Equal | Reference | KDB-X and q documentation
+title: Not Equal | Reference | kdb+ and q documentation
 description: Not Equal is a q operator that flags whether its arguments have the same value.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: compare, equal, KDB-X, q
+keywords: compare, equal, kdb+, q
 ---
 # `<>` Not Equal
 

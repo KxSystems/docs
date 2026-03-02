@@ -1,5 +1,5 @@
 ---
-title: Join atoms, lists, dictionaries or tables | Reference | KDB-X and q documentation
+title: Join atoms, lists, dictionaries or tables | Reference | kdb+ and q documentation
 description: Join is a q operator that joins atoms, lists, dictionaries or tables.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

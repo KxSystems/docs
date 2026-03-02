@@ -1,5 +1,5 @@
 ---
-title: ss, ssr – string search and replacement | Reference | KDB-X and q documentation
+title: ss, ssr – string search and replacement | Reference | kdb+ and q documentation
 description: ss and ssr are q keywords that perform string search and replacement.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

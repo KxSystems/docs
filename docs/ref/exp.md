@@ -1,5 +1,5 @@
 ---
-title: exp, xexp – raise to a power | Reference | KDB-X and q documentation
+title: exp, xexp – raise to a power | Reference | kdb+ and q documentation
 description: exp and xexp are q keywords. exp raises e to the power of its argument; xexp raises its left argument to the power of its right.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

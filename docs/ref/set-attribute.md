@@ -1,8 +1,8 @@
 ---
-title: Set Attribute | Reference | KDB-X and q documentation
+title: Set Attribute | Reference | kdb+ and q documentation
 description: Set Attribute is a q operator that assigns an attribute to a list, dictionary or table.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: attribute, grouped, KDB-X, parted, q, sorted, unique,
+keywords: attribute, grouped, kdb+, parted, q, sorted, unique,
 ---
 # `#` Set Attribute
 
@@ -85,7 +85,7 @@ The _unique_ attribute can be set on simple and mixed lists where all items are 
 Attributes _parted_ and _grouped_ are useful for simple lists (where the datatype has an integral underlying value) in memory with a lot of repetition.
 
 The _parted_ attribute asserts all common values in the list are adjacent.
-The _grouped_ attribute causes KDB-X to create and maintain an index (hash table).
+The _grouped_ attribute causes kdb+ to create and maintain an index (hash table).
 
 If the data can be sorted such that `p` can be set, it effects better speedups than grouped, both on disk and in memory.
 

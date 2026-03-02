@@ -1,8 +1,8 @@
 ---
-title: csv – Reference – KDB-X and q documentation
+title: csv – Reference – kdb+ and q documentation
 description: csv is a q keyword that represents the delimiter of CSV files.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: comma, comma-separated values, csv, file, KDB-X, q, text
+keywords: comma, comma-separated values, csv, file, kdb+, q, text
 ---
 # `csv`
 

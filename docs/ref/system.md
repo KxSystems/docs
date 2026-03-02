@@ -1,7 +1,7 @@
 ---
-title: system keyword executes a system command | Reference | KDB-X and q documentation
+title: system keyword executes a system command | Reference | kdb+ and q documentation
 description: system is a q keyword that executes a system command.
-keywords: command, system, shell, os, KDB-X, q
+keywords: command, system, shell, os, kdb+, q
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 
@@ -13,9 +13,9 @@ _Execute a system command_
 system x     system[x]
 ```
 
-Where `x` is a string representing a [KDB-X system command](syscmds.md) or operating system shell command, and any parameters to it. Executes the command and returns the result as a list of character vectors.
+Where `x` is a string representing a [kdb+ system command](syscmds.md) or operating system shell command, and any parameters to it. Executes the command and returns the result as a list of character vectors.
 
-## KDB-X system commands
+## kdb+ system commands
 
 Refer to the [system commands reference](syscmds.md) for a full list of available commands.
 
@@ -71,7 +71,7 @@ is essentially the same as the shell command
 cat x > tmpout
 ```
 
-as KDB-X tries to capture the output.
+as kdb+ tries to capture the output.
 So if you do
 
 ```q

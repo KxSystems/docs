@@ -1,8 +1,8 @@
 ---
-title: Apply (At), Index (At), Trap (At) | Reference | KDB-X and q documentation
+title: Apply (At), Index (At), Trap (At) | Reference | kdb+ and q documentation
 description: Operators Apply (At), Index (At), and Trap (At) apply a function to one or more arguments, get items at depth in a list, and trap errors.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: apply, apply at, index, index at, KDB-X, q, trap, trap at
+keywords: apply, apply at, index, index at, kdb+, q, trap, trap at
 ---
 
 [![Kandinsky: circles in a circle](https://code.kx.com/q/img/kandinsky-circles-in-a-circle.jpg)](https://en.wikipedia.org/wiki/Wassily_Kandinsky "Wikipedia")

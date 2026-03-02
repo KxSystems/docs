@@ -1,5 +1,5 @@
 ---
-title: Exponential moving average | Reference | KDB-X and q documentation
+title: Exponential moving average | Reference | kdb+ and q documentation
 description: ema is a q keyword that returns the exponential moving average of its arguments.
 ---
 # `ema`

@@ -1,7 +1,7 @@
 ---
-title: aj, aj0, ajf, ajf0 – as-of join | Reference | KDB-X and q documentation
+title: aj, aj0, ajf, ajf0 – as-of join | Reference | kdb+ and q documentation
 description: As-of joins join two tables taking from the second the most recent records prior to the times in the first
-keywords: as-of, join, KDB-X, q
+keywords: as-of, join, kdb+, q
 ---
 # `aj`, `aj0`, `ajf`, `ajf0`
 

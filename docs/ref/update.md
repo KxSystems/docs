@@ -1,8 +1,8 @@
 ---
-title: update keyword | Reference | KDB-X and q documentation
+title: update keyword | Reference | kdb+ and q documentation
 description: update is a qSQL query template that adds rows or columns to a table.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: columns, KDB-X, q, query, qsql, rows, sql, update
+keywords: columns, kdb+, q, query, qsql, rows, sql, update
 ---
 # `update`
 

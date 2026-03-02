@@ -1,5 +1,5 @@
 ---
-title: getenv, setenv – get and set environment variables | Reference | KDB-X and q documentation
+title: getenv, setenv – get and set environment variables | Reference | kdb+ and q documentation
 description: getenv and setenv are q keywords that get or set an environment variable.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

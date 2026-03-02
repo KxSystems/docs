@@ -1,8 +1,8 @@
 ---
-title: where | Reference | KDB-X and q documentation
+title: where | Reference | kdb+ and q documentation
 description: where is a q keyword that returns copies of indexes of a list or keys of a dictionary.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: KDB-X, q, selection, where
+keywords: kdb+, q, selection, where
 ---
 # `where`
 

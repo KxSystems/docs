@@ -1,8 +1,8 @@
 ---
-title: not | Reference | KDB-X and q documentation
+title: not | Reference | kdb+ and q documentation
 description: not is a q keyword that flags whether its argument is false.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: false, KDB-X, logic, not, q, true
+keywords: false, kdb+, logic, not, q, true
 ---
 # `not`
 

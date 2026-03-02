@@ -1,7 +1,7 @@
 ---
-title: uj – union join | Reference | KDB-X and q documentation
+title: uj – union join | Reference | kdb+ and q documentation
 description: uj and ujf are q keywords that perform a union join on two tables.
-keywords: join, KDB-X, q, uj, ujf, union join
+keywords: join, kdb+, q, uj, ujf, union join
 ---
 ![Union join animation](https://code.kx.com/q/img/uj.gif)
 {: style="float:right; margin-left: 3em; max-width: 250px;"}

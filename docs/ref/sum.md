@@ -1,5 +1,5 @@
 ---
-title: sum, sums, msum, wsum – sum, cumulative sums, moving sums, and weighted sum of a list | Reference | KDB-X and q documentation
+title: sum, sums, msum, wsum – sum, cumulative sums, moving sums, and weighted sum of a list | Reference | kdb+ and q documentation
 description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
@@ -60,7 +60,7 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
     Different results may be obtained by changing the order of the summation.
 
         ❯ q -s 4
-        KDB-X 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
+        kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
         ...
 
         q)\s 0

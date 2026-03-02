@@ -1,5 +1,5 @@
 ---
-title: hdel deletes a file or folder | reference | q and KDB-X documentation
+title: hdel deletes a file or folder | reference | q and kdb+ documentation
 description: Keyword hdel deletes a file or folder
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: December 2019

@@ -1,5 +1,5 @@
 ---
-title: asc, iasc, xasc – ascending sort | Reference | KDB-X and q documentation
+title: asc, iasc, xasc – ascending sort | Reference | kdb+ and q documentation
 description: Ascending sorts in q; asc returns a sortable argument in ascending order; iasc grades its items into ascending order; xasc sorts a table by columns.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

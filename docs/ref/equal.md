@@ -1,8 +1,8 @@
 ---
-title: Equal | Reference | KDB-X and q documentation
+title: Equal | Reference | kdb+ and q documentation
 description: Equal is a q operator that flags where its arguments are equal.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: equal, KDB-X, q
+keywords: equal, kdb+, q
 ---
 # `=` Equal
 

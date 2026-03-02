@@ -1,5 +1,5 @@
 ---
-title: string casts its argument to a string | Reference | KDB-X and q documentation
+title: string casts its argument to a string | Reference | kdb+ and q documentation
 description: string is a q keyword that casts its argument to a string.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

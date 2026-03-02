@@ -1,5 +1,5 @@
 ---
-title: insert keyword | Reference | KDB-X and q documentation
+title: insert keyword | Reference | kdb+ and q documentation
 description: insert is a q keyword that inserts or appends records to a table.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

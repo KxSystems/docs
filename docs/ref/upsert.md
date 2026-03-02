@@ -1,5 +1,5 @@
 ---
-title: upsert | Reference | KDB-X and q documentation
+title: upsert | Reference | kdb+ and q documentation
 description: upsert is a q keyword that adds new records to a table.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

@@ -1,8 +1,8 @@
 ---
-title: keys, xkey – Reference – KDB-X and q documentation
+title: keys, xkey – Reference – kdb+ and q documentation
 description: keys and xkey are q keywords that get or set the key columns of a table.
 author: Stephen taylor
-keyword: KDB-X, key, key columns, keyed table, q
+keyword: kdb+, key, key columns, keyed table, q
 ---
 # `keys`, `xkey`
 

@@ -1,7 +1,7 @@
 ---
-title: Coalesce operator | Reference | KDB-X and q documentation
+title: Coalesce operator | Reference | kdb+ and q documentation
 description: Coalesce is a q operator that merges keyed tables.
-keywords: coalesce, join, KDB-X,q
+keywords: coalesce, join, kdb+,q
 ---
 # `^` Coalesce
 

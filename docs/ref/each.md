@@ -1,5 +1,5 @@
 ---
-title: each, peach | Reference | KDB-X and q documentation
+title: each, peach | Reference | kdb+ and q documentation
 description: each and peach are q keywords, wrappers for the map iterators Each and Each Parallel.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

@@ -1,5 +1,5 @@
 ---
-title: min, mins, mmin – minima of a list | Reference | KDB-X and q documentation
+title: min, mins, mmin – minima of a list | Reference | kdb+ and q documentation
 description: min, mins and mmin are q keywords that return respectively the smallest item, the cumulative minimums, and the moving minimums of the argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

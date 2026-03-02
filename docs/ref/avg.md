@@ -1,5 +1,5 @@
 ---
-title: avg, avgs, mavg, wavg – average, running average, moving averages, weighted average | Reference | KDB-X and q documentation
+title: avg, avgs, mavg, wavg – average, running average, moving averages, weighted average | Reference | kdb+ and q documentation
 description: avg and wavg are q keywords invoking aggregate functions for the arithmetic and weighted means of a vector. avgs and mavgs are q keywords that invoke uniform functions that return the cumulative and moving means of a vector
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

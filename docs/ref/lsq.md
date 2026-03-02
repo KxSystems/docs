@@ -1,5 +1,5 @@
 ---
-title: lsq – least-squares matrix equation solution |Reference | KDB-X and q documentation
+title: lsq – least-squares matrix equation solution |Reference | kdb+ and q documentation
 description: lsq is a q keyword that performs least squares fitting, matrix division.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

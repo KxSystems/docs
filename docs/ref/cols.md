@@ -1,5 +1,5 @@
 ---
-title: cols, xcol, xcols | Reference | KDB-X and q documentation
+title: cols, xcol, xcols | Reference | kdb+ and q documentation
 description: cols, xcol and xcols are q keywords. cols returns the column names of a table. xcol renames tablecolumns. xcols reorders table columns. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

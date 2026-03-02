@@ -1,6 +1,6 @@
 ---
-title: exit – Reference – KDB-X and q documentation
-description: exit is a control word that terminates a KDB-X process with a specified exit code.
+title: exit – Reference – kdb+ and q documentation
+description: exit is a control word that terminates a kdb+ process with a specified exit code.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `exit`
@@ -8,14 +8,14 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 
 
 
-_Terminate KDB-X_
+_Terminate kdb+_
 
 ```syntax
 exit x    exit[x]
 ```
 
 Control word. 
-Where `x` is a positive integer, terminates the KDB-X process with `x` as the exit code.
+Where `x` is a positive integer, terminates the kdb+ process with `x` as the exit code.
 
 ```q
 q)exit 0        / typical successful exit status

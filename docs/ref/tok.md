@@ -1,5 +1,5 @@
 ---
-title: Tok interprets string data to another datatype | Reference | KDB-X and q documentation
+title: Tok interprets string data to another datatype | Reference | kdb+ and q documentation
 description: Tok is a q operator that interprets string data to another datatype.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

@@ -1,8 +1,8 @@
 ---
-title: do control word | Reference | KDB-X and q documentation
+title: do control word | Reference | kdb+ and q documentation
 description: do is a q control word that evaluates one or more expressions a set number of times.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: control, evaluate, expression, KDB-X, q
+keywords: control, evaluate, expression, kdb+, q
 ---
 # `do`
 

@@ -1,5 +1,5 @@
 ---
-title: var, svar – variance and sample variance | Reference | KDB-X and q documentation
+title: var, svar – variance and sample variance | Reference | kdb+ and q documentation
 description: var and svar are q keywords that return (respectively) the variance and sample variance of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

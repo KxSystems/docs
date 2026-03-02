@@ -1,5 +1,5 @@
 ---
-title: The .Q namespace – tools | Reference | KDB-X and q documentation
+title: The .Q namespace – tools | Reference | kdb+ and q documentation
 description: The .Q namespace contains utility objects for q programming
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 last_updated: January 2026
@@ -67,7 +67,7 @@ last_updated: January 2026
                                    [Xf          create file](#xf-create-file)
 </div>
 
-Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of KDB-X. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](namespaces.md).
+Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](namespaces.md).
 
 !!! warning "The `.Q` namespace is reserved for use by KX, as are all single-letter namespaces."
 
@@ -875,7 +875,7 @@ Where
 
 (Since V3.4)
 
-Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm for various purposes such as converting a large compressed CSV file into an on-disk KDB-X database without holding the data in memory all at once or using disk space required for the uncompressed file.
+Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm for various purposes such as converting a large compressed CSV file into an on-disk kdb+ database without holding the data in memory all at once or using disk space required for the uncompressed file.
 
 [Streaming data from named pipes](../how_to/io_and_communication/named-pipes.md#stream-and-process-data-from-a-pipe)
 
@@ -900,7 +900,7 @@ Where
 * `y` is a filepath
 * `z` is an integer
 
-loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records, applies `x` to each record, and returns the size of the file as given by [`hcount`](hcount.md). This enables you to implement a streaming algorithm for various purposes such as converting a large CSV file into an on-disk KDB-X database without holding the data in memory all at once.
+loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records, applies `x` to each record, and returns the size of the file as given by [`hcount`](hcount.md). This enables you to implement a streaming algorithm for various purposes such as converting a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
 
 `.Q.fsn` is almost identical to `.Q.fs` but takes an extra argument `z`, the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and RAM usage.
 
@@ -1588,7 +1588,7 @@ select … [by date,…] from … where [date …]
 
 !!! detail "You may need to increase the number of available file handles, and also the number of available file maps (for Linux see `vm.max_map_count`)"
 
-Since 4.1t 2024.01.11 parallelized over tables and partitions with [peach](each.md) when KDB-X running with secondary threads.
+Since 4.1t 2024.01.11 parallelized over tables and partitions with [peach](each.md) when kdb+ running with secondary threads.
 
 <!--
 ## `m.reuse` (reload module)
@@ -1798,7 +1798,7 @@ q).Q.pv!flip .Q.pn
 .Q.prf0 pid
 ```
 
-Where `pid` is a process ID, returns a table representing a snapshot of the call stack at the time of the call in another KDB-X process `pid`, with columns
+Where `pid` is a process ID, returns a table representing a snapshot of the call stack at the time of the call in another kdb+ process `pid`, with columns
 
 ```txt
 name   assigned name of the function
@@ -1812,7 +1812,7 @@ pos    execution position (caret) within text
 This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
 
 Since 4.1t 2022.03.25, .Q.prf0 will not try to stop the process if passed a negative `pid`.
-This should be used when a KDB-X process is already stopped under control of something other than `.Q.prf0` (for example, in a debugger or a native-code profiler).
+This should be used when a kdb+ process is already stopped under control of something other than `.Q.prf0` (for example, in a debugger or a native-code profiler).
 A negative `pid` should not be used in a running process.
 
 [Code profiler](https://code.kx.com/q/kb/profiler/)
@@ -1930,7 +1930,7 @@ q).Q.s ([h:1 2 3] m: 4 5 6)
 "h| m\n-| -\n1| 4\n2| 5\n3| 6\n"
 ```
 
-Occasionally useful for undoing _Studio for KDB-X_ tabular formatting.
+Occasionally useful for undoing _Studio for kdb+_ tabular formatting.
 
 ## `s1` (string representation)
 

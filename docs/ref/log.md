@@ -1,5 +1,5 @@
 ---
-title: log, xlog – logarithms | Reference | KDB-X and q documentation
+title: log, xlog – logarithms | Reference | kdb+ and q documentation
 description: log and xlog are q keywords that return logarithms, either natural or to a specified base.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

@@ -1,8 +1,8 @@
 ---
-title: Greater Than, At Least – Reference – KDB-X and q documentation
+title: Greater Than, At Least – Reference – kdb+ and q documentation
 description: Greater Than and At Least are q operators that compare their arguments.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: comparison, greater-than, greater-than-or-equal, KDB-X, q
+keywords: comparison, greater-than, greater-than-or-equal, kdb+, q
 ---
 # `>` Greater Than <br>`>=` At Least
 

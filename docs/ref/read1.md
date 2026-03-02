@@ -1,8 +1,8 @@
 ---
-title: read1 reads bytes | Reference | KDB-X and q documentation
+title: read1 reads bytes | Reference | kdb+ and q documentation
 description: read1 is a q keyword that reads bytes from a file or named pipe
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: bytes, file, filehandle, filesystem, handle, KDB-X, pipe, process, q, read, read1
+keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1
 ---
 
 # `read1`

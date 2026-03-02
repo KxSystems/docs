@@ -1,5 +1,5 @@
 ---
-title: eval, reval | Reference | KDB-X and q documentation
+title: eval, reval | Reference | kdb+ and q documentation
 description: eval and reval are q keywords that evaluate parse trees.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

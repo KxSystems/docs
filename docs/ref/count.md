@@ -1,5 +1,5 @@
 ---
-title: Count the items of a list or dictionary | Reference | KDB-X and q documentation
+title: Count the items of a list or dictionary | Reference | kdb+ and q documentation
 description: count and mcount are q keywords count returns the number of items in a list. mcount returns a moving count of the non-null items of a list. 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

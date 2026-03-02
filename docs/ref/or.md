@@ -1,8 +1,8 @@
 ---
-title: or – Reference – KDB-X and q documentation
+title: or – Reference – kdb+ and q documentation
 description: or is a q keyword that performs a logical OR.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: and, greater, KDB-X, logic, or, q
+keywords: and, greater, kdb+, logic, or, q
 ---
 # `or`
 

@@ -1,5 +1,5 @@
 ---
-title: except – exclude items from a list | Reference | KDB-X and q documentation
+title: except – exclude items from a list | Reference | kdb+ and q documentation
 description: except is a q keyword that excludes items from a list.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

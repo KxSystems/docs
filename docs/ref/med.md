@@ -1,7 +1,7 @@
 ---
-title: median of a numeric list | Reference | KDB-X and q documentation
+title: median of a numeric list | Reference | kdb+ and q documentation
 description: med is a q keyword that returns the median of its argument.
-keywords: KDB-X, median, q, statistics
+keywords: kdb+, median, q, statistics
 ---
 # `med`
 

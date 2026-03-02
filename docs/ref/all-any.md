@@ -1,5 +1,5 @@
 ---
-title: all, any – Reference – KDB-X and q documentation
+title: all, any – Reference – kdb+ and q documentation
 description: all and any are q keywords that invoke aggregator functions for vectors of flags
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

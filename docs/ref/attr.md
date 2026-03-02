@@ -1,5 +1,5 @@
 ---
-title: attr – attributes of an object | Reference | KDB-X and q documentation
+title: attr – attributes of an object | Reference | kdb+ and q documentation
 description: attr is a q keyword that returns the attributes of an object 
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---

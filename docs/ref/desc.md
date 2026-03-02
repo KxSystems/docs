@@ -1,8 +1,8 @@
 ---
-title: desc, idesc, xdesc – descending sorts | Reference | KDB-X and q documentation
+title: desc, idesc, xdesc – descending sorts | Reference | kdb+ and q documentation
 description: Descending sorts in q; desc returns a list sorted descending; idesc returns the grade for that sort. xdesc sorts a table descending by specified columns.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
-keywords: asc, desc, descending, grade, idesc, KDB-X, q, sort, xdesc
+keywords: asc, desc, descending, grade, idesc, kdb+, q, sort, xdesc
 ---
 # `desc`, `idesc`, `xdesc`
 
