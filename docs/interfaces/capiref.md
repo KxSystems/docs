@@ -982,6 +982,9 @@ if(handle==-3){
 
 Returns null if there was an error initializing the OpenSSL lib.
 
+!!! detail "Client library only"
+
+    This function is not available for plugins. To access the same information from a plugin, use ``k(0,"-26!`",(K)0)``.
 
 ### `vak`, `vaknk` (va_list versions of k, knk)
 
