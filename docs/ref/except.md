@@ -1,7 +1,7 @@
 ---
-title: except – exclude items from a list | Reference | kdb+ and q documentation
+title: except – exclude items from a list | Reference | KDB-X and q documentation
 description: except is a q keyword that excludes items from a list.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `except`
 
@@ -27,17 +27,17 @@ q)1 2 3 4 1 3 except 2 3
 1 4 1
 ```
 
-`except` uses [Find](find.md) to identify items of `x` in `y`.
+`except` uses [`in`](in.md) to identify items of `x` in `y`, which in turn uses [`find`](find.md).
 
 ----
 
-:fontawesome-solid-book:
+
 [Find](find.md),
 [`in`](in.md),
 [`within`](within.md)
 <br>
-:fontawesome-solid-book-open:
-[Selection](../basics/by-topic.md#selection)
+
+[Selection](by-topic.md#selection)
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: hsym converts symbol to file symbol | Reference | q and kdb+ documentation
+title: hsym converts symbol to file symbol | Reference | q and KDB-X documentation
 description: Keyword hsym converts symbol/s to file- or process-symbol/s
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: December 2019
 ---
 # `hsym`
@@ -30,9 +30,9 @@ q)hsym `abc`:def`::ghi
 ```
 
 ----
-:fontawesome-solid-book:
+
 [`hopen`](hopen.md)
 <br>
-:fontawesome-solid-book-open:
-[File system](../basics/files.md),
-[Interprocess communication](../basics/ipc.md)
+
+[File system](files.md),
+[Interprocess communication](../how_to/io_and_communication/ipc.md)

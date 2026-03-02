@@ -1,21 +1,18 @@
 ---
-title: tan, atan – tangent and arctangent | Reference | kdb+ and q documentation
+title: tan, atan – tangent and arctangent | Reference | KDB-X and q documentation
 description: tan and atan are q keywords that return the tangent or arctangent of their argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `tan`, `atan`
 
-
-
 _Tangent and arctangent_
-
 
 ```syntax
 tan x     tan[x]
 atan x    atan[x]
 ```
 
-Where `x` is a numeric, returns 
+Where `x` is a numeric, returns
 
 `tan`
 : the [tangent](https://en.wikipedia.org/wiki/Tangent) of `x`, taken to be in radians. Integer arguments are promoted to floating point. Null is returned if the argument is null or infinity.
@@ -23,7 +20,7 @@ Where `x` is a numeric, returns
 : The function is equivalent to `{(sin x)%cos x}`.
 
 `atan`
-: the [arctangent](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose tangent is `x`. 
+: the [arctangent](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose tangent is `x`.
 
 : The result is in radians and lies between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. The range is approximate due to rounding errors.
 
@@ -37,12 +34,11 @@ q)atan 42
 1.546991
 ```
 
-`tan` and `atan` are [multithreaded primitives](../kb/mt-primitives.md).
+`tan` and `atan` are [multithreaded primitives](mt-primitives.md).
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-`tan` and `atan` are [atomic functions](../basics/atomic.md).
+`tan` and `atan` are [atomic functions](atomic.md).
 
 ```q
 q)tan (.2;.3 .4)
@@ -59,7 +55,6 @@ y| 0.4227932 0.5463025 0.6841368 0.8422884
 z| 1.029639  1.260158  1.557408  1.96476
 ```
 
-
 ## Domain and range
 
 ```txt
@@ -67,13 +62,10 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  f . f f f f f f f . f f f z f f f f
 ```
 
-
 ----
 
-:fontawesome-solid-book:
 [`cos` and `acos`](cos.md),
 [`sin` and `asin`](sin.md)
 <br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
 
+[Mathematics](math.md)

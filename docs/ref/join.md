@@ -1,7 +1,7 @@
 ---
-title: Join atoms, lists, dictionaries or tables | Reference | kdb+ and q documentation
+title: Join atoms, lists, dictionaries or tables | Reference | KDB-X and q documentation
 description: Join is a q operator that joins atoms, lists, dictionaries or tables.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `,` `,:` Join and Append
 ## `,` Join
@@ -78,7 +78,7 @@ q)`a`b,`sym2$`c
 `a`b`c
 ```
 
-`,`(join) is a [multithreaded primitive](../kb/mt-primitives.md).
+`,`(join) is a [multithreaded primitive](mt-primitives.md).
 
 
 ### Dictionaries
@@ -111,10 +111,10 @@ a  b
 11 e
 ```
 
-:fontawesome-solid-book:
+
 [`uj`](uj.md) union join
 <br>
-:fontawesome-solid-globe:
+
 [SQL UNION ALL](https://www.w3schools.com/sql/sql_union.asp)
 
 Tables of the same count can be joined column-wise with `,'` (Join Each).
@@ -278,10 +278,10 @@ f| 12
 
 ----
 
-:fontawesome-solid-book: 
+ 
 [`.Q.dd`](dotq.md#dd-join-symbols) join symbols
 <br>
-:fontawesome-solid-book-open: 
-[Joins](../basics/joins.md) 
+ 
+[Joins](joins.md) 
 
 

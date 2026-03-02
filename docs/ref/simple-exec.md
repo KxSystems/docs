@@ -1,13 +1,13 @@
 ---
-title: Simple Exec – Reference – kdb+ and q documentation
+title: Simple Exec – Reference – KDB-X and q documentation
 description: Simple Exec is a q operator that is part of functional SQL.
-author: Stephen Taylor
-keywords: functional sql, kdb+, q,sql
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: functional sql, KDB-X, q,sql
 ---
 # `?` Simple Exec
 
 
 
 
-For functional Simple Exec, see Basics: [Functional qSQL](../basics/funsql.md#simple-exec)
+For functional Simple Exec, see Basics: [Functional qSQL](funsql.md#simple-exec)
 

@@ -1,8 +1,8 @@
 ---
-title: Display – Reference – kdb+ and q documentation
+title: Display – Reference – KDB-X and q documentation
 description: Display is a q operator that writes a value to the console before returning it.
-author: Stephen Taylor
-keywords: bang, console, debug, display, kdb+
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: bang, console, debug, display, KDB-X
 ---
 # `!` Display
 
@@ -25,8 +25,8 @@ q)2+0N!3
 Useful for debugging, or avoiding formatting that obscures the data’s structure.
 
 ---
-:fontawesome-solid-book: 
+ 
 [`show`](show.md) 
 <br>
-:fontawesome-solid-book-open: 
-[Debugging](../basics/debug.md)
+ 
+[Debugging](../how_to/working-with-code/debug.md)

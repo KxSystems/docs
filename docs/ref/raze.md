@@ -1,7 +1,7 @@
 ---
-title: raze joins the items of a list, collapsing one level of nesting | Reference | kdb+ and q documentation
+title: raze joins the items of a list, collapsing one level of nesting | Reference | KDB-X and q documentation
 description: raze is a q keyword that returns the items of a list joined, collapsing one level of nesting.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `raze`
 
@@ -59,5 +59,5 @@ q)raze (10;d)   / raze will not work
 
 
 ----
-:fontawesome-solid-book:
+
 [Join](join.md)

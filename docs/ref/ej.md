@@ -1,7 +1,7 @@
 ---
-title: ej – equi join | Reference | kdb+ and q documentation
+title: ej – equi join | Reference | KDB-X and q documentation
 description: ej is a q keyword that performs an equi join on two tables.
-keywords: ej, equi join, join, kdb+, q
+keywords: ej, equi join, join, KDB-X, q
 ---
 # `ej`
 
@@ -44,11 +44,11 @@ IBM  N   1000
 MSFT CME 250
 
 q)ej[`sym;s;t]
-sym  ex  MC  price
+sym  ex  MC    price
 -----------------------
-IBM  N  1000  0.7029677
-IBM  N  1000  0.2608152 
-MSFT CME 250  0.5433888
+IBM  N   1000  0.7029677
+IBM  N   1000  0.2608152 
+MSFT CME  250  0.5433888
 ```
 
 Duplicate column values are filled from `t2`.
@@ -67,10 +67,10 @@ k c   v
 ```
 
 ---
-:fontawesome-solid-book-open:
-[Joins](../basics/joins.md)
+
+[Joins](joins.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§9.9.5 Equi Join](/q4m3/9_Queries_q-sql/#995-equi-join-ej)
+[§9.9.5 Equi Join](../learn/q4m/9_Queries_q-sql.md#995-equijoin-ej)
 

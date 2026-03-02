@@ -1,15 +1,12 @@
 ---
-title: The .h namespace | Reference | kdb+ and q documentation
+title: The .h namespace | Reference | KDB-X and q documentation
 description: The .h namespace contains objects useful for marking up data for an HTTP response.
-author: Stephen Taylor
-keywords: html, kdb+, markup, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: html, KDB-X, markup, q
 ---
-# :fontawesome-brands-html5: The `.h` namespace
-
-
+# The `.h` namespace
 
 _Markup tools_
-
 
 <div markdown="1" class="typewriter">
 Markup (HTML and XML)                Data Serialization
@@ -33,7 +30,7 @@ Markup (HTML and XML)                Data Serialization
  [`.h.xs`](#hxs-xml-escape)      XML escape               [`.h.sb`](#hsb-body-style)    body style
                                       [`.h.val`](#hval-value)   value
 HTTP
- [`.h.he`](#hhe-http-400)      HTTP 400                URI formatting 
+ [`.h.he`](#hhe-http-400)      HTTP 400                URI formatting
  [`.h.hn`](#hhn-http-response)      HTTP response            [`.h.hu`](#hhu-uri-escape)      URI escape
  [`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.hug`](#hhug-uri-map)     URI map
  [`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.sc`](#hsc-uri-safe)      URI-safe
@@ -41,34 +38,28 @@ HTTP
  [`.h.ty`](#hty-mime-types)      MIME types
 </div>
 
-The `.h` [namespace](../basics/namespaces.md) contains objects for 
+The `.h` [namespace](namespaces.md) contains objects for
 
--   marking up strings as HTML
--   converting data into various formats
--   composing HTTP responses
--   web-console display
+- marking up strings as HTML
+- converting data into various formats
+- composing HTTP responses
+- web-console display
 
 !!! warning "The `.h` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as its private API | and do not use them.
 
-
-
-
 ## `.h.br` (linebreak)
 
 HTML linebreak (string), defaults to `"<br>"`.
-
 
 ## `.h.c0` (web color)
 
 Color used by the web console (symbol), defaults to `` `024C7E``.
 
-
 ## `.h.c1` (web color)
 
 Color used by the web console (symbol), defaults to `` `958600``.
-
 
 ## `.h.cd` (CSV from data)
 
@@ -93,9 +84,7 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 
 Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V4.0 2020.03.17.)
 
-:fontawesome-regular-hand-point-right:
 [0: load csv](file-text.md#load-csv), [save](save.md#save) (save and format data)
-
 
 ## `.h.code` (code after Tab)
 
@@ -105,8 +94,8 @@ Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to 
 
 Where `x` is a string with embedded Tab characters, returns the string with alternating segments marked up as
 
--   plain text
--   `code` and `nobr`.
+- plain text
+- `code` and `nobr`.
 
 ```q
 q).h.code "foo\tbar"
@@ -116,7 +105,6 @@ q).h.code "foo\tbar\tabc\tdef"
 q).h.code "foo"
 "foo"
 ```
-
 
 ## `.h.d` (delimiter)
 
@@ -146,7 +134,6 @@ q).h.cd t
 "2,a*b*c,1*2*3"
 ```
 
-
 ## `.h.ed` (Excel from data)
 
 ```syntax
@@ -161,7 +148,6 @@ q).h.ed ([]a:1 2 3;b:`x`y`z)
 "<Workbook xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:o=\"u..
 ```
 
-:fontawesome-regular-hand-point-right:
 [save](save.md#save) (save and format data)
 
 ## `.h.edsn` (Excel from tables)
@@ -172,8 +158,8 @@ q).h.ed ([]a:1 2 3;b:`x`y`z)
 
 Where
 
--   `x` is a symbol vector
--   `y` is a conformable list of tables
+- `x` is a symbol vector
+- `y` is a conformable list of tables
 
 returns as a list of strings an XML document describing an Excel spreadsheet.
 
@@ -203,9 +189,8 @@ q)`:/Users/sjt/tmp/excel.xls 0: .h.edsn `test1`test2!(t1;t2)
 `:/Users/sjt/tmp/excel.xls
 ```
 
-![excel.xls](../img/h.edsn.png "Excel spreadsheet")
+![excel.xls](https://code.kx.com/q/img/h.edsn.png "Excel spreadsheet")
 
-:fontawesome-regular-hand-point-right:
 [save](save.md#save) (save and format data)
 
 ## `.h.fram` (frame)
@@ -218,9 +203,9 @@ _HTML page with two frames_
 
 Where
 
--   `t` is the page title (string)
--   `s` is a list of strings
--   `l` and `r` are respectively the sources of the left and right frames (strings)
+- `t` is the page title (string)
+- `s` is a list of strings
+- `l` and `r` are respectively the sources of the left and right frames (strings)
 
 returns as a string an HTML page with two frames in a frameset wide enough to accommodate the lines of `s`.
 
@@ -238,8 +223,6 @@ q).h.fram["Five rows";s;("tmpl.htm";"tmp.txt")]
 src=\"tmp.htm\"><frame name=v src=\"tmp.txt\"></frameset></head></html>"
 ```
 
-
-
 ## `.h.ha` (anchor)
 
 ```syntax
@@ -255,7 +238,6 @@ q).h.ha["http://www.example.com";"Example.com Main Page"]
 "<a href=\"http://www.example.com\">Example.com Main Page</a>"
 ```
 
-
 ## `.h.hb` (anchor target)
 
 ```syntax
@@ -268,7 +250,6 @@ Same as `.h.ha`, but adds a `target=v` attribute to the tag.
 q).h.hb["http://www.example.com";"Example.com Main Page"]
 "<a target=v href=\"http://www.example.com\">Example.com Main Page</a>"
 ```
-
 
 ## `.h.hc` (escape lt)
 
@@ -283,7 +264,6 @@ q).h.hc "<foo>"
 "&lt;foo>"
 ```
 
-
 ## `.h.he` (HTTP 400)
 
 ```syntax
@@ -297,7 +277,6 @@ q).h.he "<rubbish>"
 "HTTP/1.1 400 Bad Request\r\nContent-Type: text/plain\r\nConnection: close\r\..
 ```
 
-
 ## `.h.hn` (HTTP response)
 
 ```syntax
@@ -306,24 +285,26 @@ q).h.he "<rubbish>"
 
 Where
 
--   `x` is the [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (string)
--   `y` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
--   `z` is the content (string). Since 4.1 2025.11.25, a byte vector is also accepted.
+- `x` is the [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (string)
+- `y` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
+- `z` is the content (string). Since 4.1 2025.11.25, a byte vector is also accepted.
 
 returns as a string an HTTP error response.
 
 For example, a request for favicon.ico could be programmed to have a 'not found' response using the 404 HTTP code.
+
 ```q
 q).h.hn["404";`txt;"Not found: favicon.ico"]
 "HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Length: 22\r\n\r\nNot found: favicon.ico"
 ```
+
 A request for the binary file 'test.exe' could generate a response using [read1](read1.md) to read the binary file before [casting](cast.md) the bytes to a string.
 An empty string is passed as a MIME type to `.h.hn` to allow it to default to `application/octet-stream`, which is appropriate for a binary file.
+
 ```q
 q).h.hn["200";`;10h$read1`:test.exe]
 "HTTP/1.1 200\r\nContent-Type: application/octet-stream\r\nConnection: close\r\nContent-Length: 164\r\n\r\nPK\003\004\n\000\000\000\000\000\004^\005[\033\013\251;\010\000\000\000\010\000\000\000\003\000\034\000txtUT\t\000\003g\341\221h\203\341\221hux\013\000\001\004\365\001\000\000\004\000\000\000\000aaa bbb\nPK\001\002\036\003\n\000\000\000\000\000\004^\005[\033\013\251;\010\000\000\000\010\000\000\000\003\000\030\000\000\000\000\000\001\000\000\000\244\201\000\000\000\000txtUT\005\000\003g\341\221hux\013\000\001\004\365\001\000\000\004\000\000\000\000PK\005\006\000\000\000\000\001\000\001\000I\000\000\000E\000\000\000\000\000"
 ```
-
 
 ## `.h.hp` (HTTP response pre)
 
@@ -348,7 +329,6 @@ Content-Length: 257
 </pre></body></html>
 ```
 
-
 ## `.h.hr` (horizontal rule)
 
 ```syntax
@@ -356,11 +336,11 @@ Content-Length: 257
 ```
 
 Where `x` is a string, returns a string of the same length filled with `"-"`.
+
 ```q
 q).h.hr "foo"
 "---"
 ```
-
 
 ## `.h.ht` (Marqdown to HTML)
 
@@ -385,7 +365,6 @@ Basic Marqdown formatting rules:
 - If second line of data starts with `"-"`, draw a horizontal rule to format the header
 - Aligns two-column data if 2nd column starts with `"\t "`
 
-
 ## `.h.hta` (start tag)
 
 ```syntax
@@ -398,7 +377,6 @@ Where `x` is the element as a symbol atom, and `y` is a dictionary of attributes
 q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
 "<a href=\"http://www.example.com\" target=\"_blank\">"
 ```
-
 
 ## `.h.htac` (element)
 
@@ -413,7 +391,6 @@ q).h.htac[`a;(`href`target)!("http://www.example.com";"_blank");"Example.com Mai
 "<a href=\"http://www.example.com\" target=\"_blank\">Example.com Main Page</..
 ```
 
-
 ## `.h.htc` (element)
 
 ```syntax
@@ -426,7 +403,6 @@ Where `x` is the HTML element as a symbol atom, and `y` is the content of the no
 q).h.htc[`tag;"value"]
 "<tag>value</tag>"
 ```
-
 
 ## `.h.html` (document)
 
@@ -454,7 +430,6 @@ q).h.html "<p>Hello world!</p>"
 "<html><head><style>a{text-decoration:none}a:link{color:024C7E}a:visited{colo..
 ```
 
-
 ## `.h.http` (hyperlinks)
 
 ```syntax
@@ -467,7 +442,6 @@ Where `x` is a string, returns `x` with embedded URLs beginning `"http://"` conv
 q).h.http "The main page is http://www.example.com"
 "The main page is <a href=\"http://www.example.com\">http://www.example.com</..
 ```
-
 
 ## `.h.hu` (URI escape)
 
@@ -482,15 +456,13 @@ q).h.hu "http://www.kx.com"
 "http%3a%2f%2fwww.kx.com"
 ```
 
-
 ## `.h.hug` (URI map)
 
 ```syntax
 .h.hug x
 ```
 
-Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape sequences *except* for the chars in `x`, which get mapped to themselves.
-
+Where `x` is a char vector, returns a mapping from characters to `%`_xx_ escape sequences _except_ for the chars in `x`, which get mapped to themselves.
 
 ## `.h.hy` (HTTP response content)
 
@@ -500,8 +472,8 @@ Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape 
 
 Where
 
--   `x` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
--   `y` is a string. Since 4.1 2025.11.25, a byte vector is also accepted.
+- `x` is a [MIME type](#hty-mime-types) (symbol) corresponding to a key from the [`.h.ty`](#hty-mime-types) (MIME types) dictionary. If the type is not found in `h.ty` it defaults to populating the resulting MIME type with `application/octet-stream`.
+- `y` is a string. Since 4.1 2025.11.25, a byte vector is also accepted.
 
 returns as a string an HTTP response for `y` as content-type `x` with a "200 OK" HTTP response status.
 
@@ -531,14 +503,11 @@ q)\head test.txt
 " {\"val\":\"e\",\"x\":1}]"
 ```
 
-
 ## `.h.HOME` (webserver root)
 
 String: location of the webserver root.
 
-:fontawesome-solid-graduation-cap:
-[HTTP](../kb/http.md)
-
+[HTTP](../how_to/io_and_communication/http.md)
 
 ## `.h.iso8601` (ISO timestamp)
 
@@ -552,7 +521,6 @@ Where `x` is nanoseconds since 2000.01.01 as an int atom, returns as a string a 
 q).h.iso8601 100
 "2000-01-01T00:00:00.000000100"
 ```
-
 
 ## `.h.jx` (table)
 
@@ -599,7 +567,6 @@ q)1_.h.jx[5;`a]
 ..
 ```
 
-
 ## `.h.ka` (HTTP keepalive)
 
 ```syntax
@@ -613,23 +580,24 @@ Returns a string of value `close` or `keep-alive` which can be used for the `Con
 Can be used during the processing of an HTTP request to enable [persistent connections](https://en.wikipedia.org/wiki/HTTP_persistent_connection) i.e. should be called within an HTTP callback such as [.z.ph](dotz.md#zph-http-get), [.z.pp](dotz.md#zpp-http-post), etc.
 
 A basic example of showing keep-alive in action for a simple response:
+
 ```q
 \p 1234
 q)f:{[x;y]"HTTP/1.1 200 OK\r\nConnection : ",.h.ka[x*1000i],"\r\nContent-Type: ",(.h.ty`txt),"\r\nContent-Length: ",(string count y),"\r\n\r\n",y}
 q).z.ph:{f[2i;"test response\n"]}
 ```
+
 Running an HTTP client such as cURL, from the same machine, shows the connection being reused for two requests.
+
 ```shell
 curl -v -v http://localhost:1234 http://localhost:1234
 ```
 
-:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
-
+[HTTP](../how_to/io_and_communication/http.md)
 
 ## `.h.logo` (KX logo)
 
 String: defaults to the KX logo in HTML format.
-
 
 ## `.h.nbr` (no break)
 
@@ -644,7 +612,6 @@ q).h.nbr "foo bar"
 "<nobr>foo bar</nobr>"
 ```
 
-
 ## `.h.pre` (pre)
 
 ```syntax
@@ -658,7 +625,6 @@ q).h.pre("foo";"bar")
 "<pre>foo\nbar\n</pre>"
 ```
 
-
 ## `.h.sa` (anchor style)
 
 String: CSS style rules used in the web console for anchor elements.
@@ -667,7 +633,6 @@ String: CSS style rules used in the web console for anchor elements.
 q).h.sa
 "a{text-decoration:none}a:link{color:024C7E}a:visited{color:024C7E}a:active{c..
 ```
-
 
 ## `.h.sb` (body-style)
 
@@ -678,7 +643,6 @@ q).h.sb
 "body{font:10pt verdana;text-align:justify}"
 ```
 
-
 ## `.h.sc` (URI-safe)
 
 String: characters that do not need to be escaped in URIs.
@@ -688,9 +652,7 @@ q).h.sc
 "$-.+!*'(),abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.h.hu`](#hhu-uri-escape)
-
 
 ## `.h.td` (TSV from data)
 
@@ -708,7 +670,6 @@ q).h.td ([]a:1 2 3;b:`x`y`z)
 "3\tz"
 ```
 
-
 ## `.h.text` (paragraphs)
 
 ```syntax
@@ -721,7 +682,6 @@ Where `x` is a list of strings, returns as a string, `x` with each item as the c
 q).h.text("foo";"bar")
 "<p>foo</p>\n<p>bar</p>\n"
 ```
-
 
 ## `.h.tx` (filetypes)
 
@@ -763,7 +723,6 @@ xls | k){ex eb es[`Sheet1]x}
     "[{\"items\":\"nut\",\"sales\":6,\"prices\":10},\n {\"items\":\"bolt\",\"sale..
     ```
 
-
 ## `.h.ty` (MIME types)
 
 Dictionary of content types and corresponding [media types](https://en.wikipedia.org/wiki/MIME "Wikipedia").
@@ -780,20 +739,18 @@ gif | "image/gif"
 ..
 ```
 
-
 ## `.h.uh` (URI unescape)
 
 ```syntax
 .h.uh x
 ```
 
-Where `x` is a string, returns `x` with `%`*xx* hex sequences replaced with character equivalents.
+Where `x` is a string, returns `x` with `%`_xx_ hex sequences replaced with character equivalents.
 
 ```q
 q).h.uh "http%3a%2f%2fwww.kx.com"
 "http://www.kx.com"
 ```
-
 
 ## `.h.val` (value)
 
@@ -807,8 +764,6 @@ Its default value is [`value`](value.md).
 Users can override this with a custom evaluation function.
 
 Since V3.6 and V3.5 2019.11.13.
-
-
 
 ## `.h.xd` (XML)
 
@@ -827,9 +782,7 @@ q).h.xd ([]a:1 2 3;b:`x`y`z)
 "</R>"
 ```
 
-:fontawesome-regular-hand-point-right:
 [save](save.md#save) (save and format data)
-
 
 ## `.h.xmp` (XMP)
 
@@ -844,7 +797,6 @@ q).h.xmp("foo";"bar")
 "<xmp>foo\nbar\n</xmp>"
 ```
 
-
 ## `.h.xs` (XML escape)
 
 ```syntax
@@ -857,7 +809,6 @@ Where `x` is a string, returns `x` with characters XML-escaped where necessary.
 q).h.xs "Arthur & Co."
 "Arthur &amp; Co."
 ```
-
 
 ## `.h.xt` (JSON)
 
@@ -875,5 +826,4 @@ q)first .h.xt[`json;("{\"foo\":\"bar\"}";"{\"this\":\"that\"}")]
 foo| "bar"
 ```
 
-:fontawesome-regular-hand-point-right:
 [`.j` namespace](dotj.md) (JSON de/serialization), [save](save.md#save) (save and format data)

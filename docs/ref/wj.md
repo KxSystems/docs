@@ -1,7 +1,7 @@
 ---
-title: Window join | Reference | kdb+ and q documentation
+title: Window join | Reference | KDB-X and q documentation
 description: wj and wj1 are q keywords that perform window joins.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `wj`, `wj1`
 
@@ -64,7 +64,7 @@ For `wj`, the prevailing quote on entry to the window is considered valid as quo
     | 3.0+    | `[]` | prevailing + `[]` |
     | 2.7/2.8 | `[)` | prevailing + `[]` |
 
-:fontawesome-brands-wikipedia-w:
+
 [Notation for intervals](https://en.wikipedia.org/wiki/Interval_(mathematics)#Notations_for_intervals "Wikipedia")
 
 
@@ -127,14 +127,14 @@ ibm 10:01:08 105   107 108 107 108 104 106 106 107
 
 
 ----
-:fontawesome-solid-book:
+
 [`aj`](aj.md),
 [`asof`](asof.md)
 <br>
-:fontawesome-solid-book-open:
-[Joins](../basics/joins.md)
+
+[Joins](joins.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§9.9.9 Window Joins](/q4m3/9_Queries_q-sql/#999-window-join)
+[9.9.9 Window Joins](../learn/q4m/9_Queries_q-sql.md#999-window-joins)
 

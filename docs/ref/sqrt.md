@@ -1,12 +1,9 @@
 ---
-title: sqrt – square root | Reference | kdb+ and q documentation
+title: sqrt – square root | Reference | KDB-X and q documentation
 description: sqrt is a q keyword that returns the square root of its argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `sqrt`
-
-
-
 
 _Square root_
 
@@ -16,10 +13,10 @@ sqrt x    sqrt[x]
 
 Returns as a float where `x` is numeric and
 
--   non-negative, the square root of `x`
--   negative or null, null
--   real or float infinity, `0w`
--   any other infinity, the square root of the largest value for the datatype
+- non-negative, the square root of `x`
+- negative or null, null
+- real or float infinity, `0w`
+- any other infinity, the square root of the largest value for the datatype
 
 ```q
 q)sqrt -1 0n 0 25 50
@@ -35,12 +32,11 @@ q)sqrt 101b
 1 0 1f
 ```
 
-`sqrt` is a [multithreaded primitive](../kb/mt-primitives.md).
+`sqrt` is a [multithreaded primitive](mt-primitives.md).
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-`sqrt` is an [atomic function](../basics/atomic.md).
+`sqrt` is an [atomic function](atomic.md).
 
 ```q
 q)sqrt (10;20 30)
@@ -78,11 +74,11 @@ range  f . f f f f f f f . f f f z f f f f
 Range: `fz`
 
 ----
-:fontawesome-solid-book: 
-[`exp`](exp.md), 
-[`log`](log.md), 
-[`xexp`](exp.md#xexp), 
-[`xlog`](log.md#xlog) 
+
+[`exp`](exp.md),
+[`log`](log.md),
+[`xexp`](exp.md#xexp),
+[`xlog`](log.md#xlog)
 <br>
-:fontawesome-solid-book-open: 
-[Mathematics](../basics/math.md)
+
+[Mathematics](math.md)

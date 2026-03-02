@@ -1,7 +1,7 @@
 ---
-title: Signal | Reference | kdb+ and q documentation
+title: Signal | Reference | KDB-X and q documentation
 description: Signal is a q operator that signals an error. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `'` Signal
 
@@ -24,7 +24,7 @@ q)0N!0;'`err;0N!1
 
 !!! info "Signal is part of q syntax. It is not an operator and cannot be iterated or projected."
 
-:fontawesome-solid-book:
+
 [`'` Quote overloads](overloads.md#quote)
 
 The only way to detect a signal is to use [Trap](apply.md#trap).
@@ -79,7 +79,7 @@ During abort, the stack is unwound as far as the nearest [trap at](apply.md#trap
 0  for sync message processing
 ```
 
-[`\e`](../basics/syscmds.md#e-error-trap-clients) sets the mode applied before async and HTTP callbacks run. Thus, `\e 1` will cause the relevant handlers to break into the debugger, while `\e 2` will dump the backtrace either to the server console (for async), or into the socket (for HTTP).
+[`\e`](syscmds.md#e-error-trap-clients) sets the mode applied before async and HTTP callbacks run. Thus, `\e 1` will cause the relevant handlers to break into the debugger, while `\e 2` will dump the backtrace either to the server console (for async), or into the socket (for HTTP).
 ```q
 q)\e 2
 q)'type             / incoming async msg signals 'type
@@ -108,7 +108,7 @@ q)f[]
        ^
 q)g:{f[]}
 q)g[]
-'bad
+'badq4m
   [2]  f:{'`bad}
           ^
   [1]  g:{f[]}
@@ -154,14 +154,14 @@ q))a
 ```
 
 ----
-:fontawesome-solid-book:
+
 [Trap, Trap At](apply.md#trap) 
 <br>
-:fontawesome-solid-book-open:
-[Controlling evaluation](../basics/control.md),
-[Debugging](../basics/debug.md),
-[Error handling](../basics/errors.md)
+
+[Controlling evaluation](control.md),
+[Debugging](../how_to/working-with-code/debug.md),
+[Error handling](errors.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§10.1.7 Return and Signal](/q4m3/10_Execution_Control/#1017-return-and-signal)
+[§10.1.8 Return and Signal](../learn/q4m/10_Execution_Control.md#1018-return-and-signal)

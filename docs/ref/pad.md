@@ -1,19 +1,18 @@
 ---
-title: Pad strings to a specified length | Reference | kdb+ and q documentation
+title: Pad strings to a specified length | Reference | KDB-X and q documentation
 description: Pad is a q operator that pads a string or list of strings to a specified length
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `$` Pad
-
 
 ```syntax
 x$y    $[x;y]
 ```
 
-Where 
+Where
 
--   `x` is a long
--   `y` is a string
+- `x` is a long
+- `y` is a string
 
 returns `y` padded to length `x`.
 
@@ -24,10 +23,9 @@ q)-9$"foo"
 "      foo"
 ```
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-Pad is [string-atomic](../basics/atomic.md#string-atomic) and applies to dictionaries and tables.
+Pad is [string-atomic](atomic.md#string-atomic) and applies to dictionaries and tables.
 
 ```q
 q)9$("The";("fox";("jumps";"over"));("the";"dog"))      / string-atomic
@@ -63,10 +61,8 @@ q)9h$("quick";"brown";"fox")
 102 111 120f
 ```
 
-:fontawesome-solid-book:
 [Overloads of dollar](overloads.md#dollar)
 
-
 ----
-:fontawesome-solid-book-open:
-[Strings](../basics/by-topic.md#strings)  
+
+[Strings](by-topic.md#strings)  

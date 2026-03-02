@@ -1,8 +1,8 @@
 ---
-title: first, last – Reference – kdb+ and q documentation
+title: first, last – Reference – KDB-X and q documentation
 description: first and last are q keywords that return respectively the first and last items from a list.
-author: Stephen Taylor
-keywords: each, enlist, first, last kdb+, q, select
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: each, enlist, first, last KDB-X, q, select
 ---
 # `first`, `last`
 
@@ -81,5 +81,5 @@ q)last 42
 ```
 
 ----
-:fontawesome-solid-book-open:
-[Selection](../basics/by-topic.md#selection)
+
+[Selection](by-topic.md#selection)

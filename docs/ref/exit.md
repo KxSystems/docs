@@ -1,21 +1,21 @@
 ---
-title: exit – Reference – kdb+ and q documentation
-description: exit is a control word that terminates a kdb+ process with a specified exit code.
-author: Stephen Taylor
+title: exit – Reference – KDB-X and q documentation
+description: exit is a control word that terminates a KDB-X process with a specified exit code.
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `exit`
 
 
 
 
-_Terminate kdb+_
+_Terminate KDB-X_
 
 ```syntax
 exit x    exit[x]
 ```
 
 Control word. 
-Where `x` is a positive integer, terminates the kdb+ process with `x` as the exit code.
+Where `x` is a positive integer, terminates the KDB-X process with `x` as the exit code.
 
 ```q
 q)exit 0        / typical successful exit status
@@ -30,14 +30,14 @@ $ echo $?
 
 !!! warning "No confirmation is requested from the console."
 
-Exit is blocked during [`reval`](eval.md#reval) or with [`-u` on the command line](../basics/cmdline.md#-u-disable-syscmds). (Since V4.1t 2021-07-12.)
+Exit is blocked during [`reval`](eval.md#reval) or with [`-u` on the command line](cmdline.md#-u-disable-syscmds). (Since V4.1t 2021-07-12.)
 
 ----
 
-:fontawesome-solid-book: 
+ 
 [`.z.exit`](dotz.md#zexit-action-on-exit) (action on exit) 
 <br>
-:fontawesome-solid-book-open: 
-[Controlling evaluation](../basics/control.md), 
-[Debugging](../basics/debug.md)
+ 
+[Controlling evaluation](control.md), 
+[Debugging](../how_to/working-with-code/debug.md)
 

@@ -1,14 +1,11 @@
 ---
-title: min, mins, mmin – minima of a list | Reference | kdb+ and q documentation
+title: min, mins, mmin – minima of a list | Reference | KDB-X and q documentation
 description: min, mins and mmin are q keywords that return respectively the smallest item, the cumulative minimums, and the moving minimums of the argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `min`, `mins`, `mmin`
 
 _Minimum/s_
-
-
-
 
 ## `min`
 
@@ -18,8 +15,8 @@ _Minimum_
 min x     min[x]
 ```
 
-Where `x` is a non-symbol sortable list, returns its minimum. 
-The minimum of an atom is itself. 
+Where `x` is a non-symbol sortable list, returns its minimum.
+The minimum of an atom is itself.
 
 Nulls are ignored, except that if the argument has only nulls, the result is infinity.
 
@@ -37,8 +34,7 @@ q)select min price by sym from t   / use in a select statement
 
 `min` is an aggregate function, equivalent to `&/`.
 
-`min` is a [multithreaded primitive](../kb/mt-primitives.md).
-
+`min` is a [multithreaded primitive](mt-primitives.md).
 
 ## `mins`
 
@@ -63,7 +59,6 @@ q)mins 0N 5 0N 1 3         / initial nulls return infinity
 
 `mins` is a uniform function, equivalent to `&\`.
 
-
 ## `mmin`
 
 _Moving minimums_
@@ -72,10 +67,10 @@ _Moving minimums_
 x mmin y     mmin[x;y]
 ```
 
-Where `y` is a non-symbol sortable list and `x` is a 
+Where `y` is a non-symbol sortable list and `x` is a
 
--   positive int atom, returns the `x`-item moving minimums of `y`, with nulls treated as the minimum value; the first `x` items of the result are the minimums of the terms so far, and thereafter the result is the moving minimum
--   0 or a negative int, returns `y`
+- positive int atom, returns the `x`-item moving minimums of `y`, with nulls treated as the minimum value; the first `x` items of the result are the minimums of the terms so far, and thereafter the result is the moving minimum
+- 0 or a negative int, returns `y`
 
 ```q
 q)3 mmin 0N -3 -2 1 -0W 0
@@ -86,19 +81,19 @@ q)3 mmin 0N -3 -2 1 0N -0W    / null is the minimum value
 
 `mmin` is a uniform function.
 
-:fontawesome-solid-graduation-cap:
-[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-
+[Sliding windows](../examples/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 
 ## Domain and range
 
 `min` and `mins`
+
 ```txt
 domain: b g x h i j e f c s p m d z n u v t
 range:  b . x h i j e f c . p m d z n u v t
 ```
 
 `mmin`
+
 ```txt
     b g x h i j e f c s p m d z n u v t
 ----------------------------------------
@@ -124,10 +119,9 @@ t | . . . . . . . . . . . . . . . . . .
 
 Range: `bcdefghijmnpstuvxz`
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-`min`, `mins`, and `mmin` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+`min`, `mins`, and `mmin` apply to [dictionaries and tables](math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
@@ -166,10 +160,9 @@ q)min (1 2;0N 4)
 0N 2
 ```
 
-
 ----
-:fontawesome-solid-book:
+
 [`max`, `maxs`, `mmax`](max.md)
 <br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
+
+[Mathematics](math.md)

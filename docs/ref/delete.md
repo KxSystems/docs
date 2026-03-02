@@ -1,8 +1,8 @@
 ---
-title: delete query | Reference | kdb+ and q documentation
+title: delete query | Reference | KDB-X and q documentation
 description: delete is a qSQL template that removes rows or columns from a table, entries from a dictionary, or objects from a namespace.
-author: Stephen Taylor
-keywords: delete, functional kdb+, q, query, qsql, sql
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: delete, functional KDB-X, q, query, qsql, sql
 ---
 # `delete`
 
@@ -14,11 +14,11 @@ delete    from x where pw
 delete ps from x
 ```
 
-!!! info "`delete` is a [qSQL query template](../basics/qsql.md) and varies from regular q syntax"
+!!! info "`delete` is a [qSQL query template](qsql.md) and varies from regular q syntax"
 
 For the Delete operator `!`, see
-:fontawesome-solid-book-open:
-[Functional SQL](../basics/funsql.md#delete)
+
+[Functional SQL](funsql.md#delete)
 
 
 ## Table rows
@@ -104,8 +104,8 @@ c| 2
 
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
-    :fontawesome-regular-hand-point-right:
-    [qSQL](../basics/qsql.md#cond)
+    
+    [qSQL](qsql.md#cond)
 
 
 ## Namespace objects
@@ -131,6 +131,6 @@ q)\v
 `symbol$()
 ```
 
-:fontawesome-regular-hand-point-right:
-[qSQL](../basics/qsql.md)
+
+[qSQL](qsql.md)
 

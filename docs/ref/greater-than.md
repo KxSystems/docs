@@ -1,12 +1,10 @@
 ---
-title: Greater Than, At Least – Reference – kdb+ and q documentation
+title: Greater Than, At Least – Reference – KDB-X and q documentation
 description: Greater Than and At Least are q operators that compare their arguments.
-author: Stephen Taylor
-keywords: comparison, greater-than, greater-than-or-equal, kdb+, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: comparison, greater-than, greater-than-or-equal, KDB-X, q
 ---
 # `>` Greater Than <br>`>=` At Least
-
-
 
 ```syntax
 x>y    >[x;y]
@@ -35,10 +33,9 @@ q)0 1 >=/:\: 0 1
 11b
 ```
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-Greater Than and At Least are [atomic functions](../basics/atomic.md).
+Greater Than and At Least are [atomic functions](atomic.md).
 
 ```q
 q)(10;20 30)>(50 -20;5)
@@ -46,7 +43,7 @@ q)(10;20 30)>(50 -20;5)
 11b
 ```
 
-They apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+They apply to [dictionaries and tables](math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -69,7 +66,6 @@ abc| 1 0
 def| 0 0
 ghi| 0 0
 ```
-
 
 ## Range and domain
 
@@ -98,10 +94,9 @@ t | b . b b b b b b b . b . . b b b b b
 
 Range: `b`
 
-
 ----
-:fontawesome-solid-book:
+
 [Less Than, Up To](less-than.md)
 <br>
-:fontawesome-solid-book-open:
-[Comparison](../basics/comparison.md)
+
+[Comparison](comparison.md)

@@ -1,7 +1,7 @@
 ---
-title: xrank – group by value | Reference | kdb+ and q documentation
+title: xrank – group by value | Reference | KDB-X and q documentation
 description: xrank is a q keyword that groups its argument by value.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `xrank`
 
@@ -67,5 +67,5 @@ bucket| Min Max Count
 
 
 ----
-:fontawesome-solid-book-open:
-[Sorting](../basics/by-topic.md#sort)
+
+[Sorting](by-topic.md#sort)

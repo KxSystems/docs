@@ -1,5 +1,5 @@
 ---
-title: reverse the order of items in a list or dictionary | Reference | kdb+ and q documentation
+title: reverse the order of items in a list or dictionary | Reference | KDB-X and q documentation
 description: reverse is a q keyword that reverses the order of items in a list or dictionary.
 ---
 # `reverse`
@@ -40,5 +40,5 @@ a b
 ```
 
 ----
-:fontawesome-solid-book: 
+ 
 [`rotate`](rotate.md)

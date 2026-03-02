@@ -1,20 +1,18 @@
 ---
-title: Greater, or | Reference | kdb+ and q documentation
+title: Greater, or | Reference | KDB-X and q documentation
 description: Greater is a q operator that returns the greater of its arguments. or is a q keyword that performs a logical OR.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `|` Greater, `or`
 
 _Greater; logical OR_
-
-
 
 ```syntax
 x|y       |[x;y]
 x or y    or[x;y]
 ```
 
-Returns the [greater](../basics/comparison.md) of the underlying values of `x` and `y`.
+Returns the [greater](comparison.md) of the underlying values of `x` and `y`.
 
 ```q
 q)2|3
@@ -25,19 +23,17 @@ q)"sat"|"cow"
 "sow"
 ```
 
-`|` is a [multithreaded primitive](../kb/mt-primitives.md).
-
+`|` is a [multithreaded primitive](mt-primitives.md).
 
 ## Flags
 
-Where `x` and `y` are both [flags](../basics/glossary.md#flag), Greater is logical OR.
+Where `x` and `y` are both [flags](glossary.md#flag), Greater is logical OR.
 
 !!! tip "Use `or` for flags"
 
     While Greater and `or` are synonyms, it helps readers to apply `or` only and wherever flag arguments are expected. 
 
     There is no performance implication.
-
 
 ## Dictionaries and keyed tables
 
@@ -67,7 +63,6 @@ appl | 2015.03
 goog | 2017.12
 ```
 
-
 ## Mixed types
 
 Where `x` and `y` are of different types the greater of their underlying values is returned as the higher of the two types.
@@ -77,10 +72,9 @@ q)98|"a"
 "b"
 ```
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-Greater and `or` are [atomic functions](../basics/atomic.md).
+Greater and `or` are [atomic functions](atomic.md).
 
 ```q
 q)(10;20 30)|(2;3 4)
@@ -88,7 +82,7 @@ q)(10;20 30)|(2;3 4)
 20 30
 ```
 
-They apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+They apply to [dictionaries and tables](math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -116,7 +110,6 @@ abc| 10 5
 def| 5  5
 ghi| 5  5
 ```
-
 
 ## Domain and range
 
@@ -146,13 +139,13 @@ t | t . t t t t t t t . t . . t n t t t
 Range: `bcdefhijmnptuvxz`
 
 ----
-:fontawesome-solid-book:
+
 [`and`, `&`, Lesser](lesser.md), [`max`](max.md), [`min`](min.md)
 <br>
-:fontawesome-solid-book-open:
-[Comparison](../basics/comparison.md),
-[Logic](../basics/by-topic.md#logic)
+
+[Comparison](comparison.md),
+[Logic](by-topic.md#logic)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser-amp)
+[§4.5 Greater and Lesser](../learn/q4m/4_Operators.md#45-greater-and-lesser)

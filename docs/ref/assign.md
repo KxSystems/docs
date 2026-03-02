@@ -1,7 +1,7 @@
 ---
-title: Assign operator | Reference | kdb+ and q documentation
+title: Assign operator | Reference | KDB-X and q documentation
 description: Name a value in q
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # Assign
 
@@ -135,7 +135,7 @@ q)s
 
     [Amend At](amend.md) is more general, and extends assignment-through-operator to derived functions, keywords and lambdas.
 
-If `x` is undefined, the [identity element](../basics/glossary.md#identity-element) for `op` is used as a default.
+If `x` is undefined, the [identity element](glossary.md#identity-element) for `op` is used as a default.
 
 ```q
 q)bar
@@ -144,14 +144,14 @@ q)bar
        ^
 q)bar+:1
 q)bar
-1
+1q4m
 ```
 
 Some operators have significant differences between their base and assignment form, for example [`,`](join.md).
 
 ## Pattern match
 
-See [Pattern matching](../basics/pattern.md#assignment)
+See [Pattern matching](pattern.md#assignment)
 
 ## Syntax
 
@@ -198,10 +198,10 @@ q):/[1 2 3 4 5]
 ```
 
 ----
-:fontawesome-solid-book:
-[Amend, Amend At](../ref/amend.md)
+
+[Amend, Amend At](amend.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§4.6.2 Simple q Amend](/q4m3/4_Operators/#462-simple-q-amend)
+[§4.6.2 Simple q Amend](../learn/q4m/4_Operators.md/#462-simple-q-amend)
 

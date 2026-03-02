@@ -1,7 +1,7 @@
 ---
-title: over, scan – wrappers for the Over and Scan accumulating iterators | Reference | kdb+ and q documentation
+title: over, scan – wrappers for the Over and Scan accumulating iterators | Reference | KDB-X and q documentation
 description: over and scan are q keywords that are wrappers for the Over and Scan accumulating iterators.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: March 2019
 ---
 # `over`, `scan`
@@ -26,10 +26,10 @@ See the [Accumulators](accumulators.md) for a more detailed discussion.
 
 Where
 
--   `v1` is a unary [applicable value](../basics/glossary.md#applicable-value)
--   `vv` is a [variadic](../basics/variadic.md) applicable value
+-   `v1` is a unary [applicable value](glossary.md#applicable-value)
+-   `vv` is a [variadic](variadic.md) applicable value
 
-applies the value progressively to `x`, then to `v1[x]` (or `vv[x]`), and so on, until the result matches (within [comparison tolerance](../basics/precision.md#comparison-tolerance)) either
+applies the value progressively to `x`, then to `v1[x]` (or `vv[x]`), and so on, until the result matches (within [comparison tolerance](precision.md#comparison-tolerance)) either
 
 -   the previous result; or
 -   `x`.
@@ -55,9 +55,9 @@ and for the related forms Do and While.
 v2 over x   over[v2;x]        v2 scan x   scan[v2;x]
 ```
 
-Where `v2` is a binary [applicable value](../basics/glossary.md#applicable-value), applies `v2` progressively between successive items.
+Where `v2` is a binary [applicable value](glossary.md#applicable-value), applies `v2` progressively between successive items.
 
-`scan[v2;]` is a [uniform function](../basics/glossary.md#uniform-function) and `over[v2;]` is an [aggregate function](../basics/glossary.md#aggregate-function).
+`scan[v2;]` is a [uniform function](glossary.md#uniform-function) and `over[v2;]` is an [aggregate function](glossary.md#aggregate-function).
 
 ```q
 q)(+) scan 1 2 3 4 5
@@ -95,5 +95,5 @@ sums     scan[+;]     +\  Add Scan
 
 
 ----
-:fontawesome-solid-book:
+
 [Accumulators](accumulators.md)

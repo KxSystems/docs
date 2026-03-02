@@ -1,14 +1,12 @@
 ---
-title: mod | Reference | kdb+ and q documentation
+title: mod | Reference | KDB-X and q documentation
 description: mod is a q keyword that returns the modulus of a number.
-author: Stephen Taylor
-keywords: kdb+, math, mathematics, modulus, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: KDB-X, math, mathematics, modulus, q
 ---
 # `mod`
 
 _Modulus_
-
-
 
 ```syntax
 x mod y    mod[x;y]
@@ -28,12 +26,11 @@ q)-7 7 mod/:\:-2.5 -2 2 2.5
 -0.5 -1 1 2
 ```
 
-`mod` is a [multithreaded primitive](../kb/mt-primitives.md).
+`mod` is a [multithreaded primitive](mt-primitives.md).
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-`mod` is an [atomic function](../basics/atomic.md).
+`mod` is an [atomic function](atomic.md).
 
 ```q
 q)(10;20 30)mod(7 13;-12)
@@ -41,7 +38,7 @@ q)(10;20 30)mod(7 13;-12)
 -4 -6
 ```
 
-It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables).
+It applies to [dictionaries and keyed tables](math.md#dictionaries-and-tables).
 
 ```q
 q)d mod 5
@@ -59,7 +56,6 @@ abc| 0 4
 def| 4 0
 ghi| 3 4
 ```
-
 
 ## Domain and range
 
@@ -89,11 +85,11 @@ t | t . t t t t t f t . . . . . . . . .
 Range: `defijmnptuvz`
 
 ----
-:fontawesome-solid-book: 
-[`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md) 
+
+[`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md)
 <br>
-:fontawesome-solid-book-open: 
-[Mathematics](../basics/math.md)
+
+[Mathematics](math.md)
 <br>
-:fontawesome-solid-street-view: 
-_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](/q4m3/4_Operators/#481-integer-division-div-and-modulus-mod)
+
+_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](../learn/q4m/4_Operators.md/#481-integer-division-div-and-modulus-mod)

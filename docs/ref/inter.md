@@ -1,8 +1,8 @@
 ---
-title: inter – Reference – kdb+ and q documentation
+title: inter – Reference – KDB-X and q documentation
 description: inter is a q keyword that returns the intersection of two lists or dictionaries.
-author: Stephen Taylor
-keywords: inter, intersection, kdb+, q, select
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: inter, intersection, KDB-X, q, select
 ---
 # `inter`
 
@@ -65,8 +65,8 @@ t 40
 ```
 
 ---
-:fontawesome-solid-book:
+
 [`in`](in.md), [`within`](within.md)
 <br>
-:fontawesome-solid-book-open:
-[Selection](../basics/by-topic.md#selection)
+
+[Selection](by-topic.md#selection)

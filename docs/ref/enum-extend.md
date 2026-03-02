@@ -1,7 +1,7 @@
 ---
-title: Enum Extend | Reference | kdb+ and q documentation
+title: Enum Extend | Reference | KDB-X and q documentation
 description: Enum Extend is a q operator that extends an enumeration.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `?` Enum Extend
 
@@ -91,25 +91,25 @@ fcntl(1024, F_SETLKW, {type=F_WRLCK, whence=SEEK_CUR, start=0, len=0}) = 0
 ```
 
 If that return value is not 0, then the lock failed and may not be supported by the chosen filesystem.
-kdb+ does not report an error if that lock call fails.
+KDB-X does not report an error if that lock call fails.
 
 Enum Extend is a uniform function. 
 
 ----
-:fontawesome-solid-book: 
+ 
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
 [`.Q.en` (enumerate varchar cols)](dotq.md#en-enumerate-varchar-cols),
 [`?` query overloads](overloads.md#query)
 <br>
-:fontawesome-solid-book-open:
-[Enumerations](../basics/enumerations.md),
-[File system](../basics/files.md)
+
+[Enumerations](enumerations.md),
+[File system](files.md)
 <br>
-:fontawesome-solid-graduation-cap:
-[Enumerating symbol columns in a table](../kb/splayed-tables.md#enumerating-symbol-columns)
+
+[Enumerating symbol columns in a table](../how_to/interact_with_databases/splayed-tables.md#enumerating-symbol-columns)
 <br>
-:fontawesome-solid-street-view: 
+ 
 _Q for Mortals_
-[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
+[§7.5 Enumerations](../learn/q4m/7_Transforming_Data.md/#75-enumerations)  
 

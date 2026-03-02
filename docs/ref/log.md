@@ -1,13 +1,11 @@
 ---
-title: log, xlog – logarithms | Reference | kdb+ and q documentation
+title: log, xlog – logarithms | Reference | KDB-X and q documentation
 description: log and xlog are q keywords that return logarithms, either natural or to a specified base.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `log`, `xlog`
 
 _Logarithms and natural logarithms_
-
-
 
 ## `log`
 
@@ -17,12 +15,12 @@ _Natural logarithm_
 log x    log[x]
 ```
 
-Where `x` is numeric and 
+Where `x` is numeric and
 
--   null, returns null
--   0, returns `-0w`
--   a datetime, returns `x`
--   otherwise, the natural logarithm of `x`
+- null, returns null
+- 0, returns `-0w`
+- a datetime, returns `x`
+- otherwise, the natural logarithm of `x`
 
 ```q
 q)log 1
@@ -35,13 +33,12 @@ q)log -2 0n 0 0.1 1 42
 0n 0n -0w -2.302585 0 3.73767
 ```
 
-`log` is a [multithreaded primitive](../kb/mt-primitives.md).
+`log` is a [multithreaded primitive](mt-primitives.md).
 
+### Implicit iteration
 
-### :fontawesome-solid-sitemap: Implicit iteration
-
-`log` is an [atomic function](../basics/atomic.md).
-It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables)
+`log` is an [atomic function](atomic.md).
+It applies to [dictionaries and tables](math.md#dictionaries-and-tables)
 
 ```q
 q)log(2;3 4)
@@ -69,7 +66,6 @@ def|          1.609438
 ghi| 1.098612
 ```
 
-
 ### Domain and range
 
 ```txt
@@ -79,9 +75,8 @@ range  f . f f f f f f f . f f f z f f f f
 
 Range: `fz`
 
-
-
 ----
+
 ## `xlog`
 
 _Logarithm_
@@ -112,13 +107,12 @@ q)"A"xlog"C"
 1.00726
 ```
 
-`xlog` is a [multithreaded primitive](../kb/mt-primitives.md).
+`xlog` is a [multithreaded primitive](mt-primitives.md).
 
+### Implicit iteration
 
-### :fontawesome-solid-sitemap: Implicit iteration
-
-`xlog` is an [atomic function](../basics/atomic.md).
-It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables)
+`xlog` is an [atomic function](atomic.md).
+It applies to [dictionaries and tables](math.md#dictionaries-and-tables)
 
 ```q
 q)(2;3 4)xlog(4;5 6)
@@ -144,7 +138,6 @@ def|           0.69897
 ghi| 0.4771213
 ```
 
-
 ### `xlog` and `xexp`
 
 `xlog` is the inverse of `xexp`, i.e. `y~x xexp x xlog y`.
@@ -153,7 +146,6 @@ ghi| 0.4771213
 q)2 xexp 2 xlog -1 0 0.125 1 42
 0n 0 0.125 1 42
 ```
-
 
 ### Domain and range
 
@@ -183,9 +175,8 @@ t    | f . f f f f f f f . f f f . f f f f
 Range: `f`
 
 ----
-:fontawesome-solid-book: 
+
 [`exp`, `xexp`](exp.md)
 <br>
-:fontawesome-solid-book-open: 
-[Datatypes](../basics/datatypes.md)
 
+[Datatypes](datatypes.md)

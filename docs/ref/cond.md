@@ -1,8 +1,8 @@
 ---
-title: Cond | Reference | kdb+ and q documentation
+title: Cond | Reference | KDB-X and q documentation
 description: Cond is a q control construct for conditional evaluation.
-author: Stephen Taylor
-keywords: cond, conditional, control, dollar, kdb+, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: cond, conditional, control, dollar, KDB-X, q
 ---
 # `$` Cond
 
@@ -104,23 +104,23 @@ Name scope within its brackets is the same as outside them.
 
     Using [`if`](if.md) is a clearer signal to the reader that a side effect is intended.)
 
-    Also, setting a variable in a code branch can have [unintended consequences](../basics/function-notation.md#name-scope).
+    Also, setting a variable in a code branch can have [unintended consequences](function-notation.md#name-scope).
 
 
 ## Query templates
 
-Cond is not supported inside [qSQL queries](../basics/qsql.md).
+Cond is not supported inside [qSQL queries](qsql.md).
 Instead, use [Vector Conditional](vector-conditional.md).
 
 
 ----
-:fontawesome-solid-book:
+
 [`$` dollar](overloads.md#dollar),
 [Vector Conditional](vector-conditional.md)
 <br>
-:fontawesome-solid-book-open:
-[Controlling evaluation](../basics/control.md)
+
+[Controlling evaluation](control.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§10.1.1 Basic Conditional Evaluation](/q4m3/10_Execution_Control/#1011-basic-conditional-evaluation)
+[§10.1.1 Basic Conditional Evaluation](../learn/q4m/10_Execution_Control.md/#1011-basic-conditional-evaluation)

@@ -1,7 +1,7 @@
 ---
-title: prior – a wrapper for the Each Prior iterator | Reference | kdb+ and q documentation
+title: prior – a wrapper for the Each Prior iterator | Reference | KDB-X and q documentation
 description: prior is a q keyword that is a wrapper for the Each Prior iterator.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: March 2019
 ---
 # `prior`
@@ -15,12 +15,12 @@ date: March 2019
 
 Where
 
--   `v2` is a binary [applicable value](../basics/glossary.md#applicable-value)
--   `vv` is a [variadic](../basics/variadic.md) applicable value
+-   `v2` is a binary [applicable value](glossary.md#applicable-value)
+-   `vv` is a [variadic](variadic.md) applicable value
 
 applies `v2` or `vv` to each item of `x` and the item preceding it, and returns a result of the same length.
 
-That is, the projections  `prior[v2;]` and `prior[vv;]` are [uniform](../basics/glossary.md#uniform-function) functions.
+That is, the projections  `prior[v2;]` and `prior[vv;]` are [uniform](glossary.md#uniform-function) functions.
 
 ```q
 q)(+) prior til 10
@@ -37,5 +37,5 @@ See the [iterator](maps.md#each-prior) for how the first item of the result is d
 
 ----
 
-:fontawesome-solid-book:
+
 [Each Prior](maps.md#each-prior)

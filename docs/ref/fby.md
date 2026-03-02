@@ -1,8 +1,8 @@
 ---
-title: fby – Reference – kdb+ and q documentation
+title: fby – Reference – KDB-X and q documentation
 description: fby is a q keyword that applies an aggregate function to groups.
-author: Stephen Taylor
-keywords: fby, group, kdb+, q, query, qsql, sql
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: fby, group, KDB-X, q, query, qsql, sql
 ---
 # `fby`
 
@@ -205,5 +205,5 @@ s4 p2 200 500
     In V2.6 and below, `fby`’s behavior is undefined if the aggregation function returns a list; it usually signals an error from the k definition of `fby`. However, if the concatenation of all list results from the aggregation function results `raze` has the same length as the original vectors, a list of some form is returned, but the order of its items is not clearly defined.
 
 ---
-:fontawesome-solid-book-open:
-[q-SQL](../basics/qsql.md)
+
+[q-SQL](qsql.md)

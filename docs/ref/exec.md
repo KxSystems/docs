@@ -1,8 +1,8 @@
 ---
-title: exec keyword | Reference | kdb+ and q documentation
+title: exec keyword | Reference | KDB-X and q documentation
 description: exec is a q keyword that returns selected rows and columns from a table. Exec is a q operator that does the same in functional SQL.
-author: Stephen Taylor
-keywords: kdb+, q, table
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: KDB-X, q, table
 ---
 # `exec`
 
@@ -13,8 +13,8 @@ _Return selected rows and columns from a table_
 !!! info "`exec` is a qSQL query template and varies from regular q syntax."
 
 For the Exec operator `?`, see 
-:fontawesome-solid-book-open:
-[Functional SQL](../basics/funsql.md)
+
+[Functional SQL](funsql.md)
 
 
 
@@ -26,13 +26,13 @@ Below, square brackets mark optional elements.
 exec [distinct] _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 </div>
 
-:fontawesome-solid-book-open:
-[qSQL syntax](../basics/qsql.md)
+
+[qSQL syntax](qsql.md)
 
 
 ## From phrase
 
-The [table expression](../basics/qsql.md#from-phrase) _t<sub>exp</sub>_ may be a table in memory, or on disk, where it may be splayed but not partitioned. 
+The [table expression](qsql.md#from-phrase) _t<sub>exp</sub>_ may be a table in memory, or on disk, where it may be splayed but not partitioned. 
 
 The workaround is to use the result of a `select` query as the table expression:
 
@@ -157,21 +157,21 @@ s1| `s$`s1`s1`s1`s1`s4`s1`s2`s2`s3`s4`s4`s1
 ## Cond
 
 Cond is not supported inside query templates: 
-see [qSQL](../basics/qsql.md#cond).
+see [qSQL](qsql.md#cond).
 
 
 
 ----
 
-:fontawesome-solid-book:
+
 [`delete`](delete.md),
 [`select`](select.md),
 [`update`](update.md)
 <br>
-:fontawesome-solid-book-open:
-[qSQL](../basics/qsql.md),
-[Functional SQL](../basics/funsql.md)
+
+[qSQL](qsql.md),
+[Functional SQL](funsql.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§9.4 The `exec` Template](/q4m3/9_Queries_q-sql/#94-the-exec-template)  
+[§9.4 The `exec` Template](../learn/q4m/9_Queries_q-sql.md/#94-the-exec-template)  

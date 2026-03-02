@@ -1,8 +1,8 @@
 ---
-title: Find | Reference | kdb+ and q documentation
+title: Find | Reference | KDB-X and q documentation
 description: Find is a q operator that finds the first occurrence of an item in a list.
-author: Stephen Taylor
-keywords: find, kdb+, q, query, search
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: find, KDB-X, q, query, search
 ---
 # `?` Find
 
@@ -18,7 +18,7 @@ where `x` is a list or a null, returns for
 -   **atom** `y` the smallest index of `y`
 -   **list** `y` the smallest index of each item of `y`
 
-Where `y` or an item of it is not found in `x`, the smallest index is the smallest integer not found in `key x`, i.e. `count x`. Comparisons are exact and are not subject to to [comparison tolerance](../basics/precision.md).
+Where `y` or an item of it is not found in `x`, the smallest index is the smallest integer not found in `key x`, i.e. `count x`. Comparisons are exact and are not subject to to [comparison tolerance](precision.md).
 
 ```q
 q)w:10 -8 3 5 -1 2 3
@@ -36,7 +36,7 @@ q)"abcde"?"d"
 3
 ```
 
-`?`(find) is a [multithreaded primitive](../kb/mt-primitives.md).
+`?`(find) is a [multithreaded primitive](mt-primitives.md).
 
 
 ## Type-specific

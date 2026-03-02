@@ -1,7 +1,7 @@
 ---
-title: var, svar – variance and sample variance | Reference | kdb+ and q documentation
+title: var, svar – variance and sample variance | Reference | KDB-X and q documentation
 description: var and svar are q keywords that return (respectively) the variance and sample variance of their argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `var`, `svar`
 
@@ -48,7 +48,7 @@ a| 1.555556
 b| 4
 ```
 
-`var` is a [multithreaded primitive](../kb/mt-primitives.md).
+`var` is a [multithreaded primitive](mt-primitives.md).
 
 
 ## `svar`
@@ -90,7 +90,7 @@ a| 2.333333
 b| 8
 ```
 
-`svar` is a [multithreaded primitive](../kb/mt-primitives.md).
+`svar` is a [multithreaded primitive](mt-primitives.md).
 
 
 ## Domain and range
@@ -103,16 +103,16 @@ range:  f . f f f f f f f . f f f f f f f f
 
 
 ----
-:fontawesome-solid-book:
+
 [`cov, scov`](cov.md)
 <br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
+
+[Mathematics](math.md)
 <br>
-:fontawesome-brands-wikipedia-w:
+
 [Covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia"),
 [Variance](https://en.wikipedia.org/wiki/Variance "Wikipedia")
 <br>
-:fontawesome-solid-globe:
+
 [Variance](http://financereference.com/learn/variance "financereference.com")
 

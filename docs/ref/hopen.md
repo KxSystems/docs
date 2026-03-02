@@ -1,7 +1,7 @@
 ---
-title: Connect and disconnect files and processes | Reference | kdb+ and q documentation
+title: Connect and disconnect files and processes | Reference | KDB-X and q documentation
 description: hopen and hclose are q keywords for connecting and disconnecting files and processes.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `hopen`, `hclose`
 
@@ -12,10 +12,10 @@ author: Stephen Taylor
 </div>
 
 
-kdb+ communicates with the [file system](../basics/files.md) and other processes through
+KDB-X communicates with the [file system](files.md) and other processes through
 
 -   one-shot functions
--   [handles](../basics/handles.md) to persistent connections
+-   [handles](handles.md) to persistent connections
 
 Connections are opened and closed respectively by `hopen` and `hclose`.
 
@@ -102,7 +102,7 @@ SSL/TLS
 : tcp with SSL/TLS encryption
 : `` `:unixs://port ``
 : unix domain socket with SSL/TLS encryption
-: :fontawesome-solid-graduation-cap: [SSL/TLS](../kb/ssl.md)
+:  [SSL/TLS](../how_to/io_and_communication/ssl.md)
 
 Fifo/named pipe
 
@@ -120,7 +120,7 @@ hopen `:tcps://mydb.us.com:5010              / SSL/TLS with hostname
 hopen (`:mydb.us.com:5010:elmo:sesame;10000) / full arg list, 10s timeout
 ```
 
-User and password are required if the server session has been started with the [`-u`](../basics/cmdline.md#-u-usr-pwd-local) or [`-U`](../basics/cmdline.md#-u-usr-pwd) command line options, and are passed to [`.z.pw`](dotz.md#zpw-validate-user) for (optional) additional processing.
+User and password are required if the server session has been started with the [`-u`](cmdline.md#-u-usr-pwd-local) or [`-U`](cmdline.md#-u-usr-pwd) command line options, and are passed to [`.z.pw`](dotz.md#zpw-validate-user) for (optional) additional processing.
 
 The optional timeout applies to the initial connection, not subsequent use of it.
 
@@ -189,19 +189,19 @@ q)neg[h][];hclose h;
 
 
 ----
-:fontawesome-solid-book:
+
 [`.Q.Xf`](dotq.md#xf-create-file) (create file)
 <br>
-:fontawesome-solid-book-open:
-[Communication handle](../basics/glossary.md#communication-handle),
-[Connection handle](../basics/glossary.md#connection-handle),
-[File system](../basics/files.md),
-[Interprocess communication](../basics/ipc.md)
+
+[Communication handle](glossary.md#communication-handle),
+[Connection handle](glossary.md#connection-handle),
+[File system](files.md),
+[Interprocess communication](../how_to/io_and_communication/ipc.md)
 <br>
-:fontawesome-solid-graduation-cap:
-[Named pipes](../kb/named-pipes.md),
-[SSL/TLS](../kb/ssl.md)
+
+[Named pipes](../how_to/io_and_communication/named-pipes.md),
+[SSL/TLS](../how_to/io_and_communication/ssl.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§11.6.2 Opening a Connection Handle](/q4m3/11_IO/#1162-opening-a-connection-handle)
+[§11.8.2 Opening a Connection Handle](../learn/q4m/11_IO.md/#1182-opening-a-connection-handle)

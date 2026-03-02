@@ -1,15 +1,12 @@
 ---
-title: dsave saves a list of tables | Reference | kdb+ and q documentation
-description: dsave is a q keyword that saves global tables to disk as splayed, enumerated, indexed kdb+ tables.
-author: Stephen Taylor
-keywords: enumerated, indexed, kdb+, q, splayed, table
+title: dsave saves a list of tables | Reference | KDB-X and q documentation
+description: dsave is a q keyword that saves global tables to disk as splayed, enumerated, indexed KDB-X tables.
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: enumerated, indexed, KDB-X, q, splayed, table
 ---
-# :fontawesome-solid-database: `dsave`
+# `dsave`
 
-_Write global tables to disk as splayed, enumerated, indexed kdb+ tables._
-
-
-
+_Write global tables to disk as splayed, enumerated, indexed KDB-X tables._
 
 ```syntax
 x dsave y     dsave[x;y]
@@ -17,8 +14,8 @@ x dsave y     dsave[x;y]
 
 Where
 
--   `x` is the _save path_ as a file symbol atom or vector
--   `y` is one or more table names as a symbol atom or vector
+- `x` is the _save path_ as a file symbol atom or vector
+- `y` is one or more table names as a symbol atom or vector
 
 save the table/s and returns the list of table names.
 (Since V3.2 2014.05.07.)
@@ -46,18 +43,7 @@ ask  | f
 bsize| j    
 asize| j    
 
-q)type each flip t
-sym  | 11
-price| 9
-size | 7
-q)type each flip q
-sym  | 11
-bid  | 9
-ask  | 9
-bsize| 7
-asize| 7
-
-q)`:/tmp/db1 dsave`sym xasc'`t`q
+q)`:/tmp/db1 dsave `sym xasc/:`t`q
 `t`q
 q)\l /tmp/db1
 
@@ -75,17 +61,6 @@ bid  | f
 ask  | f    
 bsize| j    
 asize| j    
-
-q)type each flip t
-sym  | 20
-price| 9
-size | 7
-q)type each flip q
-sym  | 20
-bid  | 9
-ask  | 9
-bsize| 7
-asize| 7
 ```
 
 In the following, the left argument is a list, of which the second item is a partition name.
@@ -94,33 +69,7 @@ In the following, the left argument is a list, of which the second item is a par
 q)t:flip`sym`price`size!100?'(-10?`3;1.0;10)
 q)q:flip`sym`bid`ask`bsize`asize!900?'(distinct t`sym;1.0;1.0;10;10)
 
-q)meta t
-c    | t f a
------| -----
-sym  | s    
-price| f    
-size | j    
-q)meta q
-c    | t f a
------| -----
-sym  | s    
-bid  | f    
-ask  | f    
-bsize| j    
-asize| j    
-
-q)type each flip t
-sym  | 11
-price| 9
-size | 7
-q)type each flip q
-sym  | 11
-bid  | 9
-ask  | 9
-bsize| 7
-asize| 7
-
-q)`:/tmp/db2`2015.01.01 dsave`sym xasc'`t`q
+q)`:/tmp/db2`2015.01.01 dsave `sym xasc/:`t`q
 `t`q
 q)\l /tmp/db2
 
@@ -143,13 +92,10 @@ asize| j
 ```
 
 ----
-:fontawesome-solid-book: 
-[`set`](get.md#set), 
-[`.Q.en`](dotq.md#en-enumerate-varchar-cols), 
-[`.Q.dpft`](dotq.md#dpft-save-table), 
-[`.Q.hdpf`](dotq.md#hdpf-save-tables) 
-<br>
-:fontawesome-solid-book-open:
-[File system](../basics/files.md)
 
+[`set`](get.md#set),
+[`.Q.en`](dotq.md#en-enumerate-varchar-cols),
+[`.Q.dpft`](dotq.md#dpft-save-table),
+[`.Q.hdpf`](dotq.md#hdpf-save-tables)
 
+[File system](files.md)

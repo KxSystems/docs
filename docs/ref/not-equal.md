@@ -1,8 +1,8 @@
 ---
-title: Not Equal | Reference | kdb+ and q documentation
+title: Not Equal | Reference | KDB-X and q documentation
 description: Not Equal is a q operator that flags whether its arguments have the same value.
-author: Stephen Taylor
-keywords: compare, equal, kdb+, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: compare, equal, KDB-X, q
 ---
 # `<>` Not Equal
 
@@ -21,11 +21,11 @@ q)(3;"a")<>(2 3 4;"abc")
 ```
 
 ---
-:fontawesome-solid-book: 
+ 
 [Equal `=`](equal.md)
 <br>
-:fontawesome-solid-book-open: 
-[Comparison](../basics/comparison.md)
+ 
+[Comparison](comparison.md)
 <br>
-:fontawesome-solid-street-view: 
-_Q for Mortals_: [§4.3.1 Equality = and Disequality <>](/q4m3/4_Operators/#431-equality-and-disequality)
+ 
+_Q for Mortals_: [§4.3.1 Equality = and Inequality <>](../learn/q4m/4_Operators.md#431-equality-and-inequality)

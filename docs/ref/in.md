@@ -1,7 +1,7 @@
 ---
-title: in | Reference | kdb+ and q documentation
+title: in | Reference | KDB-X and q documentation
 description: in is a q keyword that flags whether its left argument is an item in its right argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: November 2020
 ---
 # `in`
@@ -19,7 +19,7 @@ Where `y` is
 -   an **atom or vector** of the same type as `x`, returns whether atoms of `x` are items of `y`
 -   a **list**, returns as a boolean atom whether `x` is an item of `y`
 
-Where `y` is an atom or vector, comparison is [left-atomic](../basics/glossary.md#left-atomic-function).
+Where `y` is an atom or vector, comparison is [left-atomic](glossary.md#left-atomic-function).
 
 ```q
 q)"x" in "a"                                    / atom in atom
@@ -62,7 +62,7 @@ q)(1 2;3 4) in ((1 2;3 4);9)  / x is an item of y
 
 `in` uses [Find](find.md) to search for `x` in `y`.
 
-`in` is a [multithreaded primitive](../kb/mt-primitives.md).
+`in` is a [multithreaded primitive](mt-primitives.md).
 
 
 ## Queries
@@ -80,7 +80,7 @@ p5| cam   blue  12     paris
 ```
 
 
-## :fontawesome-solid-triangle-exclamation:{: style="color:red"} Mixed argument types
+## {: style="color:red"} Mixed argument types
 
 Optimized support for atom or 1-list `y` allows a wider input type mix.
 
@@ -126,12 +126,12 @@ q)any ` ~/: (1 2;`)
 
 
 ----
-:fontawesome-solid-book:
+
 [`except`](except.md),
 [`inter`](inter.md),
 [`within`](within.md),
 [`union`](union.md)
 <br>
-:fontawesome-solid-book-open:
-[Search](../basics/by-topic.md#search)
+
+[Search](by-topic.md#search)
 

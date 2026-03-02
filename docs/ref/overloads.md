@@ -1,7 +1,7 @@
 ---
-title: Overloaded glyphs | Reference | kdb+ and q documentation
+title: Overloaded glyphs | Reference | KDB-X and q documentation
 description: Many non-alphabetic keyboard characters are overloaded by q. This page tabulates their different forms. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # Overloaded glyphs
 
@@ -30,7 +30,7 @@ rank | syntax          | semantics
 rank | syntax                 | semantics
 :---:|------------------------|---------------------------------------
 n/a  | `\`                    | ends multiline comment
-n/a  | `\`                    | [Abort](../basics/syscmds.md#terminate), [Toggle](../basics/syscmds.md#toggle-qk)
+n/a  | `\`                    | [Abort](syscmds.md#terminate), [Toggle](syscmds.md#toggle-qk)
 1    | `(u\)`, `u\[d]`        | [Converge](accumulators.md#converge)
 2    | `n u\d`, `u\[n;d]`     | [Do](accumulators.md#do)
 2    | `t u\d`, `u\[t;d]`     | [While](accumulators.md#while)
@@ -54,8 +54,8 @@ rank | syntax            | semantics
 2    | `noasv!iv`        | [Enumeration](enumeration.md) from index
 2    | `sv!h`            | [Flip Splayed or Partitioned](flip-splayed.md)
 2    | `0N!y`            | [display](display.md) `y` and return it
-2    | `-i!y`            | [internal function](../basics/internal.md)
-4    | `![t;c;b;a]`      | [Update, Delete](../basics/funsql.md)
+2    | `-i!y`            | [internal function](internal.md)
+4    | `![t;c;b;a]`      | [Update, Delete](funsql.md)
 
 ```txt
 a: select specifications
@@ -76,15 +76,15 @@ x,y: same-length lists
 
 <div markdown="1" class="typewriter">
 a:42   [assign](assign.md)
-:42    [explicit return](../basics/function-notation.md#explicit-return)
+:42    [explicit return](function-notation.md#explicit-return)
 </div>
 
 
 ## `::` colon colon
 
 <div markdown="1" class="typewriter">
-v::select from t where a in b     [define a view](../learn/views.md)
-global::42                        [amend a global from within a lambda](../basics/function-notation.md#name-scope)
+v::select from t where a in b     [define a view](https://code.kx.com/q/learn/views/)
+global::42                        [amend a global from within a lambda](function-notation.md#name-scope)
 ::                                [Identity](identity.md)
 ::                                [Null](identity.md#null)
 </div>
@@ -115,7 +115,7 @@ rank | syntax              | semantics
 4    | `.[d;i;m;my]`       | [Amend](amend.md)
 4    | `.[d;i;:;y]`        | [Replace](amend.md)
 
-In the [Debugger](../basics/debug.md), push the stack.
+In the [Debugger](../how_to/working-with-code/debug.md), push the stack.
 
 
 ## `$` dollar
@@ -148,10 +148,10 @@ rank | example                     | semantics
 2    | `0N?1000`, ``0N?`yes`no``   | [Permute](deal.md#permute)
 2    | `x?v`                       | extend an enumeration: [Enum Extend](enum-extend.md)
 3    | `?[11011b;"black";"flock"]`   | [Vector Conditional](vector-conditional.md)
-3    | `?[t;i;p]`                  | [Simple Exec](../basics/funsql.md#simple-exec)
-4    | `?[t;c;b;a]`                | [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec)
-5    | `?[t;c;b;a;n]`              | [Select](../basics/funsql.md#rank-5)
-6    | `?[t;c;b;a;n;(g;cn)]`       | [Select](../basics/funsql.md#rank-6)
+3    | `?[t;i;p]`                  | [Simple Exec](funsql.md#simple-exec)
+4    | `?[t;c;b;a]`                | [Select](funsql.md#select), [Exec](funsql.md#exec)
+5    | `?[t;c;b;a;n]`              | [Select](funsql.md#rank-5)
+6    | `?[t;c;b;a;n;(g;cn)]`       | [Select](funsql.md#rank-6)
 
 
 ## `'` quote
@@ -235,6 +235,6 @@ rank | example      | semantics
 
 Many of the operators tabulated above have unary forms in k.
 
-:fontawesome-regular-hand-point-right: [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
+ [Exposed infrastructure](exposed-infrastructure.md#unary-forms)
 
 

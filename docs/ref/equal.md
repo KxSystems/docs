@@ -1,8 +1,8 @@
 ---
-title: Equal | Reference | kdb+ and q documentation
+title: Equal | Reference | KDB-X and q documentation
 description: Equal is a q operator that flags where its arguments are equal.
-author: Stephen Taylor
-keywords: equal, kdb+, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: equal, KDB-X, q
 ---
 # `=` Equal
 
@@ -23,11 +23,11 @@ q)(3;"a")=(2 3 4;"abc")
 Equal is an atomic function.
 
 ---
-:fontawesome-solid-book: 
+ 
 [Not Equal `<>`](not-equal.md)
 <br>
-:fontawesome-solid-book-open: 
-[Comparison](../basics/comparison.md)
+ 
+[Comparison](comparison.md)
 <br>
-:fontawesome-solid-street-view: 
-_Q for Mortals_: [§4.3.1 Equality = and Disequality <>](/q4m3/4_Operators/#431-equality-and-disequality)
+ 
+_Q for Mortals_: [§4.3.1 Equality = and Inequality <>](../learn/q4m/4_Operators.md#431-equality-and-inequality)

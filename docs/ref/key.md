@@ -1,8 +1,8 @@
 ---
-title: key keyword | Reference | kdb+ and q documentation
+title: key keyword | Reference | KDB-X and q documentation
 description: Keys of a dictionary; key columns of a keyed table; files in a folder; whether a file or name exists; target of a foreign key, type of a vector; or the enumerator of a list.
-author: Stephen Taylor
-keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, keyed table, q, symbol, til, vector
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: dictionary, directory, enumeration, file, foreign key, handle, KDB-X, keyed table, q, symbol, til, vector
 ---
 
 # `key`
@@ -56,10 +56,10 @@ w
 e
 ```
 
-:fontawesome-solid-book:
+
 [`keys`, `xkey`](keys.md)
 <br>
-:fontawesome-solid-book:
+
 [`!` Enkey, Unkey](enkey.md)
 
 
@@ -157,7 +157,7 @@ q)key x
 
 ## Type of a vector
 
-Where `x` is a vector returns the name of its [type](../basics/datatypes.md) as a symbol.
+Where `x` is a vector returns the name of its [type](datatypes.md) as a symbol.
 
 ```q
 q)key each ("abc";101b;1 2 3h;1 2 3;1 2 3;1 2 3f)
@@ -190,6 +190,6 @@ q)key 10
 
 ----
 
-:fontawesome-solid-book-open:
-[Metadata](../basics/metadata.md)
+
+[Metadata](metadata.md)
 

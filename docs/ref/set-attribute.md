@@ -1,8 +1,8 @@
 ---
-title: Set Attribute | Reference | kdb+ and q documentation
+title: Set Attribute | Reference | KDB-X and q documentation
 description: Set Attribute is a q operator that assigns an attribute to a list, dictionary or table.
-author: Stephen Taylor
-keywords: attribute, grouped, kdb+, parted, q, sorted, unique,
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: attribute, grouped, KDB-X, parted, q, sorted, unique,
 ---
 # `#` Set Attribute
 
@@ -15,7 +15,7 @@ x#y    #[x;y]
 
 Where `y` is a list or dictionary and atom `x` is
 
--   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](../basics/syntax.md#attributes) set
+-   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](syntax.md#attributes) set
 -   the null symbol `` ` ``, returns `y` with all attributes removed
 
 Attributes:
@@ -85,7 +85,7 @@ The _unique_ attribute can be set on simple and mixed lists where all items are 
 Attributes _parted_ and _grouped_ are useful for simple lists (where the datatype has an integral underlying value) in memory with a lot of repetition.
 
 The _parted_ attribute asserts all common values in the list are adjacent.
-The _grouped_ attribute causes kdb+ to create and maintain an index (hash table).
+The _grouped_ attribute causes KDB-X to create and maintain an index (hash table).
 
 If the data can be sorted such that `p` can be set, it effects better speedups than grouped, both on disk and in memory.
 
@@ -124,7 +124,7 @@ u-fail   not unique or not parted
 
 Some q functions use attributes to work faster:
 
--    Where-clauses in [`select` and `exec` templates](../basics/qsql.md) run faster with `where =`, `where in` and `where within`
+-    Where-clauses in [`select` and `exec` templates](qsql.md) run faster with `where =`, `where in` and `where within`
 -    Searching: [`bin`](bin.md), [`distinct`](distinct.md), [Find](find.md) and [`in`](in.md) (if the right argument has an attribute)
 -    Sorting: [`iasc`](asc.md#iasc) and [`idesc`](desc.md#idesc)
 -    Dictionaries: [`group`](group.md)
@@ -134,13 +134,12 @@ Setting attributes consumes resources and is likely to improve performance only 
 !!! warning "Applying an attribute to compressed data on disk decompresses it."
 
 ----
-:fontawesome-solid-book:
+
 [`attr`](attr.md)
 <br>
-:fontawesome-solid-book-open:
-[Metadata](../basics/metadata.md)
-<br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
 
+[Metadata](metadata.md)
+<br>
+
+_Q for Mortals_
+[§8.9 Attributes](../learn/q4m/8_Tables.md#89-attributes)

@@ -1,7 +1,7 @@
 ---
-title: ungroup normalizes a table | Reference | kdb+ and q documentation
+title: ungroup normalizes a table | Reference | KDB-X and q documentation
 description: ungroup is a q keyword that, where x is a table, in which some cells are lists, but for any row, all lists are of the same length, returns the normalized table, with one row for each item of a lists.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `ungroup`
 
@@ -62,11 +62,11 @@ s4 p4 300
     Grouping sorts on the keys, so a subsequent `ungroup` returns the original records sorted by the grouped column/s.
 
 ----
-:fontawesome-solid-book:
+
 [`group`](group.md),
 [`select`](select.md),
 [`xgroup`](xgroup.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§9.3.4.2 Grouping without Aggregation](/q4m3/9_Queries_q-sql/#9342-grouping-without-aggregation)
+[§9.3.4.2 Grouping without Aggregation](../learn/q4m/9_Queries_q-sql.md/#9342-grouping-without-aggregation)

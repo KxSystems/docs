@@ -1,7 +1,7 @@
 ---
-title: parse | Reference | kdb+ and q documentation
+title: parse | Reference | KDB-X and q documentation
 description: parse is a q keyword that returns a parse tree for a string expression.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # parse
 
@@ -115,8 +115,8 @@ q)views[]
 
 
 ----
-:fontawesome-solid-book:
+
 [`eval` and `reval`](eval.md)
 <br>
-:fontawesome-solid-book-open:
-[Parse trees](../basics/parsetrees.md)
+
+[Parse trees](parsetrees.md)

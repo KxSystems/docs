@@ -1,5 +1,5 @@
 ---
-title: Exponential moving average | Reference | kdb+ and q documentation
+title: Exponential moving average | Reference | KDB-X and q documentation
 description: ema is a q keyword that returns the exponential moving average of its arguments.
 ---
 # `ema`
@@ -38,9 +38,9 @@ q)(2%1+10)ema p
 ```
 
 ----
-:fontawesome-solid-book:
+
 [`avg`, `avgs`, `mavg`, `wavg`](avg.md)
 <br>
-:fontawesome-solid-book:
-[Mathematics](../basics/math.md)
+
+[Mathematics](math.md)
 

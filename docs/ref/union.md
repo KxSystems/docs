@@ -1,7 +1,7 @@
 ---
-title: union join of two tables | Reference | kdb+ and q documentation
+title: union join of two tables | Reference | KDB-X and q documentation
 description: union is a q keyword that returns the union of two lists.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `union`
 
@@ -38,10 +38,10 @@ q)(distinct t0,t1)~t0 union t1
 
 
 ----
-:fontawesome-solid-book:
+
 [`in`](in.md), [`inter`](inter.md), [`within`](within.md)
 <br>
-:fontawesome-solid-book:
-[Select](../basics/by-topic.md#selection)
+
+[Select](by-topic.md#selection)
 
 

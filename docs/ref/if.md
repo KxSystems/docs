@@ -1,8 +1,8 @@
 ---
-title: if control word | Reference | kdb+ and q documentation
+title: if control word | Reference | KDB-X and q documentation
 description: if is a q control construct for conditional evaluation of one or more expressions.
-author: Stephen Taylor
-keywords: condition, control, evaluate, kdb+, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: condition, control, evaluate, KDB-X, q
 ---
 # `if`
 
@@ -54,18 +54,18 @@ foo:{[x;y]
 The brackets of the expression list do not create lexical scope.
 Name scope within the brackets is the same as outside them.
 
-!!! warning "Setting local variables using `if` can have [unintended consequences](../basics/function-notation.md#name-scope)."
+!!! warning "Setting local variables using `if` can have [unintended consequences](function-notation.md#name-scope)."
 
 ----
-:fontawesome-solid-book:
+
 [Cond](cond.md),
 [`do`](do.md),
 [`while`](while.md),
 [Vector Conditional](vector-conditional.md)
 <br>
-:fontawesome-solid-book-open:
-[Controlling evaluation](../basics/control.md)
+
+[Controlling evaluation](control.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§10.1.4 `if`](/q4m3/10_Execution_Control/#1014-if)
+[§10.1.5 `if`](../learn/q4m/10_Execution_Control.md#1015-if)

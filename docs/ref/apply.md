@@ -1,11 +1,11 @@
 ---
-title: Apply (At), Index (At), Trap (At) | Reference | kdb+ and q documentation
+title: Apply (At), Index (At), Trap (At) | Reference | KDB-X and q documentation
 description: Operators Apply (At), Index (At), and Trap (At) apply a function to one or more arguments, get items at depth in a list, and trap errors.
-author: Stephen Taylor
-keywords: apply, apply at, index, index at, kdb+, q, trap, trap at
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: apply, apply at, index, index at, KDB-X, q, trap, trap at
 ---
 
-[![Kandinsky: circles in a circle](../img/kandinsky-circles-in-a-circle.jpg)](https://en.wikipedia.org/wiki/Wassily_Kandinsky "Wikipedia")
+[![Kandinsky: circles in a circle](https://code.kx.com/q/img/kandinsky-circles-in-a-circle.jpg)](https://en.wikipedia.org/wiki/Wassily_Kandinsky "Wikipedia")
 <br>
 <small>_Circles in a Circle, 1923_<br><br>Everything begins with a dot.<br>— W.W. Kandinsky</small>
 {: style="float: right; max-width: 200px"}
@@ -90,8 +90,8 @@ v[vx[0];vx[1]]
 
 !!! warning "Variadic operators"
 
-    Most binary operators such as Add have [deprecated unary forms](../basics/exposed-infrastructure.md#unary-forms) 
-    and are thus actually [variadic](../basics/glossary.md#variadic). 
+    Most binary operators such as Add have [deprecated unary forms](exposed-infrastructure.md#unary-forms) 
+    and are thus actually [variadic](glossary.md#variadic). 
 
     Where `v` is such a variadic operator, parenthesize it to provide it as the left argument of Apply.
 
@@ -108,9 +108,9 @@ If `v` has rank 1, then `vx` has one item and `v` is applied to the argument `vx
 v[vx[0]]
 ```
 
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§6.5.3 Indexing at Depth](/q4m3/6_Functions/#653-indexing-at-depth)
+[§6.5.3 Indexing at Depth](../learn/q4m/6_Functions.md#653-indexing-at-depth)
 
 
 ## Nullaries
@@ -324,10 +324,10 @@ q)es 80 35 20 -10
 8 3 2 0N
 ```
 
-:fontawesome-solid-book:
+
 [Set Attribute](set-attribute.md)
 <br>
-:fontawesome-solid-globe:
+
 [Step Dictionaries](https://cillianreilly.com/blog/step-dictionary.q)
 
 
@@ -370,7 +370,7 @@ q)di 2 3             / divide 2 into 3
 1.5
 ```
 
-:fontawesome-solid-book:
+
 [Compose](compose.md)
 
 ## Trap
@@ -404,7 +404,7 @@ q).[+;2 3;{"Wrong ",x}]
 
 Use Trap At as a simpler form of Trap, for unary values.
 
-:fontawesome-solid-book:
+
 [.Q.trp](dotq.md#trp-extend-trap-at) (extend trap at)
 
 
@@ -450,9 +450,9 @@ q)b // not evaluated
 
 For most purposes, you will want `e` to be a function.
 
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§10.1.8 Protected Evaluation](/q4m3/10_Execution_Control/#1018-protected-evaluation)
+[§10.1.9 Protected Evaluation](../learn/q4m/10_Execution_Control.md#1019-protected-evaluation)
 
 
 ## Errors signalled
@@ -466,5 +466,5 @@ type     an atom of vx or ux is not an integer, symbol or null
 
 
 ----
-:fontawesome-solid-book:
+
 [Amend, Amend At](amend.md)

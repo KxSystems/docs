@@ -1,8 +1,8 @@
 ---
-title: do control word | Reference | kdb+ and q documentation
+title: do control word | Reference | KDB-X and q documentation
 description: do is a q control word that evaluates one or more expressions a set number of times.
-author: Stephen Taylor
-keywords: control, evaluate, expression, kdb+, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: control, evaluate, expression, KDB-X, q
 ---
 # `do`
 
@@ -44,14 +44,14 @@ The brackets of the expression list do not create lexical scope.
 Name scope within the brackets is the same as outside them.
 
 ----
-:fontawesome-solid-book: 
+ 
 [Accumulators – Do](accumulators.md#do),
 [`if`](if.md),
 [`while`](while.md)
 <br>
-:fontawesome-solid-book-open: 
-[Controlling evaluation](../basics/control.md) 
+ 
+[Controlling evaluation](control.md) 
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§10.1.5 `do`](/q4m3/10_Execution_Control/#1015-do)
+[§10.1.6 `do`](../learn/q4m/10_Execution_Control.md#1016-do)

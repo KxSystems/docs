@@ -1,14 +1,11 @@
 ---
-title: dev, mdev, sdev – standard, moving, and sample standard deviations | Reference | kdb+ and q documentation
+title: dev, mdev, sdev – standard, moving, and sample standard deviations | Reference | KDB-X and q documentation
 description: dev, mdev, and sdev are q keywords that return, respectively, the standard deviation, moving deviation, and sample standard deviation of their argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `dev`, `mdev`, `sdev`
 
 _Deviations_
-
-
-
 
 ## `dev`
 
@@ -18,8 +15,8 @@ _Standard deviation_
 dev x     dev[x]
 ```
 
-Where `x` is a numeric list, returns its [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia") (as the square root of the variance).
-Applies to all numeric data types and signals an error with temporal types, char and sym.
+Where `x` is a numeric list, returns its [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia") (the square root of the variance).
+Applies to all numeric data types.
 
 ```q
 q)dev 10 343 232 55
@@ -29,11 +26,11 @@ q)dev 10 343 232 55
 `dev` is an aggregate function, equivalent to `{sqrt var x}`.
 
 ```txt
-domain: b g x h i j e f c s p m d z n u v t
+domain: B G X H I J E F C S P M D Z N U V T
 range:  f . f f f f f f f . f f f f f f f f
 ```
 
-Since 4.1t 2022.04.15, can also traverse columns of tables and general/anymap/nested lists.
+Since 4.1t 2022.04.15, it can also traverse columns of tables and general/anymap/nested lists.
 
 ```q
 q)M:get`:m77 set m:(2 3;4 0N;1 7)
@@ -50,7 +47,7 @@ a| 1.247219
 b| 2
 ```
 
-`dev` is a [multithreaded primitive](../kb/mt-primitives.md).
+`dev` is a [multithreaded primitive](mt-primitives.md).
 
 ## `mdev`
 
@@ -62,17 +59,17 @@ x mdev y     mdev[x;y]
 
 Where
 
--   `x` is a positive int atom
--   `y` is a numeric list
+- `x` is a positive int atom
+- `y` is a numeric list
 
-returns the floating-point `x`-item moving deviations of `y`, with any nulls after the first item replaced by zero. The first `x` items of the result are the deviations of the terms so far, and thereafter the result is the moving deviation.
+returns the floating-point `x`-item moving deviations of `y`, with any nulls replaced by zero. The first `x` items of the result are the deviations of the terms so far, and thereafter the result is the moving deviation. If the first item of `y` is null, the first item of the result is also null.
 
 ```q
 q)2 mdev 1 2 3 5 7 10
 0 0.5 0.5 1 1 1.5
 q)5 mdev 1 2 3 5 7 10
 0 0.5 0.8164966 1.47902 2.154066 2.87054
-q)5 mdev 0N 2 0N 5 7 0N    / nulls after the first are replaced by 0
+q)5 mdev 0N 2 0N 5 7 0N      / the first item is null
 0n 0 0 1.5 2.054805 2.054805
 
 q)t
@@ -91,38 +88,38 @@ b   c
 
 `mdev` is a uniform function.
 Domain and range:
+
 ```txt
-    b g x h i j e f c s p m d z n u v t
-----------------------------------------
-b | f . f f f f f f f . f f f f f f f f
-g | . . . . . . . . . . . . . . . . . .
-x | f . f f f f f f f . f f f f f f f f
-h | f . f f f f f f f . f f f f f f f f
-i | f . f f f f f f f . f f f f f f f f
-j | f . f f f f f f f . f f f f f f f f
-e | . . . . . . . . . . . . . . . . . .
-f | . . . . . . . . . . . . . . . . . .
-c | . . . . . . . . . . . . . . . . . .
-s | . . . . . . . . . . . . . . . . . .
-p | . . . . . . . . . . . . . . . . . .
-m | . . . . . . . . . . . . . . . . . .
-d | . . . . . . . . . . . . . . . . . .
-z | . . . . . . . . . . . . . . . . . .
-n | . . . . . . . . . . . . . . . . . .
-u | . . . . . . . . . . . . . . . . . .
-v | . . . . . . . . . . . . . . . . . .
-t | . . . . . . . . . . . . . . . . . .
+ | B G X H I J E F C S P M D Z N U V T
+-| -----------------------------------
+b| F . F F F F F F F . F F F F F F F F
+g| . . . . . . . . . . . . . . . . . .
+x| F . F F F F F F F . F F F F F F F F
+h| F . F F F F F F F . F F F F F F F F
+i| F . F F F F F F F . F F F F F F F F
+j| F . F F F F F F F . F F F F F F F F
+e| . . . . . . . . . . . . . . . . . .
+f| . . . . . . . . . . . . . . . . . .
+c| . . . . . . . . . . . . . . . . . .
+s| . . . . . . . . . . . . . . . . . .
+p| . . . . . . . . . . . . . . . . . .
+m| . . . . . . . . . . . . . . . . . .
+d| . . . . . . . . . . . . . . . . . .
+z| . . . . . . . . . . . . . . . . . .
+n| . . . . . . . . . . . . . . . . . .
+u| . . . . . . . . . . . . . . . . . .
+v| . . . . . . . . . . . . . . . . . .
+t| . . . . . . . . . . . . . . . . . .
 ```
 
-Range: `f`
+Range: `F`
 
+### Implicit iteration
 
-### :fontawesome-solid-sitemap: Implicit iteration
-
-`mdev` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+`mdev` applies to [dictionaries and tables](math.md#dictionaries-and-tables).
 
 ```q
-q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
 
 q)2 mdev d
 a| 0 0 0
@@ -135,14 +132,13 @@ a   b
 5.5 0.5
 9   0.5
 
-q)2 mdev k
+q)2 mdev kt
 k  | a   b
 ---| -------
 abc| 0   0
 def| 5.5 0.5
 ghi| 9   0.5
 ```
-
 
 ## `sdev`
 
@@ -152,9 +148,9 @@ _Sample standard deviation_
 sdev x     sdev[x]
 ```
 
-Where `x` is a numeric list, returns its sample standard deviation as the square root of the [sample variance](var.md#svar).
+Where `x` is a numeric list, returns its sample standard deviation, the square root of the [sample variance](var.md#svar).
 
-$$sdev(x)=\sqrt{\frac{n}{n-1}var(x)}$$
+$$\mathrm{sdev}(x)=\sqrt{\frac{n}{n-1}\mathrm{var}(x)}$$
 
 ```q
 q)sdev 10 343 232 55
@@ -164,11 +160,11 @@ q)sdev 10 343 232 55
 `sdev` is an aggregate function, equivalent to `{sqrt var[x]*count[x]%-1+count x}`.
 
 ```txt
-domain: b g x h i j e f c s p m d z n u v t
+domain: B G X H I J E F C S P M D Z N U V T
 range:  f . f f f f f f f . f f f f f f f f
 ```
 
-Since 4.1t 2022.04.15, can also traverse columns of tables and general/anymap/nested lists.
+Since 4.1t 2022.04.15, it can also traverse columns of tables and general/anymap/nested lists.
 
 ```q
 q)M:get`:m77 set m:(2 3;4 0N;1 7)
@@ -185,21 +181,18 @@ a| 1.527525
 b| 2.828427
 ```
 
-`sdev` is a [multithreaded primitive](../kb/mt-primitives.md).
+`sdev` is a [multithreaded primitive](mt-primitives.md).
 
 ----
-:fontawesome-solid-book:
+
 [`var`, `svar`](var.md)
 <br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
+
+[Mathematics](math.md)
 <br>
-:fontawesome-solid-graduation-cap:
-[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+
+[Sliding windows](../examples/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
 <br>
-:fontawesome-brands-wikipedia-w:
+
 [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia"),
 [Variance](https://en.wikipedia.org/wiki/Variance "Wikipedia")
-<br>
-:fontawesome-solid-globe:
-[Standard deviation](http://financereference.com/learn/standard-deviation "financereference.com")

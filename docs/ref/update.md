@@ -1,8 +1,8 @@
 ---
-title: update keyword | Reference | kdb+ and q documentation
+title: update keyword | Reference | KDB-X and q documentation
 description: update is a qSQL query template that adds rows or columns to a table.
-author: Stephen Taylor
-keywords: columns, kdb+, q, query, qsql, rows, sql, update
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: columns, KDB-X, q, query, qsql, rows, sql, update
 ---
 # `update`
 
@@ -14,10 +14,10 @@ _Add or amend rows or columns of a table or entries in a dictionary_
 !!! info "`update` is a qSQL query template and varies from regular q syntax."
 
 For the Update operator `!`, see 
-:fontawesome-solid-book-open:
-[Functional SQL](../basics/funsql.md)
 
-Since 4.1t 2021.06.04 updates from splayed table and path@tablename now leverage [peach](each.md) to load columns (when running with [secondary threads](../basics/syscmds.md#s-number-of-secondary-threads)).
+[Functional SQL](funsql.md)
+
+Since 4.1t 2021.06.04 updates from splayed table and path@tablename now leverage [peach](each.md) to load columns (when running with [secondary threads](syscmds.md#s-number-of-secondary-threads)).
 ```q
 q)update x:0 from get`:mysplay
 ```
@@ -29,8 +29,8 @@ q)update x:0 from get`:mysplay
 update _p~s~_ [by _p~b~_] from _t~exp~_ [where _p~w~_]
 </div>
 
-:fontawesome-solid-book-open:
-[qSQL query templates](../basics/qsql.md)
+
+[qSQL query templates](qsql.md)
 
 
 ## From phrase
@@ -55,7 +55,7 @@ harry 35  green
 
 ## Where phrase
 
-The [Where phrase](../basics/qsql.md#where-phrase) restricts the scope of updates.
+The [Where phrase](qsql.md#where-phrase) restricts the scope of updates.
 
 ```q
 q)t:([] name:`tom`dick`harry; hair:`fair`dark`fair; eye:`green`brown`gray)
@@ -125,20 +125,20 @@ Since 4.1 2024.04.29 throws `type` error if dictionary update contains by clause
 ## Cond
 
 Cond is not supported inside query templates: 
-see [qSQL](../basics/qsql.md#cond).
+see [qSQL](qsql.md#cond).
 
 
 
 ----
-:fontawesome-solid-book:
+
 [`delete`](delete.md),
 [`exec`](exec.md),
 [`select`](select.md)
 <br>
-:fontawesome-solid-book-open:
-[qSQL](../basics/qsql.md),
-[Functional SQL](../basics/funsql.md)
+
+[qSQL](qsql.md),
+[Functional SQL](funsql.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§9.5 The `update` template](/q4m3/9_Queries_q-sql/#95-the-update-template)
+[§9.5 The `update` template](../learn/q4m/9_Queries_q-sql.md/#95-the-update-template)

@@ -1,8 +1,8 @@
 ---
-title: Flip Splayed or Partitioned – Reference – kdb+ and q documentation
+title: Flip Splayed or Partitioned – Reference – KDB-X and q documentation
 description: Flip Splayed or Partitioned is a q operator that returns the flip of a splayed orpartitioned table.
-author: Stephen Taylor
-keywords: flip, flip splayed, kdb+, partitioned, q, splayed, table
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: flip, flip splayed, KDB-X, partitioned, q, splayed, table
 ---
 # `!` Flip Splayed or Partitioned
 
@@ -13,7 +13,7 @@ keywords: flip, flip splayed, kdb+, partitioned, q, splayed, table
 x!y    ![x;y]
 ```
 
-This operation is used internally by kdb+ to represent the flip of a memory-mapped splayed table. When loading a database with [`\l`](../basics/syscmds.md#l-load-file-or-directory), the tables in the database are added to the root namespace in this representation.
+This operation is used internally by KDB-X to represent the flip of a memory-mapped splayed table. When loading a database with [`\l`](syscmds.md#l-load-file-or-directory), the tables in the database are added to the root namespace in this representation.
 
 Where `x` is a symbol list containing the names of the table columns and `y` is
 
@@ -89,5 +89,5 @@ q)select from flip enlist[`a]!`s
 ```
 
 ---
-:fontawesome-solid-book-open:
-[Dictionaries & tables](../basics/dictsandtables.md)
+
+[Dictionaries & tables](dictsandtables.md)

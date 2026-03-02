@@ -1,12 +1,10 @@
 ---
-title: hcount returns file size | Reference | q and kdb+ documentation
+title: hcount returns file size | Reference | q and KDB-X documentation
 description: Keyword hcount returns the size in bytes of a file
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: December 2019
 ---
-# :fontawesome-solid-database: `hcount`
-
-
+# `hcount`
 
 _Size of a file in bytes_
 
@@ -14,7 +12,7 @@ _Size of a file in bytes_
 hcount x     hcount[x]
 ```
 
-Where `x` is a [file symbol](../basics/glossary.md#file-symbol), 
+Where `x` is a [file symbol](glossary.md#file-symbol),
 returns as a long the size of the file.
 
 ```q
@@ -25,11 +23,11 @@ q)hcount`:c:/q/test.txt
 On a compressed/encrypted file returns the size of the original uncompressed/unencrypted file.
 
 ----
-:fontawesome-solid-book-open:
-[File system](../basics/files.md)
+
+[File system](files.md)
 <br>
-:fontawesome-solid-database:
-[File compression](../kb/file-compression.md)
+
+[File compression](../how_to/interact_with_databases/file-compression.md)
 <br>
-:fontawesome-solid-database:
-[Data at rest encryption (DARE)](../kb/dare.md)
+
+[Data at rest encryption (DARE)](../how_to/interact_with_databases/dare.md)

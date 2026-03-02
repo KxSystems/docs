@@ -1,7 +1,7 @@
 ---
-title: group | Reference | kdb+ and q documentation
+title: group | Reference | KDB-X and q documentation
 description: group is a q keyword that returns a dictionary in which the keys are the distinct items of its argument, and the values the indexes where the distinct items occur.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `group`
 
@@ -46,9 +46,9 @@ p| 8
 
 ----
 
-:fontawesome-solid-book:
+
 [`ungroup`](ungroup.md),
 [`xgroup`](xgroup.md)
 <br>
-:fontawesome-solid-book:
-[Sorting](../basics/by-topic.md#sort)
+
+[Sorting](by-topic.md#sort)

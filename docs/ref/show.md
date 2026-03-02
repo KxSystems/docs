@@ -1,8 +1,8 @@
 ---
-title: show – Reference – kdb+ and q documentation
+title: show – Reference – KDB-X and q documentation
 description: show is a q keyword that formats its argument and displays it at the console.
-author: Stephen Taylor
-keywords: console, debug, develop, display, kdb+, q, tool
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: console, debug, develop, display, KDB-X, q, tool
 ---
 # `show`
 
@@ -36,8 +36,8 @@ q)a~(::)
     ```
 
 
-:fontawesome-solid-book:
+
 [Display](display.md)
 <br>
-:fontawesome-solid-book-open:
-[Debugging](../basics/debug.md)
+
+[Debugging](../how_to/working-with-code/debug.md)

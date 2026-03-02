@@ -1,11 +1,11 @@
 ---
-title: read1 reads bytes | Reference | kdb+ and q documentation
+title: read1 reads bytes | Reference | KDB-X and q documentation
 description: read1 is a q keyword that reads bytes from a file or named pipe
-author: Stephen Taylor
-keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: bytes, file, filehandle, filesystem, handle, KDB-X, pipe, process, q, read, read1
 ---
-# :fontawesome-solid-database: `read1`
 
+# `read1`
 
 _Read bytes from a file or named pipe_
 
@@ -19,21 +19,21 @@ read1 (fifo;n)    read1[(fifo;n)]
 
 Where
 
--   `f` is a [file symbol](../basics/glossary.md#file-symbol)
--   `o` is an offset as a non-negative integer/long
--   `h` is a [system or process handle](../basics/handles.md)
--   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
--   `n` is a length as a non-negative integer/long
+- `f` is a [file symbol](glossary.md#file-symbol)
+- `o` is an offset as a non-negative integer/long
+- `h` is a [system or process handle](handles.md)
+- `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
+- `n` is a length as a non-negative integer/long
 
 returns bytes from the source, as follows.
 
 ## File
 
-Where the argument is 
+Where the argument is
 
--   a file symbol. Returns the entire content of the file
--   a file symbol and offset `(f;o)`. Returns the entire content of `f` from `o` onwards
--   a file symbol, offset and length `(f;o;n)`. Returns up to `n` bytes from `f` starting at `o`
+- a file symbol. Returns the entire content of the file
+- a file symbol and offset `(f;o)`. Returns the entire content of `f` from `o` onwards
+- a file symbol, offset and length `(f;o;n)`. Returns up to `n` bytes from `f` starting at `o`
 
 ```q
 q)`:test.txt 0:("hello";"goodbye")      / write some text to a file
@@ -63,8 +63,8 @@ q)read1`:file
 
 (Since V3.4.) Where `x` is
 
--   a list `(fifo;length)`, returns `length` bytes read from `fifo`
--   an integer atom `fifo`, blocks and returns bytes from `fifo` when EOF is encountered (`0#0x` if immediate)
+- a list `(fifo;length)`, returns `length` bytes read from `fifo`
+- an integer atom `fifo`, blocks and returns bytes from `fifo` when EOF is encountered (`0#0x` if immediate)
 
 ```q
 q)h:hopen`$":fifo:///etc/redhat-release"
@@ -76,7 +76,6 @@ q)system"mkfifo somefifo";h:hopen`fifo:somefifo; 0N!read1 h; hclose h
 ```
 
 ----
-:fontawesome-solid-book-open:
-[File system](../basics/files.md),
-[Interprocess communication](../basics/ipc.md)
 
+[File system](files.md),
+[Interprocess communication](../how_to/io_and_communication/ipc.md)

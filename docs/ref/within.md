@@ -1,7 +1,7 @@
 ---
-title: within tests whether one argument is within the bounds defined by the other | Reference | kdb+ and q documentation
+title: within tests whether one argument is within the bounds defined by the other | Reference | KDB-X and q documentation
 description: within is a q keyword that tests whether one argument is within the bounds defined by the other.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `within`
 
@@ -47,17 +47,17 @@ q)(1 3 10 6 4;"acyxmpu") within ((2;"b");(6;"r"))
 
 `within` uses [Find](find.md) to search for `x` in `y`.
 
-`within` is a [multithreaded primitive](../kb/mt-primitives.md).
+`within` is a [multithreaded primitive](mt-primitives.md).
 
 
 ----
-:fontawesome-solid-book: 
+ 
 [`except`](except.md), 
 [`in`](in.md), 
 [`inter`](inter.md), 
 [`union`](union.md) 
 <br>
-:fontawesome-solid-book-open: 
-[Search](../basics/by-topic.md#search)
+ 
+[Search](by-topic.md#search)
 
 

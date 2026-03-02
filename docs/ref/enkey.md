@@ -1,8 +1,8 @@
 ---
-title: Enkey, Unkey – Reference – kdb+ and q documentation
+title: Enkey, Unkey – Reference – KDB-X and q documentation
 description: Enkey and Unkey are q operators that respectively convert a simple tableto a keyed table and vice-versa.
-author: Stephen Taylor
-keywords: bang, enkey, kdb+, keyed table, q, table, Unkey
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: bang, enkey, KDB-X, keyed table, q, table, Unkey
 ---
 # `!` Enkey, Unkey
 
@@ -72,15 +72,15 @@ a b  c
 ```
 
 ----
-:fontawesome-solid-book:
+
 [`key`](key.md)
 <br>
-:fontawesome-solid-book:
+
 [`keys`](keys.md),
 [`xkey`](keys.md#xkey)
 <br>
-:fontawesome-solid-book:
+
 [`!` bang](overloads.md#bang) overloads
 <br>
-:fontawesome-solid-book-open:
-[Tables](../kb/faq.md)
+
+[Tables](faq.md)

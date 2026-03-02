@@ -1,5 +1,5 @@
 ---
-title: enlist – make a 1-item list | Reference | kdb+ and q documentation
+title: enlist – make a 1-item list | Reference | KDB-X and q documentation
 description: enlist is a q keyword that makes a 1-list from its arguments.
 author: Stephen taylor
 ---

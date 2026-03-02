@@ -1,7 +1,7 @@
 ---
-title: upsert | Reference | kdb+ and q documentation
+title: upsert | Reference | KDB-X and q documentation
 description: upsert is a q keyword that adds new records to a table.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `upsert`
 
@@ -158,15 +158,15 @@ Upserting to a splayed table appends new values to the column files.
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
 
-:fontawesome-solid-book: 
+ 
 [`insert`](insert.md), 
 [Join](join.md) 
 <br>
-:fontawesome-solid-book-open: 
-[Joins](../basics/joins.md),
-[qSQL](../basics/qsql.md),
-[Tables](../kb/faq.md) 
+ 
+[Joins](joins.md),
+[qSQL](qsql.md),
+[Tables](faq.md) 
 <br>
-:fontawesome-solid-street-view: 
+ 
 _Q for Mortals_
-[§9.2 Upsert](/q4m3/9_Queries_q-sql/#92-upsert)
+[§9.2 Upsert](../learn/q4m/9_Queries_q-sql.md/#92-upsert)

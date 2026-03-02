@@ -1,7 +1,7 @@
 ---
-title: type – datatype of an object | Reference | kdb+ and q documentation
+title: type – datatype of an object | Reference | KDB-X and q documentation
 description: type is a q keyword that returns as a short int the datatype of an object
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `type`
 
@@ -15,7 +15,7 @@ _Type of an object_
 type x    type[x]
 ```
 
-Where `x` is any object, returns its [type](../basics/datatypes.md).
+Where `x` is any object, returns its [type](datatypes.md).
 
 The type is a short int: 
 
@@ -42,12 +42,12 @@ q)type (0|+)                    / composition
 
 ----
 
-:fontawesome-solid-book:
+
 [`key`](key.md#type-of-a-vector),
 [.Q.ty](dotq.md#ty-type)
 <br>
-:fontawesome-solid-book-open:
-[Casting and encoding](../basics/by-topic.md#casting-and-encoding),
-[Datatypes](../basics/datatypes.md)
+
+[Casting and encoding](by-topic.md#casting-and-encoding),
+[Datatypes](datatypes.md)
 
 

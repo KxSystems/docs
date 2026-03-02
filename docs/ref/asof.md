@@ -1,84 +1,58 @@
 ---
-title: asof – Reference – kdb+ and q documentation
+title: asof – Reference – KDB-X and q documentation
 description: Where t1 is a table  and t2 is a table or dictionary in which the last key or column of t2 corresponds to a time column in t1, asof[t1;t2] returns the values from the last rows matching the rest of the keys and time ≤ the time in t2.
-keywords: asof, join, kdb+, q
+keywords: asof, join, KDB-X, q
 ---
 # `asof`
-
-
-
 
 _As-of join_
 
 ```syntax
-t1 asof t2     asof[t1;t2]
+t asof d     asof[t;d]
 ```
 
 Where
 
--   `t1` is a table
--   `t2` is a table or dictionary
--   the last key or column of `t2` corresponds to a time column in `t1`
+- `t` is a table
+- `d` is a dictionary (or table) with `n` keys (or columns) that correspond to columns in `t`
+- the last key (or column) of `d` corresponds to a sortable column in `t` (usually time)
 
-returns the values from the last rows matching the rest of the keys and time ≤ the time in `t2`.
+returns the values of the remaining columns from the last row in `t` for which
 
-```q
-q)show trade asof`sym`time!(`IBM;09:30:00.0)
-price| 96.3e
-size | 200
-stop | 0b
-corr | 0
-cond | "T"
-ex   | "D"
+- the first `n-1` values each match the first `n-1` values of `d`, and
+- the last value is not greater than the last value of `d`.
 
-q)show trade asof([]sym:`AAPL`IBM;ex:"TD";time:09:30:00.0)
-price size stop corr cond
--------------------------
-78.14 100  0    0    T
-96.3  200  0    0    T
-```
-
-The following examples use the `mas` table from TAQ.
+If no items match the criteria, either because there are no rows that match in the first `n-1` columns, or because the last value is smaller than the last value in the first such row, a dictionary of nulls is returned.
 
 ```q
-q)`date xasc`mas       / sort by date
-`mas
-
-q)show a!mas asof a:([]sym:`A`B`C`GOOG;date:1995.01.01)
-sym  date      | cusip     name                           wi ex uot
----------------| --------------------------------------------------
-A    1995.01.01| 049870207 ATTWOODS PLC ADS REP5 ORD/5PNC 0  N  100
-B    1995.01.01| 067806109 BARNES GROUP INCORPORATED      0  N  100
-C    1995.01.01| 171196108 CHRYSLER CORP                  0  N  100
-GOOG 1995.01.01|                                          0
-
-q)show a!mas asof a:([]sym:`A`B`C`GOOG;date:2006.01.01)
-sym  date      | cusip     name                      wi ex uot
----------------| ---------------------------------------------
-A    2006.01.01| 00846U101 AGILENT TECHNOLOGIES, INC 0  N  100
-B    2006.01.01| 067806109 BARNES GROUP INCORPORATED 0  N  100
-C    2006.01.01| 172967101 CITIGROUP                 0  N  100
-GOOG 2006.01.01| 38259P508 GOOGLE INC CLASS A        0  T  100
-
-q)show a!mas asof a:([]sym:`A;date:1993.01.05 1996.05.23 2000.08.04)
-sym date      | cusip     name                           wi ex uot
---------------| --------------------------------------------------
-A   1993.01.05| 049870207 ATTWOODS PLC ADS REP5 ORD/5PNC 0  N  100
-A   1996.05.23| 046298105 ASTRA AB CL-A ADS 1CL-ASEK2.50 0  N  100
-A   2000.08.04| 00846U101 AGILENT TECHNOLOGIES  INC      0  N  100
+q)show t:([] time:6#09:00+10*til 3; sym:raze flip 3 2#`AAPL`GOOG; px:6?100f; vol:6?100)
+time  sym  px       vol
+-----------------------
+09:00 AAPL 81.77547 36
+09:10 AAPL 75.20102 12
+09:20 AAPL 10.86824 97
+09:00 GOOG 95.98964 92
+09:10 GOOG 3.668341 99
+09:20 GOOG 64.30982 45
+q)t asof `sym`time!(`AAPL;09:15)
+px | 75.20102
+vol| 12
+q)t asof ([]sym:`GOOG`MSFT; time:09:05)
+px       vol
+------------
+95.98964 92
+              / a row of nulls for no match
 ```
 
-`asof` is a [multithreaded primitive](../kb/mt-primitives.md).
+`asof` is a [multithreaded primitive](mt-primitives.md).
 
 ----
-:fontawesome-solid-book:
-[`aj`](aj.md), 
-[`wj`](wj.md)
-<br>
-:fontawesome-solid-book-open:
-[Joins](../basics/joins.md)
-<br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§9.9.8 As-of Joins](/q4m3/9_Queries_q-sql/#998-as-of-joins)
 
+[`aj`](aj.md),
+[`wj`](wj.md)  
+
+[Joins](joins.md)
+<br>
+
+_Q for Mortals_
+[§9.9.8 As-of Joins](../learn/q4m/9_Queries_q-sql.md/#998-as-of-joins)

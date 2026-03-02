@@ -1,7 +1,7 @@
 ---
-title: lj – left join keyword | Reference | kdb+ and q documentation
+title: lj – left join keyword | Reference | KDB-X and q documentation
 description: lj is a q keyword that performs a left join.
-keywords: join, kdb+, left, left join, lj, ljf, q
+keywords: join, KDB-X, left, left join, lj, ljf, q
 ---
 # `lj`, `ljf`
 
@@ -59,7 +59,7 @@ c d
 2 20
 ```
 
-`lj` is a [multithreaded primitive](../kb/mt-primitives.md).
+`lj` is a [multithreaded primitive](mt-primitives.md).
 
 
 ## Changes in V4.0
@@ -114,12 +114,12 @@ q)x lj y
     -| ---
     1|   1
     2| z
-    q)x lj y        / kdb+ 3.0
+    q)x lj y        / q 3.0
     a b c
     -----
     1   1
     2 z
-    q)x lj y        / kdb+ 2.8 
+    q)x lj y        / q 2.8 
     a b c
     ------
     1 x 1
@@ -130,10 +130,10 @@ q)x lj y
 
 
 ----
-:fontawesome-solid-book-open: 
-[Joins](../basics/joins.md)
+ 
+[Joins](joins.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§9.9.2 Ad Hoc Left Join](/q4m3/9_Queries_q-sql/#992-ad-hoc-left-join-lj)
+[§9.9.2 Ad Hoc Left Join](../learn/q4m/9_Queries_q-sql.md/#992-ad-hoc-left-join-lj)
 

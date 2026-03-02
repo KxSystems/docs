@@ -1,7 +1,7 @@
 ---
-title: sv – scalar from vector | Reference | kdb+ and q documentation
+title: sv – scalar from vector | Reference | KDB-X and q documentation
 description: sv is a q keyword that performs a variety of functions under the general scheme of scalar (atom) from vector – join strings or filepath elements; decode a vector to an atom.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 
 # `sv`
@@ -98,7 +98,7 @@ q)` sv `mywork`dat
 ```
 
 
-:fontawesome-solid-book:
+
 [`vs`](vs.md#partition) partition
 
 
@@ -188,14 +188,14 @@ q)0b sv 100011000110101110001011011001000110100000010101011000001000010000001010
 8c6b8b64-6815-6084-0a3e-178401251b68
 ```
 
-:fontawesome-solid-book:
+
 [`vs`](vs.md#encode) encode
 <br>
-:fontawesome-solid-book:
+
 [`.Q.j10`](dotq.md#j10-encode-binhex) (encode binhex), 
 [`.Q.x10`](dotq.md#x10-decode-binhex) (decode binhex)
 <br>
-:fontawesome-solid-book:
+
 [`.Q.j12`](dotq.md#j12-encode-base-36) (encode base36), 
 [`.Q.x12`](dotq.md#x12-decode-base-36) (decode base36)
 

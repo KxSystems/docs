@@ -1,8 +1,8 @@
 ---
-title: xgroup – Reference – kdb+ and q documentation
+title: xgroup – Reference – KDB-X and q documentation
 description: xgroup is a q keyword that groups a table by values in selected columns.
-author: Stephen Taylor
-keywords: column, group, kdb+, q, xgroup
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: column, group, KDB-X, q, xgroup
 ---
 # `xgroup`
 
@@ -79,8 +79,8 @@ p3 s1 400
     Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
 
 
-:fontawesome-solid-book:
+
 [`group`](group.md)
 <br>
-:fontawesome-solid-book-open:
-[Dictionaries & tables](../basics/dictsandtables.md)
+
+[Dictionaries & tables](dictsandtables.md)

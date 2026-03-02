@@ -1,22 +1,18 @@
 ---
-title: sin, asin – sine and arcsine | Reference | kdb+ and q documentation
+title: sin, asin – sine and arcsine | Reference | KDB-X and q documentation
 description: sin and asin are q keywords that return (respectively) the sin and arcsine of their argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `sin`, `asin`
 
 _Sine, arcsine_
-
-
-
-
 
 ```syntax
 sin x     sin[x]
 asin x    asin[x]
 ```
 
-Where `x` is a numeric, returns 
+Where `x` is a numeric, returns
 
 `sin`
 : the [sine](https://en.wikipedia.org/wiki/Sine) of `x`, taken to be in radians. The result is between `-1` and `1`, or null if the argument is null or infinity.
@@ -35,12 +31,11 @@ q)asin 0.8      / arcsine
 0.9272952
 ```
 
-`sin` and `asin` are [multithreaded primitives](../kb/mt-primitives.md).
+`sin` and `asin` are [multithreaded primitives](mt-primitives.md).
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-`sin` and `asin` are [atomic functions](../basics/atomic.md).
+`sin` and `asin` are [atomic functions](atomic.md).
 
 ```q
 q)sin (.2;.3 .4)
@@ -65,9 +60,8 @@ range:  f . f f f f f f f . f f f z f f f f
 ```
 
 ----
-:fontawesome-solid-book:
+
 [`cos`, `acos`](cos.md)
 <br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
 
+[Mathematics](math.md)

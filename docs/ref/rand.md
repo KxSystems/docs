@@ -1,8 +1,8 @@
 ---
-title: rand | Reference | kdb+ and q documentation
+title: rand | Reference | KDB-X and q documentation
 description: rand is a q keyword that randomly picks a number, or an item from a list.
-author: Stephen Taylor
-keywords: deal, kdb+, q, rand, random, roll
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: deal, KDB-X, q, rand, random, roll
 ---
 # `rand`
 
@@ -61,5 +61,5 @@ Right domain and range are as for [Roll and Deal](deal.md#generate).
 
 
 ---
-:fontawesome-solid-book:
+
 [Random seed](deal.md#seed)

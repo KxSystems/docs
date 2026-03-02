@@ -1,8 +1,8 @@
 ---
-title: ij, ijf – inner join | Reference | kdb+ and q documentation
+title: ij, ijf – inner join | Reference | KDB-X and q documentation
 description: ij and ijf are q keywords that perform inner joins.
-author: Stephen Taylor
-keywords: ij, ijf, inner join, join, kdb+, q
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: ij, ijf, inner join, join, KDB-X, q
 ---
 # `ij`, `ijf`
 
@@ -59,7 +59,7 @@ k v   s
 4 400 c
 ```
 
-`ij` is a [multithreaded primitive](../kb/mt-primitives.md).
+`ij` is a [multithreaded primitive](mt-primitives.md).
 
 !!! detail "Changes in V3.0"
 
@@ -91,10 +91,10 @@ k v   s
     Since 2016.02.17, the earlier version is available in all V3.4 and later versions as `ijf`.
 
 ---
-:fontawesome-solid-book-open:
-[Joins](../basics/joins.md)
+
+[Joins](joins.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§9.9.4 Ad Hoc Inner Join](/q4m3/9_Queries_q-sql/#994-ad-hoc-inner-join-ij)
+[§9.9.4 Ad Hoc Inner Join](../learn/q4m/9_Queries_q-sql.md/#994-ad-hoc-inner-join-ij)
 

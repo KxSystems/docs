@@ -1,13 +1,9 @@
 ---
-title: Divide | Reference | kdb+ and q documentation
+title: Divide | Reference | KDB-X and q documentation
 description: Divide is a q operator that returns the ratio of its arguments.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `%` Divide
-
-
-
-
 
 ```syntax
 x%y     %[x;y]
@@ -45,12 +41,11 @@ q)2010.01.01 % 2005.01.01
 1.999453
 ```
 
-`%` is a [multithreaded primitive](../kb/mt-primitives.md).
+`%` is a [multithreaded primitive](mt-primitives.md).
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-Divide is an [atomic function](../basics/atomic.md).
+Divide is an [atomic function](atomic.md).
 
 ```q
 q)(10;20 30)%(2;3 4)
@@ -58,7 +53,7 @@ q)(10;20 30)%(2;3 4)
 6.666667 7.5
 ```
 
-It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+It applies to [dictionaries and tables](math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -87,11 +82,10 @@ def| 1 1
 ghi| 1 1
 ```
 
-
 ## Range and domains
 
 The following shows the resulting output type given the input type of `x` and `y`.
-The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+The character representation of the datatypes referenced can be found [`here`](datatypes.md).
 
 ```txt
     b g x h i j e f c s p m d z n u v t
@@ -119,14 +113,14 @@ t | f . f f f f f f f . f f f f f f f f
 Range: `f`
 
 ----
-:fontawesome-solid-book:
+
 [`div`](div.md),
 [Multiply](multiply.md),
 [`ratios`](ratios.md)
 <br>
-:fontawesome-solid-street-view:
-[Mathematics](../basics/math.md)
-<br>
-:fontawesome-solid-book-open:
+
+[Mathematics](math.md)
+<br>q4m
+
 _Q for Mortals_
-[§4.4 Basic Arithmetic](/q4m3/4_Operators/#44-basic-arithmetic-)
+[§4.4 Basic Arithmetic](../learn/q4m/4_Operators.md/#44-basic-arithmetic-)

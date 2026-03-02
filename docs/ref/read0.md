@@ -1,10 +1,11 @@
 ---
-title: read0 reads text | Reference | kdb+ and q documentation
+title: read0 reads text | Reference | KDB-X and q documentation
 description: read0 is a q keyword that reads text from a file or process handle
-author: Stephen Taylor
-keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, read, read0, text
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+keywords: file, filesystem, filehandle, handle, KDB-X, lines, pipe, process, q, read, read0, text
 ---
-# :fontawesome-solid-database: `read0`
+
+# `read0`
 
 _Read text from a file or process handle_
 
@@ -18,14 +19,13 @@ read0 (fifo;n)    read0[(fifo;n)]
 
 where
 
--   `f` is a [file symbol](../basics/glossary.md#file-symbol)
--   `o` is an offset as a non-negative integer/long
--   `h` is a [system or connection handle](../basics/handles.md)
--   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
--   `n` is a non-negative integer
+- `f` is a [file symbol](glossary.md#file-symbol)
+- `o` is an offset as a non-negative integer/long
+- `h` is a [system or connection handle](handles.md)
+- `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
+- `n` is a non-negative integer
 
-returns character data from the source as follows. 
-
+returns character data from the source as follows.
 
 ## File symbol
 
@@ -40,7 +40,6 @@ q)read0`:test.txt
 q)/ read 500000 lines, chunks of (up to) 100000 at a time
 q)d:raze{read0(`:/tmp/data;x;100000)}each 100000*til 5
 ```
-
 
 ## File symbol with offset
 
@@ -81,7 +80,6 @@ q)a[4+til 4]
 "ever"
 ```
 
-
 ## Fifo/named pipe
 
 Returns `n` characters from the pipe.
@@ -96,11 +94,11 @@ q)read0(h;8)
 ```
 
 ----
-:fontawesome-solid-book-open:
-[Connection handles](../basics/handles.md),
-[File system](../basics/files.md),
-[Interprocess communication](../basics/ipc.md)
+
+[Connection handles](handles.md),
+[File system](files.md),q4m
+[Interprocess communication](../how_to/io_and_communication/ipc.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)
+[§11.4.1 Reading and Writing Text Files](../learn/q4m/11_IO.md/#1141-reading-and-writing-text-files)

@@ -1,14 +1,11 @@
 ---
-title: string casts its argument to a string | Reference | kdb+ and q documentation
+title: string casts its argument to a string | Reference | KDB-X and q documentation
 description: string is a q keyword that casts its argument to a string.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `string`
 
 _Cast to string_
-
-
-
 
 ```syntax
 string x    string[x]
@@ -27,10 +24,9 @@ q)string (+/)
 "+/"
 ```
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-`string` is an [atomic function](../basics/atomic.md) and iterates through dictionaries and tables.
+`string` is an [atomic function](atomic.md) and iterates through dictionaries and tables.
 
 ```q
 q)string (2 3;"abc")
@@ -55,7 +51,6 @@ a    b
 ,"3" "aapl"
 ```
 
-
 ## Domain and range
 
 ```txt
@@ -66,17 +61,14 @@ range  c c c c c c c c c c c c c c c c c c
 Range: `c`
 
 ----
-:fontawesome-solid-book: 
+
 [`.h` namespace](doth.md)
 <br>
-:fontawesome-solid-book: 
+
 [`.Q.addr`](dotq.md#addr-iphost-as-int) (IP/host as int),
 [`.Q.f`](dotq.md#f-precision-format) (precision format),
 [`.Q.fmt`](dotq.md#fmt-precision-format) (precision format with length)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§7.3.1 Data to Strings](/q4m3/7_Transforming_Data/#731-data-to-strings)
-
-
-
+[§7.3.1 Data to Strings](../learn/q4m/7_Transforming_Data.md/#731-data-to-strings)

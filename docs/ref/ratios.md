@@ -1,14 +1,9 @@
 ---
-title: ratios between successive items of a list | Reference | kdb+ and q documentation
+title: ratios between successive items of a list | Reference | KDB-X and q documentation
 description: ratios is a q keyword that returns the ratios between successive items of a list.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `ratios`
-
-
-
-
-
 
 _Ratios between items_
 
@@ -44,10 +39,9 @@ price| x
 1    | 252
 ```
 
+## Implicit iteration
 
-## :fontawesome-solid-sitemap: Implicit iteration
-
-`ratios` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+`ratios` applies to [dictionaries and tables](math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
@@ -73,7 +67,7 @@ ghi| 0.1428571 1.2
 
 ## First predecessor
 
-The predecessor of the first item is 1. 
+The predecessor of the first item is 1.
 
 ```q
 q)ratios 2000 2005 2007 2012 2020
@@ -95,16 +89,11 @@ q)ratios0 2000 2005 2007 2012 2020
     However, `ratios` is supported only as a unary function.
     For binary application, use the derived function.
 
-
-
-
 ----
-:fontawesome-solid-book:
+
 [Each Prior](maps.md#each-prior),
 [`differ`](differ.md),
 [Divide](divide.md)
 <br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
 
-
+[Mathematics](math.md)
