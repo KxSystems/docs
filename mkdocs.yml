@@ -16,6 +16,7 @@ extra_javascript:
   - https://code.kx.com/scripts/polyfill.min.js
   - https://code.kx.com/scripts/tex-mml-chtml.js
   - scripts/qsearch.js # site-specific search engine
+  - scripts/strip-repl-prompts.js # Removes q), >>>, and ... prompts from copied code blocks (keeps prompts visible in docs)
 
 markdown_extensions:
   - abbr
