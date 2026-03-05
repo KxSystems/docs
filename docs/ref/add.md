@@ -5,12 +5,11 @@ keywords: add, kdb+, mathematics, plus, q, sum
 ---
 # `+` Add
 
-
 ```syntax
 x+y     +[x;y]
 ```
 
-Where `x` and `y` are numerics or temporals, returns their 
+Where `x` and `y` are numerics or temporals, returns their
 sum.
 
 ```q
@@ -36,7 +35,6 @@ msoft| 3005 103
 Add is generally faster than [Subtract](subtract.md).
 
 `+` is a [multithreaded primitive](../kb/mt-primitives.md).
-
 
 ## Implicit iteration
 
@@ -76,7 +74,6 @@ abc| 20  8
 def| -42 10
 ghi| 6   -12
 ```
-
 
 ## Range and domains
 
@@ -119,18 +116,16 @@ q)type 1i+55
 -7h
 ```
 
-
 ----
-:fontawesome-solid-book:
+
 [Subtract](subtract.md),
 [`sum`](sum.md),
 [`.Q.addmonths`](dotq.md#addmonths)
 <br>
-:fontawesome-solid-book-open:
+
 [Datatypes](../basics/datatypes.md),
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§4.9.2 Temporal Arithmetic](/q4m3/4_Operators/#492-temporal-arithmetic)
-

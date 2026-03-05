@@ -1,7 +1,7 @@
 ---
 title: til returns the first natural numbers | Reference | kdb+ and q documentation
 description: til is a q keyword that returns the natural numbers up to its argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `til`
 
@@ -34,5 +34,5 @@ q)til 5f
 `til` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ----
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)

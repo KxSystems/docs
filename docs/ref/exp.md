@@ -1,14 +1,11 @@
 ---
 title: exp, xexp – raise to a power | Reference | kdb+ and q documentation
 description: exp and xexp are q keywords. exp raises e to the power of its argument; xexp raises its left argument to the power of its right.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `exp`, `xexp`
 
 _Raise to a power_
-
-
-
 
 ## `exp`
 
@@ -18,10 +15,10 @@ _Raise e to a power_
 exp x     exp[x]
 ```
 
-Where 
+Where
 
--   `x` is numeric 
--   $e$ is the base of natural logarithms
+- `x` is numeric
+- $e$ is the base of natural logarithms
 
 returns as a float $e^x$, or null if `x` is null.
 
@@ -41,8 +38,7 @@ q)exp 00:00:00 00:00:12 12:00:00
 
 `exp` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-
-### :fontawesome-solid-sitemap: Implicit iteration
+### Implicit iteration
 
 `exp` is an [atomic](../basics/atomic.md) function.
 It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables)
@@ -73,7 +69,6 @@ def| 7.58256e-10 148.4132
 ghi| 20.08554    0.002478752
 ```
 
-
 ### Domain and range
 
 ```txt
@@ -95,8 +90,8 @@ x xexp y    xexp[x;y]
 
 Where `x` and `y` are numerics, returns as a float where `x` is
 
--   non-negative, x<sup>y</sup>
--   null or negative, `0n`
+- non-negative, x<sup>y</sup>
+- null or negative, `0n`
 
 ```q
 q)2 xexp 8
@@ -109,8 +104,7 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
 0.1821448 1 1.04138 0n 0w
 ```
 
-
-!!! warning "The calculation is performed as `exp y * log x`." 
+!!! warning "The calculation is performed as `exp y * log x`."
 
     If `y` is integer, this is not identical to `prd y#x`.
     
@@ -126,7 +120,7 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
 
 `xexp` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-### :fontawesome-solid-sitemap: Implicit iteration
+### Implicit iteration
 
 `xexp` is an [atomic](../basics/atomic.md) function.
 It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
@@ -149,7 +143,6 @@ abc| 59049        81
 def| 9.559907e-11 243
 ghi| 27           0.001371742
 ```
-
 
 ### Domain and range
 
@@ -179,5 +172,5 @@ t   | . . . . . . . . . . . . . . . . . .
 Range: `f`
 
 ----
-:fontawesome-solid-book: 
-[`log`, `xlog`](log.md) 
+
+[`log`, `xlog`](log.md)

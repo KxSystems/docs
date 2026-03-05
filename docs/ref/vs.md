@@ -1,7 +1,7 @@
 ---
 title: vs – Reference – kdb+ and q documentation
 description: vs is a q keyword that performs various functions under the scheme vector-from-scalar (atom).
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 ---
 
@@ -96,7 +96,7 @@ q)` vs `:/home/kdb/data/mywork.dat
 `:/home/kdb/data`mywork.dat
 ```
 
-:fontawesome-solid-book:
+
 [sv](sv.md#join) join
 
 
@@ -202,14 +202,14 @@ q)10 vs(1995;1996 1997)
 ```
 
 ---
-:fontawesome-solid-book:
+
 [`sv`](sv.md#decode) decode
 <br>
-:fontawesome-solid-book:
+
 [`.Q.j10`](dotq.md#j10-encode-binhex) encode binhex, 
 [`.Q.j12`](dotq.md#j12-encode-base-36) encode base36
 <br>
-:fontawesome-solid-book:
+
 [`.Q.x10`](dotq.md#x10-decode-binhex) decode binhex,
 [`.Q.x12`](dotq.md#x12-decode-base-36) decode base36
 

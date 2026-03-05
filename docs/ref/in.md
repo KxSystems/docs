@@ -1,7 +1,7 @@
 ---
 title: in | Reference | kdb+ and q documentation
 description: in is a q keyword that flags whether its left argument is an item in its right argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: November 2020
 ---
 # `in`
@@ -80,7 +80,7 @@ p5| cam   blue  12     paris
 ```
 
 
-## :fontawesome-solid-triangle-exclamation:{: style="color:red"} Mixed argument types
+## {: style="color:red"} Mixed argument types
 
 Optimized support for atom or 1-list `y` allows a wider input type mix.
 
@@ -126,12 +126,12 @@ q)any ` ~/: (1 2;`)
 
 
 ----
-:fontawesome-solid-book:
+
 [`except`](except.md),
 [`inter`](inter.md),
 [`within`](within.md),
 [`union`](union.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Search](../basics/by-topic.md#search)
 

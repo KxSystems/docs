@@ -45,7 +45,7 @@ and if `d` is a
 
 See also binary and ternary forms of `.` and `@`
 <br>
-:fontawesome-solid-book:
+
 [Apply, Apply At, Index, Index At](apply.md)
 
 
@@ -307,12 +307,12 @@ type/attr error amending file test
 ```
 
 ----
-:fontawesome-solid-book:
+
 [Apply, Apply At, Index, Index At](apply.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§6.8.3 General Form of Function Application](/q4m3/6_Functions/#683-general-form-of-function-application)
+[§6.8.3 General Form of Amend At and Amend](/q4m3/6_Functions/#683-general-form-of-function-application)
 
 <!--
 ## Functional Amend

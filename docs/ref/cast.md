@@ -5,8 +5,6 @@ description: Cast is a q operator that converts a data argument to another datat
 
 # `$` Cast
 
-
-
 _Convert to another datatype_
 
 ```syntax
@@ -15,7 +13,7 @@ x$y     $[x;y]
 
 Where `x` is:
 
--   a **positive short, lower-case letter, or symbol** from the following table, returns `y` cast according to `x`
+- a **positive short, lower-case letter, or symbol** from the following table, returns `y` cast according to `x`
 
     ```txt
     1h  "b" `boolean
@@ -37,17 +35,17 @@ Where `x` is:
     19h "t" `time
     ```
 
--   a symbol from the list **`` `year`dd`mm`hh`uu`ss``** and `y` is a temporal type, returns the year, day, month, hour, minute, or seconds value from `y` as [tabulated below](#temporal)
+- a symbol from the list **`` `year`dd`mm`hh`uu`ss``** and `y` is a temporal type, returns the year, day, month, hour, minute, or seconds value from `y` as [tabulated below](#temporal)
 
--   **`0h` or `"*"`**, and `y` is not a string, returns `y` ([Identity](#identity))
+- **`0h` or `"*"`**, and `y` is not a string, returns `y` ([Identity](#identity))
 
--   an **upper-case letter** or a **negative short int** interprets the value from a string, see [Tok](tok.md)
+- an **upper-case letter** or a **negative short int** interprets the value from a string, see [Tok](tok.md)
 
 Casting does not change the underlying bit pattern of the data, only how it is represented.
 
 `$`(cast) is a [multithreaded primitive](../kb/mt-primitives.md).
 
-## :fontawesome-solid-sitemap: Iteration
+## Iteration
 
 Cast is an [atomic function](../basics/atomic.md).
 
@@ -77,7 +75,6 @@ q)(12h;13 14h)$(42;42 42)
 (2003.07m;2000.02.12)
 ```
 
-
 ## Integer
 
 Cast to integer:
@@ -91,7 +88,6 @@ q)`int$(neg\)6.1 6.6
 6  7
 -6 -7
 ```
-
 
 ## Boolean
 
@@ -111,7 +107,6 @@ q)" ",.Q.an
 q)"b"$" ",.Q.an
 1111111111111111111111111111111111111111111111111111111111111111b
 ```
-
 
 ## Byte
 
@@ -133,19 +128,18 @@ q)"x"$"abc"
 
     This is considered an error and is planned to change to `0x00`.
 
-
 ## Temporal
 
-The following symbols can be used to extract parts of a temporal type
+Use the following symbols to extract parts of a temporal type:
 
-* `year` to provide year as an integer
-* `month` to provide `month` datatype
-* `mm` to provide month as an integer, where January is 01i
-* `week` to provide a `date` datatype, presenting the week in which the temporal variable resides. The value returned is the start of the week (Monday). If the `date` represents a Monday, it is not altered.
-* `dd` to provide day as an integer, where 1st of the month is 1i
-* `hh` to provide hour as an integer
-* `uu` to provide minutes as an integer
-* `ss` to provide to seconds as an integer
+- `year` to provide year as an integer
+- `month` to provide `month` datatype
+- `mm` to provide month as an integer, where January is `01i`
+- `week` to provide a `date` datatype, presenting the week in which the temporal variable resides. The value returned is the start of the week (Monday). If the `date` represents a Monday, it is not altered.
+- `dd` to provide day as an integer, where 1st of the month is `1i`
+- `hh` to provide hour as an integer
+- `uu` to provide minutes as an integer
+- `ss` to provide seconds as an integer
 
 For example:
 
@@ -155,8 +149,7 @@ q)`hh`uu`ss$03:55:58.11
 q)`year`dd`mm`hh`uu`ss$2015.10.28D03:55:58
 2015 28 10 3 55 58i
 ```
-
-The following shows which information can be extracted from each temporal [datatype](../basics/datatypes.md)
+The following shows which information can be extracted from each temporal [datatype](../basics/datatypes.md).
 
 ```txt
           | year | month | mm | week | dd | hh | uu | ss
@@ -169,6 +162,7 @@ timespan  |      |       |    |      |    | x  | x  | x
 minute    |      |       |    |      |    | x  | x  | x
 second    |      |       |    |      |    | x  | x  | x
 time      |      |       |    |      |    | x  | x  | x
+
 ```
 
 !!! detail "Casting to narrower temporal type truncates rather than rounds"
@@ -179,7 +173,7 @@ time      |      |       |    |      |    | x  | x  | x
 
     As a consequence `.z.t-.z.n` is typically negative. 
 
-Numeric calculations on the base numeric type can also be used to extract part of a temporal type, for the example using the [`mod`](mod.md) keyword
+Numeric calculations on the base numeric type can also be used to extract part of a temporal type, for the example using the [`mod`](mod.md) keyword:
 
 ```q
 milliseconds: "i"$01:00:00.100 mod 1000                         / extract milliseconds from time datatype
@@ -212,13 +206,12 @@ q)`float$0Wh
 !!! tip "The infinity corresponding to numeric `x` is `min 0#x`."
 
 ----
-:fontawesome-solid-book:
+
 [Tok](tok.md)
 <br>
-:fontawesome-solid-book:
+
 [Overloads of `$`](overloads.md#dollar)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§7.2 Cast](/q4m3/7_Transforming_Data/#731-data-to-strings)
-

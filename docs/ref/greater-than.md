@@ -1,12 +1,10 @@
 ---
 title: Greater Than, At Least – Reference – kdb+ and q documentation
 description: Greater Than and At Least are q operators that compare their arguments.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: comparison, greater-than, greater-than-or-equal, kdb+, q
 ---
 # `>` Greater Than <br>`>=` At Least
-
-
 
 ```syntax
 x>y    >[x;y]
@@ -35,8 +33,7 @@ q)0 1 >=/:\: 0 1
 11b
 ```
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 Greater Than and At Least are [atomic functions](../basics/atomic.md).
 
@@ -70,7 +67,6 @@ def| 0 0
 ghi| 0 0
 ```
 
-
 ## Range and domain
 
 ```txt
@@ -98,10 +94,9 @@ t | b . b b b b b b b . b . . b b b b b
 
 Range: `b`
 
-
 ----
-:fontawesome-solid-book:
+
 [Less Than, Up To](less-than.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Comparison](../basics/comparison.md)

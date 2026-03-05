@@ -1,7 +1,7 @@
 ---
 title: where | Reference | kdb+ and q documentation
 description: where is a q keyword that returns copies of indexes of a list or keys of a dictionary.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: kdb+, q, selection, where
 ---
 # `where`
@@ -64,7 +64,7 @@ q)where 0 1 2 3 ! 2 3 0 1     / same on dictionary with indices as keys
 
 
 ----
-:fontawesome-solid-book-open:
+
 [`where` in q-SQL](../basics/qsql.md), 
 [Selection](../basics/by-topic.md#selection)
 

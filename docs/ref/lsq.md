@@ -1,9 +1,9 @@
 ---
 title: lsq – least-squares matrix equation solution |Reference | kdb+ and q documentation
 description: lsq is a q keyword that performs least squares fitting, matrix division.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
-![Linear regression](../img/linear-regression.png)
+![Linear regression](https://code.kx.com/q/img/linear-regression.png)
 {: style="float: right"}
 
 # `lsq`
@@ -98,14 +98,14 @@ q)A mmu inv B
 
 ----
 
-:fontawesome-solid-book:
+
 [`inv`](inv.md),
 [`mmu`](mmu.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-brands-wikipedia-w:
+
 [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition "Wikipedia"),
 [Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion "Wikipedia")
 

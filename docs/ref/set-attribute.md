@@ -1,7 +1,7 @@
 ---
 title: Set Attribute | Reference | kdb+ and q documentation
 description: Set Attribute is a q operator that assigns an attribute to a list, dictionary or table.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: attribute, grouped, kdb+, parted, q, sorted, unique,
 ---
 # `#` Set Attribute
@@ -134,13 +134,12 @@ Setting attributes consumes resources and is likely to improve performance only 
 !!! warning "Applying an attribute to compressed data on disk decompresses it."
 
 ----
-:fontawesome-solid-book:
+
 [`attr`](attr.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Metadata](../basics/metadata.md)
 <br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
 
+_Q for Mortals_
+[§8.9 Attributes](/q4m3/8_Tables/#88-attributes)

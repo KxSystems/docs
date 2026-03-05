@@ -1,7 +1,7 @@
 ---
 title: Simple Exec – Reference – kdb+ and q documentation
 description: Simple Exec is a q operator that is part of functional SQL.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: functional sql, kdb+, q,sql
 ---
 # `?` Simple Exec

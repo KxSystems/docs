@@ -1,13 +1,11 @@
 ---
 title: Shift to lower or upper case | Reference | kdb+ and q documentation
 description: lower and upper are q keywords that shift text to lower or upper case respectively.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `lower`, `upper`
 
 _Shift case_
-
-
 
 ```syntax
 lower x     lower[x]
@@ -15,7 +13,6 @@ upper x     upper[x]
 ```
 
 Where `x` is a character or symbol atom or vector, returns it with any bicameral characters in the lower/upper case.
-
 
 ```q
 q)lower"IBM"
@@ -29,7 +26,7 @@ q)upper`ibm`msft
 `IBM`MSFT
 ```
 
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `lower` and `upper` are [atomic functions](../basics/atomic.md).
 
@@ -42,5 +39,5 @@ q)upper(`The;(`quick`brown;(`fox;`jumps`over));`a;`lazy`dog)
 ```
 
 ----
-:fontawesome-solid-book-open:
+
 [Strings](../basics/by-topic.md#strings)

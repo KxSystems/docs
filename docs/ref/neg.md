@@ -1,7 +1,7 @@
 ---
 title: neg | Reference | kdb+ and q documentation
 description: neg is a q keyword that returns the negation of its argument. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `neg`
 
@@ -48,17 +48,17 @@ Range: `ihjefpmdznuvt`
 
 
 ---- 
-:fontawesome-solid-book:
+
 [`not`](not.md), 
 [Subtract](subtract.md) 
 <br>
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§4.3.2 Not Zero `not`](/q4m3//4_Operators/#431-equality-and-disequality)
+[§4.3.2 Not Zero `not`](/q4m3/4_Operators/#432-not-zero-not)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§4.9.2 Temporal Arithmetic](/q4m3/4_Operators/#492-temporal-arithmetic)

@@ -1,7 +1,7 @@
 ---
 title: Subtract | Reference | kdb+ and q documentation
 description: Subtract is a q operator that returns the difference of its arguments for a wide range of datatypes.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `-` Subtract
 
@@ -108,20 +108,20 @@ q)type 55-1i
 ```
 
 ----
-:fontawesome-solid-book:
+
 [Add](add.md),
-[`deltas`](deltas.md),
+[`deltas`](deltas.md),q4m
 [`differ`](differ.md),
 [`.Q.addmonths`](dotq.md#addmonths)
 <br>
-:fontawesome-solid-book-open:
+
 [Datatypes](../basics/datatypes.md),
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [How to handle temporal data in q](../kb/temporal-data.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§4.9.2 Temporal Arithmetic](/q4m3/4_Operators/#492-temporal-arithmetic)
 

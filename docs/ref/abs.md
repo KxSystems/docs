@@ -1,12 +1,9 @@
 ---
 title: abs – absolute value | Reference | kdb+ and q documentation
 description: abs is a q keyword that returns the absolute value of its argument
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `abs`
-
-
-
 
 _Absolute value_
 
@@ -14,21 +11,26 @@ _Absolute value_
 abs x    abs[x]
 ```
 
-Where `x` is a numeric or temporal, returns 
-the absolute value of `x`. 
-Null is returned if `x` is null. 
+Where `x` is a numeric, returns
+the absolute value of `x`.
+`x` is returned if `x` is null.
+`abs` also works with temporal values, where it operates on the underlying numeric (refer to the examples below).
 
 ```q
 q)abs -1.0
 1f
 q)abs 10 -43 0N
 10 43 0N
+q)abs 1999.01.01
+2000.12.31
+// if we convert these to longs, we can observe they're opposite
+q)"j"$1999.01.01 2000.12.31 
+-365 365
 ```
 
 `abs` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `abs` is an [atomic function](../basics/atomic.md).
 
@@ -40,7 +42,6 @@ q)abs(10;20 -30)
 
 It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
-
 ## Domain and range
 
 ```txt
@@ -51,8 +52,8 @@ range  i . i h i j e f i . p m d z n u v t
 Range: `ihjefpmdznuvt`
 
 ----
-:fontawesome-solid-book: 
-[`signum`](signum.md) 
+
+[`signum`](signum.md)
 <br>
-:fontawesome-solid-book-open: 
+
 [Mathematics](../basics/math.md)

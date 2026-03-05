@@ -1,7 +1,7 @@
 ---
 title: Overloaded glyphs | Reference | kdb+ and q documentation
 description: Many non-alphabetic keyboard characters are overloaded by q. This page tabulates their different forms. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # Overloaded glyphs
 
@@ -83,7 +83,7 @@ a:42   [assign](assign.md)
 ## `::` colon colon
 
 <div markdown="1" class="typewriter">
-v::select from t where a in b     [define a view](../learn/views.md)
+v::select from t where a in b     [define a view](https://code.kx.com/q/learn/views/)
 global::42                        [amend a global from within a lambda](../basics/function-notation.md#name-scope)
 ::                                [Identity](identity.md)
 ::                                [Null](identity.md#null)
@@ -235,6 +235,6 @@ rank | example      | semantics
 
 Many of the operators tabulated above have unary forms in k.
 
-:fontawesome-regular-hand-point-right: [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
+ [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
 
 

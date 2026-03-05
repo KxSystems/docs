@@ -2,7 +2,7 @@
 title: Iterators | Reference | kdb+ and q documentation
 description: The iterators (earlier known as adverbs) are native higher-order operators. They take applicable values as arguments and return derived functions.
 date: March 2019
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # Iterators
 
@@ -20,11 +20,11 @@ author: Stephen Taylor
 The iterators (once known as _adverbs_) are native higher-order operators: they take [applicable values](../basics/glossary.md#applicable-value) as arguments and return derived functions.
 They are the primary means of iterating in q.
 
-:fontawesome-solid-book-open:
+
 [Iteration](../basics/iteration.md) in q
 <br>
-:fontawesome-regular-map:
-[Iterators](../wp/iterators/index.md)
+
+[Iterators](iterators.md)
 
 !!! detail "Applicable value"
 
@@ -56,7 +56,7 @@ q)+/[1000000;2 3 4]   / binary
 1000009
 ```
 
-:fontawesome-solid-book-open: 
+ 
 [Variadic syntax](../basics/variadic.md)
 
 

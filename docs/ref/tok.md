@@ -1,7 +1,7 @@
 ---
 title: Tok interprets string data to another datatype | Reference | kdb+ and q documentation
 description: Tok is a q operator that interprets string data to another datatype.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `$` Tok
 
@@ -155,7 +155,7 @@ q)"I"$"192.168.1.34" /an IP address as an int
 -1062731486i
 ```
 
-:fontawesome-solid-book:
+
 [`.Q.addr`](dotq.md#addr-iphost-as-int) (IP/host as int),
 [`.Q.host`](dotq.md#host-ip-to-hostname) (IP to hostname)
 
@@ -194,7 +194,6 @@ q)"PZ"$\:"20191122-11:11:11.123"
 2019.11.22T11:11:11.123
 ```
 
-
 ## Date formats
 
 `"D"$` will Tok dates with varied formats:
@@ -207,26 +206,26 @@ yyyy/[mm|MMM]/dd
 dd/[mm|MMM]/[yy]yy  / when \z is set to 1
 ```
 
-:fontawesome-solid-book-open:
+
 [Command-line option `-z` (date format)](../basics/cmdline.md#-z-date-format)
 <br>
-:fontawesome-solid-book-open:
+
 [System command `\z` (date format)](../basics/syscmds.md#z-date-parsing)
 
 ----
-:fontawesome-solid-book:
+
 [Cast](cast.md)
 <br>
-:fontawesome-solid-book:
+
 [Overloads of `$`](overloads.md#dollar)
 <br>
-:fontawesome-solid-book:
+
 [`.h.iso8601`](doth.md#hiso8601-iso-timestamp) ISO 8601 timestamp
 <br>
-:fontawesome-solid-book-open:
+
 [Casting](../basics/by-topic.md#casting-and-encoding)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§7.3.3 Parsing Data from Strings](/q4m3/7_Transforming_Data/#733-parsing-data-from-strings)
 

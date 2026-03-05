@@ -1,7 +1,7 @@
 ---
 title: Assign operator | Reference | kdb+ and q documentation
 description: Name a value in q
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # Assign
 
@@ -144,7 +144,7 @@ q)bar
        ^
 q)bar+:1
 q)bar
-1
+1q4m
 ```
 
 Some operators have significant differences between their base and assignment form, for example [`,`](join.md).
@@ -198,10 +198,10 @@ q):/[1 2 3 4 5]
 ```
 
 ----
-:fontawesome-solid-book:
-[Amend, Amend At](../ref/amend.md)
+
+[Amend, Amend At](amend.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§4.6.2 Simple q Amend](/q4m3/4_Operators/#462-simple-q-amend)
 

@@ -1,7 +1,7 @@
 ---
 title: Enum Extend | Reference | kdb+ and q documentation
 description: Enum Extend is a q operator that extends an enumeration.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `?` Enum Extend
 
@@ -96,20 +96,20 @@ kdb+ does not report an error if that lock call fails.
 Enum Extend is a uniform function. 
 
 ----
-:fontawesome-solid-book: 
+ 
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
 [`.Q.en` (enumerate varchar cols)](dotq.md#en-enumerate-varchar-cols),
 [`?` query overloads](overloads.md#query)
 <br>
-:fontawesome-solid-book-open:
+
 [Enumerations](../basics/enumerations.md),
 [File system](../basics/files.md)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [Enumerating symbol columns in a table](../kb/splayed-tables.md#enumerating-symbol-columns)
 <br>
-:fontawesome-solid-street-view: 
+ 
 _Q for Mortals_
 [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
 

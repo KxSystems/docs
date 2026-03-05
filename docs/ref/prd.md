@@ -1,15 +1,11 @@
 ---
 title: prd, prds – product and running products | Reference | kdb+ and q documentation
 description: prd and prds are q keywords that return respectively the product and the cumulating products of their arguments.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `prd`, `prds`
 
 _Product/s_
-
-
-
-
 
 ## `prd`
 
@@ -40,7 +36,6 @@ q)prd "abc"
 
 `prd` is an aggregate function, equivalent to `*/`.
 
-
 ## `prds`
 
 _Products_
@@ -49,7 +44,7 @@ _Products_
 prds x    prds[x]
 ```
 
-Where `x` is a numeric list, returns the cumulative products of its items. 
+Where `x` is a numeric list, returns the cumulative products of its items.
 
 ```q
 q)prds 7                     / atom is returned unchanged
@@ -67,8 +62,7 @@ q)prds "abc"                 / type error if list is not numeric
 
 `prds` is a uniform function, equivalent to `*\`.
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `prd` and `prds` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
@@ -118,8 +112,8 @@ def| 210 20
 ghi| 630 120
 ```
 
-
 ## Domains and ranges
+
 ```txt
 domain: b g x h i j e f c s p m d z n u v t
 range:  i . i i i j e f i . p m d z n u v t
@@ -127,8 +121,7 @@ range:  i . i i i j e f i . p m d z n u v t
 
 ----
 
-:fontawesome-solid-book:
 [Multiply](multiply.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)

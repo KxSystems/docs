@@ -1,27 +1,22 @@
 ---
 title: cos, acos – cosine and arccosine | Reference | kdb+ and q documentation
 description: cos and acos are q keywords. They return the cosine and arccosine respectively of their numeric argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `cos`, `acos`
 
-
 _Cosine, arccosine_
-
-
-
-
 
 ```syntax
 cos x     cos[x]
 acos x    acos[x]
 ```
 
-Where `x` is a numeric, returns 
+Where `x` is a numeric, returns
 
 `cos`
 
-: the [cosine](https://en.wikipedia.org/wiki/Trigonometric_functions#cosine) 
+: the [cosine](https://en.wikipedia.org/wiki/Trigonometric_functions#cosine)
 of `x`, taken to be in radians. The result is between `-1` and `1`, or null if the argument is null or infinity.
 
 `acos`
@@ -43,7 +38,6 @@ q)acos -0.4                     / arccosine
 
 `cos` and `acos` are [multithreaded primitives](../kb/mt-primitives.md).
 
-
 ## Domain and range
 
 ```txt
@@ -51,9 +45,7 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  f . f f f f f f f . f f f z f f f f
 ```
 
-
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `cos` and `acos` are [atomic functions](../basics/atomic.md).
 
@@ -67,12 +59,8 @@ q)acos (.2;.3 .4)
 1.266104 1.159279
 ```
 
-
-
 ----
-:fontawesome-solid-book:
-[`sin`, `asin`](sin.md)
-<br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
 
+[`sin`, `asin`](sin.md)  
+
+[Mathematics](../basics/math.md)

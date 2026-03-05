@@ -1,11 +1,9 @@
 ---
 title: xbar | Reference | kdb+ and q documentation
 description: xbar is a q keyword that returns one argument rounded down to the nearest multiple of the other.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `xbar`
-
-
 
 _Round down_
 
@@ -15,8 +13,8 @@ x xbar y    xbar[x;y]
 
 Where
 
--   `x` is a non-negative numeric atom
--   `y` is numeric or temporal
+- `x` is a non-negative numeric atom
+- `y` is numeric or temporal
 
 returns `y` rounded down to the nearest multiple of `x`. `xbar` is a [multithreaded primitive](../kb/mt-primitives.md).
 
@@ -82,13 +80,11 @@ q)-1+`date$3+3 xbar `month$2019.11.19  / end of that quarter
 2019.12.31
 ```
 
-
 !!! warning "Duplicate keys or column names"
 
     Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `xbar` is an [atomic function](../basics/atomic.md).
 It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
@@ -112,10 +108,9 @@ def| -21 3
 ghi| 3   -6
 ```
 
-
 ## Domain and range
 
-The following shows the resulting output type given the input type of `x` and `y`. 
+The following shows the resulting output type given the input type of `x` and `y`.
 The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
 
 ```txt
@@ -142,6 +137,7 @@ t   | t . t t t t f f t . . . . . . . . .
 ```
 
 For example, rounding down timespans to the nearest multiple of a long will produce a timespan.
+
 ```q
 q)2 xbar 00:00:00.000000001 00:00:00.000000002 00:00:00.000000013
 0D00:00:00.000000000 0D00:00:00.000000002 0D00:00:00.000000012
@@ -152,9 +148,8 @@ q)type 2 xbar 00:00:00.000000001 00:00:00.000000002 00:00:00.000000013
 The possible range of output types are `ijfpmdznuvte`.
 
 ----
-:fontawesome-solid-book:
+
 [`bin`](bin.md), [`floor`](floor.md)
 <br>
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
 
+[Mathematics](../basics/math.md)

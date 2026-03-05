@@ -1,7 +1,7 @@
 ---
 title: gtime, ltime – global and local time | Reference | kdb+ and q documentation
 description: gtime and ltime are q keywords that return, respectively, global and local time.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `gtime`, `ltime`
 
@@ -60,5 +60,5 @@ local   [`.z.Z`](dotz.md#zz-local-datetime)         [`.z.P`](dotz.md#zp-local-ti
 
 ----
 
-:fontawesome-solid-book-open:
+
 [Environment](../basics/by-topic.md#environment)

@@ -1,7 +1,7 @@
 ---
 title: value | Reference | kdb+ and q documentation
 description: value is a q keyword that returns the value of a named variable, or metadata.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `value`
 
@@ -184,7 +184,7 @@ q.test)value f
 
 ## Local values in suspended functions
 
-See changes since V3.5 that support [debugging](../basics/debug.md#debugger).
+See changes since V3.5 that support [debugging](../basics/debug.md).
 
 
 ## `get`
@@ -202,7 +202,7 @@ q)value each (get;value)   / same internal code
 
 
 ----
-:fontawesome-solid-book: 
+ 
 [`eval`](eval.md),
 [`get`](get.md),
 [`parse`](parse.md),

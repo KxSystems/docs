@@ -1,7 +1,7 @@
 ---
 title: inv – matrix inverse | Reference | kdb+ and q documentation
 description: inv is a q keyword that returns the matrix inverse of its argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `inv`
 
@@ -39,12 +39,12 @@ Previously it used Cholesky decomposition as well.
 
 
 ---- 
-:fontawesome-solid-book:
+
 [`lsq`](lsq.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-brands-wikipedia-w:
+
 [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition "Wikipedia"),
 [Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion "Wikipedia")

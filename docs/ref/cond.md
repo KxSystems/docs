@@ -1,7 +1,7 @@
 ---
 title: Cond | Reference | kdb+ and q documentation
 description: Cond is a q control construct for conditional evaluation.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: cond, conditional, control, dollar, kdb+, q
 ---
 # `$` Cond
@@ -114,13 +114,13 @@ Instead, use [Vector Conditional](vector-conditional.md).
 
 
 ----
-:fontawesome-solid-book:
+
 [`$` dollar](overloads.md#dollar),
 [Vector Conditional](vector-conditional.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Controlling evaluation](../basics/control.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§10.1.1 Basic Conditional Evaluation](/q4m3/10_Execution_Control/#1011-basic-conditional-evaluation)

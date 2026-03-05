@@ -1,7 +1,7 @@
 ---
 title: Roll, Deal, Permute | Reference | kdb+ and q documentation
 description: Roll, Deal, and Permute are q operators that return ran dom selections, with or without duplicates
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: July 2019
 keywords: deal, duplicate, generate, permute, rand, random, seed
 ---
@@ -208,11 +208,11 @@ type   | `x` is negative (Roll only)
 
 ----
 
-:fontawesome-solid-book:
+
 [`rand`](rand.md)
 <br>
-:fontawesome-solid-book-open:
+
 [system command `\S`](../basics/syscmds.md#s-random-seed)
 <br>
-:fontawesome-solid-book-open:
+
 [command-line option `-S`](../basics/cmdline.md#-s-random-seed)

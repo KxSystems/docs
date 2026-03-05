@@ -4,14 +4,13 @@ description: ceiling is a q keyword that returns the least integer greater than 
 ---
 # `ceiling`
 
-
 _Round up_
 
 ```syntax
 ceiling x      ceiling[x]
 ```
 
-Returns the least integer greater than or equal to boolean or numeric `x`. 
+Returns the least integer greater than or equal to boolean or numeric `x`.
 
 ```q
 q)ceiling -2.1 0 2.1
@@ -22,7 +21,7 @@ q)ceiling 01b
 
 `ceiling` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `ceiling` is an [atomic function](../basics/atomic.md).
 
@@ -42,8 +41,7 @@ a b
 4 8
 ```
 
-
-## :fontawesome-solid-triangle-exclamation: Prior to V3.0
+## Prior to V3.0
 
 Prior to V3.0, `ceiling` 
 
@@ -60,19 +58,18 @@ q)"d"$23:59:59.999+ 2010.05.13T12:30:59.999
 2010.05.14
 ```
 
-
 ## Domain and range
 
 ```txt
 domain b g x h i j e f c s p m d z n u v t
 range  i . i h i j j j i . . . . . . . . .
 ```
+
 Range: `hij`
 
-
 ----
-:fontawesome-solid-book: 
-[`floor`](floor.md) 
+
+[`floor`](floor.md)
 <br>
-:fontawesome-solid-book-open: 
+
 [Mathematics](../basics/math.md)

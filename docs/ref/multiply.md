@@ -1,7 +1,7 @@
 ---
 title: Multiply | Reference | kdb+ and q documentation
 description: Multiply is a q operator that returns the product of its arguments.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `*` Multiply
 
@@ -43,7 +43,7 @@ price qty
 `*` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 Multiply is an [atomic function](../basics/atomic.md).
 
@@ -125,12 +125,12 @@ q)type 1i*55
 ```
 
 ----
-:fontawesome-solid-book:
+
 [Divide](divide.md),
 [`prd`, `prds`](prd.md),
 [`.Q.addmonths`](dotq.md#addmonths)
 <br>
-:fontawesome-solid-book-open:
+
 [Datatypes](../basics/datatypes.md),
 [Mathematics](../basics/math.md)
 

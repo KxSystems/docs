@@ -55,10 +55,10 @@ a b c  d
 In the example above, `pj` is equivalent to `` x+0^y[`a`b#x] `` (compute the value of `y` on `a` and `b` columns of `x`, fill the result with zeros and add to `x`).
 
 ---
-:fontawesome-solid-book-open:
+
 [Joins](../basics/joins.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§9.9.6 Plus Join](/q4m3/9_Queries_q-sql/#996-plus-join-pj)
 

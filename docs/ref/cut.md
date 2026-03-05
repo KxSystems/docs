@@ -1,14 +1,10 @@
 ---
 title: Cut, cut – Reference – kdb+ and q documentation
 description: Cut is a q operator that cuts a list or table into subarrays. cut is a q keyword that cuts a list or table into a matrix into a specified number of columns. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: cut, kdb+, keyword, operator, q
 ---
 # `_` Cut, `cut`
-
-
-
-
 
 ## _ (cut operator)
 
@@ -18,58 +14,51 @@ _Cut a list or table into sub-arrays_
 x _ y     _[x;y]
 ```
 
-Where 
+Where
 
--   `x` is a **non-decreasing list of integers** in the domain `til count y` 
--   `y` is a list or table
+- `x` is a **non-decreasing list of integers** in the domain `til count y`
+- `y` is a list or table
 
-returns `y` cut at the indexes given in `x`. The result is a list with the same count as `x`.
+returns `y` cut at the indexes given in `x`. The result is a list with the same count as `x`. Refer to the examples for how exactly the cut is constructed:
 
-Examples using cut on lists:
 ```q
 q)2 4 9 _ til 10           /first result item starts at index 2
 2 3
 4 5 6 7 8
 ,9
-q)
 q)2 4 4 9 _ til 10         /cuts are empty for duplicate indexes
 2 3
 `long$()
 4 5 6 7 8
 ,9
-q)2 5 7 _ til 12
-2 3 4
-5 6
-7 8 9 10 11
+q)t:([]a:til 5;b:`a`b`c`d`e)
+q)ts:0 3 _ t
+q)ts 0
+a b
+---
+0 a
+1 b
+2 c
+q)ts 1
+a b
+---
+3 d
+4 e
 ```
-Example using cut on table `sp` created using [`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q)
-```q
-q)\l sp.q
-q)count sp
-12
-q){}show each 2 5 7_sp / `show` returns the generic null ::
-s  p  qty
----------
-s1 p3 400
-s1 p4 200
-s4 p5 100
-s  p  qty
----------
-s1 p6 100
-s2 p1 300
-s  p  qty
----------
-s2 p2 400
-s3 p2 200
-s4 p2 200
-s4 p4 300
-s1 p5 400
-```
+
+!!! tip
+    If you want all list items to be returned, be sure to start the left argument with 0:
+
+    ```q
+    q)0 4 5 _ til 7
+    0 1 2 3
+    ,4
+    5 6
+    ```
 
 `_`(cut) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 !!! tip "Avoid confusion with underscores in names: separate the Cut operator with spaces."
-
 
 ## `cut` (keyword)
 
@@ -79,10 +68,10 @@ _Cut a list or table into a matrix of `x` columns_
 x cut y     cut[x;y]
 ```
 
-Where 
+Where
 
--   `x` is an **integer atom**
--   `y` is a list
+- `x` is an **integer atom**
+- `y` is a list
 
 returns `y` splits into a list of lists, all (except perhaps the last) of count `x`.
 
@@ -95,8 +84,6 @@ q)4 cut til 10
 
 Otherwise `cut` behaves as [`_` Cut](#_-cut-operator).
 
-
 ----
 
-:fontawesome-solid-book:
 [Drop](drop.md)

@@ -1,17 +1,11 @@
 ---
 title: asc, iasc, xasc – ascending sort | Reference | kdb+ and q documentation
 description: Ascending sorts in q; asc returns a sortable argument in ascending order; iasc grades its items into ascending order; xasc sorts a table by columns.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `asc`, `iasc`, `xasc`
 
-
 _Sort and grade: ascending_
-
-
-
-
-!!! info "Q chooses from a variety of algorithms, depending on the type and data distribution."
 
 ## `asc`
 
@@ -21,18 +15,21 @@ _Ascending sort_
 asc x     asc[x]
 ```
 
-Where `x` is a:
+Where `x` is a
 
--   **vector**, returns its items in ascending order of value, with the [sorted attribute](set-attribute.md) set, indicating the list is sorted; where the argument vector is found to be in ascending order already, it is assigned the sorted attribute
--   **mixed list**, returns the items sorted within datatype and with the sorted attribute set
--   **dictionary**, returns it sorted by the values
--   **table**, returns it sorted by the first non-key column and with 
-	+ the sorted attribute set on that column if there is only one non-key column; otherwise
-	+ the parted attribute set
+- **vector**, returns its items in ascending order of value, with the [sorted attribute](set-attribute.md) set, indicating the list is sorted.
+- **mixed list**, returns the items sorted within datatype and with the sorted attribute set;
+- **nested list**, returns the items sorted lexicographically and with the sorted attribute set;
+- **dictionary**, returns it sorted by the values;
+- **table**, returns it sorted lexicographically by the non-key columns, and
+    - if there is only one non-key column, setting the sorted attribute set on that column,
+    - otherwise, setting the parted attribute on the first non-key column.
 
-The function is uniform. 
-The sort is stable: it preserves order between equals.
+!!! info "Q chooses from a variety of sorting algorithms depending on the datatype and data distribution."
 
+The sort is stable: it preserves order between equals. If the list was already sorted, this means that the only thing that happens is the attribute being set, and therefore that also happens **in place** (``s` is the only attribute that behaves this way).
+
+`asc` is a uniform function.
 
 ### Vector
 
@@ -42,9 +39,9 @@ q)asc 2 1 3 4 2 1 2
 
 q)a:0 1
 q)b:a
-q)asc b  / result has sorted attribute
+q)asc b  / result has sorted attribute applied
 `s#0 1
-q)b      / argument was already in ascending order
+q)b      / argument was already in ascending order, so the application happened in place
 `s#0 1
 q)a      / b was a shallow copy of a
 `s#0 1
@@ -55,30 +52,34 @@ q)a      / b was a shallow copy of a
 In the example below, the boolean is returned first, then the sorted integers, the sorted characters, and then the date.
 
 ```q
-q)asc (1;1b;"b";2009.01.01;"a";0)
+q)show l:asc (1;1b;"b";2009.01.01;"a";0)
 1b
 0
 1
 "a"
 "b"
 2009.01.01
+
+q)type each l
+-1 -7 -7 -10 -10 -14h     / datatypes are sorted by their type number
 ```
 
-Note how the type numbers are used.
+!!! warning
+
+    Because of this functionality, it is essential to ensure that a list has matching datatypes if we want to sort it (unless we want exactly this to happen).
+
+### Nested list
 
 ```q
-q)asc(2f;3;4i;5h)
-5h
-4i
-3
-2f
-q){(asc;x iasc abs t)fby t:type each x}(2f;3;4i;5h)  / compare asc
-5h
-4i
-3
-2f
+q)l:("bat";"dog";"cow";"cat")
+q)asc l
+"bat"
+"cat"
+"cow"
+"dog"
+q)attr asc l  / the result has the sorted attribute, but the console doesn't show that with nested lists
+`s
 ```
-
 
 ### Dictionary
 
@@ -89,35 +90,34 @@ a| 2
 c| 3
 ```
 
-
 ### Table
 
 ```q
 q)/ simple table
-q)asc ([]a:3 4 1;b:`a`d`s)
+q)asc ([]a:4 3 4;b:`s`a`d)
 a b
 ---
-1 s
 3 a
 4 d
-q)meta asc ([]a:3 4 1;b:`a`d`s)  		/ sets parted attribute
+4 s
+q)meta asc ([]a:3 4 1;b:`a`d`s)     / sets parted attribute
 c| t f a
 -| -----
 a| j   p
 b| s
-q)meta asc([]a:3 4 1)            		/ sets sorted attribute
+q)meta asc([]a:3 4 1)               / sets sorted attribute
 c| t f a
 -| -----
 a| j   s
 
 q)/ keyed table
-q)meta asc ([c1:`a`b] c2:2 1; c3:01b)	/ sets parted attribute
+q)meta asc ([c1:`a`b] c2:2 1; c3:01b) / sets parted attribute
 c | t f a
 --| -----
 c1| s
 c2| j   p
 c3| b 
-q)meta asc ([c1:`a`b] c2:2 1)    		/ sets sorted attribute
+q)meta asc ([c1:`a`b] c2:2 1)       / sets sorted attribute
 c | t f a
 --| -----
 c1| s 
@@ -126,8 +126,8 @@ c2| j   s
 ```
 
 ```txt
-domain: b g x h i j e f c s p m d z n u v t
-range:  b g x h i j e f c s p m d z n u v t
+domain: B G X H I J E F C S P M D Z N U V T
+range:  B G X H I J E F C S P M D Z N U V T
 ```
 
 ## `iasc`
@@ -138,7 +138,7 @@ _Ascending grade_
 iasc x    iasc[x]
 ```
 
-Where `x` is a list or dictionary, returns the indexes needed to sort list `x` in ascending order. 
+Where `x` is a list or dictionary, returns the indices needed to sort the list `x` in ascending order.
 
 ```q
 q)L:2 1 3 4 2 1 2
@@ -148,32 +148,31 @@ q)L iasc L
 1 1 2 2 2 3 4
 q)(asc L)~L iasc L
 1b
-q)iasc `a`c`b!1 2 3
-`a`c`b
+q)iasc `a`b`c!2 3 1
+`c`a`b
 ```
 
-Reverse a sort with `iasc iasc`:
+!!! tip
+    You can invert an ordering with `iasc`:
 
-```q
-q)x:100?100
-q)b:100?.Q.a
-q)c:b iasc x
-q)b~c iasc iasc x
-1b
-```
+    ```q
+    q)show is:0N?til 5
+    4 2 1 3 0
+    q)b:`a`b`c`d`e
+    q)b is
+    `e`b`c`d`a
+    q)b[is] iasc is
+    `a`b`c`d`e
+    ```
 
 ```txt
-domain: b g x h i j e f c s p m d z n u v t
-range:  j j j j j j j j j j j j j j j j j j
+domain: B G X H I J E F C S P M D Z N U V T
+range:  J J J J J J J J J J J J J J J J J J
 ```
 
 ## `xasc`
 
-
-_Sort a table in ascending order of specified columns._ 
-
-![xasc](../img/xasc.png) 
-{: style="float: right; margin: 0 0 0 1em; padding: 0;"}
+_Sort a table in ascending order of specified columns._
 
 ```syntax
 x xasc y     xasc[x;y]
@@ -181,74 +180,57 @@ x xasc y     xasc[x;y]
 
 Where `x` is a symbol vector of column names defined in table `y`, which is passed by
 
--    value, returns
--    reference, updates
+- value, returns
+- [reference](../basics/glossary.md#reference-pass-by), updates
 
-`y` sorted in ascending order by `x`. 
+`y` sorted in ascending order by `x`.
 The sort is by the first column specified, then by the second column within the first, and so on.
 
 The sorted attribute is set on the first column given (if possible).
 The sort is stable, i.e. it preserves order amongst equals.
 
 ```q
-q)\l sp.q
-q)s
-s | name  status city
---| -------------------
-s1| smith 20     london
-s2| jones 10     paris
-s3| blake 30     paris
-s4| clark 20     london
-s5| adams 30     athens
-q)`city xasc s                 / sort on city
-s | name  status city
---| -------------------
-s5| adams 30     athens
-s1| smith 20     london
-s4| clark 20     london
-s2| jones 10     paris
-s3| blake 30     paris
-q)`city`name xasc s            / sort on city, and name within city
-s | name  status city
---| -------------------
-s5| adams 30     athens
-s4| clark 20     london
-s1| smith 20     london
-s3| blake 30     paris
-s2| jones 10     paris
-q)`status`city`name xasc s     / sort on 3 columns, status first
-s | name  status city
---| -------------------
-s2| jones 10     paris
-s4| clark 20     london
-s1| smith 20     london
-s5| adams 30     athens
-s3| blake 30     paris
-q)`status`city`name xasc `s    / table given by reference, updated in place
-`s
-q)s
-s | name  status city
---| -------------------
-s2| jones 10     paris
-s4| clark 20     london
-s1| smith 20     london
-s5| adams 30     athens
-s3| blake 30     paris
-q)meta s                      / status column has sorted attribute
-c     | t f a
-------| -----
-s     | s
-name  | s
-status| i   s
-city  | s
+q)show t:0N?([]sym:raze 2#/:`a`b`c; date:6#2025.01.01+til 2; val:50+6?10f)
+sym date       val
+-----------------------
+c   2025.01.01 51.95847
+a   2025.01.02 53.40721
+b   2025.01.01 50.54001
+b   2025.01.02 55.49794
+a   2025.01.01 53.83946
+c   2025.01.02 55.61526
+q)`date xasc t
+sym date       val
+-----------------------
+c   2025.01.01 51.95847
+b   2025.01.01 50.54001
+a   2025.01.01 53.83946
+a   2025.01.02 53.40721
+b   2025.01.02 55.49794
+c   2025.01.02 55.61526
+q)`sym`date xasc t
+sym date       val
+-----------------------
+a   2025.01.01 53.83946
+a   2025.01.02 53.40721
+b   2025.01.01 50.54001
+b   2025.01.02 55.49794
+c   2025.01.01 51.95847
+c   2025.01.02 55.61526
+q)`sym`date xasc `t
+`t
+q)meta t                      / sym column has sorted attribute
+c   | t f a
+----| -----
+sym | s   s
+date| d
+val | f
 ```
 
+**Duplicate column names**  
+`xasc` signals `'dup` and the duplicate column name if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
 
-**Duplicate column names** `xasc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
-
-:fontawesome-regular-hand-point-right:
-[`.Q.id` (sanitize)](dotq.md#id-sanitize) 
-
+[`.Q.id` (sanitize)](dotq.md#id-sanitize)
 
 ### Sorting data on disk
 
@@ -284,21 +266,18 @@ s 30 0
 a 43 2
 ```
 
-
 !!! warning "Duplicate keys in a dictionary or duplicate column names in a table cause sorts and grades to return unpredictable results."
 
-
 ----
-:fontawesome-solid-book:
-[`attr`](attr.md),
-[`desc`, `idesc`, `xdesc`](desc.md),
-[Set Attribute](set-attribute.md)
-<br>
-:fontawesome-solid-book-open:
-[Dictionaries & tables](../basics/dictsandtables.md), 
+
+[`attr`](attr.md);
+[`desc`, `idesc`, `xdesc`](desc.md);
+[Set Attribute](set-attribute.md)  
+
+[Dictionaries & tables](../basics/dictsandtables.md),
 [Metadata](../basics/metadata.md),
 [Sorting](../basics/by-topic.md#sort)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§8.8 Attributes](/q4m3/8_Tables#88-attributes)
+[§8.9 Attributes](/q4m3/8_Tables/#88-attributes)

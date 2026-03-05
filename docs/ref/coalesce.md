@@ -35,7 +35,7 @@ q)(kt1^kt2) ~ kt1,kt2
 1b
 ```
 
-:fontawesome-solid-book: 
+ 
 [`^` Fill](fill.md) where `x` and `y` are lists or dictionaries
 
 When `y` has null column values, the column values of `x` are updated only with non-null values of `y`.
@@ -66,6 +66,6 @@ k| c1   c2
 The performance of Coalesce is slower than that of Join since each column value of `y` must be checked for null.
 
 ----
-:fontawesome-solid-book-open: 
+ 
 [Joins](../basics/joins.md) 
 

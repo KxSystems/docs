@@ -1,7 +1,7 @@
 ---
 title: Enumeration | Reference | kdb+ and q documentation
 description: Enumeration isd a q operator that returns an enumerated symbol list.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: bang, enumerate, enumeration, list, kdb+, q
 ---
 # `!` Enumeration
@@ -29,16 +29,16 @@ q)`x!1 2 3
 ```
 
 ---
-:fontawesome-solid-book:
+
 [Enum Extend](enum-extend.md),
 [Enumerate](enumerate.md),
 [`!` bang](overloads.md#bang)
 <br>
-:fontawesome-solid-book-open:
+
 [Enumerations](../basics/enumerations.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations),
-[§8.5 Foreign Keys and Virtual Columns](/q4m3/8_Tables/#84-foreign-keys-and-virtual-columns)
+[§8.5 Foreign Keys and Virtual Columns](/q4m3/8_Tables/#85-foreign-keys-and-virtual-columns)
 

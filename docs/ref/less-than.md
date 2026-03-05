@@ -1,12 +1,10 @@
 ---
 title: Less Than, Up To – Reference – kdb+ and q documentation
 description: Less Than and Up To are q operators that compare the values of their arguments.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: comparison, kdb+, less-than, less-than-or-equal, q, up to
 ---
 # `<` Less Than<br>`<=` Up To
-
-
 
 ```syntax
 x<y    <[x;y]
@@ -35,8 +33,7 @@ q)0 1 <=/:\: 0 1
 01b
 ```
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 Less Than and Up To are [atomic functions](../basics/atomic.md).
 
@@ -70,7 +67,6 @@ def| 1 0
 ghi| 1 1
 ```
 
-
 ## Range and domain
 
 ```txt
@@ -98,10 +94,9 @@ t | b . b b b b b b b . b . . b b b b b
 
 Range: `b`
 
-
 ----
-:fontawesome-solid-book:
+
 [Greater Than, At Least](greater-than.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Comparison](../basics/comparison.md)

@@ -1,12 +1,9 @@
 ---
 title: Lesser, and | Reference | kdb+ and q documentation
 description: Lesser is a q operator that returns the lesser of its arguments. and is a q keyword that performs a logical AND.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `&` Lesser, `and`
-
-
-
 
 _Lesser of two values; logical AND_
 
@@ -28,7 +25,6 @@ q)"sat"&"cow"
 
 `&` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-
 ## Flags
 
 Where `x` and `y` are both [flags](../basics/glossary.md#flag), Lesser is logical AND.
@@ -38,7 +34,6 @@ Where `x` and `y` are both [flags](../basics/glossary.md#flag), Lesser is logica
     While Lesser and `and` are synonyms, it helps readers to apply `and` only and wherever flag arguments are expected. 
 
     There is no performance implication.
-
 
 ## Dictionaries and keyed tables
 
@@ -68,7 +63,6 @@ appl | 2015.03
 goog | 2017.11
 ```
 
-
 ## Mixed types
 
 Where `x` and `y` are of different types the lesser of their underlying values is returned as the higher of the two types.
@@ -78,8 +72,7 @@ q)98&"c"
 "b"
 ```
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 Lesser and `and` are [atomic functions](../basics/atomic.md).
 
@@ -118,9 +111,6 @@ def| -21 5
 ghi| 3   -6
 ```
 
-
-
-
 ## Domain and range
 
 The following shows the resulting output type given the input type of `x` and `y`.
@@ -152,16 +142,14 @@ t | t . t t t t t t t . t . . t n t t t
 The possible range of output types are `bcdefhijmnptuvxz`.
 
 ----
-:fontawesome-solid-book:
+
 [`or`, `|`, Greater](greater.md),
 [`max`](max.md), [`min`](min.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Comparison](../basics/comparison.md),
 [Logic](../basics/by-topic.md#logic)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser-amp)
-
-
+[§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser)

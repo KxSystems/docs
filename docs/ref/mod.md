@@ -1,14 +1,12 @@
 ---
 title: mod | Reference | kdb+ and q documentation
 description: mod is a q keyword that returns the modulus of a number.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: kdb+, math, mathematics, modulus, q
 ---
 # `mod`
 
 _Modulus_
-
-
 
 ```syntax
 x mod y    mod[x;y]
@@ -30,8 +28,7 @@ q)-7 7 mod/:\:-2.5 -2 2 2.5
 
 `mod` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `mod` is an [atomic function](../basics/atomic.md).
 
@@ -59,7 +56,6 @@ abc| 0 4
 def| 4 0
 ghi| 3 4
 ```
-
 
 ## Domain and range
 
@@ -89,11 +85,11 @@ t | t . t t t t t f t . . . . . . . . .
 Range: `defijmnptuvz`
 
 ----
-:fontawesome-solid-book: 
-[`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md) 
+
+[`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md)
 <br>
-:fontawesome-solid-book-open: 
+
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-solid-street-view: 
+
 _Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](/q4m3/4_Operators/#481-integer-division-div-and-modulus-mod)

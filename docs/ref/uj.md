@@ -3,7 +3,7 @@ title: uj – union join | Reference | kdb+ and q documentation
 description: uj and ujf are q keywords that perform a union join on two tables.
 keywords: join, kdb+, q, uj, ujf, union join
 ---
-![Union join animation](../img/uj.gif)
+![Union join animation](https://code.kx.com/q/img/uj.gif)
 {: style="float:right; margin-left: 3em; max-width: 250px;"}
 
 # `uj`, `ujf`
@@ -80,12 +80,12 @@ a b| c  d
     -| ---
     1|   1
     2| z
-    q)x uj y		/ kdb+ 3.0
+    q)x uj y		/ q 3.0
     a| b c
     -| ---
     1|   1
     2| z
-    q)x uj y        / kdb+ 2.8
+    q)x uj y        / q 2.8
     a| b c
     -| ----
     1| x 1
@@ -96,10 +96,10 @@ a b| c  d
 
 
 ---
-:fontawesome-solid-book-open:
+
 [Joins](../basics/joins.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§9.9.7 Union Join](/q4m3/9_Queries_q-sql/#997-union-join)
 
