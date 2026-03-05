@@ -61,7 +61,7 @@ domain: B G X H I J E F C S P M D Z N U V T
 range:  B B B B B B B B B B B B B B B B B B
 ```
 
-`differ` is a [multithreaded primitive](mt-primitives.md).
+`differ` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ??? warning "Binary use deprecated"
 
@@ -73,4 +73,4 @@ range:  B B B B B B B B B B B B B B B B B B
 
 ---
 
-[Comparison](comparison.md)
+[Comparison](../basics/comparison.md)

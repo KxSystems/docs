@@ -104,12 +104,12 @@ Name scope within its brackets is the same as outside them.
 
     Using [`if`](if.md) is a clearer signal to the reader that a side effect is intended.)
 
-    Also, setting a variable in a code branch can have [unintended consequences](function-notation.md#name-scope).
+    Also, setting a variable in a code branch can have [unintended consequences](../basics/function-notation.md#name-scope).
 
 
 ## Query templates
 
-Cond is not supported inside [qSQL queries](qsql.md).
+Cond is not supported inside [qSQL queries](../basics/qsql.md).
 Instead, use [Vector Conditional](vector-conditional.md).
 
 
@@ -119,8 +119,8 @@ Instead, use [Vector Conditional](vector-conditional.md).
 [Vector Conditional](vector-conditional.md)
 <br>
 
-[Controlling evaluation](control.md)
+[Controlling evaluation](../basics/control.md)
 <br>
 
 _Q for Mortals_
-[§10.1.1 Basic Conditional Evaluation](../learn/q4m/10_Execution_Control.md/#1011-basic-conditional-evaluation)
+[§10.1.1 Basic Conditional Evaluation](/q4m3/10_Execution_Control/#1011-basic-conditional-evaluation)

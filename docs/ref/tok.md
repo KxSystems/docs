@@ -85,7 +85,7 @@ q)"D"$"2147483648"
 
 ## Iteration
 
-Tok is a near-[atomic function](atomic.md).
+Tok is a near-[atomic function](../basics/atomic.md).
 Implicit recursion stops at strings, not atoms.
 
 ```q
@@ -207,10 +207,10 @@ dd/[mm|MMM]/[yy]yy  / when \z is set to 1
 ```
 
 
-[Command-line option `-z` (date format)](cmdline.md#-z-date-format)
+[Command-line option `-z` (date format)](../basics/cmdline.md#-z-date-format)
 <br>
 
-[System command `\z` (date format)](syscmds.md#z-date-parsing)
+[System command `\z` (date format)](../basics/syscmds.md#z-date-parsing)
 
 ----
 
@@ -223,9 +223,9 @@ dd/[mm|MMM]/[yy]yy  / when \z is set to 1
 [`.h.iso8601`](doth.md#hiso8601-iso-timestamp) ISO 8601 timestamp
 <br>
 
-[Casting](by-topic.md#casting-and-encoding)
+[Casting](../basics/by-topic.md#casting-and-encoding)
 <br>
 
 _Q for Mortals_
-[§7.3.3 Parsing Data from Strings](../learn/q4m/7_Transforming_Data.md/#733-parsing-data-from-strings)
+[§7.3.3 Parsing Data from Strings](/q4m3/7_Transforming_Data/#733-parsing-data-from-strings)
 

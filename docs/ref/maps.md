@@ -21,7 +21,7 @@ v1: value (rank 1)         v: value (rank 1-8)
 v2: value (rank 2)         i: vector of ints≥0
 </div>
 
-The maps are iterators that derive [**uniform**](glossary.md#uniform-function) functions that apply their [values](glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists.
+The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that apply their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists.
 
 
 ## Each
@@ -44,7 +44,7 @@ c| 4
 ```
 
 
-![each-both](svg/each-both.svg)
+![each-both](../basics/svg/each-both.svg)
 <br>
 <small>_Each Both_</small>
 {: style="float: right; margin-left: 1em; text-align: center;"}
@@ -63,7 +63,7 @@ q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
 1005000 1000000 1007000
 ```
 
-!!! warning "Each is redundant with [atomic functions](atomic.md)."
+!!! warning "Each is redundant with [atomic functions](../basics/atomic.md)."
 
 
 ### `each` keyword
@@ -95,7 +95,7 @@ The maps Each Left and Each Right take **binary** values and derive binary funct
 ------------|:--------------------------------:|:-----------------:
 syntax:     | `x f\:y`                         |  `x f/:y`
 equivalent: | `f[;y] each x`                      | `f[x;] each y`
-&nbsp;      | ![Each Left](svg/each-left.svg) | ![Each Right](svg/each-right.svg)
+&nbsp;      | ![Each Left](../basics/svg/each-left.svg) | ![Each Right](../basics/svg/each-right.svg)
 
 ```q
 q)"abcde",\:"XY"             / Each Left
@@ -159,13 +159,13 @@ q)raze[a] ~ b
     0x400921ea35935fc4
     ```
 
-    This is [exposed infrastructure](exposed-infrastructure.md).
+    This is [exposed infrastructure](../basics/exposed-infrastructure.md).
     Use the keywords [`vs`](vs.md) and [`sv`](sv.md) instead.
 
 
 ## Each Parallel
 
-![Each Parallel](svg/each-parallel.svg)
+![Each Parallel](../basics/svg/each-parallel.svg)
 {: style="float: right; margin-left: 1em;"}
 
 _Assign sublists of the argument list to secondary tasks, in which the unary value is applied to each item of the sublist._
@@ -174,11 +174,11 @@ _Assign sublists of the argument list to secondary tasks, in which the unary val
 (v1':)x   v1':[x]   v1 peach x
 ```
 
-The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available secondary tasks](cmdline.md#-s-secondary-threads). Each secondary task applies `v1` to each item of its sublist.
+The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available secondary tasks](../basics/cmdline.md#-s-secondary-threads). Each secondary task applies `v1` to each item of its sublist.
 
 
-[Command-line option `-s`](cmdline.md#-s-secondary-threads),
-[Parallel processing](../how_to/performance/performance.md#parallel-processing)
+[Command-line option `-s`](../basics/cmdline.md#-s-secondary-threads),
+Parallel processing
 
 ```bash
 ❯ q -s 2
@@ -216,19 +216,19 @@ v1 peach list
 [`.Q.fc` parallel on cut](dotq.md#fc-parallel-on-cut)
 <br>
 
-[Parallel processing](../how_to/performance/performance.md#parallel-processing)
+Parallel processing
 <br>
 
-[Table counts in a partitioned database](../how_to/interact_with_databases/partition.md#table-counts)
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 <br>
 
 _Q for Mortals_
-[A.49 `peach`](../learn/q4m/A_Built-in_Functions.md#a49-peach)
+[A.49 `peach`](/q4m3/A_Built-in_Functions/#a68-peach)
 
 
 ## Each Prior
 
-![Each Prior](svg/each-prior.svg)
+![Each Prior](../basics/svg/each-prior.svg)
 {: style="float: right; margin-left: 1em; z-index: 3"}
 
 _Apply a binary value between each item of a list and its preceding item._
@@ -280,7 +280,7 @@ q){x+2*y}':[2 3 4]
 
 
 _Q for Mortals_
-[§6.7.9 Each Prior](../learn/q4m/6_Functions.md/#679-each-prior)
+[§6.7.9 Each Prior](/q4m3/6_Functions/#679-each-prior)
 
 
 ### `prior` keyword
@@ -314,7 +314,7 @@ Where
 the derived function `int'` returns $r$ such that
 $r_i$ is ($args_{int_i})_i$
 
-![case](svg/case.svg)
+![case](../basics/svg/case.svg)
 
 The derived function `int'` has rank `max[int]+1`.
 
@@ -384,7 +384,7 @@ q)i'[a;b;c]
 ```
 
 
-[Table counts in a partitioned database](../how_to/interact_with_databases/partition.md#table-counts)
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 
 ## Empty lists

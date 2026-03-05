@@ -26,11 +26,11 @@ q)-7 7 mod/:\:-2.5 -2 2 2.5
 -0.5 -1 1 2
 ```
 
-`mod` is a [multithreaded primitive](mt-primitives.md).
+`mod` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`mod` is an [atomic function](atomic.md).
+`mod` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)(10;20 30)mod(7 13;-12)
@@ -38,7 +38,7 @@ q)(10;20 30)mod(7 13;-12)
 -4 -6
 ```
 
-It applies to [dictionaries and keyed tables](math.md#dictionaries-and-tables).
+It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)d mod 5
@@ -89,7 +89,7 @@ Range: `defijmnptuvz`
 [`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>
 
-_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](../learn/q4m/4_Operators.md/#481-integer-division-div-and-modulus-mod)
+_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](/q4m3/4_Operators/#481-integer-division-div-and-modulus-mod)

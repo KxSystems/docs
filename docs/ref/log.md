@@ -33,12 +33,12 @@ q)log -2 0n 0 0.1 1 42
 0n 0n -0w -2.302585 0 3.73767
 ```
 
-`log` is a [multithreaded primitive](mt-primitives.md).
+`log` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ### Implicit iteration
 
-`log` is an [atomic function](atomic.md).
-It applies to [dictionaries and tables](math.md#dictionaries-and-tables)
+`log` is an [atomic function](../basics/atomic.md).
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables)
 
 ```q
 q)log(2;3 4)
@@ -107,12 +107,12 @@ q)"A"xlog"C"
 1.00726
 ```
 
-`xlog` is a [multithreaded primitive](mt-primitives.md).
+`xlog` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ### Implicit iteration
 
-`xlog` is an [atomic function](atomic.md).
-It applies to [dictionaries and tables](math.md#dictionaries-and-tables)
+`xlog` is an [atomic function](../basics/atomic.md).
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables)
 
 ```q
 q)(2;3 4)xlog(4;5 6)
@@ -179,4 +179,4 @@ Range: `f`
 [`exp`, `xexp`](exp.md)
 <br>
 
-[Datatypes](datatypes.md)
+[Datatypes](../basics/datatypes.md)

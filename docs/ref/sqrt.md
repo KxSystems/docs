@@ -32,11 +32,11 @@ q)sqrt 101b
 1 0 1f
 ```
 
-`sqrt` is a [multithreaded primitive](mt-primitives.md).
+`sqrt` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`sqrt` is an [atomic function](atomic.md).
+`sqrt` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)sqrt (10;20 30)
@@ -81,4 +81,4 @@ Range: `fz`
 [`xlog`](log.md#xlog)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

@@ -83,4 +83,4 @@ p3 s1 400
 [`group`](group.md)
 <br>
 
-[Dictionaries & tables](dictsandtables.md)
+[Dictionaries & tables](../basics/dictsandtables.md)

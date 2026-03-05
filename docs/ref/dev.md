@@ -47,7 +47,7 @@ a| 1.247219
 b| 2
 ```
 
-`dev` is a [multithreaded primitive](mt-primitives.md).
+`dev` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `mdev`
 
@@ -116,7 +116,7 @@ Range: `F`
 
 ### Implicit iteration
 
-`mdev` applies to [dictionaries and tables](math.md#dictionaries-and-tables).
+`mdev` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
@@ -181,17 +181,17 @@ a| 1.527525
 b| 2.828427
 ```
 
-`sdev` is a [multithreaded primitive](mt-primitives.md).
+`sdev` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ----
 
 [`var`, `svar`](var.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>
 
-[Sliding windows](../examples/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
 <br>
 
 [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia"),

@@ -46,7 +46,7 @@ _Restricted evaluation of a parse tree_
 reval x     reval[x]
 ```
 
-The `reval` function is similar to [`eval`](eval.md), and behaves as if the [command-line option `-b`](cmdline.md#-b-blocked) were active during evaluation.
+The `reval` function is similar to [`eval`](eval.md), and behaves as if the [command-line option `-b`](../basics/cmdline.md#-b-blocked) were active during evaluation.
 
 An example usage is inside the message handler [`.z.pg`,](dotz.md#zpg-get) useful for access control, here blocking sync messages from updating:
 
@@ -57,7 +57,7 @@ q)h"a:4"
 'noupdate: `. `a
 ```
 
-Behaves as if command-line options [`-u 1`](cmdline.md#-u-usr-pwd) and [`-b`](cmdline.md#-b-blocked) were active; also blocks all system calls which change state.
+Behaves as if command-line options [`-u 1`](../basics/cmdline.md#-u-usr-pwd) and [`-b`](../basics/cmdline.md#-b-blocked) were active; also blocks all system calls which change state.
 That is, all writes to file system are blocked; allows read access to files in working directory and below only; and prevents amendment of globals.
 (Since V4.0 2020.03.17.)
 The [`exit`](exit.md) keyword is also blocked (since V4.1t 2021-07-12). Blocks hopen of a file (since 4.1t 2021.10.13, 4.0 2023.08.11)
@@ -70,5 +70,5 @@ q)h"reval(hopen;enlist`:somefile)"
 
 ----
 
-[Table counts in a partitioned database](../how_to/interact_with_databases/partition.md#table-counts)
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 

@@ -157,7 +157,7 @@ q)key x
 
 ## Type of a vector
 
-Where `x` is a vector returns the name of its [type](datatypes.md) as a symbol.
+Where `x` is a vector returns the name of its [type](../basics/datatypes.md) as a symbol.
 
 ```q
 q)key each ("abc";101b;1 2 3h;1 2 3;1 2 3;1 2 3f)
@@ -191,5 +191,5 @@ q)key 10
 ----
 
 
-[Metadata](metadata.md)
+[Metadata](../basics/metadata.md)
 

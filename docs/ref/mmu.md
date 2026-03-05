@@ -63,7 +63,7 @@ q)mmu[;b]peach a
 [Overloads of `$`](overloads.md#dollar)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>
 
 [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication "Wikipedia")

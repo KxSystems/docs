@@ -51,4 +51,4 @@ p| 8
 [`xgroup`](xgroup.md)
 <br>
 
-[Sorting](by-topic.md#sort)
+[Sorting](../basics/by-topic.md#sort)

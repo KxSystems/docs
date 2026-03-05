@@ -48,8 +48,8 @@ Name scope within the brackets is the same as outside them.
 [`if`](if.md)
 <br>
 
-[Controlling evaluation](control.md)
+[Controlling evaluation](../basics/control.md)
 <br>
 
 _Q for Mortals_
-[10.1.7 `while`](../learn/q4m/10_Execution_Control.md#1017-while)
+[10.1.7 `while`](/q4m3/10_Execution_Control/#1016-while)

@@ -76,5 +76,5 @@ q)1 2 sublist p  / 2 items starting from position 1
 [Take](take.md)
 <br>
 
-[Selection](by-topic.md#selection)
+[Selection](../basics/by-topic.md#selection)
 

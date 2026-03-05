@@ -44,15 +44,15 @@ px       vol
               / a row of nulls for no match
 ```
 
-`asof` is a [multithreaded primitive](mt-primitives.md).
+`asof` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ----
 
 [`aj`](aj.md),
 [`wj`](wj.md)  
 
-[Joins](joins.md)
+[Joins](../basics/joins.md)
 <br>
 
 _Q for Mortals_
-[§9.9.8 As-of Joins](../learn/q4m/9_Queries_q-sql.md/#998-as-of-joins)
+[§9.9.8 As-of Joins](/q4m3/9_Queries_q-sql/#998-as-of-joins)

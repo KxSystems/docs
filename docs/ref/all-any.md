@@ -56,7 +56,7 @@ domain: B G X H I J E F C S P M D Z N U V T
 range:  b . b b b b b b b . b b b b b b b b
 ```
 
-`all` is a [multithreaded primitive](mt-primitives.md).
+`all` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `any`
 
@@ -105,7 +105,7 @@ domain: B G X H I J E F C S P M D Z N U V T
 range:  b . b b b b b b b . b b b b b b b b
 ```
 
-`any` is a [multithreaded primitive](mt-primitives.md).
+`any` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ----
 
@@ -116,4 +116,4 @@ range:  b . b b b b b b b . b b b b b b b b
 [`min`](min.md)
 <br>
 
-[Logic](by-topic.md#logic)
+[Logic](../basics/by-topic.md#logic)

@@ -12,7 +12,7 @@ x & y         &[x;y]
 x and y       and[x;y]
 ```
 
-Returns the [lesser](comparison.md) of the underlying values of `x` and `y`.
+Returns the [lesser](../basics/comparison.md) of the underlying values of `x` and `y`.
 
 ```q
 q)2&3
@@ -23,11 +23,11 @@ q)"sat"&"cow"
 "cat"
 ```
 
-`&` is a [multithreaded primitive](mt-primitives.md).
+`&` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Flags
 
-Where `x` and `y` are both [flags](glossary.md#flag), Lesser is logical AND.
+Where `x` and `y` are both [flags](../basics/glossary.md#flag), Lesser is logical AND.
 
 !!! tip "Use `and` for flags"
 
@@ -74,7 +74,7 @@ q)98&"c"
 
 ## Implicit iteration
 
-Lesser and `and` are [atomic functions](atomic.md).
+Lesser and `and` are [atomic functions](../basics/atomic.md).
 
 ```q
 q)(10;20 30)&(2;3 4)
@@ -82,7 +82,7 @@ q)(10;20 30)&(2;3 4)
 3 4
 ```
 
-They apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+They apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -114,7 +114,7 @@ ghi| 3   -6
 ## Domain and range
 
 The following shows the resulting output type given the input type of `x` and `y`.
-The character representation of the datatypes referenced can be found [`here`](datatypes.md).
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
 
 ```txt
     b g x h i j e f c s p m d z n u v t
@@ -147,9 +147,9 @@ The possible range of output types are `bcdefhijmnptuvxz`.
 [`max`](max.md), [`min`](min.md)
 <br>
 
-[Comparison](comparison.md),
-[Logic](by-topic.md#logic)
+[Comparison](../basics/comparison.md),
+[Logic](../basics/by-topic.md#logic)
 <br>
 
 _Q for Mortals_
-[§4.5 Greater and Lesser](../learn/q4m/4_Operators.md#45-greater-and-lesser)
+[§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser)

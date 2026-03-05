@@ -93,11 +93,11 @@ t        time            4
 
 
 _Q for Mortals_
-[§11.5.1 Fixed-Width Records](../learn/q4m/11_IO.md/#1151-fixed-width-records)
+[§11.5.1 Fixed-Width Records](/q4m3/11_IO/#1151-fixed-width-records)
 
 ### Multithreaded Load
 
-Binary load can use multiple threads when kdb+ is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads)
+Binary load can use multiple threads when kdb+ is running in [multithreaded mode](../basics/syscmds.md#s-number-of-secondary-threads)
 
 Since 4.1t 2021.09.28.
 
@@ -110,10 +110,10 @@ x 1: y     1:[x;y]
 
 Where
 
-- `x` is a [`filesymbol`](glossary.md#file-symbol) or (since 4.1t 2023.04.17) a 4 item list ([`filesymbol`](glossary.md#file-symbol), logical block size, compression algorithm and compression level) to write compressed data
+- `x` is a [`filesymbol`](../basics/glossary.md#file-symbol) or (since 4.1t 2023.04.17) a 4 item list ([`filesymbol`](../basics/glossary.md#file-symbol), logical block size, compression algorithm and compression level) to write compressed data
 - `y` is data to write
 
-writes the raw bytes of `y` to [`filesymbol`](glossary.md#file-symbol) and returns it. If `filesymbol`
+writes the raw bytes of `y` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns it. If `filesymbol`
 
 - does not exist, it is created, with any required directories
 - exists, it is overwritten
@@ -144,7 +144,7 @@ q)type get[`:b][0]
 
 ### Compression
 
-Since 4.1t 2023.04.17 data can be compressed while writing, by including [`compression parameters`](../how_to/interact_with_databases/file-compression.md#understand-compression-parameters):
+Since 4.1t 2023.04.17 data can be compressed while writing, by including [`compression parameters`](../kb/file-compression.md#compression-parameters):
 
 ```q
 q)(`:file;17;2;9)1:100#0x0
@@ -156,4 +156,4 @@ q)(`:file;17;2;9)1:100#0x0
 [`0:` File Text](file-text.md)
 <br>
 
-[File system](files.md)
+[File system](../basics/files.md)

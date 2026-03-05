@@ -42,5 +42,5 @@ q)(2%1+10)ema p
 [`avg`, `avgs`, `mavg`, `wavg`](avg.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 

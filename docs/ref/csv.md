@@ -19,4 +19,4 @@ A synonym for `","` for use in preparing text for CSV files, or reading them.
 [`.h.td`](doth.md#htd-tsv-from-data) (tsv from data)
 <br>
 
-[File system](files.md)
+[File system](../basics/files.md)

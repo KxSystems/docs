@@ -13,7 +13,7 @@ keywords: flip, flip splayed, kdb+, partitioned, q, splayed, table
 x!y    ![x;y]
 ```
 
-This operation is used internally by kdb+ to represent the flip of a memory-mapped splayed table. When loading a database with [`\l`](syscmds.md#l-load-file-or-directory), the tables in the database are added to the root namespace in this representation.
+This operation is used internally by kdb+ to represent the flip of a memory-mapped splayed table. When loading a database with [`\l`](../basics/syscmds.md#l-load-file-or-directory), the tables in the database are added to the root namespace in this representation.
 
 Where `x` is a symbol list containing the names of the table columns and `y` is
 
@@ -90,4 +90,4 @@ q)select from flip enlist[`a]!`s
 
 ---
 
-[Dictionaries & tables](dictsandtables.md)
+[Dictionaries & tables](../basics/dictsandtables.md)

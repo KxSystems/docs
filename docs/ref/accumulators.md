@@ -32,7 +32,7 @@ t:          unary truth map
 x, y:       arguments/indexes of v
 </div>
 
-An accumulator is an [iterator](iterators.md) that takes an [applicable value](glossary.md#applicable-value) as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of **successive** evaluations.
+An accumulator is an [iterator](iterators.md) that takes an [applicable value](../basics/glossary.md#applicable-value) as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of **successive** evaluations.
 
 There are two accumulators, Scan and Over. They have the same syntax and perform the same computation. But where the Scan-derived functions return the result of each evaluation, those of Over return only the last result.
 
@@ -56,7 +56,7 @@ q)(+/)2 3 4    / Over
 
 The number of successive evaluations is determined differently for unary and for higher-rank values.
 
-The domain of the accumulators is functions, lists, and dictionaries that represent [finite-state machines](glossary.md#finite-state-machine).
+The domain of the accumulators is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine).
 
 ```q
 q)yrp                               / a European tour
@@ -85,7 +85,7 @@ Berlin| London
 x v1\y    x v1/y   / binary application
 ```
 
-The function an accumulator derives from a unary value is [variadic](variadic.md).
+The function an accumulator derives from a unary value is [variadic](../basics/variadic.md).
 The result of the first evaluation is the right argument for the second evaluation. And so on.
 
 !!! note "The value is evaluated on the entire right argument, not on items of it."
@@ -126,7 +126,7 @@ q)(route\)`Genoa                          / a circular tour
 q)(not/) 42                               / never returns!
 ```
 
-Matching is governed by [comparison tolerance](precision.md#comparison-tolerance).
+Matching is governed by [comparison tolerance](../basics/precision.md#comparison-tolerance).
 
 
 ### Do
@@ -213,11 +213,11 @@ In the last example, both applicable values are dictionaries.
 x v\y    x v/y
 ```
 
-The function an accumulator derived from a binary value is [variadic](variadic.md).
+The function an accumulator derived from a binary value is [variadic](../basics/variadic.md).
 Functions derived by Scan are uniform; functions derived by Over are aggregates.
 The number of evaluations is the count of the right argument.
 
-![over](svg/over.svg)
+![over](../basics/svg/over.svg)
 <br>
 <small>_Unary and binary application of f/_</small>
 
@@ -457,4 +457,4 @@ q){x+y*z}/[`foo;mt;mt]
 
 
 _Q for Mortals_
-[§6.7.6 Over (/) for Accumulation](../learn/q4m/6_Functions.md/#676-over-for-accumulation)
+[§6.7.6 Over (/) for Accumulation](/q4m3/6_Functions/#676-over-for-accumulation)

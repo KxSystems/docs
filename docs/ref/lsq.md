@@ -103,7 +103,7 @@ q)A mmu inv B
 [`mmu`](mmu.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>
 
 [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition "Wikipedia"),

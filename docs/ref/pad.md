@@ -25,7 +25,7 @@ q)-9$"foo"
 
 ## Implicit iteration
 
-Pad is [string-atomic](atomic.md#string-atomic) and applies to dictionaries and tables.
+Pad is [string-atomic](../basics/atomic.md#string-atomic) and applies to dictionaries and tables.
 
 ```q
 q)9$("The";("fox";("jumps";"over"));("the";"dog"))      / string-atomic
@@ -65,4 +65,4 @@ q)9h$("quick";"brown";"fox")
 
 ----
 
-[Strings](by-topic.md#strings)  
+[Strings](../basics/by-topic.md#strings)  

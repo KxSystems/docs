@@ -29,4 +29,4 @@ Useful for debugging, or avoiding formatting that obscures the data’s structur
 [`show`](show.md) 
 <br>
  
-[Debugging](../how_to/working-with-code/debug.md)
+[Debugging](../basics/debug.md)

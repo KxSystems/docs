@@ -12,7 +12,7 @@ _Size of a file in bytes_
 hcount x     hcount[x]
 ```
 
-Where `x` is a [file symbol](glossary.md#file-symbol),
+Where `x` is a [file symbol](../basics/glossary.md#file-symbol),
 returns as a long the size of the file.
 
 ```q
@@ -24,10 +24,10 @@ On a compressed/encrypted file returns the size of the original uncompressed/une
 
 ----
 
-[File system](files.md)
+[File system](../basics/files.md)
 <br>
 
-[File compression](../how_to/interact_with_databases/file-compression.md)
+[File compression](../kb/file-compression.md)
 <br>
 
-[Data at rest encryption (DARE)](../how_to/interact_with_databases/dare.md)
+[Data at rest encryption (DARE)](../kb/dare.md)

@@ -13,4 +13,4 @@ Since V4.0 2020.03.17
 
     The `.m` namespace was used for a different purpose in previous versions of kdb+. Existing code should be changed to remove this usage, as it may cause unexpected issues.
 
-The `.m` namespace holds the local namespaces of [modules](../modules/module-framework/overview.md). They should not be accessed directly but by using the interface provided by the module.
+The `.m` namespace holds the local namespaces of modules. They should not be accessed directly but by using the interface provided by the module.

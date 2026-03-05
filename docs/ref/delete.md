@@ -14,11 +14,11 @@ delete    from x where pw
 delete ps from x
 ```
 
-!!! info "`delete` is a [qSQL query template](qsql.md) and varies from regular q syntax"
+!!! info "`delete` is a [qSQL query template](../basics/qsql.md) and varies from regular q syntax"
 
 For the Delete operator `!`, see
 
-[Functional SQL](funsql.md#delete)
+[Functional SQL](../basics/funsql.md#delete)
 
 
 ## Table rows
@@ -105,7 +105,7 @@ c| 2
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
     
-    [qSQL](qsql.md#cond)
+    [qSQL](../basics/qsql.md#cond)
 
 
 ## Namespace objects
@@ -132,5 +132,5 @@ q)\v
 ```
 
 
-[qSQL](qsql.md)
+[qSQL](../basics/qsql.md)
 

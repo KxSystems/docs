@@ -68,9 +68,9 @@ k c   v
 
 ---
 
-[Joins](joins.md)
+[Joins](../basics/joins.md)
 <br>
 
 _Q for Mortals_
-[§9.9.5 Equi Join](../learn/q4m/9_Queries_q-sql.md#995-equijoin-ej)
+[§9.9.5 Equi Join](/q4m3/9_Queries_q-sql/#995-equijoin-ej)
 

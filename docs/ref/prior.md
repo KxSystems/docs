@@ -15,12 +15,12 @@ date: March 2019
 
 Where
 
--   `v2` is a binary [applicable value](glossary.md#applicable-value)
--   `vv` is a [variadic](variadic.md) applicable value
+-   `v2` is a binary [applicable value](../basics/glossary.md#applicable-value)
+-   `vv` is a [variadic](../basics/variadic.md) applicable value
 
 applies `v2` or `vv` to each item of `x` and the item preceding it, and returns a result of the same length.
 
-That is, the projections  `prior[v2;]` and `prior[vv;]` are [uniform](glossary.md#uniform-function) functions.
+That is, the projections  `prior[v2;]` and `prior[vv;]` are [uniform](../basics/glossary.md#uniform-function) functions.
 
 ```q
 q)(+) prior til 10

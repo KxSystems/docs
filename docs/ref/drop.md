@@ -15,7 +15,7 @@ _Drop items from a list, entries from a dictionary or columns from a table._
 x _ y    _[x;y]
 ```
 
-`_`(drop) is a [multithreaded primitive](mt-primitives.md).
+`_`(drop) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## Drop leading or trailing items
@@ -85,7 +85,7 @@ q)(`a`b`c!1 2 3) _ `a`b
 ```
 
  
-_Q for Mortals_: [§5. Dictionaries](../learn/q4m/5_Dictionaries.md/#522-extracting-a-sub-dictionary)
+_Q for Mortals_: [§5. Dictionaries](/q4m3/5_Dictionaries/#522-extracting-a-sub-dictionary)
 
 !!! warning "Dropping dictionary entries with integer arguments"
 

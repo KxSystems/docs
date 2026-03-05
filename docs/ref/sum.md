@@ -77,7 +77,7 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
         q)sum a
         49999897.181933172
 
-`sum` is a [multithreaded primitive](mt-primitives.md).
+`sum` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `sums`
 
@@ -162,14 +162,14 @@ q)(1 2;3 4) wsum (500 400;300 200)
 
 `wsum` is an aggregate function, equivalent to `{sum x*y}`.
 
-[Sliding windows](../examples/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
 <br>
 
 [Weighted sum](https://en.wikipedia.org/wiki/Weight_function "Wikipedia")
 
 ## Implicit iteration
 
-`sum`, `sums`, and `msum` apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+`sum`, `sums`, and `msum` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 `wsum` applies to dictionaries.
 
 ```q
@@ -274,4 +274,4 @@ Range: `defijmnptuvz`
 
 ----
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

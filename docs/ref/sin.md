@@ -31,11 +31,11 @@ q)asin 0.8      / arcsine
 0.9272952
 ```
 
-`sin` and `asin` are [multithreaded primitives](mt-primitives.md).
+`sin` and `asin` are [multithreaded primitives](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`sin` and `asin` are [atomic functions](atomic.md).
+`sin` and `asin` are [atomic functions](../basics/atomic.md).
 
 ```q
 q)sin (.2;.3 .4)
@@ -64,4 +64,4 @@ range:  f . f f f f f f f . f f f z f f f f
 [`cos`, `acos`](cos.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

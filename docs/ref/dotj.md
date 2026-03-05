@@ -13,7 +13,7 @@ _JSON serialization_
 [.j.jd  serialize infinity](#jjd-serialize-infinity)
 </div>
 
-The `.j` [namespace](namespaces.md) contains functions for converting between JSON and q dictionaries.
+The `.j` [namespace](../basics/namespaces.md) contains functions for converting between JSON and q dictionaries.
 
 !!! warning "The `.j` namespace is reserved for use by KX, as are all single-letter namespaces."
 

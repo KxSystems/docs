@@ -27,7 +27,7 @@ Equal is an atomic function.
 [Not Equal `<>`](not-equal.md)
 <br>
  
-[Comparison](comparison.md)
+[Comparison](../basics/comparison.md)
 <br>
  
-_Q for Mortals_: [§4.3.1 Equality = and Inequality <>](../learn/q4m/4_Operators.md#431-equality-and-inequality)
+_Q for Mortals_: [§4.3.1 Equality = and Inequality <>](/q4m3/4_Operators/#431-equality-and-disequality)

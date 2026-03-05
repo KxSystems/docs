@@ -27,7 +27,7 @@ q)`quickly like "quick*"
 1b
 ```
 
-Absent [pattern characters](regex.md) in `y`, `like` is equivalent to `{y~string x}`.
+Absent [pattern characters](../basics/regex.md) in `y`, `like` is equivalent to `{y~string x}`.
 
 ```q
 q)`quick like "quick"
@@ -55,8 +55,8 @@ c| 0
 [`ss`, `ssr`](ss.md),
 <br>
 
-[Regular expressions in q](regex.md),
-[Strings](by-topic.md#strings)
+[Regular expressions in q](../basics/regex.md),
+[Strings](../basics/by-topic.md#strings)
 <br>
 
-[Using regular expressions](regex.md)
+[Using regular expressions](../basics/regex.md)

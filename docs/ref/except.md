@@ -37,7 +37,7 @@ q)1 2 3 4 1 3 except 2 3
 [`within`](within.md)
 <br>
 
-[Selection](by-topic.md#selection)
+[Selection](../basics/by-topic.md#selection)
 
 
 

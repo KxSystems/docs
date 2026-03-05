@@ -78,7 +78,7 @@ q)`a`b,`sym2$`c
 `a`b`c
 ```
 
-`,`(join) is a [multithreaded primitive](mt-primitives.md).
+`,`(join) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ### Dictionaries
@@ -282,6 +282,6 @@ f| 12
 [`.Q.dd`](dotq.md#dd-join-symbols) join symbols
 <br>
  
-[Joins](joins.md) 
+[Joins](../basics/joins.md) 
 
 

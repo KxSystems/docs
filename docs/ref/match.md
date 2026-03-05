@@ -13,7 +13,7 @@ keywords: compare, kdb+, q, value
 x~y    ~[x;y]
 ``` 
 
-Returns `0b` unless `x` and `y` are identical. [Comparison tolerance](precision.md#comparison-tolerance) is used when matching floats. 
+Returns `0b` unless `x` and `y` are identical. [Comparison tolerance](../basics/precision.md#comparison-tolerance) is used when matching floats. 
 
 ```q
 q)(1 2 3+4 5 6)~4 5 6+1 2 3   / the arguments are identical
@@ -73,7 +73,7 @@ q)t1~t2
 [Equal `=`](equal.md), [Not Equal `<>`](not-equal.md)
 <br>
  
-[Comparison](comparison.md)
+[Comparison](../basics/comparison.md)
 <br>
  
-_Q for Mortals_: [§4.2 Match](../learn/q4m/4_Operators.md/#42-match)
+_Q for Mortals_: [§4.2 Match](/q4m3/4_Operators/#42-match)

@@ -114,8 +114,8 @@ q)sp:get `:sp/        / equivalent to rload `sp
 [`.Q.v`](dotq.md#v-value) (get splayed table)
 <br>
 
-[File system](files.md)
+[File system](../basics/files.md)
 <br>
 
 _Q for Mortals_
-[§11.2 Save and Load on Tables](../learn/q4m/11_IO.md/#112-save-and-load-on-tables)
+[§11.2 Save and Load on Tables](/q4m3/11_IO/#112-save-and-load-on-tables)

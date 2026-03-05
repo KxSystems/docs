@@ -19,7 +19,7 @@ Where
 - `x` is a sorted list
 - `y` is an atom of exactly the same type (no type promotion)
 
-returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`. If `x` is a simple list, `bin` is [atomic](atomic.md) in `y`. (For higher ranks of either argument, `bin` works the same way as [`?` (Find)](find.md/#type-specific).)
+returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`. If `x` is a simple list, `bin` is [atomic](../basics/atomic.md) in `y`. (For higher ranks of either argument, `bin` works the same way as [`?` (Find)](find.md/#type-specific).)
 `binr` _binary search right_, introduced in V3.0 2012.07.26, gives the index of the _first_ item in `x` which is ≥`y`.
 
 ```q
@@ -70,7 +70,7 @@ r[j]=x bin y[j]    for all j in index of y
 
 `bin` is the function used in [`aj`](aj.md) and [`lj`](lj.md).
 
-`bin` and `binr` are [multithreaded primitives](mt-primitives.md).
+`bin` and `binr` are [multithreaded primitives](../kb/mt-primitives.md).
 
 ## Tables
 
@@ -143,4 +143,4 @@ q)\t t bin t
 [`aj`](aj.md), [`lj`](lj.md)
 <br>
 
-[Search](by-topic.md#search)
+[Search](../basics/by-topic.md#search)

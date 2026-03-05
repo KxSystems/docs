@@ -20,11 +20,11 @@ q)floor -2.1 0 2.1
 -3 0 2
 ```
 
-`floor` is a [multithreaded primitive](mt-primitives.md).
+`floor` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`floor` is an [atomic function](atomic.md).
+`floor` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)floor(1.2;3.4 5.6)
@@ -51,7 +51,7 @@ range:  . . . h i j j j c s . . . s . . . .
 
 Prior to V3.0, `floor`
 
-- used [comparison tolerance](precision.md#comparison-tolerance)
+- used [comparison tolerance](../basics/precision.md#comparison-tolerance)
 - accepted datetime (Since V3.0, use `"d"$` instead.)
 
 ```q
@@ -78,4 +78,4 @@ Range: `hijcs`
 [`ceiling`](ceiling.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

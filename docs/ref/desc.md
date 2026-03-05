@@ -166,10 +166,10 @@ val | f
 [Set Attribute](set-attribute.md)
 <br>
 
-[Dictionaries & tables](dictsandtables.md),
-[Metadata](metadata.md),
-[Sorting](by-topic.md#sort)
+[Dictionaries & tables](../basics/dictsandtables.md),
+[Metadata](../basics/metadata.md),
+[Sorting](../basics/by-topic.md#sort)
 <br>
 
 _Q for Mortals_
-[§8.8 Attributes](../learn/q4m/8_Tables.md/#89-attributes)
+[§8.8 Attributes](/q4m3/8_Tables/#88-attributes)

@@ -19,7 +19,7 @@ Where
 
 returns `y` as a list, dictionary or table described or selected by `x`. 
 
-`#` is a [multithreaded primitive](mt-primitives.md).
+`#` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## Atom or list
@@ -280,7 +280,7 @@ s2| jones 10     paris
 ----
 
 _Q for Mortals_
-[§8.4.5 Retrieving Multiple Records](../learn/q4m/8_Tables.md/#845-retrieving-multiple-records)
+[§8.4.5 Retrieving Multiple Records](/q4m3/8_Tables/#845-retrieving-multiple-records)
 
 
 

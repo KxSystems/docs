@@ -41,11 +41,11 @@ q)2010.01.01 % 2005.01.01
 1.999453
 ```
 
-`%` is a [multithreaded primitive](mt-primitives.md).
+`%` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-Divide is an [atomic function](atomic.md).
+Divide is an [atomic function](../basics/atomic.md).
 
 ```q
 q)(10;20 30)%(2;3 4)
@@ -53,7 +53,7 @@ q)(10;20 30)%(2;3 4)
 6.666667 7.5
 ```
 
-It applies to [dictionaries and tables](math.md#dictionaries-and-tables).
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -85,7 +85,7 @@ ghi| 1 1
 ## Range and domains
 
 The following shows the resulting output type given the input type of `x` and `y`.
-The character representation of the datatypes referenced can be found [`here`](datatypes.md).
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
 
 ```txt
     b g x h i j e f c s p m d z n u v t
@@ -119,8 +119,8 @@ Range: `f`
 [`ratios`](ratios.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>q4m
 
 _Q for Mortals_
-[§4.4 Basic Arithmetic](../learn/q4m/4_Operators.md/#44-basic-arithmetic-)
+[§4.4 Basic Arithmetic](/q4m3/4_Operators/#44-basic-arithmetic-)

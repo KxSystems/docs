@@ -54,7 +54,7 @@ domain: B G X H I J E F C S P M D Z N U V T
 range:  f . f f f f f f f . f f f f f f f f
 ```
 
-`avg` is a [multithreaded primitive](mt-primitives.md).
+`avg` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `avgs`
 
@@ -205,11 +205,11 @@ T | f . f f f f f f f . f f f f f f f f
 
 Range: `f`
 
-`wavg` is a [multithreaded primitive](mt-primitives.md).
+`wavg` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`avg`, `avgs`, and `mavg` apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+`avg`, `avgs`, and `mavg` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 `wavg` applies to dictionaries.
 
 ```q
@@ -244,7 +244,7 @@ q)1 2 wavg d
 
 ----
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>
 
 [Weighted average mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean "Wikipedia")

@@ -184,7 +184,7 @@ q.test)value f
 
 ## Local values in suspended functions
 
-See changes since V3.5 that support [debugging](../how_to/working-with-code/debug.md).
+See changes since V3.5 that support [debugging](../basics/debug.md).
 
 
 ## `get`

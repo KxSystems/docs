@@ -61,7 +61,7 @@ b| 3
 c| 5
 ```
 
-[Table counts in a partitioned database](../how_to/interact_with_databases/partition.md#table-counts)
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 ## `mcount`
 
@@ -89,7 +89,7 @@ q)3 mcount 0N 1 2 3 0N 5
 
 ### Implicit iteration
 
-`mcount` applies to [dictionaries and tables](math.md#dictionaries-and-tables).
+`mcount` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
@@ -113,8 +113,8 @@ def| 2 2
 ghi| 2 2
 ```
 
-[Sliding windows](../examples/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
 
 ----
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

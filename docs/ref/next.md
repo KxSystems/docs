@@ -113,5 +113,5 @@ q)1 xprev "abcde"
 [Each Prior](maps.md#each-prior)
 <br>
 
-[Selection](by-topic.md#selection)
+[Selection](../basics/by-topic.md#selection)
 

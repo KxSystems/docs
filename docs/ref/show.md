@@ -40,4 +40,4 @@ q)a~(::)
 [Display](display.md)
 <br>
 
-[Debugging](../how_to/working-with-code/debug.md)
+[Debugging](../basics/debug.md)

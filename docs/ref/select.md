@@ -16,7 +16,7 @@ _Select all or part of a table, possibly with new columns_
 
 For the Select operator `?`, see 
 
-[Functional SQL](funsql.md)
+[Functional SQL](../basics/funsql.md)
 
 
 ## Syntax
@@ -37,12 +37,12 @@ _p~w~_    Where phrase
 </div>
 
 
-[qSQL syntax](qsql.md)
+[qSQL syntax](../basics/qsql.md)
 
 
-The `select` query returns a table for both [call-by-name and call-by-value](qsql.md#from-phrase).
+The `select` query returns a table for both [call-by-name and call-by-value](../basics/qsql.md#from-phrase).
 
-Since 4.1t 2021.03.30, select from [partitioned tables](../how_to/interact_with_databases/partition.md) maps relevant columns within each partition in parallel when running with [secondary threads](syscmds.md#s-number-of-secondary-threads).
+Since 4.1t 2021.03.30, select from [partitioned tables](../kb/partition.md) maps relevant columns within each partition in parallel when running with [secondary threads](../basics/syscmds.md#s-number-of-secondary-threads).
 
 
 ## Minimal form
@@ -87,7 +87,7 @@ b  20 2.2
 c  30 3.3
 ```
 
-A [computed column](qsql.md#computed-columns) in the Select phrase cannot be referred to in another subphrase. 
+A [computed column](../basics/qsql.md#computed-columns) in the Select phrase cannot be referred to in another subphrase. 
 
 
 ## Limit expression
@@ -209,7 +209,7 @@ Where there is a [By phrase](#by-phrase), and no sort order is specified, the re
 ## Cond
 
 [Cond](cond.md) is not supported inside query templates: 
-see [qSQL](qsql.md#cond).
+see [qSQL](../basics/qsql.md#cond).
 
 
 
@@ -220,9 +220,9 @@ see [qSQL](qsql.md#cond).
 [`update`](update.md)
 <br>
 
-[qSQL](qsql.md),
-[Functional SQL](funsql.md)
+[qSQL](../basics/qsql.md),
+[Functional SQL](../basics/funsql.md)
 <br>
 
 _Q for Mortals_
-[§9.3 The `select` Template](../learn/q4m/9_Queries_q-sql.md/#93-the-select-template) 
+[§9.3 The `select` Template](/q4m3/9_Queries_q-sql/#93-the-select-template) 

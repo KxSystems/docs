@@ -46,15 +46,15 @@ q)not (0W;-0w;0N)
 
 An atomic function. 
 
-`not` is a [multithreaded primitive](mt-primitives.md).
+`not` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ---
 
 [`neg`](neg.md) 
 <br>
 
-[Logic](by-topic.md#logic)
+[Logic](../basics/by-topic.md#logic)
 <br>
 
 _Q for Mortals_
-[§4.3.2 Not Zero `not`](../learn/q4m/4_Operators.md#432-not-not)
+[§4.3.2 Not Zero `not`](/q4m3/4_Operators/#432-not-zero-not)

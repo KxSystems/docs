@@ -26,7 +26,7 @@ q)string (+/)
 
 ## Implicit iteration
 
-`string` is an [atomic function](atomic.md) and iterates through dictionaries and tables.
+`string` is an [atomic function](../basics/atomic.md) and iterates through dictionaries and tables.
 
 ```q
 q)string (2 3;"abc")
@@ -71,4 +71,4 @@ Range: `c`
 <br>
 
 _Q for Mortals_
-[§7.3.1 Data to Strings](../learn/q4m/7_Transforming_Data.md/#731-data-to-strings)
+[§7.3.1 Data to Strings](/q4m3/7_Transforming_Data/#731-data-to-strings)

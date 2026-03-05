@@ -68,4 +68,4 @@ bucket| Min Max Count
 
 ----
 
-[Sorting](by-topic.md#sort)
+[Sorting](../basics/by-topic.md#sort)

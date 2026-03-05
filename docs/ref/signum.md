@@ -32,11 +32,11 @@ Find counts of price movements by direction:
 select count i by signum deltas price from trade
 ```
 
-`signum` is a [multithreaded primitive](mt-primitives.md).
+`signum` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`signum` is an [atomic function](atomic.md).
+`signum` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)signum(10;-20 30)
@@ -78,4 +78,4 @@ Range: `i`
 [`abs`](abs.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

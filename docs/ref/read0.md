@@ -19,9 +19,9 @@ read0 (fifo;n)    read0[(fifo;n)]
 
 where
 
-- `f` is a [file symbol](glossary.md#file-symbol)
+- `f` is a [file symbol](../basics/glossary.md#file-symbol)
 - `o` is an offset as a non-negative integer/long
-- `h` is a [system or connection handle](handles.md)
+- `h` is a [system or connection handle](../basics/handles.md)
 - `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
 - `n` is a non-negative integer
 
@@ -95,10 +95,10 @@ q)read0(h;8)
 
 ----
 
-[Connection handles](handles.md),
-[File system](files.md),q4m
-[Interprocess communication](../how_to/io_and_communication/ipc.md)
+[Connection handles](../basics/handles.md),
+[File system](../basics/files.md),q4m
+[Interprocess communication](../basics/ipc.md)
 <br>
 
 _Q for Mortals_
-[§11.4.1 Reading and Writing Text Files](../learn/q4m/11_IO.md/#1141-reading-and-writing-text-files)
+[§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)

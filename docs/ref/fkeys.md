@@ -32,4 +32,4 @@ c| f
 
 ---
 
-[Metadata](metadata.md)
+[Metadata](../basics/metadata.md)

@@ -15,7 +15,7 @@ _Type of an object_
 type x    type[x]
 ```
 
-Where `x` is any object, returns its [type](datatypes.md).
+Where `x` is any object, returns its [type](../basics/datatypes.md).
 
 The type is a short int: 
 
@@ -47,7 +47,7 @@ q)type (0|+)                    / composition
 [.Q.ty](dotq.md#ty-type)
 <br>
 
-[Casting and encoding](by-topic.md#casting-and-encoding),
-[Datatypes](datatypes.md)
+[Casting and encoding](../basics/by-topic.md#casting-and-encoding),
+[Datatypes](../basics/datatypes.md)
 
 

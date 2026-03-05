@@ -34,7 +34,7 @@ q)select min price by sym from t   / use in a select statement
 
 `min` is an aggregate function, equivalent to `&/`.
 
-`min` is a [multithreaded primitive](mt-primitives.md).
+`min` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `mins`
 
@@ -81,7 +81,7 @@ q)3 mmin 0N -3 -2 1 0N -0W    / null is the minimum value
 
 `mmin` is a uniform function.
 
-[Sliding windows](../examples/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 
 ## Domain and range
 
@@ -121,7 +121,7 @@ Range: `bcdefghijmnpstuvxz`
 
 ## Implicit iteration
 
-`min`, `mins`, and `mmin` apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+`min`, `mins`, and `mmin` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
@@ -165,4 +165,4 @@ q)min (1 2;0N 4)
 [`max`, `maxs`, `mmax`](max.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

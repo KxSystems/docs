@@ -20,7 +20,7 @@ get x     get[x]
 Where `x` is
 
 - the name of a global variable as a symbol atom
-- a [file or folder](glossary.md#file-symbol) named as a symbol atom or vector
+- a [file or folder](../basics/glossary.md#file-symbol) named as a symbol atom or vector
 
 returns its value.
 
@@ -87,10 +87,10 @@ t     table
 y     (any)            any q object
 ```
 
-[Compression parameters `alg`, `lbs`, and `lvl`](../how_to/interact_with_databases/file-compression.md#understand-compression-parameters)
+[Compression parameters `alg`, `lbs`, and `lvl`](../kb/file-compression.md#compression-parameters)
 <br>
 
-[Encryption parameters `alg` and `lbs`](../how_to/interact_with_databases/dare.md#set-encryption-defaults)
+[Encryption parameters `alg` and `lbs`](../kb/dare.md#configuration)
 <br>
 [Compression/Encryption specification dictionary](#compressionencryption)
 
@@ -144,10 +144,10 @@ To splay a table `t` to directory `dir`
 
 - `dir` must be a filesymbol that ends with a `/`
 - `t` must have no primary keys
-- columns of `t` must be vectors or [compound lists](glossary.md#compound-list)
+- columns of `t` must be vectors or [compound lists](../basics/glossary.md#compound-list)
 - symbol columns in `t` must be fully enumerated
 
-[Splayed tables](../how_to/interact_with_databases/splayed-tables.md)
+[Splayed tables](../kb/splayed-tables.md)
 
 ### Format
 
@@ -176,7 +176,7 @@ For
 (dir;lbs;alg;lvl) set t   / splay t to dir, compressed and/or encrypted
 ```
 
-Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../how_to/interact_with_databases/file-compression.md#understand-compression-parameters) and/or [encryption parameters](../how_to/interact_with_databases/dare.md#set-encryption-defaults).
+Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#configuration).
 
 Splay table `t` to directory `ztbl/` with gzip compression:
 
@@ -208,14 +208,14 @@ q)(`:ztbl/;dic) set t               / splay table compressed
 `:ztbl/
 ```
 
-!!! warning "Compression may speed up or slow down the execution of `set`. The [performance impact](../how_to/interact_with_databases/file-compression.md#performance-tuning) depends mainly on the data characteristics and the storage speed."
+!!! warning "Compression may speed up or slow down the execution of `set`. The [performance impact](../kb/file-compression.md#performance) depends mainly on the data characteristics and the storage speed."
 
 ----
 
-[File system](files.md)
+[File system](../basics/files.md)
 <br>
 
-[File compression](../how_to/interact_with_databases/file-compression.md)
+[File compression](../kb/file-compression.md)
 <br>
 
-[Data at rest encryption (DARE)](../how_to/interact_with_databases/dare.md)
+[Data at rest encryption (DARE)](../kb/dare.md)

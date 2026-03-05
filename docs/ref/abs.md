@@ -28,11 +28,11 @@ q)"j"$1999.01.01 2000.12.31
 -365 365
 ```
 
-`abs` is a [multithreaded primitive](mt-primitives.md).
+`abs` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`abs` is an [atomic function](atomic.md).
+`abs` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)abs(10;20 -30)
@@ -40,7 +40,7 @@ q)abs(10;20 -30)
 20 30
 ```
 
-It applies to [dictionaries and tables](math.md#dictionaries-and-tables).
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ## Domain and range
 
@@ -56,4 +56,4 @@ Range: `ihjefpmdznuvt`
 [`signum`](signum.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

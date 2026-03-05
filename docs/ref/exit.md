@@ -30,7 +30,7 @@ $ echo $?
 
 !!! warning "No confirmation is requested from the console."
 
-Exit is blocked during [`reval`](eval.md#reval) or with [`-u` on the command line](cmdline.md#-u-disable-syscmds). (Since V4.1t 2021-07-12.)
+Exit is blocked during [`reval`](eval.md#reval) or with [`-u` on the command line](../basics/cmdline.md#-u-disable-syscmds). (Since V4.1t 2021-07-12.)
 
 ----
 
@@ -38,6 +38,6 @@ Exit is blocked during [`reval`](eval.md#reval) or with [`-u` on the command lin
 [`.z.exit`](dotz.md#zexit-action-on-exit) (action on exit) 
 <br>
  
-[Controlling evaluation](control.md), 
-[Debugging](../how_to/working-with-code/debug.md)
+[Controlling evaluation](../basics/control.md), 
+[Debugging](../basics/debug.md)
 

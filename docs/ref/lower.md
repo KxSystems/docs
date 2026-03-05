@@ -28,7 +28,7 @@ q)upper`ibm`msft
 
 ## Implicit iteration
 
-`lower` and `upper` are [atomic functions](atomic.md).
+`lower` and `upper` are [atomic functions](../basics/atomic.md).
 
 ```q
 q)upper(`The;(`quick`brown;(`fox;`jumps`over));`a;`lazy`dog)
@@ -40,4 +40,4 @@ q)upper(`The;(`quick`brown;(`fox;`jumps`over));`a;`lazy`dog)
 
 ----
 
-[Strings](by-topic.md#strings)
+[Strings](../basics/by-topic.md#strings)

@@ -34,11 +34,11 @@ msoft| 3005 103
 
 Add is generally faster than [Subtract](subtract.md).
 
-`+` is a [multithreaded primitive](mt-primitives.md).
+`+` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-Add is an [atomic function](atomic.md).
+Add is an [atomic function](../basics/atomic.md).
 
 ```q
 q)(10;20 30)+(2;3 4)
@@ -46,7 +46,7 @@ q)(10;20 30)+(2;3 4)
 23 34
 ```
 
-It applies to [dictionaries and tables](math.md#dictionaries-and-tables).
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -78,7 +78,7 @@ ghi| 6   -12
 ## Range and domains
 
 The following shows the resulting output type given the input type of `x` and `y`.
-The character representation of the datatypes referenced can be found [`here`](datatypes.md).
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
 
 ```txt
     b g x h i j e f c s p m d z n u v t
@@ -123,9 +123,9 @@ q)type 1i+55
 [`.Q.addmonths`](dotq.md#addmonths)
 <br>
 
-[Datatypes](datatypes.md),
-[Mathematics](math.md)
+[Datatypes](../basics/datatypes.md),
+[Mathematics](../basics/math.md)
 <br>
 
 _Q for Mortals_
-[§4.9.2 Temporal Arithmetic](../learn/q4m/4_Operators.md/#492-temporal-arithmetic)
+[§4.9.2 Temporal Arithmetic](/q4m3/4_Operators/#492-temporal-arithmetic)

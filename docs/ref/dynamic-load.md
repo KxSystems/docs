@@ -17,9 +17,9 @@ fs 2: (cfn;rnk)    2:[fs;(cfn;rnk)]
 
 Where
 
--   `fs` is a [file symbol](glossary.md#file-symbol)
+-   `fs` is a [file symbol](../basics/glossary.md#file-symbol)
 -   `cfn` is the name of a C function (symbol) 
--   `rnk` its [rank](glossary.md#rank) (int)
+-   `rnk` its [rank](../basics/glossary.md#rank) (int)
 
 returns a function that calls it.
 
@@ -43,8 +43,8 @@ Since 3.6 2018.08.24 loading shared libraries via 2: resolved to a canonical pat
 From 4.1t 2024.01.11 it resolves to an absolute path only, without resolving sym-links.
 
  
-[File system](files.md)<br>
+[File system](../basics/files.md)<br>
 
-[Using C/C++ functions](../ref/languages/c-client-for-q.md)
+[Using C/C++ functions](../interfaces/c-client-for-q.md)
 
 

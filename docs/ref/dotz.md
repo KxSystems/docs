@@ -48,23 +48,23 @@ Environment (Time/Date)
  [.z.Z/z  local/UTC datetime](#zz-local-datetime)
 </div>
 
-The `.z` [namespace](namespaces.md) contains environment variables and functions, and hooks for callbacks.
+The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
 !!! warning "The `.z` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
 
 !!! tip "By default, callbacks are not defined in the session"
 
-    After they have been assigned, you can restore the default using [`\x`](syscmds.md#x-expunge) to delete the definition that was made.
+    After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
 Prior to kdb+, `.z` was a pseudo-namespace that could not be retrieved or enumerated using the language features (such as ```key `.z``` or ```value `.z```). In kdb+, `.z` is a proper namespace that acts like all other namespaces.
 
-[Callbacks](../how_to/io_and_communication/callbacks.md)
+[Callbacks](../kb/callbacks.md)
 [Using `.z`](https://code.kx.com/q/kb/using-dotz/)
 <br>
 
 _Q for Mortals:_
-[§11.8 Interprocess Communication](../learn/q4m/11_IO.md#118-interprocess-communication)
+[§11.8 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 ## `.z.a` (IP address)
 
@@ -168,10 +168,10 @@ An HTTP callback to handle the original request is not called.
 (4;"")
 ```
 
-Fallback to [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side), where the username/password are base64 decoded and processed via the [`-u`](cmdline.md#-u-usr-pwd-local)/[`-U`](cmdline.md#-u-usr-pwd) file and [`.z.pw`](#zpw-validate-user) (if defined).
+Fallback to [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side), where the username/password are base64 decoded and processed via the [`-u`](../basics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and [`.z.pw`](#zpw-validate-user) (if defined).
 If the user is not permitted, the client is sent a default 401 HTTP unauthorized response. Since V4.0 2021.07.12.
 
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 
 [](){#zb-dependencies}
 
@@ -187,7 +187,7 @@ x| `a`b
 y| ,`a
 ```
 
-[`\b`](syscmds.md#b-views) (views)
+[`\b`](../basics/syscmds.md#b-views) (views)
 <br>
 
 [Views](https://code.kx.com/q/learn/views/)
@@ -230,7 +230,7 @@ Displays information on the following:
 - `CERT` is the X509 certificate the peer presented. It is not present if the peer certificate was not provided.
 
 For example, the following connects to a server, then runs `.z.e` on the server to gain information on the TLS connection handle used by the client. Therefore `CERT` is the client certificate (peer of the server). 
-If [`SSL_VERIFY_CLIENT`](../how_to/io_and_communication/ssl.md#ssl_verify_client) is not enabled on the server, the client certificate is not requested by the server, and therefore would not be displayed.
+If [`SSL_VERIFY_CLIENT`](../kb/ssl.md#ssl_verify_client) is not enabled on the server, the client certificate is not requested by the server, and therefore would not be displayed.
 
 ```q
 q)h:hopen `:tcps://localhost:5000
@@ -256,15 +256,15 @@ For example, the following implements the connection open callback ([`.z.po`](#z
 .z.po:{show"SSL server connection info:";show .z.e;show"SSL client connection info:";show .z.w".z.e"}
 ```
 
-`.z.w".z.e"` is used to run `.z.e` on the client (via a [sync request](../how_to/io_and_communication/ipc.md#synchronous-requests-request-response) over the connection provided by [`.z.w`](#zw-handle))
+`.z.w".z.e"` is used to run `.z.e` on the client (via a [sync request](../basics/ipc.md#sync-request-get) over the connection provided by [`.z.w`](#zw-handle))
 
 Since V3.4 2016.05.16. `CERT` details of `VERIFIED`,`VERIFYERROR` available since 4.1t 2024.02.07.
 
-[`-26!` TLS settings](internal.md#-26x-ssl)
+[`-26!` TLS settings](../basics/internal.md#-26x-ssl)
 
 ## `.z.ex` (failed primitive)
 
-In a [debugger](../how_to/working-with-code/debug.md) session, `.z.ex` is set to the failed primitive.
+In a [debugger](../basics/debug.md) session, `.z.ex` is set to the failed primitive.
 
 Since V3.5 2017.03.15.
 
@@ -278,7 +278,7 @@ Since V3.5 2017.03.15.
 
 Where `f` is a unary function, `f` is called with the exit parameter as the argument just before exiting the kdb+ session.
 
-The exit parameter is the argument to the [`exit`](exit.md) function, or 0 if manual exit with [`\\` quit](syscmds.md#quit)
+The exit parameter is the argument to the [`exit`](exit.md) function, or 0 if manual exit with [`\\` quit](../basics/syscmds.md#quit)
 
 !!! important "The handler cannot cancel the exit."
 
@@ -335,11 +335,11 @@ os>..
 [`exit`](exit.md)
 <br>
 
-[`\\` quit](syscmds.md#quit)
+[`\\` quit](../basics/syscmds.md#quit)
 
 ## `.z.ey` (argument to failed primitive)
 
-In a [debugger](../how_to/working-with-code/debug.md) session, `.z.ey` is set to the argument to failed primitive.
+In a [debugger](../basics/debug.md) session, `.z.ey` is set to the argument to failed primitive.
 
 Since V3.5 2017.03.15.
 
@@ -368,7 +368,7 @@ q).z.H~key .z.W
 1b
 ```
 
-[`.z.W`](#zw-handles) (handles), [`.z.w`](#zw-handle) (handle), [`-38!`](internal.md#-38x-socket-table) (socket table)
+[`.z.W`](#zw-handles) (handles), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 ## `.z.h` (host)
 
@@ -462,7 +462,7 @@ bannerText     | "stephen@kx.com #59875"
 
 ## `.z.M` (module namespace name)
 
-While loading a [module](../modules/module-framework/overview.md), `.z.M` contains the name of the local namespace of the module as a symbol. Furthermore, `.z.M` suffixed with any name returns that name joined to the module namespace name.
+While loading a module, `.z.M` contains the name of the local namespace of the module as a symbol. Furthermore, `.z.M` suffixed with any name returns that name joined to the module namespace name.
 
 ```q
 // $QHOME/mod/foo/init.q
@@ -482,7 +482,7 @@ q)foo.g[]
 
 ## `.z.m` (module namespace)
 
-While loading a [module](../modules/module-framework/overview.md), `.z.m` represents the local namespace of the module as a dictionary. Elements can be added, removed and retrieved just like with any dictionary. Functions retain the information about which namespace `.z.m` refers to, as opposed to it resolving to the current module at the point of invocation.
+While loading a module, `.z.m` represents the local namespace of the module as a dictionary. Elements can be added, removed and retrieved just like with any dictionary. Functions retain the information about which namespace `.z.m` refers to, as opposed to it resolving to the current module at the point of invocation.
 
 ```q
 // $QHOME/mod/foo/init.q
@@ -625,7 +625,7 @@ q)
 .z.pd: x
 ```
 
-Where q has been [started with secondary processes for use in parallel processing](cmdline.md#-s-secondary-threads),  `x` is
+Where q has been [started with secondary processes for use in parallel processing](../basics/cmdline.md#-s-secondary-threads),  `x` is
 
 * an int vector of handles to secondary processes
 * a function that returns a list of handles to those secondary processes
@@ -662,7 +662,7 @@ Note that (since V3.1) the worker processes are not started automatically by kdb
 
     One-shot IPC requests can be used within `peach` instead.
 
-[Load balancing](../how_to/manage_streaming_data/load-balancing.md)
+[Load balancing](../kb/load-balancing.md)
 
 ## `.z.pg` (get)
 
@@ -676,7 +676,7 @@ Where `f` is a unary function, called with the object that is passed to the q se
 
 The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and executes in the root context.
 
-[`.z.ps`](#zps-set) (set), [`-30!(x)`](internal.md#-30x-deferred-response) (deferred response)
+[`.z.ps`](#zps-set) (set), [`-30!(x)`](../basics/internal.md#-30x-deferred-response) (deferred response)
 
 ## `.z.ph` (HTTP get)
 
@@ -701,11 +701,11 @@ Since V3.6 and V3.5 2019.11.13, the default implementation calls [`.h.val`](doth
 [`.h` namespace](doth.md)
 <br>
 
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 <br>
 
 _Q for Mortals_
-[§11.10.1 HTTP Connections](../learn/q4m/11_IO.md#11101-http-connections)
+[§11.10.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)
 
 ## `.z.pi` (input)
 
@@ -760,7 +760,7 @@ For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-ht
 
 [`.z.ph`](#zph-http-get) (HTTP get), [`.z.pp`](#zpp-http-post) (HTTP post), [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 
 ## `.z.po` (open)
 
@@ -768,7 +768,7 @@ For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-ht
 .z.po:f
 ```
 
-Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ session has been initialized, i.e. after it’s been validated against any [`-u`](cmdline.md#-u-usr-pwd-local)/[`-U`](cmdline.md#-u-usr-pwd) file and `.z.pw` checks.
+Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ session has been initialized, i.e. after it’s been validated against any [`-u`](../basics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and `.z.pw` checks.
 
 Its argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`
 
@@ -777,7 +777,7 @@ Its argument is the handle and is typically used to build a dictionary of handle
 <br>
 
 _Q for Mortals_
-[§11.8 Interprocess Communication](../learn/q4m/11_IO.md#118-interprocess-communication)
+[§11.8 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 ## `.z.pp` (HTTP post)
 
@@ -799,11 +799,11 @@ Allows empty requests since 4.1t 2021.03.30 (previously signalled `length` error
 [`.h` namespace](doth.md)
 <br>
 
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 <br>
 
 _Q for Mortals_
-[§11.10.1 HTTP Connections](../learn/q4m/11_IO.md#11101-http-connections)
+[§11.10.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)
 
 ## `.z.pq` (qcon)
 
@@ -847,7 +847,7 @@ q)0 "2+2"
 .z.pw:f
 ```
 
-Where `f` is a binary function, `.z.pw` is evaluated _after_ the [`-u`](cmdline.md#-u-usr-pwd-local)/[`-U`](cmdline.md#-u-usr-pwd) checks, and _before_ `.z.po` when opening a new connection to a kdb+ session.
+Where `f` is a binary function, `.z.pw` is evaluated _after_ the [`-u`](../basics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) checks, and _before_ `.z.po` when opening a new connection to a kdb+ session.
 
 The arguments are the user ID (as a symbol) and password (as a string) to be verified; the result is a boolean atom.
 
@@ -866,7 +866,7 @@ The default definition is `{[user;pswd]1b}`
 
 `1b` if Quiet Mode is set, else `0b`.
 
-[Command-line option `-q`](cmdline.md#-q-quiet-mode)
+[Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
 
 ## `.z.r` (blocked)
 
@@ -875,7 +875,7 @@ A boolean, indicating whether an update in the current context would be blocked.
 Returns `1b`
 
 * in `reval`
-* where the [`-b` command-line option](cmdline.md#-b-blocked) has been set
+* where the [`-b` command-line option](../basics/cmdline.md#-b-blocked) has been set
 * in a thread other than the main event thread
 
 Since V4.1t 2021.04.16.
@@ -922,7 +922,7 @@ q)2010.12.16D17:12:12.849442000
 
 When kdb+ has completed executing a script passed as a command-line argument, and if there are no open sockets nor a console, kdb+ will exit. The timer alone is not enough to stop the process exiting – it must have an event source which is a file descriptor (socket, console, or some plugin registering a file descriptor and callback via the C API `sd1` function).
 
-[`\t`](syscmds.md#t-timer)
+[`\t`](../basics/syscmds.md#t-timer)
 
 ## `.z.u` (user ID)
 
@@ -966,7 +966,7 @@ For function `f[x;y]`, `x` is the symbol of the modified variable and `y` is the
 
     This is not triggered for function-local variables, nor globals that are not in the default namespace, e.g. those prefixed with a dot such as `.a.b`.
 
-    This is the same restriction that applies to [logging](../how_to/manage_streaming_data/logging.md).
+    This is the same restriction that applies to [logging](../kb/logging.md).
 
 The following example sets `.z.vs` to display the symbol, the index and the value of the variable.
 
@@ -983,7 +983,7 @@ q)m[1;1]:0
 Dictionary of IPC handles with the number of bytes waiting in their output queues.
 [`.z.H`](#zh-active-sockets) is a lower cost method if the size of the output queue is not required.
 
-The following demonstrates a client connection which has created [async requests](../how_to/io_and_communication/ipc.md#asynchronous-requests-fire-and-forget), causing pending data in its connection output queue.
+The following demonstrates a client connection which has created [async requests](../basics/ipc.md#async-message-set), causing pending data in its connection output queue.
 
 ```q
 q)h:hopen ...
@@ -1007,7 +1007,7 @@ q)neg[h]({};til 1000000); neg[h]({};til 10); sum each .z.W
 6| 8000140
 ```
 
-Querying known handles can also be performed using [`-38!`](internal.md#-38x-socket-table), which can be more performant than using `.z.W` to return the entire dataset of handles.
+Querying known handles can also be performed using [`-38!`](../basics/internal.md#-38x-socket-table), which can be more performant than using `.z.W` to return the entire dataset of handles.
 
 ```q
 q)h:hopen 5000
@@ -1017,7 +1017,7 @@ q)neg[h]"11+1111111";(-38!h)`m
 24
 ```
 
-[`.z.H`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](internal.md#-38x-socket-table) (socket table)
+[`.z.H`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 ## `.z.w` (handle)
 
@@ -1029,9 +1029,9 @@ q).z.w
 ```
 
 When called from code executing a client callback function due to a client request, for example [`.z.pg`](#zpg-get), it returns the handle of the client connection.
-This can be used for performing tasks such as sending a [sync/async request](../how_to/io_and_communication/ipc.md#sending-requests-sync-vs-async) to the client or recording the handle upon which a request should be later fulfilled.
+This can be used for performing tasks such as sending a [sync/async request](../basics/ipc.md#send-messages) to the client or recording the handle upon which a request should be later fulfilled.
 
-[`.z.H`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](internal.md#-38x-socket-table) (socket table)
+[`.z.H`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
 
 ## `.z.wc` (websocket close)
 
@@ -1090,7 +1090,7 @@ Sending a websocket message is limited to async messages only (sync is `'nyi`). 
 [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
 
-[WebSockets](../how_to/io_and_communication/websockets.md)
+[WebSockets](../kb/websockets.md)
 
 ## `.z.X` (raw command line)
 
@@ -1173,7 +1173,7 @@ q).z.z
 .z.zd:dict
 ```
 
-Integers `lbs`, `alg`, and `lvl` are [compression parameters](../how_to/interact_with_databases/file-compression.md) and/or [encryption parameters](../how_to/interact_with_databases/dare.md#set-encryption-defaults).
+Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md) and/or [encryption parameters](../kb/dare.md#configuration).
 They set default values for logical block size, compression/encryption algorithm and compression level that apply when saving to files.
 Encryption available since 4.0 2019.12.12.
 
@@ -1227,19 +1227,19 @@ b| 17 2 6
 q).z.zd:dict
 ```
 
-Settings can be cleared using the [`\x`](syscmds.md#x-expunge) system command.
+Settings can be cleared using the [`\x`](../basics/syscmds.md#x-expunge) system command.
 
 ```q
 q).z.zd:17 2 6        / set zip defaults
 q)\x .z.zd            / clear zip defaults
 ```
 
-[`-21!x`](internal.md#-21x-compressionencryption-stats) (compression/encryption stats), [`set`](get.md#set) (per file/dir compression)
+[`-21!x`](../basics/internal.md#-21x-compressionencryption-stats) (compression/encryption stats), [`set`](get.md#set) (per file/dir compression)
 
-[File compression](../how_to/interact_with_databases/file-compression.md)
+[File compression](../kb/file-compression.md)
 <br>
 
-[Data at rest encryption (DARE)](../how_to/interact_with_databases/dare.md)
+[Data at rest encryption (DARE)](../kb/dare.md)
 
 ## `.z.T` `.z.t` `.z.D` `.z.d` (time/date shortcuts)
 
@@ -1254,9 +1254,9 @@ Shorthand forms:
 
 ---
 
-[Callbacks](../how_to/io_and_communication/callbacks.md),
+[Callbacks](../kb/callbacks.md),
 [Using `.z`](https://code.kx.com/q/kb/using-dotz/)
 <br>
 
 _Q for Mortals:_
-[§11.8 Interprocess Communication](../learn/q4m/11_IO.md#118-interprocess-communication)
+[§11.8 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)

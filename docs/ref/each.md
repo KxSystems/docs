@@ -14,12 +14,12 @@ _Iterate a unary_
 
 Where
 
-- `v1` is a unary [applicable value](glossary.md#applicable-value)
-- `vv` is a [variadic](variadic.md) applicable value
+- `v1` is a unary [applicable value](../basics/glossary.md#applicable-value)
+- `vv` is a [variadic](../basics/variadic.md) applicable value
 
 applies `v1` or `vv` as a unary to each item of `x` and returns a result of the same length.
 
-That is, the projections `each[v1;]`, `each[vv;]`, `peach[v1;]`, and `peach[vv;]` are [uniform](glossary.md#uniform-function) functions.
+That is, the projections `each[v1;]`, `each[vv;]`, `peach[v1;]`, and `peach[vv;]` are [uniform](../basics/glossary.md#uniform-function) functions.
 
 ```q
 q)count each ("the";"quick";" brown";"fox")
@@ -42,7 +42,7 @@ q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 `peach` is a wrapper for the [Each Parallel iterator](maps.md#each-parallel).
 It is good q style to use `each` and `peach` for unary values.
 
-!!! warning "`each` is redundant with [atomic functions](atomic.md)."
+!!! warning "`each` is redundant with [atomic functions](../basics/atomic.md)."
 
 [Maps](maps.md) for uses of Each with binary and higher-rank values
 <br>
@@ -50,14 +50,14 @@ It is good q style to use `each` and `peach` for unary values.
 [`.Q.fc` parallel on cut](dotq.md#fc-parallel-on-cut)
 <br>
 
-[Parallel processing](../how_to/performance/performance.md#parallel-processing)
+Parallel processing
 <br>
 
-[Table counts in a partitioned database](../how_to/interact_with_databases/partition.md#table-counts)
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 <br>
 
 _Q for Mortals_
-[A.49 `peach`](../learn/q4m/A_Built-in_Functions.md#a49-peach)
+[A.49 `peach`](/q4m3/A_Built-in_Functions/#a68-peach)
 
 ## Higher-rank values
 
@@ -84,4 +84,4 @@ Generally, do not use a **socket** within `peach`, unless it is encapsulated via
 
 If you are careful to manage your **file handles/file access** so that there is no parallel use of the same handle (or file) across threads, then you can open and close files within `peach`.
 
-**Streaming execute** ([`-11!`](internal.md#-11-streaming-execute)) should also be fine. However updates to global variables are not possible, so use cases might be quite restricted within `peach`.
+**Streaming execute** ([`-11!`](../basics/internal.md#-11-streaming-execute)) should also be fine. However updates to global variables are not possible, so use cases might be quite restricted within `peach`.

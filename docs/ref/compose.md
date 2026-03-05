@@ -17,7 +17,7 @@ _Compose a unary value with another_
 
 Where
 
--   `f` is a unary [value](glossary.md#applicable-value)
+-   `f` is a unary [value](../basics/glossary.md#applicable-value)
 -   `ff` is a value rank ≥1
 
 the derived function `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]`.
@@ -74,4 +74,4 @@ If we take `-100` to flag parts of `x`, the expression `max 0 (0|+)\x` returns t
 
 ----
 
-[Q Phrasebook](phrases/index.md)
+Q Phrasebook

@@ -22,11 +22,11 @@ q)reciprocal 1b
 1f
 ```
 
-`reciprocal` is a [multithreaded primitive](mt-primitives.md).
+`reciprocal` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`reciprocal` is an [atomic function](atomic.md).
+`reciprocal` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)reciprocal (12;13 14)
@@ -69,4 +69,4 @@ Range: `fpz`
 [Divide](divide.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

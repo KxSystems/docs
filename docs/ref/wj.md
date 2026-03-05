@@ -132,9 +132,9 @@ ibm 10:01:08 105   107 108 107 108 104 106 106 107
 [`asof`](asof.md)
 <br>
 
-[Joins](joins.md)
+[Joins](../basics/joins.md)
 <br>
 
 _Q for Mortals_
-[9.9.9 Window Joins](../learn/q4m/9_Queries_q-sql.md#999-window-joins)
+[9.9.9 Window Joins](/q4m3/9_Queries_q-sql/#999-window-join)
 

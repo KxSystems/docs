@@ -83,4 +83,4 @@ a b  c
 [`!` bang](overloads.md#bang) overloads
 <br>
 
-[Tables](faq.md)
+[Tables](../kb/faq.md)

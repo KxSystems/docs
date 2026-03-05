@@ -82,4 +82,4 @@ q)last 42
 
 ----
 
-[Selection](by-topic.md#selection)
+[Selection](../basics/by-topic.md#selection)

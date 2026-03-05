@@ -54,7 +54,7 @@ foo:{[x;y]
 The brackets of the expression list do not create lexical scope.
 Name scope within the brackets is the same as outside them.
 
-!!! warning "Setting local variables using `if` can have [unintended consequences](function-notation.md#name-scope)."
+!!! warning "Setting local variables using `if` can have [unintended consequences](../basics/function-notation.md#name-scope)."
 
 ----
 
@@ -64,8 +64,8 @@ Name scope within the brackets is the same as outside them.
 [Vector Conditional](vector-conditional.md)
 <br>
 
-[Controlling evaluation](control.md)
+[Controlling evaluation](../basics/control.md)
 <br>
 
 _Q for Mortals_
-[§10.1.5 `if`](../learn/q4m/10_Execution_Control.md#1015-if)
+[§10.1.5 `if`](/q4m3/10_Execution_Control/#1014-if)

@@ -83,9 +83,9 @@ cast  | item/s of `y` not in `d`
 [`$` dollar](overloads.md#dollar)
 <br>
 
-[Enumerations](enumerations.md)
+[Enumerations](../basics/enumerations.md)
 <br>
 
 _Q for Mortals_
-[§7.5 Enumerations](../learn/q4m/7_Transforming_Data.md/#75-enumerations) ,
-[§8.5 Foreign Keys and Virtual Columns](../learn/q4m/8_Tables.md#85-foreign-keys-and-virtual-columns)
+[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations) ,
+[§8.5 Foreign Keys and Virtual Columns](/q4m3/8_Tables/#85-foreign-keys-and-virtual-columns)

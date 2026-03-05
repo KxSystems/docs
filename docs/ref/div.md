@@ -48,11 +48,11 @@ q)"\023" div 8
 2i
 ```
 
-`div` is a [multithreaded primitive](mt-primitives.md).
+`div` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`div` is an [atomic function](atomic.md).
+`div` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)(10;20 30)div(3 4; -5)
@@ -60,7 +60,7 @@ q)(10;20 30)div(3 4; -5)
 -4 -6
 ```
 
-It applies to [dictionaries and keyed tables](math.md#dictionaries-and-tables).
+It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -80,7 +80,7 @@ ghi| 0  -2
 ## Domain and range
 
 The following shows the resulting output type given the input type of `x` and `y`.
-The character representation of the datatypes referenced can be found [`here`](datatypes.md).
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
 
 ```txt
  | b g x h i j e f c s p m d z n u v t
@@ -112,7 +112,7 @@ The possible range of output types are `dfijmnptuvz`.
 [`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>
 
-_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](../learn/q4m/4_Operators.md/#481-integer-division-div-and-modulus-mod)
+_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](/q4m3/4_Operators/#481-integer-division-div-and-modulus-mod)

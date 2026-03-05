@@ -36,12 +36,12 @@ q)exp 00:00:00 00:00:12 12:00:00
 1 162754.8 0w
 ```
 
-`exp` is a [multithreaded primitive](mt-primitives.md).
+`exp` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ### Implicit iteration
 
-`exp` is an [atomic](atomic.md) function.
-It applies to [dictionaries and tables](math.md#dictionaries-and-tables)
+`exp` is an [atomic](../basics/atomic.md) function.
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables)
 
 ```q
 q)exp(1;2 3)
@@ -118,12 +118,12 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
     7.9999999999999982
     ```
 
-`xexp` is a [multithreaded primitive](mt-primitives.md).
+`xexp` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ### Implicit iteration
 
-`xexp` is an [atomic](atomic.md) function.
-It applies to [dictionaries and keyed tables](math.md#dictionaries-and-tables)
+`xexp` is an [atomic](../basics/atomic.md) function.
+It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
 
 ```q
 q)3 xexp(1;2 3)

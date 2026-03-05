@@ -59,7 +59,7 @@ c d
 2 20
 ```
 
-`lj` is a [multithreaded primitive](mt-primitives.md).
+`lj` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## Changes in V4.0
@@ -131,9 +131,9 @@ q)x lj y
 
 ----
  
-[Joins](joins.md)
+[Joins](../basics/joins.md)
 <br>
 
 _Q for Mortals_
-[§9.9.2 Ad Hoc Left Join](../learn/q4m/9_Queries_q-sql.md/#992-ad-hoc-left-join-lj)
+[§9.9.2 Ad Hoc Left Join](/q4m3/9_Queries_q-sql/#992-ad-hoc-left-join-lj)
 

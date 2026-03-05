@@ -206,4 +206,4 @@ s4 p2 200 500
 
 ---
 
-[q-SQL](qsql.md)
+[q-SQL](../basics/qsql.md)

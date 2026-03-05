@@ -17,11 +17,11 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 ['  Case](maps.md#case)
 </div>
 
-The iterators (once known as _adverbs_) are native higher-order operators: they take [applicable values](glossary.md#applicable-value) as arguments and return derived functions.
+The iterators (once known as _adverbs_) are native higher-order operators: they take [applicable values](../basics/glossary.md#applicable-value) as arguments and return derived functions.
 They are the primary means of iterating in q.
 
 
-[Iteration](iteration.md) in q
+[Iteration](../basics/iteration.md) in q
 <br>
 
 [Iterators](iterators.md)
@@ -57,7 +57,7 @@ q)+/[1000000;2 3 4]   / binary
 ```
 
  
-[Variadic syntax](variadic.md)
+[Variadic syntax](../basics/variadic.md)
 
 
 ## Postfix application
@@ -91,7 +91,7 @@ q)count'[txt]          / unary function applied with brackets
 3 5 5 4
 ```
 
-If the derived function is unary or [variadic](variadic.md), you can also parenthesize it and apply it prefix.
+If the derived function is unary or [variadic](../basics/variadic.md), you can also parenthesize it and apply it prefix.
 
 ```q
 q)(count')txt          / unary function applied prefix

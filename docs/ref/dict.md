@@ -72,8 +72,8 @@ type   | `y` is not a simple table
 [`value`](value.md)
 <br>
 
-[Dictionaries & tables](dictsandtables.md)
+[Dictionaries & tables](../basics/dictsandtables.md)
 <br>
 
 _Q for Mortals_
-[§5 Dictionaries](../learn/q4m/5_Dictionaries.md/)
+[§5 Dictionaries](/q4m3/5_Dictionaries/)

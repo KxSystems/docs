@@ -133,7 +133,7 @@ q)csv 0:([]("foo\nbar";"baz"))
     ```
 
 _Q for Mortals_
-[§11.4.3 Preparing Text](../learn/q4m/11_IO.md/#1143-preparing-text)
+[§11.4.3 Preparing Text](/q4m3/11_IO/#1143-preparing-text)
 
 ## Save Text
 
@@ -241,7 +241,7 @@ table: flip `a`b`c!("ISI";",") 0:`data.csv
 
 ### Multithreaded Load
 
-CSV load (excluding embedded line return mode) can use multiple threads when kdb+ is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads).
+CSV load (excluding embedded line return mode) can use multiple threads when kdb+ is running in [multithreaded mode](../basics/syscmds.md#s-number-of-secondary-threads).
 
 ```q
 q)v:` sv 10000000#","0:10 10#til 100
@@ -295,7 +295,7 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
 
 ### Multithreaded Load
 
-Fixed width load can use multiple threads when kdb+ is running in [multithreaded mode](syscmds.md#s-number-of-secondary-threads)
+Fixed width load can use multiple threads when kdb+ is running in [multithreaded mode](../basics/syscmds.md#s-number-of-secondary-threads)
 
 Since 4.1t 2021.09.28.
 
@@ -353,7 +353,7 @@ q)0N!"S=*,"0:"a=\"hello,world\",b=1";
 ```
 
 _Q for Mortals_
-[§11.5.3 Key-Value Records](../learn/q4m/11_IO.md/#1153-key-value-records)
+[§11.5.3 Key-Value Records](/q4m3/11_IO/#1153-key-value-records)
 
 ## Column types and formats
 
@@ -385,9 +385,9 @@ T        time        hh[:]mm[:]ss[[.]ddd]
 [`.j` namespace](dotj.md) for JSON
 <br>
  q4m
-[Datatypes](datatypes.md),
-[File system](files.md)
+[Datatypes](../basics/datatypes.md),
+[File system](../basics/files.md)
 <br>
 
 _Q for Mortals_
-[§11.4.1 Reading and Writing Text Files](../learn/q4m/11_IO.md/#1141-reading-and-writing-text-files)
+[§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)

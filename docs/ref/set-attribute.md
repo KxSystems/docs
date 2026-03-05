@@ -15,7 +15,7 @@ x#y    #[x;y]
 
 Where `y` is a list or dictionary and atom `x` is
 
--   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](syntax.md#attributes) set
+-   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](../basics/syntax.md#attributes) set
 -   the null symbol `` ` ``, returns `y` with all attributes removed
 
 Attributes:
@@ -124,7 +124,7 @@ u-fail   not unique or not parted
 
 Some q functions use attributes to work faster:
 
--    Where-clauses in [`select` and `exec` templates](qsql.md) run faster with `where =`, `where in` and `where within`
+-    Where-clauses in [`select` and `exec` templates](../basics/qsql.md) run faster with `where =`, `where in` and `where within`
 -    Searching: [`bin`](bin.md), [`distinct`](distinct.md), [Find](find.md) and [`in`](in.md) (if the right argument has an attribute)
 -    Sorting: [`iasc`](asc.md#iasc) and [`idesc`](desc.md#idesc)
 -    Dictionaries: [`group`](group.md)
@@ -138,8 +138,8 @@ Setting attributes consumes resources and is likely to improve performance only 
 [`attr`](attr.md)
 <br>
 
-[Metadata](metadata.md)
+[Metadata](../basics/metadata.md)
 <br>
 
 _Q for Mortals_
-[§8.9 Attributes](../learn/q4m/8_Tables.md#89-attributes)
+[§8.9 Attributes](/q4m3/8_Tables/#88-attributes)

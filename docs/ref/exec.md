@@ -14,7 +14,7 @@ _Return selected rows and columns from a table_
 
 For the Exec operator `?`, see 
 
-[Functional SQL](funsql.md)
+[Functional SQL](../basics/funsql.md)
 
 
 
@@ -27,12 +27,12 @@ exec [distinct] _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [whe
 </div>
 
 
-[qSQL syntax](qsql.md)
+[qSQL syntax](../basics/qsql.md)
 
 
 ## From phrase
 
-The [table expression](qsql.md#from-phrase) _t<sub>exp</sub>_ may be a table in memory, or on disk, where it may be splayed but not partitioned. 
+The [table expression](../basics/qsql.md#from-phrase) _t<sub>exp</sub>_ may be a table in memory, or on disk, where it may be splayed but not partitioned. 
 
 The workaround is to use the result of a `select` query as the table expression:
 
@@ -157,7 +157,7 @@ s1| `s$`s1`s1`s1`s1`s4`s1`s2`s2`s3`s4`s4`s1
 ## Cond
 
 Cond is not supported inside query templates: 
-see [qSQL](qsql.md#cond).
+see [qSQL](../basics/qsql.md#cond).
 
 
 
@@ -169,9 +169,9 @@ see [qSQL](qsql.md#cond).
 [`update`](update.md)
 <br>
 
-[qSQL](qsql.md),
-[Functional SQL](funsql.md)
+[qSQL](../basics/qsql.md),
+[Functional SQL](../basics/funsql.md)
 <br>
 
 _Q for Mortals_
-[§9.4 The `exec` Template](../learn/q4m/9_Queries_q-sql.md/#94-the-exec-template)  
+[§9.4 The `exec` Template](/q4m3/9_Queries_q-sql/#94-the-exec-template)  

@@ -30,4 +30,4 @@ q)tables `.work   / tables in work
 
 ---
 
-[Metadata](metadata.md)
+[Metadata](../basics/metadata.md)

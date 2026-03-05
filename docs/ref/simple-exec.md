@@ -9,5 +9,5 @@ keywords: functional sql, kdb+, q,sql
 
 
 
-For functional Simple Exec, see Basics: [Functional qSQL](funsql.md#simple-exec)
+For functional Simple Exec, see Basics: [Functional qSQL](../basics/funsql.md#simple-exec)
 

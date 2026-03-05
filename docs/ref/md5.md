@@ -25,4 +25,4 @@ MD5 is a widely used, Internet standard (RFC 1321), hash function that computes 
 ----
 
 
-[Strings](by-topic.md#strings)
+[Strings](../basics/by-topic.md#strings)

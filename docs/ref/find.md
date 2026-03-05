@@ -18,7 +18,7 @@ where `x` is a list or a null, returns for
 -   **atom** `y` the smallest index of `y`
 -   **list** `y` the smallest index of each item of `y`
 
-Where `y` or an item of it is not found in `x`, the smallest index is the smallest integer not found in `key x`, i.e. `count x`. Comparisons are exact and are not subject to to [comparison tolerance](precision.md).
+Where `y` or an item of it is not found in `x`, the smallest index is the smallest integer not found in `key x`, i.e. `count x`. Comparisons are exact and are not subject to to [comparison tolerance](../basics/precision.md).
 
 ```q
 q)w:10 -8 3 5 -1 2 3
@@ -36,7 +36,7 @@ q)"abcde"?"d"
 3
 ```
 
-`?`(find) is a [multithreaded primitive](mt-primitives.md).
+`?`(find) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## Type-specific

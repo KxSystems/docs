@@ -73,6 +73,6 @@ q)keys trade         / sym is now primary key of trade
 [`.Q.ff`](dotq.md#ff-append-columns) (append columns)
 <br>
 
-[Dictionaries](dictsandtables.md),
-[Tables](faq.md),
-[Metadata](metadata.md)
+[Dictionaries](../basics/dictsandtables.md),
+[Tables](../kb/faq.md),
+[Metadata](../basics/metadata.md)

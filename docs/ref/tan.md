@@ -34,11 +34,11 @@ q)atan 42
 1.546991
 ```
 
-`tan` and `atan` are [multithreaded primitives](mt-primitives.md).
+`tan` and `atan` are [multithreaded primitives](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`tan` and `atan` are [atomic functions](atomic.md).
+`tan` and `atan` are [atomic functions](../basics/atomic.md).
 
 ```q
 q)tan (.2;.3 .4)
@@ -68,4 +68,4 @@ range:  f . f f f f f f f . f f f z f f f f
 [`sin` and `asin`](sin.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

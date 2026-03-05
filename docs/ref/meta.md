@@ -76,7 +76,7 @@ c   | t f a
 code| s
 vr  | F
 ```
-!!! warning "The result of `meta` does not tell you whether a table in memory can be [splayed](../how_to/interact_with_databases/splayed-tables.md), only the first item in each column is examined"
+!!! warning "The result of `meta` does not tell you whether a table in memory can be [splayed](../kb/splayed-tables.md), only the first item in each column is examined"
 
 A splayed table with a symbol column needs its corresponding sym list.
 
@@ -120,7 +120,7 @@ price| f
 
 ---
 
-[Metadata](metadata.md)
+[Metadata](../basics/metadata.md)
 <br>
 
-[Splayed tables](../how_to/interact_with_databases/splayed-tables.md)
+[Splayed tables](../kb/splayed-tables.md)

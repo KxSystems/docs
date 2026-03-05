@@ -16,7 +16,7 @@ Where
 - `x` is a non-negative numeric atom
 - `y` is numeric or temporal
 
-returns `y` rounded down to the nearest multiple of `x`. `xbar` is a [multithreaded primitive](mt-primitives.md).
+returns `y` rounded down to the nearest multiple of `x`. `xbar` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ```q
 q)3 xbar til 16
@@ -86,8 +86,8 @@ q)-1+`date$3+3 xbar `month$2019.11.19  / end of that quarter
 
 ## Implicit iteration
 
-`xbar` is an [atomic function](atomic.md).
-It applies to [dictionaries and keyed tables](math.md#dictionaries-and-tables)
+`xbar` is an [atomic function](../basics/atomic.md).
+It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
 
 ```q
 q)(3;4 5)xbar(10;20 -30)
@@ -111,7 +111,7 @@ ghi| 3   -6
 ## Domain and range
 
 The following shows the resulting output type given the input type of `x` and `y`.
-The character representation of the datatypes referenced can be found [`here`](datatypes.md).
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
 
 ```txt
 xbar| b g x h i j e f c s p m d z n u v t
@@ -152,4 +152,4 @@ The possible range of output types are `ijfpmdznuvte`.
 [`bin`](bin.md), [`floor`](floor.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

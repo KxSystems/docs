@@ -39,4 +39,4 @@ q)iasc idesc 2 7 3 2 5           / descending rank
 [`iasc`](asc.md#iasc) 
 <br>
 
-[Sorting](by-topic.md#sort)
+[Sorting](../basics/by-topic.md#sort)

@@ -90,8 +90,8 @@ v[vx[0];vx[1]]
 
 !!! warning "Variadic operators"
 
-    Most binary operators such as Add have [deprecated unary forms](exposed-infrastructure.md#unary-forms) 
-    and are thus actually [variadic](glossary.md#variadic). 
+    Most binary operators such as Add have [deprecated unary forms](../basics/exposed-infrastructure.md#unary-forms) 
+    and are thus actually [variadic](../basics/glossary.md#variadic). 
 
     Where `v` is such a variadic operator, parenthesize it to provide it as the left argument of Apply.
 
@@ -110,7 +110,7 @@ v[vx[0]]
 
 
 _Q for Mortals_
-[§6.5.3 Indexing at Depth](../learn/q4m/6_Functions.md#653-indexing-at-depth)
+[§6.5.3 Indexing at Depth](/q4m3/6_Functions/#653-indexing-at-depth)
 
 
 ## Nullaries
@@ -452,7 +452,7 @@ For most purposes, you will want `e` to be a function.
 
 
 _Q for Mortals_
-[§10.1.9 Protected Evaluation](../learn/q4m/10_Execution_Control.md#1019-protected-evaluation)
+[§10.1.9 Protected Evaluation](/q4m3/10_Execution_Control/#1018-protected-evaluation)
 
 
 ## Errors signalled

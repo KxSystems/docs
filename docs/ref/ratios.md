@@ -41,7 +41,7 @@ price| x
 
 ## Implicit iteration
 
-`ratios` applies to [dictionaries and tables](math.md#dictionaries-and-tables).
+`ratios` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
@@ -96,4 +96,4 @@ q)ratios0 2000 2005 2007 2012 2020
 [Divide](divide.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

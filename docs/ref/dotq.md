@@ -67,11 +67,11 @@ last_updated: January 2026
                                    [Xf          create file](#xf-create-file)
 </div>
 
-Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](namespaces.md).
+Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](../basics/namespaces.md).
 
 !!! warning "The `.Q` namespace is reserved for use by KX, as are all single-letter namespaces."
 
-    Consider all undocumented functions in the namespace as [exposed infrastructure](exposed-infrastructure.md) – and do not use them.
+    Consider all undocumented functions in the namespace as [exposed infrastructure](../basics/exposed-infrastructure.md) – and do not use them.
 
 In non-partitioned databases the partitioned database state variables remain undefined.
 
@@ -118,10 +118,10 @@ q).Q.addmonths[2006.10.29;4]
 2007.03.01
 ```
 
-[Mathematics with temporals](math.md#mathematics-with-temporals)
+[Mathematics with temporals](../basics/math.md#mathematics-with-temporals)
 <br>
 
-[How to handle temporal data in q](temporal-data.md)
+[How to handle temporal data in q](../kb/temporal-data.md)
 
 [](){#addr-ip-address}
 
@@ -354,7 +354,7 @@ q).Q.chk[`:hdb]
     check the process has write permissions for that filesystem.
 
 _Q for Mortals_
-[§14.5.2 `.Q.chk`](../learn/q4m/14_Introduction_to_kdb+.md#1452-qchk)
+[§14.5.2 `.Q.chk`](/q4m3/14_Introduction_to_Kdb+/#1457-qchk)
 
 ## `cn` (count partitioned table)
 
@@ -436,7 +436,7 @@ xyz| 321f
 efg| `a
 ```
 
-If a command-line value cannot be [converted to the data type](tok.md) of the default value, a [null](datatypes.md) is produced
+If a command-line value cannot be [converted to the data type](tok.md) of the default value, a [null](../basics/datatypes.md) is produced
 
 ```bash
 q -param1 11 -param2 2000.01.01 -param3 wrong
@@ -655,17 +655,17 @@ Tables splayed across a directory must be fully enumerated and not keyed. The so
 [`save`](save.md)
 <br>
 
-[Enumerating symbol columns in a table](../how_to/interact_with_databases/splayed-tables.md#enumerating-symbol-columns)
+[Enumerating symbol columns in a table](../kb/splayed-tables.md#enumerating-symbol-columns)
 <br>
 
-[Splayed tables](../how_to/interact_with_databases/splayed-tables.md)
+[Splayed tables](../kb/splayed-tables.md)
 <br>
 
-[Working with sym files](../how_to/interact_with_databases/symfiles.md#understand-symbol-enumeration)
+[Working with sym files](../wp/symfiles.md#enumeration)
 <br>
 
 _Q for Mortals_
-[§14.2.8 Working with sym files](../learn/q4m/14_Introduction_to_kdb+.md)
+[§14.2.8 Working with sym files](/q4m3/14_Introduction_to_Kdb+/)
 
 [](){#f-format}
 
@@ -682,7 +682,7 @@ Where
 
 returns `y` as a string formatted as a float to `x` decimal places.
 
-Because of the limits of precision in a double, for `y` above `1e13` or the limit set by [`\P`](syscmds.md#p-precision), formats in scientific notation.
+Because of the limits of precision in a double, for `y` above `1e13` or the limit set by [`\P`](../basics/syscmds.md#p-precision), formats in scientific notation.
 
 ```q
 q)\P 0
@@ -703,9 +703,9 @@ q)10 xlog 0Wj-1
 18.964889726830812
 ```
 
-[`.Q.fmt`](#fmt-precision-format) (precision format with length), [-27!(x;y)](internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
+[`.Q.fmt`](#fmt-precision-format) (precision format with length), [-27!(x;y)](../basics/internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
 <br>
-[`\P`](syscmds.md#p-precision) (precision)
+[`\P`](../basics/syscmds.md#p-precision) (precision)
 
 ## `fc` (parallel on cut)
 
@@ -848,9 +848,9 @@ q)fmt[9] each 34.4 343434.358
 "343434.36"
 ```
 
-[`.Q.f`](#f-precision-format) (precision format), [-27!(x;y)](internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
+[`.Q.f`](#f-precision-format) (precision format), [-27!(x;y)](../basics/internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
 <br>
-[`\P`](syscmds.md#p-precision) (precision)
+[`\P`](../basics/syscmds.md#p-precision) (precision)
 
 [](){#fpn-streaming-algorithm}
 
@@ -877,7 +877,7 @@ Where
 
 Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm for various purposes such as converting a large compressed CSV file into an on-disk kdb+ database without holding the data in memory all at once or using disk space required for the uncompressed file.
 
-[Streaming data from named pipes](../how_to/io_and_communication/named-pipes.md#stream-and-process-data-from-a-pipe)
+[Streaming data from named pipes](../kb/named-pipes.md#streaming)
 
 !!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
 
@@ -929,7 +929,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 120
 ```
 
-[Loading from large files](../how_to/interact_with_databases/loading-from-large-files.md)
+[Loading from large files](../kb/loading-from-large-files.md)
 
 ## `ft` (apply simple)
 
@@ -1018,7 +1018,7 @@ q)r1~r2
 Run garbage-collection and returns the amount of memory that was returned to the OS.
 <!-- (Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in secondary threads since V2.7 2011.09.21) -->
 It attempts to coalesce pieces of the heap into their original allocation units and returns any units ≥64MB to the OS.
-Refer to [`\g`](syscmds.md#g-garbage-collection-mode) (garbage collection mode) for details on how memory is created on the heap.
+Refer to [`\g`](../basics/syscmds.md#g-garbage-collection-mode) (garbage collection mode) for details on how memory is created on the heap.
 
 When secondary threads are configured and `.Q.gc[]` is invoked in the main thread, `.Q.gc[]` is automatically invoked in each secondary thread.
 If the call is instigated in a secondary thread, it affects that thread’s local heap only.
@@ -1121,8 +1121,8 @@ Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations 
 This has the advantage of running return faster than `.Q.gc[]`, but with the disadvantage of not defragmenting unused memory blocks of a smaller size (therefore may not free as much unused memory).
 
 [`.Q.w`](#w-memory-stats) (memory stats),
-[`\g`](syscmds.md#g-garbage-collection-mode) (garbage collection mode),
-[`\w`](syscmds.md#w-workspace) (workspace)
+[`\g`](../basics/syscmds.md#g-garbage-collection-mode) (garbage collection mode),
+[`\w`](../basics/syscmds.md#w-workspace) (workspace)
 
 ## `gz` (GZip)
 
@@ -1151,7 +1151,7 @@ q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 "helloworldhelloworldhelloworldhelloworldhelloworldhelloworldhelloworldhellow..
 ```
 
-[-18!x](internal.md#-18x-compress-bytes) (ipc compress bytes)
+[-18!x](../basics/internal.md#-18x-compress-bytes) (ipc compress bytes)
 
 ## `hdpf` (save tables)
 
@@ -1163,7 +1163,7 @@ The function:
 
 * saves all tables to disk, by calling [`.Q.dpft`](#dpft-save-table) (saves as splayed tables to a partition)
 * clears in-memory tables
-* sends reload message to HDB, by opening a temporary connection and sending [`\l .`](syscmds.md#l-load-file-or-directory)
+* sends reload message to HDB, by opening a temporary connection and sending [`\l .`](../basics/syscmds.md#l-load-file-or-directory)
 
 ## `hg` (HTTP get)
 
@@ -1201,7 +1201,7 @@ N.B. HTTPS is not supported across proxies which require `CONNECT`.
 Since 4.0 2019.10.22, gzip compression is supported. Requests include the HTTP header "Accept-Encoding: gzip".
 The server then decides whether to gzip the returned payload, which is uncompressed prior to .Q.hg returning.
 
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 
 [](){#host-hostname}
 
@@ -1289,7 +1289,7 @@ q).Q.hp["http://google.com";.h.ty`json]"my question"
 "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewpo..
 ```
 
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 
 ## `id` (sanitize)
 
@@ -1466,7 +1466,7 @@ q).Q.k
 Where `x` is a hsym or symbol atom naming a directory in the current directory, loads
 it recursively as in [`load`](load.md), but into the default namespace.
 
-(Implements system command [`\l`](syscmds.md#l-load-file-or-directory).)
+(Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
 
 ## `ld` (load and group)
 
@@ -1474,7 +1474,7 @@ it recursively as in [`load`](load.md), but into the default namespace.
 .Q.ld x
 ```
 
-Exposes logic used by [`\l`](syscmds.md#l-load-file-or-directory) to group script lines for evaluation.
+Exposes logic used by [`\l`](../basics/syscmds.md#l-load-file-or-directory) to group script lines for evaluation.
 Since 4.1t 2022.11.01,4.0 2023.03.28.
 
 ```q
@@ -1563,7 +1563,7 @@ q)0W~.Q.M  / defaults to long infinity
 Keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
 (Since V3.1.)
 
-For use with partitioned HDBS, used in tandem with [`\l dir`](syscmds.md#l-load-file-or-directory)
+For use with partitioned HDBS, used in tandem with [`\l dir`](../basics/syscmds.md#l-load-file-or-directory)
 
 ```q
 q)\l .
@@ -1602,7 +1602,7 @@ An alternative to [`use`](use.md), reloads the specified module even if it was a
 
 Contains a list of strings of paths where the module loader should search for modules.
 
-[Search path](../modules/module-framework/quickstart.md#search-path)
+Search path
 
 ## `n` (nums)
 
@@ -1700,7 +1700,7 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 
 !!! warning "Does not look into the segment directories."
 
-    The function calculates only the path, based on the partition and the contents of `par.txt` in a round-robin fashion. It does not check the contents of the segments to see if the partition is there. See [Segmented databases](../how_to/interact_with_databases/segment.md#considerations) for details.
+    The function calculates only the path, based on the partition and the contents of `par.txt` in a round-robin fashion. It does not check the contents of the segments to see if the partition is there. See [Segmented databases](../database/segment.md#considerations) for details.
 
 ## `PD` (partition locations)
 
@@ -1790,7 +1790,7 @@ q).Q.pv!flip .Q.pn
 2010.01.02| 100
 ```
 
-[Table counts](../how_to/interact_with_databases/partition.md#table-counts)
+[Table counts](../kb/partition.md#table-counts)
 
 ## `prf0` (code profiler)
 
@@ -1821,7 +1821,7 @@ A negative `pid` should not be used in a running process.
 
 Given a file symbol, resolves any `::` prefix to the directory of the module currently being loaded. Outside a module, the prefix is simply removed.
 
-[Module self-reference](../modules/module-framework/quickstart.md#self-reference)
+Module self-reference
 
 ## `pt` (partitioned tables)
 
@@ -1842,7 +1842,7 @@ A list of the values of the partition domain: the values corresponding to the sl
 In partitioned DBs, [`.Q.PV`](#pv-partition-values) as modified by [`.Q.view`](#view-subview).
 
 _Q for Mortals_
-[§14.5.3 `.Q.pv`](../learn/q4m/14_Introduction_to_kdb+.md)
+[§14.5.3 `.Q.pv`](/q4m3/14_Introduction_to_Kdb+/)
 
 ## `PV` (partition values)
 
@@ -1923,7 +1923,7 @@ q).Q.res,key`.q
 .Q.s x
 ```
 
-Returns `x` formatted to plain text, as used by the console. Obeys console width and height set by [`\c`](syscmds.md#c-console-size).
+Returns `x` formatted to plain text, as used by the console. Obeys console width and height set by [`\c`](../basics/syscmds.md#c-console-size).
 
 ```q
 q).Q.s ([h:1 2 3] m: 4 5 6)
@@ -1953,7 +1953,7 @@ Where `x` is a [backtrace object](#trp-extend-trap-at) returns it as a string fo
 
 Since V3.5 2017.03.15.
 
-[Debugging](../how_to/working-with-code/debug.md)
+[Debugging](../basics/debug.md)
 
 ## `sha1` (SHA-1 encode)
 
@@ -2051,7 +2051,7 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 
 Since V3.5 2017.03.15.
 
-[Debugging](../how_to/working-with-code/debug.md)
+[Debugging](../basics/debug.md)
 
 ## `trpd` (extend trap)
 
@@ -2092,7 +2092,7 @@ Use .Q.trp as a simpler form of .Q.trpd, for unary values.
 
 Since 4.1 2024.03.12.
 
-[Debugging](../how_to/working-with-code/debug.md)
+[Debugging](../basics/debug.md)
 
 ## `ts` (time and space)
 
@@ -2104,7 +2104,7 @@ _Apply, with time and space_
 
 Where `x` and `y` are valid arguments to [Apply](apply.md) returns a 2-item list:
 
-1. time and space as [`\ts`](syscmds.md#ts-time-and-space) would
+1. time and space as [`\ts`](../basics/syscmds.md#ts-time-and-space) would
 2. the result of `.[x;y]`
 
 ```q
@@ -2127,7 +2127,7 @@ Since V3.6 2018.05.18.
 .Q.ty x
 ```
 
-Where `x` is a list, returns the [type](datatypes.md) of `x` as a character code:
+Where `x` is a list, returns the [type](../basics/datatypes.md) of `x` as a character code:
 
 * lower case for a vector
 * upper case for a list of uniform type
@@ -2204,7 +2204,7 @@ Since 4.1t 2022.03.25,4.0 2023.05.26 this would signal an `invalid partition fil
 `.Q.view`, also used when loading an hdb, now utilizes threads to load .d files (column names) since 4.1t 2023.04.17.
 
 _Q for Mortals_
-[§14.5.8 `Q.view`](../learn/q4m/14_Introduction_to_kdb+.md)
+[§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/)
 
 ## `vp` (missing partitions)
 
@@ -2240,7 +2240,7 @@ q)@[get;"select from tt";-2@]; / no error
 .Q.w[]
 ```
 
-Returns the memory stats from [`\w`](syscmds.md#w-workspace) into a more readable dictionary. Refer to [`\w`](syscmds.md#w-workspace) for an explanation of each statistic.
+Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary. Refer to [`\w`](../basics/syscmds.md#w-workspace) for an explanation of each statistic.
 
 ```q
 q).Q.w[]
@@ -2256,10 +2256,10 @@ symw| 25436
 
 [`.Q.gc`](#gc-garbage-collect) (garbage collect)<br>
 
-[Command-line parameter `-w`](cmdline.md#-w-workspace) (workspace memory limit)
+[Command-line parameter `-w`](../basics/cmdline.md#-w-workspace) (workspace memory limit)
 <br>
 
-[System command `\w`](syscmds.md#w-workspace) (memory stats and workspace memory limit)
+[System command `\w`](../basics/syscmds.md#w-workspace) (memory stats and workspace memory limit)
 
 ## `Xf` (create file)
 

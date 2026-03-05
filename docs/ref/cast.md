@@ -43,11 +43,11 @@ Where `x` is:
 
 Casting does not change the underlying bit pattern of the data, only how it is represented.
 
-`$`(cast) is a [multithreaded primitive](mt-primitives.md).
+`$`(cast) is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Iteration
 
-Cast is an [atomic function](atomic.md).
+Cast is an [atomic function](../basics/atomic.md).
 
 ```q
 q)12 13 14 15 16 17 18 19h$42
@@ -149,7 +149,7 @@ q)`hh`uu`ss$03:55:58.11
 q)`year`dd`mm`hh`uu`ss$2015.10.28D03:55:58
 2015 28 10 3 55 58i
 ```
-The following shows which information can be extracted from each temporal [datatype](datatypes.md).
+The following shows which information can be extracted from each temporal [datatype](../basics/datatypes.md).
 
 ```txt
           | year | month | mm | week | dd | hh | uu | ss
@@ -214,4 +214,4 @@ q)`float$0Wh
 <br>
 
 _Q for Mortals_
-[§7.2 Cast](../learn/q4m/7_Transforming_Data.md/#731-data-to-strings)
+[§7.2 Cast](/q4m3/7_Transforming_Data/#731-data-to-strings)

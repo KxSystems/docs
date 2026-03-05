@@ -13,11 +13,11 @@ _Execute a system command_
 system x     system[x]
 ```
 
-Where `x` is a string representing a [kdb+ system command](syscmds.md) or operating system shell command, and any parameters to it. Executes the command and returns the result as a list of character vectors.
+Where `x` is a string representing a [kdb+ system command](../basics/syscmds.md) or operating system shell command, and any parameters to it. Executes the command and returns the result as a list of character vectors.
 
 ## kdb+ system commands
 
-Refer to the [system commands reference](syscmds.md) for a full list of available commands.
+Refer to the [system commands reference](../basics/syscmds.md) for a full list of available commands.
 
 !!! note "The system command does not include a leading `\`."
 
@@ -55,7 +55,7 @@ q)system "pwd"
  This transformation makes it impractical to capture binary data from the result of the system call. 
  Redirecting the output to a 
  [file](read1.md) or 
- [fifo](../how_to/io_and_communication/named-pipes.md) for explicit ingestion may be appropriate in such cases.
+ [fifo](../kb/named-pipes.md) for explicit ingestion may be appropriate in such cases.
 
 ### Directing output to a file
 

@@ -19,7 +19,7 @@ Where `y` is
 -   an **atom or vector** of the same type as `x`, returns whether atoms of `x` are items of `y`
 -   a **list**, returns as a boolean atom whether `x` is an item of `y`
 
-Where `y` is an atom or vector, comparison is [left-atomic](glossary.md#left-atomic-function).
+Where `y` is an atom or vector, comparison is [left-atomic](../basics/glossary.md#left-atomic-function).
 
 ```q
 q)"x" in "a"                                    / atom in atom
@@ -62,7 +62,7 @@ q)(1 2;3 4) in ((1 2;3 4);9)  / x is an item of y
 
 `in` uses [Find](find.md) to search for `x` in `y`.
 
-`in` is a [multithreaded primitive](mt-primitives.md).
+`in` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## Queries
@@ -133,5 +133,5 @@ q)any ` ~/: (1 2;`)
 [`union`](union.md)
 <br>
 
-[Search](by-topic.md#search)
+[Search](../basics/by-topic.md#search)
 

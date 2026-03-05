@@ -59,7 +59,7 @@ k v   s
 4 400 c
 ```
 
-`ij` is a [multithreaded primitive](mt-primitives.md).
+`ij` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 !!! detail "Changes in V3.0"
 
@@ -92,9 +92,9 @@ k v   s
 
 ---
 
-[Joins](joins.md)
+[Joins](../basics/joins.md)
 <br>
 
 _Q for Mortals_
-[§9.9.4 Ad Hoc Inner Join](../learn/q4m/9_Queries_q-sql.md/#994-ad-hoc-inner-join-ij)
+[§9.9.4 Ad Hoc Inner Join](/q4m3/9_Queries_q-sql/#994-ad-hoc-inner-join-ij)
 

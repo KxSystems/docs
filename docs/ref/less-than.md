@@ -35,7 +35,7 @@ q)0 1 <=/:\: 0 1
 
 ## Implicit iteration
 
-Less Than and Up To are [atomic functions](atomic.md).
+Less Than and Up To are [atomic functions](../basics/atomic.md).
 
 ```q
 q)(10;20 30)<(50 -20;5)
@@ -43,7 +43,7 @@ q)(10;20 30)<(50 -20;5)
 00b
 ```
 
-They apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+They apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -99,4 +99,4 @@ Range: `b`
 [Greater Than, At Least](greater-than.md)
 <br>
 
-[Comparison](comparison.md)
+[Comparison](../basics/comparison.md)

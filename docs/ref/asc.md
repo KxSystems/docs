@@ -181,7 +181,7 @@ x xasc y     xasc[x;y]
 Where `x` is a symbol vector of column names defined in table `y`, which is passed by
 
 - value, returns
-- [reference](glossary.md#reference-pass-by), updates
+- [reference](../basics/glossary.md#reference-pass-by), updates
 
 `y` sorted in ascending order by `x`.
 The sort is by the first column specified, then by the second column within the first, and so on.
@@ -274,10 +274,10 @@ a 43 2
 [`desc`, `idesc`, `xdesc`](desc.md);
 [Set Attribute](set-attribute.md)  
 
-[Dictionaries & tables](dictsandtables.md),
-[Metadata](metadata.md),
-[Sorting](by-topic.md#sort)
+[Dictionaries & tables](../basics/dictsandtables.md),
+[Metadata](../basics/metadata.md),
+[Sorting](../basics/by-topic.md#sort)
 <br>
 
 _Q for Mortals_
-[§8.9 Attributes](../learn/q4m/8_Tables.md#89-attributes)
+[§8.9 Attributes](/q4m3/8_Tables/#88-attributes)

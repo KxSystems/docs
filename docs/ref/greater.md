@@ -12,7 +12,7 @@ x|y       |[x;y]
 x or y    or[x;y]
 ```
 
-Returns the [greater](comparison.md) of the underlying values of `x` and `y`.
+Returns the [greater](../basics/comparison.md) of the underlying values of `x` and `y`.
 
 ```q
 q)2|3
@@ -23,11 +23,11 @@ q)"sat"|"cow"
 "sow"
 ```
 
-`|` is a [multithreaded primitive](mt-primitives.md).
+`|` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Flags
 
-Where `x` and `y` are both [flags](glossary.md#flag), Greater is logical OR.
+Where `x` and `y` are both [flags](../basics/glossary.md#flag), Greater is logical OR.
 
 !!! tip "Use `or` for flags"
 
@@ -74,7 +74,7 @@ q)98|"a"
 
 ## Implicit iteration
 
-Greater and `or` are [atomic functions](atomic.md).
+Greater and `or` are [atomic functions](../basics/atomic.md).
 
 ```q
 q)(10;20 30)|(2;3 4)
@@ -82,7 +82,7 @@ q)(10;20 30)|(2;3 4)
 20 30
 ```
 
-They apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+They apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -143,9 +143,9 @@ Range: `bcdefhijmnptuvxz`
 [`and`, `&`, Lesser](lesser.md), [`max`](max.md), [`min`](min.md)
 <br>
 
-[Comparison](comparison.md),
-[Logic](by-topic.md#logic)
+[Comparison](../basics/comparison.md),
+[Logic](../basics/by-topic.md#logic)
 <br>
 
 _Q for Mortals_
-[§4.5 Greater and Lesser](../learn/q4m/4_Operators.md#45-greater-and-lesser)
+[§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser)

@@ -67,5 +67,5 @@ The performance of Coalesce is slower than that of Join since each column value 
 
 ----
  
-[Joins](joins.md) 
+[Joins](../basics/joins.md) 
 

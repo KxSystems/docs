@@ -48,7 +48,7 @@ a| 1.555556
 b| 4
 ```
 
-`var` is a [multithreaded primitive](mt-primitives.md).
+`var` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## `svar`
@@ -90,7 +90,7 @@ a| 2.333333
 b| 8
 ```
 
-`svar` is a [multithreaded primitive](mt-primitives.md).
+`svar` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 
 ## Domain and range
@@ -107,7 +107,7 @@ range:  f . f f f f f f f . f f f f f f f f
 [`cov, scov`](cov.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)
 <br>
 
 [Covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia"),

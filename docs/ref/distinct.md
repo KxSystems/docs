@@ -29,7 +29,7 @@ a b c
 2 3 b
 ```
 
-It does not use [comparison tolerance](precision.md)
+It does not use [comparison tolerance](../basics/precision.md)
 
 ```q
 q)\P 14
@@ -37,7 +37,7 @@ q)distinct 2 + 0f,10 xexp -13
 2 2.0000000000001
 ```
 
-`distinct` is a [multithreaded primitive](mt-primitives.md).
+`distinct` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ```txt
 domain: B G X H I J E F C S P M D Z N U V T
@@ -55,5 +55,5 @@ type  | `x` is an atom
 [`.Q.fu`](dotq.md#fu-apply-unique) (apply unique)
 <br>
 
-[Precision](precision.md),
-[Search](by-topic.md#search)
+[Precision](../basics/precision.md),
+[Search](../basics/by-topic.md#search)

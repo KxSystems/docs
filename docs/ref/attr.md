@@ -38,7 +38,7 @@ For more information on each of the attributes, please refer to the documentatio
 [Set Attribute](set-attribute.md)
 <br>
 
-[Metadata](metadata.md)
+[Metadata](../basics/metadata.md)
 <br>
 _Q for Mortals_
-[§8.9 Attributes](../learn/q4m/8_Tables.md#89-attributes)
+[§8.9 Attributes](/q4m3/8_Tables/#88-attributes)

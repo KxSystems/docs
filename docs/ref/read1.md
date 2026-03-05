@@ -19,9 +19,9 @@ read1 (fifo;n)    read1[(fifo;n)]
 
 Where
 
-- `f` is a [file symbol](glossary.md#file-symbol)
+- `f` is a [file symbol](../basics/glossary.md#file-symbol)
 - `o` is an offset as a non-negative integer/long
-- `h` is a [system or process handle](handles.md)
+- `h` is a [system or process handle](../basics/handles.md)
 - `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
 - `n` is a length as a non-negative integer/long
 
@@ -77,5 +77,5 @@ q)system"mkfifo somefifo";h:hopen`fifo:somefifo; 0N!read1 h; hclose h
 
 ----
 
-[File system](files.md),
-[Interprocess communication](../how_to/io_and_communication/ipc.md)
+[File system](../basics/files.md),
+[Interprocess communication](../basics/ipc.md)

@@ -77,7 +77,7 @@ t| 50
 
 !!! tip "`insert` can insert to global variables only."
 
-    If you need to insert to function-local tables, use [`x,:y`](assign.md#assign-through-operator) or [Update](funsql.md#update) instead.
+    If you need to insert to function-local tables, use [`x,:y`](assign.md#assign-through-operator) or [Update](../basics/funsql.md#update) instead.
 
 
 ## Type
@@ -126,12 +126,12 @@ type     y value wrong type
 [`upsert`](upsert.md)
 <br>
  
-[Functional qSQL](funsql.md)
+[Functional qSQL](../basics/funsql.md)
 <br>
  
-[qSQL query templates](qsql.md)
+[qSQL query templates](../basics/qsql.md)
 <br>
  
-[Tables](faq.md) 
+[Tables](../kb/faq.md) 
 
 

@@ -12,7 +12,7 @@ _Delete a file or folder_
 hdel x     hdel[x]
 ```
 
-Where `x` is a [file symbol](glossary.md#file-symbol) atom, deletes the file or folder and returns `x`.
+Where `x` is a [file symbol](../basics/glossary.md#file-symbol) atom, deletes the file or folder and returns `x`.
 
 ```q
 q)hdel`:test.txt   / delete test.txt in current working directory
@@ -44,4 +44,4 @@ q)nuke:visitNode[hdel]
 
 ----
 
-[File system](files.md)
+[File system](../basics/files.md)

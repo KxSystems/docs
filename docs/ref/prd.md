@@ -64,7 +64,7 @@ q)prds "abc"                 / type error if list is not numeric
 
 ## Implicit iteration
 
-`prd` and `prds` apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+`prd` and `prds` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
@@ -124,4 +124,4 @@ range:  i . i i i j e f i . p m d z n u v t
 [Multiply](multiply.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

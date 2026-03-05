@@ -37,7 +37,7 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  b . x h i j e f c . p m d z n u v t
 ```
 
-`max` is a [multithreaded primitive](mt-primitives.md).
+`max` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `maxs`
 
@@ -120,7 +120,7 @@ Range: `bcdefghijmnpstuvxz`
 
 ## Implicit iteration
 
-`max`, `maxs`, and `mmax` apply to [dictionaries and tables](math.md#dictionaries-and-tables).
+`max`, `maxs`, and `mmax` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)max`a`b!(10 21 3;4 5 6)
@@ -172,8 +172,8 @@ q)max (1 2;0N 4)
 [Greater Than](greater-than.md)
 <br>
 
-[Comparison](comparison.md),
-[Mathematics](math.md)
+[Comparison](../basics/comparison.md),
+[Mathematics](../basics/math.md)
 <br>
 
-[Sliding windows](../examples/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)

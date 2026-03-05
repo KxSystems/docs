@@ -21,7 +21,7 @@ x ss y     ss[x;y]
 Where
 
 -   `x` is a string
--   `y` is a [pattern](regex.md) as a string (no asterisk)
+-   `y` is a [pattern](../basics/regex.md) as a string (no asterisk)
 
 returns an int vector of position/s within `x` of substrings that match pattern `y`.
 
@@ -50,7 +50,7 @@ ssr[x;y;z]
 Where
 
 -   `x` is a string
--   `y` is a [pattern](regex.md) as a string (no asterisk)
+-   `y` is a [pattern](../basics/regex.md) as a string (no asterisk)
 -   `z` is a string or a function
 
 returns `x` with each substring matching `y` replaced by:
@@ -72,12 +72,12 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 [`like`](like.md)
 <br>
 
-[Regular Expressions in q](regex.md)
+[Regular Expressions in q](../basics/regex.md)
 <br>
 
-[Strings](by-topic.md#strings)
+[Strings](../basics/by-topic.md#strings)
 <br>
 
-[Using regular expressions](regex.md)
+[Using regular expressions](../basics/regex.md)
 
 

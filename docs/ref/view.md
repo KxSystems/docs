@@ -49,8 +49,8 @@ q)views[]
 
 ---
 
-[Metadata](metadata.md) 
+[Metadata](../basics/metadata.md) 
 <br>
 
 _Q for Mortals_
-[4.11 Views](../learn/q4m/4_Operators.md#411-views-advanced)
+[4.11 Views](/q4m3/4_Operators/#4114-views)

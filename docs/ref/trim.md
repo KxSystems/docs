@@ -35,7 +35,7 @@ q)trim 42
 
 ## Implicit iteration
 
-`trim`, `ltrim`, and `rtrim` are [string-atomic](atomic.md#string-atomic) and apply to dictionaries and tables.
+`trim`, `ltrim`, and `rtrim` are [string-atomic](../basics/atomic.md#string-atomic) and apply to dictionaries and tables.
 
 ```q
 q)trim(("fox";("jumps ";"over   "));("a";"dog "))
@@ -65,4 +65,4 @@ range:  b g x h i j e f c s p m d z n u v t
 [Drop](drop.md)
 <br>
 
-[Strings](by-topic.md#strings)
+[Strings](../basics/by-topic.md#strings)

@@ -19,11 +19,11 @@ q)ceiling 01b
 0 1i
 ```
 
-`ceiling` is a [multithreaded primitive](mt-primitives.md).
+`ceiling` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Implicit iteration
 
-`ceiling` is an [atomic function](atomic.md).
+`ceiling` is an [atomic function](../basics/atomic.md).
 
 ```q
 q)ceiling(1.2;3.4 5.6)
@@ -45,7 +45,7 @@ a b
 
 Prior to V3.0, `ceiling` 
 
--    used [comparison tolerance](precision.md#comparison-tolerance)
+-    used [comparison tolerance](../basics/precision.md#comparison-tolerance)
 -    accepted datetime (Since V3.0, use `"d"$23:59:59.999+` instead.)
 
 ```q
@@ -72,4 +72,4 @@ Range: `hij`
 [`floor`](floor.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

@@ -42,6 +42,6 @@ q)(distinct t0,t1)~t0 union t1
 [`in`](in.md), [`inter`](inter.md), [`within`](within.md)
 <br>
 
-[Select](by-topic.md#selection)
+[Select](../basics/by-topic.md#selection)
 
 

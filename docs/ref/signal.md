@@ -79,7 +79,7 @@ During abort, the stack is unwound as far as the nearest [trap at](apply.md#trap
 0  for sync message processing
 ```
 
-[`\e`](syscmds.md#e-error-trap-clients) sets the mode applied before async and HTTP callbacks run. Thus, `\e 1` will cause the relevant handlers to break into the debugger, while `\e 2` will dump the backtrace either to the server console (for async), or into the socket (for HTTP).
+[`\e`](../basics/syscmds.md#e-error-trap-clients) sets the mode applied before async and HTTP callbacks run. Thus, `\e 1` will cause the relevant handlers to break into the debugger, while `\e 2` will dump the backtrace either to the server console (for async), or into the socket (for HTTP).
 ```q
 q)\e 2
 q)'type             / incoming async msg signals 'type
@@ -158,10 +158,10 @@ q))a
 [Trap, Trap At](apply.md#trap) 
 <br>
 
-[Controlling evaluation](control.md),
-[Debugging](../how_to/working-with-code/debug.md),
-[Error handling](errors.md)
+[Controlling evaluation](../basics/control.md),
+[Debugging](../basics/debug.md),
+[Error handling](../basics/errors.md)
 <br>
 
 _Q for Mortals_
-[§10.1.8 Return and Signal](../learn/q4m/10_Execution_Control.md#1018-return-and-signal)
+[§10.1.8 Return and Signal](/q4m3/10_Execution_Control/#1017-return-and-signal)

@@ -36,7 +36,7 @@ q)acos -0.4                     / arccosine
 1.982313
 ```
 
-`cos` and `acos` are [multithreaded primitives](mt-primitives.md).
+`cos` and `acos` are [multithreaded primitives](../kb/mt-primitives.md).
 
 ## Domain and range
 
@@ -47,7 +47,7 @@ range:  f . f f f f f f f . f f f z f f f f
 
 ## Implicit iteration
 
-`cos` and `acos` are [atomic functions](atomic.md).
+`cos` and `acos` are [atomic functions](../basics/atomic.md).
 
 ```q
 q)cos (.2;.3 .4)
@@ -63,4 +63,4 @@ q)acos (.2;.3 .4)
 
 [`sin`, `asin`](sin.md)  
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

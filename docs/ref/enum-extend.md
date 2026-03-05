@@ -103,13 +103,13 @@ Enum Extend is a uniform function.
 [`?` query overloads](overloads.md#query)
 <br>
 
-[Enumerations](enumerations.md),
-[File system](files.md)
+[Enumerations](../basics/enumerations.md),
+[File system](../basics/files.md)
 <br>
 
-[Enumerating symbol columns in a table](../how_to/interact_with_databases/splayed-tables.md#enumerating-symbol-columns)
+[Enumerating symbol columns in a table](../kb/splayed-tables.md#enumerating-symbol-columns)
 <br>
  
 _Q for Mortals_
-[§7.5 Enumerations](../learn/q4m/7_Transforming_Data.md/#75-enumerations)  
+[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
 

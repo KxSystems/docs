@@ -34,7 +34,7 @@ range:  f . f f f f f f f . f f f f f f f f
 
 ## Implicit iteration
 
-`med` applies to [dictionaries and tables](math.md#dictionaries-and-tables).
+`med` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
@@ -67,4 +67,4 @@ select med price by sym from
 
 ----
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

@@ -12,7 +12,7 @@ _Covariance_
 x cov y    cov[x;y]
 ```
 
-Where `x` and `y` are [conforming](conformable.md) numeric lists, returns their [covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia") as a floating-point number. Applies to all numeric data types.
+Where `x` and `y` are [conforming](../basics/conformable.md) numeric lists, returns their [covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia") as a floating-point number. Applies to all numeric data types.
 
 ```q
 q)2 3 5 7 cov 3 3 5 9
@@ -53,7 +53,7 @@ T | f . f f f f f f f . f f f f f f f f
 
 Range: `f`
 
-`cov` is a [multithreaded primitive](mt-primitives.md).
+`cov` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## `scov`
 
@@ -108,11 +108,11 @@ T | f . f f f f f f f . f f f f f f f f
 
 Range: `f`
 
-`scov` is a [multithreaded primitive](mt-primitives.md).
+`scov` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ----
 
 [`var, svar`](var.md)
 <br>
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

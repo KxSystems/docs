@@ -11,7 +11,7 @@ _Correlation_
 x cor y    cor[x;y]
 ```
 
-Where `x` and `y` are [conforming](conformable.md) numeric lists, returns their (Pearson) [correlation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) as a float in the range `-1f` to `1f`. Nulls (along with their pairs) are ignored.
+Where `x` and `y` are [conforming](../basics/conformable.md) numeric lists, returns their (Pearson) [correlation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) as a float in the range `-1f` to `1f`. Nulls (along with their pairs) are ignored.
 
 ```q
 q)29 10 54 cor 1 3 9
@@ -35,7 +35,7 @@ q)1000101000b cor 0010011001b
 
 `cor` is an aggregate function, equivalent to `{cov[x;y]%dev[x]*dev y}`.
 
-`cor` is a [multithreaded primitive](mt-primitives.md).
+`cor` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ## Domain and range
 
@@ -66,4 +66,4 @@ Range: `f`
 
 ----
 
-[Mathematics](math.md)
+[Mathematics](../basics/math.md)

@@ -69,4 +69,4 @@ s4 p4 300
 <br>
 
 _Q for Mortals_
-[§9.3.4.2 Grouping without Aggregation](../learn/q4m/9_Queries_q-sql.md/#9342-grouping-without-aggregation)
+[§9.3.4.2 Grouping without Aggregation](/q4m3/9_Queries_q-sql/#9342-grouping-without-aggregation)

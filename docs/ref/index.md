@@ -7,7 +7,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 # Reference card
 
 !!! note
-	Want a quick and handy q reference resource? Download the [q Cheat Sheet (PDF download)](../assets/q-cheat-sheet.pdf){:target="_blank"}.
+	Want a quick and handy q reference resource? Download the q Cheat Sheet (PDF download){:target="_blank"}.
 
 ## Keywords
 
@@ -53,17 +53,17 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 <td markdown class="kx-glyph">[`$`](overloads.md#dollar)</td><td colspan="7" markdown>[Cast](cast.md), [Tok](tok.md), [Enumerate](enumerate.md), [Pad](pad.md), [`mmu`](mmu.md)</td>
 </tr>
 <tr markdown>
-<td markdown class="kx-glyph">[`!`](overloads.md#bang)</td><td colspan="7" markdown>[Dict](dict.md), [Enkey](enkey.md), [Unkey](enkey.md#unkey), [Enumeration](enumeration.md), [Flip Splayed](flip-splayed.md), [Display](display.md), [internal](internal.md), [Update](funsql.md#update), [Delete](funsql.md#delete), [`lsq`](lsq.md)</td>
+<td markdown class="kx-glyph">[`!`](overloads.md#bang)</td><td colspan="7" markdown>[Dict](dict.md), [Enkey](enkey.md), [Unkey](enkey.md#unkey), [Enumeration](enumeration.md), [Flip Splayed](flip-splayed.md), [Display](display.md), [internal](../basics/internal.md), [Update](../basics/funsql.md#update), [Delete](../basics/funsql.md#delete), [`lsq`](lsq.md)</td>
 </tr>
 <tr markdown>
-<td markdown class="kx-glyph">[`?`](overloads.md#query)</td><td colspan="7" markdown>[Find](find.md), [Roll, Deal](deal.md), [Enum Extend](enum-extend.md), [Select](funsql.md#select), [Exec](funsql.md#exec), [Simple Exec](funsql.md#simple-exec), [Vector Conditional](vector-conditional.md)</td>
+<td markdown class="kx-glyph">[`?`](overloads.md#query)</td><td colspan="7" markdown>[Find](find.md), [Roll, Deal](deal.md), [Enum Extend](enum-extend.md), [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec), [Simple Exec](../basics/funsql.md#simple-exec), [Vector Conditional](vector-conditional.md)</td>
 </tr>
 <tr markdown>
 </tr>
 <tr markdown> <td markdown class="kx-glyph">`+ - * %`</td><td colspan="7" markdown>[Add](add.md), [Subtract](subtract.md), [Multiply](multiply.md), [Divide](divide.md)</td> </tr>
-<tr markdown> <td markdown class="kx-glyph">`= <> ~`</td><td colspan="7" markdown>[Equals](comparison.md#six-comparison-operators), [Not Equals](comparison.md#six-comparison-operators), [Match](comparison.md#match)</td></tr>
+<tr markdown> <td markdown class="kx-glyph">`= <> ~`</td><td colspan="7" markdown>[Equals](../basics/comparison.md#six-comparison-operators), [Not Equals](../basics/comparison.md#six-comparison-operators), [Match](../basics/comparison.md#match)</td></tr>
 <tr markdown>
-<td markdown class="kx-glyph">`< <= >= >`</td><td colspan="7" markdown>[Less Than](comparison.md#six-comparison-operators), [Up To](comparison.md#six-comparison-operators), [At Least](comparison.md#six-comparison-operators), [Greater Than](comparison.md#six-comparison-operators)</td>
+<td markdown class="kx-glyph">`< <= >= >`</td><td colspan="7" markdown>[Less Than](../basics/comparison.md#six-comparison-operators), [Up To](../basics/comparison.md#six-comparison-operators), [At Least](../basics/comparison.md#six-comparison-operators), [Greater Than](../basics/comparison.md#six-comparison-operators)</td>
 </tr>
 <tr markdown> <td markdown class="kx-glyph">`| &`</td><td colspan="3" markdown>[Greater (OR)](greater.md), [Lesser, AND](lesser.md)</td> </tr>
 <tr markdown>
@@ -77,7 +77,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 <td markdown class="kx-glyph">[`'`](overloads.md#quote)</td><td markdown>[Compose](compose.md)</td>
 </tr>
 <tr markdown> <td markdown class="kx-glyph">`0: 1: 2:`</td><td colspan="7" markdown>[File Text](file-text.md), [File Binary](file-binary.md), [Dynamic Load](dynamic-load.md)</td> </tr>
-<tr markdown> <td markdown class="kx-glyph">`0 ±1 ±2 ±n`</td><td colspan="7" markdown>write to [console, stdout, stderr, handle _n_](handles.md)</td> </tr>
+<tr markdown> <td markdown class="kx-glyph">`0 ±1 ±2 ±n`</td><td colspan="7" markdown>write to [console, stdout, stderr, handle _n_](../basics/handles.md)</td> </tr>
 <tr markdown> <td markdown class="kx-glyph" colspan="6">`.: @: $: !: ?: +: -: *: %: =: ~: <: >: |: &: #: _: ^: ,:`</td><td colspan="2" markdown>[Assign through operator](assign.md#assign-through-operator)</td> </tr>
 </table>
 
@@ -92,31 +92,31 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 [`':`](overloads.md#quote-colon)  [Each Prior](maps.md#each-prior), [`prior`](prior.md)
 </div>
 
-## [Execution control](control.md)
+## [Execution control](../basics/control.md)
 
 <div markdown class="typewriter">
-[.[f;x;e] Trap](apply.md#trap)          [: Return](function-notation.md#explicit-return)        [do](do.md)  [exit](exit.md)         [\$[x;y;z] Cond](cond.md)
-[@[f;x;e] Trap-At](apply.md#trap)       [' Signal](signal.md)        [if](if.md)  [while](while.md)        [:[v;p1;r1;...] Pattern conditional](pattern.md#pattern-conditional)
+[.[f;x;e] Trap](apply.md#trap)          [: Return](../basics/function-notation.md#explicit-return)        [do](do.md)  [exit](exit.md)         [\$[x;y;z] Cond](cond.md)
+[@[f;x;e] Trap-At](apply.md#trap)       [' Signal](signal.md)        [if](if.md)  [while](while.md)        [:[v;p1;r1;...] Pattern conditional](../basics/pattern.md#pattern-conditional)
 </div>
 
-[Debugging](../how_to/working-with-code/debug.md)
+[Debugging](../basics/debug.md)
 
 ## Other
 
 <div markdown class="typewriter">
-[`   pop stack](../how_to/working-with-code/debug.md)        [::](overloads.md#colon-colon)   [identity](identity.md)         [\x  system cmd x](syscmds.md)
-[.](overloads.md#dot)   [push stack](../how_to/working-with-code/debug.md)            [generic null](identity.md)     [\\    abort](../how_to/working-with-code/debug.md)
-                          [global amend](function-notation.md#name-scope)     \\\\   quit q
+[`   pop stack](../basics/debug.md)        [::](overloads.md#colon-colon)   [identity](identity.md)         [\x  system cmd x](../basics/syscmds.md)
+[.](overloads.md#dot)   [push stack](../basics/debug.md)            [generic null](identity.md)     [\\    abort](../basics/debug.md)
+                          [global amend](../basics/function-notation.md#name-scope)     \\\\   quit q
                           [set view](https://code.kx.com/q/learn/views/)         /    comment
 
-()     [precedence](syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](syntax.md#conditional-evaluation-and-control-statements)       {}  [lambda](function-notation.md)       \`   symbol
-(;)    [list](syntax.md#list-notation)               [argt list](syntax.md#bracket-notation)        ;   separator    \`:  filepath
-(\[\]..) [table](syntax.md#table-notation)
+()     [precedence](../basics/syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)       {}  [lambda](../basics/function-notation.md)       \`   symbol
+(;)    [list](../basics/syntax.md#list-notation)               [argt list](../basics/syntax.md#bracket-notation)        ;   separator    \`:  filepath
+(\[\]..) [table](../basics/syntax.md#table-notation)
 </div>
 
-<!-- <td markdown class="kx-glyph">`:`</td><td markdown>[Amend](amend.md)<br>[unary form](exposed-infrastructure.md#unary-forms)</td> -->
+<!-- <td markdown class="kx-glyph">`:`</td><td markdown>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
-## [Attributes](syntax.md#attributes)
+## [Attributes](../basics/syntax.md#attributes)
 
 <div markdown class="typewriter">
 **g** grouped     **p** parted     **s** sorted     **u** unique
@@ -127,33 +127,33 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 ## Command-line options and system commands
 
 <table markdown class="kx-tight">
-<tr markdown><td markdown>[file](cmdline.md#file)</td></tr>
-<tr markdown><td markdown>[`\a`](syscmds.md#a-tables)</td><td markdown>tables</td><td markdown>[`\r`](syscmds.md#r-rename)</td><td markdown>rename</td></tr>
-<tr markdown><td markdown>[`-b`](cmdline.md#-b-blocked)</td><td markdown>blocked</td><td markdown>[`-s`](cmdline.md#-s-secondary-threads) [`\s`](syscmds.md#s-number-of-secondary-threads)</td><td markdown>secondary processes</td></tr>
-<tr markdown><td markdown>[`\b`](syscmds.md#b-views) [`\B`](syscmds.md#b-pending-views)</td><td markdown>views</td><td markdown>[`-S`](cmdline.md#-s-random-seed) [`\S`](syscmds.md#s-random-seed)</td><td markdown>random seed</td></tr>
-<tr markdown><td markdown>[`-c`](cmdline.md#-c-console-size) [`\c`](syscmds.md#c-console-size)</td><td markdown>console size</td><td markdown>[`-t`](cmdline.md#-t-timer-ticks) [`\t`](syscmds.md#t-timer)</td><td markdown>timer ticks</td></tr>
-<tr markdown><td markdown>[`-C`](cmdline.md#-c-http-size) [`\C`](syscmds.md#c-http-size)</td><td markdown>HTTP size</td><td markdown>[`\ts`](syscmds.md#ts-time-and-space)</td><td markdown>time and space</td></tr>
-<tr markdown><td markdown>[`\cd`](syscmds.md#cd-change-directory)</td><td markdown>change directory</td><td markdown>[`-T`](cmdline.md#-t-timeout) [`\T`](syscmds.md#t-timeout)</td><td markdown>timeout</td></tr>
-<tr markdown><td markdown>[`\d`](syscmds.md#d-directory)</td><td markdown>directory</td><td markdown>[`-u`](cmdline.md#-u-usr-pwd-local) [`-U`](cmdline.md#-u-usr-pwd) [`\u`](syscmds.md#u-reload-user-password-file)</td><td markdown>usr-pwd</td></tr>
-<tr markdown><td markdown>[`-e`](cmdline.md#-e-error-traps) [`\e`](syscmds.md#e-error-trap-clients)</td><td markdown>error traps</td><td markdown>[`-u`](cmdline.md#-u-disable-syscmds)</td><td markdown>disable syscmds</td></tr>
-<tr markdown><td markdown>[`-E`](cmdline.md#-e-tls-server-mode) [`\E`](syscmds.md#e-tls-server-mode)</td><td markdown>TLS server mode</td><td markdown>[`\v`](syscmds.md#v-variables)</td><td markdown>variables</td></tr>
-<tr markdown><td markdown>[`\f`](syscmds.md#f-functions)</td><td markdown>functions</td><td markdown>[`-w`](cmdline.md#-w-workspace) [`\w`](syscmds.md#w-workspace)</td><td markdown>memory</td></tr>
-<tr markdown><td markdown>[`-g`](cmdline.md#-g-garbage-collection) [`\g`](syscmds.md#g-garbage-collection-mode)</td><td markdown>garbage collection</td><td markdown>[`-W`](cmdline.md#-w-start-week) [`\W`](syscmds.md#w-week-offset)</td><td markdown>week offset</td></tr>
-<tr markdown><td markdown>[`\l`](syscmds.md#l-load-file-or-directory)</td><td markdown>load file or directory</td><td markdown>[`\x`](syscmds.md#x-expunge)</td><td markdown>expunge</td></tr>
-<tr markdown><td markdown>[`-l`](cmdline.md#-l-log-updates) [`-L`](cmdline.md#-l-log-sync)</td><td markdown>log sync</td><td markdown>[`-z`](cmdline.md#-z-date-format) [`\z`](syscmds.md#z-date-parsing)</td><td markdown>date format</td></tr>
-<tr markdown><td markdown>[`-o`](cmdline.md#-o-utc-offset) [`\o`](syscmds.md#o-offset-from-utc)</td><td markdown>UTC offset</td><td markdown>[`\1` `\2`](syscmds.md#1-2-redirect)</td><td markdown>redirect</td></tr>
-<tr markdown><td markdown>[`-p`](cmdline.md#-p-listening-port) [`\p`](syscmds.md#p-listening-port)</td><td markdown>listening port</td><td markdown>[`\_`](syscmds.md#_-hide-q-code)</td><td markdown>hide q code</td></tr>
-<tr markdown><td markdown>[`-P`](cmdline.md#-p-display-precision) [`\P`](syscmds.md#p-precision)</td><td markdown>display precision</td><td markdown>[`\`](syscmds.md#terminate)</td><td markdown>terminate</td></tr>
-<tr markdown><td markdown>[`-q`](cmdline.md#-q-quiet-mode)</td><td markdown>quiet mode</td><td markdown>[`\`](syscmds.md#toggle-qk)</td><td markdown>toggle q/k</td></tr>
-<tr markdown><td markdown>[`-r`](cmdline.md#-r-replicate) [`\r`](syscmds.md#r-replication-primary)</td><td markdown>replicate</td><td markdown>[`\\`](syscmds.md#quit)</td><td markdown>quit</td></tr>
+<tr markdown><td markdown>[file](../basics/cmdline.md#file)</td></tr>
+<tr markdown><td markdown>[`\a`](../basics/syscmds.md#a-tables)</td><td markdown>tables</td><td markdown>[`\r`](../basics/syscmds.md#r-rename)</td><td markdown>rename</td></tr>
+<tr markdown><td markdown>[`-b`](../basics/cmdline.md#-b-blocked)</td><td markdown>blocked</td><td markdown>[`-s`](../basics/cmdline.md#-s-secondary-threads) [`\s`](../basics/syscmds.md#s-number-of-secondary-threads)</td><td markdown>secondary processes</td></tr>
+<tr markdown><td markdown>[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td markdown>views</td><td markdown>[`-S`](../basics/cmdline.md#-s-random-seed) [`\S`](../basics/syscmds.md#s-random-seed)</td><td markdown>random seed</td></tr>
+<tr markdown><td markdown>[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)</td><td markdown>console size</td><td markdown>[`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)</td><td markdown>timer ticks</td></tr>
+<tr markdown><td markdown>[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td markdown>HTTP size</td><td markdown>[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td markdown>time and space</td></tr>
+<tr markdown><td markdown>[`\cd`](../basics/syscmds.md#cd-change-directory)</td><td markdown>change directory</td><td markdown>[`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)</td><td markdown>timeout</td></tr>
+<tr markdown><td markdown>[`\d`](../basics/syscmds.md#d-directory)</td><td markdown>directory</td><td markdown>[`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)</td><td markdown>usr-pwd</td></tr>
+<tr markdown><td markdown>[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)</td><td markdown>error traps</td><td markdown>[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td markdown>disable syscmds</td></tr>
+<tr markdown><td markdown>[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)</td><td markdown>TLS server mode</td><td markdown>[`\v`](../basics/syscmds.md#v-variables)</td><td markdown>variables</td></tr>
+<tr markdown><td markdown>[`\f`](../basics/syscmds.md#f-functions)</td><td markdown>functions</td><td markdown>[`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)</td><td markdown>memory</td></tr>
+<tr markdown><td markdown>[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)</td><td markdown>garbage collection</td><td markdown>[`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)</td><td markdown>week offset</td></tr>
+<tr markdown><td markdown>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td markdown>load file or directory</td><td markdown>[`\x`](../basics/syscmds.md#x-expunge)</td><td markdown>expunge</td></tr>
+<tr markdown><td markdown>[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td markdown>log sync</td><td markdown>[`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)</td><td markdown>date format</td></tr>
+<tr markdown><td markdown>[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)</td><td markdown>UTC offset</td><td markdown>[`\1` `\2`](../basics/syscmds.md#1-2-redirect)</td><td markdown>redirect</td></tr>
+<tr markdown><td markdown>[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)</td><td markdown>listening port</td><td markdown>[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td markdown>hide q code</td></tr>
+<tr markdown><td markdown>[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)</td><td markdown>display precision</td><td markdown>[`\`](../basics/syscmds.md#terminate)</td><td markdown>terminate</td></tr>
+<tr markdown><td markdown>[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td markdown>quiet mode</td><td markdown>[`\`](../basics/syscmds.md#toggle-qk)</td><td markdown>toggle q/k</td></tr>
+<tr markdown><td markdown>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-primary)</td><td markdown>replicate</td><td markdown>[`\\`](../basics/syscmds.md#quit)</td><td markdown>quit</td></tr>
 </table>
 
 [`system`](system.md)
 <br>
 
-[Command-line options](cmdline.md),
-[System commands](syscmds.md),
-[OS commands](syscmds.md#os-commands)
+[Command-line options](../basics/cmdline.md),
+[System commands](../basics/syscmds.md),
+[OS commands](../basics/syscmds.md#os-commands)
 
 <!--
 ## Environment variables
@@ -182,7 +182,7 @@ q)`VARNAME setenv "NEWVALUE"
 ```
  -->
 
-## [Datatypes](datatypes.md)
+## [Datatypes](../basics/datatypes.md)
 
 <div markdown class="typewriter">
 **Basic datatypes**
@@ -220,18 +220,18 @@ RO: read only; RW: read-write
 
 **Other datatypes**
 20-76   enums
-77      anymap                                      104  [projection](application.md#projection)
+77      anymap                                      104  [projection](../basics/application.md#projection)
 78-96   77+t – mapped list of lists of type t       105  [composition](compose.md)
 97      nested sym enum                             106  [f'](maps.md#each)
 98      table                                       107  [f/](accumulators.md)
 99      dictionary                                  108  [f\\](accumulators.md)
-100     [lambda](function-notation.md)                                      109  [f':](maps.md)
+100     [lambda](../basics/function-notation.md)                                      109  [f':](maps.md)
 101     unary primitive                             110  [f/:](maps.md#each-left-and-each-right)
 102     operator                                    111  [f\\:](maps.md#each-left-and-each-right)
 103     [iterator](iterators.md)                                    112  [dynamic load](dynamic-load.md)
 </div>
 
-Above, `f` is an [applicable value](glossary.md#applicable-value).
+Above, `f` is an [applicable value](../basics/glossary.md#applicable-value).
 
 Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
 

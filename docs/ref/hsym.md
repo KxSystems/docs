@@ -34,5 +34,5 @@ q)hsym `abc`:def`::ghi
 [`hopen`](hopen.md)
 <br>
 
-[File system](files.md),
-[Interprocess communication](../how_to/io_and_communication/ipc.md)
+[File system](../basics/files.md),
+[Interprocess communication](../basics/ipc.md)

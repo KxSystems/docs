@@ -38,7 +38,7 @@ HTTP
  [`.h.ty`](#hty-mime-types)      MIME types
 </div>
 
-The `.h` [namespace](namespaces.md) contains objects for
+The `.h` [namespace](../basics/namespaces.md) contains objects for
 
 - marking up strings as HTML
 - converting data into various formats
@@ -507,7 +507,7 @@ q)\head test.txt
 
 String: location of the webserver root.
 
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 
 ## `.h.iso8601` (ISO timestamp)
 
@@ -593,7 +593,7 @@ Running an HTTP client such as cURL, from the same machine, shows the connection
 curl -v -v http://localhost:1234 http://localhost:1234
 ```
 
-[HTTP](../how_to/io_and_communication/http.md)
+[HTTP](../kb/http.md)
 
 ## `.h.logo` (KX logo)
 
