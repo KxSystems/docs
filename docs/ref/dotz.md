@@ -60,7 +60,7 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 Prior to kdb+, `.z` was a pseudo-namespace that could not be retrieved or enumerated using the language features (such as ```key `.z``` or ```value `.z```). In kdb+, `.z` is a proper namespace that acts like all other namespaces.
 
 [Callbacks](../kb/callbacks.md)
-[Using `.z`](https://code.kx.com/q/kb/using-dotz/)
+[Using `.z`](../kb/using-dotz.md)
 <br>
 
 _Q for Mortals:_
@@ -190,7 +190,7 @@ y| ,`a
 [`\b`](../basics/syscmds.md#b-views) (views)
 <br>
 
-[Views](https://code.kx.com/q/learn/views/)
+[Views](../learn/views.md)
 
 ## `.z.bm` (msg validator)
 
@@ -462,6 +462,8 @@ bannerText     | "stephen@kx.com #59875"
 
 ## `.z.M` (module namespace name)
 
+Since V5.0.
+
 While loading a module, `.z.M` contains the name of the local namespace of the module as a symbol. Furthermore, `.z.M` suffixed with any name returns that name joined to the module namespace name.
 
 ```q
@@ -481,6 +483,8 @@ q)foo.g[]
 ```
 
 ## `.z.m` (module namespace)
+
+Since V5.0.
 
 While loading a module, `.z.m` represents the local namespace of the module as a dictionary. Elements can be added, removed and retrieved just like with any dictionary. Functions retain the information about which namespace `.z.m` refers to, as opposed to it resolving to the current module at the point of invocation.
 
@@ -715,7 +719,7 @@ _Q for Mortals_
 
 Where `f` is a unary function, it is evaluated as the default handler for input.
 
-As this is called on every line of input it can be used to log all console input, or even to modify the output. For example, if you prefer the more compact [V2.3 way of formatting tables](https://code.kx.com/q/releases/ChangesIn2.4/#zpi), you can reset the output handler.
+As this is called on every line of input it can be used to log all console input, or even to modify the output. For example, if you prefer the more compact [V2.3 way of formatting tables](../releases/ChangesIn2.4.md#zpi), you can reset the output handler.
 
 ```q
 q)aa:([]a:1 2 3;b:11 22 33)
@@ -815,7 +819,7 @@ Remote connections using the ‘qcon’ text protocol are routed to `.z.pq`, whi
 
 This allows a user to handle remote qcon connections (via `.z.pq`) without defining special handling for console processing (via `.z.pi`).
 
-[Firewalling](https://code.kx.com/q/kb/firewalling) for locking down message handlers
+[Firewalling](../kb/firewalling.md) for locking down message handlers
 
 ## `.z.ps` (set)
 
@@ -860,7 +864,7 @@ The default definition is `{[user;pswd]1b}`
 [`.z.po`](#zpo-open) (port open)
 <br>
 
-[Changes in 2.4](https://code.kx.com/q/releases/ChangesIn2.4/#zpw)
+[Changes in 2.4](../releases/ChangesIn2.4.md#zpw)
 
 ## `.z.q` (quiet mode)
 
@@ -1255,7 +1259,7 @@ Shorthand forms:
 ---
 
 [Callbacks](../kb/callbacks.md),
-[Using `.z`](https://code.kx.com/q/kb/using-dotz/)
+[Using `.z`](../kb/using-dotz.md)
 <br>
 
 _Q for Mortals:_

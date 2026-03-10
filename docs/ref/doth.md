@@ -189,7 +189,7 @@ q)`:/Users/sjt/tmp/excel.xls 0: .h.edsn `test1`test2!(t1;t2)
 `:/Users/sjt/tmp/excel.xls
 ```
 
-![excel.xls](https://code.kx.com/q/img/h.edsn.png "Excel spreadsheet")
+![excel.xls](../img/h.edsn.png "Excel spreadsheet")
 
 [save](save.md#save) (save and format data)
 

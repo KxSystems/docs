@@ -4,7 +4,7 @@ description: Matrix Multiply is a q operator that performs matrix multiplication
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 
-![Matrix multiplication](https://code.kx.com/q/img/matrix-multiplication.png)
+![Matrix multiplication](../img/matrix-multiplication.png)
 {: style="float:right"}
 
 # `$` Matrix Multiply, `mmu`

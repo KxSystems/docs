@@ -36,7 +36,6 @@ last_updated: January 2026
  [n nA     nums & alphanums](#n-nums)         [qt          is table](#qt-is-table)
 
  **Module support**
- <!--[m.reuse  reload module](#m-reuse-reload-module)            [rp          resolve path](#rp-resolve-path) -->
  [m.SP     module search path](#msp-module-search-path)
 
 **IPC**                               **Segmented database state**
@@ -1600,9 +1599,9 @@ An alternative to [`use`](use.md), reloads the specified module even if it was a
 
 ## `m.SP` (module search path)
 
-Contains a list of strings of paths where the module loader should search for modules.
+Since V5.0.
 
-Search path
+Contains a list of strings of paths where the module loader should search for modules.
 
 ## `n` (nums)
 
@@ -1815,7 +1814,7 @@ Since 4.1t 2022.03.25, .Q.prf0 will not try to stop the process if passed a nega
 This should be used when a kdb+ process is already stopped under control of something other than `.Q.prf0` (for example, in a debugger or a native-code profiler).
 A negative `pid` should not be used in a running process.
 
-[Code profiler](https://code.kx.com/q/kb/profiler/)
+[Code profiler](../kb/profiler.md)
 
 ## `rp` (resolve path)
 

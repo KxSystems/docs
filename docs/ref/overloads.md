@@ -83,7 +83,7 @@ a:42   [assign](assign.md)
 ## `::` colon colon
 
 <div markdown="1" class="typewriter">
-v::select from t where a in b     [define a view](https://code.kx.com/q/learn/views/)
+v::select from t where a in b     [define a view](../learn/views.md)
 global::42                        [amend a global from within a lambda](../basics/function-notation.md#name-scope)
 ::                                [Identity](identity.md)
 ::                                [Null](identity.md#null)

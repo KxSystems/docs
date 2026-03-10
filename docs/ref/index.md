@@ -7,7 +7,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 # Reference card
 
 !!! note
-	Want a quick and handy q reference resource? Download the q Cheat Sheet (PDF download){:target="_blank"}.
+	Want a quick and handy q reference resource? Download the [q Cheat Sheet (PDF download)](../assets/q-cheat-sheet.pdf){:target="_blank"}.
 
 ## Keywords
 
@@ -107,7 +107,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 [`   pop stack](../basics/debug.md)        [::](overloads.md#colon-colon)   [identity](identity.md)         [\x  system cmd x](../basics/syscmds.md)
 [.](overloads.md#dot)   [push stack](../basics/debug.md)            [generic null](identity.md)     [\\    abort](../basics/debug.md)
                           [global amend](../basics/function-notation.md#name-scope)     \\\\   quit q
-                          [set view](https://code.kx.com/q/learn/views/)         /    comment
+                          [set view](../learn/views.md)         /    comment
 
 ()     [precedence](../basics/syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)       {}  [lambda](../basics/function-notation.md)       \`   symbol
 (;)    [list](../basics/syntax.md#list-notation)               [argt list](../basics/syntax.md#bracket-notation)        ;   separator    \`:  filepath
@@ -257,7 +257,7 @@ De/serialize as JSON.
 
 ### [`.m`](dotm.md) (modules)
 
-The currently loaded modules. The meaning of `.m` has changed between kdb+ versions.
+The currently loaded modules. In kdb+ 4.x, `.m` is reserved for memory domain 1 objects. In kdb+ 5.0 and later, `.m` is used for modules.
 
 ### [`.Q`](dotq.md) (utils)
 

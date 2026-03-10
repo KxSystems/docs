@@ -345,7 +345,7 @@ The inclusion of an asterisk as the third character allows the delimiter charact
 
 ```q
 q)0N!"I=*,"0:"5=\"hello,world\",6=1";
-(5 6i;("hello,world";,"1"))q4m
+(5 6i;("hello,world";,"1"))
 q)0N!"J=*,"0:"5=\"hello,world\",6=1";
 (5 6;("hello,world";,"1"))
 q)0N!"S=*,"0:"a=\"hello,world\",b=1";
