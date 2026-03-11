@@ -1,7 +1,7 @@
 ---
 title: Accumulators – Reference – kdb+ and q documentation
 description: An accumulator is an iterator that takes an applicable value as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of successive evaluations.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, value, while
 ---
 # Accumulators
@@ -217,7 +217,7 @@ The function an accumulator derived from a binary value is [variadic](../basics/
 Functions derived by Scan are uniform; functions derived by Over are aggregates.
 The number of evaluations is the count of the right argument.
 
-![over](../img/over.png)
+![over](../basics/svg/over.svg)
 <br>
 <small>_Unary and binary application of f/_</small>
 
@@ -308,7 +308,7 @@ q)m scan c                 / (m\)c
 4 3 1 0 6 9
 ```
 
-:fontawesome-regular-hand-point-right:
+
 [`over`, `scan`](over.md)
 
 
@@ -455,6 +455,6 @@ q){x+y*z}/[`foo;mt;mt]
 `foo
 ```
 
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§6.7.6 Over (/) for Accumulation](/q4m3/6_Functions/#676-over-for-accumulation)

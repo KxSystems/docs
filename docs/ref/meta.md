@@ -1,7 +1,7 @@
 ---
 title: meta – metadata for a table| Reference | kdb+ and q documentation
 description: meta is a q keyword that returns metadata for a table.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `meta`
 
@@ -81,8 +81,8 @@ vr  | F
 A splayed table with a symbol column needs its corresponding sym list.
 
 ```q
-KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems
-m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE ..
+kdb+ 0.1.2 2025.10.18 Copyright (C) 1993-2025 Kx Systems
+...
 
 q)load `:db/sym  / required for meta to describe db/tr
 `sym
@@ -102,8 +102,8 @@ Loading (memory mapping) a database handles this.
 ❯ q db
 ```
 ```q
-KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems
-m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE 2021.05.27 stephen@kx.com #59875
+kdb+ 0.1.2 2025.10.18 Copyright (C) 1993-2025 Kx Systems
+...
 
 q)\v
 `s#`sym`tr
@@ -119,9 +119,8 @@ price| f
 
 
 ---
-:fontawesome-solid-book-open:
+
 [Metadata](../basics/metadata.md)
 <br>
-:fontawesome-solid-graduation-cap:
-[Splayed tables](../kb/splayed-tables.md)
 
+[Splayed tables](../kb/splayed-tables.md)

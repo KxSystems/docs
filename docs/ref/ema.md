@@ -38,9 +38,9 @@ q)(2%1+10)ema p
 ```
 
 ----
-:fontawesome-solid-book:
+
 [`avg`, `avgs`, `mavg`, `wavg`](avg.md)
 <br>
-:fontawesome-solid-book:
+
 [Mathematics](../basics/math.md)
 

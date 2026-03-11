@@ -1,14 +1,11 @@
 ---
 title: sum, sums, msum, wsum – sum, cumulative sums, moving sums, and weighted sum of a list | Reference | kdb+ and q documentation
 description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `sum`, `sums`, `msum`, `wsum`
 
 _Totals – simple, running, moving, and weighted_
-
-
-
 
 ## `sum`
 
@@ -20,10 +17,10 @@ sum x    sum[x]
 
 Where `x` is
 
--   a simple numeric list, returns the sums of its items
--   an atom, returns `x`
--   a list of numeric lists, returns their sums
--   a dictionary with numeric values
+- a simple numeric list, returns the sums of its items
+- an atom, returns `x`
+- a list of numeric lists, returns their sums
+- a dictionary with numeric values
 
 Nulls are treated as zeros.
 
@@ -63,8 +60,8 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
     Different results may be obtained by changing the order of the summation.
 
         ❯ q -s 4
-        KDB+ 4.0 2021.01.20 Copyright (C) 1993-2021 Kx Systems
-        m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 ..
+        kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
+        ...
 
         q)\s 0
         q)a:100000000?1.
@@ -118,7 +115,6 @@ q)sums "abc"                    / type error if list is not numeric
 
 `sums` is a uniform function, equivalent to `+\`.
 
-
 ## `msum`
 
 _Moving sums_
@@ -129,8 +125,8 @@ x msum y    msum[x;y]
 
 Where
 
--  `x` is a positive int atom
--  `y` is a numeric list
+- `x` is a positive int atom
+- `y` is a numeric list
 
 returns the `x`-item moving sums of `y`, with nulls replaced by zero. The first `x` items of the result are the sums of the terms so far, and thereafter the result is the moving sum.
 
@@ -143,7 +139,6 @@ q)3 msum 0N 2 3 5 0N 11     / nulls treated as zero
 
 `msum` is a uniform function.
 
-
 ## `wsum`
 
 _Weighted sum_
@@ -152,7 +147,7 @@ _Weighted sum_
 x wsum y    wsum[x;y]
 ```
 
-Where `x` and `y` are numeric lists, returns the weighted sum of the products of `x` and `y`. When both `x` and `y` are integer lists, they are first converted to floats. 
+Where `x` and `y` are numeric lists, returns the weighted sum of the products of `x` and `y`. When both `x` and `y` are integer lists, they are first converted to floats.
 
 ```q
 q)2 3 4 wsum 1 2 4   / equivalent to sum 2 3 4 * 1 2 4f
@@ -167,14 +162,12 @@ q)(1 2;3 4) wsum (500 400;300 200)
 
 `wsum` is an aggregate function, equivalent to `{sum x*y}`.
 
-:fontawesome-solid-graduation-cap:
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
 <br>
-:fontawesome-brands-wikipedia-w:
+
 [Weighted sum](https://en.wikipedia.org/wiki/Weight_function "Wikipedia")
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `sum`, `sums`, and `msum` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 `wsum` applies to dictionaries.
@@ -206,7 +199,6 @@ q)1 2 wsum d
 18 31 15
 ```
 
-
 ## Aggregating nulls
 
 `avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
@@ -217,16 +209,17 @@ q)sum (1 2;0N 4)
 0N 6
 ```
 
-
 ## Domains and ranges
 
 `sum` and `sums`
+
 ```txt
 domain: b g x h i j e f c s p m d z n u v t
 range:  i . i i i j e f i . p m d z n u v t
 ```
 
 `msum`
+
 ```txt
     b g x h i j e f c s p m d z n u v t
 ----------------------------------------
@@ -253,6 +246,7 @@ t | . . . . . . . . . . . . . . . . . .
 Range: `efijntuv`
 
 `wsum`
+
 ```txt
     b g x h i j e f c s p m d z n u v t
 ----------------------------------------
@@ -278,9 +272,6 @@ t | t . t t t t t f t . . . . . . . . .
 
 Range: `defijmnptuvz`
 
-
-
-
 ----
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)

@@ -1,7 +1,7 @@
 ---
 title: ss, ssr – string search and replacement | Reference | kdb+ and q documentation
 description: ss and ssr are q keywords that perform string search and replacement.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `ss`, `ssr`
 
@@ -68,16 +68,16 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 
 
 ----
-:fontawesome-solid-book:
+
 [`like`](like.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Regular Expressions in q](../basics/regex.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Strings](../basics/by-topic.md#strings)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [Using regular expressions](../basics/regex.md)
 
 

@@ -1,7 +1,7 @@
 ---
 title: Fill operator, fills keyword – replace nulls in a vector | Reference | kdb+ and q documentation
 description: Fill is a q operator that replaces nulls in a vector. fills is a q keyword that replaces nulls in a vector with preceding non-nulls.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `^` Fill, `fills`
 
@@ -98,7 +98,7 @@ q)type 5^0n 2 3i
 The possible range of output types are `bcdefghijmnpstuvxz`.
 
 
-:fontawesome-solid-book: 
+ 
 [`^` Coalesce](coalesce.md) where `x` and `y` are keyed tables 
 
 

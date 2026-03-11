@@ -1,7 +1,7 @@
 ---
 title: Overloaded glyphs | Reference | kdb+ and q documentation
 description: Many non-alphabetic keyboard characters are overloaded by q. This page tabulates their different forms. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # Overloaded glyphs
 
@@ -235,6 +235,6 @@ rank | example      | semantics
 
 Many of the operators tabulated above have unary forms in k.
 
-:fontawesome-regular-hand-point-right: [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
+ [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
 
 

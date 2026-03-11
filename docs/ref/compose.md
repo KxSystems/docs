@@ -1,7 +1,7 @@
 ---
 title: Compose – compose functions together | Reference | kdb+ and q documentation
 description: Compose is a q operator that composes (or curries) a unary value with another. The rank of the result is the rank of the second argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: adverb, compose, composition, function, kdb+, map, q, value
 ---
 # `'` Compose
@@ -73,5 +73,5 @@ If we take `-100` to flag parts of `x`, the expression `max 0 (0|+)\x` returns t
 
 
 ----
-:fontawesome-solid-graduation-cap:
-[Q Phrasebook](https://code.kx.com/phrases/)
+
+Q Phrasebook

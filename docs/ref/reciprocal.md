@@ -1,14 +1,11 @@
 ---
 title: reciprocal of a number | Reference | kdb+ and q documentation
 description: reciprocal is a q keyword that returns the reciprocal of a number.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: divide, division, divisor, kdb+, math, mathematics, numerator, q
 ---
+
 # `reciprocal`
-
-
-
-
 
 _Reciprocal of a number_
 
@@ -27,7 +24,7 @@ q)reciprocal 1b
 
 `reciprocal` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `reciprocal` is an [atomic function](../basics/atomic.md).
 
@@ -57,7 +54,6 @@ def| 0.04761905 0.2
 ghi| 0.3333333  0.1666667
 ```
 
-
 ## Domain and range
 
 ```txt
@@ -68,10 +64,9 @@ range  f . f f f f f f f . p f f z f f f f
 Range: `fpz`
 
 ----
-:fontawesome-solid-book: 
-[`div`](div.md), 
-[Divide](divide.md) 
-<br>
-:fontawesome-solid-book-open: 
-[Mathematics](../basics/math.md)
 
+[`div`](div.md),
+[Divide](divide.md)
+<br>
+
+[Mathematics](../basics/math.md)

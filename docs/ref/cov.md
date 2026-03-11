@@ -6,52 +6,49 @@ description: cov and scov are q keyword, that return respectively the covariance
 
 _Covariance_
 
-
-
-
 ## `cov`
 
 ```syntax
 x cov y    cov[x;y]
 ```
 
-Where `x` and `y` are [conforming](../basics/conformable.md) numeric lists returns their [covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia") as a floating-point number. Applies to all numeric data types and signals an error with temporal types, char and sym.
+Where `x` and `y` are [conforming](../basics/conformable.md) numeric lists, returns their [covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia") as a floating-point number. Applies to all numeric data types.
 
 ```q
 q)2 3 5 7 cov 3 3 5 9
 4.5
-q)2 3 5 7 cov 4 3 0 2
+q)t:([]a:2 3 5 7;b:4 3 0 2)
+q)exec a cov b from t
 -1.8125
-q)select price cov size by sym from trade
 ```
-
 
 `cov` is an aggregate function.
 
 The function `cov` is equivalent to `{avg[x*y]-avg[x]*avg y}`.
 
 Domain and range:
+
 ```txt
-    b g x h i j e f c s p m d z n u v t
+    B G X H I J E F C S P M D Z N U V T
 ----------------------------------------
-b | f . f f f f f f f . f f f f f f f f
-g | . . . . . . . . . . . . . . . . . .
-x | f . f f f f f f f . f f f f f f f f
-h | f . f f f f f f f . f f f f f f f f
-i | f . f f f f f f f . f f f f f f f f
-j | f . f f f f f f f . f f f f f f f f
-e | f . f f f f f f f . f f f f f f f f
-f | f . f f f f f f f . f f f f f f f f
-c | f . f f f f f f f . f f f f f f f f
-s | . . . . . . . . . . . . . . . . . .
-p | f . f f f f f f f . f f f f f f f f
-m | f . f f f f f f f . f f f f f f f f
-d | f . f f f f f f f . f f f f f f f f
-z | f . f f f f f f f . f f f f f f f f
-n | f . f f f f f f f . f f f f f f f f
-u | f . f f f f f f f . f f f f f f f f
-v | f . f f f f f f f . f f f f f f f f
-t | f . f f f f f f f . f f f f f f f f
+B | f . f f f f f f f . f f f f f f f f
+G | . . . . . . . . . . . . . . . . . .
+X | f . f f f f f f f . f f f f f f f f
+H | f . f f f f f f f . f f f f f f f f
+I | f . f f f f f f f . f f f f f f f f
+J | f . f f f f f f f . f f f f f f f f
+E | f . f f f f f f f . f f f f f f f f
+F | f . f f f f f f f . f f f f f f f f
+C | f . f f f f f f f . f f f f f f f f
+S | . . . . . . . . . . . . . . . . . .
+P | f . f f f f f f f . f f f f f f f f
+M | f . f f f f f f f . f f f f f f f f
+D | f . f f f f f f f . f f f f f f f f
+Z | f . f f f f f f f . f f f f f f f f
+N | f . f f f f f f f . f f f f f f f f
+U | f . f f f f f f f . f f f f f f f f
+V | f . f f f f f f f . f f f f f f f f
+T | f . f f f f f f f . f f f f f f f f
 ```
 
 Range: `f`
@@ -66,18 +63,18 @@ _Sample covariance_
 x scov y    scov[x;y]
 ```
 
-Where `x` and `y` are conforming numeric lists returns their [sample covariance](https://en.wikipedia.org/wiki/Covariance#Calculating_the_sample_covariance "Wikipedia") as a float atom.
+Where `x` and `y` are conforming numeric lists, returns their [sample covariance](https://en.wikipedia.org/wiki/Covariance#Calculating_the_sample_covariance "Wikipedia") as a float atom.
 
-$$scov(x,y)=\frac{n}{n-1} cov(x,y)$$
+$$\mathrm{scov}(x,y)=\frac{n}{n-1} \mathrm{cov}(x,y)$$
 
 Applies to all numeric data types and signals an error with temporal types, char and sym.
 
 ```q
 q)2 3 5 7 scov 3 3 5 9
 6f
-q)2 3 5 7 scov 4 3 0 2
+q)t:([]a:2 3 5 7;b:4 3 0 2)
+q)exec a scov b from t
 -2.416667
-q)select price scov size by sym from trade
 ```
 
 `scov` is an aggregate function.
@@ -85,40 +82,37 @@ q)select price scov size by sym from trade
 The function `scov` is equivalent to `{cov[x;y]*count[x]%-1+count x}`.
 
 Domain and range:
+
 ```txt
-    b g x h i j e f c s p m d z n u v t
+    B G X H I J E F C S P M D Z N U V T
 ----------------------------------------
-b | f . f f f f f f . . f f f f f f f f
-g | . . . . . . . . . . . . . . . . . .
-x | f . f f f f f f . . f f f f f f f f
-h | f . f f f f f f . . f f f f f f f f
-i | f . f f f f f f . . f f f f f f f f
-j | f . f f f f f f . . f f f f f f f f
-e | f . f f f f f f . . f f f f f f f f
-f | f . f f f f f f f . f f f f f f f f
-c | . . . . . . . f . . f f f f f f f f
-s | . . . . . . . . . . . . . . . . . .
-p | f . f f f f f f f . f . . . f f f f
-m | f . f f f f f f f . . f . . f f f f
-d | f . f f f f f f f . . . f . f f f f
-z | f . f f f f f f f . . . . f f f f f
-n | f . f f f f f f f . f f f f f f f f
-u | f . f f f f f f f . f f f f f f f f
-v | f . f f f f f f f . f f f f f f f f
-t | f . f f f f f f f . f f f f f f f f
+B | f . f f f f f f f . f f f f f f f f
+G | . . . . . . . . . . . . . . . . . .
+X | f . f f f f f f f . f f f f f f f f
+H | f . f f f f f f f . f f f f f f f f
+I | f . f f f f f f f . f f f f f f f f
+J | f . f f f f f f f . f f f f f f f f
+E | f . f f f f f f f . f f f f f f f f
+F | f . f f f f f f f . f f f f f f f f
+C | f . f f f f f f f . f f f f f f f f
+S | . . . . . . . . . . . . . . . . . .
+P | f . f f f f f f f . f f f f f f f f
+M | f . f f f f f f f . f f f f f f f f
+D | f . f f f f f f f . f f f f f f f f
+Z | f . f f f f f f f . f f f f f f f f
+N | f . f f f f f f f . f f f f f f f f
+U | f . f f f f f f f . f f f f f f f f
+V | f . f f f f f f f . f f f f f f f f
+T | f . f f f f f f f . f f f f f f f f
 ```
 
 Range: `f`
 
 `scov` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-
 ----
-:fontawesome-solid-book:
+
 [`var, svar`](var.md)
 <br>
-:fontawesome-solid-book:
+
 [Mathematics](../basics/math.md)
-<br>
-:fontawesome-brands-wikipedia-w: 
-[Covariance](https://en.wikipedia.org/wiki/Covariance)

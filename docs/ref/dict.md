@@ -1,7 +1,7 @@
 ---
 title: Dict | Reference | kdb+ and q documentation
 description: Dict is a q operator that returns a dictionary from vectors of keys and values. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: bang, dict, dictionaries, dictionary, kdb+, q
 ---
 # `!` Dict
@@ -67,13 +67,13 @@ length | `x` and `y` are not same-length lists
 length | `x` is not in `1_ til count y`
 type   | `y` is not a simple table
 
-:fontawesome-solid-book:
+
 [`key`](key.md),
 [`value`](value.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Dictionaries & tables](../basics/dictsandtables.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§5 Dictionaries](/q4m3/5_Dictionaries/)

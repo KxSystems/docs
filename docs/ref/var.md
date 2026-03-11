@@ -1,7 +1,7 @@
 ---
 title: var, svar – variance and sample variance | Reference | kdb+ and q documentation
 description: var and svar are q keywords that return (respectively) the variance and sample variance of their argument.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `var`, `svar`
 
@@ -103,16 +103,16 @@ range:  f . f f f f f f f . f f f f f f f f
 
 
 ----
-:fontawesome-solid-book:
+
 [`cov, scov`](cov.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-brands-wikipedia-w:
+
 [Covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia"),
 [Variance](https://en.wikipedia.org/wiki/Variance "Wikipedia")
 <br>
-:fontawesome-solid-globe:
+
 [Variance](http://financereference.com/learn/variance "financereference.com")
 

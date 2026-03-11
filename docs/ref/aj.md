@@ -5,9 +5,6 @@ keywords: as-of, join, kdb+, q
 ---
 # `aj`, `aj0`, `ajf`, `ajf0`
 
-
-
-
 _As-of join_
 
 ```syntax
@@ -17,19 +14,19 @@ ajf [c; t1; t2]
 ajf0[c; t1; t2]
 ```
 
-Where 
+Where
 
--   `t1` is a table. Since 4.1t 2023.08.04 if `t1` is the name of a table, it is updated in place.
--   `t2` is a simple table 
--   `c` is a symbol list of `n` column names, common to `t1` and `t2`, and of matching type
--   column `c[n]` is of a sortable type (typically time)
+- `t1` is a table or the name of a table as a symbol (since 4.1t 2023.08.04, in the latter case, the table is updated in place with the result)
+- `t2` is a simple table
+- `c` is a symbol vector of `n` column names, common to `t1` and `t2`, and of matching type
+- column `c`<sub>`n`</sub> is of a sortable type (typically time)
 
 returns a table with records from the left-join of `t1` and `t2`.
-In the join, columns `c[til n-1]` are matched for equality, and the last value of `c[n]` (most recent time) is taken.
+In the join, columns `c`<sub>`0`</sub>`...c`<sub>`n-1`</sub> are matched for equality, and the last value of `c`<sub>`n`</sub> (most recent time) is taken.
 For each record in `t1`, the result has one record with the items in `t1`, and
 
--   if there are matching records in `t2`, the items of the last (in row order) matching record are appended to those of `t1`;
--   otherwise the remaining columns are null.
+- if there are matching records in `t2`, the items of the last (in row order) matching record are appended to those of `t1`;
+- otherwise the remaining columns are null.
 
 ```q
 q)t:([]time:10:01:01 10:01:03 10:01:04;sym:`msft`ibm`ge;qty:100 200 150)
@@ -61,7 +58,6 @@ time       sym  qty px
 
 !!! tip "There is no requirement for any of the join columns to be keys but the join is faster on keys."
 
-
 ## `aj`, `aj0`
 
 `aj` and `aj0` return different times in their results:
@@ -71,10 +67,9 @@ aj    boundary time from t1
 aj0   actual time from t2
 ```
 
-
 ## `ajf`, `ajf0`
 
-Since V3.6 2018.05.18 `ajf` and `ajf0` behave as V2.8 `aj` and `aj0`, i.e. they fill from LHS if RHS is null. e.g.
+Since V3.6 2018.05.18 `ajf` and `ajf0` behave as V2.8 `aj` and `aj0`; they fill from `t1` if the corresponding value in `t2` is null. For example:
 
 ```q
 q)t0:([]time:2#00:00:01;sym:`a`b;p:1 1;n:`r`s)
@@ -84,14 +79,11 @@ q)t0~ajf[`sym`time;t1;t2]
 1b
 ```
 
-
 ## Performance
 
 !!! warning "Order of search columns"
 
     Ensure the first argument to `aj`, the columns to search on, is in the correct order, e.g. `` `sym`time``. Otherwise you’ll suffer a severe performance hit.
-
-If the resulting time value is to be from the quote (actual time) instead of the (boundary time) from trade, use `aj0` instead of `aj`.
 
 `aj` should run at a million or two trade records per second; whether the tables are mapped or not is irrelevant. However, for speed:
 
@@ -100,16 +92,15 @@ medium | t2\[c<sub>1</sub>\] | t2\[c<sub>2</sub>…\] | example
 memory | `g#`          | sorted within <code>c<sub>1</sub></code> | `quote` has `` `g#sym`` and `time` sorted within `sym`
 disk   | `p#`          | sorted within <code>c<sub>1</sub></code> | `quote` has `` `p#sym`` and `time` sorted within `sym`
 
-Departure from this incurs a severe performance penalty. 
+Departure from this incurs a severe performance penalty.
 
-Note that, on disk, the `g#` attribute does not help.
+Note that on disk, the `g#` attribute does not help.
 
-!!! warning "Select the virtual partition column only if you need it. It is fabricated on demand, which can be slow for large partitions."
-
+!!! warning "Select the virtual partition column only if you need it. It is constructed on demand, which can be slow for large partitions."
 
 ## `select` from `t2`
 
-In memory, there is no need to select from `t2`. Irrespective of the number of records, use, e.g.:
+In memory, there is no need to select from `t2`. Irrespective of the number of records, use, for example:
 
 ```q
 aj[`sym`time;select … from trade where …;quote]
@@ -122,9 +113,9 @@ aj[`sym`time;select … from trade where …;
              select … from quote where …]
 ```
 
-In contrast, on disk you must map in your splay or day-at-a-time partitioned database:
+In contrast, on disk, you must map your splayed or partitioned database to memory first:
 
-Splay:
+Splayed:
 
 ```q
 aj[`sym`time;select … from trade where …;select … from quote]
@@ -139,17 +130,16 @@ aj[`sym`time;select … from trade where …;
 
 !!! warning "If further `where` constraints are used, the columns will be _copied_ instead of mapped into memory, slowing down the join."
 
-If you are using a database where an individual day’s data is spread over multiple partitions the on-disk `p#` will be lost when retrieving data with a constraint such as `…date=2011.08.05`. 
+If you are using a database where an individual day’s data is spread over multiple partitions the on-disk `p#` will be lost when retrieving data with a constraint such as `…date=2011.08.05`.
 In this case you will have to reduce the number of quotes retrieved by applying further constraints – or by re-applying the attribute.
 
-
 ----
-:fontawesome-solid-book:
-[`asof`](asof.md) 
+
+[`asof`](asof.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Joins](../basics/joins.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§9.9.8 As-of Joins](/q4m3/9_Queries_q-sql/#998-as-of-joins)

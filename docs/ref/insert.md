@@ -1,7 +1,7 @@
 ---
 title: insert keyword | Reference | kdb+ and q documentation
 description: insert is a q keyword that inserts or appends records to a table.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `insert`
 
@@ -119,19 +119,19 @@ type     y value wrong type
 !!! tip "With keyed tables, consider [`upsert`](upsert.md) as an alternative."
 
 ----
-:fontawesome-solid-book: 
+ 
 [Join](join.md)
 <br>
-:fontawesome-solid-book: 
+ 
 [`upsert`](upsert.md)
 <br>
-:fontawesome-solid-book-open: 
+ 
 [Functional qSQL](../basics/funsql.md)
 <br>
-:fontawesome-solid-book-open: 
+ 
 [qSQL query templates](../basics/qsql.md)
 <br>
-:fontawesome-solid-book-open: 
+ 
 [Tables](../kb/faq.md) 
 
 

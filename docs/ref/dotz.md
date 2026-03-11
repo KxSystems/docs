@@ -1,12 +1,11 @@
 ---
 title: the .z namespace | Reference | kdb+ and q documentation
 description: The .z namespace contains objects that return or set system information, and callbacks for IPC.
-author: Stephen Taylor
+last_updated: January 2026
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: callbacks, environment, kdb+, q
 ---
-# :fontawesome-regular-clock: The `.z` namespace
-
-
+# The `.z` namespace
 
 _Environment and callbacks_
 
@@ -21,10 +20,12 @@ Environment                              Callbacks
  [.z.K    version](#zk-version)                          [.z.po    open](#zpo-open)
  [.z.k    release date](#zk-release-date)                     [.z.pq    qcon](#zpq-qcon)
  [.z.l    license](#zl-license)                          [.z.r     blocked](#zr-blocked)
- [.z.o    OS version](#zo-os-version)                       [.z.ps    set](#zps-set)
- [.z.q    quiet mode](#zq-quiet-mode)                       [.z.pw    validate user](#zpw-validate-user)
- [.z.s    self](#zs-self)                             [.z.ts    timer](#zts-timer)
- [.z.u    user ID](#zu-user-id)                          [.z.vs    value set](#zvs-value-set)
+ [.z.M    module namespace name](#zm-module-namespace-name)            [.z.ps    set](#zps-set)
+ [.z.m    module namespace](#zm-module-namespace)                 [.z.pw    validate user](#zpw-validate-user)
+ [.z.o    OS version](#zo-os-version)                       [.z.ts    timer](#zts-timer)
+ [.z.q    quiet mode](#zq-quiet-mode)                       [.z.vs    value set](#zvs-value-set)
+ [.z.s    self](#zs-self)
+ [.z.u    user ID](#zu-user-id)
  [.z.X/x  raw/parsed command line](#zx-raw-command-line)
                                          Callbacks (HTTP)
 Environment (Compression/Encryption)      [.z.ac    HTTP auth](#zac-http-auth)
@@ -56,17 +57,14 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 
     After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
-:fontawesome-solid-graduation-cap:
-[Callbacks](../kb/callbacks.md),
+Prior to kdb+, `.z` was a pseudo-namespace that could not be retrieved or enumerated using the language features (such as ```key `.z``` or ```value `.z```). In kdb+, `.z` is a proper namespace that acts like all other namespaces.
+
+[Callbacks](../kb/callbacks.md)
 [Using `.z`](../kb/using-dotz.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals:_
-[§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
-
-
-
-
+[§11.8 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 ## `.z.a` (IP address)
 
@@ -84,34 +82,40 @@ The return value depends on whether it is invoked in an IPC callback or not.
 * **Not invoking in an IPC callback**
    <br>Returns the current IP address associated with the hostname.
    <br>This pre-populated value is equivalent to passing [`.z.h`](#zh-host) to [`.Q.addr`](dotq.md#host-ip-to-hostname) to find the IP address of the current host.
+
    ```q
    q).z.a
    -1408172030i
    q).Q.addr .z.h
    -1408172030i
    ```
+
 * **Invoking in an IPC callback**
    <br>When invoked inside a `.z.p*` callback via a TCP/IP connection, it is the IP address of the client session, not the current session.
    For example, connecting from a remote machine:
+
    ```q
    q)h:hopen myhost:1234
    q)h"\"i\"$0x0 vs .z.a"
    192 168 65 1i
    ```
+
    or from same machine:
+
    ```q
    q)h:hopen 1234
    q)h"\"i\"$0x0 vs .z.a"
    127 0 0 1i
    ```
+
    When invoked via a Unix Domain Socket, it is 0.
+
    ```q
    q)h:hopen `:unix://1234
    q)h".z.a"
    0i
    ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.h`](#zh-host) (host), [`.Q.host`](dotq.md#host-ip-to-hostname) (IP to hostname)
 
 ## `.z.ac` (HTTP auth)
@@ -121,7 +125,7 @@ The return value depends on whether it is invoked in an IPC callback or not.
 ```
 
 Lets you define custom code to authorize/authenticate an HTTP request.
-e.g. inspect HTTP headers representing oauth tokens, cookies, etc. 
+e.g. inspect HTTP headers representing oauth tokens, cookies, etc.
 Your custom code can then return different values based on what is discovered.
 
 `.z.ac` is a unary function, whose single parameter is a two-element list providing the request text and header.
@@ -131,35 +135,46 @@ Your custom code can then return different values based on what is discovered.
 The function should return a two-element list. The list of possible return values is:
 
 * User not authorized/authenticated
+
 ```q
 (0;"")
 ```
+
 User not authorized. Client is sent default 401 HTTP unauthorized response.
 An HTTP callback to handle the request will not be called.
+
 * User authorized/authenticated
+
 ```q
 (1;"username")
 ```
-The provided username is used to set [`.z.u`](#zu-user-id). 
+
+The provided username is used to set [`.z.u`](#zu-user-id).
 The relevant HTTP callback to handle this request will be allowed.
+
 * User not authorized/authenticated (custom response)
+
 ```q
 (2;"response text")
 ```
+
 The custom response to be sent should be provided in the "response text" section.
 The response text should be comprised of a valid HTTP response message, for example a 401 response with a customised message.
 An HTTP callback to handle the original request is not called.
+
 * Fallback to basic authentication
+
 ```q
 (4;"")
 ```
-Fallback to [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side), where the username/password are base64 decoded and processed via the [`-u`](../ba
-sics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and [`.z.pw`](#zpw-validate-user) (if defined).
+
+Fallback to [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side), where the username/password are base64 decoded and processed via the [`-u`](../basics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and [`.z.pw`](#zpw-validate-user) (if defined).
 If the user is not permitted, the client is sent a default 401 HTTP unauthorized response. Since V4.0 2021.07.12.
 
-:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
+[HTTP](../kb/http.md)
 
 [](){#zb-dependencies}
+
 ## `.z.b` (view dependencies)
 
 The dependency dictionary.
@@ -172,12 +187,10 @@ x| `a`b
 y| ,`a
 ```
 
-:fontawesome-solid-book-open:
 [`\b`](../basics/syscmds.md#b-views) (views)
 <br>
-:fontawesome-solid-graduation-cap:
-[Views](../learn/views.md)
 
+[Views](../learn/views.md)
 
 ## `.z.bm` (msg validator)
 
@@ -189,9 +202,9 @@ Where `x` is a unary function.
 
 kdb+ before V2.7 was sensitive to being fed malformed data structures, sometimes resulting in a crash, but now validates incoming IPC messages to check that data structures are well formed, reporting `'badmsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
 
-1.  calls `.z.bm` with a 2-item list: `(handle;msgBytes)`
-2.  close the handle and call `.z.pc`
-3.  signals `'badmsg`
+1. calls `.z.bm` with a 2-item list: `(handle;msgBytes)`
+2. close the handle and call `.z.pc`
+3. signals `'badmsg`
 
 E.g. with the callback defined
 
@@ -201,22 +214,20 @@ q).z.bm:{`msg set (.z.p;x);}
 
 after a bad msg has been received, the global var `msg` will contain the timestamp, the handle and the full message. Note that this check validates only the data structures, it cannot validate the data itself.
 
-
 ## `.z.c` (cores)
 
 The number of physical cores.
-
 
 ## `.z.e` (TLS connection status)
 
 TLS details used with the current connection handle. 
 Returns an empty dictionary if the connection is not TLS enabled. 
 
-Displays information on the following
+Displays information on the following:
 
-* `CIPHER` is the name of cipher used for the connection
-* `PROTOCOL` is the name of the protocol used for the connection, for example `` `TLSv1.2 ``
-* `CERT` is the X509 certificate the peer presented. It is not present if the peer certificate was not provided.
+- `CIPHER` is the name of cipher used for the connection
+- `PROTOCOL` is the name of the protocol used for the connection, for example `` `TLSv1.2 ``
+- `CERT` is the X509 certificate the peer presented. It is not present if the peer certificate was not provided.
 
 For example, the following connects to a server, then runs `.z.e` on the server to gain information on the TLS connection handle used by the client. Therefore `CERT` is the client certificate (peer of the server). 
 If [`SSL_VERIFY_CLIENT`](../kb/ssl.md#ssl_verify_client) is not enabled on the server, the client certificate is not requested by the server, and therefore would not be displayed.
@@ -228,8 +239,8 @@ CIPHER  | `AES128-GCM-SHA256
 PROTOCOL| `TLSv1.2
 CERT    | `SUBJECT`ISSUER`SERIALNUMBER`NOTVALIDBEFORE`NOTVALIDAFTER`VERIFIED`VERIFYERROR!("/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com";"/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com";,"1";"Jul  6 10:08:57 2021 GMT";"May 15 10:08:57 2031 GMT";1b;0)
 ```
-
 The following shows the client sending a message to the server, which in turn sends `.z.e` to the client (using the current connection handle [`.z.w`](#zw-handle)), displaying the server certificate used by the client connection.
+
 ```q
 q)h:hopen `:tcps://localhost:5000
 q)h".z.w\".z.e\""
@@ -245,23 +256,19 @@ For example, the following implements the connection open callback ([`.z.po`](#z
 .z.po:{show"SSL server connection info:";show .z.e;show"SSL client connection info:";show .z.w".z.e"}
 ```
 
-`.z.w".z.e"` is used to run .z.e on the client (via a [sync request](../basics/ipc.md#sync-request-get) over the connection provided by [`.z.w`](#zw-handle))
+`.z.w".z.e"` is used to run `.z.e` on the client (via a [sync request](../basics/ipc.md#sync-request-get) over the connection provided by [`.z.w`](#zw-handle))
 
 Since V3.4 2016.05.16. `CERT` details of `VERIFIED`,`VERIFYERROR` available since 4.1t 2024.02.07.
 
-:fontawesome-solid-hand-point-right:
 [`-26!` TLS settings](../basics/internal.md#-26x-ssl)
-
 
 ## `.z.ex` (failed primitive)
 
-In a [debugger](../basics/debug.md#debugger) session, `.z.ex` is set to the failed primitive.
+In a [debugger](../basics/debug.md) session, `.z.ex` is set to the failed primitive.
 
 Since V3.5 2017.03.15.
 
-:fontawesome-solid-hand-point-right:
 [`.z.ey`](#zey-argument-to-failed-primitive) (argument to failed primitive)
-
 
 ## `.z.exit` (action on exit)
 
@@ -322,25 +329,21 @@ q))'`up
 os>..
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.pc`](#zpc-close) (port close)
 <br>
-:fontawesome-solid-book:
+
 [`exit`](exit.md)
 <br>
-:fontawesome-solid-book-open:
-[`\\` quit](../basics/syscmds.md#quit)
 
+[`\\` quit](../basics/syscmds.md#quit)
 
 ## `.z.ey` (argument to failed primitive)
 
-In a [debugger](../basics/debug.md#debugger) session, `.z.ey` is set to the argument to failed primitive.
+In a [debugger](../basics/debug.md) session, `.z.ey` is set to the argument to failed primitive.
 
 Since V3.5 2017.03.15.
 
-:fontawesome-solid-hand-point-right:
 [`.z.ex`](#zex-failed-primitive) (failed primitive)
-
 
 ## `.z.f` (file)
 
@@ -352,9 +355,7 @@ q).z.f
 `test.q
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.x`](#zx-argv) (argv)
-
 
 ## `.z.H` (active sockets)
 
@@ -367,9 +368,7 @@ q).z.H~key .z.W
 1b
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.W`](#zw-handles) (handles), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
-
 
 ## `.z.h` (host)
 
@@ -380,28 +379,29 @@ q).z.h
 `demo.kx.com
 ```
 
-If you require a fully qualified domain name, and the command returns a hostname only (with no domain name), this should be resolved by your system administrators. 
+If you require a fully qualified domain name, and the command returns a hostname only (with no domain name), this should be resolved by your system administrators.
 
 **Linux**
 
-On Linux this should return the same value as the shell command `hostname`. 
+On Linux this should return the same value as the shell command `hostname`.
 Linux stores the current hostname in `/proc/sys/kernel/hostname`. The operating system reads the hostname from `/etc/hostname`.
 
-**MacOS**
+**macOS**
 
-On MacOS this should return the same value as `sysctl kern.hostname` or `scutil --get HostName`.
+On macOS this should return the same value as `sysctl kern.hostname` or `scutil --get HostName`.
 
 **Microsoft Windows**
 
-On Windows this should return the same value as `hostname` via cmd.exe or Powershell, 
+On Windows this should return the same value as `hostname` via cmd.exe or Powershell,
 which typically gets the hostname from the registry entry `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ComputerName\ActiveComputerName`.
 The `req query` command can be used to retrieve the current value.
+
 ```
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ComputerName\ActiveComputerName
 ```
+
 The value can also be viewed and altered via the Control Panel.
 
-:fontawesome-solid-hand-point-right:
 [`.z.a`](#za-ip-address) (IP address), [`.Q.addr`](dotq.md#addr-iphost-as-int) (IP/host as int)
 
 ## `.z.i` (PID)
@@ -412,7 +412,6 @@ The process ID as an integer.
 q).z.i
 23219
 ```
-
 
 ## `.z.K` (version)
 
@@ -426,9 +425,7 @@ q).z.k
 2006.10.30
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.k`](#zk-release-date) (release date)
-
 
 ## `.z.k` (release date)
 
@@ -442,9 +439,7 @@ q)
 
 This value is checked against `.Q.k` as part of the startup to make sure that the executable and the version of q.k being used are compatible.
 
-:fontawesome-solid-hand-point-right:
 [`.z.K`](#zk-version) (version)
-
 
 ## `.z.l` (license)
 
@@ -465,6 +460,55 @@ bannerText     | "stephen@kx.com #59875"
 
 `bannerText` is the custom text displayed at startup, and always contains the license number as the last token.
 
+## `.z.M` (module namespace name)
+
+Since V5.0.
+
+While loading a module, `.z.M` contains the name of the local namespace of the module as a symbol. Furthermore, `.z.M` suffixed with any name returns that name joined to the module namespace name.
+
+```q
+// $QHOME/mod/foo/init.q
+f:{.z.M}
+g:{.z.M.f}
+export:([f;g])
+
+// user
+q).z.M
+`.
+q)foo:use`foo
+q)foo.f[]
+`.m.foo
+q)foo.g[]
+`.m.foo.f
+```
+
+## `.z.m` (module namespace)
+
+Since V5.0.
+
+While loading a module, `.z.m` represents the local namespace of the module as a dictionary. Elements can be added, removed and retrieved just like with any dictionary. Functions retain the information about which namespace `.z.m` refers to, as opposed to it resolving to the current module at the point of invocation.
+
+```q
+// $QHOME/mod/foo/init.q
+// log:{-1 string[.z.P]," ",x}  // doesn't work, since log is a reserved name
+.z.m.log:{-1 string[.z.P]," ",x}
+f:{x+1}
+// upd:{.z.m.log"updating";select f a from ([]a:1 2 3)}  // would look for `f` in the user's namespace
+upd:{.z.m.log"updating";select .z.m.f a from ([]a:1 2 3)}
+export:([upd])
+
+// user
+q).z.m,:use`foo
+q).z.m
+upd| `.m.foo.export.upd[]
+q)upd[]
+2025.10.08D12:36:17.579634206 updating
+a
+-
+2
+3
+4
+```
 
 ## `.z.N` (local timespan)
 
@@ -476,9 +520,7 @@ q).z.N
 0D23:30:10.827156000
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.n`](#zn-utc-timespan) (UTC timespan), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
-
 
 ## `.z.n` (UTC timespan)
 
@@ -494,7 +536,6 @@ q).z.n
 
     Linux clock source returns a nanosecond precision timespan
 
-:fontawesome-solid-hand-point-right:
 [`.z.n`](#zn-local-timespan) (local timespan), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
 ## `.z.o` (OS version)
@@ -520,7 +561,6 @@ Windows          | **w32** | **w64**
 Note this is the version of the kdb+ executable, NOT the OS itself.
 You might run both 32-bit and 64-bit versions of kdb+ on the same machine to support older external interfaces.
 
-
 ## `.z.P` (local timestamp)
 
 System localtime timestamp in nanoseconds.
@@ -531,9 +571,7 @@ q).z.P
 2018.04.30D10:18:31.932126000
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
-
 
 ## `.z.p` (UTC timestamp)
 
@@ -548,7 +586,6 @@ q).z.p
 
     Linux clock source returns a nanosecond precision timestamp
 
-:fontawesome-solid-hand-point-right:
 [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan), [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
 ## `.z.pc` (close)
@@ -564,8 +601,8 @@ As the connection has been closed by the time `f` is called there are strictly n
 To allow you to clean up things like tables of users keyed by handle, the handle that _was_ being used is passed as a parameter to `.z.pc`
 
 ```q
-KDB+ 2.3 2007.03.27 Copyright (C) 1993-2007 Kx Systems
-l64/ 8cpu 16026MB simon ...
+kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
+...
 
 q).z.pc
 '.z.pc
@@ -584,9 +621,7 @@ q)
 
 !!! info "`.z.pc` is not called by `hclose`."
 
-:fontawesome-solid-hand-point-right:
 [`.z.po`](#zpo-open) (port open)
-
 
 ## `.z.pd` (peach handles)
 
@@ -596,8 +631,8 @@ q)
 
 Where q has been [started with secondary processes for use in parallel processing](../basics/cmdline.md#-s-secondary-threads),  `x` is
 
--    an int vector of handles to secondary processes
--    a function that returns a list of handles to those secondary processes
+* an int vector of handles to secondary processes
+* a function that returns a list of handles to those secondary processes
 
 For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to the secondary processes by calling [`.z.pd[]`](#zpd-peach-handles).
 
@@ -631,10 +666,7 @@ Note that (since V3.1) the worker processes are not started automatically by kdb
 
     One-shot IPC requests can be used within `peach` instead.
 
-
-:fontawesome-solid-graduation-cap:
 [Load balancing](../kb/load-balancing.md)
-
 
 ## `.z.pg` (get)
 
@@ -648,9 +680,7 @@ Where `f` is a unary function, called with the object that is passed to the q se
 
 The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and executes in the root context.
 
-:fontawesome-solid-hand-point-right:
 [`.z.ps`](#zps-set) (set), [`-30!(x)`](../basics/internal.md#-30x-deferred-response) (deferred response)
-
 
 ## `.z.ph` (HTTP get)
 
@@ -662,26 +692,24 @@ Where `f` is a unary function, it is evaluated when a synchronous HTTP request i
 
 `.z.ph` is passed a single argument, a 2-item list `(requestText;requestHeaderAsDictionary)`:
 
-- `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task.
-- `requestHeaderAsDictionary` contains a dictionary of [HTTP header](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) names and values as sent by the client. This can be used to return content optimized for particular browsers.
+* `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task.
+* `requestHeaderAsDictionary` contains a dictionary of [HTTP header](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) names and values as sent by the client. This can be used to return content optimized for particular browsers.
 
 The function returns a string representation of an HTTP response message e.g. [HTTP/1.1 response message format](https://en.wikipedia.org/wiki/HTTP#HTTP/1.1_response_messages).
 
 Since V3.6 and V3.5 2019.11.13, the default implementation calls [`.h.val`](doth.md#hval-value) instead of [`value`](value.md), allowing users to interpose their own valuation code. It is called with `requestText` as the argument.
 
-:fontawesome-solid-hand-point-right:
 [`.z.pp`](#zpp-http-post) (HTTP post), [`.z.pm`](#zpm-http-methods) (HTTP methods), [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
-:fontawesome-solid-book:
+
 [`.h` namespace](doth.md)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [HTTP](../kb/http.md)
 <br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§11.7.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)
 
+_Q for Mortals_
+[§11.10.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)
 
 ## `.z.pi` (input)
 
@@ -713,8 +741,6 @@ To return to the default display, just delete your custom handler
 q)\x .z.pi
 ```
 
-
-
 ## `.z.pm` (HTTP methods)
 
 ```syntax
@@ -723,10 +749,10 @@ q)\x .z.pi
 
 Where f is a unary function, .z.pm is evaluated when the following HTTP request methods are received in the kdb+ session.
 
--   OPTIONS
--   PATCH (since V4.1t 2021.03.30)
--   PUT (since V4.1t 2021.03.30)
--   DELETE (since V4.1t 2021.03.30)
+* OPTIONS
+* PATCH (since V4.1t 2021.03.30)
+* PUT (since V4.1t 2021.03.30)
+* DELETE (since V4.1t 2021.03.30)
 
 Each method is passed to `f` as a 3-item list e.g.
 
@@ -736,11 +762,9 @@ Each method is passed to `f` as a 3-item list e.g.
 
 For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-http-get).
 
-:fontawesome-solid-hand-point-right:
 [`.z.ph`](#zph-http-get) (HTTP get), [`.z.pp`](#zpp-http-post) (HTTP post), [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
-:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
-
+[HTTP](../kb/http.md)
 
 ## `.z.po` (open)
 
@@ -752,14 +776,12 @@ Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ 
 
 Its argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`
 
-:fontawesome-solid-hand-point-right:
 [`.z.pc`](#zpc-close) (port close),
 [`.z.pw`](#zpw-validate-user) (validate user)
 <br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
+_Q for Mortals_
+[§11.8 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 ## `.z.pp` (HTTP post)
 
@@ -775,19 +797,17 @@ See [`.z.ph`](#zph-http-get) for details of the argument and return value.
 
 Allows empty requests since 4.1t 2021.03.30 (previously signalled `length` error).
 
-:fontawesome-solid-hand-point-right:
 [`.z.ph`](#zph-http-get) (HTTP get), [`.z.pm`](#zpm-http-methods) (HTTP methods), [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
-:fontawesome-solid-book:
+
 [`.h` namespace](doth.md)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [HTTP](../kb/http.md)
 <br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§11.7.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)
 
+_Q for Mortals_
+[§11.10.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)
 
 ## `.z.pq` (qcon)
 
@@ -799,9 +819,7 @@ Remote connections using the ‘qcon’ text protocol are routed to `.z.pq`, whi
 
 This allows a user to handle remote qcon connections (via `.z.pq`) without defining special handling for console processing (via `.z.pi`).
 
-:fontawesome-solid-graduation-cap:
 [Firewalling](../kb/firewalling.md) for locking down message handlers
-
 
 ## `.z.ps` (set)
 
@@ -825,9 +843,7 @@ q)0 "2+2"
 4
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.pg`](#zpg-get) (get)
-
 
 ## `.z.pw` (validate user)
 
@@ -845,20 +861,16 @@ If `.z.pw` returns `0b` the task attempting to establish the connection will get
 
 The default definition is `{[user;pswd]1b}`
 
-:fontawesome-solid-hand-point-right:
 [`.z.po`](#zpo-open) (port open)
 <br>
-:fontawesome-solid-book:
-[Changes in 2.4](../releases/ChangesIn2.4.md#zpw)
 
+[Changes in 2.4](../releases/ChangesIn2.4.md#zpw)
 
 ## `.z.q` (quiet mode)
 
 `1b` if Quiet Mode is set, else `0b`.
 
-:fontawesome-solid-book-open:
 [Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
-
 
 ## `.z.r` (blocked)
 
@@ -866,12 +878,11 @@ A boolean, indicating whether an update in the current context would be blocked.
 
 Returns `1b`
 
--   in `reval`
--   where the [`-b` command-line option](../basics/cmdline.md#-b-blocked) has been set
--   in a thread other than the main event thread
+* in `reval`
+* where the [`-b` command-line option](../basics/cmdline.md#-b-blocked) has been set
+* in a thread other than the main event thread
 
 Since V4.1t 2021.04.16.
-
 
 ## `.z.s` (self)
 
@@ -891,7 +902,6 @@ q)fact[5]
 ```
 
 Note this is purely an example; there are other ways to achieve the same result.
-
 
 ## `.z.ts` (timer)
 
@@ -916,9 +926,7 @@ q)2010.12.16D17:12:12.849442000
 
 When kdb+ has completed executing a script passed as a command-line argument, and if there are no open sockets nor a console, kdb+ will exit. The timer alone is not enough to stop the process exiting – it must have an event source which is a file descriptor (socket, console, or some plugin registering a file descriptor and callback via the C API `sd1` function).
 
-:fontawesome-solid-book-open:
 [`\t`](../basics/syscmds.md#t-timer)
-
 
 ## `.z.u` (user ID)
 
@@ -931,10 +939,10 @@ q).z.u
 
 For
 
--   handle 0 (console) returns the userid under which the process is running.
--   handles > 0 returns either:
-    -   on the server end of a connection, the userid as passed to `hopen` by the client
-    -   on the client end of a connection, the null symbol `` ` ``
+* handle 0 (console) returns the userid under which the process is running.
+* handles > 0 returns either:
+  * on the server end of a connection, the userid as passed to `hopen` by the client
+  * on the client end of a connection, the null symbol `` ` ``
 
 ```q
 q).z.u                  / console is handle 0
@@ -948,7 +956,6 @@ q)h({.z.w".z.u"};::)    / client side returns null symbol
 `
 ```
 
-
 ## `.z.vs` (value set)
 
 ```syntax
@@ -957,7 +964,7 @@ q)h({.z.w".z.u"};::)    / client side returns null symbol
 
 Where `f` is a binary function, `.z.vs` is evaluated _after_ a value is set globally in the default namespace (e.g. `a`, `a.b`).
 
-For function `f[x;y]`, `x` is the symbol of the modified variable and `y` is the index. 
+For function `f[x;y]`, `x` is the symbol of the modified variable and `y` is the index.
 
 !!! detail "Applies only to globals in the default namespace"
 
@@ -975,13 +982,13 @@ q)m[1;1]:0
 (`m;1 1;(1 2;3 0))
 ```
 
-
 ## `.z.W` (handles)
 
 Dictionary of IPC handles with the number of bytes waiting in their output queues.
 [`.z.H`](#zh-active-sockets) is a lower cost method if the size of the output queue is not required.
 
 The following demonstrates a client connection which has created [async requests](../basics/ipc.md#async-message-set), causing pending data in its connection output queue.
+
 ```q
 q)h:hopen ...
 q)h
@@ -1005,6 +1012,7 @@ q)neg[h]({};til 1000000); neg[h]({};til 10); sum each .z.W
 ```
 
 Querying known handles can also be performed using [`-38!`](../basics/internal.md#-38x-socket-table), which can be more performant than using `.z.W` to return the entire dataset of handles.
+
 ```q
 q)h:hopen 5000
 q)neg[h]"11+1111111";.z.W h
@@ -1013,13 +1021,11 @@ q)neg[h]"11+1111111";(-38!h)`m
 24
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.H`](#zh-active-sockets) (active sockets), [`.z.w`](#zw-handle) (handle), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
-
 
 ## `.z.w` (handle)
 
-The current connection handle. When called within the current session console, it will return 0i. 
+The current connection handle. When called within the current session console, it will return `0i`. 
 
 ```q
 q).z.w
@@ -1029,9 +1035,7 @@ q).z.w
 When called from code executing a client callback function due to a client request, for example [`.z.pg`](#zpg-get), it returns the handle of the client connection.
 This can be used for performing tasks such as sending a [sync/async request](../basics/ipc.md#send-messages) to the client or recording the handle upon which a request should be later fulfilled.
 
-:fontawesome-solid-hand-point-right:
 [`.z.H`](#zh-active-sockets) (active sockets), [`.z.W`](#zw-handles) (handles), [`-38!`](../basics/internal.md#-38x-socket-table) (socket table)
-
 
 ## `.z.wc` (websocket close)
 
@@ -1041,8 +1045,8 @@ This can be used for performing tasks such as sending a [sync/async request](../
 
 Where
 
--   `f` is a unary function
--   `h` is the handle to a websocket connection to a kdb+ session
+* `f` is a unary function
+* `h` is the handle to a websocket connection to a kdb+ session
 
 `f[h]` is evaluated _after_ a websocket connection has been closed.
 (Since V3.3t 2014.11.26.)
@@ -1051,11 +1055,9 @@ As the connection has been closed by the time `.z.wc` is called, there are stric
 
 This allows you to clean up things like tables of users keyed by handle.
 
-:fontawesome-solid-hand-point-right:
 [`.z.wo`](#zwo-websocket-open) (websocket open),
 [`.z.ws`](#zws-websockets) (websockets),
 [`.z.ac`](#zac-http-auth) (HTTP auth)
-
 
 ## `.z.wo` (websocket open)
 
@@ -1065,19 +1067,17 @@ This allows you to clean up things like tables of users keyed by handle.
 
 Where
 
--   `f` is a unary function
--   `h` is the handle to a websocket connection to a kdb+ session
+* `f` is a unary function
+* `h` is the handle to a websocket connection to a kdb+ session
 
 `f[h]` is evaluated when the connection has been initialized, i.e. _after_ it has been validated against any `-u`/`-U` file and `.z.pw` checks.
 (Since V3.3t 2014.11.26)
 
 The handle argument is typically used by `f` to build a dictionary of handles to session information such as the value of `.z.a`, `.z.u`.
 
-:fontawesome-solid-hand-point-right:
 [`.z.wc`](#zwc-websocket-close) (websocket close),
 [`.z.ws`](#zws-websockets) (websockets),
 [`.z.ac`](#zac-http-auth) (HTTP auth)
-
 
 ## `.z.ws` (websockets)
 
@@ -1089,14 +1089,12 @@ Where `f` is a unary function, it is evaluated on a message arriving at a websoc
 
 Sending a websocket message is limited to async messages only (sync is `'nyi`). A string will be sent as a text message; a byte vector as a binary message.
 
-:fontawesome-solid-hand-point-right:
 [`.z.wo`](#zwo-websocket-open) (websocket open),
 [`.z.wc`](#zwc-websocket-close) (websocket close),
 [`.z.ac`](#zac-http-auth) (HTTP auth)
 <br>
-:fontawesome-solid-graduation-cap:
-[WebSockets](../kb/websockets.md)
 
+[WebSockets](../kb/websockets.md)
 
 ## `.z.X` (raw command line)
 
@@ -1108,12 +1106,12 @@ Returns a list of strings of the raw, unfiltered command line with which kdb+ wa
 (Since V3.3 2015.02.12)
 
 ```bash
-$ q somefile.q -customarg 42 -p localhost:17200
+q somefile.q -customarg 42 -p localhost:17200
 ```
 
 ```q
-KDB+ 3.4 2016.09.22 Copyright (C) 1993-2016 KX Systems
-m64/ 4()core 8192MB ...
+kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
+...
 q).z.X
 ,"q"
 "somefile.q"
@@ -1123,9 +1121,7 @@ q).z.X
 "localhost:17200"
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.x`](#zx-argv) (argv), [`.z.f`](#zf-file) (file), [`.z.q`](#zq-quiet-mode) (quiet mode), [`.Q.opt`](dotq.md#opt-command-parameters) (command parameters), [`.Q.def`](dotq.md#def-command-defaults) (command defaults), [`.Q.x`](dotq.md#x-non-command-parameters) (non-command parameters)
-
 
 ## `.z.x` (argv)
 
@@ -1142,9 +1138,7 @@ q).z.x
 
 Command-line options can be converted to a dictionary using the convenient [`.Q.opt`](dotq.md#opt-command-parameters) function.
 
-:fontawesome-solid-hand-point-right:
 [`.z.X`](#zx-raw-command-line) (raw command line), [`.z.f`](#zf-file) (file), [`.z.q`](#zq-quiet-mode) (quiet mode), [`.Q.opt`](dotq.md#opt-command-parameters) (command parameters), [`.Q.def`](dotq.md#def-command-defaults) (command defaults), [`.Q.x`](dotq.md#x-non-command-parameters) (non-command parameters)
-
 
 ## `.z.Z` (local datetime)
 
@@ -1159,7 +1153,6 @@ The offset from UTC is fetched from the OS: kdb+ does not have its own time-offs
 
 Which avoids problems like [this](https://it.slashdot.org/story/07/02/25/2038217/software-bug-halts-f-22-flight).
 
-:fontawesome-solid-hand-point-right:
 [`.z.z`](#zz-utc-datetime) (UTC datetime), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan)
 
 ## `.z.z` (UTC datetime)
@@ -1170,11 +1163,10 @@ UTC time as a datetime atom.
 q).z.z
 2006.11.13T21:16:14.601
 ```
+
 !!! detail "`z.z` calls `gettimeofday` and so has microsecond precision"
 
-:fontawesome-solid-hand-point-right:
 [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.P`](#zp-local-timestamp) (local timestamp), [`.z.p`](#zp-utc-timestamp) (UTC timestamp), [`.z.N`](#zn-local-timespan) (local timespan), [`.z.n`](#zn-utc-timespan) (UTC timespan)
-
 
 [](){#zzd-zip-defaults}
 
@@ -1185,7 +1177,7 @@ q).z.z
 .z.zd:dict
 ```
 
-Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#encryption).
+Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md) and/or [encryption parameters](../kb/dare.md#configuration).
 They set default values for logical block size, compression/encryption algorithm and compression level that apply when saving to files.
 Encryption available since 4.0 2019.12.12.
 
@@ -1227,8 +1219,8 @@ logicalBlockSize  | 17i
 zipLevel          | 4i
 ```
 
-A dictionary can be assigned to `.z.zd`. The keys of the dictionary are either column names or the null symbol `` `  ``. 
-The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`. 
+A dictionary can be assigned to `.z.zd`. The keys of the dictionary are either column names or the null symbol `` ` ``.
+The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`.
 The null symbol is used as a default for columns that do not match the other keys.
 
 ```q
@@ -1238,24 +1230,20 @@ a| 17 2 6
 b| 17 2 6
 q).z.zd:dict
 ```
+
 Settings can be cleared using the [`\x`](../basics/syscmds.md#x-expunge) system command.
+
 ```q
 q).z.zd:17 2 6        / set zip defaults
 q)\x .z.zd            / clear zip defaults
 ```
 
-:fontawesome-solid-hand-point-right:
 [`-21!x`](../basics/internal.md#-21x-compressionencryption-stats) (compression/encryption stats), [`set`](get.md#set) (per file/dir compression)
 
-:fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
 <br>
-:fontawesome-regular-map:
-[Compression in kdb+](../wp/compress/index.md)
-<br>
-:fontawesome-solid-database:
-[Data at rest encryption (DARE)](../kb/dare.md)
 
+[Data at rest encryption (DARE)](../kb/dare.md)
 
 ## `.z.T` `.z.t` `.z.D` `.z.d` (time/date shortcuts)
 
@@ -1266,15 +1254,13 @@ Shorthand forms:
 .z.t  `time$.z.z     .z.d  `date$.z.z
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.Z`](#zz-local-datetime) (local datetime), [`.z.z`](#zz-utc-datetime) (UTC datetime)
 
-
 ---
-:fontawesome-solid-graduation-cap:
+
 [Callbacks](../kb/callbacks.md),
 [Using `.z`](../kb/using-dotz.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals:_
-[§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
+[§11.8 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)

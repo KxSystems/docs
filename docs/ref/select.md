@@ -1,7 +1,7 @@
 ---
 title: select keyword, Select operator | Reference | kdb+ and q documentation
 description: select and Select are (respectively) a q keyword and operator that select all or part of a table, possibly with new columns.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: column, kdb+, q, qsql, query, select, sql, table
 ---
 # `select`
@@ -15,7 +15,7 @@ _Select all or part of a table, possibly with new columns_
 !!! info "`select` is a qSQL query template and varies from regular q syntax."
 
 For the Select operator `?`, see 
-:fontawesome-solid-book-open:
+
 [Functional SQL](../basics/funsql.md)
 
 
@@ -36,7 +36,7 @@ _t~exp~_  Table expression
 _p~w~_    Where phrase
 </div>
 
-:fontawesome-solid-book-open:
+
 [qSQL syntax](../basics/qsql.md)
 
 
@@ -152,7 +152,7 @@ Unlike in SQL, columns in the By phrase
 -   are included in the result and need not be specified in the Select phrase
 -   can include computed columns
 
-:fontawesome-solid-globe:
+
 [The SQL `GROUP BY` statement](https://www.w3schools.com/sql/sql_groupby.asp)
 
 The [`ungroup`](ungroup.md) keyword reverses the grouping, though the original order is lost. 
@@ -214,15 +214,15 @@ see [qSQL](../basics/qsql.md#cond).
 
 
 ----
-:fontawesome-solid-book:
+
 [`delete`](delete.md),
 [`exec`](exec.md),
 [`update`](update.md)
 <br>
-:fontawesome-solid-book-open:
+
 [qSQL](../basics/qsql.md),
 [Functional SQL](../basics/funsql.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§9.3 The `select` Template](/q4m3/9_Queries_q-sql/#93-the-select-template) 

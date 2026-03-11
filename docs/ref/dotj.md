@@ -1,10 +1,10 @@
 ---
 title: The .j namespace – Reference – kdb+ and q documentation
 description: the .j namespace contains objects useful for converting between JSON and and q dictionaries.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
-# :fontawesome-brands-js: The `.j` namespace
 
+# The `.j` namespace
 
 _JSON serialization_
 
@@ -21,7 +21,6 @@ The `.j` [namespace](../basics/namespaces.md) contains functions for converting 
 
 Prior to V3.2, JSON parsing was catered for via use of the script [KxSystems/kdb/e/json.k](https://github.com/KxSystems/kdb/blob/master/e/json.k)
 
-
 ## `.j.j` (serialize)
 
 ```syntax
@@ -29,7 +28,6 @@ Prior to V3.2, JSON parsing was catered for via use of the script [KxSystems/kdb
 ```
 
 Where `x` is a K object, returns a string representing it in JSON.
-
 
 ## `.j.jd` (serialize infinity)
 
@@ -39,10 +37,10 @@ Where `x` is a K object, returns a string representing it in JSON.
 
 Where
 
--   `x` is a K object
--   `d` is a dictionary
+- `x` is a K object
+- `d` is a dictionary
 
-returns the result of `.j.j` unless `` d[`null0w]`` is 1b, in which case `0w` and `-0w` are mapped to `"null"`.
+returns the result of `.j.j` unless ``d[`null0w]`` is 1b, in which case `0w` and `-0w` are mapped to `"null"`.
 (Since V3.6 2018.12.06.)
 
 ```q
@@ -53,8 +51,6 @@ q).j.jd(-0w 0 1 2 3 0w;()!())
 q).j.jd(-0w 0 1 2 3 0w;([null0w:1b]))
 "[null,0,1,2,3,null]"
 ```
-
-
 
 ## `.j.k` (deserialize)
 
@@ -94,4 +90,3 @@ q).j.k raze read0 `:t1.json
 code   | 3f
 message| "This request requires authorization"
 ```
-

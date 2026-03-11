@@ -1,7 +1,7 @@
 ---
 title: key keyword | Reference | kdb+ and q documentation
 description: Keys of a dictionary; key columns of a keyed table; files in a folder; whether a file or name exists; target of a foreign key, type of a vector; or the enumerator of a list.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, keyed table, q, symbol, til, vector
 ---
 
@@ -56,10 +56,10 @@ w
 e
 ```
 
-:fontawesome-solid-book:
+
 [`keys`, `xkey`](keys.md)
 <br>
-:fontawesome-solid-book:
+
 [`!` Enkey, Unkey](enkey.md)
 
 
@@ -190,6 +190,6 @@ q)key 10
 
 ----
 
-:fontawesome-solid-book-open:
+
 [Metadata](../basics/metadata.md)
 

@@ -40,5 +40,5 @@ a b
 ```
 
 ----
-:fontawesome-solid-book: 
+ 
 [`rotate`](rotate.md)

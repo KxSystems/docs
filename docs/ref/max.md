@@ -1,13 +1,9 @@
 ---
 title: Maximums | Reference | kdb+ and q documentation
 description: max, maxs, and mmax are q keywords that return respectively the largest item from a list or dictionary, the cumulative maximums, and the moving maximums.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `max`, `maxs`, `mmax`
-
-
-
-
 
 ## `max`
 
@@ -18,7 +14,7 @@ max x    max[x]
 ```
 
 Where `x` is a non-symbol sortable list, returns the maximum of its items.
-The maximum of an atom is itself. 
+The maximum of an atom is itself.
 
 Nulls are ignored, except that if the items of `x` are all nulls, the result is negative infinity.
 
@@ -43,7 +39,6 @@ range:  b . x h i j e f c . p m d z n u v t
 
 `max` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-
 ## `maxs`
 
 _Maximums_
@@ -52,7 +47,7 @@ _Maximums_
 maxs x    maxs[x]
 ```
 
-Where `x` is a non-symbol sortable list, returns the running maximums of its prefixes. 
+Where `x` is a non-symbol sortable list, returns the running maximums of its prefixes.
 
 Nulls are ignored, except that initial nulls are returned as negative infinity.
 
@@ -72,7 +67,6 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  b . x h i j e f c . p m d z n u v t
 ```
 
-
 ## `mmax`
 
 _Moving maximums_
@@ -83,8 +77,8 @@ x mmax y    mmax[x;y]
 
 Where
 
--   `x` is a positive int atom
--   `y` is a non-symbol sortable list
+- `x` is a positive int atom
+- `y` is a non-symbol sortable list
 
 returns the `x`-item moving maximums of `y`, with nulls after the first replaced by the preceding maximum. The first `x` items of the result are the maximums of the items so far, and thereafter the result is the moving maximum.
 
@@ -98,6 +92,7 @@ q)3 mmax 0N -3 -2 0N 1 0  / initial null returns negative infinity
 `mmax` is a uniform function.
 
 Domain and range:
+
 ```txt
     b g x h i j e f c s p m d z n u v t
 ----------------------------------------
@@ -123,8 +118,7 @@ t | . . . . . . . . . . . . . . . . . .
 
 Range: `bcdefghijmnpstuvxz`
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `max`, `maxs`, and `mmax` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
@@ -163,7 +157,6 @@ def| 21 5
 ghi| 21 6
 ```
 
-
 ## Aggregating nulls
 
 `avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
@@ -174,15 +167,13 @@ q)max (1 2;0N 4)
 1 4
 ```
 
-
 ----
-:fontawesome-solid-book:
+
 [Greater Than](greater-than.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Comparison](../basics/comparison.md),
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-solid-graduation-cap:
-[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
 
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)

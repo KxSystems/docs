@@ -1,7 +1,7 @@
 ---
 title: prior – a wrapper for the Each Prior iterator | Reference | kdb+ and q documentation
 description: prior is a q keyword that is a wrapper for the Each Prior iterator.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: March 2019
 ---
 # `prior`
@@ -37,5 +37,5 @@ See the [iterator](maps.md#each-prior) for how the first item of the result is d
 
 ----
 
-:fontawesome-solid-book:
+
 [Each Prior](maps.md#each-prior)

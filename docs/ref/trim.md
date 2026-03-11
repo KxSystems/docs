@@ -1,12 +1,11 @@
 ---
 title: trim, ltrim, rtrim – trim nulls from a list | Reference | kdb+ and q documentation
 description: trim, ltrim, and rtrim are q keywords that remove leading or trailing spaces from a string.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `trim`, `ltrim`, `rtrim`
 
 _Remove leading or trailing nulls from a list_
-
 
 ```syntax
  trim x     trim[x]
@@ -34,8 +33,7 @@ q)trim 42
 42
 ```
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 `trim`, `ltrim`, and `rtrim` are [string-atomic](../basics/atomic.md#string-atomic) and apply to dictionaries and tables.
 
@@ -55,7 +53,6 @@ a                b
 ("jumps";"over") "dog"
 ```
 
-
 ## Domain and range
 
 ```txt
@@ -64,9 +61,8 @@ range:  b g x h i j e f c s p m d z n u v t
 ```
 
 ----
-:fontawesome-solid-book:
+
 [Drop](drop.md)
 <br>
-:fontawesome-solid-book-open:
-[Strings](../basics/by-topic.md#strings)
 
+[Strings](../basics/by-topic.md#strings)

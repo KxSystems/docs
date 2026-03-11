@@ -1,7 +1,7 @@
 ---
 title: Sublist of a list | Reference | kdb+ and q documentation
 description: sublist is a q keyword that returns a sublist of a list.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `sublist`
 
@@ -72,9 +72,9 @@ q)1 2 sublist p  / 2 items starting from position 1
 
 
 ----
-:fontawesome-solid-book:
+
 [Take](take.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Selection](../basics/by-topic.md#selection)
 

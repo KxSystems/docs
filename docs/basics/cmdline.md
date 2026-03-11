@@ -207,7 +207,7 @@ domain description
 1      filesystem-backed memory
 ```
 
-The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1, however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`
+The [`.m` namespace](../ref/dotm.md#memory-backed-files) is reserved for objects in memory domain 1, however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`
 
 
 
@@ -422,7 +422,7 @@ Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 -w N
 ```
 
-Workspace limit in MB for the heap across threads for [memory domain](../ref/dotm.md) 0.
+Workspace limit in MB for the heap across threads for [memory domain](../ref/dotm.md#memory-backed-files) 0.
 Default is 0: no limit.
 
 :fontawesome-solid-book-open:

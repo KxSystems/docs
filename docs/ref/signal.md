@@ -1,7 +1,7 @@
 ---
 title: Signal | Reference | kdb+ and q documentation
 description: Signal is a q operator that signals an error. 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `'` Signal
 
@@ -24,7 +24,7 @@ q)0N!0;'`err;0N!1
 
 !!! info "Signal is part of q syntax. It is not an operator and cannot be iterated or projected."
 
-:fontawesome-solid-book:
+
 [`'` Quote overloads](overloads.md#quote)
 
 The only way to detect a signal is to use [Trap](apply.md#trap).
@@ -154,14 +154,14 @@ q))a
 ```
 
 ----
-:fontawesome-solid-book:
+
 [Trap, Trap At](apply.md#trap) 
 <br>
-:fontawesome-solid-book-open:
+
 [Controlling evaluation](../basics/control.md),
 [Debugging](../basics/debug.md),
 [Error handling](../basics/errors.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§10.1.7 Return and Signal](/q4m3/10_Execution_Control/#1017-return-and-signal)
+[§10.1.8 Return and Signal](/q4m3/10_Execution_Control/#1017-return-and-signal)

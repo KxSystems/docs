@@ -42,9 +42,9 @@ If using a relative path which does not resolve to reside under `$QHOME/os`, ens
 Since 3.6 2018.08.24 loading shared libraries via 2: resolved to a canonical path prior to load via the OS. This caused issues for libs whose run-time path was relative to a sym-link.
 From 4.1t 2024.01.11 it resolves to an absolute path only, without resolving sym-links.
 
-:fontawesome-solid-book-open: 
+ 
 [File system](../basics/files.md)<br>
-:fontawesome-brands-superpowers:
-[Using C/C++ functions](../interfaces/using-c-functions.md)
+
+[Using C/C++ functions](../interfaces/c-client-for-q.md)
 
 

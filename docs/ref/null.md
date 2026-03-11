@@ -1,7 +1,7 @@
 ---
 title: Flag nulls in a list or dictionary | Reference | kdb+ and q documentation
 description: null is a q keyword that flags where its argument is null.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `null`
 

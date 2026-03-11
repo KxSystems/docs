@@ -1,7 +1,7 @@
 ---
 title: eval, reval | Reference | kdb+ and q documentation
 description: eval and reval are q keywords that evaluate parse trees.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `eval`, `reval`
 
@@ -69,6 +69,6 @@ q)h"reval(hopen;enlist`:somefile)"
 ```
 
 ----
-:fontawesome-solid-graduation-cap:
+
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 

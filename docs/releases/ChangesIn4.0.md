@@ -233,7 +233,7 @@ domain | content
 0      | regular anonymous memory (active and used for all allocs by default)
 1      | filesystem-backed memory
 
-[Namespace `.m`](../ref/dotm.md) is reserved for objects in domain 1; however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`.
+[Namespace `.m`](../ref/dotm.md#memory-backed-files) is reserved for objects in domain 1; however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`.
 
 `\d .m` changes the current domain to 1, causing it to be used by all further allocs. `\d .anyotherns` sets it back to 0.
 

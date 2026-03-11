@@ -1,13 +1,9 @@
 ---
 title: bin, binr | Reference | kdb+ and q documentation
 description: bin and binr are q keywords that perform binary searches.
-keywords: bin, binr, kdb+, q, search_
+keywords: bin, binr, kdb+, q, search, Find
 ---
 # `bin`, `binr`
-
-
-
-
 
 _Binary search_
 
@@ -20,8 +16,8 @@ x binr y    binr[x;y]
 
 Where
 
--   `x` is a sorted list
--   `y` is an atom of exactly the same type (no type promotion)
+- `x` is a sorted list
+- `y` is an atom of exactly the same type (no type promotion)
 
 returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`. If `x` is a simple list, `bin` is [atomic](../basics/atomic.md) in `y`. (For higher ranks of either argument, `bin` works the same way as [`?` (Find)](find.md/#type-specific).)
 `binr` _binary search right_, introduced in V3.0 2012.07.26, gives the index of the _first_ item in `x` which is ≥`y`.
@@ -62,7 +58,7 @@ The result `r` can be interpreted as follows: for an atom `y`, `r` is an integer
 
 ```txt
 r[i]=-1            iff y[i]<x[0]
-r[i]=j             iff last j such that x[j]<=y[i]<=x[j+1]
+r[i]=j             iff j is last k such that x[k]<=y[i]<=x[k+1]
 r[i]=n-1           iff x[n-1]<=y[i]
 ```
 
@@ -80,10 +76,10 @@ r[j]=x bin y[j]    for all j in index of y
 
 Where
 
--   `x` is a table of `n` columns
--   `y` is a table row with the same schema (e.g. a list with `n` elements or a dictionary with the same keys as the columns of `x`)
+- `x` is a table of `n` columns
+- `y` is a table row with the same schema (e.g. a list with `n` elements or a dictionary with the same keys as the columns of `x`)
 
-returns the index of the last row of `x` for which 
+returns the index of the last row of `x` for which
 
 - the first `n-1` values each match the first `n-1` values of `y`, and
 - the last value is not greater than the last value of `y`.
@@ -125,7 +121,6 @@ k
 d
 l
 
-
 q)(kt bin ([]a:`p`q`q`r;b:1;c:4 8 2 4))`k
 `d`l``
 ```
@@ -143,12 +138,9 @@ q)\t t bin t
 3699
 ```
 
-
 ----
 
-:fontawesome-solid-book:
 [`aj`](aj.md), [`lj`](lj.md)
 <br>
-:fontawesome-solid-book-open:
-[Search](../basics/by-topic.md#search)
 
+[Search](../basics/by-topic.md#search)

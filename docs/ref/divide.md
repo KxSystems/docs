@@ -1,13 +1,9 @@
 ---
 title: Divide | Reference | kdb+ and q documentation
 description: Divide is a q operator that returns the ratio of its arguments.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `%` Divide
-
-
-
-
 
 ```syntax
 x%y     %[x;y]
@@ -47,8 +43,7 @@ q)2010.01.01 % 2005.01.01
 
 `%` is a [multithreaded primitive](../kb/mt-primitives.md).
 
-
-## :fontawesome-solid-sitemap: Implicit iteration
+## Implicit iteration
 
 Divide is an [atomic function](../basics/atomic.md).
 
@@ -87,7 +82,6 @@ def| 1 1
 ghi| 1 1
 ```
 
-
 ## Range and domains
 
 The following shows the resulting output type given the input type of `x` and `y`.
@@ -119,14 +113,14 @@ t | f . f f f f f f f . f f f f f f f f
 Range: `f`
 
 ----
-:fontawesome-solid-book:
+
 [`div`](div.md),
 [Multiply](multiply.md),
 [`ratios`](ratios.md)
 <br>
-:fontawesome-solid-street-view:
+
 [Mathematics](../basics/math.md)
-<br>
-:fontawesome-solid-book-open:
+<br>q4m
+
 _Q for Mortals_
 [§4.4 Basic Arithmetic](/q4m3/4_Operators/#44-basic-arithmetic-)

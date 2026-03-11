@@ -1,29 +1,30 @@
 ---
 title: Reference card | kdb+ and q documentation
 description: Quick reference for kdb+ and the q programming language
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 
 # Reference card
 
-
-
+!!! note
+	Want a quick and handy q reference resource? Download the [q Cheat Sheet (PDF download)](../assets/q-cheat-sheet.pdf){:target="_blank"}.
 
 ## Keywords
+
 <style>
-	.kx-tight td,
-	.kx-tight th {
-		font-size: 85%;
-		padding: 0 .4em;
-	}
-	.kx-tight th {
-		border-bottom: 1px solid rgba(0,0,0,.3);
-		opacity: .7;
-		text-align: left;
-	}
-	.kx-tight thead {
-		border-bottom: 1px solid #aaa;
-	}
+ .kx-tight td,
+ .kx-tight th {
+  font-size: 85%;
+  padding: 0 .4em;
+ }
+ .kx-tight th {
+  border-bottom: 1px solid rgba(0,0,0,.3);
+  opacity: .7;
+  text-align: left;
+ }
+ .kx-tight thead {
+  border-bottom: 1px solid #aaa;
+ }
 </style>
 
 <table class="kx-tight" markdown><tbody markdown>
@@ -31,17 +32,17 @@ author: Stephen Taylor
 </tbody></table>
 
 ### By category
+
 <table class="kx-tight" markdown>
 <tbody markdown>
 --8<-- "docs/ref/kwdcat.txt"
 </tbody></table>
 
-:fontawesome-solid-book:
 [`.Q.id`](dotq.md#id-sanitize) (sanitize),
 [`.Q.res`](dotq.md#res-keywords) (reserved words)
 
-
 ## Operators
+
 <style>.kx-glyph{background-color: rgba(0,0,0,.05);font-size: 110%;text-align: center; white-space: nowrap;}</style>
 <table class="kx-tight" markdown>
 <tr markdown>
@@ -80,9 +81,7 @@ author: Stephen Taylor
 <tr markdown> <td markdown class="kx-glyph" colspan="6">`.: @: $: !: ?: +: -: *: %: =: ~: <: >: |: &: #: _: ^: ,:`</td><td colspan="2" markdown>[Assign through operator](assign.md#assign-through-operator)</td> </tr>
 </table>
 
-:fontawesome-solid-book:
 [Overloaded glyphs](overloads.md)
-
 
 ## [Iterators](iterators.md)
 
@@ -96,20 +95,17 @@ author: Stephen Taylor
 ## [Execution control](../basics/control.md)
 
 <div markdown class="typewriter">
-[.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](../basics/function-notation.md#explicit-return)        [do](../ref/do.md)  [exit](../ref/exit.md)         [\$[x;y;z] Cond](../ref/cond.md)
-[@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)        [:[v;p1;r1;...] Pattern conditional](../basics/pattern.md#pattern-conditional)
+[.[f;x;e] Trap](apply.md#trap)          [: Return](../basics/function-notation.md#explicit-return)        [do](do.md)  [exit](exit.md)         [\$[x;y;z] Cond](cond.md)
+[@[f;x;e] Trap-At](apply.md#trap)       [' Signal](signal.md)        [if](if.md)  [while](while.md)        [:[v;p1;r1;...] Pattern conditional](../basics/pattern.md#pattern-conditional)
 </div>
 
-:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
-
-
 
 ## Other
 
 <div markdown class="typewriter">
-[`   pop stack](../basics/debug.md#debugging)        [::](overloads.md#colon-colon)   [identity](identity.md)         [\x  system cmd x](../basics/syscmds.md)
-[.](overloads.md#dot)   [push stack](../basics/debug.md#debugging)            [generic null](identity.md)     [\\    abort](../basics/debug.md#abort)
+[`   pop stack](../basics/debug.md)        [::](overloads.md#colon-colon)   [identity](identity.md)         [\x  system cmd x](../basics/syscmds.md)
+[.](overloads.md#dot)   [push stack](../basics/debug.md)            [generic null](identity.md)     [\\    abort](../basics/debug.md)
                           [global amend](../basics/function-notation.md#name-scope)     \\\\   quit q
                           [set view](../learn/views.md)         /    comment
 
@@ -117,8 +113,6 @@ author: Stephen Taylor
 (;)    [list](../basics/syntax.md#list-notation)               [argt list](../basics/syntax.md#bracket-notation)        ;   separator    \`:  filepath
 (\[\]..) [table](../basics/syntax.md#table-notation)
 </div>
-
-
 
 <!-- <td markdown class="kx-glyph">`:`</td><td markdown>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
@@ -128,9 +122,7 @@ author: Stephen Taylor
 **g** grouped     **p** parted     **s** sorted     **u** unique
 </div>
 
-:fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
-
 
 ## Command-line options and system commands
 
@@ -156,14 +148,12 @@ author: Stephen Taylor
 <tr markdown><td markdown>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-primary)</td><td markdown>replicate</td><td markdown>[`\\`](../basics/syscmds.md#quit)</td><td markdown>quit</td></tr>
 </table>
 
-:fontawesome-solid-book:
-[`system`](../ref/system.md)
+[`system`](system.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Command-line options](../basics/cmdline.md),
 [System commands](../basics/syscmds.md),
 [OS commands](../basics/syscmds.md#os-commands)
-
 
 <!--
 ## Environment variables
@@ -255,7 +245,6 @@ time.(minute second mm ss)
 milliseconds: time mod 1000
 ```
 
-
 ## Namespaces
 
 ### [`.h`](doth.md) (markup)
@@ -266,9 +255,9 @@ HTTP, markup and data conversion.
 
 De/serialize as JSON.
 
-### [`.m`](dotm.md) (memory backed files)
+### [`.m`](dotm.md) (modules)
 
-Memory backed by files.
+The currently loaded modules. In kdb+ 4.x, `.m` is reserved for memory domain 1 objects. In kdb+ 5.0 and later, `.m` is used for modules.
 
 ### [`.Q`](dotq.md) (utils)
 
@@ -277,4 +266,3 @@ Utilities: general, environment, IPC, datatype, database, partitioned database s
 ### [`.z`](dotz.md) (environment, callbacks)
 
 Environment, callbacks
-

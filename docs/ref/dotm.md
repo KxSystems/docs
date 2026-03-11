@@ -1,14 +1,22 @@
 ---
 title: Memory backed by filesystem | Basics | q and kdb+ documentation
 description: Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+
-author: Charlie Skelton
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: November 2019
 keywords: appdirect, dax, memory, thread
 ---
 # The `.m` namespace
 
+## Modules
 
-Since V4.0 2020.03.17
+From kdb+ 5.0 onwards, the `.m` namespace was repurposed to hold the local namespaces of modules. 
+Objects in the new `.m` namespace should not be accessed directly but only by using the interface provided by the respective module.
+
+Existing code that uses `.m` for [`memory domains`](#memory-backed-files) will not work in kdb+ 5.0+ and should be updated to remove this usage to avoid unexpected issues.
+
+## Memory backed files
+
+V4.0 only (since 2020.03.17). For V5.0 and above see [`modules`](#modules).
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
@@ -57,6 +65,3 @@ q)value each ("\\d .m";"\\w";"\\d .";"\\w")
 ```
 
 [Command-line option `-w limit`](../basics/cmdline.md#-w-workspace) (M1/m2) is no longer thread-local, but memory domain-local. Command-line option `-w`, and [system command `\w`](../basics/syscmds.md#w-workspace) set limit for memory domain 0.
-
-Mapped is a single global counter, the same in every thread’s `\w`.
-

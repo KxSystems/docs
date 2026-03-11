@@ -1,15 +1,13 @@
 ---
 title: get, set – Reference – kdb+ and q documentation
 description: get and set are q keywords that read or set value of a variable or a kdb+ data file.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: get, kdb+, q, set
 ---
-# :fontawesome-solid-database: `get`, `set`
+
+# `get`, `set`
 
 _Read or set the value of a variable or a kdb+ data file_
-
-
-
 
 ## `get`
 
@@ -21,8 +19,8 @@ get x     get[x]
 
 Where `x` is
 
--   the name of a global variable as a symbol atom
--   a [file or folder](../basics/glossary.md#file-symbol) named as a symbol atom or vector
+- the name of a global variable as a symbol atom
+- a [file or folder](../basics/glossary.md#file-symbol) named as a symbol atom or vector
 
 returns its value.
 
@@ -57,11 +55,8 @@ q)s:get`:SNewTrade/                     / s has columns mapped on demand
 
     <!-- FIXME: describe other uses. -->
 
-:fontawesome-solid-book:
 [`eval`](eval.md),
 [`value`](value.md)
-
-
 
 ## `set`
 
@@ -92,15 +87,15 @@ t     table
 y     (any)            any q object
 ```
 
-:fontawesome-solid-database:
 [Compression parameters `alg`, `lbs`, and `lvl`](../kb/file-compression.md#compression-parameters)
 <br>
-:fontawesome-solid-database:
-[Encryption parameters `alg` and `lbs`](../kb/dare.md#encryption)
+
+[Encryption parameters `alg` and `lbs`](../kb/dare.md#configuration)
 <br>
 [Compression/Encryption specification dictionary](#compressionencryption)
 
 Examples:
+
 ```q
 q)`a set 42                         / set global variable
 `a
@@ -138,23 +133,21 @@ q)(hcount`$":a0#")=hcount`$":a1#"
 
 Since 4.1t 2023.09.29,4.0 2023.11.03 when writing anymap, empty vectors without attributes are deduplicated automatically (including enum vectors when the enum name is 'sym').
 Since 4.1t 2021.06.04,4.0 2023.01.20 improved memory efficiency of writing nested data sourced from a type 77 (anymap) file, commonly encountered during compression of files. e.g.
+
 ```q
 q)`:a set 500000 100#"abc";system"ts `:b set get`:a" / was 76584400 bytes, now 8390208.
 ```
-
 
 ### Splayed table
 
 To splay a table `t` to directory `dir`
 
--   `dir` must be a filesymbol that ends with a `/`
--   `t` must have no primary keys
--   columns of `t` must be vectors or [compound lists](../basics/glossary.md#compound-list)
--   symbol columns in `t` must be fully enumerated
+- `dir` must be a filesymbol that ends with a `/`
+- `t` must have no primary keys
+- columns of `t` must be vectors or [compound lists](../basics/glossary.md#compound-list)
+- symbol columns in `t` must be fully enumerated
 
-:fontawesome-solid-database:
 [Splayed tables](../kb/splayed-tables.md)
-
 
 ### Format
 
@@ -173,6 +166,7 @@ q)read0 `:data/foo
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 
 [](){#compression}
+
 ### Compression/Encryption
 
 For
@@ -182,7 +176,7 @@ For
 (dir;lbs;alg;lvl) set t   / splay t to dir, compressed and/or encrypted
 ```
 
-Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#encryption).
+Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters) and/or [encryption parameters](../kb/dare.md#configuration).
 
 Splay table `t` to directory `ztbl/` with gzip compression:
 
@@ -197,7 +191,7 @@ For
 (dir;dic) set t            / splay t to dir, compressed
 ```
 
-the keys of `dic` are either column names of `t` or the null symbol `` `  ``. The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`.
+the keys of `dic` are either column names of `t` or the null symbol `` ` ``. The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`.
 
 Compression/encryption for unspecified columns is specified either by an entry for the null symbol (as below) or by [`.z.zd`](dotz.md#zzd-compressionencryption-defaults).
 
@@ -217,17 +211,11 @@ q)(`:ztbl/;dic) set t               / splay table compressed
 !!! warning "Compression may speed up or slow down the execution of `set`. The [performance impact](../kb/file-compression.md#performance) depends mainly on the data characteristics and the storage speed."
 
 ----
-:fontawesome-solid-database:
-[Database: tables in the filesystem](../database/index.md)
-<br>
-:fontawesome-solid-book-open:
+
 [File system](../basics/files.md)
 <br>
-:fontawesome-solid-database:
+
 [File compression](../kb/file-compression.md)
 <br>
-:fontawesome-regular-map:
-[Compression in kdb+](../wp/compress/index.md)
-<br>
-:fontawesome-solid-database:
+
 [Data at rest encryption (DARE)](../kb/dare.md)

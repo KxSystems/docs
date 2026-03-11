@@ -1,15 +1,12 @@
 ---
 title: File Text | Reference | kdb+ and q documentation
 description: File Text is a q operator that reads or writes text files.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: file, kdb+, q, read, text, write
 ---
 # `0:` File Text
 
 _Read or write text_
-
-
-
 
 The File Text operator `0:` has five forms:
 
@@ -18,17 +15,16 @@ The File Text operator `0:` has five forms:
 
 [Save Text](#save-text)        write a list of strings to file
 
-[Load CSV](#load-csv)         field-delimited string, list of strings, or file, 
+[Load CSV](#load-csv)         field-delimited string, list of strings, or file,
                  as a list or matrix
 
-[Load Fixed](#load-fixed)       fixed-format list of strings, or file, 
+[Load Fixed](#load-fixed)       fixed-format list of strings, or file,
                  as a list or matrix
 
 [Key-Value Pairs](#key-value-pairs)  delimited string as key-value pairs
 </div>
 
-
-## :fontawesome-solid-align-left: Prepare Text
+## Prepare Text
 
 _Represent a table as a list of delimited strings_
 
@@ -36,12 +32,12 @@ _Represent a table as a list of delimited strings_
 delimiter 0: t                          0:[delimiter;t]
 ```
 
-Where 
+Where
 
--   `delimiter` is a char atom 
--   `t` is a table in which the columns are either vectors or lists of strings
+- `delimiter` is a char atom
+- `t` is a table in which the columns are either vectors or lists of strings
 
-returns a list of character strings containing text representations of the rows of `t` separated by `delimiter`. 
+returns a list of character strings containing text representations of the rows of `t` separated by `delimiter`.
 
 ```q
 q)csv 0: ([]a:1 2 3;b:`x`y`z)
@@ -136,12 +132,10 @@ q)csv 0:([]("foo\nbar";"baz"))
     ,`FiscalTag
     ```
 
-:fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.4.3 Preparing Text](/q4m3/11_IO/#1143-preparing-text)
 
-
-## :fontawesome-solid-database: Save Text
+## Save Text
 
 _Write a list of strings to file_
 
@@ -149,10 +143,10 @@ _Write a list of strings to file_
 filesymbol 0: strings                   0:[filesymbol;strings]
 ```
 
-Where 
+Where
 
--   `filesymbol` is a file symbol
--   `strings` a list of character strings
+- `filesymbol` is a file symbol
+- `strings` a list of character strings
 
 `strings` are saved as lines in the file. The result of [Prepare Text](#prepare-text) can be used as `strings`.
 
@@ -165,15 +159,12 @@ q)`:status.txt 0: string system "w"
 
 If `filesymbol`
 
--   does not exist, it is created, with any missing containing directories
--   exists, it is overwritten
+- does not exist, it is created, with any missing containing directories
+- exists, it is overwritten
 
-
-:fontawesome-solid-book:
 [`save`, `rsave`](save.md)
 
-
-## :fontawesome-solid-database: Load CSV
+## Load CSV
 
 _Interpret a field-delimited string, list of strings, or file as a list or matrix_
 
@@ -182,20 +173,19 @@ _Interpret a field-delimited string, list of strings, or file as a list or matri
 (types;delimiter;flag) 0: y             0:[(types;delimiter;flag);y]
 ```
 
-Where 
+Where
 
--   `y` is one of the following:
-    - string
-    - list of strings
-    - file symbol
-    - 2-list (filesymbol;offset) where offset is a non-zero integer
-    - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
--   `types` is a string of [column type codes](#column-types-and-formats) in upper case
--   `delimiter` is a char atom or 1-item list
--   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`
+- `y` is one of the following:
+  - string
+  - list of strings
+  - file symbol
+  - 2-list (filesymbol;offset) where offset is a non-zero integer
+  - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
+- `types` is a string of [column type codes](#column-types-and-formats) in upper case
+- `delimiter` is a char atom or 1-item list
+- `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`
 
 returns a vector, matrix, or table interpreted from the content of `y`.
-
 
 ### With column names
 
@@ -214,14 +204,13 @@ q)("I*";",";1)0:("0,\"ab\nc\"";"1,\"def\"")
 "ab\nc" "def"
 ```
 
-Where `y` is a string and `delimiter` an atom, returns a single list of the data split and parsed accordingly. 
+Where `y` is a string and `delimiter` an atom, returns a single list of the data split and parsed accordingly.
 
 ```q
 q)("DT";",")0:"20130315,185540686"
 2013.03.15
 18:55:40.686
 ```
-
 
 ### Without column names
 
@@ -252,7 +241,7 @@ table: flip `a`b`c!("ISI";",") 0:`data.csv
 
 ### Multithreaded Load
 
-CSV load (excluding embedded line return mode) can use multiple threads when kdb+ is running in [multithreaded mode](https://code.kx.com/q/basics/syscmds/#s-number-of-secondary-threads).
+CSV load (excluding embedded line return mode) can use multiple threads when kdb+ is running in [multithreaded mode](../basics/syscmds.md#s-number-of-secondary-threads).
 
 ```q
 q)v:` sv 10000000#","0:10 10#til 100
@@ -261,8 +250,7 @@ q)system"s 10";(10#"J";",")0:v
 
 Since 4.1t 2021.09.28.
 
-
-## :fontawesome-solid-database: Load Fixed
+## Load Fixed
 
 _Interpret a fixed-format list of strings or file as a list or matrix_
 
@@ -270,15 +258,15 @@ _Interpret a fixed-format list of strings or file as a list or matrix_
 (types; widths) 0: y                    0:[(types;widths);y]
 ```
 
-Where 
+Where
 
--   `y` is one of the following:
-    - list of strings
-    - file symbol
-    - 2-list (filesymbol;offset) where offset is a non-zero integer
-    - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
--   `types` is a list of [column types](#column-types-and-formats) in upper case
--   `widths` is an int vector of field widths
+- `y` is one of the following:
+  - list of strings
+  - file symbol
+  - 2-list (filesymbol;offset) where offset is a non-zero integer
+  - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
+- `types` is a list of [column types](#column-types-and-formats) in upper case
+- `widths` is an int vector of field widths
 
 returns a vector or matrix interpreted from the content of `y`.
 
@@ -307,12 +295,11 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
 
 ### Multithreaded Load
 
-Fixed width load can use multiple threads when kdb+ is running in [multithreaded mode](https://code.kx.com/q/basics/syscmds/#s-number-of-secondary-threads)
+Fixed width load can use multiple threads when kdb+ is running in [multithreaded mode](../basics/syscmds.md#s-number-of-secondary-threads)
 
 Since 4.1t 2021.09.28.
 
-
-## :fontawesome-solid-book: Key-Value Pairs
+## Key-Value Pairs
 
 _Interpret a delimited string as key-value pairs_
 
@@ -320,7 +307,7 @@ _Interpret a delimited string as key-value pairs_
 x 0: string                             0:[x;string]
 ```
 
-Where `x` is a 3- or 4-char string: 
+Where `x` is a 3- or 4-char string:
 
 ```txt
 key-type
@@ -329,7 +316,7 @@ field-separator
 record-separator
 ```
 
-and `key-type` is `S` for symbol, `I` for integer, or `J` for long, returns a 2-row matrix of the keys and values. 
+and `key-type` is `S` for symbol, `I` for integer, or `J` for long, returns a 2-row matrix of the keys and values.
 
 ```q
 q)"S=;"0:"one=1;two=2;three=3"
@@ -365,10 +352,8 @@ q)0N!"S=*,"0:"a=\"hello,world\",b=1";
 (`a`b;("hello,world";,"1"))
 ```
 
-:fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.5.3 Key-Value Records](/q4m3/11_IO/#1153-key-value-records)
-
 
 ## Column types and formats
 
@@ -395,15 +380,14 @@ T        time        hh[:]mm[:]ss[[.]ddd]
 *                    literal chars
 ```
 
-
 ----
-:fontawesome-solid-book: 
-[`.j` namespace](../ref/dotj.md) for JSON 
+
+[`.j` namespace](dotj.md) for JSON
 <br>
-:fontawesome-solid-book-open: 
-[Datatypes](../basics/datatypes.md), 
+ q4m
+[Datatypes](../basics/datatypes.md),
 [File system](../basics/files.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)

@@ -1,7 +1,7 @@
 ---
 title: Connect and disconnect files and processes | Reference | kdb+ and q documentation
 description: hopen and hclose are q keywords for connecting and disconnecting files and processes.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `hopen`, `hclose`
 
@@ -102,7 +102,7 @@ SSL/TLS
 : tcp with SSL/TLS encryption
 : `` `:unixs://port ``
 : unix domain socket with SSL/TLS encryption
-: :fontawesome-solid-graduation-cap: [SSL/TLS](../kb/ssl.md)
+:  [SSL/TLS](../kb/ssl.md)
 
 Fifo/named pipe
 
@@ -189,19 +189,19 @@ q)neg[h][];hclose h;
 
 
 ----
-:fontawesome-solid-book:
+
 [`.Q.Xf`](dotq.md#xf-create-file) (create file)
 <br>
-:fontawesome-solid-book-open:
+
 [Communication handle](../basics/glossary.md#communication-handle),
 [Connection handle](../basics/glossary.md#connection-handle),
 [File system](../basics/files.md),
 [Interprocess communication](../basics/ipc.md)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [Named pipes](../kb/named-pipes.md),
 [SSL/TLS](../kb/ssl.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§11.6.2 Opening a Connection Handle](/q4m3/11_IO/#1162-opening-a-connection-handle)
+[§11.8.2 Opening a Connection Handle](/q4m3/11_IO/#1162-opening-a-connection-handle)

@@ -1,29 +1,26 @@
 ---
 title: attr – attributes of an object | Reference | kdb+ and q documentation
 description: attr is a q keyword that returns the attributes of an object 
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `attr`
 
-
-
-
-_Attributes of an object_
+_Attribute of an object_
 
 ```syntax
 attr x     attr[x]
 ```
 
-Where `x` is any object, returns its attributes as a symbol vector.
+Where `x` is any object, returns its attribute as a symbol atom.
 
 The possible attributes are:
 
 code | attribute
 :---:|---------------------
-s    | sorted
-u    | unique (hash table)
-p    | partitioned (grouped)
-g    | true index (dynamic attribute): enables constant time update and access for real-time tables
+```s``    | sorted
+```u``    | unique
+```p``    | parted
+```g``    | grouped
 
 A null symbol result `` ` `` means no attributes are set on `x`.
 
@@ -32,18 +29,16 @@ q)attr 1 3 4
 `
 q)attr asc 1 3 4
 `s
-q)attr ({x+y})
-`
 ```
 
+For more information on each of the attributes, please refer to the documentation pages in the footer.
 
 ----
 
-:fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
 <br>
-:fontawesome-solid-book-open:
+
 [Metadata](../basics/metadata.md)
 <br>
 _Q for Mortals_
-[§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
+[§8.9 Attributes](/q4m3/8_Tables/#88-attributes)

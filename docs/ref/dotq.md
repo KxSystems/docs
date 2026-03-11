@@ -1,12 +1,12 @@
 ---
 title: The .Q namespace – tools | Reference | kdb+ and q documentation
 description: The .Q namespace contains utility objects for q programming
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
+last_updated: January 2026
 ---
-# :fontawesome-solid-wrench: The `.Q` namespace
+# The `.Q` namespace
 
-
-_Tools_
+## Tools
 
 <div markdown="1" class="typewriter">
 **General**                           **Datatype**
@@ -34,7 +34,11 @@ _Tools_
  [A a an   alphabets](#a-upper-case-alphabet)                [M           chunk size](#m-chunk-size)
  [b6       bicameral alphanums](#b6-bicameral-alphanums)      [qp          is partitioned](#qp-is-partitioned)
  [n nA     nums & alphanums](#n-nums)         [qt          is table](#qt-is-table)
-  
+
+ **Module support**
+ [m.SP     module search path](#msp-module-search-path)
+
+**IPC**                               **Segmented database state**
  **Debug/Profile**                     **Partitioned database state**
  [bt       backtrace](#bt-backtrace)                [bv          build vp](#bv-build-vp)
  [prf0     code profiler](#prf0-code-profiler)            [bvi         build incremental vp](#bvi-build-incremental-vp)
@@ -62,7 +66,6 @@ _Tools_
                                    [Xf          create file](#xf-create-file)
 </div>
 
-
 Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](../basics/namespaces.md).
 
 !!! warning "The `.Q` namespace is reserved for use by KX, as are all single-letter namespaces."
@@ -71,9 +74,10 @@ Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. So
 
 In non-partitioned databases the partitioned database state variables remain undefined.
 
-
 ## `A` (upper-case alphabet)
+
 ## `a` (lower-case alphabet)
+
 ## `an` (all alphanumerics)
 
 ```syntax
@@ -92,7 +96,6 @@ q).Q.a
 q).Q.an
 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
-
 
 ## `addmonths`
 
@@ -114,13 +117,13 @@ q).Q.addmonths[2006.10.29;4]
 2007.03.01
 ```
 
-:fontawesome-solid-book-open:
 [Mathematics with temporals](../basics/math.md#mathematics-with-temporals)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [How to handle temporal data in q](../kb/temporal-data.md)
 
 [](){#addr-ip-address}
+
 ## `addr` (IP/host as int)
 
 ```syntax
@@ -132,6 +135,7 @@ Where `x` is a hostname or IP address as a symbol atom, returns the IP address a
 The dotted-decimal string representation can be obtained from an integer using [`vs`](vs.md#integer-based-ip-address).
 
 If the symbol represents a standard IPv4 dotted decimal notation, it returns the IP as integer without any DNS look-ups required.
+
 ```q
 q).Q.addr`$"127.0.0.1"
 2130706433i
@@ -143,7 +147,9 @@ When given a host name, the underlying operating system will govern how the look
 q).Q.addr`localhost
 2130706433i
 ```
+
 If the host cannot be resolved, -1 will be returned
+
 ```q
 q).Q.addr`blah
 -1i
@@ -161,7 +167,7 @@ This configuration and look-up order can be different for each distribution. For
 
 Return first entry found to match the provided IP.
 
-**MacOS**
+**macOS**
 
 Returns first entry found when consulting the following:
 
@@ -177,10 +183,9 @@ These can be adjusted by system settings or policies, but typical order is:
 * reverse dns
 * optionally configured services, for example NetBIOS/LLMNR/WINS
 
-If multiple addresses available, it uses a [prefix policy table](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/configure-ipv6-in-windows) 
+If multiple addresses available, it uses a [prefix policy table](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/configure-ipv6-in-windows)
 and dynamically adjusts preference based on interface reachability and past success.
 
-:fontawesome-regular-hand-point-right:
 [`.Q.host`](#host-ip-to-hostname) (IP to hostname), [`.z.h`](dotz.md#zh-host) (host), [`.z.a`](dotz.md#za-ip-address) (IP address), [`vs`](vs.md#byte-representation) (Byte representation)
 
 ## `atob` (b64 decode)
@@ -189,7 +194,7 @@ and dynamically adjusts preference based on interface reachability and past succ
 .Q.atob x
 ```
 
-Decodes base64 data. Accepts char or byte vector, returns byte vector. Throws domain error if data not correctly padded.
+Decodes base64 data. Accepts char or byte vector, returns byte vector. Throws domain error if data is not correctly padded.
 
 The following decodes a padded base64 value and [`casts`](cast.md) it to a char vector.
 
@@ -200,9 +205,7 @@ q)10h$.Q.atob "aGVsbG8="
 
 Since 4.1 2025.11.25.
 
-:fontawesome-regular-hand-point-right:
 [`.Q.btoa`](#btoa-b64-encode) (b64 encode)
-
 
 ## `b6` (bicameral-alphanums)
 
@@ -218,7 +221,6 @@ q).Q.b6
 ```
 
 Used for [binhex](#j10-encode-binhex) encoding and decoding.
-
 
 ## `bt` (backtrace)
 
@@ -254,7 +256,6 @@ q)).Q.bt[]
 
 The debugger itself occupies a stack frame, but its source is hidden. (Since V3.5 2017.03.15.)
 
-
 ## `btoa` (b64 encode)
 
 ```syntax
@@ -270,24 +271,21 @@ q).Q.btoa"Hello World!"
 
 Since V3.6 2018.05.18.
 
-:fontawesome-regular-hand-point-right:
 [`.Q.atob`](#atob-b64-decode) (b64 decode)
 
-
 ## `bv` (build vp)
-
 
 ```syntax
 .Q.bv[]
 .Q.bv[`]
 ```
 
-In partitioned DBs, construct the dictionary [`.Q.vp`](#vp-missing-partitions) of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition. 
+In partitioned DBs, construct the dictionary [`.Q.vp`](#vp-missing-partitions) of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition.
 
 After loading/re-loading from the filesystem, invoke `.Q.bv[]` to (re)populate `.Q.vt`/`.Q.vp`, which are used inside `.Q.p1` during the partitioned select `.Q.ps`.
 (Since V2.8 2012.01.20, modified  V3.0 2012.01.26)
 
-If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. 
+If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk.
 
 ``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
 
@@ -312,11 +310,9 @@ tt| +`date`sym`time`num!(`date$();`sym$();`time$();`long$())
 q)@[get;"select from tt";-2@]; / no error
 ```
 
-
 ## `bvi` (build incremental vp)
 
 It offers the same functionality as [`.Q.bv`](#bv-build-vp), but scans only new partitions loaded in the hdb since the last time `.Q.bv` or `.Q.bvi` was run. Since v4.1 2024.09.13.
-
 
 ## `Cf` (create empty nested char file)
 
@@ -329,7 +325,6 @@ It offers the same functionality as [`.Q.bv`](#bv-build-vp), but scans only new 
 ```
 
 A projection of [`.Q.Xf`](#xf-create-file): i.e. ``.Q.Xf[`char;]``
-
 
 ## `chk` (fill HDB)
 
@@ -357,10 +352,8 @@ q).Q.chk[`:hdb]
 
     check the process has write permissions for that filesystem.
 
-:fontawesome-solid-street-view:
 _Q for Mortals_
-[§14.5.2 `.Q.chk`](/q4m3/14_Introduction_to_Kdb%2B/#1457-qchk)
-
+[§14.5.2 `.Q.chk`](/q4m3/14_Introduction_to_Kdb+/#1457-qchk)
 
 ## `cn` (count partitioned table)
 
@@ -369,7 +362,6 @@ _Q for Mortals_
 ```
 
 Where `x` is a partitioned table, passed by value, returns its count. Populates [`.Q.pn`](#pn-partition-counts) cache.
-
 
 ## `D` (partitions)
 
@@ -396,7 +388,6 @@ q).Q.P!.Q.D
 :../segments/4| 2010.05.29 2010.05.30
 ```
 
-
 ## `dd` (join symbols)
 
 ```syntax
@@ -420,6 +411,7 @@ IBM  N  IBM.N
 ```
 
 [](){#def-parse-options}
+
 ## `def` (command defaults)
 
 _Default values and type checks for command-line arguments parsed with [`.Q.opt`](#opt-command-parameters)_
@@ -433,8 +425,9 @@ Where `x` is a dictionary of default parameter names and values, and `y` is the 
 Types are inferred from the default values provided, which must be an atom type.
 
 ```bash
-$ q -abc 123 -xyz 321
+q -abc 123 -xyz 321
 ```
+
 ```q
 q).Q.def[`abc`xyz`efg!(1;2.;`a)].Q.opt .z.x
 abc| 123
@@ -445,8 +438,9 @@ efg| `a
 If a command-line value cannot be [converted to the data type](tok.md) of the default value, a [null](../basics/datatypes.md) is produced
 
 ```bash
-$ q -param1 11 -param2 2000.01.01 -param3 wrong
+q -param1 11 -param2 2000.01.01 -param3 wrong
 ```
+
 ```q
 q).Q.def[`param1`param2`param3!(1;1999.01.01;23.1)].Q.opt .z.x
 param1| 11
@@ -454,15 +448,15 @@ param2| 2000.01.01
 param3| 0n
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.opt`](#opt-command-parameters) (command parameters), [`.Q.x`](#x-non-command-parameters) (non-command parameters)
 
-
 ## `dpft` (save table)
-## `dpfts` (save table with symtable)
-## `dpt` (save table unsorted)
-## `dpts` (save table unsorted with symtable)
 
+## `dpfts` (save table with symtable)
+
+## `dpt` (save table unsorted)
+
+## `dpts` (save table unsorted with symtable)
 
 ```syntax
 .Q.dpft[d;p;f;t]
@@ -473,11 +467,11 @@ param3| 0n
 
 Where
 
--   `d` is a directory handle
--   `p` is a partition of a database
--   `f` a field of the table (required to be present in table since 4.1t 2021.09.03) named by `t` below
--   `t`, the name (as a symbol) of a simple table whose columns are vectors or compound lists
--   `s` is the handle of a symtable
+* `d` is a directory handle
+* `p` is a partition of a database
+* `f` a field of the table (required to be present in table since 4.1t 2021.09.03) named by `t` below
+* `t`, the name (as a symbol) of a simple table whose columns are vectors or compound lists
+* `s` is the handle of a symtable
 
 saves `t` splayed to partition `p`.
 
@@ -525,7 +519,9 @@ table columns
 -------------
 t     b
 ```
+
 `.Q.dpfts` allows the enum domain to be specified. Since V3.6 (2018.04.13)
+
 ```q
 q)show t:([]a:10?`a`b`c;b:10?10)
 a b
@@ -546,7 +542,6 @@ q)mysym
 `c`a`b
 ```
 
-
 ## `dsftg` (load process save)
 
 ```syntax
@@ -555,15 +550,14 @@ q)mysym
 
 Where
 
-- `d` is `(dst;part;table)` where `table` has `M` rows
-- `s` is `(src;offset;length)`
-- `f` is fields as a symbol vector
-- `t` is `(types;widths)`
-- `g` is a unary post-processing function
+* `d` is `(dst;part;table)` where `table` has `M` rows
+* `s` is `(src;offset;length)`
+* `f` is fields as a symbol vector
+* `t` is `(types;widths)`
+* `g` is a unary post-processing function
 
 loops `.Q.M&1000000` rows at a time.
 
-:fontawesome-solid-hand-point-right:
 [`.Q.M`](#m-chunk-size) (chunk size)
 
 For example, loading TAQ DVD:
@@ -578,6 +572,7 @@ q).Q.dsftg[d;s;f;t;g]
 ```
 
 ## `en` (enumerate varchar cols)
+
 ## `ens` (enumerate against domain)
 
 ```syntax
@@ -587,22 +582,23 @@ q).Q.dsftg[d;s;f;t;g]
 
 Where
 
--   `dir` is a symbol handle to a folder or generic null ([`::`](identity.md#null))
--   `table` is a table
--   `name` is a symbol atom naming a sym file in `dir`
+* `dir` is a symbol handle to a folder or generic null ([`::`](identity.md#null))
+* `table` is a table
+* `name` is a symbol atom naming a sym file in `dir`
 
 When `dir` is a symbol handle, the function
 
--   creates if necessary the folder `dir`
--   gets `sym` from `dir` if it exists
--   enumerates against in-memory `sym` using the symbols in `table`
--   writes `sym` to file in `dir`
--   returns `table` with columns enumerated (for `.Q.ens`, against `name`)
+* creates if necessary the folder `dir`
+* gets `sym` from `dir` if it exists
+* enumerates against in-memory `sym` using the symbols in `table`
+* writes `sym` to file in `dir`
+* returns `table` with columns enumerated (for `.Q.ens`, against `name`)
 
     !!! warning "Locking ensures two processes do not write to the sym file at the same time"
 
     The following example uses `.Q.en` to enumerate to both the in-memory and disk `sym` domain, while
     saving the table output using [`set`](get.md#set):
+
     ```q
     q)t1:([]col1:`a`b`c;col2:1 2 3)
     q)`:/tmp/db/t1/ set .Q.en[`:/tmp/db;t1];
@@ -613,9 +609,11 @@ When `dir` is a symbol handle, the function
     q)get `:/tmp/db/t1/col1                   / col1 enumerated against sym domain
     `sym$`a`b`c
     ```
-    Providing a new or updated table against an existing `sym` domain will read the existing on-disk sym domain before updating. 
-    Both the in-memory and on-disk version are updated to reflect the new state. Continuing with the same example shows the 
+
+    Providing a new or updated table against an existing `sym` domain will read the existing on-disk sym domain before updating.
+    Both the in-memory and on-disk version are updated to reflect the new state. Continuing with the same example shows the
     existing `sym` domain being altered:
+
     ```q
     q)t2:([]col1:`a`d`e;col2:1 2 3)
     q)`:/tmp/db/t2/ set .Q.en[`:/tmp/db;t2];  / enumerate additional table against existing sym domain
@@ -627,8 +625,9 @@ When `dir` is a symbol handle, the function
 
 When `dir` is a generic null (since 4.1 2025.01.17), the function
 
--   does not read/write/lock the `sym` file
--   enumerates against in-memory `sym` using the symbols in `table`, for example
+* does not read/write/lock the `sym` file
+* enumerates against in-memory `sym` using the symbols in `table`, for example
+
     ```q
     q)t1:([]a:`a`b`c;b:1 2 3)
     q).Q.en[::;t1];
@@ -650,29 +649,25 @@ q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 
 Tables splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
 
-:fontawesome-solid-book:
 [`dsave`](dsave.md),
 [Enum Extend](enum-extend.md),
 [`save`](save.md)
 <br>
-:fontawesome-solid-graduation-cap:
+
 [Enumerating symbol columns in a table](../kb/splayed-tables.md#enumerating-symbol-columns)
 <br>
-:fontawesome-solid-database:
+
 [Splayed tables](../kb/splayed-tables.md)
 <br>
-:fontawesome-regular-map:
-[Data-management techniques](../wp/data-management.md)
-<br>
-:fontawesome-regular-map:
-[Working with sym files](../wp/symfiles.md#qen)
-<br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§14.2.8 Working with sym files](/q4m3/14_Introduction_to_Kdb%2B/#1428-working-with-sym-files)
 
+[Working with sym files](../wp/symfiles.md#enumeration)
+<br>
+
+_Q for Mortals_
+[§14.2.8 Working with sym files](/q4m3/14_Introduction_to_Kdb+/)
 
 [](){#f-format}
+
 ## `f` (precision format)
 
 ```syntax
@@ -681,8 +676,8 @@ _Q for Mortals_
 
 Where
 
--   `x` is an int atom
--   `y` is a numeric atom
+* `x` is an int atom
+* `y` is a numeric atom
 
 returns `y` as a string formatted as a float to `x` decimal places.
 
@@ -707,11 +702,9 @@ q)10 xlog 0Wj-1
 18.964889726830812
 ```
 
-:fontawesome-regular-hand-point-right:
 [`.Q.fmt`](#fmt-precision-format) (precision format with length), [-27!(x;y)](../basics/internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
-<br>:fontawesome-solid-book-open:
+<br>
 [`\P`](../basics/syscmds.md#p-precision) (precision)
-
 
 ## `fc` (parallel on cut)
 
@@ -721,8 +714,8 @@ q)10 xlog 0Wj-1
 
 Where
 
--   `x` is is a unary atomic function
--   `y` is a list
+* `x` is is a unary atomic function
+* `y` is a list
 
 returns the result of evaluating `f vec` – using multiple threads if possible. (Since V2.6)
 
@@ -743,7 +736,6 @@ q)\t f peach vec
 45
 ```
 
-
 ## `ff` (append columns)
 
 ```syntax
@@ -752,8 +744,8 @@ q)\t f peach vec
 
 Where
 
--   `x` is table to modify
--   `y` is a table of columns to add to `x` and set to null
+* `x` is table to modify
+* `y` is a table of columns to add to `x` and set to null
 
 returns `x`, with all new columns in `y`, with values in new columns set to null of the appropriate type.
 
@@ -789,8 +781,6 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
  fgl 05:18:45.828 389.056  9342
 ```
 
-
-
 ## `fk` (foreign key)
 
 ```syntax
@@ -800,6 +790,7 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.
 
 [](){#fmt-format}
+
 ## `fmt` (precision format)
 
 ```syntax
@@ -808,8 +799,8 @@ Where `x` is a table column, returns `` ` `` if the column is not a foreign key 
 
 Where
 
--   `x` and `y` are integer atoms
--   `z` is a numeric atom
+* `x` and `y` are integer atoms
+* `z` is a numeric atom
 
 returns `z` as a string of length `x`, formatted to `y` decimal places.
 
@@ -841,10 +832,12 @@ q)align fix[2]1.2 123 1.23445 -1234578.5522
 "-1234578.55"
 ```
 
-Example: persist a table with float values to file as character strings of length 9, e.g. 34.3 to 
+Example: persist a table with float values to file as character strings of length 9, e.g. 34.3 to
+
 ```q
 "     34.3"
 ```
+
 Keep as much precision as possible, i.e. persist 343434.3576 as `"343434.36"`.
 
 ```q
@@ -854,14 +847,16 @@ q)fmt[9] each 34.4 343434.358
 "343434.36"
 ```
 
-:fontawesome-regular-hand-point-right:
 [`.Q.f`](#f-precision-format) (precision format), [-27!(x;y)](../basics/internal.md#-27xy-ieee754-precision-format) (IEEE754 precision format)
-<br>:fontawesome-solid-book-open:
+<br>
 [`\P`](../basics/syscmds.md#p-precision) (precision)
 
 [](){#fpn-streaming-algorithm}
+
 ## `fpn` (pipe streaming)
+
 [](){#fps-streaming-algorithm}
+
 ## `fps` (pipe streaming)
 
 _[`.Q.fs`](#fs-file-streaming) for pipes_
@@ -873,22 +868,24 @@ _[`.Q.fs`](#fs-file-streaming) for pipes_
 
 Where
 
--   `x` is a unary function
--   `y` is a filepath to a fifo (named pipe)
--   `z` is an integer
+* `x` is a unary function
+* `y` is a filepath to a fifo (named pipe)
+* `z` is an integer
 
 (Since V3.4)
 
 Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm for various purposes such as converting a large compressed CSV file into an on-disk kdb+ database without holding the data in memory all at once or using disk space required for the uncompressed file.
 
-:fontawesome-solid-graduation-cap:
 [Streaming data from named pipes](../kb/named-pipes.md#streaming)
 
 !!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
 
 [](){#fs-streaming-algorithm}
+
 ## `fs` (file streaming)
+
 [](){#fsn-streaming-algorithm}
+
 ## `fsn` (file streaming)
 
 ```syntax
@@ -898,9 +895,9 @@ Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and appli
 
 Where
 
--   `x` is a unary function
--   `y` is a filepath
--   `z` is an integer
+* `x` is a unary function
+* `y` is a filepath
+* `z` is an integer
 
 loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records, applies `x` to each record, and returns the size of the file as given by [`hcount`](hcount.md). This enables you to implement a streaming algorithm for various purposes such as converting a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
 
@@ -931,9 +928,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 120
 ```
 
-:fontawesome-solid-graduation-cap:
 [Loading from large files](../kb/loading-from-large-files.md)
-
 
 ## `ft` (apply simple)
 
@@ -943,8 +938,8 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 
 Where
 
--   `y` is a keyed table
--   `x` is a unary function `x[t]` in which `t` is a simple table
+* `y` is a keyed table
+* `x` is a unary function `x[t]` in which `t` is a simple table
 
 returns a table with at least as many key columns as `t`.
 
@@ -984,7 +979,6 @@ s3| blake 30     paris
 s4| clark 20     london
 ```
 
-
 ## `fu` (apply unique)
 
 ```syntax
@@ -993,8 +987,8 @@ s4| clark 20     london
 
 Where `x` is a unary function and `y` is
 
--   a list, returns `x[y]` after evaluating `x` only on distinct items of `y`
--   not a list, returns `x[y]`
+* a list, returns `x[y]` after evaluating `x` only on distinct items of `y`
+* not a list, returns `x[y]`
 
 ```q
 q)vec:100000 ? 30     / long vector with few different values
@@ -1014,7 +1008,6 @@ q)r1~r2
 
     To explore this, study `.Q.fu[avg;] (4 3#12?100)10?4`.
 
-
 ## `gc` (garbage collect)
 
 ```syntax
@@ -1030,6 +1023,7 @@ When secondary threads are configured and `.Q.gc[]` is invoked in the main threa
 If the call is instigated in a secondary thread, it affects that thread’s local heap only.
 
 Example of garbage collection in the default `deferred` mode, using [`.Q.w[]`](#w-memory-stats) to view memory stats:
+
 ```q
 q)a:til 10000000      / create an object that is ≥64MB
 q).Q.w[]              / view current heap size and how many bytes used of the heap (all objects plus previously allocated object)
@@ -1122,14 +1116,12 @@ If you have nested data, e.g. columns of char vectors, or much grouping, you may
 
 Since V3.3 2015.08.23 (Linux only) unused pages in the heap are dropped from RSS during `.Q.gc[]`.
 
-Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations performed by `.Q.gc[]` (i.e. only return unused blocks >= 64MB to os). 
+Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations performed by `.Q.gc[]` (i.e. only return unused blocks >= 64MB to os).
 This has the advantage of running return faster than `.Q.gc[]`, but with the disadvantage of not defragmenting unused memory blocks of a smaller size (therefore may not free as much unused memory).
 
-:fontawesome-solid-hand-point-right:
-[`.Q.w`](#w-memory-stats) (memory stats), 
-[`\g`](../basics/syscmds.md#g-garbage-collection-mode) (garbage collection mode), 
+[`.Q.w`](#w-memory-stats) (memory stats),
+[`\g`](../basics/syscmds.md#g-garbage-collection-mode) (garbage collection mode),
 [`\w`](../basics/syscmds.md#w-workspace) (workspace)
-
 
 ## `gz` (GZip)
 
@@ -1141,14 +1133,14 @@ This has the advantage of running return faster than `.Q.gc[]`, but with the dis
 
 Where
 
--   `cbv` is a char vector (or byte vector since 4.1t 2021.09.03,4.0 2021.10.01)
--   `cl` is compression level \[1-9\] as a long
+* `cbv` is a char vector (or byte vector since 4.1t 2021.09.03,4.0 2021.10.01)
+* `cl` is compression level \[1-9\] as a long
 
 returns, for
 
--   the [general null](identity.md#null), a boolean atom as whether Zlib is loaded
--   `cbv`, the inflated (unzipped) vector
--   a 2-list, the deflated (zipped) vector
+* the [general null](identity.md#null), a boolean atom as whether Zlib is loaded
+* `cbv`, the inflated (unzipped) vector
+* a 2-list, the deflated (zipped) vector
 
 since V4.0 2020.04.16.
 
@@ -1158,9 +1150,7 @@ q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 "helloworldhelloworldhelloworldhelloworldhelloworldhelloworldhelloworldhellow..
 ```
 
-:fontawesome-solid-hand-point-right:
 [-18!x](../basics/internal.md#-18x-compress-bytes) (ipc compress bytes)
-
 
 ## `hdpf` (save tables)
 
@@ -1173,7 +1163,6 @@ The function:
 * saves all tables to disk, by calling [`.Q.dpft`](#dpft-save-table) (saves as splayed tables to a partition)
 * clears in-memory tables
 * sends reload message to HDB, by opening a temporary connection and sending [`\l .`](../basics/syscmds.md#l-load-file-or-directory)
-
 
 ## `hg` (HTTP get)
 
@@ -1208,12 +1197,13 @@ environment variable       | use
 
 N.B. HTTPS is not supported across proxies which require `CONNECT`.
 
-Since 4.0 2019.10.22, gzip compression is supported. Requests include the HTTP header "Accept-Encoding: gzip". 
+Since 4.0 2019.10.22, gzip compression is supported. Requests include the HTTP header "Accept-Encoding: gzip".
 The server then decides whether to gzip the returned payload, which is uncompressed prior to .Q.hg returning.
 
-:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
+[HTTP](../kb/http.md)
 
 [](){#host-hostname}
+
 ## `host` (IP to hostname)
 
 ```syntax
@@ -1228,6 +1218,7 @@ q).Q.host 2130706433i
 ```
 
 The operator [`$`](tok.md#ip-address) (tok) can be used to convert an IP address in dotted-decimal string representation to an integer
+
 ```q
 q)"I"$"104.130.139.23"
 1753385751i
@@ -1237,8 +1228,8 @@ q).Q.host "I"$"104.130.139.23"
 
 Each underlying operating system deals with resolving a hostname to IP (and vice-versa) in different ways, reference [`.Q.addr`](#addr-iphost-as-int) for details.
 
-When the resolving leads to consulting a DNS server, the DNS server can also have rules on which IP (or the sort order of IPs) it can return when multiple IPs associated with one host. 
-Therefore performing an IP lookup from a given hostname, then using the resuling IP to get its hostname, can return a different hostname. 
+When the resolving leads to consulting a DNS server, the DNS server can also have rules on which IP (or the sort order of IPs) it can return when multiple IPs associated with one host.
+Therefore performing an IP lookup from a given hostname, then using the resuling IP to get its hostname, can return a different hostname.
 For example:
 
 ```q
@@ -1246,29 +1237,34 @@ q).Q.host .Q.addr `$"www.yahoo.co.uk"
 `a7de0457831fd11f7.awsglobalaccelerator.com   / alternative hostname for IP
 ```
 
-When using `/etc/hosts` on MacOS/Linux, the order in which multiple hosts are associated with an IP will effect the value returned.
+When using `/etc/hosts` on macOS/Linux, the order in which multiple hosts are associated with an IP will effect the value returned.
 For example, `/etc/hosts` with the entry
+
 ```bash
 172.17.0.4      test1 test2
 ```
+
 will cause 172.17.0.4 to be resolved to test1
+
 ```q
 q).Q.host "I"$"172.17.0.4"
 `test1
 ```
+
 but `/etc/hosts` with the machine names in a different order
+
 ```bash
 172.17.0.4      test2 test1
 ```
+
 will cause 172.17.0.4 to be resolved to test2
+
 ```q
 q).Q.host "I"$"172.17.0.4"
 `test2
 ```
 
-:fontawesome-regular-hand-point-right:
 [`.Q.addr`](#addr-iphost-as-int) (IP/host as int), [`.z.h`](dotz.md#zh-host) (host), [`.z.a`](dotz.md#za-ip-address) (IP address)
-
 
 ## `hp` (HTTP post)
 
@@ -1278,9 +1274,9 @@ q).Q.host "I"$"172.17.0.4"
 
 Where
 
--   `x` is a URL as a symbol handle or string (since V3.6 2018.02.10)
--   `y` is a MIME type as a string
--   `z` is the POST query as a string
+* `x` is a URL as a symbol handle or string (since V3.6 2018.02.10)
+* `y` is a MIME type as a string
+* `z` is the POST query as a string
 
 Returns a string for the result of an HTTP[S] POST query.
 (Since V3.4)
@@ -1292,8 +1288,7 @@ q).Q.hp["http://google.com";.h.ty`json]"my question"
 "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewpo..
 ```
 
-:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
-
+[HTTP](../kb/http.md)
 
 ## `id` (sanitize)
 
@@ -1303,14 +1298,14 @@ q).Q.hp["http://google.com";.h.ty`json]"my question"
 
 Where `x` is
 
-- a **symbol atom**, returns `x` with items sanitized to valid q names
+* a **symbol atom**, returns `x` with items sanitized to valid q names
 
     ```q
     q).Q.id each `$("ab";"a/b";"two words";"2drifters";"2+2")
     `ab`ab`twowords`a2drifters`a22
     ```
 
-- a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. Updated in V3.2 to include [`.Q.res`](#res-keywords) for checking collisions.
+* a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. Updated in V3.2 to include [`.Q.res`](#res-keywords) for checking collisions.
 
     ```q
     q).Q.id flip (5#.Q.res)!(5#())
@@ -1321,7 +1316,7 @@ Where `x` is
     ----
     ```
 
-- a **dictionary** (since v4.1 2024.09.13), supports the same rules as `table` above
+* a **dictionary** (since v4.1 2024.09.13), supports the same rules as `table` above
 
     ```q
     q).Q.id (5#.Q.res)!(5#())
@@ -1357,7 +1352,6 @@ q)cols .Q.id(`$("3aa";"_aa";"_aa"))xcol([]1 2;3 4;5 6)
 `a3aa`a_aa`a_aa1
 ```
 
-
 ## `ind` (partitioned index)
 
 ```syntax
@@ -1366,8 +1360,8 @@ q)cols .Q.id(`$("3aa";"_aa";"_aa"))xcol([]1 2;3 4;5 6)
 
 Where
 
--   `x` is a partitioned table
--   `y` is a **long** int vector of row indexes into `x`
+* `x` is a partitioned table
+* `y` is a **long** int vector of row indexes into `x`
 
 returns rows `y` from `x`.
 
@@ -1404,10 +1398,12 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
     q)select from trade where date=2010.01.07,i within(start;start+chunkSize)
     ````
 
-
 ## `j10` (encode binhex)
+
 ## `x10` (decode binhex)
+
 ## `j12` (encode base-36)
+
 ## `x12` (decode base-36)
 
 ```syntax
@@ -1417,8 +1413,8 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 
 Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or decoded (`x10`, `x12`) against restricted alphabets:
 
--   `…10` en/decodes against the alphabet `.Q.b6`, this is a base-64 encoding - see [BinHex](https://en.wikipedia.org/wiki/BinHex) and [Base64](https://en.wikipedia.org/wiki/Base64) for more details than you ever want to know about which characters are where in the encoding. To keep the resulting number an integer the maximum length of `s` is 10.
--   `-12` en/decodes against `.Q.nA`, a base-36 encoding. As the alphabet is smaller `s` can be longer – maximum length 12.
+* `…10` en/decodes against the alphabet `.Q.b6`, this is a base-64 encoding - see [BinHex](https://en.wikipedia.org/wiki/BinHex) and [Base64](https://en.wikipedia.org/wiki/Base64) for more details than you ever want to know about which characters are where in the encoding. To keep the resulting number an integer the maximum length of `s` is 10.
+* `-12` en/decodes against `.Q.nA`, a base-36 encoding. As the alphabet is smaller `s` can be longer – maximum length 12.
 
 The main use of these functions is to encode long alphanumeric identifiers (CUSIP, ORDERID..) so they can be quickly searched – but without filling up the symbol table with vast numbers of single-use values.
 
@@ -1441,9 +1437,8 @@ q).Q.j12 .Q.x12 12345
 
     If the values are not going to be searched (or will be searched with `like`) then keeping them as nested character is probably going to be simpler.
 
-
-
 ## `K` (version date)
+
 ## `k` (version)
 
 ```syntax
@@ -1461,7 +1456,6 @@ q).Q.k
 4f
 ```
 
-
 ## `l` (load)
 
 ```syntax
@@ -1472,7 +1466,6 @@ Where `x` is a hsym or symbol atom naming a directory in the current directory, 
 it recursively as in [`load`](load.md), but into the default namespace.
 
 (Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
-
 
 ## `ld` (load and group)
 
@@ -1515,7 +1508,6 @@ date      | x
 
 Since v4.1 2024.09.20.
 
-
 ## `lo` (load without)
 
 ```syntax
@@ -1524,9 +1516,9 @@ Since v4.1 2024.09.20.
 
 Where
 
--   `database` is a hsym or symbol atom (as per parameter to [.Q.l](#l-load))
--   `cd` is a boolean flag indicating whether to cd to the database dir
--   `scripts` is a boolean flag indicating whether to execute any scripts in the database dir
+* `database` is a hsym or symbol atom (as per parameter to [.Q.l](#l-load))
+* `cd` is a boolean flag indicating whether to cd to the database dir
+* `scripts` is a boolean flag indicating whether to execute any scripts in the database dir
 
 Load a database without changing directory and/or loading scripts in the database (since 4.1t 2023.03.01).
 
@@ -1548,7 +1540,6 @@ q)\cd
 "/tmp"
 ```
 
-
 ## `M` (chunk size)
 
 ```syntax
@@ -1557,12 +1548,10 @@ q)\cd
 
 Chunk size for [`dsftg`](#dsftg-load-process-save) (load-process-save).
 
-
 ```q
 q)0W~.Q.M  / defaults to long infinity
 1b
 ```
-
 
 ## `MAP` (maps partitions)
 
@@ -1590,17 +1579,32 @@ select … [by date,…] from … where [date …]
 
 .Q.MAP currently has the following limitations:
 
-- .Q.MAP does not work with linked columns
+* .Q.MAP does not work with linked columns
 
-- .Q.MAP does not work with virtual partition columns
+* .Q.MAP does not work with virtual partition columns
 
-- Use of .Q.MAP with compressed files is not recommended, as the uncompressed maps will be retained in memory
+* Use of .Q.MAP with compressed files is not recommended, as the uncompressed maps will be retained in memory
 
 !!! detail "You may need to increase the number of available file handles, and also the number of available file maps (for Linux see `vm.max_map_count`)"
 
 Since 4.1t 2024.01.11 parallelized over tables and partitions with [peach](each.md) when kdb+ running with secondary threads.
 
+<!--
+## `m.reuse` (reload module)
+
+An alternative to [`use`](use.md), reloads the specified module even if it was already loaded, but does not affect any transitive dependencies.
+
+[Use and reuse](../integrations/module-framework/modules.md#use-and-reuse)
+-->
+
+## `m.SP` (module search path)
+
+Since V5.0.
+
+Contains a list of strings of paths where the module loader should search for modules.
+
 ## `n` (nums)
+
 ## `nA` (alphanums)
 
 ```syntax
@@ -1619,7 +1623,6 @@ q).Q.nA
 
 `.Q.nA` is used for [base-36](#j12-encode-base-36) encoding and decoding.
 
-
 ## `opt` (command parameters)
 
 ```syntax
@@ -1629,8 +1632,9 @@ q).Q.nA
 Presents command-line arguments as a dictionary, using the output of [`.z.x`](dotz.md#zx-argv). Defaults can be added using [`.Q.def`](#def-command-defaults).
 
 ```bash
-$ q -param1 val1 -param2 val2
+q -param1 val1 -param2 val2
 ```
+
 ```q
 q)params:.Q.opt .z.x
 q)show params
@@ -1639,10 +1643,13 @@ param2| "val2"
 q)params`param1
 "val1"
 ```
+
 Example of a command-line parameter with no value and a parameter with multiple values:
+
 ```bash
-$ q -param1 -param2 as asd -param3
+q -param1 -param2 as asd -param3
 ```
+
 ```q
 q).Q.opt .z.x
 param1| ()
@@ -1650,9 +1657,7 @@ param2| ("as";"asd")
 param3| ()
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.def`](#def-command-defaults) (command defaults), [`.Q.x`](#x-non-command-parameters) (non-command parameters)
-
 
 ## `P` (segments)
 
@@ -1667,7 +1672,6 @@ q).Q.P
 `:../segments/1`:../segments/2`:../segments/3`:../segments/4
 ```
 
-
 ## `par` (get expected partition location)
 
 ```syntax
@@ -1676,8 +1680,8 @@ q).Q.P
 
 Where
 
--   `dir` is a directory filepath
--   `part` is a date
+* `dir` is a directory filepath
+* `part` is a date
 
 returns the expected location of `table`. (Sensitive to `par.txt`.)
 
@@ -1722,7 +1726,6 @@ q).Q.PV!.Q.PD
 2010.05.31| :../segments/1
 ```
 
-
 ## `pd` (modified partition locations)
 
 ```syntax
@@ -1730,7 +1733,6 @@ q).Q.PV!.Q.PD
 ```
 
 In partitioned DBs, [`.Q.PD`](#pd-partition-locations) as modified by [`.Q.view`](#view-subview).
-
 
 ## `pf` (partition field)
 
@@ -1740,7 +1742,6 @@ In partitioned DBs, [`.Q.PD`](#pd-partition-locations) as modified by [`.Q.view`
 
 In partitioned DBs, the partition field.
 Possible values are `` `date`month`year`int``.
-
 
 ## `pn` (partition counts)
 
@@ -1788,9 +1789,7 @@ q).Q.pv!flip .Q.pn
 2010.01.02| 100
 ```
 
-:fontawesome-solid-graduation-cap:
 [Table counts](../kb/partition.md#table-counts)
-
 
 ## `prf0` (code profiler)
 
@@ -1811,14 +1810,17 @@ pos    execution position (caret) within text
 
 This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
 
-Since 4.1t 2022.03.25, .Q.prf0 will not try to stop the process if passed a negative `pid`. 
+Since 4.1t 2022.03.25, .Q.prf0 will not try to stop the process if passed a negative `pid`.
 This should be used when a kdb+ process is already stopped under control of something other than `.Q.prf0` (for example, in a debugger or a native-code profiler).
 A negative `pid` should not be used in a running process.
 
-:fontawesome-solid-graduation-cap:
 [Code profiler](../kb/profiler.md)
 
+## `rp` (resolve path)
 
+Given a file symbol, resolves any `::` prefix to the directory of the module currently being loaded. Outside a module, the prefix is simply removed.
+
+Module self-reference
 
 ## `pt` (partitioned tables)
 
@@ -1838,10 +1840,8 @@ A list of the values of the partition domain: the values corresponding to the sl
 
 In partitioned DBs, [`.Q.PV`](#pv-partition-values) as modified by [`.Q.view`](#view-subview).
 
-:fontawesome-solid-street-view:
 _Q for Mortals_
-[§14.5.3 `.Q.pv`](/q4m3/14_Introduction_to_Kdb%2B/#1453-qpv)
-
+[§14.5.3 `.Q.pv`](/q4m3/14_Introduction_to_Kdb+/)
 
 ## `PV` (partition values)
 
@@ -1866,7 +1866,6 @@ q).Q.PV
 2010.05.26 2010.05.27 2010.05.28 2010.05.29 2010.05.30 2010.05.30 2010.05.31
 ```
 
-
 ## `qp` (is partitioned)
 
 ```syntax
@@ -1875,9 +1874,9 @@ q).Q.PV
 
 Where `x`
 
--   is a partitioned table, returns `1b`
--   a splayed table, returns `0b`
--   anything else, returns 0
+* is a partitioned table, returns `1b`
+* a splayed table, returns `0b`
+* anything else, returns 0
 
 ```q
 q)\
@@ -1894,7 +1893,6 @@ q).Q.qp C
 0b
 ```
 
-
 ## `qt` (is table)
 
 ```syntax
@@ -1902,7 +1900,6 @@ q).Q.qp C
 ```
 
 Where `x` is a table, returns `1b`, else `0b`.
-
 
 ## `res` (keywords)
 
@@ -1917,9 +1914,7 @@ q).Q.res,key`.q
 `abs`acos`asin`atan`avg`bin`binr`cor`cos`cov`delete`dev`div`do`enlist`exec`ex..
 ```
 
-:fontawesome-regular-hand-point-right:
 [`.Q.id`](#id-sanitize) (sanitize)
-
 
 ## `s` (plain text)
 
@@ -1936,7 +1931,6 @@ q).Q.s ([h:1 2 3] m: 4 5 6)
 
 Occasionally useful for undoing _Studio for kdb+_ tabular formatting.
 
-
 ## `s1` (string representation)
 
 ```syntax
@@ -1945,10 +1939,8 @@ Occasionally useful for undoing _Studio for kdb+_ tabular formatting.
 
 Returns a string representation of `x`.
 
-:fontawesome-solid-book:
 [`show`](show.md),
 [`string`](string.md)
-
 
 ## `sbt` (string backtrace)
 
@@ -1960,9 +1952,7 @@ Where `x` is a [backtrace object](#trp-extend-trap-at) returns it as a string fo
 
 Since V3.5 2017.03.15.
 
-:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
-
 
 ## `sha1` (SHA-1 encode)
 
@@ -1979,7 +1969,6 @@ q).Q.sha1"Hello World!"
 
 Since V3.6 2018.05.18.
 
-
 ## `t` (type letters)
 
 ```syntax
@@ -1995,8 +1984,6 @@ q).Q.t?"j"  / longs have datatype 7
 7
 ```
 
-
-
 ## `trp` (extend trap at)
 
 ```syntax
@@ -2005,14 +1992,14 @@ q).Q.t?"j"  / longs have datatype 7
 
 Where
 
--   `f` is a unary function
--   `x` is its argument
--   `g` is a binary function
+* `f` is a unary function
+* `x` is its argument
+* `g` is a binary function
 
 extends [Trap At](apply.md#trap-at) (`@[f;x;g]`) to collect backtrace: `g` gets called with arguments:
 
-1.   the error string
-2.   the backtrace object
+1. the error string
+2. the backtrace object
 
 You can format the backtrace object with [`.Q.sbt`](#sbt-string-backtrace).
 
@@ -2063,9 +2050,7 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 
 Since V3.5 2017.03.15.
 
-:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
-
 
 ## `trpd` (extend trap)
 
@@ -2075,15 +2060,15 @@ Since V3.5 2017.03.15.
 
 Where
 
--   `f` is a function of rank
--   `x` is an atom or list of count with items in the domains of f
+* `f` is a function of rank
+* `x` is an atom or list of count with items in the domains of f
 
--   `g` is a binary function
+* `g` is a binary function
 
 extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` is called with arguments:
 
-1.   the error string
-2.   the backtrace object
+1. the error string
+2. the backtrace object
 
 You can format the backtrace object with [`.Q.sbt`](#sbt-string-backtrace).
 
@@ -2106,9 +2091,7 @@ Use .Q.trp as a simpler form of .Q.trpd, for unary values.
 
 Since 4.1 2024.03.12.
 
-:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
-
 
 ## `ts` (time and space)
 
@@ -2120,8 +2103,8 @@ _Apply, with time and space_
 
 Where `x` and `y` are valid arguments to [Apply](apply.md) returns a 2-item list:
 
-1.  time and space as [`\ts`](../basics/syscmds.md#ts-time-and-space) would
-2.  the result of `.[x;y]`
+1. time and space as [`\ts`](../basics/syscmds.md#ts-time-and-space) would
+2. the result of `.[x;y]`
 
 ```q
 q)\ts .Q.hg `:http://www.google.com
@@ -2137,7 +2120,6 @@ q).Q.ts[+;2 3]
 
 Since V3.6 2018.05.18.
 
-
 ## `ty` (type)
 
 ```syntax
@@ -2146,9 +2128,9 @@ Since V3.6 2018.05.18.
 
 Where `x` is a list, returns the [type](../basics/datatypes.md) of `x` as a character code:
 
--   lower case for a vector
--   upper case for a list of uniform type
--   else blank
+* lower case for a vector
+* upper case for a list of uniform type
+* else blank
 
 ```q
 q)t:([]a:3 4 5;b:"abc";c:(3;"xy";`ab);d:3 2#3 4 5;e:("abc";"de";"fg"))
@@ -2166,9 +2148,7 @@ q).Q.ty each t`a`b`c`d`e
 
     If the argument is a table column, returns upper case for mappable/uniform lists of vectors.
 
-:fontawesome-solid-book:
 [`meta`](meta.md)
-
 
 ## `u` (date based)
 
@@ -2176,9 +2156,8 @@ q).Q.ty each t`a`b`c`d`e
 .Q.u
 ```
 
--   In segmented DBs, returns `1b` if each partition is uniquely found in one segment. (E.g., true if segmenting is date-based, false if name-based.)
--   In partitioned DBs, returns `1b`.
-
+* In segmented DBs, returns `1b` if each partition is uniquely found in one segment. (E.g., true if segmenting is date-based, false if name-based.)
+* In partitioned DBs, returns `1b`.
 
 ## `V` (table to dict)
 
@@ -2188,12 +2167,10 @@ q).Q.ty each t`a`b`c`d`e
 
 Where `x` is
 
--   a table, returns a dictionary of its column values.
--   a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
+* a table, returns a dictionary of its column values.
+* a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
 
-:fontawesome-solid-book:
 [`meta`](meta.md)
-
 
 ## `v` (value)
 
@@ -2203,10 +2180,9 @@ Where `x` is
 
 Where `x` is
 
--   a filepath, returns the splayed table stored at `x`
--   any other symbol, returns the global named `x`
--   anything else, returns `x`
-
+* a filepath, returns the splayed table stored at `x`
+* any other symbol, returns the global named `x`
+* anything else, returns `x`
 
 ## `view` (subview)
 
@@ -2224,12 +2200,10 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 
 Since 4.1t 2022.03.25,4.0 2023.05.26 this would signal an `invalid partition filter` error if partition value(s) resulted in no matches with [.Q.PV](#pv-partition-values).
 
-`.Q.view`, also used when loading an hdb, now utilizes threads to load .d files (column names) since 4.1t 2023.04.17. 
+`.Q.view`, also used when loading an hdb, now utilizes threads to load .d files (column names) since 4.1t 2023.04.17.
 
-:fontawesome-solid-hand-point-right:
 _Q for Mortals_
-[§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
-
+[§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/)
 
 ## `vp` (missing partitions)
 
@@ -2259,7 +2233,6 @@ tt| +`date`sym`time`num!(`date$();`sym$();`time$();`long$())
 q)@[get;"select from tt";-2@]; / no error
 ```
 
-
 ## `w` (memory stats)
 
 ```syntax
@@ -2280,14 +2253,12 @@ syms| 577
 symw| 25436
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.Q.gc`](#gc-garbage-collect) (garbage collect)<br>
-:fontawesome-solid-book-open:
+
 [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace) (workspace memory limit)
 <br>
-:fontawesome-solid-book-open:
-[System command `\w`](../basics/syscmds.md#w-workspace) (memory stats and workspace memory limit)
 
+[System command `\w`](../basics/syscmds.md#w-workspace) (memory stats and workspace memory limit)
 
 ## `Xf` (create file)
 
@@ -2301,8 +2272,8 @@ symw| 25436
 
 Where
 
--   `x` is a mapped nested datatype as either an upper-case char atom, or as a short symbol (e.g. `` `char``)
--   `y` is a filepath
+* `x` is a mapped nested datatype as either an upper-case char atom, or as a short symbol (e.g. `` `char``)
+* `y` is a filepath
 
 creates an empty nested-vector file at `y`.
 
@@ -2311,7 +2282,6 @@ q).Q.Xf["C";`:emptyNestedCharVector];
 q)type get`:emptyNestedCharVector
 87h
 ```
-
 
 ## `x` (non-command parameters)
 
@@ -2322,8 +2292,9 @@ q)type get`:emptyNestedCharVector
 Set by [`.Q.opt`](#opt-command-parameters): a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
 
 ```bash
-$ q taq.k path/to/source path/to/destn
+q taq.k path/to/source path/to/destn
 ```
+
 ```q
 q)cla:.Q.opt .z.X /command-line arguments
 q).Q.x
@@ -2332,5 +2303,4 @@ q).Q.x
 "path/to/destn"
 ```
 
-:fontawesome-solid-hand-point-right:
 [`.z.x`](dotz.md#zx-argv) (argv), [`.z.X`](dotz.md#zx-raw-command-line) (raw command line), [`.z.f`](dotz.md#zf-file) (file), [`.z.q`](dotz.md#zq-quiet-mode) (quiet mode), [`.Q.opt`](#opt-command-parameters) (command parameters), [`.Q.def`](#def-command-defaults) (command defaults)

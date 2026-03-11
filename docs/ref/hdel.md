@@ -1,11 +1,10 @@
 ---
 title: hdel deletes a file or folder | reference | q and kdb+ documentation
 description: Keyword hdel deletes a file or folder
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 date: December 2019
 ---
-# :fontawesome-solid-database: `hdel`
-
+# `hdel`
 
 _Delete a file or folder_
 
@@ -44,5 +43,5 @@ q)nuke:visitNode[hdel]
 !!! warning "Unlike Linux, Windows doesn’t allow one to overwrite files which are memory mapped, and it takes some mS after unmapping for that to become possible."
 
 ----
-:fontawesome-solid-book-open:
+
 [File system](../basics/files.md)

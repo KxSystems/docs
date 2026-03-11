@@ -1,7 +1,7 @@
 ---
 title: Matrix Multiply, mmu – Reference – kdb+ and q documentation
 description: Matrix Multiply is a q operator that performs matrix multiplication; mmu is a q keyword that is a wrapper for it.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 
 ![Matrix multiplication](../img/matrix-multiplication.png)
@@ -59,11 +59,11 @@ q)mmu[;b]peach a
 ```
 
 ----
-:fontawesome-solid-book:
+
 [Overloads of `$`](overloads.md#dollar)
 <br>
-:fontawesome-solid-book-open:
+
 [Mathematics](../basics/math.md)
 <br>
-:fontawesome-brands-wikipedia-w:
+
 [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication "Wikipedia")

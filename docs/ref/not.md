@@ -1,7 +1,7 @@
 ---
 title: not | Reference | kdb+ and q documentation
 description: not is a q keyword that flags whether its argument is false.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: false, kdb+, logic, not, q, true
 ---
 # `not`
@@ -49,12 +49,12 @@ An atomic function.
 `not` is a [multithreaded primitive](../kb/mt-primitives.md).
 
 ---
-:fontawesome-solid-book:
+
 [`neg`](neg.md) 
 <br>
-:fontawesome-solid-book-open:
+
 [Logic](../basics/by-topic.md#logic)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
-[§4.3.2 Not Zero `not`](/q4m3//4_Operators/#431-equality-and-disequality)
+[§4.3.2 Not Zero `not`](/q4m3/4_Operators/#432-not-zero-not)

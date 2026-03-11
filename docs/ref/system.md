@@ -2,10 +2,10 @@
 title: system keyword executes a system command | Reference | kdb+ and q documentation
 description: system is a q keyword that executes a system command.
 keywords: command, system, shell, os, kdb+, q
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
-# :fontawesome-solid-bullhorn: `system`
 
+# `system`
 
 _Execute a system command_
 
@@ -13,7 +13,7 @@ _Execute a system command_
 system x     system[x]
 ```
 
-Where `x` is a string representing a [kdb+ system command](../basics/syscmds.md) or operating system shell command, and any parameters to it. Executes the command and returns the result as a list of character vectors. 
+Where `x` is a string representing a [kdb+ system command](../basics/syscmds.md) or operating system shell command, and any parameters to it. Executes the command and returns the result as a list of character vectors.
 
 ## kdb+ system commands
 
@@ -34,7 +34,7 @@ q)count system "a"       / this returns a result
 3
 ```
 
-### :fontawesome-brands-windows: Changing working directory
+### Changing working directory
 
 In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
 
@@ -49,16 +49,15 @@ q)system "pwd"
 
 !!! warning "Binary output"
 
-	The result is expected to be text, and is captured into a list of character vectors. 
-	As part of this capture, line feeds and associated carriage returns are removed. 
-	
-	This transformation makes it impractical to capture binary data from the result of the system call. 
-	Redirecting the output to a 
-	[file](https://code.kx.com/q/ref/read1/) or 
-	[fifo](https://code.kx.com/q/kb/named-pipes/) for explicit ingestion may be appropriate in such cases.
+ The result is expected to be text, and is captured into a list of character vectors. 
+ As part of this capture, line feeds and associated carriage returns are removed. 
+ 
+ This transformation makes it impractical to capture binary data from the result of the system call. 
+ Redirecting the output to a 
+ [file](read1.md) or 
+ [fifo](../kb/named-pipes.md) for explicit ingestion may be appropriate in such cases.
 
-
-### :fontawesome-solid-database: Directing output to a file
+### Directing output to a file
 
 When redirecting output to a file, for efficiency purposes, avoiding using `>tmpout` needlessly; append a semi-colon to the command.
 
@@ -97,7 +96,7 @@ the shell interpreter considers it as two statements
 cat x > y; > tmpout
 ```
 
-### :fontawesome-solid-triangle-exclamation: Capture stderr output
+### Capture stderr output
 
 You cannot capture the stderr output from the system call directly, but a workaround is
 
@@ -110,6 +109,3 @@ q)@[system;"ls egg";{0N!"error - ",x;}]
 ls: egg: No such file or directory
 "error - os"
 ```
-
-
-

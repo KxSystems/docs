@@ -1,7 +1,7 @@
 ---
 title: Match | Reference | kdb+ and q documentation
 description: Match is a q operator that flags whether its arguments have the same value.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: compare, kdb+, q, value
 ---
 # `~` Match
@@ -69,11 +69,11 @@ q)t1~t2
 ```
 
 ---
-:fontawesome-solid-book: 
+ 
 [Equal `=`](equal.md), [Not Equal `<>`](not-equal.md)
 <br>
-:fontawesome-solid-book-open: 
+ 
 [Comparison](../basics/comparison.md)
 <br>
-:fontawesome-solid-street-view: 
+ 
 _Q for Mortals_: [§4.2 Match](/q4m3/4_Operators/#42-match)

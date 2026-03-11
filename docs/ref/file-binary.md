@@ -1,16 +1,14 @@
 ---
 title: File Binary | Reference | kdb+ and q documentation
 description: File Binary is a q operator that reads or writes a binary file.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
-# :fontawesome-solid-database: `1:` File Binary
+
+# `1:` File Binary
 
 _Read and parse, or write bytes_
 
-
-
-> There are 10 types of people: those who use binary arithmetic and those who don’t. 
-
+> There are 10 types of people: those who use binary arithmetic and those who don’t.
 
 ## Read Binary
 
@@ -18,14 +16,14 @@ _Read and parse, or write bytes_
 x 1: y     1:[x;y]
 ```
 
-Where 
+Where
 
--   `x` is a 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) of which the order determines whether the data is parsed as little-endian or big-endian
--   `y` is either a
-    -   file symbol to repeatedly read all available records (specified by `x`) from a file
-    -   3-element list containing the file (symbol), offset (long), and length (long). Enables repeatedly reading all available records (specified by `x`) from a file, which stops after the given byte length, starting 'offset' bytes from the start of the file.
-    -   string
-    -   byte sequence
+- `x` is a 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) of which the order determines whether the data is parsed as little-endian or big-endian
+- `y` is either a
+  - file symbol to repeatedly read all available records (specified by `x`) from a file
+  - 3-element list containing the file (symbol), offset (long), and length (long). Enables repeatedly reading all available records (specified by `x`) from a file, which stops after the given byte length, starting 'offset' bytes from the start of the file.
+  - string
+  - byte sequence
 
 returns the content of `y` as a matrix.
 
@@ -93,13 +91,13 @@ t        time            4
 (blank)  skip           
 ```
 
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§11.5.1 Fixed-Width Records](/q4m3/11_IO/#1151-fixed-width-records)
 
 ### Multithreaded Load
 
-Binary load can use multiple threads when kdb+ is running in [multithreaded mode](https://code.kx.com/q/basics/syscmds/#s-number-of-secondary-threads)
+Binary load can use multiple threads when kdb+ is running in [multithreaded mode](../basics/syscmds.md#s-number-of-secondary-threads)
 
 Since 4.1t 2021.09.28.
 
@@ -112,13 +110,13 @@ x 1: y     1:[x;y]
 
 Where
 
--   `x` is a [`filesymbol`](../basics/glossary.md#file-symbol) or (since 4.1t 2023.04.17) a 4 item list ([`filesymbol`](../basics/glossary.md#file-symbol), logical block size, compression algorithm and compression level) to write compressed data
--   `y` is data to write
+- `x` is a [`filesymbol`](../basics/glossary.md#file-symbol) or (since 4.1t 2023.04.17) a 4 item list ([`filesymbol`](../basics/glossary.md#file-symbol), logical block size, compression algorithm and compression level) to write compressed data
+- `y` is data to write
 
 writes the raw bytes of `y` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns it. If `filesymbol`
 
--   does not exist, it is created, with any required directories
--   exists, it is overwritten
+- does not exist, it is created, with any required directories
+- exists, it is overwritten
 
 ```q
 q)`:hello 1: 0x68656c6c6f776f726c64
@@ -154,8 +152,8 @@ q)(`:file;17;2;9)1:100#0x0
 ```
 
 ----
-:fontawesome-solid-book:
+
 [`0:` File Text](file-text.md)
 <br>
-:fontawesome-solid-book-open:
+
 [File system](../basics/files.md)

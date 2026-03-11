@@ -1,7 +1,7 @@
 ---
 title: exec keyword | Reference | kdb+ and q documentation
 description: exec is a q keyword that returns selected rows and columns from a table. Exec is a q operator that does the same in functional SQL.
-author: Stephen Taylor
+author: KX Systems, Inc., a subsidiary of KX Software Limited
 keywords: kdb+, q, table
 ---
 # `exec`
@@ -13,7 +13,7 @@ _Return selected rows and columns from a table_
 !!! info "`exec` is a qSQL query template and varies from regular q syntax."
 
 For the Exec operator `?`, see 
-:fontawesome-solid-book-open:
+
 [Functional SQL](../basics/funsql.md)
 
 
@@ -26,7 +26,7 @@ Below, square brackets mark optional elements.
 exec [distinct] _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 </div>
 
-:fontawesome-solid-book-open:
+
 [qSQL syntax](../basics/qsql.md)
 
 
@@ -163,15 +163,15 @@ see [qSQL](../basics/qsql.md#cond).
 
 ----
 
-:fontawesome-solid-book:
+
 [`delete`](delete.md),
 [`select`](select.md),
 [`update`](update.md)
 <br>
-:fontawesome-solid-book-open:
+
 [qSQL](../basics/qsql.md),
 [Functional SQL](../basics/funsql.md)
 <br>
-:fontawesome-solid-street-view:
+
 _Q for Mortals_
 [§9.4 The `exec` Template](/q4m3/9_Queries_q-sql/#94-the-exec-template)  
