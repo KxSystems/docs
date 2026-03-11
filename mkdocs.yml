@@ -394,7 +394,7 @@ nav:
       - Namespaces:
         - .h (markup): ref/doth.md
         - .j (JSON): ref/dotj.md
-        - .m (memory backed files): ref/dotm.md
+        - .m (modules): ref/dotm.md
         - .Q (utils): ref/dotq.md
         - .z (env, callbacks): ref/dotz.md
       - Application: basics/application.md

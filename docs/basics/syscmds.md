@@ -893,7 +893,7 @@ q)\w 3
 ```
 
 **Domain-local**
-Since V4.0 2020.03.17 returns information for the [current memory domain](../ref/dotm.md) only.
+Since V4.0 2020.03.17 returns information for the [current memory domain](../ref/dotm.md#memory-backed-files) only.
 
 ```q
 q)value each ("\\d .m";"\\w";"\\d .";"\\w")
@@ -906,7 +906,7 @@ q)value each ("\\d .m";"\\w";"\\d .";"\\w")
 :fontawesome-solid-book-open:
 [`-w` workspace command-line option](cmdline.md#-w-workspace), [`\g`](#g-garbage-collection-mode) (garbage-collection mode)<br>
 :fontawesome-solid-book:
-[`.m` namespace](../ref/dotm.md) (DAX-enabled filesystems)
+[`.m` namespace](../ref/dotm.md#memory-backed-files) (DAX-enabled filesystems)
 
 
 ## `\W` (week offset)
