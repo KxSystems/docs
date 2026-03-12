@@ -61,7 +61,6 @@ plugins:
   - exclude:
       glob:
         - "*.tmp"
-        - "*.pdf"
         - "*.gz"
       regex:
         - '.*\.(tmp|bin|tar)$'
