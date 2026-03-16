@@ -101,10 +101,11 @@ cat x > y; > tmpout
 You cannot capture the stderr output from the system call directly, but a workaround is
 
 ```q
-/ force capture to a file, and cat the file
+q)/ Force capture to a file, and cat the file
 q)system"ls egg > file 2>&1;cat file"
 "ls: egg: No such file or directory"        
-/ try and fails to capture the text
+
+q)/ Try and fails to capture the text
 q)@[system;"ls egg";{0N!"error - ",x;}]
 ls: egg: No such file or directory
 "error - os"

@@ -192,7 +192,7 @@ returns a vector, matrix, or table interpreted from the content of `y`.
 If `delimiter` is enlisted, the first row of the content of `y` is read as column names and the result is a table; otherwise the result is a list of values for each column.
 
 ```q
-/load 2 columns from space-delimited file with header 
+q)/ Load 2 columns from space-delimited file with header 
 q)t:("SS";enlist" ")0:`:/tmp/txt
 ```
 
@@ -284,7 +284,7 @@ q)sum(" Z T";5 20 1 5)0:dates
 Load Fixed expects either a `\n` after every record, or none at all.
 
 ```q
-/reads a text file containing fixed-length records
+q)/ Reads a text file containing fixed-length records
 q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt 
 ```
 

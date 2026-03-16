@@ -55,7 +55,7 @@ u
 With `offset` and `length`:
 
 ```q
-/load 500000 records, 100000 at a time
+q)/ Load 500000 records, 100000 at a time
 q)d:raze{("ii";4 4)1:(`:/tmp/data;x;100000)}each 100000*til 5
 ```
 

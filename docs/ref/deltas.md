@@ -31,19 +31,21 @@ time                          sym  price diff
 Use with [`signum`](signum.md) to count the number of up/down/same ticks:
 
 ```q
-// the sign of the price movements
+q)/ The sign of the price movements
 q)select movement:signum deltas price by sym from t
 sym | movement
 ----| --------
 AAPL| 1 0 -1
 GOOG| 1 1 1
-// it always starts with 1, so we will drop that
+
+q)/ It always starts with 1, so we will drop that
 q)select movement:1_ signum deltas price by sym from t
 sym | movement
 ----| --------
 AAPL| 0 -1
 GOOG| 1 1
-// ungroup so we can do a second query more easily
+
+q)/ Ungroup so we can do a second query more easily
 q)ungroup select movement:1_ signum deltas price by sym from t
 sym  movement
 -------------

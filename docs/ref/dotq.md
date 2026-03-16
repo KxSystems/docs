@@ -510,7 +510,7 @@ date       sym time         price    size
 If you are getting an `'unmappable` error, you can identify the offending columns and tables:
 
 ```q
-/ create 2 example tables
+q)/ Create 2 example tables
 q)t:([]a:til 2;b:2#enlist (til 1;10))  / bad table, b is unmappable
 q)t1:([]a:til 2;b:2#til 1)  / good table, b is mappable
 q)helper:{$[(type x)or not count x;1;t:type first x;all t=type each x;0]};
@@ -1385,7 +1385,8 @@ A more elaborate example that selects all the rows from a date:
 q)t:select count i by date from trade
 q)count .Q.ind[trade;(exec first sum x from t where date<2010.01.07)+til first exec x from t where date=2010.01.07]
 28160313
-/ show that this matches the full select for that date
+
+q)/ Show that this matches the full select for that date
 q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from t where date<2010.01.07)+til first exec x from t where date=2010.01.07]
 1b
 ```

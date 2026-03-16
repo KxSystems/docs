@@ -641,7 +641,7 @@ For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to 
     Each Parallel will close them if it receives anything other than a response message.
 
 ```q
-q)/open connections to 4 processes on the localhost
+q)/ Open connections to 4 processes on the localhost
 q).z.pd:`u#hopen each 20000+til 4
 ```
 
@@ -912,9 +912,9 @@ Note this is purely an example; there are other ways to achieve the same result.
 Where `f` is a unary function, `.z.ts` is evaluated on intervals of the timer variable set by system command `\t`. The timestamp is returned as Greenwich Mean Time (GMT).
 
 ```q
-q)/ set the timer to 1000 milliseconds
+q)/ Set the timer to 1000 milliseconds
 q)\t 1000
-q)/ argument x is the timestamp scheduled for the callback
+q)/ Argument x is the timestamp scheduled for the callback
 q)/ .z.ts is called once per second and returns the timestamp
 q).z.ts:{0N!x}
 q)2010.12.16D17:12:12.849442000

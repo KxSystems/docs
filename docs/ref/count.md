@@ -32,7 +32,7 @@ q)count each (2;3 5;"eight")
 1 2 5
 q)count `a`b`c!2 3 5                 / dictionary
 3
-q)/ the items of a table are its rows
+q)/ The items of a table are its rows
 q)count ([]city:`London`Paris`Berlin; country:`England`France`Germany)
 3
 q)count each ([]city:`London`Paris`Berlin; country:`England`France`Germany)

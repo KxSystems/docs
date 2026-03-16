@@ -204,7 +204,7 @@ q)2+2 / we know this one
 A `/` at the beginning of a line marks a **comment line**. The entire line is ignored.
 
 ```q
-q)/nothing in this line is evaluated
+q)/ Nothing in this line is evaluated
 ```
 
 In a script, a line with a solitary `/` marks the beginning of a **multiline comment**. A multiline comment is terminated by a `\` or the end of the script.

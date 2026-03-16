@@ -153,10 +153,12 @@ q)5(`f;)\1
 (`f;(`f;(`f;1)))
 (`f;(`f;(`f;(`f;1))))
 (`f;(`f;(`f;(`f;(`f;1)))))
-q)/first 10+2 numbers of Fibonacci sequence
+
+q)/ First 10+2 numbers of Fibonacci sequence
 q)10{x,sum -2#x}/0 1                       / derived binary applied infix
 0 1 1 2 3 5 8 13 21 34 55 89
-q)/first n+2 numbers of Fibonacci sequence
+
+q)/ First n+2 numbers of Fibonacci sequence
 q)fibonacci:{x,sum -2#x}/[;0 1]            / projection of derived function
 q)fibonacci 10
 0 1 1 2 3 5 8 13 21 34 55 89
@@ -350,7 +352,7 @@ q){x+y*z}\[1000 2000;5 10 15 20;3]
 1045 2045
 1090 2090
 1150 2150
-q)// Chinese whispers
+q)/ Chinese whispers
 q)s:"We are going to advance. Send reinforcements."
 q)ssr\[s;("advance";"reinforcements");("a dance";"three and fourpence")]
 "We are going to a dance. Send reinforcements."

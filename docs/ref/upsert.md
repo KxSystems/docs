@@ -99,7 +99,7 @@ q| 1 5
 w| 2 6
 e| 3 7
 
-q)/update `q and `e, insert new `r; return new table
+q)/ Update `q and `e, insert new `r; return new table
 q)a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)    / keyed table
 s| r  u                                       
 -| -----
