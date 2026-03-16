@@ -36,7 +36,7 @@ q)next 2 3 5 7 11
 q)next (1 2;"abc";`ibm)
 "abc"
 `ibm
-`int$()
+`long$()
 ```
 
 Duration of a quote:
@@ -65,7 +65,7 @@ For the first item, it returns a null if the list is vector, otherwise an empty 
 q)prev 2 3 5 7 11
 0N 2 3 5 7
 q)prev (1 2;"abc";`ibm)
-`int$()
+`long$()
 1 2
 "abc"
 ```

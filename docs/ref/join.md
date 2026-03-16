@@ -21,18 +21,26 @@ q)1 2 3,4
 q)1 2,3 4
 1 2 3 4
 q)(0;1 2.5;01b),(`a;"abc")
-(0;1.00 2.50;01b;`a;"abc")
+0
+1 2.5
+01b
+`a
+"abc"
 ```
 
 The result is a vector if both arguments are vectors or atoms of the same type; otherwise a mixed list.
 
 ```q
 q)1 2.4 5,-7.9 10               /float vectors
-1.00 2.40 5.00 -7.90 10.00
+1 2.4 5 -7.9 10
 q)1 2.4 5,-7.9                  /float vector and atom
-1.00 2.40 5.00 -7.90
+1 2.4 5 -7.9
 q)1 2.4 5, -7.9 10e             /float and real vectors
-(1.00;2.40;5.00;-7.90e;10.00e)
+1f
+2.4
+5f
+-7.9e
+10e
 ```
 
 [Cast](cast.md) arguments to ensure vector results.
@@ -40,11 +48,11 @@ q)1 2.4 5, -7.9 10e             /float and real vectors
 ```q
 q)v:1 2.34 -567.1 20e
 q)v,(type v)$789                / cast an int to a real
-1.00 2.34 -567.1 20.00 789e
+1 2.34 -567.1 20 789e
 q)v,(type v)$1b                 / cast a boolean to a real
-1.00 2.34 -567.1 20 1e
+1 2.34 -567.1 20 1e
 q)v,(type v)$0xab
-1.00 2.34 -567.1 20.00 171e
+1 2.34 -567.1 20 171e
 ```
 
 The result is a general list if the two arguments are [enumeration](enumerate.md) atoms of different domains, or one is an enumeration and the other is a regular symbol:

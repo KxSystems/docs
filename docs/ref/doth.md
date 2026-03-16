@@ -122,16 +122,16 @@ q).h.d
 " "
 q).h.cd t
 "a,b,c"
-"0,a b c,1 2 3"
-"1,a b c,1 2 3"
-"2,a b c,1 2 3"
+"0,abc,1 2 3"
+"1,abc,1 2 3"
+"2,abc,1 2 3"
 
 q).h.d:"*"
 q).h.cd t
 "a,b,c"
-"0,a*b*c,1*2*3"
-"1,a*b*c,1*2*3"
-"2,a*b*c,1*2*3"
+"0,abc,1*2*3"
+"1,abc,1*2*3"
+"2,abc,1*2*3"
 ```
 
 ## `.h.ed` (Excel from data)
@@ -690,10 +690,10 @@ Dictionary of file types and corresponding conversion functions (`.h.cd`, `.h.td
 ```q
 q).h.tx
 raw | ,:
-json| k){$[10=abs t:@x;s@,/{$[x in r:"\t\n\r\"\\";"\\","tnr\"\\"r?x;x]}'x;(::..
-csv | k){.q.csv 0:x}
+json| k){.j.j'$[.Q.qt x;0!x;x]}
+csv | k){.q.csv 0:$[.Q.qt x;![x;();0b;(!t)[c]!,:'.q.sv[d]@/:'$v c:&(~l=-10h)&0>l:.Q.tx'v:. t:+0!x];x]}
 txt | k){"\t"0:x}
-xml | k){g:{(#*y)#'(,,"<",x),y,,,"</",x:($x),">"};(,"<R>"),(,/'+g[`r]@,/(!x)g..
+xml | k){g:{(#*y)#'(,,"<",x),y,,,"</",x:($x),">"};(,"<R>"),(,/'+g[`r]@,/(!x)g'{,xs'$[11h=@x;$x;t&77h>t:@x;$x;x]}'x:+0!x),,"</R>"}
 xls | k){ex eb es[`Sheet1]x}
 ```
 

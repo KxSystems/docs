@@ -59,11 +59,11 @@ q)t2:([]x:`s#1 2 3)
 q)meta t1
 c| t f a
 -| -----
-x| i
+x| j
 q)meta t2
 c| t f a
 -| -----
-x| i   s
+x| j   s
 q)t1~t2
 1b
 ```

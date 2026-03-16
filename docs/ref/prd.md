@@ -29,7 +29,7 @@ q)prd 2 3 0N 7             / 0N is treated as 1
 q)prd (1 2 3 4;2 3 5 7)    / product of list of lists
 2 6 15 28
 q)prd 101b
-0b
+0i
 q)prd "abc"
 'type
 ```

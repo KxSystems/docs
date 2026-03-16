@@ -51,11 +51,13 @@ If `x` is 0, an empty list is returned.
 ```q 
 q)trade:([]time:();sym:();price:();size:())  /columns can hold anything
 q)trade
-+`time`sym`price`size!(();();();())
+time sym price size
+-------------------
 q)/ Idiomatic way to initialize columns to appropriate types
 q)trade:([]time:0#0Nt;sym:0#`;price:0#0n;size:0#0N)
 q)trade
-+`time`sym`price`size!(`time$();`symbol$();`float$();`int$())
+time sym price size
+-------------------
 ```
 
 Where `x` is a vector, returns a matrix or higher-dimensional array; `count x` gives the number of dimensions.

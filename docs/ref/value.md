@@ -68,7 +68,6 @@ q)value "iasc 2 7 3 1"
 3 0 2 1
 q)\d .a
 q.a)value"b:2"
-2
 q.a)b
 2
 q.a)\d .
@@ -89,8 +88,8 @@ q)value +[2]                        / projection
 +
 2
 q)value differ                      / composition
-~:
-~':
+$["b"]
+~~':
 q)f:,/:\:                           / derived function
 q)value f
 ,/:

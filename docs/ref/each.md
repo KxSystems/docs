@@ -23,7 +23,7 @@ That is, the projections `each[v1;]`, `each[vv;]`, `peach[v1;]`, and `peach[vv;]
 
 ```q
 q)count each ("the";"quick";" brown";"fox")
-3 5 5 3
+3 5 6 3
 q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 2 5 9
 (5 6;12 14)
