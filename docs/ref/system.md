@@ -75,7 +75,7 @@ as kdb+ tries to capture the output.
 So if you do
 
 ```q
-system"cat x > y"
+q)system"cat x > y"
 ```
 
 under the covers that looks like
@@ -87,7 +87,7 @@ cat x > y > tmpout
 Not good. So if you add the semicolon
 
 ```q
-system"cat x > y;"
+q)system"cat x > y;"
 ```
 
 the shell interpreter considers it as two statements

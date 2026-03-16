@@ -582,7 +582,7 @@ Can be used during the processing of an HTTP request to enable [persistent conne
 A basic example of showing keep-alive in action for a simple response:
 
 ```q
-\p 1234
+q)\p 1234
 q)f:{[x;y]"HTTP/1.1 200 OK\r\nConnection : ",.h.ka[x*1000i],"\r\nContent-Type: ",(.h.ty`txt),"\r\nContent-Length: ",(string count y),"\r\n\r\n",y}
 q).z.ph:{f[2i;"test response\n"]}
 ```

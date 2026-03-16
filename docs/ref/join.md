@@ -122,7 +122,6 @@ Tables of the same count can be joined column-wise with `,'` (Join Each).
 ```q
 q)r:([]c:10 20 30;d:1.2 3.4 5.6)
 q)show t,'r
-q)show t,'r
 a b c  d
 ----------
 1 a 10 1.2

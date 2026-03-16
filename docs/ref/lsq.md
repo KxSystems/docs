@@ -68,11 +68,11 @@ Previously it used Cholesky decomposition as well.
 `lsq` can be used to approximate `x` and `y` values by polynomials.
 
 ```q
-lsfit:{(enlist y) lsq x xexp/: til 1+z} / fit y to poly in x with degree z
-poly:{[c;x]sum c*x xexp til count c}    / polynomial with coefficients c
-x:til 6
-y:poly[1 5 -3 2] each x   / cubic
-lsfit[x;y] each 1 2 3     / linear,quadratic,cubic(=exact) fits
+q)lsfit:{(enlist y) lsq x xexp/: til 1+z} / fit y to poly in x with degree z
+q)poly:{[c;x]sum c*x xexp til count c}    / polynomial with coefficients c
+q)x:til 6
+q)y:poly[1 5 -3 2] each x   / cubic
+q)lsfit[x;y] each 1 2 3     / linear,quadratic,cubic(=exact) fits
 -33 37.6
 7 -22.4 12
 1 5 -3 2

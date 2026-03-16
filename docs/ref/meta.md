@@ -81,9 +81,6 @@ vr  | F
 A splayed table with a symbol column needs its corresponding sym list.
 
 ```q
-kdb+ 0.1.2 2025.10.18 Copyright (C) 1993-2025 Kx Systems
-...
-
 q)load `:db/sym  / required for meta to describe db/tr
 `sym
 q)meta `:db/tr
@@ -102,9 +99,6 @@ Loading (memory mapping) a database handles this.
 ❯ q db
 ```
 ```q
-kdb+ 0.1.2 2025.10.18 Copyright (C) 1993-2025 Kx Systems
-...
-
 q)\v
 `s#`sym`tr
 q)meta tr

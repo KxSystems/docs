@@ -720,7 +720,8 @@ Where
 returns the result of evaluating `f vec` – using multiple threads if possible. (Since V2.6)
 
 ```q
-q -s 8
+q)\s
+8i
 q)f:{2 xexp x}
 q)vec:til 100000
 q)\t f vec

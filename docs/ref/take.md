@@ -246,7 +246,7 @@ Where
 returns column/s `x` from `y`.
 
 ```q 
-t:([] name:`Dent`Beeblebrox`Prefect; iq:98 42 126; age:20 22 25)
+q)t:([] name:`Dent`Beeblebrox`Prefect; iq:98 42 126; age:20 22 25)
 q)`name`age#t
 name       age
 --------------

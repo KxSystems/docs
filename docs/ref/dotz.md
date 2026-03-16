@@ -467,12 +467,11 @@ Since V5.0.
 While loading a module, `.z.M` contains the name of the local namespace of the module as a symbol. Furthermore, `.z.M` suffixed with any name returns that name joined to the module namespace name.
 
 ```q
-// $QHOME/mod/foo/init.q
+q)-1 system "cat ~/.kx/mod/foo/init.q";
 f:{.z.M}
 g:{.z.M.f}
 export:([f;g])
 
-// user
 q).z.M
 `.
 q)foo:use`foo
@@ -489,7 +488,7 @@ Since V5.0.
 While loading a module, `.z.m` represents the local namespace of the module as a dictionary. Elements can be added, removed and retrieved just like with any dictionary. Functions retain the information about which namespace `.z.m` refers to, as opposed to it resolving to the current module at the point of invocation.
 
 ```q
-// $QHOME/mod/foo/init.q
+q)-1 system "cat ~/.kx/mod/foo/init.q";
 // log:{-1 string[.z.P]," ",x}  // doesn't work, since log is a reserved name
 .z.m.log:{-1 string[.z.P]," ",x}
 f:{x+1}
@@ -497,7 +496,6 @@ f:{x+1}
 upd:{.z.m.log"updating";select .z.m.f a from ([]a:1 2 3)}
 export:([upd])
 
-// user
 q).z.m,:use`foo
 q).z.m
 upd| `.m.foo.export.upd[]
@@ -601,9 +599,6 @@ As the connection has been closed by the time `f` is called there are strictly n
 To allow you to clean up things like tables of users keyed by handle, the handle that _was_ being used is passed as a parameter to `.z.pc`
 
 ```q
-kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
-...
-
 q).z.pc
 '.z.pc
 q).z.pc:{0N!(.z.a;.z.u;.z.w;x);x}
@@ -1110,8 +1105,6 @@ q somefile.q -customarg 42 -p localhost:17200
 ```
 
 ```q
-kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
-...
 q).z.X
 ,"q"
 "somefile.q"
