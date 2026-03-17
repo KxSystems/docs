@@ -40,9 +40,9 @@ q)a lsq b
 0.07666667 0.6933333 0.6766667 0.5466667
 0.2766667  1.226667  0.8766667 0.8133333
 q)a - (a lsq b) mmu b
--4.440892e-16 2.220446e-16 0             0
-0             8.881784e-16 -8.881784e-16 8.881784e-16
-0             0            0             1.776357e-15
+4.440892e-16 2.220446e-16 0             4.440892e-16
+8.881784e-16 0            -1.776357e-15 0           
+0            0            0             0
 q)a ~ (a lsq b) mmu b      / tolerant match
 1b
 
@@ -68,11 +68,11 @@ Previously it used Cholesky decomposition as well.
 `lsq` can be used to approximate `x` and `y` values by polynomials.
 
 ```q
-lsfit:{(enlist y) lsq x xexp/: til 1+z} / fit y to poly in x with degree z
-poly:{[c;x]sum c*x xexp til count c}    / polynomial with coefficients c
-x:til 6
-y:poly[1 5 -3 2] each x   / cubic
-lsfit[x;y] each 1 2 3     / linear,quadratic,cubic(=exact) fits
+q)lsfit:{(enlist y) lsq x xexp/: til 1+z} / fit y to poly in x with degree z
+q)poly:{[c;x]sum c*x xexp til count c}    / polynomial with coefficients c
+q)x:til 6
+q)y:poly[1 5 -3 2] each x   / cubic
+q)lsfit[x;y] each 1 2 3     / linear,quadratic,cubic(=exact) fits
 -33 37.6
 7 -22.4 12
 1 5 -3 2

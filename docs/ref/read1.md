@@ -42,7 +42,7 @@ q)read1`:test.txt                       / read in as bytes
 q)"c"$read1`:test.txt                   / convert from bytes to char
 "hello\ngoodbye\n"
 
-q)/ read 500000 lines, chunks of (up to) 100000 at a time
+q)/ Read 500000 lines, chunks of (up to) 100000 at a time
 q)d:raze{read1(`:/tmp/data;x;100000)}each 100000*til 5 
 ```
 

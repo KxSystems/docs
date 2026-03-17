@@ -93,7 +93,7 @@ c| 3
 ### Table
 
 ```q
-q)/ simple table
+q)/ Simple table
 q)asc ([]a:4 3 4;b:`s`a`d)
 a b
 ---
@@ -110,7 +110,7 @@ c| t f a
 -| -----
 a| j   s
 
-q)/ keyed table
+q)/ Keyed table
 q)meta asc ([c1:`a`b] c2:2 1; c3:01b) / sets parted attribute
 c | t f a
 --| -----

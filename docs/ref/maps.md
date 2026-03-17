@@ -332,7 +332,7 @@ q)l?`German`English`French`French`German
 q)(l?`German`English`French`French`German)'[e;f;g]
 `eins`two`trois`quatre`funf
 
-q)/extra arguments don't signal a rank error
+q)/ Extra arguments don't signal a rank error
 q)0 2 0'["abc";"xyz";"123";"789"]
 "a2c"
 q)0 1 0'["a";"xyz"]  /atom "a" repeated as needed

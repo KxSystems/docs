@@ -95,7 +95,7 @@ Use [`set`](get.md) instead to save
 <!-- 
 ```q
 q)`:t set t /save in binary format as a single file
-q)/ save in binary format as a splayed table 
+q)/ Save in binary format as a splayed table 
 q)/ (1 file/column, symbols enumerated against the sym file in current dir)
 q)`:t/ set .Q.en[`:.;t] 
 q)`:t.csv 0:.h.tx[`csv;t] / save in csv format

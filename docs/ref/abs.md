@@ -23,7 +23,8 @@ q)abs 10 -43 0N
 10 43 0N
 q)abs 1999.01.01
 2000.12.31
-// if we convert these to longs, we can observe they're opposite
+
+q)/ If we convert these to longs, we can observe they're opposite
 q)"j"$1999.01.01 2000.12.31 
 -365 365
 ```

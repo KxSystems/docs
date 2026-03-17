@@ -26,10 +26,11 @@ q)hdel`:test.txt   / should generate an error
 To delete a folder and its contents, [recursively](dotz.md#zs-self)
 
 ```q
-​/diR gets recursive dir listing​
-q)diR:{$[11h=type d:key x;raze x,.z.s each` sv/:x,/:d;d]}
-​/hide power behind nuke​
-q)​nuke:hdel​ ​each​ ​​desc diR​@​ / desc sort!​
+​q)/ dir gets recursive directory listing​
+q)dir:{$[11h=type d:key x;raze x,.z.s each` sv/:x,/:d;d]}
+​
+q)/ Hide power behind nuke​
+q)​nuke:hdel​ ​each​ ​​desc dir​@​ / desc sort!​
 ​q)nuke`:mydir
 ```
 

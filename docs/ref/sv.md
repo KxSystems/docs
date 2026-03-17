@@ -142,7 +142,7 @@ q)0x0 sv "x" $0 255           / short
 q)0x0 sv "x" $128 255
 -32513h
 q)0x0 sv "x" $0 64 128 255    / int
-4227327
+4227327i
 q)0x0 sv "x" $til 8           / long
 283686952306183
 q)256 sv til 8                / same calculation

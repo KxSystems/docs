@@ -175,8 +175,6 @@ Deal, Roll, Permute and [`rand`](rand.md) use a constant seed on kdb+ startup: s
 !!! tip "To use GUIDs as identifiers, use Deal, not Roll"
 
 ```q
-$ q
-..
 q)1?0Ng                                    / roll 1 GUID
 ,8c6b8b64-6815-6084-0a3e-178401251b68
 q)\\

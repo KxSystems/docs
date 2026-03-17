@@ -22,9 +22,9 @@ q)t:([]a:`f$2 2 2;b:0;c:`f$1 1 1)
 q)meta t
 c| t f a
 -| -----
-a| i f
-b| i
-c| i f
+a| j f
+b| j
+c| j f
 q)fkeys t
 a| f
 c| f

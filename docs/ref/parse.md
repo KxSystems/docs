@@ -71,7 +71,7 @@ q)foo:{x+2}
 q)parse "foo each til 5"
 k){x'y}
 `foo
-(k){$[-6h=@x;!x;'`type]};5)
+(k){$[0>@x;!x;'`type]};5)
 ```
 
 !!! tip "The composition of `eval` after `parse` is essentially the q interpreter."

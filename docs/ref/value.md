@@ -68,7 +68,6 @@ q)value "iasc 2 7 3 1"
 3 0 2 1
 q)\d .a
 q.a)value"b:2"
-2
 q.a)b
 2
 q.a)\d .
@@ -79,7 +78,7 @@ q).a.b
 
 q)value(+;1;2)                      / list - apply a function or index a list
 3
-q)/ if the first item is a string or symbol, it is evaluated first
+q)/ If the first item is a string or symbol, it is evaluated first
 q)value(`.q.neg;2)
 -2
 q)value("{x+y}";1;2)
@@ -89,8 +88,8 @@ q)value +[2]                        / projection
 +
 2
 q)value differ                      / composition
-~:
-~':
+$["b"]
+~~':
 q)f:,/:\:                           / derived function
 q)value f
 ,/:
@@ -164,7 +163,7 @@ q)value f
 ""
 -1
 "{[a;b]d::neg c:a*b+5;c+e}"
-q)/Now define in .test context – globals refer to current context of test
+q)/ Now define in .test context – globals refer to current context of test
 q)\d .test
 q.test)f:{[a;b]d::neg c:a*b+5;c+e}
 q.test)value f

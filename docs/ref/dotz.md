@@ -467,12 +467,11 @@ Since V5.0.
 While loading a module, `.z.M` contains the name of the local namespace of the module as a symbol. Furthermore, `.z.M` suffixed with any name returns that name joined to the module namespace name.
 
 ```q
-// $QHOME/mod/foo/init.q
+q)-1 system "cat ~/.kx/mod/foo/init.q";
 f:{.z.M}
 g:{.z.M.f}
 export:([f;g])
 
-// user
 q).z.M
 `.
 q)foo:use`foo
@@ -489,7 +488,7 @@ Since V5.0.
 While loading a module, `.z.m` represents the local namespace of the module as a dictionary. Elements can be added, removed and retrieved just like with any dictionary. Functions retain the information about which namespace `.z.m` refers to, as opposed to it resolving to the current module at the point of invocation.
 
 ```q
-// $QHOME/mod/foo/init.q
+q)-1 system "cat ~/.kx/mod/foo/init.q";
 // log:{-1 string[.z.P]," ",x}  // doesn't work, since log is a reserved name
 .z.m.log:{-1 string[.z.P]," ",x}
 f:{x+1}
@@ -497,7 +496,6 @@ f:{x+1}
 upd:{.z.m.log"updating";select .z.m.f a from ([]a:1 2 3)}
 export:([upd])
 
-// user
 q).z.m,:use`foo
 q).z.m
 upd| `.m.foo.export.upd[]
@@ -601,21 +599,18 @@ As the connection has been closed by the time `f` is called there are strictly n
 To allow you to clean up things like tables of users keyed by handle, the handle that _was_ being used is passed as a parameter to `.z.pc`
 
 ```q
-kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
-...
-
 q).z.pc
 '.z.pc
 q).z.pc:{0N!(.z.a;.z.u;.z.w;x);x}
 q)\p 2021
-q)(2130706433;`simon;0;4)
+q)(2130706433i;`simon;0i;4i)
 
 q).z.a
-2130706433
+2130706433i
 q).z.u
 `simon
 q).z.w
-0
+0i
 q)
 ```
 
@@ -641,7 +636,7 @@ For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to 
     Each Parallel will close them if it receives anything other than a response message.
 
 ```q
-q)/open connections to 4 processes on the localhost
+q)/ Open connections to 4 processes on the localhost
 q).z.pd:`u#hopen each 20000+til 4
 ```
 
@@ -912,9 +907,9 @@ Note this is purely an example; there are other ways to achieve the same result.
 Where `f` is a unary function, `.z.ts` is evaluated on intervals of the timer variable set by system command `\t`. The timestamp is returned as Greenwich Mean Time (GMT).
 
 ```q
-q)/ set the timer to 1000 milliseconds
+q)/ Set the timer to 1000 milliseconds
 q)\t 1000
-q)/ argument x is the timestamp scheduled for the callback
+q)/ Argument x is the timestamp scheduled for the callback
 q)/ .z.ts is called once per second and returns the timestamp
 q).z.ts:{0N!x}
 q)2010.12.16D17:12:12.849442000
@@ -1110,8 +1105,6 @@ q somefile.q -customarg 42 -p localhost:17200
 ```
 
 ```q
-kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
-...
 q).z.X
 ,"q"
 "somefile.q"

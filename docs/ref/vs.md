@@ -128,7 +128,7 @@ Where `x` is `0b` and `y` is an integer, returns the bit representation of `y`.
 ```q
 q)0b vs 23173h
 0101101010000101b
-q)0b vs 23173
+q)0b vs 23173i
 00000000000000000101101010000101b
 ```
 
@@ -146,7 +146,7 @@ Where `x` is `0x0` and `y` is a number, returns the internal representation of `
 ```q
 q)0x0 vs 2413h
 0x096d
-q)0x0 vs 2413
+q)0x0 vs 2413i
 0x0000096d
 q)0x0 vs 2413e
 0x4516d000
