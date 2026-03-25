@@ -498,9 +498,6 @@ nav:
         - Shebang script: develop/shebang.md
         - Surveillance latency: wp/surveillance-latency/index.md
         - Windows service: kb/windows-service/index.md
-        - Optane Memory:
-          - Optane Memory and kdb+: kb/optane.md
-          - Performance tests: architecture/optane-tests.md
       - Release notes:
         - History: releases/index.md
         - Changes in 4.1: releases/ChangesIn4.1.md
