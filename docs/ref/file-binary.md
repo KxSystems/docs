@@ -129,7 +129,7 @@ q)read1`:hello
 0x0100000000000000
 ```
 
-If `y` is a general list, it writes `y` as an anymap instead of the raw bytes. This is similar to [`set`](get.md#set), except that any nested general lists inside `y` are themselves saved in the anymap format.
+If `y` is a general list, table, dictionary, projection or composition, it writes `y` as an anymap instead of the raw bytes. This is similar to [`set`](get.md#set), except that lists within all structures remain mapped, no matter the depth, and can be used without being copied to the heap. There is a trade-off compared to `set`, since a reference to any nested object requires the whole file to remain mapped, which can leak limited resources.
 
 ```q
 q)`:a set ((1 2;3 4);(1 2;3 4))
