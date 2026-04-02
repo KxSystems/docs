@@ -166,7 +166,7 @@ wf         -log(0.0) in Windows or (1/0.0) on Linux   float infinity
 
 <div markdown="1" class="typewriter">
 [ka](#ka-create-atom)  atom        [kj](#kj-create-long)   long            [ktj](#ktj-create-timespan)    timespan
-[kb](#kb-create-boolean)  boolean     [knk](#knk-create-list)  list            [ktn](#ktn-create-vector)    vector
+[kb](#kb-create-boolean)  boolean     [knk](#knk-create-list)  list            [ktn](#ktn-create-vector)    vector/list
 [kc](#kc-create-char)  char        [knt](#knt-create-keyed-table)  keyed table     [ku](#ku-create-guid)     guid
 [kd](#kd-create-date)  date        [kp](#kp-create-string)   char array      [kz](#kz-create-datetime)     datetime
 [ke](#ke-create-real)  real        [kpn](#kpn-create-fixed-length-string)  char array      [vaknk](#vak-vaknk-va_list-versions-of-k-knk)  va_list version of knk
@@ -767,6 +767,7 @@ K ktn(I type, J length)
 ```
 Tags: `c.o`
 
+Create a vector or list with the given type and length. For a mixed or symbol list, all elements must be initialized prior to returning the list or passing it to other API functions.
 
 ### `ku` (create guid)
 
