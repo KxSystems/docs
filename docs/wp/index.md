@@ -48,7 +48,7 @@ White papers are flagged in the navigation menus.
 -   [**Intraday writedown solutions**](intraday-writedown/index.md)<br>Colm McCarthy, 2014.03
 -   [**Compression in kdb+**](compress/index.md)<br>Eoin Killeen, 2013.10
 -   [**Permissions with kdb+**](permissions/index.md)<br>Tom Martin, 2013.05
--   [**Multi-threading in kdb+:** performance optimizations and use cases](multi-thread/index.md)<br>Edward Cormack, 2013.03
+-   [**Multi-threading in kdb+:** performance optimizations and use cases](multi-thread/index.md)
 -   [**kdb+ data-management techniques**](data-management.md)<br>Simon Mescal, 2013.01
 -   [**Order Book:** a kdb+ intraday storage and access methodology](order-book.md)<br>Niall Coulter, 2012.04
 -   [**Disaster-recovery planning for kdb+ tick systems**](disaster-recovery/index.md)<br>Stewart Robinson

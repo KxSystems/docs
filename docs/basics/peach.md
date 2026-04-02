@@ -47,6 +47,9 @@ q)\ts .[g;]peach flip(2#1000000;2 3)
 
 The secondary processes used by Parallel Each and `peach` are either threads or processes according to the sign of the [value used in the command line](cmdline.md#-s-secondary-threads).
 
+!!! note "Changes since 4.1t 2024.01.04"
+
+    peach workload distribution methodology changed to dynamically redistribute workload and allow nested invocation. The limitations on nesting have been removed, so peach (and multi-threaded primitives) can be used inside peach. To facilitate this, round-robin scheduling has been removed. The order of processing the elements is undefined. The workload is dynamically redistributed if a thread finishes its share before the others.
 
 ## Threads
 
@@ -108,8 +111,7 @@ Perfect scaling may not be achieved, because of resource clashes.
 
 ### Number of cores/secondary threads
 
-A vector with _n_ items peached with function `f` with _s_ secondary processes on _m_ cores is distributed such that threads are preassigned which items they will be responsible for processing, e.g. for 9 jobs over 4 threads, thread \#0 will be assigned elements 0, 4, 8; if each job takes the same time to complete, then the total execution time of jobs will be quantized according to \#jobs _mod_ \#cores, i.e. with 4 cores, 12 jobs should execute in a similar time as 9 jobs (assuming \#secondary processes≥\#cores).
-
+If each job takes the same time to complete, then the total execution time of jobs will be quantized according to \#jobs _mod_ \#cores, i.e. with 4 cores, 12 jobs should execute in a similar time as 9 jobs (assuming \#secondary processes≥\#cores).
 
 ### Sockets and handles 
 
