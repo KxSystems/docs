@@ -18,10 +18,7 @@ Existing code that uses `.m` for [`memory domains`](#memory-backed-files) will n
 
 V4.0 only (since 2020.03.17). For V5.0 and above see [`modules`](#modules).
 
-Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
-
-:fontawesome-solid-graduation-cap:
-[Optane Memory and kdb+](../kb/optane.md)
+Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems as a non-persistent memory extension for kdb+.
 
 [Command-line option `-m path`](../basics/cmdline.md#-m-memory-domain) directs kdb+ to use the filesystem path specified as a separate memory domain. This splits every thread’s heap into two:
 

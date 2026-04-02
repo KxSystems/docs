@@ -224,47 +224,9 @@ or use [`.z.zd`](../ref/dotz.md#zzd-compressionencryption-defaults) for process-
 
 ## :fontawesome-solid-bolt: Optane support
 
-Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
+This feature has been discontinued in later kdb+ releases.
 
-Use command-line option [`-m path`](../basics/cmdline.md#-m-memory-domain) to use the filesystem path specified as a separate memory domain. This splits every thread’s heap into two:
-
-domain | content
-:-----:|:-------
-0      | regular anonymous memory (active and used for all allocs by default)
-1      | filesystem-backed memory
-
-[Namespace `.m`](../ref/dotm.md#memory-backed-files) is reserved for objects in domain 1; however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`.
-
-`\d .m` changes the current domain to 1, causing it to be used by all further allocs. `\d .anyotherns` sets it back to 0.
-
-`.m.x:x` ensures the entirety of `.m.x` is in the domain 1, performing a deep copy of `x` as needed. (Objects of types `100-103h`, `112h` are not copied and remain in domain 0.)
-
-Lambdas defined in `.m` set current domain to 1 during execution. This will nest since other lambdas don’t change domains:
-
-```q
-q)\d .myns
-q)g:{til x}
-q)\d .m
-q)w:{system"w"};f:{.myns.g x}
-q)\d .
-q)x:.m.f 1000000;.m.w` / x allocated in domain 1
-```
-
-[`-120!x`](../basics/internal.md#-120x-memory-domain) returns `x`’s domain (currently 0 or 1), e.g `0 1~-120!'(1 2 3;.m.x:1 2 3)`.
-
-[`\w`](../basics/syscmds.md#w-workspace) returns memory info for the current domain only:
-
-```q
-q)value each ("\\d .m";"\\w";"\\d .";"\\w")
-```
-
-The [-w limit](../basics/cmdline.md#-w-workspace) (M1/m2) is no longer thread-local, but domain-local: command-line option `-w` and system command `\w` set the limit for domain 0.
-
-`mapped` is a single global counter, the same in every thread’s `\w`.
-
-:fontawesome-solid-graduation-cap:
-[Optane Memory and kdb+](../kb/optane.md)
-
+[Memory backed files](../ref/dotm.md)
 
 ## :fontawesome-solid-code: Profiler
 
