@@ -48,7 +48,7 @@ The terminology generalizes to values.
 
 -   The left domain of a matrix `m` is `til count m`.
 -   The right domain of a matrix is `til count first m`.
--   The right domains of a list `m` of depth `n` are `1_n{til count first x}\m`. <!-- FIXME Check -->
+-   The right domains of a list `m` of depth `n` are `1_til each count each (n-1)first\m`.
 
 The single argument of a unary function is sometimes referred to as its _right argument_.
 
