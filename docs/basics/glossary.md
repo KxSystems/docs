@@ -431,7 +431,9 @@ Q knows the identity elements of some functions, e.g. `+` (zero), but not others
 ## Infix
 
 Applying an operator by writing it between its arguments, e.g.
-`2+3`  applies `+` to 2 and 3
+`2+3` applies `+` to 2 and 3.
+
+The alternative in most cases is to apply an operator prefix, e.g. `+[2;3]`.
 
 
 ## Item, list item
@@ -592,12 +594,16 @@ Files representing a [splayed table](#splayed-table) may also be partitioned.
 
 ## Postfix
 
-Applying an iterator to its argument by writing it to the right, e.g. `+/` applies iterator `/` to `+`. (Not to be confused with projecting an operator on its left argument.)
+Postfix notation is when a function is written to the right of its arguments. Only iterators can be written postfix, 
+e.g. `+/` applies iterator `/` to `+`. (Not to be confused with projecting an operator on its left argument, 
+e.g. `+[1 2 3]` is a projection of the `+` operator, while `+/[1 2 3]` is a reduction of `+` over the list `1 2 3`.)
 
+:fontawesome-solid-book:
+[Iterators](../ref/iterators.md)
 
 ## Prefix
 
-Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `vx` is equivalent to `v[x]`.
+Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `v x` is equivalent to `v[x]`.
 
 :fontawesome-regular-hand-point-right:
 [Application](application.md)
@@ -820,7 +826,7 @@ A value of rank 1, i.e. a function with 1 argument, or a list of depth ≥1.
 
 ## Unary operator
 
-See **Iterator**.
+An operator with only 1 argument. Iterators are unary operators.
 
 :fontawesome-solid-book:
 [Iterators](../ref/iterators.md)
