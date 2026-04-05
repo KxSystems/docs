@@ -51,9 +51,16 @@ q)s:get`:SNewTrade/                     / s has columns mapped on demand
     5
     q)get "2+3"
     5
+    q)a:1 2 3
+    q)get `a
+    1 2 3
+    q)get `q`w`e!(1 2;3 4;5 6)
+    1 2
+    3 4
+    5 6
+    q)get (+;1;2)
+    3
     ```
-
-    <!-- FIXME: describe other uses. -->
 
 [`eval`](eval.md),
 [`value`](value.md)
