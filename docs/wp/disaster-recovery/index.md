@@ -432,7 +432,7 @@ This is usually due to a column vector being a different
 length from the rest of the table. The only method to fix it is to
 count each column file and compare, then manually saving the
 erroneous one to the correct length. This can occur when not using
-the standard save commands (.e.g [`.Q.dpft`](../../ref/dotq.md#dpft-save-table)), but rather setting each
+the standard save commands (e.g. [`.Q.dpft`](../../ref/dotq.md#dpft-save-table)), but rather setting each
 column individually, and some logic has caused the column lengths to
 vary.
 

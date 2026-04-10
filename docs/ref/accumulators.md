@@ -131,6 +131,8 @@ Matching is governed by [comparison tolerance](../basics/precision.md#comparison
 
 ### Do
 
+In its binary form, with an integer `n≥0` as the left argument, the derived function is applied `n` times.
+
 ```q
 q)dbl:2*
 q)3 dbl\2 7                                / Do
@@ -187,6 +189,9 @@ q)("j"$a=b) foo/bar                        / ?[a=b;foo bar;bar]
 
 
 ### While
+
+In its binary form, if the left argument `t` of the derived function is an applicable unary value, 
+it is applied **while** `t` applied on the result returns true or something other than `0`.
 
 ```q
 q)(10>)dbl\2                               / While

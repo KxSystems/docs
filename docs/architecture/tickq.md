@@ -127,7 +127,7 @@ Actions performed:
 * increment current date ([`.u.d`](#variables)) to next day
 * roll log if using tickerplant log, i.e.
     * close current tickerplant log ([`.u.l`](#variables))
-    * create a new tickerplant log file i.e set [`.u.l`](#variables), call [`.u.ld`](#uld) with new date
+    * create a new tickerplant log file i.e. set [`.u.l`](#variables), call [`.u.ld`](#uld) with new date
 
 ### .u.tick
 
@@ -165,7 +165,7 @@ Where `x` is current date. Returns handle of log file for that date.
 
 Actions performed:
 
-* using [`.u.L`](#variables), change last 10 chars to provided date and create log file if it doesnt yet exist
+* using [`.u.L`](#variables), change last 10 chars to provided date and create log file if it does not yet exist
 * set [`.u.i`](#variables) and [`.u.j`](#variables) to count of valid messages currently in log file
 * if log file is found to be corrupt (size bigger than size of number of valid messages) an error is returned
 * open new/existing log file

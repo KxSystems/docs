@@ -825,4 +825,4 @@ Analysis levels 7 and 8 are the most time consuming, for this reason, the defaul
 Some ideas for improvements:
 
 * run `paths`,`dotd` etc once on startup and store the results for lookup rather than regenerating at each step.
-* recovery mode if loading the hdb fails; if there is an issue with the latest partition, the hdb can fail to load. Most of the hdb variables in the `.Q` namespace (.e.g. `.Q.pv`) could be constructed on load error. However, as so much is dependent on the structure of the latest partition, it may be better to leave this to be manually investigated and fixed first.
+* recovery mode if loading the hdb fails; if there is an issue with the latest partition, the hdb can fail to load. Most of the hdb variables in the `.Q` namespace (e.g. `.Q.pv`) could be constructed on load error. However, as so much is dependent on the structure of the latest partition, it may be better to leave this to be manually investigated and fixed first.
