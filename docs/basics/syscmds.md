@@ -600,6 +600,9 @@ This should not be executed manually otherwise it can disrupt replication. It is
 :fontawesome-solid-book-open:
 [`-r` command-line option](cmdline.md#-r-replicate)
 
+:fontawesome-solid-book-open:
+[Replication](../kb/logging.md#replication)
+
 
 ## `\r` (rename)
 
