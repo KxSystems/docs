@@ -29,7 +29,7 @@ The instances will be run on the same machine for simplicity of the example, but
 
 ### Workers
 
-Start 2 worker nodes. Each will contain a very small table with different data so that we can easily identify the data received by the client. In practise, this could be an extremely large dataset.
+Start 2 worker nodes. Each will contain a very small table with different data so that we can easily identify the data received by the client. In practice, this could be an extremely large dataset.
 
 Start one worker node to listen on port 6000, e.g. `q -p 6000`
 ```q
