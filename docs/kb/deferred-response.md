@@ -82,7 +82,7 @@ Further error checking, [`.z.pc`](../ref/dotz.md#zpc-close), timeouts, sequence 
 
 ### Client
 
-Run kdb+ (`q`) and connect to the gateway. The gateway will pass the intruction to both worker nodes. 
+Run kdb+ (`q`) and connect to the gateway. The gateway will pass the instruction to both worker nodes. 
 Only when both worker nodes reply, is the [`raze`](../ref/raze.md) function applied to both sets of data to form a single data set. It is then returned to the client.
 
 ```q
