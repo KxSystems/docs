@@ -13,7 +13,7 @@ Ideally, for concurrency, all messaging would be async. However, sync messaging 
 On the server side of client request, [`.z.pg`](../ref/dotz.md#zpg-get) handles the sync request, performs the required task and returns the outcome.
 
 The sync callback [`.z.pg`](../ref/dotz.md#zpg-get) can be redefined to implement custom logic for an sync request. By using [`-30!x`](../basics/internal.md#-30x-deferred-response), `.z.pg` does not need to return the outcome. It is used to flag that the outcome will be returned later and the callback can return without any response being sent to the client.
-Once the result is ready to be sent the client, [`-30!x`](../basics/internal.md#-30x-deferred-response) is used again to return the data to the awaiting client.
+Once the result is ready, call [`-30!x`](../basics/internal.md#-30x-deferred-response) again to send the data to the waiting client.
 
 This allows other messages to be processed prior to sending a response message. 
 
