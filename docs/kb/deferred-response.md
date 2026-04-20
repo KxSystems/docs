@@ -15,7 +15,7 @@ On the server side of client request, [`.z.pg`](../ref/dotz.md#zpg-get) handles 
 The sync callback [`.z.pg`](../ref/dotz.md#zpg-get) can be redefined to implement custom logic for an sync request. By using [`-30!x`](../basics/internal.md#-30x-deferred-response), `.z.pg` does not need to return the outcome. It is used to flag that the outcome will be returned later and the callback can return without any response being sent to the client.
 Once the result is ready, call [`-30!x`](../basics/internal.md#-30x-deferred-response) again to send the data to the waiting client.
 
-This allows other messages to be processed prior to sending a response message. 
+This allows kdb+ to process other messages before sending the response.
 
 ## Example
 
