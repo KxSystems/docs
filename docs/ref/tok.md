@@ -150,14 +150,47 @@ q)"b"$" ",.Q.an
 
 ## IP address
 
+### IPv4 address as int
+
 ```q
 q)"I"$"192.168.1.34" /an IP address as an int
 -1062731486i
 ```
 
-
 [`.Q.addr`](dotq.md#addr-iphost-as-int) (IP/host as int),
 [`.Q.host`](dotq.md#host-ip-to-hostname) (IP to hostname)
+
+### IPv4 address as guid
+
+Available since 3.6 2017.09.26.
+
+```q
+q)"G"$"192.0.2.1"
+00000000-0000-0000-0000-ffffc0000201
+```
+
+### IPv6 address as guid
+
+Available since 3.6 2017.09.26.
+
+```q
+q)"G"$"2001:0DB8:85A3:0000:0000:8A2E:0370:7334"
+20010db8-85a3-0000-0000-8a2e03707334
+q)"G"$"2001:0DB8:85A3::8A2E:0370:7334"
+20010db8-85a3-0000-0000-8a2e03707334
+q)"G"$"::8A2E:0370:7334"
+00000000-0000-0000-0000-8a2e03707334
+```
+
+Representatons of an IPv4 address using IPv6 formatting
+```q
+q)"G"$"::FFFF:192.0.2.1"
+00000000-0000-0000-0000-ffffc0000201
+q)"G"$"::FFFF:c000:201"
+00000000-0000-0000-0000-ffffc0000201
+q)"G"$"192.0.2.1"
+00000000-0000-0000-0000-ffffc0000201
+```
 
 ## Timestamps
 
