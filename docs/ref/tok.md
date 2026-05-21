@@ -182,7 +182,7 @@ q)"G"$"::8A2E:0370:7334"
 00000000-0000-0000-0000-8a2e03707334
 ```
 
-Representatons of an IPv4 address using IPv6 formatting
+Representations of an IPv4 address using IPv6 formatting:
 ```q
 q)"G"$"::FFFF:192.0.2.1"
 00000000-0000-0000-0000-ffffc0000201
