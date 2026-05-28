@@ -264,9 +264,15 @@ loop
 [](){#main-thread-only}
 main thread only
 
-:   E.g. ``-36!(`:kf;"pwd")``
+[](){#match}
+match
 
-:   Not executed from main thread
+:   E.g.
+    ```q
+    (1):2
+    (1 2!(one;two)):1 3!"ac"
+    ```
+:   [Pattern match](pattern.md) encountered a non-matching value or missing key
 
 [](){#mismatch}
 mismatch
