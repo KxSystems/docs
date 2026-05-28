@@ -38,7 +38,6 @@ last_updated: January 2026
  **Module support**
  [m.SP     module search path](#msp-module-search-path)
 
-**IPC**                               **Segmented database state**
  **Debug/Profile**                     **Partitioned database state**
  [bt       backtrace](#bt-backtrace)                [bv          build vp](#bv-build-vp)
  [prf0     code profiler](#prf0-code-profiler)            [bvi         build incremental vp](#bvi-build-incremental-vp)
