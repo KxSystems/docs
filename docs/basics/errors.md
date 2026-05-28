@@ -264,6 +264,10 @@ loop
 [](){#main-thread-only}
 main thread only
 
+:   E.g. ``-36!(`:kf;"pwd")``
+
+:   Not executed from main thread
+
 [](){#match}
 match
 
