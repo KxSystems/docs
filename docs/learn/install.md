@@ -9,40 +9,21 @@ _You can run kdb+ on Linux, macOS, or Windows_
 
 ## :fontawesome-solid-download: Step 1: Download
 
-=== "Non-commercial users"
+Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). Credentials are available from the customer's [Designated Contacts](licensing.md#obtain-a-license-key-file).
 
-    <button style="background: #0088ff; border-radius: 5px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); padding: 10px;" type="button">
-      <a href="https://kx.com/kdb-personal-edition-download/" style="color: white">
-        <span style="font-size: 2em;">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
-        :fontawesome-brands-linux:
-        :fontawesome-brands-apple:
-        :fontawesome-brands-windows:
-      </a>
-    </button>
+Requires a 64-bit interpreter and a `k4.lic` or `kc.lic` license-key file 
 
-    The 64-bit kdb+ Personal Edition interpreter is licensed for non-commercial use. 
-    It is not licensed for use on cloud servers.
-    
-    The provided license-key file (`kc.lic`) requires an always-on Internet connection. 
+OR
 
+a 32-bit interpreter.
 
-=== "Commercial users"
+!!! warning "32-bit applications will not run in macOS 10.15+ (Catalina and later)"
 
-    Commercial versions of kdb+ are available to customers from [downloads.kx.com](https://downloads.kx.com). Credentials are available from the customer's [Designated Contacts](licensing.md#obtain-a-license-key-file).
+!!! tip "Internal distribution at customer sites"
 
-    Requires a 64-bit interpreter and a `k4.lic` or `kc.lic` license-key file 
+    Most customers download the latest release of kdb+ (along with the accompanying `README.txt`, the detailed change list) and make a limited number of approved kdb+ versions available from a central file server.
 
-    OR
-
-    a 32-bit interpreter.
-
-    !!! warning "32-bit applications will not run in macOS 10.15+ (Catalina and later)"
-
-    !!! tip "Internal distribution at customer sites"
-
-        Most customers download the latest release of kdb+ (along with the accompanying `README.txt`, the detailed change list) and make a limited number of approved kdb+ versions available from a central file server.
-
-        Designated Contacts should encourage developers to keep production systems up to date with these versions of kdb+. This can greatly simplify development, deployment and debugging.
+    Designated Contacts should encourage developers to keep production systems up to date with these versions of kdb+. This can greatly simplify development, deployment and debugging.
 
 
 !!! info "Platforms and versions"

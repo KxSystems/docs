@@ -18,23 +18,6 @@ If both are found, the `kc.lic` file is used.
 
 ## Obtain a license key file
 
-A license file can be a commercial license or an on-demand person license (for non-commercial use).
-
-### On-Demand License
-
-It requires a `kc.lic` license key file and an always-on internet connection to operate.
-
-#### Licensing server
-
-If kdb+ with an on-demand license cannot contact the KX license server it will abort with a timestamped message.
-
-```q
-'2018.03.28T11:20:03.831 couldn't connect to license daemon -- exiting
-```
-
-If an HTTP proxy is required, the environment variables `http_proxy` or `HTTP_PROXY` define the URL of the HTTP proxy to use.
-Since 4.1t 2022.11.01,4.0 2022.10.26,4.0ce 2022.09.16 the on-demand system honours the NO_PROXY/no_proxy environment variables, with the lowercase version taking precedence.
-
 ### Commercial License
 
 Use of commercial kdb+ is covered by your license agreement with KX.
