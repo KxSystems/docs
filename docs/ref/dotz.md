@@ -82,7 +82,6 @@ The return value depends on whether it is invoked in an IPC callback or not.
 * **Not invoking in an IPC callback**
    <br>Returns the current IP address associated with the hostname.
    <br>This pre-populated value is equivalent to passing [`.z.h`](#zh-host) to [`.Q.addr`](dotq.md#host-ip-to-hostname) to find the IP address of the current host.
-
    ```q
    q).z.a
    -1408172030i
@@ -93,23 +92,18 @@ The return value depends on whether it is invoked in an IPC callback or not.
 * **Invoking in an IPC callback**
    <br>When invoked inside a `.z.p*` callback via a TCP/IP connection, it is the IP address of the client session, not the current session.
    For example, connecting from a remote machine:
-
    ```q
    q)h:hopen myhost:1234
    q)h"\"i\"$0x0 vs .z.a"
    192 168 65 1i
    ```
-
    or from same machine:
-
    ```q
    q)h:hopen 1234
    q)h"\"i\"$0x0 vs .z.a"
    127 0 0 1i
    ```
-
    When invoked via a Unix Domain Socket, it is 0.
-
    ```q
    q)h:hopen `:unix://1234
    q)h".z.a"
