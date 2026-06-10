@@ -635,6 +635,8 @@ Create a table keyed by `n` first columns if number of columns exceeds `n`.
 
 Returns null if the argument `x` is not a table.
 
+Note that this function does **not** take ownership of `x`.
+
 
 ### `kp` (create string)
 
