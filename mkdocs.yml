@@ -17,6 +17,7 @@ extra_javascript:
   - https://code.kx.com/scripts/tex-mml-chtml.js
   - scripts/qsearch.js # site-specific search engine
   - scripts/strip-repl-prompts.js # Removes q), >>>, and ... prompts from copied code blocks (keeps prompts visible in docs)
+  - scripts/init_kapa_widget.js    
 
 markdown_extensions:
   - abbr
