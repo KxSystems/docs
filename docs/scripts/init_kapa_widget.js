@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   script.setAttribute("data-modal-title-font-size", "18px");  
   script.setAttribute("data-button-text-color", "#060000");
   script.setAttribute("data-modal-disclaimer", "This is an experimental custom LLM for answering technical questions about KX products. Answers are based **only** on KX documentation and support sources, but may not be fully accurate so please use your best judgement. Don't forget to rate the answers and give feedback!");  
-  script.setAttribute("data-modal-example-questions", "How do I get started with kdb+?,What's the latest Insights features?,How do I learn q?,How do I enable kdb+ compression?");  
+  script.setAttribute("data-modal-example-questions", "How do I get started with kdb+?,What's new in kdb+?,How do I get started with KDB-X?,How do I learn q?");  
   script.setAttribute("data-mcp-enabled", "true");  
   script.setAttribute("data-mcp-server-url", "https://kx.mcp.kapa.ai");  
   script.setAttribute("data-search-mode-enabled", "true");  
