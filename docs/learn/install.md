@@ -1,11 +1,16 @@
 ---
 title: Installing kdb+ | Learn | kdb+ and q documentation
 description: How to install kdb+ on Linux, macOS, or Windows
+keywords: kdb+, KDB-X Community Edition, free trial, non-commercial version
 ---
 # :fontawesome-solid-power-off: Installing kdb+
 
 
-_You can run kdb+ on Linux, macOS, or Windows_
+_You can run kdb+ on Linux, macOS, or Windows._
+
+!!! tip "Get KDB-X Community Edition"
+
+    You can get a free, non time-limited license for the next evolution of kdb+ with KDB-X Community Edition. For more information and to get started right away, see [Get KDB-X Community Edition](https://developer.kx.com/products/kdb-x/install).
 
 ## :fontawesome-solid-download: Step 1: Download
 
