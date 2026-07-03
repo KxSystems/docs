@@ -18,6 +18,12 @@ If both are found, the `kc.lic` file is used.
 
 ## Obtain a license key file
 
+### Non-Commercial License
+
+!!! tip "Get KDB-X Community Edition"
+
+    You can get a free, non time-limited license for the next evolution of kdb+ with KDB-X Community Edition. For more information and to get started right away, see [Get KDB-X Community Edition](https://developer.kx.com/products/kdb-x/install).
+
 ### Commercial License
 
 Use of commercial kdb+ is covered by your license agreement with KX.
