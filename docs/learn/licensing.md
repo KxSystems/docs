@@ -18,7 +18,7 @@ If both are found, the `kc.lic` file is used.
 
 ## Obtain a license key file
 
-### Non-Commercial License
+You can get a commercial license for kdb+ or you can use KDB-X Community Edition, which is free for personal and commercial use.
 
 !!! tip "Get KDB-X Community Edition"
 
