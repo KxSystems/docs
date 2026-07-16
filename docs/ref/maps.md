@@ -339,6 +339,17 @@ q)0 1 0'["a";"xyz"]  /atom "a" repeated as needed
 "aya"
 ```
 
+Dictionaries can be used instead of lists, as long as the lengths of all lists and dictionaries are the same. All dictionaries must have the same keys in the same order.
+
+```q
+q)0 2 0'[`a`b`c!"abc";"xyz";"123";`a`b`c!"789"]
+"a2c"
+q)0 2 0'[`a`b`c!"abc";"xyz";"123";`a`b!"78"]
+'length
+q)0 2 0'[`a`b`c!"abc";"xyz";"123";`b`a`c!"789"]
+'domain
+```
+
 You can use Case to select between record fields according to a test on some other field.
 
 Suppose we have lists `h` and `o` of home and office phone numbers, and a third list `p` indicating at which number the subject prefers to be called.
