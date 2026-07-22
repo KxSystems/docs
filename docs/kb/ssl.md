@@ -174,10 +174,25 @@ When an IP is used to connect via TLS/SSL, checks if the certificate matches a s
                 IP Address:127.0.0.1
    ```
 
+#### SSL_MINPROTOCOL
+
+Sets the minimum supported TLS protocol. Accepted values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3` and `None` for no limit. Default: `TLSv1`. Requires OpenSSL 1.1.0 or later.
+Since 4.1 2026.04.01, kdbx 2026.04.01.
+
+#### SSL_MAXPROTOCOL
+
+Sets the minimum supported TLS protocol. Accepted values are `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3` and `None` for no limit. Requires OpenSSL 1.1.0 or later.
+Since 4.1 2026.04.01, kdbx 2026.04.01.
+
+#### SSL_CIPHERSUITES
+
+Sets the available ciphersuites for TLSv1.3. The value is a colon-separated list of TLSv1.3 ciphersuite names in order of preference. 
+This list will be combined with any configured TLSv1.2 ([`SSL_CIPHER_LIST`](#ssl_cipher_list)). To display the ciphersuites available on your system run `openssl ciphers -s -tls1_3`. Requires OpenSSL 1.1.0 or later. 
+Since 4.1 2026.04.01, kdbx 2026.04.01.
+
 ### Checking Configuration
 
 Configured TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../basics/internal.md#-26x-ssl).
-
 
 ## Certificates
 
