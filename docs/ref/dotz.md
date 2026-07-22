@@ -222,6 +222,7 @@ Displays information on the following:
 - `CIPHER` is the name of cipher used for the connection
 - `PROTOCOL` is the name of the protocol used for the connection, for example `` `TLSv1.2 ``
 - `CERT` is the X509 certificate the peer presented. It is not present if the peer certificate was not provided.
+- `LOCAL_CERT` contains information on the local certificate, if one is selected during the connection handshake. It contains a dictionary with key values `SUBJECT`,`ISSUER`,`SERIALNUMBER`,`NOTVALIDBEFORE` and `NOTVALIDAFTER`. Since kdbx 2026.01.22.
 
 For example, the following connects to a server, then runs `.z.e` on the server to gain information on the TLS connection handle used by the client. Therefore `CERT` is the client certificate (peer of the server). 
 If [`SSL_VERIFY_CLIENT`](../kb/ssl.md#ssl_verify_client) is not enabled on the server, the client certificate is not requested by the server, and therefore would not be displayed.
