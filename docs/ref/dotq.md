@@ -62,7 +62,7 @@ last_updated: January 2026
  [hg       HTTP get](#hg-http-get)
  [host     IP to hostname](#host-ip-to-hostname)           **File I/O**
  [hp       HTTP post](#hp-http-post)                [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
-                                   [Xf          create file](#xf-create-file)
+ [ipc      ipc settings](#ipc-ipc-settings)             [Xf          create file](#xf-create-file)
 </div>
 
 Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](../basics/namespaces.md).
@@ -1398,6 +1398,20 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
     ```q
     q)select from trade where date=2010.01.07,i within(start;start+chunkSize)
     ````
+## `ipc` (ipc settings)
+
+Compression can be turned on or off for a given handle. This enables or disables ipc compression for outgoing data.
+
+```syntax
+.Q.ipc[x;y]
+```
+
+Where `x` is a connection handle and `y` is a dictionary. The dictionary uses a key of symbol `z` for compression, with a boolean value to turn compression on or off, for example `.Q.ipc[h;([z:0b])]` switches off compression for handle `h`.
+Connection handles are returned from [`hopen`](hopen.md) when creating a connection, or within callback functions using [`.z.w`](dotz.md#zw-handle).
+
+The standard [compression rules](../basics/ipc.md#compression) still apply when compression enabled i.e. data should be >2000bytes and compress to less than half the size in order to be compressed.
+
+Since 4.1 2026.07.06, kdbx 2026.07.06.
 
 ## `j10` (encode binhex)
 
