@@ -463,7 +463,8 @@ If [logging](../kb/logging.md) is enabled, the command [checkpoints](../kb/loggi
 
 :fontawesome-solid-book:
 [`load`](../ref/load.md),
-[`.Q.l`](../ref/dotq.md#l-load) (load)
+[`.Q.l`](../ref/dotq.md#l-load) (load),
+[`\_`](#_-hide-q-code) (hide q code)
 <br>
 :fontawesome-solid-graduation-cap:
 [Logging](../kb/logging.md)
@@ -1047,6 +1048,9 @@ q)read0`:t1.q_          / file contents are scrambled
 "S\014%\210\0273\245"
 ```
 
+:fontawesome-solid-book:
+[`\l`](#l-load-file-or-directory) (load file or directory)
+<br>
 :fontawesome-solid-book-open:
 [Protecting proprietary code](../wp/permissions/index.md#protecting-proprietary-code)
 
