@@ -241,6 +241,28 @@ q)((a;b):`F):3 4e
              ^
 ```
 
+Combining type check with a list or dictionary pattern allows element-wise type checking:
+```q
+q)(a:`i;b:`j):(1i;2j)
+q)(a:`i;b:`j):(1i;2h)
+'type
+  [0]  (a:`i;b:`j):(1i;2h)
+              ^
+q)([a:a:`i;b:b:`j]):([a:1i;b:2j])
+q)([a:a:`i;b:b:`j]):([a:1i;b:2h])
+'type
+  [0]  ([a:a:`i;b:b:`j]):([a:1i;b:2h])
+                   ^
+```
+Note that the form ``([a:`i])`` is a dictionary pattern that matches the value at the key `a` to a symbol, so it doesn't contain a type check pattern. Additionally, using a null pattern in a type check for a dictionary element requires parentheses:
+```q
+q)([a:(:`i);b:(:`j)]):([a:1i;b:2j])
+q)([a:(:`i);b:(:`j)]):([a:1i;b:2h])
+'type
+  [0]  ([a:(:`i);b:(:`j)]):([a:1i;b:2h])
+                    ^
+```
+
 ### Filter function
 
 The filter function pattern takes the form ```p:expr``` where `expr` is an expression that returns a callable (such as a lambda, projection or operator). The result of `expr` is called on the value from the assigned value, and the result is matched to `p`.
