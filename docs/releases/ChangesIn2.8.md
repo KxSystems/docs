@@ -3,11 +3,9 @@ title: Changes in 2.8 – Releases – kdb+ and q documentation
 description: Changes to V2.8 of kdb+ from the previous version
 author: Charles Skelton
 ---
-# Changes in 2.8
+# Highlights in 2.8
 
-
-
-Below is a summary of changes from V2.7. Commercially licensed users may obtain the detailed change list / release notes from (http://downloads.kx.com)
+Below is a summary of changes from V2.8. 
 
 
 ## Production release date

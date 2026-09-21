@@ -3,14 +3,8 @@ title: New features in the 2.4 release of kdb+ – Releases – kdb+ and q docum
 description: New features in the 2.4 release of kdb+
 author: Charles Skelton
 ---
-# New features in the 2.4 release of kdb+
+# Highlights in 2.4 
 
-
-
-
-
-**Detailed change list / release notes**
-Commercially licensed users may obtain the detailed change list / release notes from <http://kxdownloads.com>
 
 ## General info
 

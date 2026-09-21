@@ -4,9 +4,7 @@ description: Changes to V4.1 of kdb+ from the previous version
 authors: [Charles Skelton, Simon Shanks, Michaela Woods]
 date: [February 2024]
 ---
-# Changes in 4.1
-
-The README.txt of the current 4.1 release contains a full list of changes. Some of the highlights are listed below.
+# Highlights in 4.1
 
 ## Production release date
 

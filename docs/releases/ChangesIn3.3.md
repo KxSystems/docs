@@ -3,12 +3,9 @@ title: Changes in 3.3 – Releases – kdb+ and q documentation
 description: Changes to V3.3 of kdb+ from the previous version
 author: Charles Skelton
 ---
-# Changes in 3.3
+# Highlights in 3.3
 
-
-
-Below is a summary of changes from V3.2. Commercially-licensed users may obtain the detailed change list / release notes from [downloads.kx.com](http://downloads.kx.com)
-
+Below is a summary of changes from V3.3.
 
 ## Production release date
 
