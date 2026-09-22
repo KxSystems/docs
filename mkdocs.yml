@@ -20,6 +20,9 @@ extra_javascript:
   # Kapa "Ask AI" is injected by GTM container GTM-PG938LS.
   # GA4 remains managed by GTM; do not add a separate gtag snippet.
 
+hooks:
+  - tools/markdown_versions.py
+
 markdown_extensions:
   - abbr
   - admonition
