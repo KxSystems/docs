@@ -290,6 +290,8 @@ If your table exists at least in the latest partition (so there is a prototype f
 
 !!! note "Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior."
 
+`.Q.bv` and `.Q.bvi` do not currently work with linked columns
+
 ```q
 q)n:100
 q)t:([]time:.z.T+til n;sym:n?`2;num:n)
