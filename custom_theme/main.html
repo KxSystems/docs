@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+
+{% if page %}
+<link rel="alternate" type="text/markdown" href="/q/{{ page.file.src_uri }}">
+{% endif %}
+<link rel="describedby" href="/q/llms.txt">
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
