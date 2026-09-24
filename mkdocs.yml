@@ -17,7 +17,8 @@ extra_javascript:
   - https://code.kx.com/scripts/tex-mml-chtml.js
   - scripts/qsearch.js # site-specific search engine
   - scripts/strip-repl-prompts.js # Removes q), >>>, and ... prompts from copied code blocks (keeps prompts visible in docs)
-  - scripts/init_kapa_widget.js    
+  # Kapa "Ask AI" is injected by GTM container GTM-PG938LS.
+  # GA4 remains managed by GTM; do not add a separate gtag snippet.
 
 markdown_extensions:
   - abbr
