@@ -290,7 +290,7 @@ If your table exists at least in the latest partition (so there is a prototype f
 
 !!! note "Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior."
 
-`.Q.bv` and `.Q.bvi` do not currently work with linked columns
+`.Q.bv` does not currently work with linked columns.
 
 ```q
 q)n:100
@@ -314,6 +314,8 @@ q)@[get;"select from tt";-2@]; / no error
 ## `bvi` (build incremental vp)
 
 It offers the same functionality as [`.Q.bv`](#bv-build-vp), but scans only new partitions loaded in the hdb since the last time `.Q.bv` or `.Q.bvi` was run. Since v4.1 2024.09.13.
+
+`.Q.bvi` does not currently work with linked columns.
 
 ## `Cf` (create empty nested char file)
 
