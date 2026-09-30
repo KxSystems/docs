@@ -57,9 +57,9 @@ q)("apple";"banana";"coffee") bin ("anise";"berry";"curry")
 The result `r` can be interpreted as follows: for an atom `y`, `r` is an integer atom whose value is either a valid index of `x` or `-1`. In general:
 
 ```txt
-r[i]=-1            iff y[i]<x[0]
-r[i]=j             iff j is last k such that x[k]<=y[i]<=x[k+1]
-r[i]=n-1           iff x[n-1]<=y[i]
+r[i]=-1            if y[i]<x[0]
+r[i]=j             if j is last k such that x[k]<=y[i]<=x[k+1]
+r[i]=n-1           if x[n-1]<=y[i]
 ```
 
 and
