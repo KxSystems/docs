@@ -1,6 +1,6 @@
 ---
 title: Reference architecture | Google Cloud | kdb+ and q documentation
-description:
+description: Reference architecture for Google Cloud
 date: June 2021
 author: Ferenc Bodon
 ---

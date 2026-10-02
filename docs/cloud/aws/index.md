@@ -1,6 +1,6 @@
 ---
 title: Reference architecture | AWS | KX documentation
-description:
+description: architectural pattern for kdb+tick in Amazon Web Services
 date: June 2021
 authors: Eric Corcoran, Ferenc Bodon
 ---

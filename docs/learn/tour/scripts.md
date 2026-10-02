@@ -1,5 +1,6 @@
 ---
 title: Scripting in q | A tour of the q programming language | kdb+ and q documentation
+description: a tour of scripting in q
 author: Stephen Taylor
 date: February 2020
 ---

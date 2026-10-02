@@ -1,3 +1,9 @@
+---
+title: Q client for Bloomberg
+author: unknown
+date: October 2025
+description: Feedhandler for Bloomberg Open API written in q
+---
 # Q client for Bloomberg
 
 
