@@ -1,6 +1,6 @@
 ---
 title: Code profiler for q | Knowledge Base | Documentation for q and kdb+
-description:
+description: sampling profiler for q for low-overhead instrumentation of code performance characteristics
 author: Oleg Finkelshteyn
 date: March 2020
 ---

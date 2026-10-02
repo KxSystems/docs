@@ -1,3 +1,8 @@
+---
+title: A Case Study with KX Nano for choosing the Right File System for kdb+ | kdb+ and q documentation
+description: A Case Study with KX Nano for choosing the Right File System for kdb+
+author: Ferenc Bodon
+---
 # Choosing the Right File System for kdb+: A Case Study with KX Nano
 
 The performance of a kdb+ system is critically dependent on the throughput and latency of its underlying storage. In a Linux environment, the file system is the foundational layer that enables data management on a given storage partition.

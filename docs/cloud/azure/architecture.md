@@ -1,3 +1,9 @@
+---
+title: Reference architecture | Azure | kdb+ and q documentation
+description: Reference architecture for Azure
+date: June 2021
+author: Ferenc Bodon
+---
 # Reference architecture for Azure
 
 <!-- kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.

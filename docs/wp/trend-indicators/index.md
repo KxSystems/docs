@@ -2,7 +2,7 @@
 title: Implementing trend indicators in kdb+ | Documentation for kdb+ and q
 author: James Galligan
 date: April 2020
-description: Using kdb+ to produce trade analytics – indicators and oscillators traders commonly use to trigger buy/sell signals and clarify their picture of the market.
+description: Using kdb+ to produce trade analytics. indicators and oscillators traders commonly use to trigger buy/sell signals and clarify their picture of the market.
 ---
 # Implementing trend indicators in kdb+
 

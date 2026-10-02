@@ -1,6 +1,6 @@
 ---
 title: Summarize and Say | Q by Puzzles | Learn | kdb+ and q documentation
-description: A
+description: Q by Puzzles. Summarize and say.
 author: Stephen Taylor
 date: December 2020
 ---
