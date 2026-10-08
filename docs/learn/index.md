@@ -14,7 +14,7 @@ author: Stephen Taylor
 [<span style="font-size: 3em">:fontawesome-solid-download:</span>
 <br/>
 Download<br/>
-:fontawesome-brands-linux: :fontawesome-brands-apple: :fontawesome-brands-windows: ](https://developer.kx.com/products/kdb-x/install "Download free kdb+ for non-commercial use")
+:fontawesome-brands-linux: :fontawesome-brands-apple: :fontawesome-brands-windows: ](https://developer.kx.com/products/kdb-x/install "Download Community Edition")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-power-off:</span><br/>
