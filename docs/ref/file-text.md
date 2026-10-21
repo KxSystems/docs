@@ -176,11 +176,11 @@ _Interpret a field-delimited string, list of strings, or file as a list or matri
 Where
 
 - `y` is one of the following:
-  - string
-  - list of strings
-  - file symbol
-  - 2-list (filesymbol;offset) where offset is a non-zero integer
-  - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
+    - string
+    - list of strings
+    - file symbol
+    - 2-list (filesymbol;offset) where offset is a non-zero integer
+    - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
 - `types` is a string of [column type codes](#column-types-and-formats) in upper case
 - `delimiter` is a char atom or 1-item list
 - `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`
@@ -261,10 +261,10 @@ _Interpret a fixed-format list of strings or file as a list or matrix_
 Where
 
 - `y` is one of the following:
-  - list of strings
-  - file symbol
-  - 2-list (filesymbol;offset) where offset is a non-zero integer
-  - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
+    - list of strings
+    - file symbol
+    - 2-list (filesymbol;offset) where offset is a non-zero integer
+    - 3-list (filesymbol;offset;length) where offset and length are non-zero integers
 - `types` is a list of [column types](#column-types-and-formats) in upper case
 - `widths` is an int vector of field widths
 
