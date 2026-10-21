@@ -18,12 +18,14 @@ x 1: y     1:[x;y]
 
 Where
 
-- `x` is a 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) of which the order determines whether the data is parsed as little-endian or big-endian
-- `y` is either a
-  - file symbol to repeatedly read all available records (specified by `x`) from a file
-  - 3-element list containing the file (symbol), offset (long), and length (long). Enables repeatedly reading all available records (specified by `x`) from a file, which stops after the given byte length, starting 'offset' bytes from the start of the file.
-  - string
-  - byte sequence
+* `x` is either a
+    * 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) to parse as little-endian
+    * 2-item list (an int vector of widths and a string of [types](#column-types-and-widths)) to parse as big-endian
+* `y` is either a
+    * file symbol to repeatedly read all available records (specified by `x`) from a file
+    * 3-element list containing the file (symbol), offset (long), and length (long). Enables repeatedly reading all available records (specified by `x`) from a file, which stops after the given byte length, starting 'offset' bytes from the start of the file.
+    * string
+    * byte sequence
 
 returns the content of `y` as a matrix.
 
