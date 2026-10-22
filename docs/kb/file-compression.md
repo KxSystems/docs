@@ -189,9 +189,9 @@ There are three key aspects of compression algorithms:
 
 **There is no single best compression algorithm that outperforms all others in all aspects.** You need to select compression (or avoid compression) based on your priorities:
 
-  - Is achieving the fastest possible query execution more important to you, or do you prefer to minimize storage costs?
-  - Does your kdb+ system handle a high volume of incoming data, requiring a reliable intraday write process to manage the data effectively?
-  - Are you looking for a general solution that provides balanced performance across various aspects without excelling or underperforming in any particular area?
+- Is achieving the fastest possible query execution more important to you, or do you prefer to minimize storage costs?
+- Does your kdb+ system handle a high volume of incoming data, requiring a reliable intraday write process to manage the data effectively?
+- Are you looking for a general solution that provides balanced performance across various aspects without excelling or underperforming in any particular area?
 
 A single thread with full use of a core can decompress approx 300MB/s, depending on data/algorithm and level.
 

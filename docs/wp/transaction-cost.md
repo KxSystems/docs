@@ -15,8 +15,8 @@ With the ever-increasing volatility of financial markets and multitude of tradin
 
 One attribute that is common across many TCA functions is the need to align market data with trade execution data and summarize the differences between perceived versus actual trade prices. kdb+ enables users to run joins and update benchmarks on a tick-by-tick basis intra day and scan hundreds of billions of records on disk in seconds. The two use cases synonymous with TCA are:
 
-  - Real-time and historical slippage calculations
-  - Market impact profiling
+- Real-time and historical slippage calculations
+- Market impact profiling
 
 Slippage, at its most basic, is a measure of the difference between the price at the time of your decision and the price actually paid at execution, i.e. the fill message reported by the broker. Slippage can be influenced by many things such as commissions, settlement costs and latency between venues and market impact.
 

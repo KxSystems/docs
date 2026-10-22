@@ -122,11 +122,11 @@ upd:{[t;x]
 
 The tickerplant described above differs from a standard tickerplant in a number of ways. A standard tickerplant would:
 
-  - Check to see if the log file already exists on startup and then read the number of messages it contains
-  - The `sub` function could be enhanced to handle subscribing for certain syms only
-  - The `upd` function could add a time to the data if it is not present
-  - The `upd` function would only send ``(`upd;t;x)`` to the subscribers
-  - At end of day (EOD) it would send a message to any subscribers and roll the log file
+- Check to see if the log file already exists on startup and then read the number of messages it contains
+- The `sub` function could be enhanced to handle subscribing for certain syms only
+- The `upd` function could add a time to the data if it is not present
+- The `upd` function would only send ``(`upd;t;x)`` to the subscribers
+- At end of day (EOD) it would send a message to any subscribers and roll the log file
 
 In the tickerplant described above, we are capturing some extra timing metrics which will allow us to profile the messaging and throughput statistics for the tickerplant. These are described below in [_Tests_](#tests).
 
@@ -155,9 +155,9 @@ h:hopen 8099; h(`sub;`trade)
 
 Again, the RDB described here differs from a standard RDB. A standard RDB would:
 
-  - Replay the tickerplant log file on startup to get trades from earlier in the day
-  - `upd` would only take 2 arguments: the table name and data
-  - There would be an EOD function defined which would write intra-day tables to disk and then empty the tables
+- Replay the tickerplant log file on startup to get trades from earlier in the day
+- `upd` would only take 2 arguments: the table name and data
+- There would be an EOD function defined which would write intra-day tables to disk and then empty the tables
 
 Similarly to the TP code, the code for the RDB records some timing metrics to measure throughput on the RDB. These are described next.
 
@@ -187,12 +187,11 @@ RDB CPU      | CPU usage of the RDB seen using `top` (with the timing code in th
 
 Testing specifications:
 
-  - All tests were run on 64-bit Linux with eight CPUs, using kdb+ 3.1 2014.02.08.
-  - The tickerplant is writing to local disk and the write speed is 400MB/s.
-  - All the processes run on the same server and are run using `taskset`. Note that kdb+ does not implement IPC compression when publishing to localhost.
-  - Each test is run until the median times stop changing, which takes roughly 1 or 2 minutes.
+- All tests were run on 64-bit Linux with eight CPUs, using kdb+ 3.1 2014.02.08.
+- The tickerplant is writing to local disk and the write speed is 400MB/s.
+- All the processes run on the same server and are run using `taskset`. Note that kdb+ does not implement IPC compression when publishing to localhost.
+- Each test is run until the median times stop changing, which takes roughly 1 or 2 minutes.
     
-
 ### Number of rows in each update
 
 In this test we will vary the number of rows sent in each update by
