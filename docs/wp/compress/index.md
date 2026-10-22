@@ -152,10 +152,10 @@ In some cases, the extra precision afforded by longs is required only for a smal
 
 The user-specifiable parameters for compression provide a lot of room for experimentation and customization, according to the demands of a particular system. For a given use case, the choice of compression parameters should be informed by a number of factors:
 
-  - CPU time taken to perform the compression
-  - change in disk I/O time
-  - compression ratio achieved
-  - usage patterns for the on-disk data
+- CPU time taken to perform the compression
+- change in disk I/O time
+- compression ratio achieved
+- usage patterns for the on-disk data
 
 The relative weighting of these factors will vary from one system to another. If reduction in physical disk usage is the primary motivating concern behind the use of compression, then naturally the compression ratio itself must be maximized, while constraining the other parameters to acceptable levels.
 
@@ -186,19 +186,17 @@ quote:([]sym:asc n?`3; time:"p"$st+((et-st)%n-1)*til n;
   bp:n?1000.; ap:n?1000.; bs:n?100; as:n?100)
 ```
 
-
 ### Procedure
 
 The above test tables were saved to disk, both uncompressed and compressed using the kdb+ IPC algorithm, with low, mid- and high-range logical block sizes.
 
 The relative changes in performance (compressed vs uncompressed) of the following query types were measured:
 
-  - Select all data from the table
-  - Select all data for a subset of symbols
-  - Aggregate values by symbol
-  - Aggregate values by symbol and time bucket
-  - As-of join straight from disk
-
+- Select all data from the table
+- Select all data for a subset of symbols
+- Aggregate values by symbol
+- Aggregate values by symbol and time bucket
+- As-of join straight from disk
 
 ### Results
 

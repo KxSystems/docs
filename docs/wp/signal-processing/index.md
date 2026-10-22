@@ -52,10 +52,10 @@ analysis and storage of large volumes of sensor data.
 The technical specifications for the machine used to perform the
 computations described in this paper are as follows:
 
-  -   CPU: Intel® Core™i7 Quad Core Processor i7-7700 (3.6GHz) 8MB Cache
-  -   RAM: 16GB Corsair 2133MHz SODIMM DDR4 (1 x 16GB)
-  -   OS: Windows 10 64-bit
-  -   kdb+ 3.5 2017.10.11
+-   CPU: Intel® Core™i7 Quad Core Processor i7-7700 (3.6GHz) 8MB Cache
+-   RAM: 16GB Corsair 2133MHz SODIMM DDR4 (1 x 16GB)
+-   OS: Windows 10 64-bit
+-   kdb+ 3.5 2017.10.11
 
 
 ## Basic steps for signal processing

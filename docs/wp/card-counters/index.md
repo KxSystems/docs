@@ -143,9 +143,9 @@ All card-counting methods require sound comprehension of basic strategy, which i
 
 With basic strategy, a number of permutations exist depending on the player’s hand type and the dealers shown card. The different hand types are;
 
-  - Hard: any two-card total which does not include an Ace
-  - Soft: any two-card total which includes an Ace
-  - Pair: two of the same cards
+- Hard: any two-card total which does not include an Ace
+- Soft: any two-card total which includes an Ace
+- Pair: two of the same cards
 
 The card-counting algorithms described below will use basic strategy to decide whether they should hit (H), stick (S), double (D) or split (SP), by performing a look-up in the corresponding dictionaries.
 
@@ -254,9 +254,9 @@ The Zen Count has some similarities to the Hi-Lo system, but it’s a little mor
 
 Including basic strategy, variation is what separates the good card counters from the professionals. Basic strategy explains the best possible move for you to make on average. However, as the count increases or decreases, some of the moves basic strategy tells you to do may no longer be the correct decision. Looking at three scenarios within the advanced card-counting algorithm:
 
-  - True count is less than or equal to -1
-  - The player’s hand sum is 14
-  - The dealer’s first card is a 5
+- True count is less than or equal to -1
+- The player’s hand sum is 14
+- The dealer’s first card is a 5
 
 Basic strategy suggests a player should stick, however the variation strategy opts to double, due to the higher probability of obtaining a low card. Behind the scenes, the advanced algorithm, along with the Zen Card Counting system, uses the simple lookup dictionary of the basic strategy to determine initially whether to hit, stick, double or split. However, instead of returning this result immediately it then identifies its hand type (hard/soft/pair) so that it can check within the variation functions whether or not, given the current count, another result should be chosen. Below is an example of the variation function with a ‘hard’ hand type.
 

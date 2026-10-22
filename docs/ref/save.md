@@ -20,15 +20,15 @@ Where `x` is a symbol atom or vector of the form `[path/to/]v[.ext]` in which
 
 - `v` is the name of a global variable
 - `path/to/` is a file path (optional). If a file
-  - exists, it is overwritten
-  - does not exist, it is created, with any required parent directories
+    - exists, it is overwritten
+    - does not exist, it is created, with any required parent directories
 - `.ext` is a file extension (optional) which effects the file content format. Options are:
-  - `(none)` for binary format
-  - `csv` for comma-separated values
-  - `txt` for plain text)
-  - `xls` for Excel spreadsheet format
-  - `xml` for Extensible Markup Language (XML))
-  - `json` for JavaScript Object Notation (JSON) Since v3.2 2014.07.31.
+    - `(none)` for binary format
+    - `csv` for comma-separated values
+    - `txt` for plain text)
+    - `xls` for Excel spreadsheet format
+    - `xml` for Extensible Markup Language (XML))
+    - `json` for JavaScript Object Notation (JSON) Since v3.2 2014.07.31.
 
 writes global variable/s `v` etc. to file and returns the filename/s.
 
