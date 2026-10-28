@@ -1,4 +1,4 @@
-copyright: '©2026 KX. All Rights Reserved. KX® and kdb+ are registered trademarks of KX Systems, Inc., a subsidiary of KX Software Limited.'
+copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>©2026 KX. All Rights Reserved. KX® and kdb+ are registered trademarks of KX Systems, Inc., a subsidiary of KX Software Limited.'
 
 extra_css:
   - https://code.kx.com/stylesheets/2021.css # DO NOT ALTER
