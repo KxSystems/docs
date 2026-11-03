@@ -51,6 +51,7 @@ Free for all use.
 -   [qStudio](http://www.timestored.com/qstudio/), a cross-platform IDE with charting and autocompletion by TimeStored 
 -   [Q Insight Pad](http://www.qinsightpad.com) is an IDE for Windows
 -   :fontawesome-brands-github: [kxcontrib/cburke/qconsole](https://github.com/kxcontrib/cburke/tree/master/qconsole) is an IDE using GTK
+-   [DBine](https://dbine.com/en/engines/kdb), a free and open-source (Apache 2.0) desktop database manager for macOS, Windows and Linux by AddLayer: connects over IPC (plain or TLS), browses tables (in-memory, splayed and partitioned), views, functions and variables across namespaces, and runs q scripts statement by statement
 
 <!--
 -   Most popular is Charlie Skelton’s **Studio for kdb+**, a cross-platform execution environment – worth having available even if you use another interface  
