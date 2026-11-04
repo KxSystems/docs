@@ -210,7 +210,17 @@ after a bad msg has been received, the global var `msg` will contain the timesta
 
 ## `.z.c` (cores)
 
-The number of physical cores.
+The number of logical CPUs that the q process may run on. With simultaneous multithreading (Hyper-Threading), each hardware thread counts, so a host with 64 physical cores and 2 threads per core reports 128.
+
+The count reflects the CPU affinity that q starts with, for example from `taskset`, `numactl --physcpubind`, or a container cpuset:
+
+```bash
+$ taskset -c 0-5 q -q
+q).z.c
+6i
+```
+
+It does not reflect a CPU quota, such as a container started with `--cpus=4`, or a license limit on secondary threads: with a license that allows 4 secondary threads, `.z.c` still reported every CPU, and starting q with `-s 8` failed with `Max number of secondary threads 4`. `.Q.lim` shows the license limits.
 
 ## `.z.e` (TLS connection status)
 
