@@ -1401,7 +1401,8 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 
     ```q
     q)select from trade where date=2010.01.07,i within(start;start+chunkSize)
-    ````
+    ```
+
 ## `ipc` (ipc settings)
 
 Compression can be turned on or off for a given handle. This enables or disables ipc compression for outgoing data.
