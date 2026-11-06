@@ -24,7 +24,7 @@ You can get a commercial license for kdb+ or you can use KDB-X Community Edition
 
     You can get a free, non time-limited license for the next evolution of kdb+ with KDB-X Community Edition. For more information and to get started right away, see [Get KDB-X Community Edition](https://developer.kx.com/products/kdb-x/install).
 
-### Commercial License
+### Commercial license
 
 Use of commercial kdb+ is covered by your license agreement with KX.
 
@@ -81,7 +81,7 @@ m64/ 4(3)core 16384MB simon simon-macos.local 127.0.0.1   simon@kx.com #40000
 'cores
 ```
 
-As long as you use `taskset` or `numa` correctly, the binary will not abort itself.
+As long as you use `taskset` or `numactl` correctly, the binary will not abort itself.
 
 You can see the number of cores entitled to a q process:
 
@@ -101,7 +101,13 @@ The number of licensed cores is always 16 for the on-demand license.
     Linux and macOS users can restore their hostnames from the command shell, e.g. 
 
     ```bash
-    scutil --set HostName "mymbp.local"
+    sudo scutil --set HostName "mymbp.local"
+    ```
+
+    On Linux distributions that use systemd, use `hostnamectl`:
+    
+    ```bash
+    sudo hostnamectl set-hostname myhost
     ```
 
 ## License questions
