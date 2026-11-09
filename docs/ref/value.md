@@ -5,10 +5,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `value`
 
-
 _Recurse the interpreter_
-
-
 
 ```syntax
 value x     value[x]
@@ -24,12 +21,12 @@ string               result of evaluating it in current context
 list                 result of calling or indexing
                      the first element
                      with the remaining elements
-                     (if the first element is a string or symbol, 
+                     (if the first element is a string or symbol,
                      it is evaluated first)
-                     note that this is different from a parse tree 
-                     that is handled by [`eval`](eval.md).
+                     unlike a parse tree,
+                     which [`eval`](eval.md) evaluates
 
-projection           list: function followed by argument/s
+projection           list: function followed by its arguments
 composition          list of composed values
 derived function     argument of the iterator
 operator             internal code
@@ -39,7 +36,6 @@ lambda               [structure](#lambda)
 
 file symbol          [content of datafile](#get)
 </div>
-
 
 Examples:
 
@@ -73,11 +69,15 @@ q.a)b
 q.a)\d .
 q)b
 'b
+  [0]  b
+       ^
 q).a.b
 2
 
 q)value(+;1;2)                      / list - apply a function or index a list
 3
+q)value(til 5;2)
+2
 q)/ If the first item is a string or symbol, it is evaluated first
 q)value(`.q.neg;2)
 -2
@@ -97,17 +97,16 @@ q)value each (::;+;-;*;%)           / operator
 0 1 2 3 4
 ```
 
-!!! tip "The string form can be useful as a kind of ‘prepared statement’ from the Java client API since the Java serializer doesn’t support lambdas and keywords."
-
+!!! tip "The string form can be useful as a kind of prepared statement from the Java client API, because the Java serializer doesn’t support lambdas and keywords."
 
 ## View
 
-returns a list of metadata:
+Returns a list of metadata:
 
--   cached value
--   parse tree
--   dependencies
--   definition
+- cached value
+- parse tree
+- dependencies
+- definition: the file and line number where the view was defined, followed by its source code
 
 When the view is _pending_, the cached value is `::`.
 
@@ -116,19 +115,19 @@ q)a:1
 q)b::a+1
 q)get`. `b
 ::
-(+;`a;1)
+`s#(+;`a;1)
 ,`a
-"a+1"
+(("q";`);"";0;"b::a+1")
 q)b
 2
 q)get`. `b
 2
-(+;`a;1)
+`s#(+;`a;1)
 ,`a
-"a+1"
-q)
+(("q";`);"";0;"b::a+1")
 ```
 
+A view defined in the console has an empty file path and a line number of `0`.
 
 ## Lambda
 
@@ -146,8 +145,8 @@ this | is
 -----|------
 `m`  | bytecode to source position map; `-1` if position unknown
 `n`  | fully qualified (with namespace) function name as a string, set on first global assignment, with `@` appended for inner lambdas; `()` if not applicable
-`f`  | full path to the file where the function originated from; `""` if not applicable
-`l`  | line number in said file; `-1` if n/a
+`f`  | full path to the file where the function originated; `""` if not applicable
+`l`  | line number in that file; `-1` if not applicable
 `s`  | source code
 
 ```q
@@ -156,9 +155,9 @@ q)value f
 0xa0624161430309220b048100028269410004
 `a`b
 ,`c
-``d`e
+``d`e`
 5
-21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2
+21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2 2
 "..f"
 ""
 -1
@@ -170,16 +169,14 @@ q.test)value f
 0xa0624161430309220b048100028269410004
 `a`b
 ,`c
-`test`d`e
+`test`d`e`
 5
-21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2
+21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2 2
 ".test.f"
 ""
 -1
 "{[a;b]d::neg c:a*b+5;c+e}"
 ```
-
-
 
 ## Local values in suspended functions
 
@@ -188,9 +185,9 @@ See changes since V3.5 that support [debugging](../basics/debug.md).
 
 ## `get`
 
-The function `value` is the same as [`get`](get.md)
+The function `value` is the same as [`get`](get.md).
 
-By convention `get` is used for file I/O but the two are interchangeable.
+By convention, `get` is used for file I/O, but the two are interchangeable.
 
 ```q
 q)get "2+3"                / same as value
@@ -199,11 +196,9 @@ q)value each (get;value)   / same internal code
 19 19
 ```
 
-
 ----
- 
+
 [`eval`](eval.md),
 [`get`](get.md),
 [`parse`](parse.md),
 [`.Q.v`](dotq.md#v-value)
-

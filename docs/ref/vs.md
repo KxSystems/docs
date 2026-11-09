@@ -7,17 +7,16 @@ keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 
 # `vs`
 
-_“Vector from scalar”_
+_Vector from scalar_
 
--   _partition a symbol, string, or bytestream_
--   _encode a vector from an atom, or a matrix from a vector_
+- _Partition a symbol, string, or bytestream_
+- _Encode a vector from an atom, or a matrix from a vector_
 
 ```syntax
 x vs y    vs[x;y]
 ```
 
 ## Partition
-
 
 ### String by char
 
@@ -40,10 +39,9 @@ q)"|" vs "red|green||blue"
 "blue"
 ```
 
+### String or bytestream by line break
 
-### String or bytestream by linebreak
-
-Where `x` is the empty symbol `` ` ``, and `y` is a string or bytestream, returns as a list of strings `y` partitioned on embedded line terminators into lines. (Recognizes both Unix `\n` and Windows `\r\n` terminators).
+Where `x` is the null symbol `` ` ``, and `y` is a string or bytestream, returns `y` split into lines on its line terminators, as a list of strings. `vs` recognizes both Unix `\n` and Windows `\r\n` terminators.
 
 ```q
 q)` vs "abc\ndef\nghi"
@@ -60,49 +58,45 @@ q)` vs "abc\r\ndef\r\nghi"
 "ghi"
 ```
 
-!!! detail "Elides trailing linebreaks"
+!!! detail "Ignores a trailing line break"
 
-	The treatment of linebreaks varies usefully from a left argument of `\n`.
+    Unlike a left argument of `"\n"`, a null symbol ignores a final line terminator.
 
-	```q
-	q)"\n" vs "abc\ndef\nghi\n"
-	"abc"
-	"def"
-	"ghi"
-	""
-	q)` vs "abc\ndef\nghi\n"
-	"abc"
-	"def"
-	"ghi"
-	```
-
+    ```q
+    q)"\n" vs "abc\ndef\nghi\n"
+    "abc"
+    "def"
+    "ghi"
+    ""
+    q)` vs "abc\ndef\nghi\n"
+    "abc"
+    "def"
+    "ghi"
+    ```
 
 ### Symbol by dot
 
-Where `x` is the null symbol `` ` ``, and `y` is a symbol, returns as a symbol vector `y` split on `` `.` ``.
+Where `x` is the null symbol `` ` ``, and `y` is a symbol, returns `y` split on `` `.` `` as a symbol vector.
 
 ```q
 q)` vs `mywork.dat
 `mywork`dat
 ```
 
-
 ### File handle
 
-Where `x` is the empty symbol `` ` ``, and `y` is a file handle, returns as a symbol vector `y` split into directory and  file parts.
+Where `x` is the null symbol `` ` ``, and `y` is a file handle, returns `y` split into directory and file parts as a symbol vector.
 
 ```q
 q)` vs `:/home/kdb/data/mywork.dat
 `:/home/kdb/data`mywork.dat
 ```
 
+[`sv`](sv.md#join) join
 
-[sv](sv.md#join) join
+### Byte vectors
 
-
-### Byte Vectors
-
-Since 4.1t 2024.01.11, `y` can be a byte vector: y cut using x as the delimiter.
+Since 4.1t 2024.01.11, `y` can be a byte vector. Where `y` is a byte vector, and `x` is a byte or char atom or vector, returns `y` cut using `x` as the delimiter. The items of the result have the type of `x`.
 
 ```q
 q)0x02 vs 0x0102010201
@@ -112,36 +106,29 @@ q)0x02 vs 0x0102010201
 q)0x0203 vs 0x000102030405
 0x0001
 0x0405
-q)" "vs"x"$"a b"    / type inferred from left hand side
+q)" "vs"x"$"a b"    / type inferred from left argument
 ,"a"
 ,"b"
 ```
 
-
 ## Encode
-
 
 ### Bit representation
 
-Where `x` is `0b` and `y` is an integer, returns the bit representation of `y`.
+Where `x` is `0b` and `y` is a boolean, byte, integer, or GUID atom, returns the bit representation of `y`. (Since 4.1t 2021.09.03, `y` can be a GUID.)
 
 ```q
 q)0b vs 23173h
 0101101010000101b
 q)0b vs 23173i
 00000000000000000101101010000101b
-```
-
-Since 4.1t 2021.09.03, `y` also supports guids.
-
-```q
-q)0b vs rand 0Ng
+q)0b vs "G"$"8c6b8b64-6815-6084-0a3e-178401251b68"
 10001100011010111000101101100100011010000001010101100000100001000000101000111110000101111000010000000001001001010001101101101000b
 ```
 
 ### Byte representation
 
-Where `x` is `0x0` and `y` is a number, returns the internal representation of `y`, with each byte in hex.
+Where `x` is `0x0` and `y` is a number or GUID, returns the internal representation of `y`, with each byte in hex.
 
 ```q
 q)0x0 vs 2413h
@@ -154,22 +141,26 @@ q)0x0 vs 2413f
 0x40a2da0000000000
 ```
 
-#### Integer based IP address
+#### Integer-based IP address
 
-Base-256 is used to encode IP addresses to integers. The following example converts the current IP address reported by [`.z.a`](dotz.md#za-ip-address)
+IP addresses are encoded as integers in base 256. The following example converts an IP address in the integer form reported by [`.z.a`](dotz.md#za-ip-address).
+
 ```q
-q)"i"$0x0 vs .z.a
+q)ip:-1062731773i     / for example, ip:.z.a
+q)"i"$0x0 vs ip
 192 168 0 3i
 ```
-The commonly written dotted-decimal notation can be produced from the list of longs using [`string`](string.md) and [`sv`](sv.md#strings).
+
+You can produce the commonly written dotted-decimal notation from this list using [`string`](string.md) and [`sv`](sv.md#strings).
+
 ```q
-q)"." sv string "i"$0x0 vs .z.a
+q)"." sv string "i"$0x0 vs ip
 "192.168.0.3"
 ```
 
 ### Base-x representation
 
-Where `x` and `y` are integer, the result is the representation of `y` in base `x`. (Since V3.4t 2015.12.13.)
+Where `x` and `y` are integers, the result is the representation of `y` in base `x`. (Since V3.4t 2015.12.13.)
 
 ```q
 q)10 vs 1995
@@ -178,11 +169,11 @@ q)2 vs 9
 1 0 0 1
 q)24 60 60 vs 3805
 1 3 25
-q)"." sv string 256 vs .z.a / ip address string from .z.a
-"192.168.1.213"
+q)"." sv string 256 vs ip   / IP address string from integer
+"192.168.0.3"
 ```
 
-Where `y` is an integer vector the result is a matrix with `count[x]` items whose `i`-th column `(x vs y)[;i]` is identical to `x vs y[i]`.
+Where `y` is an integer vector, the result is a matrix whose `i`-th column `(x vs y)[;i]` is `x vs y[i]`, padded with leading zeros where necessary.
 More generally, `y` can be any list of integers, and each item of the result is identical to `y` in structure.
 
 ```q
@@ -199,6 +190,11 @@ q)10 vs(1995;1996 1997)
 9 9 9
 9 9 9
 5 6 7
+q)10 vs 1995 7
+1 0
+9 0
+9 0
+5 7
 ```
 
 ---
@@ -206,11 +202,9 @@ q)10 vs(1995;1996 1997)
 [`sv`](sv.md#decode) decode
 <br>
 
-[`.Q.j10`](dotq.md#j10-encode-binhex) encode binhex, 
-[`.Q.j12`](dotq.md#j12-encode-base-36) encode base36
+[`.Q.j10`](dotq.md#j10-encode-binhex) encode binhex,
+[`.Q.j12`](dotq.md#j12-encode-base-36) encode base 36
 <br>
 
 [`.Q.x10`](dotq.md#x10-decode-binhex) decode binhex,
-[`.Q.x12`](dotq.md#x12-decode-base-36) decode base36
-
-
+[`.Q.x12`](dotq.md#x12-decode-base-36) decode base 36

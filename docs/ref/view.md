@@ -1,13 +1,9 @@
 ---
 title: view, views | Reference | kdb+ and q documentation
-description: view and views are q keywords. view returns the expression defining a view. views lists views defined in the default namespace. 
+description: view and views are q keywords. view returns the expression defining a view. views lists views defined in the default namespace.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `view`, `views`
-
-
-
-
 
 ## `view`
 
@@ -17,18 +13,18 @@ _Expression defining a view_
 view x    view[x]
 ```
 
-Where `x` is a view (by reference), returns the expression defining `x`.
+Where `x` is the name of a view as a symbol, returns the expression defining `x` as a string.
+The string is the source text of the definition, including any trailing comment.
 
 ```q
-q)v::2+a*3                        / define dependency v
+q)/ define dependency v
+q)v::2+a*3
 q)a:5
 q)v
 17
 q)view `v                         / view the dependency expression
 "2+a*3"
 ```
-
-
 
 ## `views`
 
@@ -38,7 +34,7 @@ _List views defined in the default namespace_
 views[]
 ```
 
-Returns a sorted list of the views currently defined in the default namespace.
+Returns a sorted list of the views defined in the default namespace.
 
 ```q
 q)w::b*10
@@ -49,7 +45,8 @@ q)views[]
 
 ---
 
-[Metadata](../basics/metadata.md) 
+[`value`](value.md#view),
+[Metadata](../basics/metadata.md)
 <br>
 
 _Q for Mortals_
