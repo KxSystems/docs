@@ -228,7 +228,7 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [idesc](../ref/desc.md#idesc)     grade descending
 [rank](../ref/rank.md)      position in sorted list
 [xgroup](../ref/xgroup.md)    group table by values of selected column/s
-[xrank](../ref/xrank.md)     group by value
+[xrank](../ref/xrank.md)     assign items to buckets by rank
 [xasc](../ref/asc.md#xasc)      sort table ascending
 [xdesc](../ref/desc.md#xdesc)     sort table descending
 </div>

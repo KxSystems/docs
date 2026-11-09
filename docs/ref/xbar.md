@@ -13,7 +13,7 @@ x xbar y    xbar[x;y]
 
 Where
 
-- `x` is a non-negative numeric atom
+- `x` is a positive numeric or timespan atom
 - `y` is numeric or temporal
 
 returns `y` rounded down to the nearest multiple of `x`. `xbar` is a [multithreaded primitive](../kb/mt-primitives.md).
@@ -27,29 +27,29 @@ q)5 xbar 11:00 + 0 2 3 5 7 11 13
 11:00 11:00 11:00 11:05 11:05 11:10 11:10
 ```
 
-Interval bars are useful in aggregation queries. To get last price and total size in 10-minute bars:
+Interval bars are useful in aggregation queries. To get the last price and the total size in 10-minute bars:
 
 ```q
+q)trade:([]time:09:30:00.000+0 120000 480000 650000 1100000 1500000 1810000 2300000;sym:`IBM;price:55.1 55.32 54.8 54.99 55 54.93 55.2 55.23;size:300 200 500 100 400 200 100 300)
 q)select last price, sum size by 10 xbar time.minute from trade where sym=`IBM
 minute| price size
-------| -----------
-09:30 | 55.32 90094
-09:40 | 54.99 48726
-09:50 | 54.93 36511
-10:00 | 55.23 35768
-...
+------| ----------
+09:30 | 54.8  1000
+09:40 | 55    500
+09:50 | 54.93 200
+10:00 | 55.23 400
 ```
 
 Group symbols by closing price:
 
 ```q
+q)daily:([]date:2026.01.02;sym:`AIG`DOW`GOOG`PEP`AAPL`HPQ`ORCL;close:26.1 28.5 27 29.9 33.2 45.5 47.1)
 q)select sym by 5 xbar close from daily where date=last date
 close| sym
------| ----------------------
-25   | `sym$`AIG`DOW`GOOG`PEP,...
-30   | `sym$,`AAPL,...
-45   | `sym$`HPQ`ORCL,...
-...
+-----| -----------------
+25   | `AIG`DOW`GOOG`PEP
+30   | ,`AAPL
+45   | `HPQ`ORCL
 ```
 
 !!! tip "You can use `bin` to group at irregular intervals."
@@ -80,27 +80,36 @@ q)-1+`date$3+3 xbar `month$2019.11.19  / end of that quarter
 2019.12.31
 ```
 
-!!! warning "Duplicate keys or column names"
+!!! warning "A timespan `x` is converted to a count of nanoseconds"
 
-    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+    Use a timespan `x` only with a timestamp or timespan `y`. For other temporal types, use a number in the units of `y`, such as `5 xbar` for a 5-minute bar on minutes, or `300 xbar` for a 5-minute bar on seconds.
+
+    ```q
+    q)0D00:05 xbar 2026.01.01D10:07
+    2026.01.01D10:05:00.000000000
+    q)0D00:05 xbar 10:07:00.000             / 5 minutes as nanoseconds, applied to milliseconds
+    00:00:00.000
+    q)300000 xbar 10:07:00.000
+    10:05:00.000
+    ```
 
 ## Implicit iteration
 
 `xbar` is an [atomic function](../basics/atomic.md).
-It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
+It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
 q)(3;4 5)xbar(10;20 -30)
 9
 20 -30
 
-q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
 
 q)3 xbar d
 a| 9 -21 3
 b| 3 3   -6
 
-q)3 xbar k
+q)3 xbar kt
 k  | a   b
 ---| ------
 abc| 9   3
@@ -110,8 +119,8 @@ ghi| 3   -6
 
 ## Domain and range
 
-The following shows the resulting output type given the input type of `x` and `y`.
-The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
 xbar| b g x h i j e f c s p m d z n u v t
@@ -123,7 +132,7 @@ h   | i . i i i j f f i . p m d z n u v t
 i   | i . i i i j f f i . p m d z n u v t
 j   | j . j j j j f f j . p m d z n u v t
 e   | e . e e e e f f e . p m d z n u v t
-f   | f . f f f f f f f . f f z z f f f f
+f   | f . f f f f f f f . f f f f f f f f
 c   | . . . . . . f f . . p m d z n u v t
 s   | . . . . . . . . . . . . . . . . . .
 p   | p . p p p p f f p . . . . . . . . .
@@ -136,7 +145,7 @@ v   | v . v v v v f f v . . . . . . . . .
 t   | t . t t t t f f t . . . . . . . . .
 ```
 
-For example, rounding down timespans to the nearest multiple of a long will produce a timespan.
+For example, rounding down timespans to the nearest multiple of a long produces a timespan.
 
 ```q
 q)2 xbar 00:00:00.000000001 00:00:00.000000002 00:00:00.000000013
@@ -145,7 +154,7 @@ q)type 2 xbar 00:00:00.000000001 00:00:00.000000002 00:00:00.000000013
 16h
 ```
 
-The possible range of output types are `ijfpmdznuvte`.
+The possible output types are `ijfpmdznuvte`.
 
 ----
 

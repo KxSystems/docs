@@ -6,11 +6,7 @@ keywords: condition, control, iteration, kdb+, q, while
 ---
 # `while`
 
-
-
-
-
-_Evaluate expression/s while some condition remains true_
+_Evaluate expressions while some condition remains true_
 
 ```syntax
 while[test;e1;e2;e3;…;en]
@@ -18,10 +14,10 @@ while[test;e1;e2;e3;…;en]
 
 Control construct. Where
 
--   `test` is an expression that evaluates to an atom of integral type
--   `e1`, `e2`, … `en` are expressions
+- `test` is an expression that evaluates to an atom of integral type, typically a boolean
+- `e1`, `e2`, … `en` are expressions
 
-unless `test` evaluates to zero, the expressions `e1` to `en` are evaluated, in order. The cycle – evaluate `test`, then the expressions – continues until `test` evaluates to zero.
+unless `test` evaluates to zero, q evaluates the expressions `e1` to `en` in order. The cycle (evaluate `test`, then the expressions) continues until `test` evaluates to zero.
 
 ```q
 q)r:1 1
@@ -29,12 +25,15 @@ q)x:10
 q)while[x-:1;r,:sum -2#r]
 q)r
 1 1 2 3 5 8 13 21 34 55 89
+q)i:0
+q)while[i<3;i+:1]
+q)i
+3
 ```
 
 The result of `while` is always the [generic null](identity.md#null).
 
-!!! warning "`while` is not a function but a control construct. It cannot be iterated or projected."
-
+!!! warning "`while` is not a function but a control construct. You cannot iterate or project it."
 
 ## Name scope
 
