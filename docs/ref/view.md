@@ -34,7 +34,7 @@ _List views defined in the default namespace_
 views[]
 ```
 
-Returns a sorted list of the views defined in the default namespace.
+Returns a sorted list of the views currently defined in the default namespace.
 
 ```q
 q)w::b*10
