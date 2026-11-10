@@ -13,7 +13,7 @@ x xbar y    xbar[x;y]
 
 Where
 
-- `x` is a positive numeric or timespan atom
+- `x` is a non-negative numeric atom
 - `y` is numeric or temporal
 
 returns `y` rounded down to the nearest multiple of `x`. `xbar` is a [multithreaded primitive](../kb/mt-primitives.md).
@@ -80,19 +80,6 @@ q)-1+`date$3+3 xbar `month$2019.11.19  / end of that quarter
 2019.12.31
 ```
 
-!!! warning "A timespan `x` is converted to a count of nanoseconds"
-
-    Use a timespan `x` only with a timestamp or timespan `y`. For other temporal types, use a number in the units of `y`, such as `5 xbar` for a 5-minute bar on minutes, or `300 xbar` for a 5-minute bar on seconds.
-
-    ```q
-    q)0D00:05 xbar 2026.01.01D10:07
-    2026.01.01D10:05:00.000000000
-    q)0D00:05 xbar 10:07:00.000             / 5 minutes as nanoseconds, applied to milliseconds
-    00:00:00.000
-    q)300000 xbar 10:07:00.000
-    10:05:00.000
-    ```
-
 ## Implicit iteration
 
 `xbar` is an [atomic function](../basics/atomic.md).
@@ -132,7 +119,7 @@ h   | i . i i i j f f i . p m d z n u v t
 i   | i . i i i j f f i . p m d z n u v t
 j   | j . j j j j f f j . p m d z n u v t
 e   | e . e e e e f f e . p m d z n u v t
-f   | f . f f f f f f f . f f f f f f f f
+f   | f . f f f f f f f . f f z z f f f f
 c   | . . . . . . f f . . p m d z n u v t
 s   | . . . . . . . . . . . . . . . . . .
 p   | p . p p p p f f p . . . . . . . . .
