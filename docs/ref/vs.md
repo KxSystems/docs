@@ -9,8 +9,8 @@ keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 
 _Vector from scalar_
 
-- _Partition a symbol, string, or bytestream_
-- _Encode a vector from an atom, or a matrix from a vector_
+- _Partition a symbol, string, or byte list_
+- _Encode an atom into a vector, or a vector into a matrix_
 
 ```syntax
 x vs y    vs[x;y]
@@ -39,9 +39,9 @@ q)"|" vs "red|green||blue"
 "blue"
 ```
 
-### String or bytestream by line break
+### String or byte list by line break
 
-Where `x` is the null symbol `` ` ``, and `y` is a string or bytestream, returns `y` split into lines on its line terminators, as a list of strings. `vs` recognizes both Unix `\n` and Windows `\r\n` terminators.
+Where `x` is the null symbol `` ` ``, and `y` is a string or byte list, returns `y` split into lines on its line terminators, as a list of strings. `vs` recognizes both Unix `\n` and Windows `\r\n` terminators.
 
 ```q
 q)` vs "abc\ndef\nghi"
@@ -128,7 +128,7 @@ q)0b vs "G"$"8c6b8b64-6815-6084-0a3e-178401251b68"
 
 ### Byte representation
 
-Where `x` is `0x0` and `y` is a number or GUID, returns the internal representation of `y`, with each byte in hex.
+Where `x` is `0x0` and `y` is a number or GUID, returns the internal representation of `y`.
 
 ```q
 q)0x0 vs 2413h

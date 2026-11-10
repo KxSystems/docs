@@ -24,7 +24,7 @@ returns, for each record in `t`, a record with additional columns `c0` and `c1`,
 `q` must be sorted on `` `sym`time `` with the `` `p# `` attribute on `sym`.
 Since 4.1t 2023.08.04, if `t` is the name of a table as a symbol, it is updated in place.
 
-A typical call is:
+For example, the following call finds the highest ask and lowest bid in each window. The column names `sym`, `time`, `ask` and `bid` are illustrative; `wj` does not require particular column names.
 
 ```q
 wj[w;`sym`time;trade;(quote;(max;`ask);(min;`bid))]

@@ -14,11 +14,14 @@ _Replace selected items of one list with corresponding items of another_
 
 Where
 
-- `x` is a boolean vector or atom
-- `y` and `z` are lists or atoms of the same type
+- `x` is a boolean atom or vector
+- `y` and `z` are atoms or lists of the same type
 - `x`, `y`, and `z` [conform](../basics/conformable.md)
 
-returns a new list by replacing items of `y` with the corresponding items of `z` where `x` is false.
+returns
+
+- `y` if `x` is a true atom, or `z` if `x` is a false atom
+- a list that takes the items of `y` where `x` is true and the items of `z` where `x` is false, if `x` is a list
 
 All three arguments are evaluated.
 
@@ -49,7 +52,7 @@ q)?[1 0 1;1 2 3;4 5 6]
 
 You can use Vector Conditional in [qSQL queries](../basics/qsql.md), which do not support [Cond](cond.md).
 
-!!! tip "For more than two cases, see [Controlling evaluation](../basics/control.md#case)."
+!!! tip "For more than two cases, see the [Case](maps.md#case) iterator."
 
 ----
 

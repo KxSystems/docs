@@ -23,8 +23,8 @@ list                 result of calling or indexing
                      with the remaining elements
                      (if the first element is a string or symbol,
                      it is evaluated first)
-                     unlike a parse tree,
-                     which [`eval`](eval.md) evaluates
+                     note that this is different from a parse tree
+                     that is handled by [`eval`](eval.md).
 
 projection           list: function followed by its arguments
 composition          list of composed values
@@ -97,7 +97,7 @@ q)value each (::;+;-;*;%)           / operator
 0 1 2 3 4
 ```
 
-!!! tip "The string form can be useful as a kind of prepared statement from the Java client API, because the Java serializer doesn’t support lambdas and keywords."
+!!! tip "The string form can be useful as a prepared statement when using the Java client API, because the Java serializer doesn’t support lambdas and keywords."
 
 ## View
 
@@ -106,7 +106,7 @@ Returns a list of metadata:
 - cached value
 - parse tree
 - dependencies
-- definition: the file and line number where the view was defined, followed by its source code
+- definition
 
 When the view is _pending_, the cached value is `::`.
 
@@ -115,19 +115,17 @@ q)a:1
 q)b::a+1
 q)get`. `b
 ::
-`s#(+;`a;1)
+(+;`a;1)
 ,`a
-(("q";`);"";0;"b::a+1")
+"a+1"
 q)b
 2
 q)get`. `b
 2
-`s#(+;`a;1)
+(+;`a;1)
 ,`a
-(("q";`);"";0;"b::a+1")
+"a+1"
 ```
-
-A view defined in the console has an empty file path and a line number of `0`.
 
 ## Lambda
 
@@ -145,8 +143,8 @@ this | is
 -----|------
 `m`  | bytecode to source position map; `-1` if position unknown
 `n`  | fully qualified (with namespace) function name as a string, set on first global assignment, with `@` appended for inner lambdas; `()` if not applicable
-`f`  | full path to the file where the function originated; `""` if not applicable
-`l`  | line number in that file; `-1` if not applicable
+`f`  | full path to the file where the function originated from; `""` if not applicable
+`l`  | line number in said file; `-1` if n/a
 `s`  | source code
 
 ```q
@@ -155,9 +153,9 @@ q)value f
 0xa0624161430309220b048100028269410004
 `a`b
 ,`c
-``d`e`
+``d`e
 5
-21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2 2
+21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2
 "..f"
 ""
 -1
@@ -169,9 +167,9 @@ q.test)value f
 0xa0624161430309220b048100028269410004
 `a`b
 ,`c
-`test`d`e`
+`test`d`e
 5
-21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2 2
+21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2
 ".test.f"
 ""
 -1
