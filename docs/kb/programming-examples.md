@@ -8,60 +8,57 @@ keywords: example, kdb+, programming, q
 
 
 
-## HTTP client request and parse string result into a table
+## Send an HTTP request and parse the result into a table
 
-Q has a built-in HTTP request command, which follows the syntax
+[`.Q.hg`](../ref/dotq.md#hg-http-get) sends an HTTP GET request and returns the response body as a string. It handles proxy settings and decompresses a gzipped payload.
 
-```q
-`:http://host:port "string to send as HTTP method etc"
-```
+HTTPS requests need the OpenSSL libraries and a CA certificate file. See [SSL/TLS](ssl.md).
 
-The string-to-send can be anything within the HTTP protocol the HTTP server will understand.  
-:fontawesome-regular-hand-point-right: [jmarshall.com/easy/http](https://www.jmarshall.com/easy/http/)
-
-kdb+ does not add to nor encode the string to send, nor does it decode the response; it just returns the raw data.
+The following example downloads English Premier League results from [football-data.co.uk](https://www.football-data.co.uk/) and parses the CSV text into a table.
 
 ```q
-q)/ string to send
-q)s2s:"GET /mmz4281/1314/E0.csv HTTP/1.0\r\nhost:www.football-data.co.uk\r\n\r\n"
-q)data:(`$":http://www.football-data.co.uk") s2s
-q)(" SSSIIIIII IIIIIIIIIIII"; ",")0:data
+q)data:.Q.hg ":https://football-data.co.uk/mmz4281/2425/E0.csv"
+q)\z 1  / dates in the file are dd/mm/yyyy
+q)3#t:(" DSSSIIS";enlist ",")0:data
+Date       Time  HomeTeam   AwayTeam  FTHG FTAG FTR
+---------------------------------------------------
+2024.08.16 20:00 Man United Fulham    1    0    H
+2024.08.17 12:30 Ipswich    Liverpool 0    2    A
+2024.08.17 15:00 Arsenal    Wolves    2    0    H
 ```
 
-:fontawesome-brands-github: [KxSystems/cookbook/yahoo.q](https://github.com/KxSystems/cookbook/blob/master/yahoo.q)
+The URL is a string, not a symbol literal, because a hyphen ends a symbol literal in q.
 
-This example function queries Yahoo Financials and produces a table of trading info for a list of stocks during the last few days. 
-The list of stocks and the number of days are parameters of the function.
+The CSV has over 100 columns. A type string with fewer characters than the file has columns loads only the leading columns. A space in the type string skips a column; the example skips the first, because the file starts with a byte-order mark.
+
+The [`nasdaq.q` example in the KxSystems cookbook](https://github.com/KxSystems/cookbook/blob/master/nasdaq.q) :fontawesome-brands-github: queries the Nasdaq API and produces a table of daily trading information for a list of stocks during the last few days. The API needs no key. The list of stocks and the number of days are parameters of the function. A symbol the API doesn't know contributes no rows.
 
 The function definition contains examples of:
 
--   date manipulation
--   string creation, manipulation and pattern matching
--   do loops
--   sending HTTP requests to an HTTP server
--   parsing tables from strings
--   queries with user-defined functions
--   parsing dates from strings
+- Date manipulation
+- String creation and manipulation, with projections such as `ssr[;".";"-"]` and `except[;"$,"]`
+- A lambda with typed parameters, projected and applied to each stock with `each`
+- Sending an HTTPS request with `.Q.hg`
+- Parsing JSON with `.j.k` into a list of dictionaries, which `select` queries as a table
+- Building a table with a `select` that converts strings to dates, floats and longs
+- Combining the per-stock tables with `raze`
 
 Sample use:
 
 ```q
-q)yahoo[10;`GOOG`AMZN]
-Date       Open   High   Low    Close  Volume   Sym
-----------------------------------------------------
-2006.08.21 28.7   28.98  27.97  28.13  5334900  AMZN
-2006.08.21 378.1  379    375.22 377.3  4023300  GOOG
-2006.08.22 28.14  28.89  28.05  28.37  4587100  AMZN
-2006.08.22 377.73 379.26 374.84 378.29 4164100  GOOG
-2006.08.23 28.56  28.89  27.77  28.14  4726400  AMZN
-2006.08.23 377.64 378.27 372.66 373.43 3642300  GOOG
+q)nasdaq[10;`GOOG`AMZN]
+Date       Sym  Open    High     Low      Close  Volume
+---------------------------------------------------------
+2026.11.09 GOOG 290.545 294.69   285.94   286.01 24039970
+2026.11.06 GOOG 283.415 289.22   283      283.93 24620200
+2026.11.05 GOOG 291.805 293.6399 276.2    281.74 41149910
+2026.11.04 GOOG 281.475 294.4    281.33   287.3  31709230
+2026.11.03 GOOG 279.19  280.34   272      278.27 23372330
+2026.11.02 GOOG 280.575 285.2099 277.78   278.04 29231780
+2026.11.09 AMZN 269.32  275.34   266.91   266.93 51523180
+2026.11.06 AMZN 259.81  264.182  258.53   259.3  42571530
 ...
 ```
-
-The above function definition has been adapted from a more compact one by Simon Garland. 
-The long version adds comments, renames variables, and splits computations into smaller steps so that the code is easier to follow.  
-Compact version: :fontawesome-brands-github: [KxSystems/cookbook/yahoo_compact.q](https://github.com/KxSystems/cookbook/blob/master/yahoo_compact.q)
-
 
 ## An efficient query to extract last n ticks for a particular stock from quote table
 
@@ -71,14 +68,14 @@ The quote table is defined as follows:
 q)quote: ([] stock:();time:();price())
 ```
 
-For fast (constant-time) continuous queries on last _n_ ticks we have to maintain the data nested. 
+For fast (constant-time) continuous queries on last _n_ ticks we have to maintain the data nested.
 For our quote table, we define
 
 ```q
 q)q: ([stock:()]time:();price:())
 ```
 
-where, for each row, the columns `time` and `price` contain a list, rather than an atom 
+where, for each row, the columns `time` and `price` contain a list, rather than an atom
 (i.e., the columns `time` and `price` are lists of lists). This table is populated as follows:
 
 ```q
@@ -106,13 +103,13 @@ This one is also constant-time.
 
 ## An efficient query to know on which days a symbol appears
 
-Issuing a single select that covers a whole year would be too inefficient. 
+Issuing a single select that covers a whole year would be too inefficient.
 You could issue a separate select for each date, but if you are covering a year or two, the cumulative time quickly adds up.
 
 The design of the following query is based on efficiency (both time and memory) on a large, parallel database.
 
-A straightforward implementation of this query takes over a second per month. 
-The version shown here takes 50ms for a whole year. 
+A straightforward implementation of this query takes over a second per month.
+The version shown here takes 50ms for a whole year.
 (There will be an initial warm-up cost for a new q instance, but once it has been issued, queries with other symbols take 50ms).
 
 ```q
