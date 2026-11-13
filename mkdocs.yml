@@ -137,7 +137,7 @@ nav:
         # - HTTP, HTTPS: learn/tour/http.md
         - Scripts: learn/tour/scripts.md
         - IDE: learn/tour/ide.md
-      - Q for quants: learn/brief-introduction.md
+      - Q for quants: 'https://code.kx.com/kdb-x/learn/brief-introduction.html'
       - Q by Examples: learn/q-by-examples.md
       - Q for All (video): learn/q-for-all.md
       # - Q for Pythons:
@@ -209,9 +209,9 @@ nav:
       - Starting kdb+:
         - Overview: learn/startingkdb/index.md
         - The q language: learn/startingkdb/language.md
-        - IPC: learn/startingkdb/ipc.md
-        - Tables: learn/startingkdb/tables.md
-        - Historical database: learn/startingkdb/hdb.md
+        - IPC: 'https://code.kx.com/kdb-x/how_to/io_and_communication/basics.html'
+        - Tables: 'https://code.kx.com/kdb-x/how_to/basics/data_structures/tables.html'
+        - Historical database: 'https://code.kx.com/kdb-x/how_to/interact_with_databases/hdb.html'
         - Realtime database: learn/startingkdb/tick.md
     - Language:
       - Reference card: ref/index.md
@@ -437,7 +437,7 @@ nav:
       - IPC: 'https://code.kx.com/kdb-x/how_to/io_and_communication/basics.html'
       - Tools:
         - Code profiler: kb/profiler.md
-        - Debugging: basics/debug.md
+        - Debugging: 'https://code.kx.com/kdb-x/how_to/basics/debug.html'
         - Errors: basics/errors.md
         - man.q: about/man.md
         - Unit tests: kb/unit-tests.md
@@ -454,8 +454,8 @@ nav:
         - Timezones: kb/timezones.md
         - Unicode: kb/unicode.md
       - DevOps:
-        - CPU affinity: kb/cpu-affinity.md
-        - Daemon: kb/daemon.md
+        - CPU affinity: 'https://code.kx.com/kdb-x/how_to/performance/os.html#numa'
+        - Daemon: 'https://code.kx.com/kdb-x/how_to/basics/keep-processes-running.html'
         - Firewalling: kb/firewalling.md
         - inetd, xinetd: kb/inetd.md
         - Linux production notes: kb/linux-production.md
@@ -465,7 +465,7 @@ nav:
         - Multiple versions: kb/versions.md
         - Parallel processing: basics/peach.md
         - Performance tips: kb/performance-tips.md
-        - Shebang script: develop/shebang.md
+        - Shebang script: 'https://code.kx.com/kdb-x/how_to/basics/use-scripts.html#run-a-script-as-a-shebang'
         - Surveillance latency: wp/surveillance-latency/index.md
         - Windows service: kb/windows-service/index.md
       # - Environment: basics/environment.md

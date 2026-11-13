@@ -12,17 +12,17 @@ date: [March 2020, February 2023]
 
 ## :fontawesome-solid-bolt: Multithreaded primitives
 
-kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../basics/listening-port.md#multi-threaded-input-mode).
+kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html#multi-threaded-input-mode).
 
 kdb+ 4.0 adds an additional level of multithreading via primitives.
 It is fully transparent to the user, requiring no code change by the user to exploit it. The underlying framework currently uses the number of threads configured as secondary threads on the command line.
-   
-As most kdb+ primitives are memory-bound, within-primitive parallelism is intended to exploit all-core memory bandwidth available on modern server hardware with multi-channel memory. 
+
+As most kdb+ primitives are memory-bound, within-primitive parallelism is intended to exploit all-core memory bandwidth available on modern server hardware with multi-channel memory.
 
 SSE-enabled primitives (mostly arithmetic) are not parallel when SSE is not available (Windows and NoSSE builds).
 Within-primitive parallelism reverts to being single-threaded within `peach` or multi-threaded input mode.
 
-Systems with low aggregate memory bandwidth are unlikely to see an improvement for in-memory data, but on-disk data should still benefit. 
+Systems with low aggregate memory bandwidth are unlikely to see an improvement for in-memory data, but on-disk data should still benefit.
 Multi-threaded primitives are not NUMA-aware and should not be expected to scale beyond 1 socket.
 
 :fontawesome-solid-graduation-cap:
@@ -37,7 +37,7 @@ kdb+4.0 supports Data-At-Rest Encryption (DARE), using AES256CBC. As with the bu
 openssl rand 32 | openssl aes-256-cbc -salt -pbkdf2 -iter 50000 -out testkek.key
 ```
 
-the key can then be [loaded into kdb+](../basics/internal.md#-36-load-master-key) using 
+the key can then be [loaded into kdb+](../basics/internal.md#-36-load-master-key) using
 
 ```q
 -36!(`:testkek.key;"mypassword")
@@ -129,7 +129,7 @@ Errors thrown by [`parse`](../ref/parse.md) show up in [`.Q.trp`](../ref/dotq.md
 q).Q.trp[parse;"2+2;+2";{1@.Q.sbt 2#y}];
   [3]  2+2;+2
            ^
-  [2]  (.q.parse) 
+  [2]  (.q.parse)
 ```
 
 The `name` (global used as local) bytecode compiler error has location info.
@@ -144,7 +144,7 @@ q){a::1;a:1}
 
 ## Miscellaneous
 
--   The parser now interprets **Form Feed** (Ctl-L) as whitespace, allowing a script to be [divided into pages](https://en.wikipedia.org/wiki/Page_break "Wikipedia") at logical places. 
+-   The parser now interprets **Form Feed** (Ctl-L) as whitespace, allowing a script to be [divided into pages](https://en.wikipedia.org/wiki/Page_break "Wikipedia") at logical places.
 
 -   The macOS build no longer exits with `couldn’t report -- exiting` after waking from **system sleep** when running under an on-demand license. This alleviates the issue of Apple dropping support for 32-bit apps on macOS 10.15.
 
@@ -190,7 +190,7 @@ The length of the By clause needs to match table count.
 
 `select` auto-aliased colliding duplicate column names for either `select a,a from t`, or `select a by c,c from t`, but not for `select a,a by a from t`.
 
-Such a collision now signals a `dup names for cols/groups a` error during parse, indicating the first column name which collides. 
+Such a collision now signals a `dup names for cols/groups a` error during parse, indicating the first column name which collides.
 
 The easiest way to resolve this conflict is to explicitly rename columns. e.g.
 ```q

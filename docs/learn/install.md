@@ -256,5 +256,5 @@ Multiple versions of kdb+ can be installed on a system by following this [guide]
 
 ## :fontawesome-solid-hand-point-right: What’s next?
 
-[Learn the q programming language](index.md), look through the [reference card](../ref/index.md), or see in the [Database](../database/index.md) what you can do with kdb+.
+[Learn the q programming language](index.md), look through the [reference card](../ref/index.md), or see in the [Database](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html) what you can do with kdb+.
 

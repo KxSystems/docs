@@ -196,7 +196,7 @@ q tick/r.q :5010 :5012 -p 5011
 
 ## Process communication
 
-The qkdb+ processes communicate by sending a function with arguments using [Interprocess communication](ipc.md).
+The qkdb+ processes communicate by sending a function with arguments using [Interprocess communication](https://code.kx.com/kdb-x/how_to/io_and_communication/basics.html).
 
 For example, the tickerplant sends new data to the subscribers by calling the `upd` function with the table name and new data. In the last process, this is:
 

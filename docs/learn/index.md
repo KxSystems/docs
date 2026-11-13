@@ -38,7 +38,7 @@ _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-chart-line:</span><br/>
-Q for quants](brief-introduction.md "A q tutorial for analysts and quants")
+A brief introduction to q](https://code.kx.com/kdb-x/learn/brief-introduction.html "A q tutorial for analysts and quants")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-code:</span><br/>
@@ -61,10 +61,10 @@ KX Developer](/developer/ "Download and install the free IDE, KX Developer")
 
 kdb+ is a database. You can use it through [interfaces](../interfaces/index.md) such as ODBC, or from [Python](https://code.kx.com/pykx), but its power and performance are best accessed through its own language, q.
 
-Q is a general-purpose programming language. You can write programs for anything in q. 
+Q is a general-purpose programming language. You can write programs for anything in q.
 
-You do not need prior programming experience to learn it. 
-If you have some experience with mathematics, functional programming or SQL, you will find in q much that is familiar. 
+You do not need prior programming experience to learn it.
+If you have some experience with mathematics, functional programming or SQL, you will find in q much that is familiar.
 
 In this section we offer different routes into the language.
 Find one that suits your experience and learning style.
@@ -74,8 +74,8 @@ Other sections:
 section | content
 --------|--------
 :fontawesome-solid-book: [Language](../ref/index.md) | formal definition of  language elements
-:fontawesome-solid-database:  [Database](../database/index.md)  | persisting tables in the filesystem 
-:fontawesome-solid-building-columns: [Architecture](../architecture/index.md) | topics in building systems using kdb+ processes 
+:fontawesome-solid-database:  [Database](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html)  | persisting tables in the filesystem
+:fontawesome-solid-building-columns: [Architecture](../architecture/index.md) | topics in building systems using kdb+ processes
 :fontawesome-regular-map: [White papers](../wp/index.md) | extended treatments of topics in q programming and in building kdb+ systems
 
 
@@ -118,7 +118,7 @@ by Nick Psaris
 Whether you are a data scientist looking to learn q, or a kdb+ developer looking to learn machine learning, there is something for everyone.
 :fontawesome-solid-quote-right:
 
-:fontawesome-solid-globe: 
+:fontawesome-solid-globe:
 [Review](https://vector.org.uk/book-review-fun-q-a-functional-introduction-to-machine-learning-in-q/) in _Vector_
 <br>
 :fontawesome-brands-amazon:
@@ -133,7 +133,7 @@ Whether you are a data scientist looking to learn q, or a kdb+ developer looking
 by Jan Novotny, Paul A. Bilokon, Aris Galiotos, and Frederic Deleze
 
 :fontawesome-solid-quote-left:
-Offers quants, programmers and algorithmic traders a practical entry into the powerful but non-intuitive kdb+ database and q programming language. 
+Offers quants, programmers and algorithmic traders a practical entry into the powerful but non-intuitive kdb+ database and q programming language.
 :fontawesome-solid-quote-right:
 
 :fontawesome-brands-amazon:
@@ -149,7 +149,7 @@ Offers quants, programmers and algorithmic traders a practical entry into the po
 <br>
 by Jeffry A. Borror
 
-Covers up to kdb+ V3.3. 
+Covers up to kdb+ V3.3.
 
 If you are a new kdb+ user, this is the book for you!
 

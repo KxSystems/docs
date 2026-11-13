@@ -11,7 +11,7 @@ kdb+ has an in-built webserver capable of handling HTTP/HTTPS requests.
 
 ### Listening port
 
-When kdb+ is [configured](../basics/listening-port.md) to listen on a port, it uses the same port as that serving kdb+ IPC and websocket connections.
+When kdb+ is [configured](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html) to listen on a port, it uses the same port as that serving kdb+ IPC and websocket connections.
 
 ### SSL/TLS
 

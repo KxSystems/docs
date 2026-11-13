@@ -39,5 +39,5 @@ Exit is blocked during [`reval`](eval.md#reval) or with [`-u` on the command lin
 <br>
  
 [Controlling evaluation](../basics/control.md), 
-[Debugging](../basics/debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 

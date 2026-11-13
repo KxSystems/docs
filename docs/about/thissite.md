@@ -6,7 +6,7 @@ author: Stephen Taylor
 # About this site
 
 
-This site is the official documentation for [kdb+](../database/index.md) and the [q programming language](../ref/index.md).
+This site is the official documentation for [kdb+](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html) and the [q programming language](../ref/index.md).
 
 It reflects the work of the KX community since 1993, has many authors,
 and continues to evolve.

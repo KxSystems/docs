@@ -231,7 +231,7 @@ Tweaking the kernel settings on Linux may help – it really depends on the size
 
 !!! danger "Do not read or write a compressed file concurrently from multiple threads."
 
-However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [segmented](../database/segment.md) historical database with secondary threads will be using the decompression in a multithreaded mode.
+However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [segmented](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html) historical database with secondary threads will be using the decompression in a multithreaded mode.
 
 
 ## Requirements

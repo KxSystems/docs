@@ -40,4 +40,4 @@ q)a~(::)
 [Display](display.md)
 <br>
 
-[Debugging](../basics/debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)

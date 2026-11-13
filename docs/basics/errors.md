@@ -98,7 +98,7 @@ close
 [](){#con}
 con
 
-:   qcon client is not supported when kdb+ is in [multithreaded input mode](listening-port.md#multi-threaded-input-mode)
+:   qcon client is not supported when kdb+ is in [multithreaded input mode](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html#multi-threaded-input-mode)
 
 [](){#cond}
 cond
@@ -667,7 +667,7 @@ Use [Signal](../ref/signal.md) to signal errors.
 Use [Trap and Trap At](../ref/apply.md#trap) to trap errors.
 
 :fontawesome-solid-book-open:
-[Debugging](debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 
 
 <!-- :fontawesome-regular-hand-point-right: Simon’s list :fontawesome-brands-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->

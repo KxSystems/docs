@@ -9,7 +9,7 @@ date: October 2020
 
 
 
-The [Load CSV](../ref/file-text.md#load-csv) form of the File Text operator loads a CSV file into a table in memory, from which it can be [serialized](../database/index.md) in various ways.
+The [Load CSV](../ref/file-text.md#load-csv) form of the File Text operator loads a CSV file into a table in memory, from which it can be [serialized](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html) in various ways.
 
 If the data in the CSV file is too large to fit into memory, we need to break the large CSV file into manageable chunks and process them in sequence. 
 

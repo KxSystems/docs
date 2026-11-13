@@ -762,5 +762,5 @@ the restroom at the end of the universe
 
 ## Special constructs
 
-Back-slash, colon and single-quote (`/ \ : '`) all have special meanings outside ordinary expressions, denoting [system commands](syscmds.md) and [debugging controls](debug.md).
+Back-slash, colon and single-quote (`/ \ : '`) all have special meanings outside ordinary expressions, denoting [system commands](syscmds.md) and [debugging controls](https://code.kx.com/kdb-x/how_to/basics/debug.html).
 
