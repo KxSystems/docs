@@ -12,3 +12,13 @@ about/sitenews              about/thissite
 about/search                about/thissite
 about/sg                    https://github.com/KxSystems/docs
 about/kxtechnology          about/archive
+learn/brief-introduction    https://code.kx.com/kdb-x/learn/brief-introduction.html
+database/                   https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html
+learn/startingkdb/ipc       https://code.kx.com/kdb-x/how_to/io_and_communication/basics.html
+learn/startingkdb/tables    https://code.kx.com/kdb-x/how_to/basics/data_structures/tables.html
+learn/startingkdb/hdb       https://code.kx.com/kdb-x/how_to/interact_with_databases/hdb.html
+basics/listening-port       https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html
+basics/debug                https://code.kx.com/kdb-x/how_to/basics/debug.html
+kb/cpu-affinity             https://code.kx.com/kdb-x/how_to/performance/os.html#numa
+kb/daemon                   https://code.kx.com/kdb-x/how_to/basics/keep-processes-running.html
+develop/shebang             https://code.kx.com/kdb-x/how_to/basics/use-scripts.html#run-a-script-as-a-shebang
