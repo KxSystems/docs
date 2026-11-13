@@ -178,7 +178,7 @@ q.test)value f
 
 ## Local values in suspended functions
 
-See changes since V3.5 that support [debugging](../basics/debug.md).
+See changes since V3.5 that support [debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html).
 
 
 ## `get`

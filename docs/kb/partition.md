@@ -1,6 +1,6 @@
 ---
 title: Partitioned tables | Knowledge Base | kdb+ and q documentation
-description: File par.txt in the main database directory defines a top-level partitioning of a database into directories. 
+description: File par.txt in the main database directory defines a top-level partitioning of a database into directories.
 author: Stephen Taylor
 date: October 2020
 ---
@@ -32,7 +32,7 @@ db
 
 !!! tip "Partition data correctly: data for a particular date must reside in the partition for that date."
 
-:fontawesome-solid-book: 
+:fontawesome-solid-book:
 [`.Q.par`](../ref/dotq.md#par-get-expected-partition-location)
 
 
@@ -55,7 +55,7 @@ Partition a table if either
 
 ----
 :fontawesome-solid-book:
-[`count`](../ref/count.md), 
+[`count`](../ref/count.md),
 [maps](../ref/maps.md),
 [`peach`](../ref/each.md),
 [`reval`](../ref/eval.md#reval),
@@ -70,4 +70,4 @@ _Q for Mortals_
 [§14.3 Partitioned Tables](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
 <br>
 :fontawesome-solid-database:
-[Segmented databases](../database/segment.md)
+[Segmented databases](https://code.kx.com/kdb-x/how_to/interact_with_databases/segment.html)

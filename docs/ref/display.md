@@ -29,4 +29,4 @@ Useful for debugging, or avoiding formatting that obscures the data’s structur
 [`show`](show.md) 
 <br>
  
-[Debugging](../basics/debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)

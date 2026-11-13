@@ -63,7 +63,7 @@ $ numactl -s
 ```
 
 :fontawesome-regular-hand-point-right: 
-[CPU affinity – Linux](cpu-affinity.md#linux)
+[CPU affinity – Linux](https://code.kx.com/kdb-x/how_to/performance/os.html#numa)
 
 
 ## Huge Pages and Transparent Huge Pages (THP)

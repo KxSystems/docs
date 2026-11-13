@@ -43,7 +43,7 @@ Q reference](ref/index.md "Reference card for the q language")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-database:</span><br/>
-Database](database/index.md "Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.")
+Database](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html "Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-laptop-code:</span><br/>

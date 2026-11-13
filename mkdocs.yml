@@ -137,7 +137,7 @@ nav:
         # - HTTP, HTTPS: learn/tour/http.md
         - Scripts: learn/tour/scripts.md
         - IDE: learn/tour/ide.md
-      - Q for quants: learn/brief-introduction.md
+      - Q for quants: 'https://code.kx.com/kdb-x/learn/brief-introduction.html'
       - Q by Examples: learn/q-by-examples.md
       - Q for All (video): learn/q-for-all.md
       # - Q for Pythons:
@@ -209,9 +209,9 @@ nav:
       - Starting kdb+:
         - Overview: learn/startingkdb/index.md
         - The q language: learn/startingkdb/language.md
-        - IPC: learn/startingkdb/ipc.md
-        - Tables: learn/startingkdb/tables.md
-        - Historical database: learn/startingkdb/hdb.md
+        - IPC: 'https://code.kx.com/kdb-x/how_to/io_and_communication/basics.html'
+        - Tables: 'https://code.kx.com/kdb-x/how_to/basics/data_structures/tables.html'
+        - Historical database: 'https://code.kx.com/kdb-x/how_to/interact_with_databases/hdb.html'
         - Realtime database: learn/startingkdb/tick.md
     - Language:
       - Reference card: ref/index.md
@@ -432,48 +432,12 @@ nav:
       - System commands: basics/syscmds.md
       - Tables: kb/faq.md
       - Variadic syntax: basics/variadic.md
-    - Database:
-      - Tables in the filesystem: database/index.md
-      - Populating tables:
-        - Loading from large files: kb/loading-from-large-files.md
-        - Foreign keys: wp/foreign-keys.md
-        - Linking columns: kb/linking-columns.md
-        - Data loaders: wp/data-loaders/index.md
-        - From MDB via ODBC: database/mdb-odbc.md
-      - Persisting tables:
-        - Serializing an object: database/object.md
-        - Splayed tables: kb/splayed-tables.md
-        - Partitioned tables: kb/partition.md
-        - Segmented databases: database/segment.md
-        - Multiple partitions: wp/multi-partitioned-dbs/index.md
-      - Maintenance:
-        - Data management: wp/data-management.md
-        - Data-At-Rest Encryption: kb/dare.md
-        - Compression:
-          - File compression: kb/file-compression.md
-          - Compression examples: wp/compress/index.md
-          - FSI case study: kb/compression/fsicasestudy.md
-        - Permissions: wp/permissions/index.md
-        - Query optimization: wp/columnar-database/index.md
-        - Query scaling: wp/query-scaling.md
-        - Time-series simplification: wp/ts-shrink/index.md
-        - Compacting HDB sym: kb/compacting-hdb-sym.md
-        - Working with sym files: wp/symfiles.md
+    - Database: 'https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html'
     - Developing:
-      - IPC:
-        - Overview: basics/ipc.md
-        - Listening port: basics/listening-port.md
-        - Deferred response: kb/deferred-response.md
-        - Async callbacks: kb/callbacks.md
-        - Named pipes: kb/named-pipes.md
-        - Serialization examples: kb/serialization.md
-        - Socket sharding: wp/socket-sharding/index.md
-        - SSL/TLS: kb/ssl.md
-        - HTTP: kb/http.md
-        - WebSockets: kb/websockets.md
+      - IPC: 'https://code.kx.com/kdb-x/how_to/io_and_communication/basics.html'
       - Tools:
         - Code profiler: kb/profiler.md
-        - Debugging: basics/debug.md
+        - Debugging: 'https://code.kx.com/kdb-x/how_to/basics/debug.html'
         - Errors: basics/errors.md
         - man.q: about/man.md
         - Unit tests: kb/unit-tests.md
@@ -490,8 +454,8 @@ nav:
         - Timezones: kb/timezones.md
         - Unicode: kb/unicode.md
       - DevOps:
-        - CPU affinity: kb/cpu-affinity.md
-        - Daemon: kb/daemon.md
+        - CPU affinity: 'https://code.kx.com/kdb-x/how_to/performance/os.html#numa'
+        - Daemon: 'https://code.kx.com/kdb-x/how_to/basics/keep-processes-running.html'
         - Firewalling: kb/firewalling.md
         - inetd, xinetd: kb/inetd.md
         - Linux production notes: kb/linux-production.md
@@ -501,7 +465,7 @@ nav:
         - Multiple versions: kb/versions.md
         - Parallel processing: basics/peach.md
         - Performance tips: kb/performance-tips.md
-        - Shebang script: develop/shebang.md
+        - Shebang script: 'https://code.kx.com/kdb-x/how_to/basics/use-scripts.html#run-a-script-as-a-shebang'
         - Surveillance latency: wp/surveillance-latency/index.md
         - Windows service: kb/windows-service/index.md
       # - Environment: basics/environment.md

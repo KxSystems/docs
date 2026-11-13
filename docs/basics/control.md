@@ -27,7 +27,7 @@ Evaluation is controlled by
 
 
 :fontawesome-solid-book-open:
-    [Debugging](debug.md)
+    [Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 
 ## Iterators
 

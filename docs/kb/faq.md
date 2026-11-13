@@ -165,7 +165,7 @@ usb   8.19  800  09:04:01.000
 
 Use [Load CSV](../ref/file-text.md#load-csv) to load a CSV file as a table; more generally, [File Text](../ref/file-text.md) for reading data from text files.
 
-For reading tables persisted to the filesystem, see [Database: persisting tables in the filesystem](../database/index.md)
+For reading tables persisted to the filesystem, see [Database: persisting tables in the filesystem](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html)
 
 
 
@@ -724,7 +724,7 @@ count distinct trade
 [Functional qSQL](../basics/funsql.md)
 <br>
 :fontawesome-solid-database:
-[Database: persisting tables to the filesystem](../database/index.md)
+[Database: persisting tables to the filesystem](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

@@ -99,13 +99,13 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 [@[f;x;e] Trap-At](apply.md#trap)       [' Signal](signal.md)        [if](if.md)  [while](while.md)        [:[v;p1;r1;...] Pattern conditional](../basics/pattern.md#pattern-conditional)
 </div>
 
-[Debugging](../basics/debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 
 ## Other
 
 <div markdown class="typewriter">
-[`   pop stack](../basics/debug.md)        [::](overloads.md#colon-colon)   [identity](identity.md)         [\x  system cmd x](../basics/syscmds.md)
-[.](overloads.md#dot)   [push stack](../basics/debug.md)            [generic null](identity.md)     [\\    abort](../basics/debug.md)
+[`   pop stack](https://code.kx.com/kdb-x/how_to/basics/debug.html)        [::](overloads.md#colon-colon)   [identity](identity.md)         [\x  system cmd x](../basics/syscmds.md)
+[.](overloads.md#dot)   [push stack](https://code.kx.com/kdb-x/how_to/basics/debug.html)            [generic null](identity.md)     [\\    abort](https://code.kx.com/kdb-x/how_to/basics/debug.html)
                           [global amend](../basics/function-notation.md#name-scope)     \\\\   quit q
                           [set view](../learn/views.md)         /    comment
 

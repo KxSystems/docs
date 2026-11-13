@@ -516,7 +516,7 @@ _Show or set listening port_
 
 See
 :fontawesome-solid-book-open:
-[Listening port](listening-port.md) for detail.
+[Listening port](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html) for detail.
 
 :fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
@@ -525,7 +525,7 @@ See
 [`-p` command-line option ](cmdline.md#-p-listening-port)
 <br>
 :fontawesome-solid-graduation-cap:
-[Multithreaded input mode](listening-port.md#multi-threaded-input-mode),
+[Multithreaded input mode](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html#multi-threaded-input-mode),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
 :fontawesome-regular-map:
@@ -1073,7 +1073,7 @@ q)
 ```
 
 :fontawesome-solid-book-open:
-[Debugging](debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 
 
 !!! warning "Without a suspension, `\` toggles in an out of the k interpreter."

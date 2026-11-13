@@ -20,7 +20,7 @@ All messages sent across a WebSocket connection are asynchronous.
 
 ## WebSocket server
 
-To enable kdb+ to accept websocket connection, simply start a q session [listening on a port](../basics/listening-port.md) of your choice.
+To enable kdb+ to accept websocket connection, simply start a q session [listening on a port](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html) of your choice.
 
 The [`.z.ws`](../ref/dotz.md#zws-websockets) function will be called by the server for every client message.
 To customise the kdb+ websocket server, define the [`.z.ws`](../ref/dotz.md#zws-websockets) function to your chosen logic.

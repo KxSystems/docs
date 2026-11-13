@@ -16,7 +16,7 @@ last_updated: January 2026
  [fc       parallel on cut](#fc-parallel-on-cut)          [j12         encode base 36](#j12-encode-base-36)
  [ff       append columns](#ff-append-columns)           [ty          type](#ty-type)
  [fmt      precision format](#fmt-precision-format)         [x10         decode binhex](#x10-decode-binhex)
- [ft       apply simple](#ft-apply-simple)             [x12         decode base 36](#x12-decode-base-36) 
+ [ft       apply simple](#ft-apply-simple)             [x12         decode base 36](#x12-decode-base-36)
  [fu       apply unique](#fu-apply-unique)
  [gc       garbage collect](#gc-garbage-collect)         **Database**
  [gz       GZip](#gz-gzip)                     [chk         fill HDB](#chk-fill-hdb)
@@ -54,10 +54,10 @@ last_updated: January 2026
  [def      command defaults](#def-command-defaults)         [PV          partition values](#pv-partition-values)
  [opt      command parameters](#opt-command-parameters)       [pv          modified partition values](#pv-modified-partition-values)
  [x        non-command parameters](#x-non-command-parameters)   [qp          is partitioned](#qp-is-partitioned)
-                                   [vp          missing partitions](#vp-missing-partitions) 
+                                   [vp          missing partitions](#vp-missing-partitions)
  **IPC**
  [addr     IP/host as int](#addr-iphost-as-int)          **Segmented database state**
- [fps fpn  pipe streaming](#fpn-pipe-streaming)           [P           segments](#p-segments) 
+ [fps fpn  pipe streaming](#fpn-pipe-streaming)           [P           segments](#p-segments)
  [fs  fsn  file streaming](#fs-file-streaming)           [u           date based](#u-date-based)
  [hg       HTTP get](#hg-http-get)
  [host     IP to hostname](#host-ip-to-hostname)           **File I/O**
@@ -1324,11 +1324,11 @@ Where `x` is
 
     ```q
     q).Q.id (5#.Q.res)!(5#())
-    abs1 | 
-    acos1| 
-    asin1| 
-    atan1| 
-    avg1 | 
+    abs1 |
+    acos1|
+    asin1|
+    atan1|
+    avg1 |
     ```
 
 Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains a single character that is not in [.Q.an](#an-all-alphanumerics) (it previously produced an empty sym) e.g.
@@ -1589,7 +1589,7 @@ q)\l .
 q).Q.MAP[]
 ```
 
-<!-- 
+<!--
 When using `.Q.MAP[]` you can’t access the date column outside of the usual:
 
 ```q
@@ -1719,7 +1719,7 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 
 !!! warning "Does not look into the segment directories."
 
-    The function calculates only the path, based on the partition and the contents of `par.txt` in a round-robin fashion. It does not check the contents of the segments to see if the partition is there. See [Segmented databases](../database/segment.md#considerations) for details.
+    The function calculates only the path, based on the partition and the contents of `par.txt` in a round-robin fashion. It does not check the contents of the segments to see if the partition is there. See [Segmented databases](https://code.kx.com/kdb-x/how_to/interact_with_databases/segment.html) for details.
 
 ## `PD` (partition locations)
 
@@ -1972,7 +1972,7 @@ Where `x` is a [backtrace object](#trp-extend-trap-at) returns it as a string fo
 
 Since V3.5 2017.03.15.
 
-[Debugging](../basics/debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 
 ## `sha1` (SHA-1 encode)
 
@@ -2070,7 +2070,7 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 
 Since V3.5 2017.03.15.
 
-[Debugging](../basics/debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 
 ## `trpd` (extend trap)
 
@@ -2111,7 +2111,7 @@ Use .Q.trp as a simpler form of .Q.trpd, for unary values.
 
 Since 4.1 2024.03.12.
 
-[Debugging](../basics/debug.md)
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html)
 
 ## `ts` (time and space)
 

@@ -26,7 +26,7 @@ q [[file](#file)] [-option [parameters] … ]
  [-m memory domain](#-m-memory-domain)              [-U usr-pwd](#-u-usr-pwd)
  [-o UTC offset](#-o-utc-offset)                 [-w workspace](#-w-workspace)
  [-p listening port](#-p-listening-port)             [-W start week](#-w-start-week)
- [-P display precision](#-p-display-precision)          [-z date format](#-z-date-format)                                     
+ [-P display precision](#-p-display-precision)          [-z date format](#-z-date-format)
 </div>
 
 :fontawesome-solid-book:
@@ -61,7 +61,7 @@ q)
 ```
 
 Block write-access to a kdb+ database, for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
-Blocks [`hdel`](../ref/hdel.md) keyword (since V4.1t 2021.10.13, V4.0 2023.08.11). 
+Blocks [`hdel`](../ref/hdel.md) keyword (since V4.1t 2021.10.13, V4.0 2023.08.11).
 Blocks hopen of a file (since 4.1t 2021.10.13, 4.0 2023.08.11)
 
 ```bash
@@ -232,9 +232,9 @@ _Set listening port_
 -p [rp,][hostname:](portnumber|servicename)
 ```
 
-See 
+See
 :fontawesome-solid-book-open:
-[Listening port](listening-port.md) for detail.
+[Listening port](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html) for detail.
 
 :fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
@@ -243,7 +243,7 @@ See
 [`\p` system command](syscmds.md#p-listening-port)
 <br>
 :fontawesome-solid-graduation-cap:
-[Multithreaded input mode](listening-port.md#multi-threaded-input-mode),
+[Multithreaded input mode](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html#multi-threaded-input-mode),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
 :fontawesome-regular-map:
@@ -374,10 +374,10 @@ Timeout in seconds for client queries, i.e. maximum time a client call will exec
 -u file     / both the above
 ```
 
-`-u 1` disables 
+`-u 1` disables
 
--   system commands from a remote (signals `'access`), including exit via `"\\"` 
--   access to files outside the current directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0. Segmented database partitions using directories outside the current working directory can be enabled using the method described [here](../database/segment.md#using-symlinks).
+-   system commands from a remote (signals `'access`), including exit via `"\\"`
+-   access to files outside the current directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0. Segmented database partitions using directories outside the current working directory can be enabled using the method described [here](https://code.kx.com/kdb-x/how_to/interact_with_databases/overview.html).
 -   hopen on a fifo (since 4.1t 2021.10.13, 4.0 2023.08.11)
 -   hopen of a file (since 4.1t 2021.10.13, 4.0 2023.08.11)
 -   the [`exit`](../ref/exit.md) keyword (since 4.1t 2021.07.12)
@@ -440,7 +440,7 @@ Default is 0: no limit.
 
     On Linux systems, administrators might prefer [cgroups](https://en.wikipedia.org/wiki/Cgroups) as a way of limiting resources.
 
-    On Unix systems, memory usage can be constrained using `ulimit`, e.g. 
+    On Unix systems, memory usage can be constrained using `ulimit`, e.g.
 
     ```bash
     ulimit -v 262144

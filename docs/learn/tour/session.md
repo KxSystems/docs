@@ -124,7 +124,7 @@ q)
 ```
 
 :fontawesome-solid-book-open:
-[Debugging](../../basics/debug.md),
+[Debugging](https://code.kx.com/kdb-x/how_to/basics/debug.html),
 [Error messages](../../basics/errors.md)
 
 

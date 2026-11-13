@@ -72,7 +72,7 @@ Note: If a license file is found in the current working directory it will be use
 
 ## Core restrictions
 
-If the license is for fewer cores than the total number on the machine, the number of cores available to kdb+ must be [restricted with OS programs](../kb/cpu-affinity.md), or kdb+ will signal `'cores` and abort.
+If the license is for fewer cores than the total number on the machine, the number of cores available to kdb+ must be [restricted with OS programs](https://code.kx.com/kdb-x/how_to/performance/os.html#numa), or kdb+ will signal `'cores` and abort.
 
 ```txt
 KDB+ 3.6 2018.07.30 Copyright (C) 1993-2018 Kx Systems

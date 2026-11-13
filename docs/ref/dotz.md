@@ -269,7 +269,7 @@ Since V3.4 2016.05.16. `CERT` details of `VERIFIED`,`VERIFYERROR` available sinc
 
 ## `.z.ex` (failed primitive)
 
-In a [debugger](../basics/debug.md) session, `.z.ex` is set to the failed primitive.
+In a [debugger](https://code.kx.com/kdb-x/how_to/basics/debug.html) session, `.z.ex` is set to the failed primitive.
 
 Since V3.5 2017.03.15.
 
@@ -344,7 +344,7 @@ os>..
 
 ## `.z.ey` (argument to failed primitive)
 
-In a [debugger](../basics/debug.md) session, `.z.ey` is set to the argument to failed primitive.
+In a [debugger](https://code.kx.com/kdb-x/how_to/basics/debug.html) session, `.z.ey` is set to the argument to failed primitive.
 
 Since V3.5 2017.03.15.
 

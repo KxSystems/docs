@@ -22,7 +22,7 @@ KX customers can lift and shift their kdb+ plants to the cloud and exploit virtu
 
     <!-- -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries -->
     <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
-    
+
     -   Use Helm and Kubernetes to deploy kdb+ applications to the cloud
 
     Service integration:
@@ -31,7 +31,7 @@ KX customers can lift and shift their kdb+ plants to the cloud and exploit virtu
     -   [Kurl](https://code.kx.com/insights/core/kurl/kurl.html) – Native kdb+ REST client with authentication to cloud services
 
     Storage:
-    
+
     -   [kdb+ Object Store](https://code.kx.com/insights/core/objstor/main.html) – Native support for reading and querying cloud object storage
 
 
@@ -58,7 +58,7 @@ One architectural pattern for kdb+tick in Amazon Web Services is depicted below.
 Worthy of note in this reference architecture is the ability to place kdb+ processing functions either in one Elastic Compute Cloud (EC2) instance or distributed across many EC2 instances. kdb+ processes can communicate with each other through built-in language primitives: this allows for flexibility in final design layouts. Data transportation between kdb+ processes, and overall external communication, is by low-level TCP/IP sockets. If two components are on the same EC2 instance, local Unix sockets can be used to reduce communication overhead.
 
 Many customers have tickerplants set up on their premises. The AWS reference architecture allows them to manage a hybrid infrastructure that communicates with tickerplants both on premises and in the cloud. However, the benefits of migrating on-premises solutions to the cloud are vast. These include flexibility, auto-scaling, improved transparency in cost management, access to management and infrastructure tools built by Amazon, quick hardware allocation and many more.
-<!-- 
+<!--
 !!! tip "kdb Insights"
 
     This article focuses on kdb+tick deployment to EC2 virtual machines in AWS.
@@ -284,7 +284,7 @@ The CPU requirement of the real-time database (RDB) comes from
 -   appending updates to local tables
 -   user queries
 
-Local table updates are very efficient especially if TP sends batch updates. Nevertheless, a faster CPU results in faster ingestion and lower latency. User queries are often CPU-intensive. They perform aggregation and joins, and call expensive functions. If the RDB is set up in [multithreaded input mode](../../basics/listening-port.md#multi-threaded-input-mode) then user queries are executed in parallel. Furthermore, kdb+ 4.0 supports multithreading in most primitives, including `sum`, `avg`, `dev`, etc. If the RDB process is heavily used and hit by many queries, then it is recommended to start with [secondary threads](../../basics/cmdline.md#-s-secondary-threads). VMs with plenty of cores are recommended for RDB processes with large numbers of user queries.
+Local table updates are very efficient especially if TP sends batch updates. Nevertheless, a faster CPU results in faster ingestion and lower latency. User queries are often CPU-intensive. They perform aggregation and joins, and call expensive functions. If the RDB is set up in [multithreaded input mode](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html#multi-threaded-input-mode) then user queries are executed in parallel. Furthermore, kdb+ 4.0 supports multithreading in most primitives, including `sum`, `avg`, `dev`, etc. If the RDB process is heavily used and hit by many queries, then it is recommended to start with [secondary threads](../../basics/cmdline.md#-s-secondary-threads). VMs with plenty of cores are recommended for RDB processes with large numbers of user queries.
 
 If the infrastructure is sensitive to the RDB EOD work, then powerful CPUs are recommended. Sorting tables before splaying is a CPU-intensive task.
 
@@ -365,7 +365,7 @@ EFA provides lower and more consistent latency and higher throughput than the TC
 
 A network load balancer is a type of [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) by Amazon. It is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, Network Load Balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
 
-Load balancers can distribute load among applications that offer the same service. kdb+ is single-threaded by default. You can set [multithreaded input mode](../../basics/listening-port.md#multi-threaded-input-mode) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
+Load balancers can distribute load among applications that offer the same service. kdb+ is single-threaded by default. You can set [multithreaded input mode](https://code.kx.com/kdb-x/how_to/io_and_communication/listening-port.html#multi-threaded-input-mode) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
 
 A better approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway via async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then we recommend a gateway load balancer to avoid query contention in the gateway. Furthermore, there are other tickerplant components that enjoy the benefit of load balancers to handle simultaneous requests better.
 

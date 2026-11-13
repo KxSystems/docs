@@ -115,7 +115,7 @@ rank | syntax              | semantics
 4    | `.[d;i;m;my]`       | [Amend](amend.md)
 4    | `.[d;i;:;y]`        | [Replace](amend.md)
 
-In the [Debugger](../basics/debug.md), push the stack.
+In the [Debugger](https://code.kx.com/kdb-x/how_to/basics/debug.html), push the stack.
 
 
 ## `$` dollar
