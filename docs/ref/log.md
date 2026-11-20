@@ -68,6 +68,9 @@ ghi| 1.098612
 
 ### Domain and range
 
+The following shows the resulting output (range) type given the input (domain) type of `x`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
 domain b g x h i j e f c s p m d z n u v t
 range  f . f f f f f f f . f f f z f f f f
@@ -148,6 +151,9 @@ q)2 xexp 2 xlog -1 0 0.125 1 42
 ```
 
 ### Domain and range
+
+The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
 xlog | b g x h i j e f c s p m d z n u v t

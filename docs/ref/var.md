@@ -106,6 +106,9 @@ b| 8
 
 ## Domain and range
 
+The following shows the resulting output (range) type given the input (domain) type of `x`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
 domain: B G X H I J E F C S P M D Z N U V T
 range:  f . f f f f f f f . f f f f f f f f
