@@ -87,12 +87,18 @@ q)3 mmin 0N -3 -2 1 0N -0W    / null is the minimum value
 
 `min` and `mins`
 
+The following shows the resulting output (range) type given the input (domain) type of `x`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
 domain: b g x h i j e f c s p m d z n u v t
 range:  b . x h i j e f c . p m d z n u v t
 ```
 
 `mmin`
+
+The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
     b g x h i j e f c s p m d z n u v t

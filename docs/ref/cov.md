@@ -28,8 +28,8 @@ The function `cov` is equivalent to `{avg[x*y]-avg[x]*avg y}`.
 
 ### Domain and range:
 
-The following shows the resulting output (range) type given the input (domain) type of `x`.
-The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
     B G X H I J E F C S P M D Z N U V T
@@ -85,6 +85,9 @@ q)exec a scov b from t
 The function `scov` is equivalent to `{cov[x;y]*count[x]%-1+count x}`.
 
 ### Domain and range:
+
+The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
     B G X H I J E F C S P M D Z N U V T
