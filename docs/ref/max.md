@@ -91,7 +91,7 @@ q)3 mmax 0N -3 -2 0N 1 0  / initial null returns negative infinity
 
 `mmax` is a uniform function.
 
-Domain and range:
+### Domain and range:
 
 ```txt
     b g x h i j e f c s p m d z n u v t

@@ -27,6 +27,9 @@ q)select med price by sym from trade where date=2001.10.10,sym in`AAPL`LEH
 
 ## Domain and range
 
+The following shows the resulting output (range) type given the input (domain) type of `x`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
 domain: b g x h i j e f c s p m d z n u v t
 range:  f . f f f f f f f . f f f f f f f f
