@@ -107,7 +107,7 @@ q)0 mavg 2 3
 
 `mavg` is a uniform function.
 
-Domain and range:
+### Domain and range:
 
 ```txt
     B G X H I J E F C S P M D Z N U V T

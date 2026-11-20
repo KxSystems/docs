@@ -45,6 +45,9 @@ It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-table
 
 ## Domain and range
 
+The following shows the resulting output (range) type given the input (domain) type of `x`.
+The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+
 ```txt
 domain b g x h i j e f c s p m d z n u v t
 range  i . i h i j e f i . p m d z n u v t
