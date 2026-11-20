@@ -152,6 +152,9 @@ q)2 xexp 2 xlog -1 0 0.125 1 42
 
 ### Domain and range
 
+The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
+
 ```txt
 xlog | b g x h i j e f c s p m d z n u v t
 ---- | -----------------------------------

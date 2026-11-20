@@ -39,6 +39,9 @@ q)1000101000b cor 0010011001b
 
 ## Domain and range
 
+The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
+
 ```txt
     B G X H I J E F C S P M D Z N U V T
 ----------------------------------------
