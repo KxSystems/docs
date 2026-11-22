@@ -61,7 +61,7 @@ q)"d"$23:59:59.999+ 2010.05.13T12:30:59.999
 ## Domain and range
 
 The following shows the resulting output (range) type given the input (domain) type of `x`.
-The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
 domain b g x h i j e f c s p m d z n u v t

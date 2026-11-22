@@ -26,7 +26,7 @@ q)exec a cov b from t
 
 The function `cov` is equivalent to `{avg[x*y]-avg[x]*avg y}`.
 
-### Domain and range:
+### Domain and range
 
 The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
@@ -84,7 +84,7 @@ q)exec a scov b from t
 
 The function `scov` is equivalent to `{cov[x;y]*count[x]%-1+count x}`.
 
-### Domain and range:
+### Domain and range
 
 The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).

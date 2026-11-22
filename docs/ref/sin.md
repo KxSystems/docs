@@ -55,7 +55,7 @@ z| 0.7173561 0.7833269  0.841471  0.8912074
 ## Domain and range
 
 The following shows the resulting output (range) type given the input (domain) type of `x`.
-The character representation of the datatypes referenced can be found [`here`](../basics/datatypes.md).
+For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
 domain: b g x h i j e f c s p m d z n u v t

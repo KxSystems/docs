@@ -107,7 +107,7 @@ q)0 mavg 2 3
 
 `mavg` is a uniform function.
 
-### Domain and range:
+### Domain and range
 
 The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
@@ -181,7 +181,7 @@ a  | 10.75
 
 `wavg` is an aggregate function, equivalent to `{(sum x*y)%sum x}`.
 
-### Domain and range:
+### Domain and range
 
 The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).

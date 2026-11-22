@@ -91,7 +91,7 @@ q)3 mmax 0N -3 -2 0N 1 0  / initial null returns negative infinity
 
 `mmax` is a uniform function.
 
-### Domain and range:
+### Domain and range
 
 The following table shows the result type for each combination of the type of `x` (rows) and the type of `y` (columns).
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
