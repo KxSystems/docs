@@ -88,7 +88,7 @@ An empty folder returns an empty symbol vector; a non-existent folder returns an
 
 ## Whether a file exists
 
-Where `x` is a file handle, returns the descriptor if the file exists, otherwise an empty list.
+Where `x` is a file symbol, returns the descriptor if the file exists, otherwise an empty list.
 
 ```q
 q)key`:c:/q/sp.q

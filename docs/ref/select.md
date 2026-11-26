@@ -64,7 +64,7 @@ id val
 The Select phrase specifies the columns of the result table, one per subphrase.
 
 Without a Select phrase, the query returns all the columns of the table expression.
-(Unlike SQL, q doesn't need a `*` wildcard.)
+(Unlike SQL, q doesn't use a `*` wildcard.)
 
 ```q
 q)t:([] c1:`a`b`c; c2:10 20 30; c3:1.1 2.2 3.3)
@@ -162,10 +162,7 @@ b| 20 40
 c| ,50
 ```
 
-Unlike in SQL, columns in the By phrase 
-
--   are included in the result and need not be specified in the Select phrase
--   can include computed columns
+Unlike in SQL, columns in the By phrase
 
 - are included in the result, so you don't need to specify them in the Select phrase
 - can include computed columns

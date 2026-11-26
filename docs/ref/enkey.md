@@ -44,7 +44,7 @@ _Remove the key/s from a table._
 0!t    ![0;t]
 ```
 
-Where `t` is a **keyed table**, or a handle to one, returns `t` as a simple table, with no keys.
+Where `t` is a **keyed table**, or a file symbol of one, returns `t` as a simple table, with no keys.
 ```q
 q)t:([a:1 2 3]b:10 20 30;c:`x`y`z)
 q)0!t

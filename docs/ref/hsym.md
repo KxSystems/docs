@@ -18,7 +18,7 @@ Where `x` is a symbol atom or vector (since V3.1) returns the symbol/s prefixed 
 
 
 ```q
-q)hsym`c:/q/test.txt                / file path to symbolic file handle
+q)hsym`c:/q/test.txt                / file path to file symbol
 `:c:/q/test.txt
 q)hsym`10.43.23.197                 / IP address to symbolic handle
 `:10.43.23.197

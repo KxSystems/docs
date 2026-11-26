@@ -55,7 +55,7 @@ c| 0
 [`ss`, `ssr`](ss.md),
 <br>
 
-[Regular expressions in q](../basics/regex.md),
+[Wildcard patterns in q](../basics/regex.md),
 [Strings](../basics/by-topic.md#strings)
 <br>
 

@@ -85,9 +85,10 @@ q)a[4+til 4]
 "ever"
 ```
 
-## Fifo or named pipe
+## FIFO or named pipe
 
-(Since V3.4 2016.05.31) Where the argument is a handle `fifo` to a Fifo, returns the lines read from the pipe until end of file (EOF).
+(Since V3.4 2016.05.31) Where the argument is a handle to a named pipe (FIFO), as opened by ``hopen`:fifo://mypipe``, returns the lines read from the pipe until end of file (EOF).
+
 Where the argument is `(fifo;n)`, returns `n` characters from the pipe.
 
 ```q

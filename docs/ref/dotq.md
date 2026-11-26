@@ -470,11 +470,11 @@ param3| 0n
 
 Where
 
-* `d` is a directory handle
+* `d` is a directory file symbol
 * `p` is a partition of a database
 * `f` a field of the table (required to be present in table since 4.1t 2021.09.03) named by `t` below
 * `t`, the name (as a symbol) of a simple table whose columns are vectors or compound lists
-* `s` is the handle of a symtable
+* `s` is the file symbol of a symtable
 
 saves `t` splayed to partition `p`.
 
@@ -585,11 +585,11 @@ q).Q.dsftg[d;s;f;t;g]
 
 Where
 
-* `dir` is a symbol handle to a folder or generic null ([`::`](identity.md#null))
+* `dir` is a file symbol of a folder or generic null ([`::`](identity.md#null))
 * `table` is a table
 * `name` is a symbol atom naming a sym file in `dir`
 
-When `dir` is a symbol handle, the function
+When `dir` is a file symbol, the function
 
 * creates if necessary the folder `dir`
 * gets `sym` from `dir` if it exists

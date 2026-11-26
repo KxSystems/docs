@@ -46,7 +46,7 @@ q)` sv ("one";"two";"three")      / use host line separator
 Where
 
 - `x` is the null symbol `` ` ``
-- `y` is a symbol list
+- `y` is a symbol list in which the first item doesn't start with a colon
 
 returns a symbol atom in which the items of `y` are joined by periods:
 
@@ -75,16 +75,16 @@ q)0x02 sv (enlist 0x01;enlist 0x01;enlist 0x01)
 Where
 
 - `x` is the null symbol `` ` ``
-- `y` is a symbol list of which the first item is a file handle
+- `y` is a symbol list in which the first item is a file symbol
 
-returns a file handle where the items of the list are joined, separated by slashes. This is useful when building file paths.
+returns a file symbol where the items of the list are joined, separated by slashes. This is useful when building file paths.
 
 ```q
 q)` sv `:/home/kdb/q`data`2010.03.22`trade
 `:/home/kdb/q/data/2010.03.22/trade
 ```
 
-If the first item is not a file handle, returns a symbol where the items are joined, separated by `.` (dot). This is useful for building filenames with a given extension:
+If the first item is not a file symbol, returns a symbol where the items are joined, separated by `.` (dot). This is useful for building filenames with a given extension:
 
 ```q
 q)` sv `mywork`dat
@@ -123,7 +123,7 @@ Where
 - `x` is `0x0`
 - `y` is a vector of bytes of length 2, 4, 8, or 16
 
-returns `y` converted to the corresponding short, int, long, or GUID.
+returns `y` converted to the corresponding short, int, long, or GUID, reading the bytes in big-endian order (most significant byte first).
 
 ```q
 q)0x0 sv "x" $0 255           / short

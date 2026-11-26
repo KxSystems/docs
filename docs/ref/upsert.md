@@ -5,7 +5,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `upsert`
 
-_Update or append records in a table_
+_Update or append records in a table, list or dictionary_
 
 ```syntax
 x upsert y    upsert[x;y]
@@ -13,7 +13,7 @@ x upsert y    upsert[x;y]
 
 Where 
 
-- `x` is a table, the name of a table as a symbol atom, or a file handle to a serialized or splayed table
+- `x` is a table, the name of a table as a symbol atom, or a file symbol of a serialized or splayed table
 - `y` is zero or more records
 
 `upsert` adds the records to the table, as described in the following sections.
@@ -23,9 +23,9 @@ The records `y` can be either:
 - Lists with types that match `type each x cols x`
 - A table with columns that are members of `cols x` and have corresponding types
 
-If `x` is the name of a table or a file handle, `upsert` updates the table in place and returns `x`. Otherwise, it returns the updated table.
+If `x` is the name of a table or a file symbol, `upsert` updates the table in place and returns `x`. Otherwise, it returns the updated table.
 
-If `x` names a table that does not exist, `upsert` creates a global table from `y`. If `x` is a file handle to a table that does not exist, `upsert` writes `y` to that file.
+If `x` names a table that does not exist, `upsert` creates a global table from `y`. If `x` is a file symbol of a table that does not exist, `upsert` writes `y` to that file.
 
 ## Simple table
 

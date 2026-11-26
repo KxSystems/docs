@@ -74,7 +74,7 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 [`like`](like.md)
 <br>
 
-[Regular expressions in q](../basics/regex.md)
+[Wildcard patterns in q](../basics/regex.md)
 <br>
 
 [Strings](../basics/by-topic.md#strings)

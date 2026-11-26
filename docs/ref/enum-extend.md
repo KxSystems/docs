@@ -18,7 +18,7 @@ x?y    ?[x;y]
 Where 
 
 -   `y` is a list
--   `x` is a handle to a:
+-   `x` is a file symbol of a:
 
 
 ## Variable

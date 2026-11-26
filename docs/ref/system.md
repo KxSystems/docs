@@ -39,10 +39,6 @@ q)count system "a"       / this returns a result
 3
 ```
 
-### Working directory changes on Windows
-
-If the working directory changes unexpectedly on Windows, refer to [why the current directory can change](https://devblogs.microsoft.com/oldnewthing/20071121-00/?p=24433) on _The Old New Thing_.
-
 ## Operating system shell commands
 
 As with `\`, if the argument is not a q command, `system` runs it in the shell and returns the output of the command as a list of strings:
@@ -100,7 +96,19 @@ the shell treats it as two statements:
 cat x > y; > tmpout
 ```
 
-The same mechanism means that, for several commands separated by semicolons, only the output of the last command is captured.
+The same mechanism means that, for several commands separated by semicolons, only the output of the last command is captured. To capture the output of all of them, group the commands in parentheses so that the redirection applies to the whole group:
+
+```q
+q)system"echo a;echo b"      / only b is captured; a goes to stdout
+a
+,,"b"
+q)system"(echo a;echo b)"    / both are captured
+(,"a";,"b")
+```
+
+!!! warning "Do not build commands from untrusted text"
+
+    The shell interprets the whole command string, so joining user input into it lets that input run any command (command injection). Validate such input, or avoid passing it through the shell.
 
 ### Capture `stderr` output
 
@@ -112,10 +120,16 @@ q)system"ls egg > file 2>&1;cat file"
 "ls: egg: No such file or directory"
 
 q)/ Try and fail to capture the text
-q)@[system;"ls egg";{0N!"error - ",x;}]
+q)@[system;"ls egg";{-1"error - ",x;}]
 ls: egg: No such file or directory
-"error - os"
+error - os
 ```
+
+### Shell startup commands
+
+`system` passes the command to the shell of the operating system: `sh -c` on Unix-like systems and `cmd.exe` on Windows. A shell can run startup commands of its own, and these affect every `system` call. For example, on Windows the command processor runs the commands registered in its `AutoRun` setting each time it starts. They can change the working directory, set environment variables, or run any other command. See [why the current directory can change](https://devblogs.microsoft.com/oldnewthing/20071121-00/?p=24433) on _The Old New Thing_.
+
+On Unix-like systems, `sh -c` is not an interactive or login shell, so it does not read startup files such as `.bashrc` or `.profile`.
 
 ----
 

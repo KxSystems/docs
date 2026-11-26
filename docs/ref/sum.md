@@ -19,7 +19,7 @@ Where `x` is
 
 - a simple numeric list, returns the sum of its items
 - an atom, returns `x`
-- a list of numeric lists, returns their sum (item-wise)
+- a list of numeric lists, returns the sums of the items at equal indices
 - a dictionary with numeric values, returns the sum of its values
 
 `sum` treats nulls in a vector as zeros. For a list of lists, nulls are preserved; see [Aggregating nulls](#aggregating-nulls).
@@ -44,12 +44,15 @@ s2| 700
 s3| 200
 q)sum "abc"                     / chars are summed as their codes
 294i
-q)sum (0n 8;8 0n)               / sum of a list of vectors does not ignore nulls
-0n 0n
+q)m:(0n 8 1;8 0n 2;3 4 0n)
+q)sum m                         / sum of a list of vectors does not ignore nulls
+0n 0n 0n
 q)sum 0n 8                      / sum of a vector ignores nulls, as in SQL-92
 8f
-q)sum each flip(0n 8;8 0n)      / to ignore nulls, sum each vector
-8 8f
+q)sum each m                    / sums the rows, not the columns
+9 10 7f
+q)sum each flip m               / to ignore nulls and sum the columns, flip first
+11 12 3f
 ```
 
 `sum` is an aggregate function, equivalent to `+/`.
@@ -200,8 +203,7 @@ q)1 2 wsum d
 
 ## Aggregating nulls
 
-`avg`, `min`, `max`, and `sum` ignore nulls, as SQL-92 does.
-For nested `x`, however, these functions preserve nulls.
+`sum` ignores nulls in a vector, as SQL-92 does. For nested `x`, however, it preserves nulls. See [Aggregating nulls](../basics/math.md#aggregating-nulls) for the other aggregates.
 
 ```q
 q)sum (1 2;0N 4)

@@ -22,26 +22,6 @@ update ret:ratios price by sym from trade
 select log ratios price from trade
 ```
 
-Use [`deltas`](deltas.md) to get price movements:
-
-```q
-update diff:deltas price by sym from trade
-```
-
-With [`signum`](signum.md) to count the number of up, down, and unchanged ticks:
-
-```q
-q)trade:([]price:10 11 11 10 12 13 12f)
-q)select count i by signum deltas price from trade
-price| x
------| -
--1   | 2
-0    | 1
-1    | 4
-```
-
-The first item counts as an up tick, because `deltas` treats its predecessor as 0.
-
 ## Implicit iteration
 
 `ratios` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
@@ -106,7 +86,8 @@ q)ratios0 2000 2005 2007 2012 2020
 [Each Prior](maps.md#each-prior),
 [`deltas`](deltas.md),
 [`differ`](differ.md),
-[Divide](divide.md)
+[Divide](divide.md),
+[`signum`](signum.md)
 <br>
 
 [Mathematics](../basics/math.md)
