@@ -83,9 +83,9 @@ q)` vs `mywork.dat
 `mywork`dat
 ```
 
-### File handle
+### File symbol
 
-Where `x` is the null symbol `` ` ``, and `y` is a file handle, returns `y` split into directory and file parts as a symbol vector.
+Where `x` is the null symbol `` ` ``, and `y` is a file symbol, returns `y` split into directory and file parts as a symbol vector.
 
 ```q
 q)` vs `:/home/kdb/data/mywork.dat
@@ -128,7 +128,7 @@ q)0b vs "G"$"8c6b8b64-6815-6084-0a3e-178401251b68"
 
 ### Byte representation
 
-Where `x` is `0x0` and `y` is a number or GUID, returns the internal representation of `y`.
+Where `x` is `0x0` and `y` is a number or GUID, returns the internal representation of `y`, with the bytes in big-endian order (most significant byte first).
 
 ```q
 q)0x0 vs 2413h

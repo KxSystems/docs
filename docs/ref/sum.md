@@ -1,11 +1,11 @@
 ---
 title: sum, sums, msum, wsum – sum, cumulative sums, moving sums, and weighted sum of a list | Reference | kdb+ and q documentation
-description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument.
+description: sum, sums, msum, and wsum are q keywords that return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `sum`, `sums`, `msum`, `wsum`
 
-_Totals – simple, running, moving, and weighted_
+_Totals: simple, running, moving, and weighted_
 
 ## `sum`
 
@@ -17,12 +17,12 @@ sum x    sum[x]
 
 Where `x` is
 
-- a simple numeric list, returns the sums of its items
+- a simple numeric list, returns the sum of its items
 - an atom, returns `x`
-- a list of numeric lists, returns their sums
-- a dictionary with numeric values
+- a list of numeric lists, returns the sums of the items at equal indices
+- a dictionary with numeric values, returns the sum of its values
 
-Nulls are treated as zeros.
+`sum` treats nulls in a vector as zeros. For a list of lists, nulls are preserved; see [Aggregating nulls](#aggregating-nulls).
 
 ```q
 q)sum 7                         / sum atom (returned unchanged)
@@ -31,36 +31,37 @@ q)sum 2 3 5 7                   / sum list
 17
 q)sum 2 3 0N 7                  / 0N is treated as 0
 12
-q)sum (1 2 3 4;2 3 5 7)         / sum list of lists
-3 5 8 11                        / same as 1 2 3 4 + 2 3 5 7
+q)sum (1 2 3 4;2 3 5 7)         / sum list of lists: same as 1 2 3 4 + 2 3 5 7
+3 5 8 11
 q)sum `a`b`c!1 2 3
 6
-q)\l sp.q
+q)sp:([]s:`s1`s1`s2`s3`s1`s2;qty:300 200 400 200 100 300)
 q)select sum qty by s from sp   / use in select statement
 s | qty
---| ----
-s1| 1600
+--| ---
+s1| 600
 s2| 700
 s3| 200
-s4| 600
-q)sum "abc"                     / type error if list is not numeric
-'type
-q)sum (0n 8;8 0n) / n.b. sum list of vectors does not ignore nulls
-0n 0n
-q)sum 0n 8 / the vector case was modified to match sql92 (ignore nulls)
+q)sum "abc"                     / chars are summed as their codes
+294i
+q)m:(0n 8 1;8 0n 2;3 4 0n)
+q)sum m                         / sum of a list of vectors does not ignore nulls
+0n 0n 0n
+q)sum 0n 8                      / sum of a vector ignores nulls, as in SQL-92
 8f
-q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
-8 8f
+q)sum each m                    / sums the rows, not the columns
+9 10 7f
+q)sum each flip m               / to ignore nulls and sum the columns, flip first
+11 12 3f
 ```
 
 `sum` is an aggregate function, equivalent to `+/`.
 
 !!! warning "Floating-point addition is not associative"
 
-    Different results may be obtained by changing the order of the summation.
+    Changing the order of the summation can change the result.
 
         ❯ q -s 4
-        kdb+ 5.0.20251113 2025.11.13 Copyright (C) 1993-2025 Kx Systems
         ...
 
         q)\s 0
@@ -71,7 +72,7 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
         q)sum reverse a
         49999897.181931004
 
-    The order of summation changes when the primitive is able to use threads. 
+    The order of summation changes when the primitive can use threads.
 
         q)\s 4
         q)sum a
@@ -89,7 +90,7 @@ sums x    sums[x]
 
 Where `x` is a numeric or temporal list, returns the cumulative sums of the items of `x`.
 
-The sum of an atom is itself. Nulls are treated as zeros.
+The sum of an atom is itself. `sums` treats nulls as zeros.
 
 ```q
 q)sums 7                        / cumulative sum atom (returned unchanged)
@@ -98,19 +99,20 @@ q)sums 2 3 5 7                  / cumulative sum list
 2 5 10 17
 q)sums 2 3 0N 7                 / 0N is treated as 0
 2 5 5 12
-q)sums (1 2 3;2 3 5)            / cumulative sum list of lists
-1 2 3                           / same as (1 2 3;1 2 3 + 2 3 5)
+q)sums (1 2 3;2 3 5)            / same as (1 2 3;1 2 3 + 2 3 5)
+1 2 3
 3 5 8
-q)\l sp.q
+q)sp:([]s:`s1`s1`s2`s3`s1`s2;qty:300 200 400 200 100 300)
 q)select sums qty by s from sp  / use in select statement
 s | qty
---| --------------------------
-s1| 300 500 900 1100 1200 1600
-s2| 300 700
+--| -----------
+s1| 300 500 600
+s2| 400 700
 s3| ,200
-s4| 100 300 600
 q)sums "abc"                    / type error if list is not numeric
 'type
+  [0]  sums "abc"                    / type error if list is not numeric
+       ^
 ```
 
 `sums` is a uniform function, equivalent to `+\`.
@@ -125,7 +127,7 @@ x msum y    msum[x;y]
 
 Where
 
-- `x` is a positive int atom
+- `x` is a positive integer atom
 - `y` is a numeric list
 
 returns the `x`-item moving sums of `y`, with nulls replaced by zero. The first `x` items of the result are the sums of the terms so far, and thereafter the result is the moving sum.
@@ -147,7 +149,7 @@ _Weighted sum_
 x wsum y    wsum[x;y]
 ```
 
-Where `x` and `y` are numeric lists, returns the weighted sum of the products of `x` and `y`. When both `x` and `y` are integer lists, they are first converted to floats.
+Where `x` and `y` are numeric lists, returns the sum of the products of `x` and `y`. When both `x` and `y` are vectors, the result is a float, except that a long vector with a boolean vector returns a long. Where `x` is an atom, the result has the type of `x*y`.
 
 ```q
 q)2 3 4 wsum 1 2 4   / equivalent to sum 2 3 4 * 1 2 4f
@@ -201,8 +203,7 @@ q)1 2 wsum d
 
 ## Aggregating nulls
 
-`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
-But for nested `x` these functions preserve the nulls.
+`sum` ignores nulls in a vector, as SQL-92 does. For nested `x`, however, it preserves nulls. See [Aggregating nulls](../basics/math.md#aggregating-nulls) for the other aggregates.
 
 ```q
 q)sum (1 2;0N 4)
@@ -211,24 +212,31 @@ q)sum (1 2;0N 4)
 
 ## Domains and ranges
 
-`sum` and `sums`
+`sum`
 
 ```txt
-domain: b g x h i j e f c s p m d z n u v t
+domain: B G X H I J E F C S P M D Z N U V T
 range:  i . i i i j e f i . p m d z n u v t
+```
+
+`sums`
+
+```txt
+domain: B G X H I J E F C S P M D Z N U V T
+range:  I . I I I J E F . . P M D Z N U V T
 ```
 
 `msum`
 
 ```txt
-    b g x h i j e f c s p m d z n u v t
+    B G X H I J E F C S P M D Z N U V T
 ----------------------------------------
-b | i . i i i j e f . . n i i f n u v t
+b | I . I I I J E F . . N I I F N U V T
 g | . . . . . . . . . . . . . . . . . .
-x | i . i i i j e f . . n i i f n u v t
-h | i . i i i j e f . . n i i f n u v t
-i | i . i i i j e f . . n i i f n u v t
-j | i . i i i j e f . . n i i f n u v t
+x | I . I I I J E F . . N I I F N U V T
+h | I . I I I J E F . . N I I F N U V T
+i | I . I I I J E F . . N I I F N U V T
+j | I . I I I J E F . . N I I F N U V T
 e | . . . . . . . . . . . . . . . . . .
 f | . . . . . . . . . . . . . . . . . .
 c | . . . . . . . . . . . . . . . . . .
@@ -243,20 +251,47 @@ v | . . . . . . . . . . . . . . . . . .
 t | . . . . . . . . . . . . . . . . . .
 ```
 
-Range: `efijntuv`
+Range: `EFIJNTUV`
 
-`wsum`
+`wsum` where `x` and `y` are vectors
 
 ```txt
-    b g x h i j e f c s p m d z n u v t
+    B G X H I J E F C S P M D Z N U V T
 ----------------------------------------
-b | i . i i i j e f . . p m d z n u v t
+B | f . f f f j f f f . f f f f f f f f
+G | . . . . . . . . . . . . . . . . . .
+X | f . f f f f f f f . f f f f f f f f
+H | f . f f f f f f f . f f f f f f f f
+I | f . f f f f f f f . f f f f f f f f
+J | j . f f f f f f f . f f f f f f f f
+E | f . f f f f f f f . f f f f f f f f
+F | f . f f f f f f f . f f f f f f f f
+C | f . f f f f f f f . f f f f f f f f
+S | . . . . . . . . . . . . . . . . . .
+P | f . f f f f f f f . f f f f f f f f
+M | f . f f f f f f f . f f f f f f f f
+D | f . f f f f f f f . f f f f f f f f
+Z | f . f f f f f f f . f f f f f f f f
+N | f . f f f f f f f . f f f f f f f f
+U | f . f f f f f f f . f f f f f f f f
+V | f . f f f f f f f . f f f f f f f f
+T | f . f f f f f f f . f f f f f f f f
+```
+
+Range: `fj`
+
+`wsum` where `x` is an atom
+
+```txt
+    B G X H I J E F C S P M D Z N U V T
+----------------------------------------
+b | i . i i i j e f i . p m d z n u v t
 g | . . . . . . . . . . . . . . . . . .
-x | i . i i i j e f . . p m d z n u v t
-h | i . i i i j e f . . p m d z n u v t
-i | i . i i i j e f . . p m d z n u v t
-j | j . j j j j e f . . p m d z n u v t
-e | e . e e e e e f . . p m d z n u v t
+x | i . i i i j e f i . p m d z n u v t
+h | i . i i i j e f i . p m d z n u v t
+i | i . i i i j e f i . p m d z n u v t
+j | j . j j j j e f j . p m d z n u v t
+e | e . e e e e e f e . p m d z n u v t
 f | f . f f f f f f f . f f z z f f f f
 c | . . . . . . . f . . p m d z n u v t
 s | . . . . . . . . . . . . . . . . . .

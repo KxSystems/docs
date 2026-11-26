@@ -11,7 +11,7 @@ _Cast to string_
 string x    string[x]
 ```
 
-Returns `x` as a string.  Applies to all datatypes.
+Returns `x` as a string. `string` applies to all datatypes.
 
 ```q
 q)string `ibm

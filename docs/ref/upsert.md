@@ -1,15 +1,11 @@
 ---
 title: upsert | Reference | kdb+ and q documentation
-description: upsert is a q keyword that adds new records to a table.
+description: upsert is a q keyword that adds records to a table or updates matching ones.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `upsert`
 
-
-
-
-
-_Overwrite or append records to a table_
+_Update or append records in a table, list or dictionary_
 
 ```syntax
 x upsert y    upsert[x;y]
@@ -17,25 +13,23 @@ x upsert y    upsert[x;y]
 
 Where 
 
--   `x` is a table, or the name of a table as a symbol atom, or the name of a splayed table as a directory handle
--   `y` is zero or more records
+- `x` is a table, the name of a table as a symbol atom, or a file symbol of a serialized or splayed table
+- `y` is zero or more records
 
-the records are upserted into the table.
+`upsert` adds the records to the table, as described in the following sections.
 
-The record/s `y` may be either 
+The records `y` can be either:
 
--   lists with types that match `type each x cols x`
--   a table with columns that are members of `cols x` and have corresponding types
+- Lists with types that match `type each x cols x`
+- A table with columns that are members of `cols x` and have corresponding types
 
-If `x` is the name of a table, it is updated in place. Otherwise the updated table is returned.
+If `x` is the name of a table or a file symbol, `upsert` updates the table in place and returns `x`. Otherwise, it returns the updated table.
 
-If `x` is the name of a table as a symbol atom (or the name of a splayed table as a directory handle) that does not exist in the file system, it is written to file.
-
+If `x` names a table that does not exist, `upsert` creates a global table from `y`. If `x` is a file symbol of a table that does not exist, `upsert` writes `y` to that file.
 
 ## Simple table
 
-If the table is simple, new records are appended.
-If the records are in a table, it must be simple.
+If `x` is a simple table, `upsert` appends the new records. If `y` is a table, it must also be simple.
 
 ```q
 q)t:([]name:`tom`dick`harry;age:28 29 30;sex:`M)
@@ -69,14 +63,14 @@ dick  49
 jane  23
 ```
 
-
 ## Keyed table
 
-If the table is keyed, any new records that match on key are updated. Otherwise, new records are inserted.
+If `x` is keyed, `upsert` updates the existing records whose keys match records in `y`, and inserts the rest.
 
-If the right argument is a table it may be keyed or unkeyed.
+If `y` is a table, it can be keyed or unkeyed.
 
 ```q
+q)a:([s:`q`w]r:1 2;u:5 6)
 q)a upsert (`e;30;70)                         / single record
 s| r  u
 -| -----
@@ -92,7 +86,7 @@ w| 2  6
 e| 30 70
 r| 40 80
 
-q)show a:([]s:`q`w`e;r:1 2 3;u:5 6 7)         / simple table
+q)show a:([s:`q`w`e]r:1 2 3;u:5 6 7)         / keyed table
 s| r u
 -| ---
 q| 1 5
@@ -100,8 +94,8 @@ w| 2 6
 e| 3 7
 
 q)/ Update `q and `e, insert new `r; return new table
-q)a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)    / keyed table
-s| r  u                                       
+q)a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)    / keyed table as records
+s| r  u
 -| -----
 q| 10 50
 w| 2  6
@@ -111,7 +105,6 @@ r| 4  8
 q)`a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)   / same but update table in place
 `a
 ```
-
 
 ## Serialized table
 
@@ -131,7 +124,6 @@ c  3.3
 
 Upserting to a serialized table reads the table into memory, updates it, and writes it back to file. 
 
-
 ## Splayed table
 
 ```q
@@ -149,18 +141,15 @@ c  3.3
 
 Upserting to a splayed table appends new values to the column files. 
 
-!!! note "Upserting to a serialized or splayed table removes any [attributes](set-attribute.md) set. "
+!!! note "Upserting can remove [attributes](set-attribute.md)"
+
+    As with tables in memory, the unique and sorted attributes are kept only while the data still satisfies them, and the parted attribute is removed.
+    Upserting to a splayed table also removes the grouped attribute.
 
 ----
 
-!!! warning "Cond is not supported inside q-SQL expressions"
-
-    Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
-
-
- 
-[`insert`](insert.md), 
-[Join](join.md) 
+[`insert`](insert.md),
+[Join](join.md)
 <br>
  
 [Joins](../basics/joins.md),

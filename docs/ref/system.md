@@ -13,100 +13,124 @@ _Execute a system command_
 system x     system[x]
 ```
 
-Where `x` is a string representing a [kdb+ system command](../basics/syscmds.md) or operating system shell command, and any parameters to it. Executes the command and returns the result as a list of character vectors.
+Where `x` is a string representing a [kdb+ system command](../basics/syscmds.md) or operating system shell command, and any parameters to it, executes the command and returns its result.
 
 ## kdb+ system commands
 
 Refer to the [system commands reference](../basics/syscmds.md) for a full list of available commands.
 
-!!! note "The system command does not include a leading `\`."
+!!! note "The argument to `system` does not include a leading `\`."
+
+If you enter a system command with `\`, q passes any trailing comment to the command as part of its argument, so put comments on a separate line.
 
 ```q
-q)\l sp.q
-…
-q)\a                     / tables in namespace
+q)s:([]a:1 2);p:([]b:3 4);sp:([]c:5 6)
+q)/ tables in namespace
+q)\a
 `p`s`sp
-q)count \a               / \ must be the first character
+q)/ \ must be the first character
+q)count \a
 '\
+  [0]  count \a
+             ^
 q)system "a"             / same command called with system
 `p`s`sp
 q)count system "a"       / this returns a result
 3
 ```
 
-### Changing working directory
-
-In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
-
 ## Operating system shell commands
 
-As with `\`, if the argument is not a q command, it is executed in the shell:
+As with `\`, if the argument is not a q command, `system` runs it in the shell and returns the output of the command as a list of strings:
 
 ```q
 q)system "pwd"
 "/home/guest/q"
 ```
 
+If the shell command exits with a nonzero status, `system` signals an `os` error.
+
 !!! warning "Binary output"
 
- The result is expected to be text, and is captured into a list of character vectors. 
- As part of this capture, line feeds and associated carriage returns are removed. 
- 
- This transformation makes it impractical to capture binary data from the result of the system call. 
- Redirecting the output to a 
- [file](read1.md) or 
- [fifo](../kb/named-pipes.md) for explicit ingestion may be appropriate in such cases.
+    `system` expects the result to be text and captures it as a list of character vectors.
+    During capture, it removes line feeds and their associated carriage returns.
 
-### Directing output to a file
+    This transformation makes it impractical to capture binary data from the result of the system call.
+    In such cases, redirect the output to a file or FIFO and [read the file with `read1`](read1.md).
 
-When redirecting output to a file, for efficiency purposes, avoiding using `>tmpout` needlessly; append a semi-colon to the command.
+### Direct output to a file
+
+To capture the output, kdb+ redirects it to a temporary file. If you redirect the output to a file yourself, append a semicolon to the command to avoid an unnecessary redirection.
 
 ```q
 q)system"cat x"
 ```
 
-is essentially the same as the shell command
+is essentially the same as the shell command:
 
 ```bash
 cat x > tmpout
 ```
 
-as kdb+ tries to capture the output.
-So if you do
+because kdb+ captures the output. If you redirect the output yourself:
 
 ```q
 q)system"cat x > y"
 ```
 
-under the covers that looks like
+the shell receives:
 
 ```bash
 cat x > y > tmpout
 ```
 
-Not good. So if you add the semicolon
+which redirects the output twice. If you add the semicolon:
 
 ```q
 q)system"cat x > y;"
 ```
 
-the shell interpreter considers it as two statements
+the shell treats it as two statements:
 
 ```bash
 cat x > y; > tmpout
 ```
 
-### Capture stderr output
+The same mechanism means that, for several commands separated by semicolons, only the output of the last command is captured. To capture the output of all of them, group the commands in parentheses so that the redirection applies to the whole group:
 
-You cannot capture the stderr output from the system call directly, but a workaround is
+```q
+q)system"echo a;echo b"      / only b is captured; a goes to stdout
+a
+,,"b"
+q)system"(echo a;echo b)"    / both are captured
+(,"a";,"b")
+```
+
+!!! warning "Do not build commands from untrusted text"
+
+    The shell interprets the whole command string, so joining user input into it lets that input run any command (command injection). Validate such input, or avoid passing it through the shell.
+
+### Capture `stderr` output
+
+You cannot capture `stderr` from `system` directly. As a workaround, redirect it to a file and read the file:
 
 ```q
 q)/ Force capture to a file, and cat the file
 q)system"ls egg > file 2>&1;cat file"
-"ls: egg: No such file or directory"        
+"ls: egg: No such file or directory"
 
-q)/ Try and fails to capture the text
-q)@[system;"ls egg";{0N!"error - ",x;}]
+q)/ Try and fail to capture the text
+q)@[system;"ls egg";{-1"error - ",x;}]
 ls: egg: No such file or directory
-"error - os"
+error - os
 ```
+
+### Shell startup commands
+
+`system` passes the command to the shell of the operating system: `sh -c` on Unix-like systems and `cmd.exe` on Windows. A shell can run startup commands of its own, and these affect every `system` call. For example, on Windows the command processor runs the commands registered in its `AutoRun` setting each time it starts. They can change the working directory, set environment variables, or run any other command. See [why the current directory can change](https://devblogs.microsoft.com/oldnewthing/20071121-00/?p=24433) on _The Old New Thing_.
+
+On Unix-like systems, `sh -c` is not an interactive or login shell, so it does not read startup files such as `.bashrc` or `.profile`.
+
+----
+
+[System commands](../basics/syscmds.md)

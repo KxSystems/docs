@@ -33,7 +33,7 @@ q)reciprocal (12;13 14)
 0.08333333
 0.07692308 0.07142857
 
-q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
 
 q)reciprocal d
 a| 0.1  0.04761905 0.3333333
@@ -46,7 +46,7 @@ a          b
 0.04761905 0.2
 0.3333333  0.1666667
 
-q)reciprocal k
+q)reciprocal kt
 k  | a          b
 ---| --------------------
 abc| 0.1        0.25
@@ -60,8 +60,8 @@ The following shows the resulting output (range) type given the input (domain) t
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
-domain b g x h i j e f c s p m d z n u v t
-range  f . f f f f f f f . p f f z f f f f
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . p f f z f f f f
 ```
 
 Range: `fpz`

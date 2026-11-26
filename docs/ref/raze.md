@@ -5,16 +5,13 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `raze`
 
-
-
 _Return the items of `x` joined, collapsing one level of nesting_
-
 
 ```syntax
 raze x    raze[x]
 ```
 
-To collapse all levels, use [Converge](accumulators.md#converge) i.e. `raze/[x]`.
+To collapse all levels, use [Converge](accumulators.md#converge), that is, `raze/[x]`.
 
 ```q
 q)raze (1 2;3 4 5)
@@ -33,7 +30,7 @@ q)raze 42                / atom returned as a list
 ,42
 ```
 
-Returns the flattened values from a dictionary.
+Where `x` is a dictionary, returns its values joined.
 
 ```q
 q)d:`q`w`e!(1 2;3 4;5 6)
@@ -47,16 +44,19 @@ q)raze d
 
 !!! warning "Use only on items that can be joined"
 
-`raze` is the extension `,/` (Join Over) and requires items that can be joined together. 
+    `raze` is equivalent to `,/` (Join Over) and requires items that can be joined.
 
-```q
-q)d:`a`b!(1 2;3 5)
-q)10,d          / cannot join integer and dictionary
-'type
-q)raze (10;d)   / raze will not work
-'type
-```
-
+    ```q
+    q)d:`a`b!(1 2;3 5)
+    q)10,d          / cannot join integer and dictionary
+    'type
+      [0]  10,d          / cannot join integer and dictionary
+             ^
+    q)raze (10;d)   / so raze signals an error too
+    'type
+      [0]  raze (10;d)   / so raze signals an error too
+           ^
+    ```
 
 ----
 

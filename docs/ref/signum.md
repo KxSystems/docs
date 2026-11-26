@@ -1,6 +1,6 @@
 ---
 title: signum – the sign of a number | Reference | kdb+ and q documentation
-description: signum is a q keyword that returns 1, 0,or -1 according to the sign of its argument.
+description: signum is a q keyword that returns 1, 0, or -1 according to the sign of its argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `signum`
@@ -29,7 +29,13 @@ q)signum 1999.12.31
 Find counts of price movements by direction:
 
 ```q
-select count i by signum deltas price from trade
+q)trade:([]price:10 11 11 10 9 12)
+q)select count i by signum deltas price from trade
+price| x
+-----| -
+-1   | 2
+0    | 1
+1    | 3
 ```
 
 `signum` is a [multithreaded primitive](../kb/mt-primitives.md).
@@ -43,7 +49,7 @@ q)signum(10;-20 30)
 1i
 -1 1i
 
-q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
 
 q)signum d
 a| 1 -1 1
@@ -56,7 +62,7 @@ a  b
 -1 1
 1  -1
 
-q)signum k
+q)signum kt
 k  | a  b
 ---| -----
 abc| 1  1
@@ -70,8 +76,8 @@ The following shows the resulting output (range) type given the input (domain) t
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
-domain b g x h i j e f c s p m d z n u v t
-range  i . i i i i i i i . i i i i i i i i
+domain: b g x h i j e f c s p m d z n u v t
+range:  i . i i i i i i i . i i i i i i i i
 ```
 
 Range: `i`

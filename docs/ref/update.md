@@ -6,22 +6,11 @@ keywords: columns, kdb+, q, query, qsql, rows, sql, update
 ---
 # `update`
 
-
-
-
 _Add or amend rows or columns of a table or entries in a dictionary_
 
 !!! info "`update` is a qSQL query template and varies from regular q syntax."
 
-For the Update operator `!`, see 
-
-[Functional SQL](../basics/funsql.md)
-
-Since 4.1t 2021.06.04 updates from splayed table and path@tablename now leverage [peach](each.md) to load columns (when running with [secondary threads](../basics/syscmds.md#s-number-of-secondary-threads)).
-```q
-q)update x:0 from get`:mysplay
-```
-
+For the Update operator `!`, see [Functional SQL](../basics/funsql.md).
 
 ## Syntax
 
@@ -32,15 +21,33 @@ update _p~s~_ [by _p~b~_] from _t~exp~_ [where _p~w~_]
 
 [qSQL query templates](../basics/qsql.md)
 
-
 ## From phrase
 
-!!! warning "`update` will not modify a splayed table on disk."
+!!! warning "`update` does not modify a splayed table on disk."
 
+`update` on a splayed table returns the result in memory, and leaves the table on disk unchanged.
+Since 4.1t 2021.06.04, when running with [secondary threads](../basics/syscmds.md#s-number-of-secondary-threads), updates from a splayed table and from `path@tablename` use [`peach`](each.md) to load columns.
+
+```q
+q)`:mysplay/ set ([]a:1 2 3)
+`:mysplay/
+q)update x:0 from get`:mysplay
+a x
+---
+1 0
+2 0
+3 0
+q)get`:mysplay
+a
+-
+1
+2
+3
+```
 
 ## Select phrase
 
-Names in the [Select phrase](select.md#select-phrase) refer to new or modified columns in the table expression. 
+Names in the [Select phrase](select.md#select-phrase) refer to new or modified columns in the table expression.
 
 ```q
 q)t:([] name:`tom`dick`harry; age:28 29 35)
@@ -51,7 +58,6 @@ tom   28  blue
 dick  29  brown
 harry 35  green
 ```
-
 
 ## Where phrase
 
@@ -74,60 +80,66 @@ dick  dark brown
 harry fair blue
 ```
 
-New values must have the type of the column being amended.
+When the Where phrase selects some of the rows, new values must have the type of the column being amended.
 
-If the query adds a new column it will have values only as determined by the Where phrase. At other positions, it will have nulls of the column’s type. 
+```q
+q)update eye:1 from t where hair=`fair
+'type
+  [0]  update eye:1 from t where hair=`fair
+                                      ^
+```
 
+If the query adds a new column, it has values only at the positions selected by the Where phrase. At other positions, it has nulls of the column’s type.
 
+```q
+q)update age:30 from t where hair=`fair
+name  hair eye   age
+--------------------
+tom   fair green 30
+dick  dark brown
+harry fair gray  30
+```
 
 ## By phrase
 
-The [By phrase](select.md#by-phrase) applies the update along groups. 
+The [By phrase](select.md#by-phrase) applies the update along groups.
 This is most useful with aggregate and uniform functions.
 
 With an aggregate function, the entire group gets the value of the aggregation on the group.
 
 ```q
+q)p:([p:`p1`p2`p3`p4`p5`p6] name:`nut`bolt`screw`screw`cam`cog; weight:12 17 17 14 12 19f; city:`london`paris`rome`london`paris`london)
 q)update avg weight by city from p
-p | name  color weight city
---| -------------------------
-p1| nut   red   15     london
-p2| bolt  green 14.5   paris
-p3| screw blue  17     rome
-p4| screw red   15     london
-p5| cam   blue  14.5   paris
-p6| cog   red   15     london
+p | name  weight city
+--| -------------------
+p1| nut   15     london
+p2| bolt  14.5   paris
+p3| screw 17     rome
+p4| screw 15     london
+p5| cam   14.5   paris
+p6| cog   15     london
 ```
 
-A uniform function is applied along the group in place. This can be used, for example, to compute cumulative volume of orders.
+A uniform function is applied along the group in place. For example, you can use it to compute the cumulative volume of orders.
 
 ```q
+q)sp:([]s:`s1`s1`s2`s1`s2`s3;qty:300 200 400 200 100 300)
 q)update cumqty:sums qty by s from sp
-s p  qty cumqty
----------------
-0 p1 300 300
-0 p2 200 500
-0 p3 400 900
-0 p4 200 1100
-3 p5 100 100
-0 p6 100 1200
-1 p1 300 300
-1 p2 400 700
-2 p2 200 200
-3 p2 200 300
-3 p4 300 600
-0 p5 400 1600
+s  qty cumqty
+-------------
+s1 300 300
+s1 200 500
+s2 400 400
+s1 200 700
+s2 100 500
+s3 300 300
 ```
 
-Since 4.1 2024.04.29 throws `type` error if dictionary update contains by clause (previously ignored).
-
+A By phrase is not supported when updating a dictionary, and signals a `type` error. (Since 4.1 2024.04.29; previously the By phrase was ignored.)
 
 ## Cond
 
-Cond is not supported inside query templates: 
-see [qSQL](../basics/qsql.md#cond).
-
-
+Cond is not supported inside query templates. Refer to [Cond in qSQL](../basics/qsql.md#cond).
 
 ----
 

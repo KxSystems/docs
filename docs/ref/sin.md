@@ -1,6 +1,6 @@
 ---
 title: sin, asin – sine and arcsine | Reference | kdb+ and q documentation
-description: sin and asin are q keywords that return (respectively) the sin and arcsine of their argument.
+description: sin and asin are q keywords that return (respectively) the sine and arcsine of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `sin`, `asin`
@@ -12,14 +12,14 @@ sin x     sin[x]
 asin x    asin[x]
 ```
 
-Where `x` is a numeric, returns
+Where `x` is numeric, returns
 
 `sin`
 : the [sine](https://en.wikipedia.org/wiki/Sine) of `x`, taken to be in radians. The result is between `-1` and `1`, or null if the argument is null or infinity.
 
 `asin`
-: the [arcsine](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose sine is `x`. The result is in radians and lies between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. (The range is approximate due to rounding errors).
-Null is returned if the argument is not between -1 and 1.
+: the [arcsine](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose sine is `x`. The result is in radians and lies between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. (The range is approximate because of rounding errors.)
+The result is null if the argument is not between `-1` and `1`.
 
 ```q
 q)sin 0.5       / sine
@@ -29,6 +29,8 @@ q)sin 1%0
 
 q)asin 0.8      / arcsine
 0.9272952
+q)asin 2
+0n
 ```
 
 `sin` and `asin` are [multithreaded primitives](../kb/mt-primitives.md).

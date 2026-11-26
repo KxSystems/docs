@@ -5,16 +5,13 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `til`
 
-
-
-
-_First x natural numbers_ 
+_First `x` natural numbers_
 
 ```syntax
 til x    til[x]
 ```
 
-Where `x` is a non-negative integer atom, returns a vector of the first `x` integers. 
+Where `x` is a non-negative boolean, byte, short, int, or long atom, returns a vector of the first `x` natural numbers, starting from 0. A negative `x` signals a `domain` error.
 
 ```q
 q)til 0
@@ -29,7 +26,7 @@ q)til 5f
        ^
 ```
 
-`til` and [`key`](key.md) are synonyms, but the above usage is conventionally reserved to `til`.
+`til` and [`key`](key.md) are synonyms, but by convention only `til` is used for this purpose.
 
 `til` is a [multithreaded primitive](../kb/mt-primitives.md).
 

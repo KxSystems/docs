@@ -11,32 +11,15 @@ _Ratios between items_
 ratios y     ratios[y]
 ```
 
-Where `y` is a non-symbolic sortable list, returns the ratios of the underlying values of consecutive pairs of items of `y`.
+Where `y` is a numeric or temporal list, returns the ratios of the underlying values of consecutive pairs of items of `y`, as floats.
 
-`ratios` is an aggregate function.
+`ratios` is a uniform function.
 
-Examples: queries to get returns on prices:
+The following queries calculate returns on prices:
 
 ```q
 update ret:ratios price by sym from trade
 select log ratios price from trade
-```
-
-In a query to get price movements:
-
-```q
-update diff:deltas price by sym from trade
-```
-
-With [`signum`](signum.md) to count the number of up/down/same ticks:
-
-```q
-q)select count i by signum deltas price from trade
-price| x
------| ----
--1   | 247
-0    | 3
-1    | 252
 ```
 
 ## Implicit iteration
@@ -44,7 +27,7 @@ price| x
 `ratios` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
 ```q
-q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
 
 q)ratios d
 a| 10  21        3
@@ -57,7 +40,7 @@ a         b
 2.1       1.25
 0.1428571 1.2
 
-q)ratios k
+q)ratios kt
 k  | a         b
 ---| --------------
 abc| 10        4
@@ -74,7 +57,7 @@ q)ratios 2000 2005 2007 2012 2020
 2000 1.0025 1.000998 1.002491 1.003976
 ```
 
-It may be more convenient to have 1 as the first item of the result.
+You might prefer 1 as the first item of the result.
 
 ```q
 q)ratios0:{first[x]%':x}
@@ -82,18 +65,29 @@ q)ratios0 2000 2005 2007 2012 2020
 1 1.0025 1.000998 1.002491 1.003976
 ```
 
-!!! warning "Subtract Each Divide"
+!!! warning "Divide Each Prior"
 
-    The derived function `%':` (Divide Each Prior) used to define `ratios` is variadic and can be applied as either a unary or a binary.
+    `ratios` is defined with the derived function `%':` (Divide Each Prior), which is variadic: you can apply it as either a unary or a binary.
 
-    However, `ratios` is supported only as a unary function.
+    However, you can apply `ratios` only as a unary function.
     For binary application, use the derived function.
+
+    ```q
+    q)2 ratios 3 4
+    'type
+      [0]  2 ratios 3 4
+           ^
+    q)2%':3 4
+    1.5 1.333333
+    ```
 
 ----
 
 [Each Prior](maps.md#each-prior),
+[`deltas`](deltas.md),
 [`differ`](differ.md),
-[Divide](divide.md)
+[Divide](divide.md),
+[`signum`](signum.md)
 <br>
 
 [Mathematics](../basics/math.md)

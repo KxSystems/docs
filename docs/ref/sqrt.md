@@ -11,7 +11,7 @@ _Square root_
 sqrt x    sqrt[x]
 ```
 
-Returns as a float where `x` is numeric and
+Where `x` is numeric, returns a float:
 
 - non-negative, the square root of `x`
 - negative or null, null
@@ -28,6 +28,9 @@ q)sqrt 12:00:00.000000000
 q)sqrt 0Wh
 181.0166
 
+q)sqrt -0W
+0n
+
 q)sqrt 101b
 1 0 1f
 ```
@@ -43,7 +46,7 @@ q)sqrt (10;20 30)
 3.162278
 4.472136 5.477226
 
-q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+q)kt:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
 
 q)sqrt d
 a| 3.162278 4.582576 1.732051
@@ -56,7 +59,7 @@ a        b
 4.582576 2.236068
 1.732051 2.44949
 
-q)sqrt k
+q)sqrt kt
 k  | a        b
 ---| -----------------
 abc| 3.162278 2
@@ -70,8 +73,8 @@ The following shows the resulting output (range) type given the input (domain) t
 For the character codes of the datatypes, refer to [Datatypes](../basics/datatypes.md).
 
 ```txt
-domain b g x h i j e f c s p m d z n u v t
-range  f . f f f f f f f . f f f z f f f f
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f z f f f f
 ```
 
 Range: `fz`

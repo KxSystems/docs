@@ -1,5 +1,5 @@
 ---
-title: tan, atan – tangent and arctangent | Reference | kdb+ and q documentation
+title: tan, atan – tangent and arctangent | Reference | kdb+ and q documentation
 description: tan and atan are q keywords that return the tangent or arctangent of their argument.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
@@ -12,17 +12,17 @@ tan x     tan[x]
 atan x    atan[x]
 ```
 
-Where `x` is a numeric, returns
+Where `x` is numeric, returns
 
 `tan`
-: the [tangent](https://en.wikipedia.org/wiki/Tangent) of `x`, taken to be in radians. Integer arguments are promoted to floating point. Null is returned if the argument is null or infinity.
+: the [tangent](https://en.wikipedia.org/wiki/Tangent) of `x`, taken to be in radians. Integer arguments are promoted to floating point. Returns null if the argument is null or infinity.
 
 : The function is equivalent to `{(sin x)%cos x}`.
 
 `atan`
 : the [arctangent](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose tangent is `x`.
 
-: The result is in radians and lies between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. The range is approximate due to rounding errors.
+: The result is in radians and lies between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. The range is approximate because of rounding errors.
 
 ```q
 q)tan 0 0.5 1 1.5707963 2 0w                    / tangent
