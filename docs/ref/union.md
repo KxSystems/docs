@@ -1,13 +1,9 @@
 ---
-title: union join of two tables | Reference | kdb+ and q documentation
+title: union – union of two lists | Reference | kdb+ and q documentation
 description: union is a q keyword that returns the union of two lists.
 author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `union`
-
-
-
-
 
 _Union of two lists_
 
@@ -15,7 +11,7 @@ _Union of two lists_
 x union y    union[x;y]
 ```
 
-Where `x` and `y` are lists or atoms, returns a list of the distinct items of its combined arguments, i.e. `distinct x,y`.
+Where `x` and `y` are lists or atoms, returns a list of the distinct items of its combined arguments, that is, `distinct x,y`.
 
 ```q
 q)1 2 3 3 6 union 2 4 6 8
@@ -36,12 +32,9 @@ q)(distinct t0,t1)~t0 union t1
 1b
 ```
 
-
 ----
 
 [`in`](in.md), [`inter`](inter.md), [`within`](within.md)
 <br>
 
-[Select](../basics/by-topic.md#selection)
-
-
+[Selection](../basics/by-topic.md#selection)

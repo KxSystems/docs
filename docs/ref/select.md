@@ -14,15 +14,11 @@ _Select all or part of a table, possibly with new columns_
 
 !!! info "`select` is a qSQL query template and varies from regular q syntax."
 
-For the Select operator `?`, see 
-
-[Functional SQL](../basics/funsql.md)
-
+For the Select operator `?`, see [Functional SQL](../basics/funsql.md).
 
 ## Syntax
 
-
-Below, square brackets mark optional elements.
+In the following syntax, square brackets mark optional elements.
 
 <div markdown="1" class="typewriter">
 select [_L~exp~_] [_p~s~_] [by _p~b~_] from _t~exp~_ [where _p~w~_]
@@ -44,6 +40,7 @@ The `select` query returns a table for both [call-by-name and call-by-value](../
 
 Since 4.1t 2021.03.30, select from [partitioned tables](../kb/partition.md) maps relevant columns within each partition in parallel when running with [secondary threads](../basics/syscmds.md#s-number-of-secondary-threads).
 
+A `select` from [partitioned tables](../kb/partition.md) maps relevant columns within each partition in parallel when running with [secondary threads](../basics/syscmds.md#s-number-of-secondary-threads).
 
 ## Minimal form
 
@@ -64,10 +61,10 @@ id val
 
 ## Select phrase
 
-The [Select phrase](#select-phrase) specifies the columns of the result table, one per subphrase. 
+The Select phrase specifies the columns of the result table, one per subphrase.
 
-Absent a Select phrase, all the columns of the table expression are returned.
-(Unlike SQL, no `*` wildcard is required.)
+Without a Select phrase, the query returns all the columns of the table expression.
+(Unlike SQL, q doesn't need a `*` wildcard.)
 
 ```q
 q)t:([] c1:`a`b`c; c2:10 20 30; c3:1.1 2.2 3.3)
@@ -87,12 +84,18 @@ b  20 2.2
 c  30 3.3
 ```
 
-A [computed column](../basics/qsql.md#computed-columns) in the Select phrase cannot be referred to in another subphrase. 
+Another subphrase cannot refer to a [computed column](../basics/qsql.md#computed-columns) in the Select phrase.
 
+```q
+q)select a:c2*2, b:a+1 from t
+'a
+  [0]  select a:c2*2, b:a+1 from t
+                        ^
+```
 
 ## Limit expression
 
-To limit the returned results you can include a limit expression _L<sub>exp</sub>_
+To limit the returned results, you can include a limit expression _L~exp~_:
 
 ```q
 select[n]
@@ -104,23 +107,35 @@ select distinct
 
 where 
 
--   `n` limits the result to the first `n` rows of the selection if positive, or the last `n` rows if negative 
--   `m` is the number of the first row to be returned: useful for stepping through query results one block of `n` at a time
--   `order` is a column (or table) and sort order: use `<` for ascending, `>` for descending
+- `n` limits the result to the first `n` rows of the selection if positive, or the last `n` rows if negative
+- `m` is the number of the first row to return: useful for stepping through query results one block of `n` at a time
+- `order` is a column (or table) and sort order: use `<` for ascending, `>` for descending
+
+The following query returns the three best prices for symbol `s` with a size greater than 0.
 
 ```q
-select[3;>price] from bids where sym=s,size>0
+q)bids:([]sym:`a`a`a`b`a;price:10 12 11 20 13;size:100 0 200 300 50)
+q)s:`a
+q)select[3;>price] from bids where sym=s,size>0
+sym price size
+--------------
+a   13    50
+a   11    200
+a   10    100
+q)select[1 2] from bids     / 2 rows starting from row 1
+sym price size
+--------------
+a   12    0
+a   11    200
 ```
 
-This would return the three best prices for symbol `s` with a size greater than 0.
-
-This construct works on in-memory tables but not on memory-mapped tables loaded from splayed or partitioned files. 
+This construct works on in-memory and memory-mapped splayed tables, but not on partitioned tables, where it signals `'nyi`.
 
 !!! tip "Performance"
 
-    `select[n]` applies the Where phrase on all rows of the table, and takes the first `n` rows, before applying the Select phrase. 
+    `select[n]` applies the Where phrase to all rows of the table, and takes the first `n` rows, before applying the Select phrase.
 
-    So if you are paging it is better to store the result of the query somewhere and `select[n,m]` from there, rather than run the filter again.
+    If you're paging through results, store the query result and use `select[m n]` on it instead of running the filter again.
 
 `select distinct` returns only unique records in the result.
 
@@ -128,7 +143,7 @@ This construct works on in-memory tables but not on memory-mapped tables loaded 
 ## By phrase
 
 A `select` query that includes a By phrase returns a keyed table.
-The key columns are those in the By phrase; values from other columns are grouped, i.e. nested. 
+The key columns are those in the By phrase; values from other columns are grouped, that is, nested.
 
 ```q
 q)k:`a`b`a`b`c
@@ -152,6 +167,8 @@ Unlike in SQL, columns in the By phrase
 -   are included in the result and need not be specified in the Select phrase
 -   can include computed columns
 
+- are included in the result, so you don't need to specify them in the Select phrase
+- can include computed columns
 
 [The SQL `GROUP BY` statement](https://www.w3schools.com/sql/sql_groupby.asp)
 
@@ -203,15 +220,12 @@ f  | jill gray
 m  | jack blue
 ```
 
-Where there is a [By phrase](#by-phrase), and no sort order is specified, the result is sorted ascending by its key.
+If a query has a By phrase and no sort order, q sorts the result in ascending order by its key.
 
 
 ## Cond
 
-[Cond](cond.md) is not supported inside query templates: 
-see [qSQL](../basics/qsql.md#cond).
-
-
+Query templates don't support [Cond](cond.md). For details, see [qSQL](../basics/qsql.md#cond).
 
 ----
 

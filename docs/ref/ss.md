@@ -5,10 +5,7 @@ author: KX Systems, Inc., a subsidiary of KX Software Limited
 ---
 # `ss`, `ssr`
 
-_String search – and replace_
-
-
-
+_String search and replace_
 
 ## `ss`
 
@@ -20,10 +17,10 @@ x ss y     ss[x;y]
 
 Where
 
--   `x` is a string
--   `y` is a [pattern](../basics/regex.md) as a string (no asterisk)
+- `x` is a string
+- `y` is a [pattern](../basics/regex.md) as a char atom or string (`ss` doesn't support `*` as a wildcard)
 
-returns an int vector of position/s within `x` of substrings that match pattern `y`.
+returns a long vector of the positions within `x` of substrings that match pattern `y`.
 
 ```q
 q)"We the people of the United States" ss "the"
@@ -38,6 +35,12 @@ q)s ss "t?r"
 0 10
 ```
 
+Matches do not overlap: after a match, the search resumes at the end of the matched substring.
+
+```q
+q)"aaaa" ss "aa"
+0 2
+```
 
 ## `ssr`
 
@@ -49,14 +52,14 @@ ssr[x;y;z]
 
 Where
 
--   `x` is a string
--   `y` is a [pattern](../basics/regex.md) as a string (no asterisk)
--   `z` is a string or a function
+- `x` is a string
+- `y` is a [pattern](../basics/regex.md) as a char atom or string (`ssr` doesn't support `*` as a wildcard)
+- `z` is a string or a function
 
 returns `x` with each substring matching `y` replaced by:
 
--   `z` if `z` is a string
--   `z[Y]` where `z` is a function and `Y` is the matched substring
+- `z` if `z` is a string
+- `z[Y]` if `z` is a function, where `Y` is the matched substring
 
 ```q
 q)s:"toronto ontario"
@@ -66,18 +69,12 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 "TORonto onTARio"
 ```
 
-
 ----
 
 [`like`](like.md)
 <br>
 
-[Regular Expressions in q](../basics/regex.md)
+[Regular expressions in q](../basics/regex.md)
 <br>
 
 [Strings](../basics/by-topic.md#strings)
-<br>
-
-[Using regular expressions](../basics/regex.md)
-
-

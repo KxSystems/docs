@@ -8,16 +8,13 @@ keywords: deal, kdb+, q, rand, random, roll
 
 _Pick randomly_
 
-
-
 ```syntax
 rand x   rand[x]
 ```
 
-
 ## Pick an item from a list
 
-Where `x` is a **list** returns one item chosen randomly from `x`
+Where `x` is a **list**, returns one item chosen randomly from `x`.
 
 ```q
 q)rand 1 30 45 32
@@ -26,10 +23,9 @@ q)rand("abc";"def";"ghi")  / list of lists
 "ghi"
 ```
 
-
 ## Pick a value at random
 
-Where `x` is an **atom** returns an atom of the same type.
+Where `x` is an **atom**, returns an atom of the same type.
 
 ```q
 q)rand 100
@@ -48,8 +44,8 @@ Right domain and range are as for [Roll and Deal](deal.md#generate).
 
 !!! tip "Returns a single item"
 
-    `rand` is exactly equivalent to `{first 1?x}`. 
-    If you need a list result, use [Roll](deal.md). 
+    `rand` is exactly equivalent to `{first 1?x}`.
+    If you need a list result, use [Roll](deal.md).
     The following expressions all roll a million six-sided dice.
 
         q)\ts rand each 1000000#6
@@ -58,7 +54,6 @@ Right domain and range are as for [Roll and Deal](deal.md#generate).
         210 41166496
         q)\ts 1000000?6                     / Roll
         6 8388800
-
 
 ---
 

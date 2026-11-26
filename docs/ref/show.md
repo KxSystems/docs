@@ -6,9 +6,7 @@ keywords: console, debug, develop, display, kdb+, q, tool
 ---
 # `show`
 
-
-
-_Format and display at the console._
+_Format and display at the console_
 
 ```syntax
 show x    show[x]
@@ -28,14 +26,14 @@ q)a~(::)
     ```q
     q)f:{a:x<5;sum a}
     q)f 2 3 5 7 3
-    3
+    3i
     q)f:{show a:x<5;sum a}    / same function, showing value of a
     q)f 2 3 5 7 3
     11001b
-    3
+    3i
     ```
 
-
+----
 
 [Display](display.md)
 <br>
